@@ -1,72 +1,27 @@
 /* =========================================================
-   Noble Dental Care — scripts.js
-   (header, hero motion, booking, doctors app, reviews,
-    certificates, footer year, Care Guide with full dataset)
+   Noble Dental Care — Main JS
+   (header/menu, scroll bar, hero motion, booking, doctors,
+    reviews rail, certificates, footer year, Care Guide)
    ========================================================= */
-.brand-title {
-  font-size: 1.3rem;
-  font-weight: 800;
-  margin: 0;
-  color: #0f172a;
-  letter-spacing: 0.02em;
-}
 
-.brand-title span {
-  color: var(--brand);
-}
-
-(() => {
-  const header = document.querySelector('.site-header');
-  const menuBtn = document.querySelector('.menu-toggle');
-  const navList = document.querySelector('.nav-pill');
-
-  const shrinkOnScroll = () => {
-    header.classList.toggle('shrink', window.scrollY > 10);
-  };
-
-  shrinkOnScroll();
-  window.addEventListener('scroll', shrinkOnScroll, { passive: true });
-
-  menuBtn.addEventListener('click', () => {
-    const isOpen = menuBtn.getAttribute('aria-expanded') === 'true';
-    menuBtn.setAttribute('aria-expanded', String(!isOpen));
-    navList.setAttribute('aria-hidden', String(isOpen));
-  });
-
-  document.addEventListener('click', (e) => {
-    if (!header.contains(e.target)) {
-      menuBtn.setAttribute('aria-expanded', 'false');
-      navList.setAttribute('aria-hidden', 'true');
-    }
-  });
-})();
-
-const scrollBar = document.getElementById('scrollIndicator');
-
-window.addEventListener('scroll', () => {
-  const scrollTop = window.scrollY;
-  const docHeight = document.body.scrollHeight - window.innerHeight;
-  const scrollPercent = (scrollTop / docHeight) * 100;
-  scrollBar.style.width = `${scrollPercent}%`;
-});
-
-/* ------------- tiny helpers ------------- */
+/* ---------- tiny helpers ---------- */
 const $  = (s, r=document) => r.querySelector(s);
 const $$ = (s, r=document) => Array.from(r.querySelectorAll(s));
 const on = (el, ev, fn, o) => el && el.addEventListener(ev, fn, o);
 
 /* =========================================================
-   Header: shrink, mobile menu, submenu
+   Header: shrink on scroll, mobile menu, Specialities submenu
    ========================================================= */
 (() => {
-  const header = $('.site-header');
+  const header  = $('.site-header');
   const menuBtn = $('.menu-toggle');
   const navList = $('.nav-pill');
   const subBtn  = $('.has-submenu > .submenu-toggle');
   const subMenu = $('#sp-submenu');
 
   const setShrink = () => header?.classList.toggle('shrink', (window.scrollY||0) > 10);
-  setShrink(); on(window,'scroll', setShrink, {passive:true});
+  setShrink();
+  on(window,'scroll', setShrink, {passive:true});
 
   // mobile nav toggle
   on(menuBtn, 'click', () => {
@@ -74,36 +29,87 @@ const on = (el, ev, fn, o) => el && el.addEventListener(ev, fn, o);
     menuBtn.setAttribute('aria-expanded', String(!open));
     navList.setAttribute('aria-hidden', String(open));
   });
-  // close on outside click / esc
-  on(document, 'click', (e) => {
-    if (!header.contains(e.target)) { menuBtn.setAttribute('aria-expanded','false'); navList.setAttribute('aria-hidden','true'); }
-  });
-  on(document, 'keydown', (e) => { if (e.key === 'Escape'){ menuBtn.setAttribute('aria-expanded','false'); navList.setAttribute('aria-hidden','true'); }});
 
-  // submenu
+  // close nav on outside click / Esc
+  on(document, 'click', (e) => {
+    if (!header.contains(e.target)) {
+      menuBtn.setAttribute('aria-expanded','false');
+      navList.setAttribute('aria-hidden','true');
+      closeSubInline();
+    }
+  });
+  on(document, 'keydown', (e) => {
+    if (e.key === 'Escape') {
+      menuBtn.setAttribute('aria-expanded','false');
+      navList.setAttribute('aria-hidden','true');
+      closeSubInline();
+    }
+  });
+
+  // Specialities submenu: desktop via CSS hover; mobile via inline toggle
+  function openSubInline(){
+    if (!subBtn || !subMenu) return;
+    subBtn.setAttribute('aria-expanded','true');
+    subMenu.setAttribute('aria-hidden','false');
+    subMenu.style.opacity = '1';
+    subMenu.style.transform = 'translateY(0)';
+    subMenu.style.pointerEvents = 'auto';
+  }
+  function closeSubInline(){
+    if (!subBtn || !subMenu) return;
+    subBtn.setAttribute('aria-expanded','false');
+    subMenu.setAttribute('aria-hidden','true');
+    subMenu.style.opacity = '';
+    subMenu.style.transform = '';
+    subMenu.style.pointerEvents = '';
+  }
   if (subBtn && subMenu){
-    const closeMenu = ()=>{ subBtn.setAttribute('aria-expanded','false'); subMenu.setAttribute('aria-hidden','true'); };
-    const openMenu  = ()=>{ subBtn.setAttribute('aria-expanded','true');  subMenu.setAttribute('aria-hidden','false'); };
-    on(subBtn,'click',(e)=>{ const isOpen=subBtn.getAttribute('aria-expanded')==='true'; isOpen?closeMenu():openMenu(); e.stopPropagation(); });
-    on(document,'click',(e)=>{ if (!subMenu.contains(e.target) && e.target !== subBtn) closeMenu(); });
-    on(document,'keydown',(e)=>{ if (e.key==='Escape') closeMenu(); });
+    on(subBtn,'click',(e)=>{
+      const isMobile = window.matchMedia('(max-width: 960px)').matches;
+      if (!isMobile) return; // desktop handled by CSS hover/focus
+      e.preventDefault();
+      const isOpen = subBtn.getAttribute('aria-expanded') === 'true';
+      isOpen ? closeSubInline() : openSubInline();
+      e.stopPropagation();
+    });
   }
 })();
 
 /* =========================================================
-   Hero: respect reduced motion
+   Scroll progress bar (uses #scrollIndicator already in CSS)
+   ========================================================= */
+(() => {
+  let bar = $('#scrollIndicator');
+  if (!bar) {
+    bar = document.createElement('div');
+    bar.id = 'scrollIndicator';
+    document.body.appendChild(bar);
+  }
+  const update = () => {
+    const scrollTop = window.scrollY;
+    const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+    const pct = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
+    bar.style.width = `${Math.max(0, Math.min(100, pct))}%`;
+  };
+  update();
+  on(window, 'scroll', update, { passive: true });
+  on(window, 'resize', update);
+})();
+
+/* =========================================================
+   Hero video: respect reduced motion
    ========================================================= */
 (() => {
   const vid = document.querySelector(".blackhole-video");
   if (!vid) return;
   const mq = matchMedia("(prefers-reduced-motion: reduce)");
-  const apply = () => { if (mq.matches){ vid.pause?.(); vid.removeAttribute?.("autoplay"); } };
-  mq.addEventListener?.("change", apply) ?? mq.addListener?.(apply);
+  const apply = () => { if (mq.matches){ vid.pause?.(); vid.removeAttribute?.("autoplay"); vid.removeAttribute?.("loop"); } };
+  (mq.addEventListener?.("change", apply) || mq.addListener?.(apply));
   apply();
 })();
 
 /* =========================================================
-   Booking form: days/times, WA handoff
+   Booking form: day/time slots + WhatsApp handoff
    ========================================================= */
 (() => {
   const tz = "Asia/Kolkata";
@@ -188,7 +194,7 @@ ${fd.get("notes") ? "• Notes: "+fd.get("notes") : ""}`.trim();
     e.preventDefault();
     if (bookBtn.disabled) return;
     updateWA();
-    toast.hidden = false; setTimeout(()=> toast.hidden = true, 2000);
+    if (toast){ toast.hidden = false; setTimeout(()=> (toast.hidden = true), 2000); }
     window.open(waFill.href, "_blank", "noopener");
   });
 
@@ -201,9 +207,9 @@ ${fd.get("notes") ? "• Notes: "+fd.get("notes") : ""}`.trim();
 (() => {
   const grid = $('#docGrid');
   const dlg = $('#docSheet');
+  if (!grid || !dlg) return;
   const closeBtn = $('.sheet-close', dlg);
   const search = $('#docSearch');
-  if (!grid || !dlg) return;
 
   const DATA = {
     dhivakaran:{ name:"Dr Dhivakaran", role:"Chief Medical Director", hero:"/images/doctors/dhivakaran-hero.webp", bio:"Chief Medical Director at Noble Dental Care. Director, Healthflo (557 hospitals). Contributor to Triumph’s Complete Review of Dentistry.", expertise:["Painless RCT","Dental Implants","Preventive Dentistry"], books:[{t:"Triumph’s Complete Review of Dentistry",p:"Wolters Kluwer • 2018",img:"/images/books/triumph.webp",href:"https://play.google.com/store/books/details?id=ZTjvDwAAQBAJ"}] },
@@ -254,13 +260,11 @@ ${fd.get("notes") ? "• Notes: "+fd.get("notes") : ""}`.trim();
     }
   });
 
-  function checkHash(){
-    const id = location.hash.replace('#','');
-    if (id && DATA[id]) openDialog(id);
-  }
+  // deep-link (#dhivakaran, etc.)
+  function checkHash(){ const id = location.hash.replace('#',''); if (id && DATA[id]) openDialog(id); }
   window.addEventListener('hashchange', checkHash); checkHash();
 
-  // search/filter chips
+  // search + filter chips
   function applyFilter(){
     const q = (search.value||'').toLowerCase().trim();
     const pressed = $$('#docFilters .chip--ghost').find(b=>b.getAttribute('aria-pressed')==='true');
@@ -284,14 +288,93 @@ ${fd.get("notes") ? "• Notes: "+fd.get("notes") : ""}`.trim();
   });
 })();
 
-
-
 /* =========================================================
-   Testimonials rail controls
+   Testimonials / Reviews rail (auto, seamless, hover pause)
    ========================================================= */
+(() => {
+  const track = $('#revTrack');
+  if (!track) return;
+
+  const REVIEWS = [
+    { stars:5, body:"Had a painless RCT the same evening. Doctor explained every step; recovery was smooth.", who:"Shruthi P", src:"Google", avatar:"/images/avatars/a1.webp" },
+    { stars:5, body:"Friendly team, clear cost breakdown, and late-evening slot—perfect for my schedule.", who:"Rahul K", src:"Practo", avatar:"/images/avatars/a2.webp" },
+    { stars:5, body:"Got my wisdom tooth out—quick, careful, and zero complications. Highly recommend.", who:"Mahesh V", src:"Google", avatar:"/images/avatars/a3.webp" },
+    { stars:5, body:"My daughter’s braces journey went smoothly. Clear instructions and regular follow-ups.", who:"Priya S", src:"Practo", avatar:"/images/avatars/a4.webp" },
+    { stars:5, body:"Implant felt natural by day two. Expert hands + clean workflow.", who:"Vikram R", src:"Google", avatar:"/images/avatars/a5.webp" },
+    { stars:5, body:"Great hygiene, transparent advice. No unnecessary procedures pushed.", who:"Aishwarya N", src:"Google", avatar:"/images/avatars/a6.webp" },
+    { stars:5, body:"Emergency swelling managed late evening—very reassuring.", who:"Sameer T", src:"Google", avatar:"/images/avatars/a7.webp" },
+    { stars:5, body:"Aligners were a breeze, progress tracked closely.", who:"Naveen S", src:"Practo", avatar:"/images/avatars/a8.webp" },
+    { stars:5, body:"Best cleaning I’ve had—gentle and thorough.", who:"Rekha D", src:"Google", avatar:"/images/avatars/a9.webp" },
+    { stars:5, body:"Kids’ visit was fun—no fear, lots of smiles.", who:"Farheen A", src:"Google", avatar:"/images/avatars/a10.webp" },
+    { stars:5, body:"Crown fit perfectly on first try. Precise work.", who:"Sanjana L", src:"Practo", avatar:"/images/avatars/a11.webp" },
+    { stars:5, body:"Doctor explained X-rays clearly. Very comforting.", who:"Harish B", src:"Google", avatar:"/images/avatars/a12.webp" }
+  ];
+
+  const stars = n => '★★★★★'.slice(0, Math.min(5, Math.max(0, n|0)));
+  const tpl = r => `
+    <article class="rev-card" itemscope itemtype="https://schema.org/Review">
+      <div class="rev-stars" aria-label="${r.stars} out of 5 stars" itemprop="reviewRating" itemscope itemtype="https://schema.org/Rating">
+        <meta itemprop="ratingValue" content="${r.stars}"/><span aria-hidden="true">${stars(r.stars)}</span>
+      </div>
+      <blockquote class="rev-quote" itemprop="reviewBody">${r.body}</blockquote>
+      <div class="rev-author">
+        <img src="${r.avatar}" alt="" width="36" height="36" loading="lazy" decoding="async">
+        <div>
+          <span class="n" itemprop="author" itemscope itemtype="https://schema.org/Person">
+            <span itemprop="name">${r.who}</span>
+          </span>
+          <span class="s">${r.src} Review</span>
+        </div>
+      </div>
+    </article>`;
+  // Duplicate for seamless loop
+  track.innerHTML = REVIEWS.map(tpl).join('') + REVIEWS.map(tpl).join('');
+
+  let animating = false, stepPx = 0, timer = null;
+
+  function calcStep(){
+    const card = track.querySelector('.rev-card');
+    if (!card) return 300;
+    const gap = parseFloat(getComputedStyle(track).getPropertyValue('--gap')) || 14;
+    return Math.round(card.getBoundingClientRect().width + gap);
+  }
+  function shift(){
+    if (animating) return;
+    animating = true;
+    track.style.transition = 'transform .6s ease';
+    track.style.transform = `translateX(-${stepPx}px)`;
+    const end = () => {
+      track.removeEventListener('transitionend', end);
+      // move items until we've covered the shift distance (handles responsive widths)
+      let moved = 0;
+      const gap = parseFloat(getComputedStyle(track).getPropertyValue('--gap')) || 14;
+      while (moved < stepPx - 1) {
+        const first = track.firstElementChild; if (!first) break;
+        moved += first.getBoundingClientRect().width + gap;
+        track.appendChild(first);
+      }
+      track.style.transition = 'none';
+      track.style.transform = 'translateX(0)';
+      track.offsetHeight; // reflow
+      animating = false;
+    };
+    track.addEventListener('transitionend', end, {once:true});
+  }
+  const play = () => { stop(); timer = setInterval(shift, 2500); };
+  const stop = () => { if (timer){ clearInterval(timer); timer=null; } };
+
+  on(track,'mouseenter', stop);
+  on(track,'mouseleave', play);
+  on(track,'focusin', stop);
+  on(track,'focusout', play);
+  on(window,'resize', ()=>{ const was = !!timer; stop(); stepPx = calcStep(); if (was) play(); });
+
+  stepPx = calcStep();
+  play();
+})();
 
 /* =========================================================
-   Certificates ticker (simple cards)
+   Certificates ticker (simple cards + arrows)
    ========================================================= */
 (() => {
   const track = $('#certsTrack');
@@ -329,7 +412,7 @@ ${fd.get("notes") ? "• Notes: "+fd.get("notes") : ""}`.trim();
 (() => { const y = $('#year'); if (y) y.textContent = new Date().getFullYear(); })();
 
 /* =========================================================
-   Care Guide (Voka): full dataset + UI wiring + PDF
+   Care Guide (Voka): full dataset + UI + PDF
    ========================================================= */
 function initCareGuide(){
   const el = {
@@ -688,9 +771,7 @@ function initCareGuide(){
     const HOT = ['pain','whitening','implants','braces','wisdom','kids','gum','crown','aligners','ulcer'];
     const seen = new Set();
     const chips = [];
-    // build from keywords & ids
     state.filtered.forEach(t => (t.keywords||[]).forEach(k => { if (HOT.some(h=>k.includes(h)) && !seen.has(k)){ seen.add(k); chips.push(k); }}));
-    // ensure unique and limited
     const final = Array.from(new Set([...HOT, ...chips])).slice(0,12);
     el.chips.innerHTML = final.map(w => `<button type="button" class="vk-chip" data-q="${escapeHtml(w)}">${escapeHtml(w)}</button>`).join('');
   }
@@ -716,13 +797,14 @@ function initCareGuide(){
     el.postop.innerHTML   = renderListPanel('Post-op', t.postop);
     el.tips.innerHTML     = renderListPanel('Tips', t.tips);
     el.proscons.innerHTML = renderListPanel('Pros & Cons', t.proscons);
-    el.sources.querySelector('.vk-refs')?.insertAdjacentHTML('beforeend', t.sources?`<li>${escapeHtml(t.sources)}</li>`:'');
+    // keep your fixed references list, append topic sources as a simple line
+    const refs = el.sources.querySelector('.vk-refs');
+    if (refs && t.sources){
+      const li = document.createElement('li'); li.textContent = t.sources; refs.appendChild(li);
+    }
     crossfadeTo(t.img);
 
-    // update dots active state
     $$('#vkDots button').forEach((b,idx)=> b.classList.toggle('is-active', idx===state.i));
-
-    // set hash for deep-linking (doesn't trigger doctor dialog)
     history.replaceState(null, "", `#care:${t.id}`);
   }
 
@@ -754,7 +836,6 @@ function initCareGuide(){
     );
     if (idx >= 0){
       const t = VK_TOPICS[idx];
-      // reset filters so result is visible
       el.category.value = 'all'; el.search.value = '';
       state.filtered = [...VK_TOPICS];
       buildDots(); buildChips();
@@ -781,11 +862,10 @@ function initCareGuide(){
 
   // filtering/search/chips
   on(el.category,'change', applyCategory);
-  on(el.search,'input', ()=> { /* live suggestions only */ });
-  on(el.search,'change', ()=> applyCategory());
+  on(el.search,'change', applyCategory);
   on(el.chips,'click',(e)=>{ const c=e.target.closest('.vk-chip'); if (!c) return; el.search.value=c.dataset.q||''; applyCategory(); });
 
-  // chat
+  // chat quick-jump
   function chatLine(msg, who='user'){
     const div = document.createElement('div');
     div.className = 'msg ' + (who==='user' ? 'msg--user':'msg--bot');
@@ -815,12 +895,12 @@ function initCareGuide(){
         state.filtered = [...VK_TOPICS];
         buildDots(); buildChips();
         show(idx);
-        $('#ndc-care-voka')?.scrollIntoView({behavior:'smooth', block:'start'});
+        $('#ndc-care-voka')?.scrollIntoView({behavior:'smooth', block: 'start'});
       }
     }
   }
 
-  // PDF export
+  // PDF export (html2pdf already in your HTML)
   on(el.pdfBtn,'click', async ()=> {
     const t = state.filtered[state.i];
     const printable = document.createElement('div');
@@ -844,16 +924,15 @@ function initCareGuide(){
       return;
     }
     const opt = {
-      margin:       10,
-      filename:     `NDC_${t.id}.pdf`,
-      image:        { type: 'jpeg', quality: 0.96 },
-      html2canvas:  { scale: 2, useCORS: true, backgroundColor: '#FFFFFF' },
-      jsPDF:        { unit: 'mm', format: 'a4', orientation: 'portrait' }
+      margin: 10,
+      filename: `NDC_${t.id}.pdf`,
+      image: { type: 'jpeg', quality: 0.96 },
+      html2canvas: { scale: 2, useCORS: true, backgroundColor: '#FFFFFF' },
+      jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' }
     };
     await html2pdf().set(opt).from(printable).save();
   });
 
-  // initial render
   buildDatalist();
   applyCategory();
   setTabs('tab-overview');
