@@ -1,356 +1,289 @@
 /* =========================================================
-   Noble Dental Care — Dental Implants Page JS
-   (parallax, smooth scroll, sticky TOC, eligibility checker,
-    lazy images, reveal-on-scroll, currency toggle)
+   Dental Implants — Page Script (implants.js)
+   - Helpers ($, $$, on)
+   - Parallax hero layers
+   - Sticky TOC → converts to header ribbon on scroll/overlap
+   - Smooth scroll + ScrollSpy + hash sync + keyboard nav
+   - Self-eligibility quick check (patient-friendly messaging)
+   - Reveal-on-scroll animations for cards/sections
+   - Light a11y + reduced motion support
    ========================================================= */
 
 (() => {
-  /* ---------- tiny helpers ---------- */
+  /* -------------------- Helpers -------------------- */
   const $  = (s, r=document) => r.querySelector(s);
   const $$ = (s, r=document) => Array.from(r.querySelectorAll(s));
-  const on = (el, ev, fn, o) => el && el.addEventListener(ev, fn, o);
-  const prefersReduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const on = (el, ev, fn, opt) => el && el.addEventListener(ev, fn, opt);
 
-  /* =======================================================
-     1) Parallax hero (mouse + scroll) w/ reduced-motion
-     ======================================================= */
-  const hero = $('.implant-hero');
-  if (hero && !prefersReduced){
-    const layers = $$('.p-layer', hero);
-    let sx = 0, sy = 0, cy = 0, ticking = false;
+  const reduceMotion = matchMedia('(prefers-reduced-motion: reduce)');
+  const raf = (cb) => (reduceMotion.matches ? cb() : requestAnimationFrame(cb));
 
-    on(hero, 'mousemove', (e) => {
-      const rect = hero.getBoundingClientRect();
-      const x = (e.clientX - rect.left) / rect.width  - 0.5;
-      const y = (e.clientY - rect.top)  / rect.height - 0.5;
-      sx = x; sy = y; requestTick();
+  /* -------------------- Parallax (hero layers) -------------------- */
+  const layers = $$('[data-parallax]');
+  let ticking = false;
+
+  function parallaxUpdate() {
+    const y = window.scrollY || 0;
+    layers.forEach(el => {
+      const speed = parseFloat(el.dataset.parallax || '0');
+      // Only translate the Y of each layer; GPU-friendly
+      el.style.transform = `translate3d(0, ${y * speed}px, 0)`;
     });
-
-    on(window, 'scroll', () => { cy = window.scrollY || 0; requestTick(); }, {passive:true});
-
-    function requestTick(){
-      if (ticking) return;
-      ticking = true;
-      requestAnimationFrame(render);
-    }
-    function render(){
-      const scrollFactor = Math.min(1, (cy / 600));
-      layers.forEach((l, i) => {
-        const depth = (i+1) * 6; // different speeds
-        const tx = sx * depth * 8;
-        const ty = sy * depth * 6 + scrollFactor * depth * 3;
-        l.style.transform = `translate3d(${tx}px, ${ty}px, 0)`;
-      });
-      ticking = false;
-    }
-    render();
+    ticking = false;
+  }
+  function onScrollParallax() {
+    if (ticking || reduceMotion.matches) return;
+    ticking = true;
+    requestAnimationFrame(parallaxUpdate);
+  }
+  if (layers.length) {
+    on(window, 'scroll', onScrollParallax, { passive: true });
+    parallaxUpdate();
   }
 
-  /* =======================================================
-     2) Smooth scroll for in-page TOC links
-     ======================================================= */
-  $$('a[href^="#"]').forEach(a => {
-    on(a,'click',(e)=>{
-      const id = a.getAttribute('href');
-      if (!id || id === '#') return;
-      const target = document.querySelector(id);
-      if (!target) return;
-      e.preventDefault();
-      target.scrollIntoView({ behavior: prefersReduced ? 'auto' : 'smooth', block: 'start' });
-      history.pushState(null, '', id);
-    });
-  });
-
-  /* =======================================================
-     3) Sticky TOC active link via IntersectionObserver
-     ======================================================= */
+  /* -------------------- TOC: sticky → header mode -------------------- */
   const toc = $('.toc');
-  if (toc){
-    const links = $$('a[href^="#"]', toc);
-    const map = new Map(links.map(a => [a.getAttribute('href'), a]));
-    const obs = new IntersectionObserver((entries)=>{
-      entries.forEach(entry=>{
-        const id = '#'+entry.target.id;
-        const link = map.get(id);
-        if (!link) return;
-        if (entry.isIntersecting){
-          links.forEach(l => l.classList.remove('is-active'));
-          link.classList.add('is-active');
-        }
-      });
-    }, { rootMargin: '-40% 0px -55% 0px', threshold: 0.01 });
+  const hero = $('.implant-hero');
 
-    links.forEach(a => {
-      const sel = a.getAttribute('href');
-      const sec = sel ? $(sel) : null;
-      if (sec) obs.observe(sec);
+  function setTocHeaderMode(onHeader) {
+    if (!toc) return;
+    toc.classList.toggle('as-header', onHeader);
+    document.body.classList.toggle('has-toc-header', onHeader);
+  }
+
+  // Trigger header-mode when hero is mostly scrolled out or when content overlaps
+  function evalTocMode() {
+    if (!toc || !hero) return;
+    const rect = hero.getBoundingClientRect();
+    const trigger = rect.bottom <= 64; // hero bottom above ~header height
+    setTocHeaderMode(trigger);
+  }
+  on(window, 'scroll', () => raf(evalTocMode), { passive: true });
+  on(window, 'resize', () => raf(evalTocMode));
+  evalTocMode();
+
+  /* -------------------- ScrollSpy + Smooth Scroll + Hash Sync -------------------- */
+  if (toc) {
+    const links = $$('.toc a[href^="#"]', toc)
+      .filter(a => !!$(a.getAttribute('href')));
+
+    // Map links <-> sections
+    const sections = links.map(link => {
+      const id = link.getAttribute('href').slice(1);
+      const el = document.getElementById(id);
+      if (el && el.tabIndex < 0) el.tabIndex = -1; // focusable for a11y
+      return { id, el, link, ratio: 0 };
+    });
+
+    // Compute total header offset (site header + TOC header when active)
+    const siteHeader = $('.site-header');
+    const headerOffsetPx = () => {
+      const h1 = siteHeader ? siteHeader.getBoundingClientRect().height : 0;
+      const h2 = toc.classList.contains('as-header') ? toc.getBoundingClientRect().height : 0;
+      return Math.round(h1 + h2 + 8);
+    };
+
+    // Keep scroll-margin-top synced so scrollIntoView aligns under headers
+    function applyScrollMargins() {
+      const m = headerOffsetPx();
+      sections.forEach(s => s.el && s.el.style.setProperty('scroll-margin-top', m + 'px'));
+    }
+    applyScrollMargins();
+
+    // Smooth scroll (respects reduced motion)
+    function scrollToSection(target) {
+      if (!target) return;
+      target.scrollIntoView({
+        behavior: reduceMotion.matches ? 'auto' : 'smooth',
+        block: 'start'
+      });
+      // Focus for screen readers without jumping
+      setTimeout(() => target.focus({ preventScroll: true }), 10);
+    }
+
+    // Click handling
+    on(toc, 'click', (e) => {
+      const a = e.target.closest('a[href^="#"]');
+      if (!a) return;
+      const id = a.getAttribute('href').slice(1);
+      const s = sections.find(x => x.id === id);
+      if (!s) return;
+      e.preventDefault();
+      scrollToSection(s.el);
+      history.replaceState(null, '', '#' + id);
+    });
+
+    // Keyboard navigation
+    on(toc, 'keydown', (e) => {
+      const i = links.indexOf(document.activeElement);
+      if (e.key === 'ArrowDown') {
+        e.preventDefault();
+        (links[i + 1] || links[0]).focus();
+      } else if (e.key === 'ArrowUp') {
+        e.preventDefault();
+        (links[i - 1] || links[links.length - 1]).focus();
+      } else if (e.key === 'Home') {
+        e.preventDefault(); links[0].focus();
+      } else if (e.key === 'End') {
+        e.preventDefault(); links[links.length - 1].focus();
+      }
+    });
+
+    // IntersectionObserver: update active link + per-link progress
+    let activeId = null;
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(ent => {
+        const s = sections.find(x => x.el === ent.target);
+        if (!s) return;
+        s.ratio = ent.intersectionRatio;
+
+        // Boost ratio when near top under headers to avoid jitter
+        const top = ent.boundingClientRect.top - headerOffsetPx();
+        if (top <= 220 && top >= -220) s.ratio += 0.2;
+      });
+
+      const best = sections
+        .filter(s => s.el.getBoundingClientRect().bottom > headerOffsetPx() + 40)
+        .sort((a,b) => b.ratio - a.ratio)[0];
+
+      if (best && best.id !== activeId) {
+        activeId = best.id;
+        links.forEach(a => a.classList.toggle('is-active', a.getAttribute('href') === '#' + activeId));
+        links.forEach(a => a.removeAttribute('aria-current'));
+        const act = links.find(a => a.getAttribute('href') === '#' + activeId);
+        act && act.setAttribute('aria-current', 'true');
+        // Update hash without extra history entries
+        history.replaceState(null, '', '#' + activeId);
+      }
+
+      // Per-link progress underline
+      if (activeId) {
+        const s = sections.find(x => x.id === activeId);
+        if (s) {
+          const rect = s.el.getBoundingClientRect();
+          const start = headerOffsetPx();
+          const total = Math.max(1, rect.height + start);
+          const progressed = Math.min(Math.max((start - rect.top) / total, 0), 1);
+          sections.forEach(x => x.link.style.setProperty('--progress', x === s ? String(progressed) : '0'));
+        }
+      }
+    }, {
+      root: null,
+      rootMargin: `-${headerOffsetPx()}px 0px -40% 0px`,
+      threshold: Array.from({ length: 21 }, (_, i) => i / 20)
+    });
+
+    sections.forEach(s => s.el && io.observe(s.el));
+
+    // Keep measurements fresh
+    const recalc = () => {
+      applyScrollMargins();
+      io.rootMargin = `-${headerOffsetPx()}px 0px -40% 0px`;
+    };
+    on(window, 'resize', () => raf(recalc));
+    on(window, 'scroll', () => raf(recalc), { passive: true });
+
+    // Align to existing hash on load (avoid native jump)
+    window.addEventListener('load', () => {
+      const id = decodeURIComponent((location.hash || '').slice(1));
+      const s = sections.find(x => x.id === id);
+      if (s) setTimeout(() => scrollToSection(s.el), 20);
+    });
+
+    // Back/forward hash navigation
+    on(window, 'hashchange', (e) => {
+      const id = decodeURIComponent((location.hash || '').slice(1));
+      const s = sections.find(x => x.id === id);
+      if (s) {
+        e.preventDefault?.();
+        scrollToSection(s.el);
+      }
     });
   }
 
-  /* =======================================================
-     4) Self-Eligibility Check
-     - Requires a form#selfCheckForm with checkboxes/radios
-     - Each input can carry:
-         data-type="contra|caution|good"
-         data-weight="number" (optional, default 1)
-     - Optional: numeric inputs with data-metric (e.g., hba1c)
-     - Outputs to:
-         #selfCheckBadge, #selfCheckSummary, #selfCheckNext
-     ======================================================= */
-  const form = $('#selfCheckForm');
-  if (form){
-    const badge   = $('#selfCheckBadge');
-    const summary = $('#selfCheckSummary');
-    const next    = $('#selfCheckNext');
+  /* -------------------- Self-Eligibility Logic -------------------- */
+  const eligForm = $('#elig-form');
+  const eligOut  = $('#elig-result');
 
-    function scoreForm(){
-      let contra = 0, caution = 0, good = 0;
+  function computeEligibility() {
+    if (!eligForm || !eligOut) return;
 
-      // checkboxes & radios
-      $$('input[type="checkbox"],input[type="radio"]', form).forEach(el=>{
-        if (!el.checked) return;
-        const type = el.dataset.type || 'caution';
-        const w = Number(el.dataset.weight || 1);
-        if (type === 'contra') contra += w;
-        else if (type === 'caution') caution += w;
-        else good += w;
-      });
+    // Gather flags
+    const checked = (name) => !!eligForm.querySelector(`input[name="${name}"]`)?.checked;
+    const redFlags = [
+      checked('uncontrolled'),
+      checked('activeinfection'),
+      checked('bleedingdisorder')
+    ].filter(Boolean).length;
 
-      // metrics (optional): e.g., HbA1c, BP
-      const hba = $('input[data-metric="hba1c"]', form);
-      if (hba && hba.value){
-        const v = parseFloat(hba.value);
-        if (!isNaN(v)){
-          if (v >= 8) contra += 2;
-          else if (v >= 7) caution += 1;
-          else good += .5;
-        }
-      }
-      const sys = $('input[data-metric="bp-sys"]', form);
-      const dia = $('input[data-metric="bp-dia"]', form);
-      if (sys && dia && sys.value && dia.value){
-        const s = parseFloat(sys.value), d = parseFloat(dia.value);
-        if (!isNaN(s) && !isNaN(d)){
-          if (s >= 160 || d >= 100) contra += 2;
-          else if (s >= 140 || d >= 90) caution += 1;
-          else good += .5;
-        }
-      }
+    const cautions = [
+      checked('anticoagulants'),
+      checked('antiresorptives'),
+      checked('smoking')
+    ].filter(Boolean).length;
 
-      // decision
-      let state = 'eligible';
-      if (contra >= 2 || (contra >= 1 && caution >= 2)) state = 'not-eligible';
-      else if (caution >= 1) state = 'optimize';
+    const goodControl = [
+      checked('wellcontrolled'),
+      checked('bpok'),
+      checked('norecentevents')
+    ].filter(Boolean).length;
 
-      // paint UI
-      if (badge){
-        badge.textContent =
-          state === 'eligible'    ? 'Likely Eligible'
-        : state === 'optimize'    ? 'Eligible with Optimization'
-        :                           'Needs Specialist Clearance';
-        badge.className = 'badge-soft ' + (
-          state === 'eligible' ? '' : state === 'optimize' ? 'warn' : 'danger'
-        );
-        if (state === 'optimize') badge.style.background = 'linear-gradient(135deg,#f59e0b,#fde047)';
-        if (state === 'not-eligible') badge.style.background = 'linear-gradient(135deg,#ef4444,#f97316)';
-      }
-      if (summary){
-        summary.innerHTML =
-          state === 'eligible'
-          ? 'Based on your answers, you look like a good candidate for dental implants. Book a consult to confirm imaging (CBCT) and finalize your plan.'
-          : state === 'optimize'
-          ? 'You may be eligible after medical optimization (e.g., glycemic control, BP management, smoking cessation) and specialist clearance. We’ll tailor a plan and timelines.'
-          : 'Right now, implants may not be advised without specialist clearance (e.g., bleeding disorders, high-dose bisphosphonates, recent head/neck radiation, poorly controlled diabetes/hypertension). We can discuss safer alternatives or staged care.';
-      }
-      if (next){
-        next.hidden = false;
-      }
+    // Compose friendly message
+    let msg = '';
+    if (redFlags > 0) {
+      msg = 'Not ready yet — we’ll stabilise medical and oral factors first, then reassess. Please book a consult for a personalised plan.';
+    } else if (cautions >= 2 || goodControl <= 1) {
+      msg = 'Likely eligible with precautions (physician clearance, local haemostasis and strict hygiene). Our surgeon will tailor your plan.';
+    } else {
+      msg = 'Likely eligible for implants. Next step: CBCT and digital planning for a precise, safe outcome.';
     }
 
-    on(form,'change', scoreForm);
-    on(form,'input', scoreForm);
-    // prime
-    scoreForm();
+    // Longevity hint (non-promise)
+    const longevity = checked('wellcontrolled') && checked('bpok') && !checked('smoking')
+      ? 'With good control and reviews, implants often last for decades.'
+      : 'Longevity improves with control of systemic factors and regular reviews.';
+
+    eligOut.textContent = `${msg} ${longevity}`;
+  }
+  if (eligForm) {
+    on(eligForm, 'change', computeEligibility);
+    computeEligibility();
   }
 
-  /* =======================================================
-     5) Lazy-load images (data-src → src)
-     ======================================================= */
-  const lazyImgs = $$('img[data-src]');
-  if ('IntersectionObserver' in window && lazyImgs.length){
-    const io = new IntersectionObserver((entries, obs)=>{
-      entries.forEach(entry=>{
-        if (!entry.isIntersecting) return;
-        const img = entry.target;
-        img.src = img.dataset.src;
-        img.removeAttribute('data-src');
-        obs.unobserve(img);
-      });
-    }, { rootMargin: '300px' });
-    lazyImgs.forEach(img => io.observe(img));
-  } else {
-    // fallback
-    lazyImgs.forEach(img => { img.src = img.dataset.src; img.removeAttribute('data-src'); });
-  }
-
-  /* =======================================================
-     6) Reveal-on-scroll (elements with [data-reveal])
-     ======================================================= */
-  const revealEls = $$('[data-reveal]');
-  if ('IntersectionObserver' in window && revealEls.length){
-    revealEls.forEach(el => { el.style.opacity = 0; el.style.transform = 'translateY(12px)'; });
-    const io = new IntersectionObserver((entries, obs)=>{
-      entries.forEach(entry=>{
-        if (!entry.isIntersecting) return;
-        const el = entry.target;
-        el.style.transition = 'opacity .6s ease, transform .6s ease';
-        el.style.opacity = 1; el.style.transform = 'translateY(0)';
+  /* -------------------- Reveal-on-Scroll Animations -------------------- */
+  const revealEls = $$('.step, .t-card, .fact, .table, .cta-stripe, .map-card');
+  if (revealEls.length) {
+    revealEls.forEach(el => el.style.setProperty('opacity', '0'));
+    const rev = new IntersectionObserver((ents, obs) => {
+      ents.forEach(ent => {
+        if (!ent.isIntersecting) return;
+        const el = ent.target;
+        el.style.transition = 'opacity .5s ease, transform .5s ease';
+        el.style.opacity = '1';
+        el.style.transform = 'translateY(0)';
+        // Start slightly below for subtle lift
+        el.animate(
+          [
+            { transform: 'translateY(12px)', opacity: 0 },
+            { transform: 'translateY(0px)', opacity: 1 }
+          ],
+          reduceMotion.matches ? 0 : 450
+        );
         obs.unobserve(el);
       });
-    }, { rootMargin: '140px' });
-    revealEls.forEach(el => io.observe(el));
+    }, { rootMargin: '0px 0px -10% 0px', threshold: 0.15 });
+    revealEls.forEach(el => rev.observe(el));
   }
 
-  /* =======================================================
-     7) Currency toggle (optional UI: #currencyToggle)
-     - Expects price nodes with [data-inr] numeric (₹)
-     - Converts to USD/EUR (approx) for info only
-     ======================================================= */
-  const cSel = $('#currencyToggle');
-  if (cSel){
-    const nodes = $$('[data-inr]');
-    const RATES = { INR: 1, USD: 0.012, EUR: 0.011 }; // approx; keep informational
-    function paint(){
-      const cur = cSel.value || 'INR';
-      const fx  = RATES[cur] || 1;
-      nodes.forEach(n=>{
-        const v = Number(n.dataset.inr || 0);
-        let out = v;
-        let symbol = '₹';
-        if (cur !== 'INR'){
-          out = Math.round(v * fx);
-          symbol = cur === 'USD' ? '$' : '€';
-        }
-        n.textContent = symbol + out.toLocaleString();
-        n.dataset.currency = cur;
-      });
-    }
-    on(cSel, 'change', paint);
-    paint();
-  }
-
-  /* =======================================================
-     8) Copy-link on section headings (UX nicety)
-     ======================================================= */
-  $$('section[id] .section-title, h2[id], h3[id]').forEach(h=>{
-    const id = h.id || h.closest('section')?.id;
-    if (!id) return;
-    h.style.cursor = 'pointer';
-    on(h,'click', ()=>{
-      const url = `${location.origin}${location.pathname}#${id}`;
-      navigator.clipboard?.writeText(url);
-      h.classList.add('copied');
-      setTimeout(()=> h.classList.remove('copied'), 900);
-      if (!prefersReduced) h.animate([{transform:'scale(1.0)'},{transform:'scale(1.03)'},{transform:'scale(1.0)'}],{duration:250});
-    });
+  /* -------------------- Polishing: external links noopener ------------- */
+  $$('a[target="_blank"]').forEach(a => {
+    const rel = (a.getAttribute('rel') || '').toLowerCase();
+    if (!/noopener/.test(rel)) a.setAttribute('rel', (rel ? rel + ' ' : '') + 'noopener');
   });
 
-  /* =======================================================
-     9) Basic light hover tilt for .step & .t-card (optional)
-     ======================================================= */
-  function addTilt(card, max=6){
-    if (!card || prefersReduced) return;
-    let rAF = 0;
-    function move(e){
-      const rect = card.getBoundingClientRect();
-      const x = (e.clientX - rect.left) / rect.width  - 0.5;
-      const y = (e.clientY - rect.top)  / rect.height - 0.5;
-      cancelAnimationFrame(rAF);
-      rAF = requestAnimationFrame(()=>{
-        card.style.transform = `perspective(700px) rotateX(${(-y*max).toFixed(2)}deg) rotateY(${(x*max).toFixed(2)}deg) translateY(-4px)`;
-      });
-    }
-    function leave(){
-      cancelAnimationFrame(rAF);
-      card.style.transform = '';
-    }
-    on(card,'mousemove',move);
-    on(card,'mouseleave',leave);
+  /* -------------------- Small UX niceties -------------------- */
+  // Make hero buttons float a touch less if reduced motion
+  if (reduceMotion.matches) {
+    $$('.hero-wrap .btn').forEach(b => b.style.animation = 'none');
   }
-  $$('.step, .t-card').forEach(el => addTilt(el));
-
-  /* =======================================================
-     10) Safety: Guard external links to open in new tab
-     ======================================================= */
-  $$('a[href^="http"]').forEach(a=>{
-    try{
-      const url = new URL(a.href);
-      if (url.origin !== location.origin){
-        a.target = '_blank';
-        a.rel = 'noopener external nofollow';
-      }
-    }catch{ /* ignore */ }
-  });
-
-})();
-
-/* =======================================================
-   TOC adaptive mode: sidebar → top header on scroll
-   - No HTML changes needed: we create a sentinel.
-   - Works alongside the sticky/active-link observer you have.
-   ======================================================= */
-(() => {
-  const toc = document.querySelector('.toc');
-  if (!toc) return;
-
-  // Create a sentinel right after the hero (or at top of main content)
-  let sentinel = document.getElementById('toc-sentinel');
-  if (!sentinel) {
-    sentinel = document.createElement('div');
-    sentinel.id = 'toc-sentinel';
-    sentinel.style.cssText = 'position:relative;width:1px;height:1px;margin:0;padding:0;opacity:0;';
-    const afterHero =
-      document.querySelector('.implant-hero')?.nextElementSibling ||
-      document.querySelector('main')?.firstElementChild ||
-      document.body.firstElementChild;
-    (afterHero?.parentNode || document.body).insertBefore(sentinel, afterHero);
-  }
-
-  let headerMode = false;
-  const docEl = document.documentElement;
-  const body = document.body;
-
-  // Toggle header mode
-  function setHeader(on){
-    if (on === headerMode) return;
-    headerMode = on;
-    toc.classList.toggle('as-header', on);
-    body.classList.toggle('has-toc-header', on);
-
-    // sync padding to actual height (in case you tweak CSS)
-    if (on) {
-      // Wait a tick for layout, then measure
-      requestAnimationFrame(() => {
-        const h = toc.getBoundingClientRect().height || 56;
-        body.style.paddingTop = h + 'px';
-      });
-    } else {
-      body.style.paddingTop = '';
-    }
-  }
-
-  // When sentinel leaves the viewport (i.e., you’ve scrolled into content), go header-mode
-  const io = new IntersectionObserver((entries) => {
-    const e = entries[0];
-    setHeader(!e.isIntersecting);
-  }, { rootMargin: '0px 0px 0px 0px', threshold: 0 });
-
-  io.observe(sentinel);
-
-  // If window resizes, recompute padding when in header mode
-  window.addEventListener('resize', () => {
-    if (!headerMode) return;
-    const h = toc.getBoundingClientRect().height || 56;
-    body.style.paddingTop = h + 'px';
-  }, { passive: true });
 })();
