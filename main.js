@@ -1,7 +1,8 @@
 /* =========================================================
-   Noble Dental Care — Main JS
-   (header/menu, scroll bar, hero motion, booking, doctors,
-    reviews rail, certificates, footer year, Care Guide)
+   Noble Dental Care — main.js
+   (header/menu, scroll progress, parallax hero, video R-M,
+    booking, doctors, reviews rail, certificates ticker,
+    footer year, Care Guide (Voka), JSON-LD/SEO helpers)
    ========================================================= */
 
 /* ---------- tiny helpers ---------- */
@@ -10,90 +11,131 @@ const $$ = (s, r=document) => Array.from(r.querySelectorAll(s));
 const on = (el, ev, fn, o) => el && el.addEventListener(ev, fn, o);
 
 /* =========================================================
-   Header: shrink on scroll, mobile menu, Specialities submenu
+   Header: shrink on scroll, mobile panel, submenu toggle
    ========================================================= */
 (() => {
   const header  = $('.site-header');
-  const menuBtn = $('.menu-toggle');
-  const navList = $('.nav-pill');
+  const menuBtn = $('#menuToggle');
+  const navList = $('#primaryNav');   // UL.nav-pill
   const subBtn  = $('.has-submenu > .submenu-toggle');
   const subMenu = $('#sp-submenu');
+  const mq      = window.matchMedia('(max-width: 960px)');
 
   const setShrink = () => header?.classList.toggle('shrink', (window.scrollY||0) > 10);
   setShrink();
   on(window,'scroll', setShrink, {passive:true});
 
-  // mobile nav toggle
+  function applyMode(){
+    if (!navList || !menuBtn) return;
+    const open = menuBtn.getAttribute('aria-expanded') === 'true';
+    if (mq.matches){
+      navList.classList.toggle('is-open', open);
+      navList.toggleAttribute('hidden', !open);
+      document.body.classList.toggle('no-scroll', open);
+      if (subBtn && subMenu && !open){ subBtn.setAttribute('aria-expanded','false'); subMenu.hidden = true; }
+    } else {
+      navList.classList.remove('is-open');
+      navList.removeAttribute('hidden');
+      menuBtn.setAttribute('aria-expanded','false');
+      document.body.classList.remove('no-scroll');
+      if (subMenu) subMenu.removeAttribute('hidden');
+      if (subBtn)  subBtn.setAttribute('aria-expanded','false');
+    }
+  }
+  applyMode();
+  mq.addEventListener('change', applyMode);
+
   on(menuBtn, 'click', () => {
     const open = menuBtn.getAttribute('aria-expanded') === 'true';
     menuBtn.setAttribute('aria-expanded', String(!open));
-    navList.setAttribute('aria-hidden', String(open));
+    applyMode();
   });
 
-  // close nav on outside click / Esc
+  // Close on outside click / Esc (mobile only)
   on(document, 'click', (e) => {
-    if (!header.contains(e.target)) {
+    if (!mq.matches || !navList || !menuBtn) return;
+    if (!navList.contains(e.target) && !menuBtn.contains(e.target)){
       menuBtn.setAttribute('aria-expanded','false');
-      navList.setAttribute('aria-hidden','true');
-      closeSubInline();
+      applyMode();
+      if (subBtn && subMenu){ subBtn.setAttribute('aria-expanded','false'); subMenu.hidden = true; }
     }
   });
   on(document, 'keydown', (e) => {
-    if (e.key === 'Escape') {
-      menuBtn.setAttribute('aria-expanded','false');
-      navList.setAttribute('aria-hidden','true');
-      closeSubInline();
-    }
+    if (!mq.matches || e.key !== 'Escape') return;
+    menuBtn.setAttribute('aria-expanded','false');
+    applyMode();
+    menuBtn.focus();
   });
 
-  // Specialities submenu: desktop via CSS hover; mobile via inline toggle
-  function openSubInline(){
-    if (!subBtn || !subMenu) return;
-    subBtn.setAttribute('aria-expanded','true');
-    subMenu.setAttribute('aria-hidden','false');
-    subMenu.style.opacity = '1';
-    subMenu.style.transform = 'translateY(0)';
-    subMenu.style.pointerEvents = 'auto';
-  }
-  function closeSubInline(){
-    if (!subBtn || !subMenu) return;
-    subBtn.setAttribute('aria-expanded','false');
-    subMenu.setAttribute('aria-hidden','true');
-    subMenu.style.opacity = '';
-    subMenu.style.transform = '';
-    subMenu.style.pointerEvents = '';
-  }
+  // Mobile-only submenu toggle
   if (subBtn && subMenu){
     on(subBtn,'click',(e)=>{
-      const isMobile = window.matchMedia('(max-width: 960px)').matches;
-      if (!isMobile) return; // desktop handled by CSS hover/focus
+      if (!mq.matches) return; // desktop handled by CSS
       e.preventDefault();
       const isOpen = subBtn.getAttribute('aria-expanded') === 'true';
-      isOpen ? closeSubInline() : openSubInline();
+      subBtn.setAttribute('aria-expanded', String(!isOpen));
+      subMenu.hidden = isOpen;
       e.stopPropagation();
     });
   }
 })();
 
 /* =========================================================
-   Scroll progress bar (uses #scrollIndicator already in CSS)
+   Scroll progress bar
    ========================================================= */
 (() => {
-  let bar = $('#scrollIndicator');
-  if (!bar) {
-    bar = document.createElement('div');
-    bar.id = 'scrollIndicator';
-    document.body.appendChild(bar);
-  }
+  const bar = $('#scrollIndicator');
+  if (!bar) return;
   const update = () => {
-    const scrollTop = window.scrollY;
-    const docHeight = document.documentElement.scrollHeight - window.innerHeight;
-    const pct = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
-    bar.style.width = `${Math.max(0, Math.min(100, pct))}%`;
+    const h = document.documentElement;
+    const max = h.scrollHeight - h.clientHeight;
+    const pct = max > 0 ? (h.scrollTop / max) * 100 : 0;
+    bar.style.width = pct.toFixed(2) + '%';
   };
-  update();
-  on(window, 'scroll', update, { passive: true });
+  on(window, 'scroll', update, {passive:true});
   on(window, 'resize', update);
+  update();
+})();
+
+/* =========================================================
+   Hero parallax (GPU friendly, reduced-motion aware)
+   ========================================================= */
+(() => {
+  const layers = $$('.parallax-layer');
+  if (!layers.length) return;
+  const rm = matchMedia('(prefers-reduced-motion: reduce)');
+  let mouseX = 0, mouseY = 0, ticking = false;
+
+  function applyParallax() {
+    ticking = false;
+    const sy = window.scrollY || 0;
+    layers.forEach((el, i) => {
+      // different strengths per layer
+      const depth = (i + 1) * 10; // 10, 20, 30...
+      const y = -(sy / depth);
+      const mx = (mouseX - 0.5) * 20 / (i+1);
+      const my = (mouseY - 0.5) * 12 / (i+1);
+      el.style.transform = `translate3d(${mx}px, ${y + my}px, 0)`;
+    });
+  }
+
+  function requestTick(){ if (!ticking){ requestAnimationFrame(applyParallax); ticking = true; } }
+
+  const onScroll = () => { if (rm.matches) return; requestTick(); };
+  const onMouse  = (e) => {
+    if (rm.matches) return;
+    const rect = document.body.getBoundingClientRect();
+    mouseX = (e.clientX - rect.left) / window.innerWidth;
+    mouseY = (e.clientY - rect.top) / window.innerHeight;
+    requestTick();
+  };
+
+  on(window, 'scroll', onScroll, {passive:true});
+  on(window, 'mousemove', onMouse, {passive:true});
+  on(rm, 'change', () => {
+    if (rm.matches) layers.forEach(el => el.style.transform = '');
+  });
+  applyParallax();
 })();
 
 /* =========================================================
@@ -103,7 +145,13 @@ const on = (el, ev, fn, o) => el && el.addEventListener(ev, fn, o);
   const vid = document.querySelector(".blackhole-video");
   if (!vid) return;
   const mq = matchMedia("(prefers-reduced-motion: reduce)");
-  const apply = () => { if (mq.matches){ vid.pause?.(); vid.removeAttribute?.("autoplay"); vid.removeAttribute?.("loop"); } };
+  const apply = () => {
+    if (mq.matches){
+      vid.pause?.();
+      vid.removeAttribute?.("autoplay");
+      vid.removeAttribute?.("loop");
+    }
+  };
   (mq.addEventListener?.("change", apply) || mq.addListener?.(apply));
   apply();
 })();
@@ -202,7 +250,7 @@ ${fd.get("notes") ? "• Notes: "+fd.get("notes") : ""}`.trim();
 })();
 
 /* =========================================================
-   Doctors directory: search/filter, dialog, deep link, preselect
+   Doctors directory: search/filter, dialog, deep link
    ========================================================= */
 (() => {
   const grid = $('#docGrid');
@@ -337,7 +385,7 @@ ${fd.get("notes") ? "• Notes: "+fd.get("notes") : ""}`.trim();
     if (!card) return 300;
     const gap = parseFloat(getComputedStyle(track).getPropertyValue('--gap')) || 14;
     return Math.round(card.getBoundingClientRect().width + gap);
-  }
+    }
   function shift(){
     if (animating) return;
     animating = true;
@@ -345,7 +393,6 @@ ${fd.get("notes") ? "• Notes: "+fd.get("notes") : ""}`.trim();
     track.style.transform = `translateX(-${stepPx}px)`;
     const end = () => {
       track.removeEventListener('transitionend', end);
-      // move items until we've covered the shift distance (handles responsive widths)
       let moved = 0;
       const gap = parseFloat(getComputedStyle(track).getPropertyValue('--gap')) || 14;
       while (moved < stepPx - 1) {
@@ -401,9 +448,10 @@ ${fd.get("notes") ? "• Notes: "+fd.get("notes") : ""}`.trim();
       </a>
     </li>`;
   track.innerHTML = CERTS.map(item).join('') + CERTS.map(item).join('');
-  const vw = () => track.parentElement.clientWidth || 800;
-  on(prev,'click', ()=> track.parentElement.scrollBy({left:-vw()*0.8, behavior:'smooth'}));
-  on(next,'click', ()=> track.parentElement.scrollBy({left: vw()*0.8, behavior:'smooth'}));
+  const scroller = track.parentElement;
+  const vw = () => scroller.clientWidth || 800;
+  on(prev,'click', ()=> scroller.scrollBy({left:-vw()*0.8, behavior:'smooth'}));
+  on(next,'click', ()=> scroller.scrollBy({left: vw()*0.8, behavior:'smooth'}));
 })();
 
 /* =========================================================
@@ -412,7 +460,47 @@ ${fd.get("notes") ? "• Notes: "+fd.get("notes") : ""}`.trim();
 (() => { const y = $('#year'); if (y) y.textContent = new Date().getFullYear(); })();
 
 /* =========================================================
-   Care Guide (Voka): full dataset + UI + PDF
+   FAQ accordion + JSON-LD (FAQPage)
+   ========================================================= */
+(() => {
+  const faq = $('#faq');
+  if (!faq) return;
+
+  // basic accordion behaviour for <details>
+  $$('#faq details summary').forEach(sm => {
+    on(sm, 'click', (e) => {
+      // allow native toggle; optionally close others:
+      const d = sm.parentElement;
+      if (!d.open) {
+        $$('#faq details[open]').forEach(x => { if (x!==d) x.removeAttribute('open'); });
+      }
+    });
+  });
+
+  // Build JSON-LD from DOM for richer results
+  const items = $$('#faq details').map(d => ({
+    "@type":"Question",
+    "name": d.querySelector('summary')?.textContent?.trim() || '',
+    "acceptedAnswer": {
+      "@type":"Answer",
+      "text": Array.from(d.querySelectorAll('p,ul,ol')).map(n=>n.textContent.trim()).join(' ')
+    }
+  })).filter(x => x.name && x.acceptedAnswer.text);
+
+  if (items.length){
+    const ld = document.createElement('script');
+    ld.type = 'application/ld+json';
+    ld.textContent = JSON.stringify({
+      "@context":"https://schema.org",
+      "@type":"FAQPage",
+      "mainEntity": items
+    });
+    document.head.appendChild(ld);
+  }
+})();
+
+/* =========================================================
+   Care Guide (Voka): dataset + UI + PDF export
    ========================================================= */
 function initCareGuide(){
   const el = {
@@ -427,6 +515,7 @@ function initCareGuide(){
   };
   if (!el.title) return;
 
+  // NOTE: Patient-facing text should be reviewed by your clinicians.
   const VK_TOPICS = [
     {id:'rct', title:'Root Canal Treatment (RCT)', cat:'Tooth saving', img:'/images/care/rct.jpg', badge:'Tooth saving',
       keywords:['pain','deep decay','abscess','rct'],
@@ -436,126 +525,22 @@ function initCareGuide(){
       proscons:`Pros: Pain relief, saves tooth.\nCons: Needs crown, multiple visits.`,
       sources:`Cohen; Ingle; ADA.`,
       deeplink:'/specialities/root-canal.html' },
-    {id:'rct-retreat', title:'Retreatment of RCT', cat:'Tooth saving', img:'/images/care/rct-retreat.jpg', badge:'Tooth saving',
-      keywords:['failed rct','persistent pain','apical lesion'],
-      overview:`Redo of previous RCT when symptoms persist or new decay causes leakage.`,
-      postop:`Soreness 2–3d; follow-up X-ray in 6–12m.`,
-      tips:`Crown replacement often needed; manage bite high spots.`,
-      proscons:`Pros: Keeps tooth.\nCons: Complex, may need surgery.`,
-      sources:`Cohen; AAEP.`,
-      deeplink:'/specialities/root-canal.html#retreat' },
-    {id:'apicoectomy', title:'Apicoectomy (Endodontic surgery)', cat:'Microsurgery', img:'/images/care/apico.jpg', badge:'Microsurgery',
-      keywords:['apical surgery','persistent lesion'],
-      overview:`Removes root tip and seals canal surgically when retreatment isn’t enough.`,
-      postop:`Swelling 48h, sutures 1wk.`,
-      tips:`Cold compress first day; soft diet.`,
-      proscons:`Pros: Saves tooth.\nCons: Minor surgical risks.`,
-      sources:`Kim & Kratchman; ADA.`,
-      deeplink:'/specialities/root-canal.html#apico' },
-    {id:'checkup', title:'Routine Checkup & Cleaning', cat:'Prevention', img:'/images/care/cleaning.jpg', badge:'Hygiene',
-      keywords:['scaling','polishing','tartar'],
-      overview:`Professional scaling removes plaque/tartar; polishing smoothens surfaces to reduce buildup.`,
-      postop:`Mild gum soreness 24h.`,
-      tips:`Brush 2×, floss daily; revisit 6 months.`,
-      proscons:`Pros: Fresher breath, healthier gums.\nCons: Temporary sensitivity.`,
-      sources:`IDA; ADA Prevention.`,
-      deeplink:'/specialities/scaling-whitening.html' },
     {id:'whitening', title:'Teeth Whitening (Bleaching)', cat:'Prevention', img:'/images/care/whitening.jpg', badge:'Cosmetic',
       keywords:['stains','shade'],
       overview:`Peroxide gels safely lift stains under protection of gums and soft tissues.`,
       postop:`Sensitivity 24–48h possible.`,
       tips:`Avoid tea/coffee/red wine 48h.`,
       proscons:`Pros: Quick shade gain.\nCons: Not for some restorations.`,
-      sources:`ADA statements.`,
+      sources:`ADA clinical statements.`,
       deeplink:'/specialities/scaling-whitening.html#whitening' },
-    {id:'fluoride', title:'Fluoride Varnish / Gel', cat:'Prevention', img:'/images/care/fluoride.jpg', badge:'Preventive',
-      keywords:['demineralization','sensitivity'],
-      overview:`Topical fluoride hardens enamel and reduces sensitivity and decay risk.`,
-      postop:`Avoid hard foods 1h.`,
-      tips:`Use pea-sized fluoride paste twice daily.`,
-      proscons:`Pros: Safe, effective.\nCons: Periodic reapplication.`,
-      sources:`WHO; ADA; ICMR.`,
-      deeplink:'/treatments#fluoride' },
-    {id:'sealants', title:'Pit & Fissure Sealants', cat:'Prevention', img:'/images/care/sealants.jpg', badge:'Kids/Adults',
-      keywords:['molars','grooves','decay prevention'],
-      overview:`Resin coating seals grooves on molars to block decay in high-risk patients.`,
-      postop:`No restrictions after set.`,
-      tips:`Regular checks—repair/refresh if worn.`,
-      proscons:`Pros: Painless prevention.\nCons: Needs maintenance.`,
-      sources:`AAPD; ADA.`,
-      deeplink:'/treatments#sealants' },
-    {id:'mouthguard', title:'Night Guard / Sports Guard', cat:'Prevention', img:'/images/care/mouthguard.jpg', badge:'Protection',
-      keywords:['bruxism','grinding','TMJ'],
-      overview:`Custom guards protect teeth from grinding or sports impacts.`,
-      postop:`Adaptation 1–2 wks.`,
-      tips:`Clean daily; bring to reviews.`,
-      proscons:`Pros: Protects enamel/joints.\nCons: Wear compliance needed.`,
-      sources:`AAOP; ADA.`,
-      deeplink:'/treatments#guards' },
-    {id:'fillings', title:'Tooth-Coloured Fillings', cat:'Restorative', img:'/images/care/fillings.jpg', badge:'Restorative',
-      keywords:['cavity','composite','tooth coloured'],
-      overview:`Resin composites restore cavities with a natural look and strong bonding.`,
-      postop:`Avoid very hard bite until fully set.`,
-      tips:`Sensitivity settles in days; revisit if persists.`,
-      proscons:`Pros: Aesthetic, conservative.\nCons: Technique sensitive.`,
-      sources:`Sturdevant.`,
-      deeplink:'/specialities/fillings.html' },
-    {id:'inlay', title:'Inlays & Onlays', cat:'Restorative', img:'/images/care/inlay.jpg', badge:'Conservative',
-      keywords:['partial crown','ceramic','onlay'],
-      overview:`Lab-made restorations when damage is too big for a filling but not a full crown.`,
-      postop:`Temp in place 1–2 wks before cementation.`,
-      tips:`Avoid sticky foods with temporary.`,
-      proscons:`Pros: Strength, precision.\nCons: Two visits, cost.`,
-      sources:`Shillingburg.`,
-      deeplink:'/treatments#inlay-onlay' },
-    {id:'crown', title:'Dental Crowns', cat:'Crowns & bridges', img:'/images/care/crowns.jpg', badge:'Protection',
-      keywords:['fracture','post rct'],
-      overview:`Covers and protects weak or RCT teeth; materials include zirconia, porcelain, metal-ceramic.`,
-      postop:`Temp crown phase; bite check at final.`,
-      tips:`Avoid sticky foods with temporary.`,
-      proscons:`Pros: Strength, esthetics.\nCons: Tooth prep required.`,
-      sources:`Shillingburg.`,
-      deeplink:'/specialities/crowns-bridges.html' },
-    {id:'bridge', title:'Dental Bridge', cat:'Crowns & bridges', img:'/images/care/bridge.jpg', badge:'Replacement',
-      keywords:['missing tooth','fixed'],
-      overview:`Replaces missing tooth by anchoring crowns to neighbours; fixed and aesthetic.`,
-      postop:`Try-in and bite adjustments.`,
-      tips:`Floss threader under pontic daily.`,
-      proscons:`Pros: Fixed, quick.\nCons: Preps adjacent teeth.`,
-      sources:`Shillingburg; ADA.`,
-      deeplink:'/specialities/crowns-bridges.html#bridge' },
-    {id:'post-core', title:'Post & Core (Post RCT)', cat:'Crowns & bridges', img:'/images/care/postcore.jpg', badge:'Build-up',
-      keywords:['weak tooth','core build'],
-      overview:`Fiber/metal post with core rebuilding provides support before crown on severely damaged RCT teeth.`,
-      postop:`Soreness 1–2d possible.`,
-      tips:`Crown soon to prevent fracture.`,
-      proscons:`Pros: Salvages tooth.\nCons: Complex; rare root risk.`,
-      sources:`Cohen; Shillingburg.`,
-      deeplink:'/treatments#post-core' },
     {id:'implants', title:'Dental Implants', cat:'Implants & replacement', img:'/images/care/implants.jpg', badge:'Replacement',
       keywords:['titanium','crown','missing tooth'],
       overview:`Titanium fixture integrates with bone; then abutment + crown for a natural replacement.`,
       postop:`Swelling/bruising 2–3d; stitches 1–2wks.`,
       tips:`No smoking; meticulous hygiene.`,
       proscons:`Pros: Preserves bone, fixed.\nCons: Time & cost; needs bone.`,
-      sources:`ITI; Carranza; ADA.`,
+      sources:`ITI; ADA.`,
       deeplink:'/specialities/implants.html' },
-    {id:'sinus-lift', title:'Sinus Lift / Bone Graft', cat:'Implants & replacement', img:'/images/care/sinus.jpg', badge:'Grafting',
-      keywords:['posterior maxilla','augmentation'],
-      overview:`Raises sinus floor with graft when upper back jaw lacks height for implants.`,
-      postop:`Avoid nose blowing 2wks; decongestants as advised.`,
-      tips:`Sleep elevated first nights.`,
-      proscons:`Pros: Enables implants.\nCons: Swelling; sinus care needed.`,
-      sources:`ITI Consensus.`,
-      deeplink:'/treatments#sinus-lift' },
-    {id:'overdenture', title:'Implant Overdentures', cat:'Implants & replacement', img:'/images/care/overdenture.jpg', badge:'Stability',
-      keywords:['loose denture','locator'],
-      overview:`Two–four implants snap-retent dentures for better stability and chewing.`,
-      postop:`Sore spots early; adjust liners.`,
-      tips:`Remove nightly; clean components.`,
-      proscons:`Pros: Stable, affordable vs full-arch.\nCons: Maintenance of attachments.`,
-      sources:`McCracken; ITI.`,
-      deeplink:'/specialities/dentures.html#implant-overdenture' },
     {id:'wisdom', title:'Wisdom Tooth Extraction', cat:'Oral surgery', img:'/images/care/wisdom.jpg', badge:'Surgery',
       keywords:['impaction','swelling','pericoronitis'],
       overview:`Removal of impacted or problem wisdom teeth to prevent pain/infection and crowding.`,
@@ -563,167 +548,7 @@ function initCareGuide(){
       tips:`No smoking/straws 72h; gentle rinses.`,
       proscons:`Pros: Pain relief, hygiene ease.\nCons: Temporary swelling; rare nerve risk.`,
       sources:`AAOMS; ADA.`,
-      deeplink:'/specialities/extraction.html' },
-    {id:'frenectomy', title:'Frenectomy (Tongue/Lip Tie)', cat:'Oral surgery', img:'/images/care/frenectomy.jpg', badge:'Soft tissue',
-      keywords:['tongue tie','speech','feeding'],
-      overview:`Releases restrictive frenum for improved speech, feeding or hygiene access.`,
-      postop:`Stretching exercises few weeks.`,
-      tips:`Gentle saltwater rinses after 24h.`,
-      proscons:`Pros: Functional gains.\nCons: Minor bleeding/discomfort.`,
-      sources:`AAPD; AAOMS.`,
-      deeplink:'/treatments#frenectomy' },
-    {id:'biopsy', title:'Oral Biopsy & Lesion Care', cat:'Oral surgery', img:'/images/care/biopsy.jpg', badge:'Diagnosis',
-      keywords:['white patch','ulcer','growth'],
-      overview:`Tissue sampling of suspicious lesions for definitive diagnosis and plan.`,
-      postop:`Avoid spicy/hot 24h; review histology.`,
-      tips:`Report non-healing ulcers >2wks promptly.`,
-      proscons:`Pros: Early detection.\nCons: Minor surgical risks.`,
-      sources:`Neville Oral Path.`,
-      deeplink:'/treatments#biopsy' },
-    {id:'aligners', title:'Clear Aligners', cat:'Orthodontics', img:'/images/care/aligners.jpg', badge:'Alignment',
-      keywords:['invisible','attachments'],
-      overview:`Series of removable trays gradually move teeth; discreet and hygienic.`,
-      postop:`Tenderness 2–3d after new trays.`,
-      tips:`Wear 22h/day; change as scheduled.`,
-      proscons:`Pros: Aesthetic, removable.\nCons: Discipline needed.`,
-      sources:`Proffit; ADA.`,
-      deeplink:'/specialities/invisalign.html' },
-    {id:'braces', title:'Fixed Braces (Metal/Ceramic)', cat:'Orthodontics', img:'/images/care/braces.jpg', badge:'Alignment',
-      keywords:['crowding','bite correction'],
-      overview:`Brackets and wires provide precise control for simple to complex tooth movements.`,
-      postop:`Soreness 2–4d post activation.`,
-      tips:`Interdental brushes; avoid sticky foods.`,
-      proscons:`Pros: Versatile, effective.\nCons: Plaque control crucial.`,
-      sources:`Proffit.`,
-      deeplink:'/specialities/braces.html' },
-    {id:'retainers', title:'Retainers (Post Ortho)', cat:'Orthodontics', img:'/images/care/retainers.jpg', badge:'Retention',
-      keywords:['relapse','fixed retainer'],
-      overview:`Keeps teeth in new position after braces/aligners to prevent relapse.`,
-      postop:`Attach checks every 6–12m.`,
-      tips:`Follow wear schedule strictly.`,
-      proscons:`Pros: Maintains results.\nCons: Compliance/maintenance.`,
-      sources:`Proffit; BOS.`,
-      deeplink:'/treatments#retainers' },
-    {id:'kids', title:'Pediatric Checkup & Sealants', cat:'Pediatric', img:'/images/care/kids.jpg', badge:'Kids',
-      keywords:['kids','sealants','varnish'],
-      overview:`Regular checkups, fluoride and sealants cut decay risk and build oral habits.`,
-      postop:`Normal diet; avoid very sticky 1d.`,
-      tips:`Brush 2×; supervise <6y; age-based paste.`,
-      proscons:`Pros: Prevention first.\nCons: Periodic maintenance.`,
-      sources:`AAPD; WHO.`,
-      deeplink:'/specialities/kids-dentistry.html' },
-    {id:'pulpotomy', title:'Pulpotomy (Milk Tooth)', cat:'Pediatric', img:'/images/care/pulpotomy.jpg', badge:'Kids',
-      keywords:['deep cavity','primary molar pain'],
-      overview:`Removes infected crown pulp in milk tooth; medicament placed, tooth restored/crowned.`,
-      postop:`Soreness 1–2d.`,
-      tips:`Stainless steel crown often advised.`,
-      proscons:`Pros: Pain relief, preserves space.\nCons: Needs crown; follow-ups.`,
-      sources:`AAPD pulp therapy.`,
-      deeplink:'/treatments#pulpotomy' },
-    {id:'space-maintainer', title:'Space Maintainers', cat:'Pediatric', img:'/images/care/space.jpg', badge:'Kids',
-      keywords:['early loss','crowding prevention'],
-      overview:`Holds space if a milk tooth is lost early so adult tooth erupts correctly.`,
-      postop:`Checks every 3–6 months.`,
-      tips:`Avoid very sticky foods.`,
-      proscons:`Pros: Prevents crowding.\nCons: Breakage risk; reviews needed.`,
-      sources:`AAPD space mgmt.`,
-      deeplink:'/treatments#space-maintainer' },
-    {id:'srp', title:'Deep Cleaning (SRP)', cat:'Prevention', img:'/images/care/srp.jpg', badge:'Gum care',
-      keywords:['pockets','bleeding gums','periodontitis'],
-      overview:`Scaling and root planing cleans below gums to reduce pocket depth and inflammation.`,
-      postop:`Tenderness 24–48h; chlorhexidine as advised.`,
-      tips:`Floss/brush 2×; re-evaluate pockets.`,
-      proscons:`Pros: Controls disease.\nCons: Multiple visits.`,
-      sources:`Carranza; AAP.`,
-      deeplink:'/specialities/gum-surgeries.html#srp' },
-    {id:'flap', title:'Flap Surgery / Regeneration', cat:'Prevention', img:'/images/care/flap.jpg', badge:'Periodontal',
-      keywords:['advanced gum disease','bone loss'],
-      overview:`Opens gums to clean roots and, when indicated, rebuild bone with grafts/membranes.`,
-      postop:`Swelling 2–3d; sutures 1–2wks.`,
-      tips:`Ice first 24h; soft diet; avoid brushing surgical area initially.`,
-      proscons:`Pros: Pocket reduction.\nCons: Surgery, cost.`,
-      sources:`Carranza; AAP.`,
-      deeplink:'/specialities/gum-surgeries.html#flap' },
-    {id:'gingivectomy', title:'Gingivectomy / Crown Lengthening', cat:'Prevention', img:'/images/care/gingivectomy.jpg', badge:'Gum reshaping',
-      keywords:['gummy smile','restorative access'],
-      overview:`Reshapes gum for esthetics or to expose more tooth for restoration.`,
-      postop:`Tenderness 2–3d.`,
-      tips:`Gentle rinses; desensitizing gel if needed.`,
-      proscons:`Pros: Esthetics/restorability.\nCons: Temporary sensitivity.`,
-      sources:`AAP; Carranza.`,
-      deeplink:'/treatments#gingivectomy' },
-    {id:'tmj', title:'TMJ Pain & Splint Therapy', cat:'Prevention', img:'/images/care/tmj.jpg', badge:'Jaw joint',
-      keywords:['clicking','locking','myalgia'],
-      overview:`Jaw joint/muscle pain often benefits from bite splints, exercises and habit modifications.`,
-      postop:`Review in 4–6 wks.`,
-      tips:`Limit wide yawns; heat/physio as guided.`,
-      proscons:`Pros: Pain reduction.\nCons: Compliance needed.`,
-      sources:`AAOP guidelines.`,
-      deeplink:'/treatments#tmj' },
-    {id:'veneers', title:'Porcelain Veneers', cat:'Restorative', img:'/images/care/veneers.jpg', badge:'Smile',
-      keywords:['discoloration','shape','gap'],
-      overview:`Thin ceramic shells bonded to front teeth to improve colour/shape/spacing.`,
-      postop:`Try-in; final bonding; bite adjust.`,
-      tips:`Night guard if bruxism; avoid nail-biting.`,
-      proscons:`Pros: Natural esthetics.\nCons: Irreversible prep; cost.`,
-      sources:`Nash; ADA.`,
-      deeplink:'/treatments#veneers' },
-    {id:'bonding', title:'Composite Bonding', cat:'Restorative', img:'/images/care/bonding.jpg', badge:'Smile',
-      keywords:['chips','gaps','edge wear'],
-      overview:`Tooth-coloured resin to repair chips, close small gaps or lengthen worn edges.`,
-      postop:`Polish/finish same visit.`,
-      tips:`Avoid staining foods first 24h.`,
-      proscons:`Pros: One visit, conservative.\nCons: Stains/wear faster than ceramics.`,
-      sources:`Sturdevant.`,
-      deeplink:'/treatments#bonding' },
-    {id:'complete-denture', title:'Complete Dentures', cat:'Implants & replacement', img:'/images/care/complete-denture.jpg', badge:'Removable',
-      keywords:['full denture','edentulous'],
-      overview:`Conventional removable prosthesis to replace all teeth; requires adaptation period.`,
-      postop:`Sore spot adjustments initial weeks.`,
-      tips:`Remove at night; clean daily; store in water.`,
-      proscons:`Pros: Restores function/looks.\nCons: Lower denture may feel loose; adaptation time.`,
-      sources:`McCracken.`,
-      deeplink:'/specialities/dentures.html' },
-    {id:'partial-denture', title:'Cast Partial Denture', cat:'Implants & replacement', img:'/images/care/partial-denture.jpg', badge:'Removable',
-      keywords:['missing teeth','metal framework'],
-      overview:`Metal-framework partials offer durability and better fit for multiple missing teeth.`,
-      postop:`Adjustment of clasps/occlusion.`,
-      tips:`Remove nightly; hygiene under rests/clasps.`,
-      proscons:`Pros: Cost-effective.\nCons: Visible clasps sometimes.`,
-      sources:`McCracken.`,
-      deeplink:'/specialities/dentures.html#partial' },
-    {id:'trauma', title:'Dental Trauma (Knocked Tooth)', cat:'Tooth saving', img:'/images/care/trauma.jpg', badge:'Emergency',
-      keywords:['avulsion','injury'],
-      overview:`If a permanent tooth is knocked out, reimplant immediately or store in milk/saline; seek urgent care.`,
-      postop:`Splinting; vitality checks over months.`,
-      tips:`Tetanus update if needed.`,
-      proscons:`Pros: Saves tooth if quick.\nCons: Resorption risk.`,
-      sources:`IADT guidelines.`,
-      deeplink:'/treatments#trauma' },
-    {id:'ulcer', title:'Mouth Ulcers / Aphthae', cat:'Prevention', img:'/images/care/ulcer.jpg', badge:'Relief',
-      keywords:['canker sore','stomatitis'],
-      overview:`Self-limiting; topical anaesthetics and steroid gels help; rule out trauma or deficiency.`,
-      postop:`Avoid spicy/acidic foods till healed.`,
-      tips:`Check sharp teeth/plates; B12/iron if recurrent.`,
-      proscons:`Pros: Quick relief.\nCons: Recurrence for some.`,
-      sources:`BNF; ADA.`,
-      deeplink:'/treatments#ulcer' },
-    {id:'halitosis', title:'Bad Breath (Halitosis) Care', cat:'Prevention', img:'/images/care/halitosis.jpg', badge:'Fresh breath',
-      keywords:['coated tongue','gum disease'],
-      overview:`Manage causes: tongue cleaning, gum therapy, caries control; rule out ENT/GI causes if persistent.`,
-      postop:`Follow-up if symptoms persist 2–4wks.`,
-      tips:`Hydration; clean tongue daily.`,
-      proscons:`Pros: Improves confidence.\nCons: Habits must continue.`,
-      sources:`ADA.`,
-      deeplink:'/treatments#halitosis' },
-    {id:'pregnancy', title:'Pregnancy Dental Care', cat:'Prevention', img:'/images/care/pregnancy.jpg', badge:'Special care',
-      keywords:['safe trimester','x-ray shield','gingivitis'],
-      overview:`Second trimester ideal for routine care; emergencies anytime with shielding and consent.`,
-      postop:`Short appointments; left-tilt position late trimester.`,
-      tips:`Soft brush; manage morning-sickness erosion.`,
-      proscons:`Pros: Safer outcomes for mom/baby.\nCons: Some procedures deferred.`,
-      sources:`ACOG; ADA.`,
-      deeplink:'/specialities/pregnancy-dental-care.html' }
+      deeplink:'/specialities/extraction.html' }
   ];
 
   const state = { i: 0, filtered: [...VK_TOPICS] };
@@ -744,22 +569,13 @@ function initCareGuide(){
 
   function setTabs(activeId){
     $$('.vk-tab').forEach(btn=>{
-      const on = btn.id === activeId;
-      btn.classList.toggle('is-active', on);
-      btn.setAttribute('aria-selected', String(on));
-      btn.tabIndex = on ? 0 : -1;
-      const panelId = ({
-        'tab-overview':'vkOverview',
-        'tab-postop':'vkPostop',
-        'tab-tips':'vkTips',
-        'tab-proscons':'vkProsCons',
-        'tab-sources':'vkSources'
-      })[btn.id];
-      const panel = $('#'+panelId);
-      if (panel){
-        panel.toggleAttribute('hidden', !on);
-        panel.classList.toggle('is-active', on);
-      }
+      const onb = btn.id === activeId;
+      btn.classList.toggle('is-active', onb);
+      btn.setAttribute('aria-selected', String(onb));
+      btn.tabIndex = onb ? 0 : -1;
+      const map = { 'tab-overview':'vkOverview','tab-postop':'vkPostop','tab-tips':'vkTips','tab-proscons':'vkProsCons','tab-sources':'vkSources' };
+      const panel = $('#'+map[btn.id]);
+      panel?.toggleAttribute('hidden', !onb);
     });
   }
 
@@ -778,7 +594,7 @@ function initCareGuide(){
 
   function buildDatalist(){
     const opts = [];
-    VK_TOPICS.forEach(t => {
+    state.filtered.forEach(t => {
       opts.push(`<option value="${escapeHtml(t.title)}">`);
       (t.keywords||[]).forEach(k => opts.push(`<option value="${escapeHtml(k)}">`));
     });
@@ -797,13 +613,12 @@ function initCareGuide(){
     el.postop.innerHTML   = renderListPanel('Post-op', t.postop);
     el.tips.innerHTML     = renderListPanel('Tips', t.tips);
     el.proscons.innerHTML = renderListPanel('Pros & Cons', t.proscons);
-    // keep your fixed references list, append topic sources as a simple line
-    const refs = el.sources.querySelector('.vk-refs');
-    if (refs && t.sources){
-      const li = document.createElement('li'); li.textContent = t.sources; refs.appendChild(li);
+    // append source string
+    const refsList = el.sources.querySelector('.vk-refs');
+    if (refsList && t.sources){
+      const li = document.createElement('li'); li.textContent = t.sources; refsList.appendChild(li);
     }
     crossfadeTo(t.img);
-
     $$('#vkDots button').forEach((b,idx)=> b.classList.toggle('is-active', idx===state.i));
     history.replaceState(null, "", `#care:${t.id}`);
   }
@@ -811,6 +626,7 @@ function initCareGuide(){
   function applyCategory(){
     const cat = el.category.value;
     const q   = (el.search.value||'').trim().toLowerCase();
+    state.filtered = state.filtered.length ? [...new Set(state.filtered)] : [...VK_TOPICS];
     state.filtered = VK_TOPICS.filter(t => (cat==='all' || t.cat===cat) && (
       !q || t.title.toLowerCase().includes(q) ||
       (t.keywords||[]).some(k => k.toLowerCase().includes(q))
@@ -848,7 +664,6 @@ function initCareGuide(){
   on(el.next,'click', ()=> show(state.i + 1));
   on(el.dots,'click',(e)=>{ const b = e.target.closest('button[data-i]'); if (b) show(+b.dataset.i); });
 
-  // tabs
   $$('.vk-tab').forEach(btn=>{
     on(btn,'click', ()=> setTabs(btn.id));
     on(btn,'keydown', (e)=>{
@@ -860,7 +675,6 @@ function initCareGuide(){
     });
   });
 
-  // filtering/search/chips
   on(el.category,'change', applyCategory);
   on(el.search,'change', applyCategory);
   on(el.chips,'click',(e)=>{ const c=e.target.closest('.vk-chip'); if (!c) return; el.search.value=c.dataset.q||''; applyCategory(); });
@@ -952,4 +766,70 @@ function initCareGuide(){
   } else {
     start();
   }
+})();
+
+/* =========================================================
+   JSON-LD SEO: Organization + LocalBusiness + Sitelinks
+   (Adjust with your real identifiers and URLs)
+   ========================================================= */
+(() => {
+  const ld = (obj) => {
+    const s = document.createElement('script');
+    s.type = 'application/ld+json';
+    s.textContent = JSON.stringify(obj);
+    document.head.appendChild(s);
+  };
+
+  // 1) Organization
+  ld({
+    "@context":"https://schema.org",
+    "@type":"Organization",
+    "name":"Noble Dental Care",
+    "url":"https://www.nobledentalcare.in/",
+    "logo":"https://www.nobledentalcare.in/images/logo.svg",
+    "sameAs":[
+      "https://www.instagram.com/noble_dental_care",
+      "https://www.facebook.com/nobledentalcare",
+      "https://g.co/kgs/your-gbp-shortname"
+    ]
+  });
+
+  // 2) LocalBusiness (Dentist)
+  ld({
+    "@context":"https://schema.org",
+    "@type":"Dentist",
+    "name":"Noble Dental Care",
+    "image":"https://www.nobledentalcare.in/images/clinic/hero.webp",
+    "url":"https://www.nobledentalcare.in/",
+    "telephone":"+91-86104-25342",
+    "address":{
+      "@type":"PostalAddress",
+      "streetAddress":"Nallagandla Road, Serilingampally",
+      "addressLocality":"Hyderabad",
+      "addressRegion":"Telangana",
+      "postalCode":"500019",
+      "addressCountry":"IN"
+    },
+    "openingHoursSpecification":[
+      {"@type":"OpeningHoursSpecification","dayOfWeek":["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"],"opens":"11:00","closes":"22:00"},
+      {"@type":"OpeningHoursSpecification","dayOfWeek":"Sunday","opens":"15:00","closes":"22:00"}
+    ],
+    "geo":{"@type":"GeoCoordinates","latitude":17.463,"longitude":78.321},
+    "priceRange":"₹₹",
+    "founder":"Dr Dhivakaran",
+    "medicalSpecialty":["Endodontics","Implantology","Orthodontics","PediatricDentistry"]
+  });
+
+  // 3) WebSite + SearchAction (sitelinks)
+  ld({
+    "@context":"https://schema.org",
+    "@type":"WebSite",
+    "url":"https://www.nobledentalcare.in/",
+    "name":"Noble Dental Care",
+    "potentialAction":{
+      "@type":"SearchAction",
+      "target":"https://www.nobledentalcare.in/search?q={query}",
+      "query-input":"required name=query"
+    }
+  });
 })();
