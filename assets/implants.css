@@ -1,48 +1,59 @@
 /* =========================================================
    Noble Dental Care — Implants Page Styles
    Author: 2025
-   Notes: Modern responsive design + SEO + a11y
+   Notes: Optimized, responsive, SEO + a11y ready
    ========================================================= */
 
 /* ---- Reset & Base ---- */
 *,
 *::before,
-*::after {
-  box-sizing: border-box;
-}
+*::after { box-sizing: border-box; }
+
 html {
   font-size: 16px;
   scroll-behavior: smooth;
 }
+
 body {
   font-family: 'Manrope', system-ui, sans-serif;
-  line-height: 1.6;
+  line-height: 1.65;
   margin: 0;
   color: #1a1a1a;
   background: #fafafa;
 }
+
 img {
   max-width: 100%;
   height: auto;
   border-radius: 6px;
+  display: block;
 }
+
 a {
   color: #0056b3;
   text-decoration: none;
+  transition: color 0.2s ease;
 }
-a:hover {
+a:hover,
+a:focus {
+  color: #003d82;
   text-decoration: underline;
 }
+a:focus-visible {
+  outline: 3px solid #00b4d8;
+  outline-offset: 2px;
+}
+
 h1, h2, h3, h4 {
   font-weight: 700;
   line-height: 1.2;
+  margin: 1rem 0 0.6rem;
+  color: #0b3c61;
 }
-p {
-  margin: 0.6em 0;
-}
-ul, ol {
-  padding-left: 1.25rem;
-}
+
+p { margin: 0.6em 0; }
+ul, ol { padding-left: 1.25rem; }
+
 .container {
   max-width: 1200px;
   margin: 0 auto;
@@ -54,28 +65,33 @@ ul, ol {
   position: relative;
   text-align: center;
   color: #fff;
-  min-height: 90vh;
+  min-height: 88vh;
   display: flex;
   align-items: center;
   justify-content: center;
   background: linear-gradient(135deg, #0b3c61 0%, #0097b2 100%);
   overflow: hidden;
 }
+
 .implant-hero .hero-wrap {
   max-width: 850px;
   z-index: 2;
+  padding: 1rem;
 }
+
 .implant-hero h1.gradient {
-  font-size: 2.8rem;
+  font-size: clamp(2rem, 5vw, 3rem);
   background: linear-gradient(90deg, #fff, #c8e4ff);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
+
 .implant-hero .lead {
   font-size: 1.25rem;
   margin-top: 0.75rem;
   color: #f0f0f0;
 }
+
 .hero-cta {
   margin-top: 1.5rem;
   display: flex;
@@ -83,20 +99,26 @@ ul, ol {
   gap: 1rem;
   justify-content: center;
 }
+
+/* ---- Buttons ---- */
 .btn {
   padding: 0.7rem 1.4rem;
   border-radius: 50px;
   font-weight: 600;
-  transition: all 0.3s ease;
   cursor: pointer;
+  transition: all 0.25s ease;
+  display: inline-block;
 }
+
 .btn--primary {
   background: #00b4d8;
   color: #fff;
 }
 .btn--primary:hover {
   background: #0097b2;
+  transform: translateY(-2px);
 }
+
 .btn--outline {
   border: 2px solid #fff;
   color: #fff;
@@ -115,28 +137,29 @@ ul, ol {
   background: #fff;
   padding: 1rem;
   border-radius: 12px;
-  box-shadow: 0 4px 18px rgba(0,0,0,0.1);
+  box-shadow: 0 3px 12px rgba(0,0,0,0.08);
   margin: 2rem 1rem;
   max-height: 80vh;
   overflow-y: auto;
+  font-size: 0.95rem;
 }
+
 .toc h3 {
-  font-size: 1rem;
+  font-size: 0.9rem;
   margin-bottom: 0.8rem;
   text-transform: uppercase;
   letter-spacing: 1px;
+  color: #444;
 }
-.toc nav {
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
-}
+
+.toc nav { display: flex; flex-direction: column; gap: 0.4rem; }
+
 .toc a {
   padding: 0.5rem;
   border-radius: 6px;
-  transition: background 0.3s ease;
-  font-size: 0.95rem;
+  transition: background 0.25s ease;
   position: relative;
+  color: #333;
 }
 .toc a.is-active {
   background: #e6f7ff;
@@ -152,18 +175,14 @@ ul, ol {
   background: #00b4d8;
   transition: width 0.3s ease;
 }
-/* =========================================================
-   Implants Page Styles — Part 2
-   ========================================================= */
 
 /* ---- Section Titles ---- */
 .section-title {
-  font-size: 2rem;
+  font-size: clamp(1.6rem, 2vw, 2rem);
   margin: 1.5rem 0 1rem;
-  color: #0b3c61;
 }
 .section-sub {
-  font-size: 1.1rem;
+  font-size: 1.05rem;
   color: #444;
   margin-bottom: 1rem;
 }
@@ -178,12 +197,12 @@ ul, ol {
   background: #fff;
   padding: 1rem;
   border-radius: 12px;
-  box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+  box-shadow: 0 3px 12px rgba(0,0,0,0.08);
   transition: transform 0.25s ease, box-shadow 0.25s ease;
 }
 .elig:hover {
   transform: translateY(-4px);
-  box-shadow: 0 6px 22px rgba(0,0,0,0.12);
+  box-shadow: 0 6px 18px rgba(0,0,0,0.12);
 }
 .elig.good { border-left: 6px solid #4caf50; }
 .elig.caution { border-left: 6px solid #ff9800; }
@@ -199,17 +218,14 @@ ul, ol {
   background: #fff;
   border-radius: 12px;
   padding: 1rem;
-  box-shadow: 0 3px 14px rgba(0,0,0,0.08);
+  box-shadow: 0 3px 12px rgba(0,0,0,0.08);
   transition: transform 0.25s ease, box-shadow 0.25s ease;
 }
 .step:hover {
   transform: translateY(-6px);
-  box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.14);
 }
-.s-img {
-  position: relative;
-  margin-bottom: 0.75rem;
-}
+.s-img { position: relative; margin-bottom: 0.75rem; }
 .s-tag {
   position: absolute;
   bottom: 8px;
@@ -222,30 +238,18 @@ ul, ol {
 }
 
 /* ---- Timeline ---- */
-.timeline {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-}
-.t-item {
-  margin: 1.25rem 0;
-}
+.timeline { list-style: none; padding: 0; margin: 0; }
+.t-item { margin: 1.25rem 0; }
 .t-card {
   background: #fff;
   border-radius: 12px;
   padding: 1rem;
-  box-shadow: 0 3px 14px rgba(0,0,0,0.08);
-  display: flex;
-  flex-direction: column;
-  gap: 0.75rem;
+  box-shadow: 0 3px 12px rgba(0,0,0,0.08);
   transition: transform 0.25s ease, box-shadow 0.25s ease;
 }
 .t-card:hover {
-  transform: translateY(-5px);
+  transform: translateY(-4px);
   box-shadow: 0 6px 20px rgba(0,0,0,0.14);
-}
-.t-media img {
-  border-radius: 10px;
 }
 
 /* ---- Fact Cards ---- */
@@ -258,11 +262,11 @@ ul, ol {
   background: #fff;
   padding: 1rem;
   border-radius: 12px;
-  box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+  box-shadow: 0 3px 12px rgba(0,0,0,0.08);
   text-align: center;
 }
 .fact .kpi {
-  font-size: 1.1rem;
+  font-size: 1.05rem;
   font-weight: 600;
   margin-bottom: 0.5rem;
   color: #0097b2;
@@ -272,15 +276,15 @@ ul, ol {
 .table {
   width: 100%;
   border-collapse: collapse;
-  margin-top: 1rem;
+  margin: 1.25rem 0;
 }
 .table th, .table td {
-  border: 1px solid #ddd;
+  border: 1px solid #e0e0e0;
   padding: 0.75rem;
   text-align: left;
 }
 .table th {
-  background: #f0f9ff;
+  background: #f5faff;
   font-weight: 700;
 }
 
@@ -295,13 +299,13 @@ ul, ol {
   overflow: hidden;
   border-radius: 12px;
   background: #fff;
-  box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+  box-shadow: 0 3px 12px rgba(0,0,0,0.08);
   cursor: pointer;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 .media-card:hover {
   transform: translateY(-5px);
-  box-shadow: 0 8px 22px rgba(0,0,0,0.15);
+  box-shadow: 0 6px 18px rgba(0,0,0,0.12);
 }
 .media-card img, .media-card video {
   width: 100%;
@@ -338,11 +342,11 @@ ul, ol {
   color: #0097b2;
 }
 
-/* ---- Footer & Map ---- */
+/* ---- Map ---- */
 .map-card {
   border-radius: 12px;
   overflow: hidden;
-  box-shadow: 0 4px 18px rgba(0,0,0,0.1);
+  box-shadow: 0 3px 12px rgba(0,0,0,0.08);
 }
 .map-card iframe {
   width: 100%;
@@ -350,12 +354,78 @@ ul, ol {
   border: 0;
 }
 
-/* ---- Glow Effect for Cards ---- */
+/* ---- Glow Hover Effect ---- */
 @keyframes glow {
   0% { box-shadow: 0 0 5px rgba(255,255,255,0.4); }
-  50% { box-shadow: 0 0 20px rgba(255,255,255,0.8); }
+  50% { box-shadow: 0 0 16px rgba(255,255,255,0.8); }
   100% { box-shadow: 0 0 5px rgba(255,255,255,0.4); }
 }
 .step:hover, .t-card:hover, .media-card:hover {
   animation: glow 1.5s infinite alternate;
+}
+
+/* ---- Lightbox ---- */
+.lightbox {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(15,15,15,0.9);
+  backdrop-filter: blur(6px);
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease;
+  z-index: 2000;
+}
+.lightbox.open { opacity: 1; visibility: visible; }
+.lightbox-content {
+  position: relative;
+  max-width: 90%;
+  max-height: 85%;
+  background: #000;
+  border-radius: 12px;
+  overflow: hidden;
+  animation: zoomIn 0.35s ease;
+}
+.lightbox-body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px;
+}
+.lightbox-body img,
+.lightbox-body video {
+  max-width: 100%;
+  max-height: 80vh;
+  border-radius: 8px;
+}
+.lightbox-close {
+  position: absolute;
+  top: 10px;
+  right: 12px;
+  font-size: 2rem;
+  color: #fff;
+  background: rgba(0,0,0,0.5);
+  border: none;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.2s;
+}
+.lightbox-close:hover { background: rgba(0,0,0,0.8); }
+
+@keyframes zoomIn {
+  from { transform: scale(0.8); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
+
+/* ---- Responsive ---- */
+@media (max-width: 992px) {
+  main.band { grid-template-columns: 1fr; }
+  .toc { display: none; }
 }
