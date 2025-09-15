@@ -835,6 +835,7 @@ dialog.ndc-sheet[open] {
   margin: 4px;
 }
 
+
 /* Add fade‑in animation for dialog opening */
 @keyframes dialogFadeIn {
   from {
@@ -861,6 +862,21 @@ dialog.ndc-sheet {
   overflow-y: auto;
   max-height: calc(90vh - 60px); /* leave space for close button etc */
 }
+
+
+/* Highlight pulse for doctor auto-fill */
+@keyframes pulse-border {
+  0%   { box-shadow: 0 0 0 0 rgba(14,165,163,0.6); }
+  70%  { box-shadow: 0 0 0 8px rgba(14,165,163,0); }
+  100% { box-shadow: 0 0 0 0 rgba(14,165,163,0); }
+}
+
+select.pulse {
+  animation: pulse-border 1s ease-out 2;
+  border: 2px solid var(--teal, #0EA5A3);
+  border-radius: 6px;
+}
+
 
 /* Self‑Check section */
 .ndc-selfcheck-hero {
