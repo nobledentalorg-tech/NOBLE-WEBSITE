@@ -62,7 +62,7 @@ const on = (el, ev, fn, opts = false) => el && el.addEventListener(ev, fn, opts)
 })();
 
 /* =========================================================
-   2. Doctors Popup (Focus Trap)
+   2. Doctors Popup (Focus Trap + Book with Doctor)
 ========================================================= */
 (() => {
   const grid = $('#docGrid');
@@ -149,13 +149,68 @@ const on = (el, ev, fn, opts = false) => el && el.addEventListener(ev, fn, opts)
     lastFocus?.focus();
   }
 
+  // ✅ Attach card click
   on(grid, 'click', e => {
     const card = e.target.closest('.ndc-card');
-    if (card && (e.target.closest('.open') || e.target.closest('.block'))) openPopup(card.dataset.id);
+    if (card && (e.target.closest('.open') || e.target.closest('.block'))) {
+      e.preventDefault();
+      openPopup(card.dataset.id);
+    }
   });
+
+  // ✅ Close button
   on($('.sheet-close', dlg), 'click', closePopup);
   on(dlg, 'click', e => { if (e.target === dlg) closePopup(); });
+
+  // ✅ Book with this doctor
+  const sheetBookBtn = $('#sheetBook');
+  if (sheetBookBtn) {
+    on(sheetBookBtn, 'click', () => {
+      const docId = sheetBookBtn.dataset.doc;
+      closePopup();
+
+      // Scroll smoothly to booking section
+      document.querySelector('#get-in-touch')?.scrollIntoView({ behavior: 'smooth' });
+
+      // Auto-fill doctor select
+      const doctorSelect = $('#doctorSelect');
+      if (doctorSelect && docId) {
+        const d = DATA[docId];
+        if (d) {
+          doctorSelect.value = d.name;
+          const resetBtn = $('#resetDoctor');
+          if (resetBtn) resetBtn.hidden = false;
+        }
+      }
+    });
+  }
+
+  // ✅ Reset doctor handler
+  const resetBtn = $('#resetDoctor');
+  const doctorSelect = $('#doctorSelect');
+  if (resetBtn && doctorSelect) {
+    on(resetBtn, 'click', () => {
+      doctorSelect.value = "";
+      resetBtn.hidden = true;
+    });
+  }
 })();
+
+// Auto-fill doctor select
+const doctorSelect = $('#doctorSelect');
+if (doctorSelect && docId) {
+  const d = DATA[docId];
+  if (d) {
+    doctorSelect.value = d.name;
+
+    // ✅ Visual pulse highlight
+    doctorSelect.classList.add('pulse');
+    setTimeout(() => doctorSelect.classList.remove('pulse'), 2000);
+
+    const resetBtn = $('#resetDoctor');
+    if (resetBtn) resetBtn.hidden = false;
+  }
+}
 
 /* =========================================================
    3. Booking Form: Voice Input + Autosave + WhatsApp Handoff
@@ -295,3 +350,27 @@ const on = (el, ev, fn, opts = false) => el && el.addEventListener(ev, fn, opts)
    8. Footer Year Auto Update
 ========================================================= */
 (() => {const y=$('#year');if(y)y.textContent=new Date().getFullYear();})();
+
+// Inside your Doctors Popup IIFE, after closePopup is defined:
+const sheetBookBtn = $('#sheetBook');
+if (sheetBookBtn) {
+  on(sheetBookBtn, 'click', () => {
+    const docId = sheetBookBtn.dataset.doc;
+    closePopup();
+
+    // Scroll smoothly to booking section
+    const booking = document.querySelector('#get-in-touch');
+    booking?.scrollIntoView({ behavior: 'smooth' });
+
+    // Auto-fill doctor select
+    const doctorSelect = document.querySelector('#doctorSelect');
+    if (doctorSelect && docId) {
+      const d = DATA[docId];
+      if (d) {
+        doctorSelect.value = d.name;
+        const resetBtn = document.querySelector('#resetDoctor');
+        if (resetBtn) resetBtn.hidden = false;
+      }
+    }
+  });
+}
