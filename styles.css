@@ -646,7 +646,7 @@ button, input, select, textarea {
 .booking-form textarea {
   width: 100%;
   padding: 0.75rem 1rem;
-  border: 1px solid var(--glass‑bd);
+  border: 1px solid var(--glass-bd);
   border-radius: 10px;
   margin-bottom: 0.3rem;
   font: inherit;
@@ -1239,3 +1239,93 @@ dialog.ndc-sheet {
   font-size: .85rem;
   color: var(--muted);
 }
+
+/* =========================================================
+   Extra Styles — Sticky Bar, WhatsApp Offer, Mic Button
+========================================================= */
+
+/* Sticky booking bar */
+.sticky-bar {
+  position: fixed;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 12px;
+  background: #ffffffee;
+  border: 1px solid rgba(0,0,0,0.08);
+  border-radius: 16px 16px 0 0;
+  padding: 10px 18px;
+  box-shadow: 0 -6px 20px rgba(0,0,0,0.15);
+  z-index: 1500;
+  backdrop-filter: blur(12px) saturate(180%);
+}
+
+.sticky-bar a {
+  font-weight: 600;
+  color: var(--ink);
+  text-decoration: none;
+  background: linear-gradient(135deg, var(--brand), var(--brand2));
+  color: #fff;
+  padding: 10px 16px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.sticky-bar a:hover,
+.sticky-bar a:focus-visible {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 14px rgba(0,0,0,0.2);
+  outline: none;
+}
+
+/* WhatsApp offer popup */
+.wa-offer {
+  position: fixed;
+  bottom: 80px;
+  right: 20px;
+  background: #25d366;
+  color: #fff;
+  padding: 14px 18px;
+  border-radius: 14px;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.25);
+  font-size: 0.95rem;
+  z-index: 1600;
+  animation: slideUp 0.4s ease-out;
+}
+
+.wa-offer a {
+  color: #fff;
+  font-weight: 700;
+  text-decoration: underline;
+}
+
+@keyframes slideUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Mic button for booking form */
+.mic-btn {
+  margin-top: 6px;
+  margin-bottom: 12px;
+  padding: 8px 12px;
+  border-radius: 8px;
+  border: 1px solid var(--glass-bd);
+  background: #f9fafb;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: background 0.2s ease;
+}
+
+.mic-btn:hover,
+.mic-btn:focus-visible {
+  background: var(--brand);
+  color: #fff;
+  outline: none;
+}
+
+
