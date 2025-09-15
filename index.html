@@ -136,229 +136,210 @@
     </section>
 
 
-<!-- ===== DOCTORS + TESTIMONIALS SECTION ===== -->
-
-<section id="doctors" class="ndc-team-android" aria-labelledby="teamTitle">
-  <div class="ndc-screen">
-    <div class="ndc-appbar">
-      <h2 id="teamTitle" class="title">Meet Your Care Team</h2>
-      <div aria-hidden="true">💚</div>
-    </div>
-
-    <!-- Filters -->
-    <div id="docFilters" role="group" aria-label="Filter doctors by speciality">
-      <button class="chip--ghost" type="button" data-filter="all" aria-pressed="true">All</button>
-      <button class="chip--ghost" type="button" data-filter="rct" aria-pressed="false">Endodontics</button>
-      <button class="chip--ghost" type="button" data-filter="implants" aria-pressed="false">Implants</button>
-      <button class="chip--ghost" type="button" data-filter="ortho" aria-pressed="false">Orthodontics</button>
-      <button class="chip--ghost" type="button" data-filter="kids" aria-pressed="false">Pediatric</button>
-      <button class="chip--ghost" type="button" data-filter="aesthetic" aria-pressed="false">Aesthetic</button>
-    </div>
-
-    <!-- Search -->
-    <div class="ndc-search">
-      <label for="docSearch" class="sr-only">Search doctors by expertise or name</label>
-      <input id="docSearch" type="search" placeholder="Search expertise, name, procedure…" aria-label="Search doctors">
-      <button class="clear" type="button" aria-label="Clear search">Clear</button>
-    </div>
-
-    <!-- Doctors Grid -->
-    <div id="docGrid" class="ndc-cards">
-      <!-- Dr Dhivakaran -->
-      <article class="ndc-card" data-id="dhivakaran" data-tags="rct implants painless textbooks">
-        <a class="block" href="#dhivakaran">
-          <img src="images/doctors/dhivakaran-card.webp" alt="Dr Dhivakaran – Chief Medical Director, Endodontist" loading="lazy" width="300" height="200">
-          <div class="info">
-            <h3 class="name">Dr Dhivakaran</h3>
-            <p class="role">Chief Medical Director • Endodontist</p>
-            <ul class="meta"><li>Painless RCT</li><li>Dental Implants</li><li>Preventive Dentistry</li></ul>
+  <!-- ================= MEET OUR SPECIALISTS ================= -->
+  <section class="ndc-team-android" id="ndc-doctors-app" aria-label="Meet Our Doctors">
+    <div class="ndc-screen container">
+      <header class="ndc-appbar" role="toolbar" aria-label="Doctor directory">
+        <div class="left">
+          <i class="bx bx-heart" aria-hidden="true"></i>
+          <div class="titles">
+            <span class="eyebrow">Noble Dental Care · Nallagandla</span>
+            <h2 class="title">Our Specialists</h2>
           </div>
-        </a>
-        <button class="open" type="button" aria-label="View details for Dr Dhivakaran">↗</button>
-      </article>
+        </div>
+        <div class="right" role="group" aria-label="Filter by specialty" id="docFilters">
+          <button class="chip--ghost" type="button" data-filter="all" aria-pressed="true">All</button>
+          <button class="chip--ghost" type="button" data-filter="surgery">Surgery</button>
+          <button class="chip--ghost" type="button" data-filter="ortho">Ortho</button>
+          <button class="chip--ghost" type="button" data-filter="aesthetic">Aesthetic</button>
+          <button class="chip--ghost" type="button" data-filter="preventive">Preventive</button>
+        </div>
+      </header>
 
-      <!-- Dr Roger Ronaldo -->
-      <article class="ndc-card" data-id="roger" data-tags="implants surgery maxillofacial">
-        <a class="block" href="#roger">
-          <img src="images/doctors/roger-card.webp" alt="Dr Roger Ronaldo – Oral & Maxillofacial Surgeon" loading="lazy" width="300" height="200">
-          <div class="info">
-            <h3 class="name">Dr Roger Ronaldo</h3>
-            <p class="role">Oral &amp; Maxillofacial Surgeon</p>
-            <ul class="meta"><li>Implantology</li><li>Reconstruction</li><li>Trauma Surgery</li></ul>
-          </div>
-        </a>
-        <button class="open" type="button" aria-label="View details for Dr Roger Ronaldo">↗</button>
-      </article>
+      <form class="ndc-search" role="search" onsubmit="return false">
+        <i class="bx bx-search" aria-hidden="true"></i>
+        <input id="docSearch" type="search" placeholder="Search doctor, specialty, language…" autocomplete="off" aria-label="Search doctors">
+        <button type="reset" class="clear" aria-label="Clear search"><i class="bx bx-x" aria-hidden="true"></i></button>
+      </form>
 
-      <!-- Dr Deepak -->
-      <article class="ndc-card" data-id="deepak" data-tags="ortho braces aligners smile">
-        <a class="block" href="#deepak">
-          <img src="images/doctors/deepak-card.webp" alt="Dr Deepak – Orthodontist" loading="lazy" width="300" height="200">
-          <div class="info">
-            <h3 class="name">Dr Deepak</h3>
-            <p class="role">Orthodontist</p>
-            <ul class="meta"><li>Clear Aligners</li><li>Smile Design</li><li>Complex Malocclusion</li></ul>
-          </div>
-        </a>
-        <button class="open" type="button" aria-label="View details for Dr Deepak">↗</button>
-      </article>
+      <div id="docGrid" class="ndc-cards">
+        <!-- Dhivakaran -->
+        <article class="ndc-card" data-id="dhivakaran" data-tags="surgery implants rct english hindi telugu tamil chief" itemscope itemtype="https://schema.org/Person">
+          <a class="block" href="#dhivakaran" aria-label="Open profile: Dr Dhivakaran">
+            <img src="/images/doctors/dhivakaran.webp" width="320" height="420" loading="lazy" decoding="async" alt="Dr Dhivakaran — Chief Medical Director" itemprop="image">
+            <div class="info">
+              <h3 class="name" itemprop="name">Dr Dhivakaran</h3>
+              <p class="role" itemprop="jobTitle">Chief Medical Director</p>
+              <ul class="meta" aria-label="At a glance">
+                <li><i class="bx bx-time-five" aria-hidden="true"></i> 10+ yrs</li>
+                <li><i class="bx bx-star" aria-hidden="true"></i> 4.8</li>
+                <li><i class="bx bx-chat" aria-hidden="true"></i> EN • HI • TE • TA</li>
+              </ul>
+            </div>
+          </a>
+          <button class="open" type="button" aria-label="Open profile"><i class="bx bx-chevron-right" aria-hidden="true"></i></button>
+          <meta itemprop="affiliation" content="Noble Dental Care - Nallagandla">
+        </article>
 
-      <!-- Dr Idhaya -->
-      <article class="ndc-card" data-id="idhaya" data-tags="kids prevention tourism insurance">
-        <a class="block" href="#idhaya">
-          <img src="images/doctors/idhaya-card.webp" alt="Dr Idhaya – Pediatric & Preventive Dentist" loading="lazy" width="300" height="200">
-          <div class="info">
-            <h3 class="name">Dr Idhaya</h3>
-            <p class="role">Pediatric &amp; Preventive Dentist</p>
-            <ul class="meta"><li>Child Dentistry</li><li>Insurance Advisory</li><li>Preventive Dentistry</li></ul>
-          </div>
-        </a>
-        <button class="open" type="button" aria-label="View details for Dr Idhaya">↗</button>
-      </article>
+        <!-- Roger -->
+        <article class="ndc-card" data-id="roger" data-tags="surgery implants maxillofacial trauma english" itemscope itemtype="https://schema.org/Person">
+          <a class="block" href="#roger" aria-label="Open profile: Dr Roger Ronaldo">
+            <img src="/images/doctors/roger.webp" width="320" height="420" loading="lazy" decoding="async" alt="Dr Roger Ronaldo — Oral & Maxillofacial Surgeon" itemprop="image">
+            <div class="info">
+              <h3 class="name" itemprop="name">Dr Roger Ronaldo</h3>
+              <p class="role" itemprop="jobTitle">Oral &amp; Maxillofacial Surgeon</p>
+              <ul class="meta">
+                <li><i class="bx bx-time-five"></i> 13+ yrs</li>
+                <li><i class="bx bx-star"></i> 4.9</li>
+                <li><i class="bx bx-chat"></i> EN</li>
+              </ul>
+            </div>
+          </a>
+          <button class="open" type="button" aria-label="Open profile"><i class="bx bx-chevron-right" aria-hidden="true"></i></button>
+          <meta itemprop="affiliation" content="Noble Dental Care - Nallagandla">
+        </article>
 
-      <!-- Dr Thik Vijay -->
-      <article class="ndc-card" data-id="thikvijay" data-tags="aesthetic cosmetic smile design beauty">
-        <a class="block" href="#thikvijay">
-          <img src="images/doctors/thikvijay-card.webp" alt="Dr Thik Vijay – Aesthetic & Cosmetic Dentist" loading="lazy" width="300" height="200">
-          <div class="info">
-            <h3 class="name">Dr Thik Vijay</h3>
-            <p class="role">Aesthetic &amp; Cosmetic Dentist • 11 yrs exp.</p>
-            <ul class="meta"><li>Smile Design</li><li>Cosmetic Dentistry</li><li>Aesthetic Restorations</li></ul>
-          </div>
-        </a>
-        <button class="open" type="button" aria-label="View details for Dr Thik Vijay">↗</button>
-      </article>
+        <!-- Thikvijay -->
+        <article class="ndc-card" data-id="thikvijay" data-tags="aesthetic cosmetology trichology english" itemscope itemtype="https://schema.org/Person">
+          <a class="block" href="#thikvijay" aria-label="Open profile: Dr Thikvijay">
+            <img src="/images/doctors/thikvijay.webp" width="320" height="420" loading="lazy" decoding="async" alt="Dr Thikvijay — Aesthetic & Medical Cosmetologist" itemprop="image">
+            <div class="info">
+              <h3 class="name" itemprop="name">Dr Thikvijay</h3>
+              <p class="role" itemprop="jobTitle">Aesthetic & Medical Cosmetologist</p>
+              <ul class="meta">
+                <li><i class="bx bx-time-five"></i> 10+ yrs</li>
+                <li><i class="bx bx-star"></i> 4.8</li>
+                <li><i class="bx bx-chat"></i> EN</li>
+              </ul>
+            </div>
+          </a>
+          <button class="open" type="button" aria-label="Open profile"><i class="bx bx-chevron-right" aria-hidden="true"></i></button>
+          <meta itemprop="affiliation" content="Noble Dental Care - Nallagandla">
+        </article>
+
+        <!-- Deepak -->
+        <article class="ndc-card" data-id="deepak" data-tags="ortho braces aligners smile english hindi telugu" itemscope itemtype="https://schema.org/Person">
+          <a class="block" href="#deepak" aria-label="Open profile: Dr Deepak">
+            <img src="/images/doctors/deepak.webp" width="320" height="420" loading="lazy" decoding="async" alt="Dr Deepak — Orthodontist" itemprop="image">
+            <div class="info">
+              <h3 class="name" itemprop="name">Dr Deepak</h3>
+              <p class="role" itemprop="jobTitle">Orthodontist</p>
+              <ul class="meta">
+                <li><i class="bx bx-time-five"></i> 10+ yrs</li>
+                <li><i class="bx bx-star"></i> 4.8</li>
+                <li><i class="bx bx-chat"></i> EN • HI • TE</li>
+              </ul>
+            </div>
+          </a>
+          <button class="open" type="button" aria-label="Open profile"><i class="bx bx-chevron-right" aria-hidden="true"></i></button>
+          <meta itemprop="affiliation" content="Noble Dental Care - Nallagandla">
+        </article>
+
+        <!-- Idhaya -->
+        <article class="ndc-card" data-id="idhaya" data-tags="preventive kids tourism english hindi tamil" itemscope itemtype="https://schema.org/Person">
+          <a class="block" href="#idhaya" aria-label="Open profile: Dr Idhaya">
+            <img src="/images/doctors/idhaya.webp" width="320" height="420" loading="lazy" decoding="async" alt="Dr Idhaya — Preventive & Tourism Dentistry" itemprop="image">
+            <div class="info">
+              <h3 class="name" itemprop="name">Dr Idhaya</h3>
+              <p class="role" itemprop="jobTitle">Preventive &amp; Tourism Dentistry</p>
+              <ul class="meta">
+                <li><i class="bx bx-time-five"></i> 8+ yrs</li>
+                <li><i class="bx bx-star"></i> 4.9</li>
+                <li><i class="bx bx-chat"></i> EN • HI • TA</li>
+              </ul>
+            </div>
+          </a>
+          <button class="open" type="button" aria-label="Open profile"><i class="bx bx-chevron-right" aria-hidden="true"></i></button>
+          <meta itemprop="affiliation" content="Noble Dental Care - Nallagandla">
+        </article>
+      </div>
     </div>
+  </section>
 
-  </div>
-
-  <dialog id="docSheet" class="ndc-sheet" role="dialog" aria-modal="true" aria-labelledby="sheetTitle">
-    <button class="sheet-close" aria-label="Close doctor details">✕</button>
-    <div class="sheet-hero">
-      <img id="sheetHero" alt="" loading="lazy" width="600" height="260">
-    </div>
+  <!-- Bottom sheet dialog -->
+  <dialog id="docSheet" class="ndc-sheet" aria-labelledby="sheetTitle">
+    <button class="sheet-close" type="button" aria-label="Close"><i class="bx bx-x"></i></button>
+    <div class="sheet-hero"><img id="sheetHero" src="" alt="" width="900" height="280" decoding="async"></div>
     <div class="sheet-body">
       <h3 id="sheetTitle"></h3>
       <p id="sheetRole" class="muted"></p>
       <p id="sheetBio"></p>
-      <div id="sheetExpertise" class="chips" aria-label="Areas of expertise"></div>
+      <div id="sheetExpertise" class="chips" aria-label="Expertise"></div>
+      <div id="sheetBooks" class="books" aria-label="Publications"></div>
       <div class="sheet-actions">
-        <button id="sheetBook" class="btn outline">Book with this doctor</button>
+        <a id="sheetBook" class="btn primary" href="#get-in-touch" data-doc=""><i class="bx bx-calendar"></i> Book with this doctor</a>
+        <a id="sheetCall" href="tel:+918610425342" class="btn outline"><i class="bx bxs-phone"></i> Call Clinic</a>
       </div>
+      <div class="sheet-footnote"><i class="bx bx-shield-alt-2" aria-hidden="true"></i> Evidence-based care aligned with IDA/ADA/WHO & ICMR recommendations; individualized after a clinical exam & X-rays when indicated.</div>
     </div>
   </dialog>
-</section>
-
-
-    <!-- BOOKING -->
-    <section id="get-in-touch" class="booking-section" aria-labelledby="bookingTitle">
-      <div class="booking-wrap">
-        <div class="booking-info">
-          <p class="eyebrow">BOOK IN SECONDS</p>
-          <h2 id="bookingTitle">Online Appointment</h2>
-          <p class="desc">
-            Choose your day &amp; time. We confirm via WhatsApp/SMS.<br>
-            For emergencies (trauma, swelling, severe pain), call directly.<br>
-            Reviewed by <strong>Dr Dhivakaran &amp; NDC‑D Team</strong>.
-          </p>
-          <div class="cta-buttons">
-            <a href="tel:+918610425342" class="btn-pill call" aria-label="Call clinic">📞 Call clinic</a>
-            <a href="https://wa.me/918610425342" target="_blank" rel="noopener" class="btn-pill whatsapp" aria-label="Message on WhatsApp">💬 WhatsApp</a>
+    
+  <!-- ================= APPOINTMENT (Book) ================= -->
+  <section id="get-in-touch" class="band contact-band" aria-label="Get in touch & book">
+    <div class="container">
+      <div class="git-wrap">
+        <aside class="git-left">
+          <header class="git-head">
+            <p class="eyebrow">Get in touch</p>
+            <h2 class="section-title">Let’s fix your smile — today or this week</h2>
+            <p class="section-sub">Pick a day & time. Prefer a call or WhatsApp? Use the quick actions.</p>
+          </header>
+          <div class="git-actions">
+            <a class="cta-pill call" href="tel:+918610425342"><i class="bx bxs-phone"></i> Call now</a>
+            <a class="cta-pill whats" id="waQuick" target="_blank" rel="noopener" href="https://wa.me/918610425342"><i class="bx bxl-whatsapp"></i> WhatsApp</a>
           </div>
-          <ul class="booking-points">
-            <li>Evening slots available for working professionals</li>
-            <li>Transparent estimates before treatment begins</li>
-            <li>HIPAA‑aware: No diagnosis via chat; records stored securely</li>
+          <ul class="git-points" role="list">
+            <li><i class="bx bx-time-five"></i> Mon–Sat 11:00–22:00, Sun 15:00–22:00</li>
+            <li><i class="bx bx-map"></i> Nallagandla, Hyderabad (easy parking)</li>
+            <li><i class="bx bx-shield-quarter"></i> Emergency support available</li>
           </ul>
-        </div>
+        </aside>
 
-        <div class="booking-form">
-          <form id="apptForm" novalidate>
-            <div>
-              <label for="name">Your name <span aria-hidden="true">*</span></label>
-              <input id="name" name="name" type="text" placeholder="Full name" required aria-required="true">
-            </div>
-            <div>
-              <label for="phone">Phone <span aria-hidden="true">*</span></label>
-              <input id="phone" name="phone" type="tel" placeholder="+91 …" required aria-required="true" pattern="[0-9+ ]+">
-            </div>
-            <div>
-              <label for="service">Service <span aria-hidden="true">*</span></label>
-              <select id="service" name="service" required aria-required="true">
-                <option value="">Select a service</option>
-                <option>Consultation</option>
-                <option>Regular Check-up</option>
-                <option>Second Opinion</option>
-                <option>Tooth Cleaning</option>
-                <option>Tooth Removal</option>
-                <option>Tooth Filling</option>
-                <option>Root Canal Treatment</option>
-                <option>Dental Emergency</option>
-              </select>
-            </div>
-            <div>
-              <label for="doctorSelect">Preferred doctor</label>
-              <div class="doctor-select-wrap">
-                <select id="doctorSelect" name="doctor">
-                  <option value="">Any available</option>
+        <div class="git-card">
+          <form id="apptForm" autocomplete="on">
+            <div class="git-form-grid">
+              <label class="f"><span>Name</span><input type="text" name="name" required></label>
+              <label class="f"><span>Phone</span><input type="tel" name="phone" required></label>
+              <label class="f"><span>Service</span>
+                <select name="service">
+                  <option>Root Canal</option><option>Implants</option><option>Braces/Aligners</option>
+                  <option>Whitening</option><option>Extraction</option><option>Kids Dentistry</option>
+                  <option>Gum Treatment</option><option>Checkup & Cleaning</option>
+                </select>
+              </label>
+              <label class="f"><span>Doctor</span>
+                <select id="doctorSelect" name="doctor" required>
                   <option>Dr Dhivakaran</option>
                   <option>Dr Roger Ronaldo</option>
                   <option>Dr Deepak</option>
                   <option>Dr Idhaya</option>
-                  <option>Dr Thik Vijay</option>
+                  <option>Dr Thikvijay</option>
                 </select>
-                <button id="resetDoctor" type="button" hidden aria-label="Reset selected doctor">Change</button>
+              </label>
+              <label class="f full"><span>Notes (optional)</span>
+                <textarea name="notes" rows="2" placeholder="Anything we should know in advance?"></textarea>
+              </label>
+            </div>
+
+            <label class="f"><span>Select Day</span><select id="daySelect" name="day" required></select></label>
+            <label class="f"><span>Select Time</span><select id="timeSelect" name="time" required><option value="">Select a time</option></select></label>
+
+            <div class="git-summary">
+              <div class="summary-line"><i class="bx bx-info-circle"></i> <span id="summaryText">Choose a day & time to continue.</span></div>
+              <div class="git-submit">
+                <button class="btn primary" type="submit" id="bookBtn" disabled><i class="bx bx-calendar-check"></i> Submit & WhatsApp</button>
+                <a class="t-btn" href="tel:+918610425342"><i class="bx bxs-phone"></i> Call</a>
+                <a class="t-btn" id="waFill" target="_blank" rel="noopener" href="https://wa.me/918610425342"><i class="bx bxl-whatsapp"></i> WhatsApp</a>
               </div>
             </div>
-            <fieldset>
-              <legend>Preferred contact <span aria-hidden="true">*</span></legend>
-              <div class="contact-methods">
-                <div>
-                  <input type="radio" id="contactWhatsApp" name="contact" value="WhatsApp" checked>
-                  <label for="contactWhatsApp">WhatsApp</label>
-                </div>
-                <div>
-                  <input type="radio" id="contactSMS" name="contact" value="SMS">
-                  <label for="contactSMS">SMS</label>
-                </div>
-                <div>
-                  <input type="radio" id="contactCall" name="contact" value="Call">
-                  <label for="contactCall">Call</label>
-                </div>
-              </div>
-            </fieldset>
-            <div>
-              <label for="daySelect">Choose day <span aria-hidden="true">*</span></label>
-              <select id="daySelect" name="day">
-                <!-- options inserted via JS -->
-              </select>
-            </div>
-            <div>
-              <label for="timeSelect">Choose time <span aria-hidden="true">*</span></label>
-              <select id="timeSelect" name="time">
-                <option value="">Select a time</option>
-              </select>
-            </div>
-            <p id="summaryText">Choose a day &amp; time to continue.</p>
-            <div>
-              <label for="notes">Notes</label>
-              <textarea id="notes" name="notes" rows="4"></textarea>
-            </div>
-            <button id="bookBtn" type="submit" disabled>Book Appointment</button>
-            <a id="waFill" hidden></a>
+
+            <p id="apptToast" class="appt-toast" role="status" aria-live="polite" hidden>✅ Opening WhatsApp with your request…</p>
           </form>
         </div>
       </div>
-    </section>
+    </div>
+  </section>
 
-    <dialog id="successModal" role="dialog" aria-modal="true" aria-labelledby="successTitle">
-      <h3 id="successTitle">✅ Appointment Ready</h3>
-      <p>Your appointment details have been prepared. Please confirm in your chosen method.</p>
-      <div class="actions">
-        <a id="waLink" href="#" target="_blank" rel="noopener" class="btn hero-button whatsapp">Open WhatsApp</a>
-        <button id="closeSuccess" type="button">Close</button>
-      </div>
-    </dialog>
 
     <!-- SELF‑CHECK BANNER -->
     <section id="selfcheck" class="ndc-selfcheck-hero band is-full" aria-labelledby="selfCheckTitle">
