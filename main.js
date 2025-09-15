@@ -62,231 +62,183 @@ const on = (el, ev, fn, opts = false) => el && el.addEventListener(ev, fn, opts)
 })();
 
 /* =========================================================
-   2. Doctors Popup (Focus Trap + Book with Doctor)
-========================================================= */
+   Booking form: day/time slots + WhatsApp handoff
+   ========================================================= */
+(() => {
+  const tz = "Asia/Kolkata";
+  const form = $("#apptForm");
+  if (!form) return;
+
+  const daySelect = $("#daySelect");
+  const timeSelect = $("#timeSelect");
+  const summary = $("#summaryText");
+  const bookBtn = $("#bookBtn");
+  const toast = $("#apptToast");
+  const waFill = $("#waFill");
+  const waQuick = $("#waQuick");
+
+  // opening hours (0=Sun)
+  const hours = { 0: [15,22], 1:[11,22], 2:[11,22], 3:[11,22], 4:[11,22], 5:[11,22], 6:[11,22] };
+
+  const fmtDay  = (d) => d.toLocaleDateString("en-IN",{ timeZone: tz, weekday:"short", day:"2-digit", month:"short" });
+  const fmtTime = (d) => d.toLocaleTimeString("en-IN",{ timeZone: tz, hour:"2-digit", minute:"2-digit" });
+
+  function buildDays(){
+    daySelect.innerHTML = "";
+    const today = new Date();
+    for (let i=0;i<14;i++){
+      const d = new Date(today); d.setDate(d.getDate()+i);
+      const opt = document.createElement("option");
+      opt.value = d.toISOString();
+      opt.textContent = fmtDay(d);
+      daySelect.appendChild(opt);
+    }
+  }
+
+  function buildTimes(dayIso){
+    timeSelect.innerHTML = '<option value="">Select a time</option>';
+    if (!dayIso) return;
+    const d = new Date(dayIso);
+    const [open, close] = hours[d.getDay()] || [0,0];
+    const start = new Date(d); start.setHours(open,0,0,0);
+    const end   = new Date(d); end.setHours(close,0,0,0);
+    const now = new Date();
+
+    for (let t = new Date(start); t < end; t.setMinutes(t.getMinutes()+30)){
+      if (t < now) continue;
+      const iso = t.toISOString();
+      const opt = document.createElement("option");
+      opt.value = iso;
+      opt.textContent = fmtTime(new Date(iso));
+      timeSelect.appendChild(opt);
+    }
+  }
+
+  function updateSummary(){
+    const d = daySelect.value ? new Date(daySelect.value) : null;
+    const t = timeSelect.value ? new Date(timeSelect.value) : null;
+    if (d && t){ summary.textContent = `${fmtDay(d)} • ${fmtTime(t)} (IST)`; bookBtn.disabled = false; }
+    else { summary.textContent = "Choose a day & time to continue."; bookBtn.disabled = true; }
+    updateWA();
+  }
+
+  function updateWA(){
+    const fd = new FormData(form);
+    const d = daySelect.value ? new Date(daySelect.value) : null;
+    const t = timeSelect.value ? new Date(timeSelect.value) : null;
+    const msg = `Hi Noble Dental Care,
+I'd like to book:
+• Name: ${fd.get("name")||""}
+• Phone: ${fd.get("phone")||""}
+• Service: ${fd.get("service")||""}
+• Doctor: ${fd.get("doctor")||""}
+• Time: ${d?fmtDay(d):"-"} • ${t?fmtTime(t):"-"} (IST)
+${fd.get("notes") ? "• Notes: "+fd.get("notes") : ""}`.trim();
+    const url = `https://wa.me/918610425342?text=${encodeURIComponent(msg)}`;
+    if (waFill)  waFill.href = url;
+    if (waQuick) waQuick.href = url;
+  }
+
+  on(daySelect,'change', ()=>{ buildTimes(daySelect.value); updateSummary(); });
+  on(timeSelect,'change', updateSummary);
+  on(form,'input', updateWA);
+
+  on(form,'submit',(e)=>{
+    e.preventDefault();
+    if (bookBtn.disabled) return;
+    updateWA();
+    if (toast){ toast.hidden = false; setTimeout(()=> (toast.hidden = true), 2000); }
+    window.open(waFill.href, "_blank", "noopener");
+  });
+
+  buildDays(); buildTimes(daySelect.value); updateSummary();
+})();
+
+/* =========================================================
+   Doctors directory: search/filter, dialog, deep link, preselect
+   ========================================================= */
 (() => {
   const grid = $('#docGrid');
   const dlg = $('#docSheet');
   if (!grid || !dlg) return;
+  const closeBtn = $('.sheet-close', dlg);
+  const search = $('#docSearch');
 
   const DATA = {
-    dhivakaran: {
-      name: "Dr Dhivakaran",
-      role: "Chief Medical Director • Endodontist",
-      hero: "images/doctors/dhivakaran-hero.webp",
-      bio: "Painless RCT & Implants specialist with extensive clinical research.",
-      expertise: ["Painless RCT", "Dental Implants", "Preventive Dentistry"]
-    },
-    roger: {
-      name: "Dr Roger Ronaldo",
-      role: "Oral & Maxillofacial Surgeon",
-      hero: "images/doctors/roger-hero.webp",
-      bio: "Expert in implants, reconstruction & trauma surgery.",
-      expertise: ["Implantology", "Reconstruction", "Trauma Surgery"]
-    },
-    deepak: {
-      name: "Dr Deepak",
-      role: "Orthodontist",
-      hero: "images/doctors/deepak-hero.webp",
-      bio: "Smile design, aligners, and complex malocclusion.",
-      expertise: ["Smile Design", "Clear Aligners", "Complex Malocclusion"]
-    },
-    idhaya: {
-      name: "Dr Idhaya",
-      role: "Pediatric & Preventive Dentist",
-      hero: "images/doctors/idhaya-hero.webp",
-      bio: "Child dentistry, prevention & insurance advisory.",
-      expertise: ["Child Dentistry", "Insurance Advisory", "Preventive Dentistry"]
-    },
-    thikvijay: {
-      name: "Dr Thik Vijay",
-      role: "Aesthetic & Cosmetic Dentist",
-      hero: "images/doctors/thikvijay-hero.webp",
-      bio: "11+ years in cosmetic restorations, veneers, and smile makeovers.",
-      expertise: ["Smile Design", "Cosmetic Dentistry", "Aesthetic Restorations"]
-    }
+    dhivakaran:{ name:"Dr Dhivakaran", role:"Chief Medical Director", hero:"/images/doctors/dhivakaran-hero.webp", bio:"Chief Medical Director at Noble Dental Care. Director, Healthflo (557 hospitals). Contributor to Triumph’s Complete Review of Dentistry.", expertise:["Painless RCT","Dental Implants","Preventive Dentistry"], books:[{t:"Triumph’s Complete Review of Dentistry",p:"Wolters Kluwer • 2018",img:"/images/books/triumph.webp",href:"https://play.google.com/store/books/details?id=ZTjvDwAAQBAJ"}] },
+    roger:{ name:"Dr Roger Ronaldo", role:"Oral & Maxillofacial Surgeon", hero:"/images/doctors/roger-hero.webp", bio:"Surgeon focusing on implants, orthognathic & reconstruction, and facial trauma.", expertise:["Implantology","Orthognathic & Reconstruction","Trauma Surgery"], books:[] },
+    thikvijay:{ name:"Dr Thikvijay", role:"Aesthetic & Medical Cosmetologist", hero:"/images/doctors/thikvijay-hero.webp", bio:"FMC (Germany), ISHR. Trichology, Aesthetic & Medical Cosmetology, Hair & Scalp Restoration.", expertise:["Trichology","Aesthetic Medicine","Hair & Scalp Restoration"], books:[] },
+    deepak:{ name:"Dr Deepak", role:"Orthodontist", hero:"/images/doctors/deepak-hero.webp", bio:"Assistant Professor. Smile design, clear aligners, complex malocclusion.", expertise:["Smile Design","Clear Aligners","Complex Malocclusion"], books:[] },
+    idhaya:{ name:"Dr Idhaya", role:"Preventive & Tourism Dentistry", hero:"/images/doctors/idhaya-hero.webp", bio:"Preventive programs, insurance advisory and medical tourism coordination.", expertise:["Preventive Dentistry","Insurance Advisory","Medical Tourism"], books:[] }
   };
 
-  let lastFocus = null, trapRemove;
-
-  function trapFocus(dlg) {
-    const sel = 'a[href], button:not([disabled]), input, select, textarea, [tabindex]:not([tabindex="-1"])';
-    const focusables = $$(sel, dlg);
-    if (!focusables.length) return () => {};
-    const first = focusables[0], last = focusables[focusables.length - 1];
-    function handler(e) {
-      if (e.key === 'Tab') {
-        if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
-        else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
-      }
-      if (e.key === 'Escape') closePopup();
-    }
-    dlg.addEventListener('keydown', handler);
-    return () => dlg.removeEventListener('keydown', handler);
-  }
-
-  function fillPopup(id) {
+  function fillDialog(id){
     const d = DATA[id]; if (!d) return;
-    $('#sheetHero').src = d.hero; $('#sheetHero').alt = d.name;
-    $('#sheetTitle').textContent = d.name;
-    $('#sheetRole').textContent = d.role;
-    $('#sheetBio').textContent = d.bio;
-    $('#sheetExpertise').innerHTML = d.expertise.map(e => `<span class="chip">${e}</span>`).join('');
-    $('#sheetBook').dataset.doc = id;
+    $('#sheetHero').src = d.hero || '';
+    $('#sheetHero').alt = d.name || '';
+    $('#sheetTitle').textContent = d.name || '';
+    $('#sheetRole').textContent = d.role || '';
+    $('#sheetBio').textContent = d.bio || '';
+    $('#sheetExpertise').innerHTML = (d.expertise||[]).map(x=>`<span class="chip">${x}</span>`).join('');
+    $('#sheetBooks').innerHTML = (d.books||[]).map(b=>`
+      <div class="book">
+        <img src="${b.img||''}" alt="">
+        <div><div class="t">${b.t||''}</div><div class="p">${b.p||''}</div>${b.href?`<a class="t-btn" href="${b.href}" target="_blank" rel="noopener">View</a>`:''}</div>
+      </div>`).join('');
+    $('#sheetBook').dataset.doc = d.name || '';
+  }
+  function openDialog(id){
+    fillDialog(id);
+    if (typeof dlg.showModal === 'function') dlg.showModal(); else dlg.setAttribute('open','');
+    history.replaceState(null, "", `#${id}`);
+  }
+  function closeDialog(){
+    if (typeof dlg.close === 'function') dlg.close(); else dlg.removeAttribute('open');
+    history.replaceState(null, "", window.location.pathname + window.location.search);
   }
 
-  function openPopup(id) {
-    fillPopup(id);
-    lastFocus = document.activeElement;
-    dlg.showModal();
-    trapRemove = trapFocus(dlg);
-    dlg.querySelector('.sheet-close')?.focus();
-  }
+  on(grid,'click',(e)=>{
+    const card = e.target.closest('.ndc-card'); if (!card) return;
+    if (e.target.closest('.open') || e.target.closest('.block')) openDialog(card.dataset.id);
+  });
+  on(closeBtn,'click', closeDialog);
+  on(dlg,'keydown',(e)=>{ if (e.key==='Escape') closeDialog(); });
+  on(dlg,'click',(e)=>{ const r=dlg.getBoundingClientRect(); if(e.clientX<r.left||e.clientX>r.right||e.clientY<r.top||e.clientY>r.bottom) closeDialog(); });
 
-  function closePopup() {
-    dlg.close();
-    trapRemove && trapRemove();
-    lastFocus?.focus();
-  }
-
-  // ✅ Attach card click
-  on(grid, 'click', e => {
-    const card = e.target.closest('.ndc-card');
-    if (card && (e.target.closest('.open') || e.target.closest('.block'))) {
-      e.preventDefault();
-      openPopup(card.dataset.id);
+  on($('#sheetBook'),'click',(e)=>{
+    const name = e.currentTarget?.dataset?.doc || '';
+    const sel = $('#doctorSelect'); if (sel && name){
+      sel.value = name;
+      document.querySelector('#get-in-touch')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
     }
   });
 
-  // ✅ Close button
-  on($('.sheet-close', dlg), 'click', closePopup);
-  on(dlg, 'click', e => { if (e.target === dlg) closePopup(); });
+  // deep-link (#dhivakaran, etc.)
+  function checkHash(){ const id = location.hash.replace('#',''); if (id && DATA[id]) openDialog(id); }
+  window.addEventListener('hashchange', checkHash); checkHash();
 
-  // ✅ Book with this doctor
-  const sheetBookBtn = $('#sheetBook');
-  if (sheetBookBtn) {
-    on(sheetBookBtn, 'click', () => {
-      const docId = sheetBookBtn.dataset.doc;
-      closePopup();
-
-      // Scroll smoothly to booking section
-      document.querySelector('#get-in-touch')?.scrollIntoView({ behavior: 'smooth' });
-
-      // Auto-fill doctor select
-      const doctorSelect = $('#doctorSelect');
-      if (doctorSelect && docId) {
-        const d = DATA[docId];
-        if (d) {
-          doctorSelect.value = d.name;
-          const resetBtn = $('#resetDoctor');
-          if (resetBtn) resetBtn.hidden = false;
-        }
-      }
+  // search + filter chips
+  function applyFilter(){
+    const q = (search.value||'').toLowerCase().trim();
+    const pressed = $$('#docFilters .chip--ghost').find(b=>b.getAttribute('aria-pressed')==='true');
+    const f = pressed ? pressed.dataset.filter : 'all';
+    $$('.ndc-card', grid).forEach(card=>{
+      const tags = (card.getAttribute('data-tags')||'').toLowerCase();
+      const text = (card.textContent||'').toLowerCase();
+      const matchQ = !q || tags.includes(q) || text.includes(q);
+      const matchF = (f==='all') || tags.includes(f);
+      card.style.display = (matchQ && matchF) ? '' : 'none';
     });
   }
-
-  // ✅ Reset doctor handler
-  const resetBtn = $('#resetDoctor');
-  const doctorSelect = $('#doctorSelect');
-  if (resetBtn && doctorSelect) {
-    on(resetBtn, 'click', () => {
-      doctorSelect.value = "";
-      resetBtn.hidden = true;
+  on(search,'input', applyFilter);
+  on($('.ndc-search .clear'),'click', ()=>{ search.value=''; applyFilter(); });
+  $$('#docFilters .chip--ghost').forEach(btn=>{
+    on(btn,'click', ()=>{
+      $$('#docFilters .chip--ghost').forEach(b=>b.setAttribute('aria-pressed','false'));
+      btn.setAttribute('aria-pressed','true');
+      applyFilter();
     });
-  }
-})();
-
-// Auto-fill doctor select
-const doctorSelect = $('#doctorSelect');
-if (doctorSelect && docId) {
-  const d = DATA[docId];
-  if (d) {
-    doctorSelect.value = d.name;
-
-    // ✅ Visual pulse highlight
-    doctorSelect.classList.add('pulse');
-    setTimeout(() => doctorSelect.classList.remove('pulse'), 2000);
-
-    const resetBtn = $('#resetDoctor');
-    if (resetBtn) resetBtn.hidden = false;
-  }
-}
-
-/* =========================================================
-   3. Booking Form: Voice Input + Autosave + WhatsApp Handoff
-========================================================= */
-(() => {
-  const form = $('#apptForm');
-  const notes = $('#notes');
-  if (!form) return;
-
-  /* --- Voice Input --- */
-  const micBtn = document.createElement('button');
-  micBtn.type = 'button'; micBtn.textContent = '🎤';
-  micBtn.className = 'mic-btn'; notes?.insertAdjacentElement('afterend', micBtn);
-
-  if ('webkitSpeechRecognition' in window) {
-    const rec = new webkitSpeechRecognition();
-    rec.lang = 'en-IN'; rec.continuous = false; rec.interimResults = false;
-    on(micBtn, 'click', () => rec.start());
-    rec.onresult = e => {
-      notes.value += (notes.value ? ' ' : '') + e.results[0][0].transcript;
-      notes.dispatchEvent(new Event('input'));
-    };
-  } else micBtn.style.display = 'none';
-
-  /* --- Autosave --- */
-  const key = 'ndc-booking';
-  on(form, 'input', () => {
-    const data = {};
-    [...form.elements].forEach(el => el.name && (data[el.name] = el.value));
-    localStorage.setItem(key, JSON.stringify(data));
   });
-  const saved = localStorage.getItem(key);
-  if (saved) Object.entries(JSON.parse(saved)).forEach(([k,v]) => form.elements[k] && (form.elements[k].value = v));
-
-  /* --- WhatsApp Handoff --- */
-  const daySel = $('#daySelect'), timeSel = $('#timeSelect');
-  const waFill = $('#waFill'), waLink = $('#waLink'), summary = $('#summaryText');
-  const bookBtn = $('#bookBtn'), modal = $('#successModal');
-
-  const hours = {0:[15,22],1:[11,22],2:[11,22],3:[11,22],4:[11,22],5:[11,22],6:[11,22]};
-  const fmtDay = d => d.toLocaleDateString("en-IN",{weekday:"short",day:"2-digit",month:"short"});
-  const fmtTime = d => d.toLocaleTimeString("en-IN",{hour:"2-digit",minute:"2-digit"});
-
-  function buildDays() {
-    const today = new Date(); let html='';
-    for(let i=0;i<14;i++){const d=new Date(today);d.setDate(today.getDate()+i);
-      html+=`<option value="${d.toISOString()}">${fmtDay(d)}</option>`;}
-    daySel.innerHTML=html;
-  }
-  function buildTimes(iso){
-    let opts='<option value="">Select time</option>'; if(!iso){timeSel.innerHTML=opts;return;}
-    const d=new Date(iso), [o,c]=hours[d.getDay()]||[0,0];
-    const start=new Date(d); start.setHours(o,0,0,0); const end=new Date(d); end.setHours(c,0,0,0);
-    for(let t=new Date(start);t<end;t.setMinutes(t.getMinutes()+30)){opts+=`<option value="${t.toISOString()}">${fmtTime(t)}</option>`;}
-    timeSel.innerHTML=opts;
-  }
-  function updateLinks(){
-    const f=new FormData(form); const dVal=daySel.value?new Date(daySel.value):null, tVal=timeSel.value?new Date(timeSel.value):null;
-    const lines=[`Hi Noble Dental Care, I'd like to book:`,`• Name: ${f.get("name")||""}`,`• Phone: ${f.get("phone")||""}`,`• Service: ${f.get("service")||""}`,`• Doctor: ${f.get("doctor")||""}`,`• Contact: ${f.get("contact")||"WhatsApp"}`,`• Time: ${dVal?fmtDay(dVal):"-"} ${tVal?fmtTime(tVal):"-"}`];
-    if(f.get("notes"))lines.push(`• Notes: ${f.get("notes")}`);
-    const url=`https://wa.me/918610425342?text=${encodeURIComponent(lines.join("\n"))}`;
-    waFill.href=url; waLink.href=url;
-  }
-  function updateSummary(){
-    const dVal=daySel.value?new Date(daySel.value):null,tVal=timeSel.value?new Date(timeSel.value):null;
-    if(dVal&&tVal){summary.textContent=`${fmtDay(dVal)} • ${fmtTime(tVal)}`; bookBtn.disabled=false;}
-    else{summary.textContent="Choose a day & time"; bookBtn.disabled=true;}
-    updateLinks();
-  }
-
-  buildDays(); buildTimes(daySel.value); updateSummary();
-  on(daySel,'change',()=>{buildTimes(daySel.value);updateSummary();});
-  on(timeSel,'change',updateSummary);
-  on(form,'input',updateLinks);
-  on(form,'submit',e=>{e.preventDefault();if(bookBtn.disabled)return;updateLinks();modal.showModal();window.open(waFill.href,'_blank');});
-  on($('#closeSuccess'),'click',()=>modal.close());
 })();
 
 /* =========================================================
