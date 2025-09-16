@@ -610,7 +610,7 @@ button, input, select, textarea {
 
 /* -------------------- CONTACT (Booking) -------------------- */
 .contact-band{background:linear-gradient(135deg, rgba(87,192,185,.08), rgba(128,160,255,.08));padding:4rem 0}
-.git-wrap{display:grid;gap:24px;grid-template-columns:1fr 1fr;max-width:1200px;margin:auto}
+.git-wrap{display:grid;gap:24px;grid-template-columns:1fr 1fr;max-width:1150px;margin:auto}
 .git-left{display:flex;flex-direction:column;gap:1.5rem}
 .cta-pill{display:inline-flex;align-items:center;gap:.6rem;padding:.75rem 1.25rem;border-radius:999px;font-weight:600;transition:background .2s, transform .2s}
 .cta-pill.call{background:linear-gradient(135deg,var(--brand),var(--brand2));color:#fff}
@@ -620,15 +620,15 @@ button, input, select, textarea {
 .git-points li{display:flex;align-items:center;gap:.5rem;margin-bottom:.5rem}
 
 .git-card{
-  background:rgba(255,255,255,0.08);border-radius:16px;padding:24px;
+  background:rgb(255 255 255);border-radius:16px;padding:16px;
   backdrop-filter:blur(18px) saturate(160%);border:1px solid rgba(255,255,255,0.18);
   box-shadow:0 8px 24px rgba(0,0,0,0.25)
 }
-.git-form-grid{display:grid;gap:16px}
+.git-form-grid{display:grid;gap:2px}
 .f{display:flex;flex-direction:column;font-size:0.95rem}
 .f span{margin-bottom:6px;font-weight:600}
 .f input,.f select,.f textarea{
-  padding:12px;border:1px solid rgba(255,255,255,0.2);
+  padding:12px;border:1px solid rgb(191 180 180 / 20%);
   border-radius:12px;background:rgba(255,255,255,0.06);color:var(--text)
 }
 .git-summary{
@@ -647,14 +647,14 @@ button, input, select, textarea {
 :root {
   --sc-brand: #12b2a0;
   --sc-brand2: #0d6efd;
-  --sc-grad: linear-gradient(90deg,rgba(42, 123, 155, 1) 0%, rgba(87, 199, 133, 1) 50%, rgba(237, 221, 83, 1) 100%);
+  --sc-grad: linear-gradient(90deg,rgba(42, 123, 155, 1) 0%, rgb(92 73 252 / 79%) 50%, #13aba4db 100%);
 }
 
 /* Gradient background animation */
 .ndc-selfcheck-hero {
   background: var(--sc-grad);
   background-size: 400% 400%;
-  animation: pastelShift 18s ease-in-out infinite;
+  animation: pastelShift 22s ease-in-out infinite;
   color: #fff;
   padding: clamp(48px, 6vw, 84px) 0;
   position: relative;
@@ -669,7 +669,7 @@ button, input, select, textarea {
 
 /* Container alignment */
 .ndc-selfcheck-wrap {
-  max-width: var(--max, 1280px);
+  max-width: var(--max, 1200px);
   margin-inline: auto;
   padding-inline: var(--pad, 24px);
 
@@ -678,7 +678,7 @@ button, input, select, textarea {
   gap: 32px;
   align-items: center;
 }
-@media (max-width: 1024px) {
+@media (max-width: 980px) {
   .ndc-selfcheck-wrap {
     grid-template-columns: 1fr;
     gap: 24px;
@@ -759,7 +759,7 @@ button, input, select, textarea {
   padding: 12px;
   background: rgba(255,255,255,0.08);
   backdrop-filter: blur(18px) saturate(160%);
-  border: 1px solid rgba(255,255,255,0.22);
+  border: 1px solid rgb(255 255 255 / 22%);
   box-shadow: 0 12px 40px rgba(0,0,0,0.3);
 }
 
@@ -827,8 +827,8 @@ button, input, select, textarea {
 .testimonials-track { overflow: hidden; width: 100%; }
 .testimonials-loop {
   display: flex;
-  gap: 20px;
-  animation: loopScroll 50s linear infinite;
+  gap: 100px;
+  animation: loopScroll 20s linear infinite;
   width: max-content;
 }
 .testimonials-track:hover .testimonials-loop { animation-play-state: paused; }
@@ -949,7 +949,7 @@ button, input, select, textarea {
 
 /* -------------------- CERTIFICATES TICKER -------------------- */
 #certs-ticker {
-  padding: 60px 0;
+  padding: 100px 0;
   text-align: center;
 }
 
@@ -972,7 +972,7 @@ button, input, select, textarea {
 #certs-ticker .section-sub {
   font-size: 1rem;
   color: var(--muted);
-  margin-bottom: 24px;
+  margin-bottom: 2px;
 }
 
 #certs-ticker .ticker-viewport {
@@ -981,14 +981,14 @@ button, input, select, textarea {
   border: 1px solid var(--glass-bd);
   border-radius: 16px;
   background: var(--glass-bg);
-  padding: 16px;
+  padding: 56px;
   box-shadow: var(--glass-shadow);
   backdrop-filter: blur(10px) saturate(140%);
 }
 
 .ticker-track {
   display: flex;
-  gap: 24px;
+  gap: 50px;
   list-style: none;
   padding: 0;
   margin: 0;
@@ -997,7 +997,7 @@ button, input, select, textarea {
 }
 
 .ticker-track li img {
-  height: 120px; /* 🔥 Bigger height for visibility */
+  height: 240px; /* 🔥 Bigger height for visibility */
   width: auto;
   object-fit: contain;
   transition: transform 0.3s ease, filter 0.3s ease;
@@ -1035,7 +1035,7 @@ button, input, select, textarea {
 
 
 .site-footer {
-  background: linear-gradient(180deg,#0b0e14 0%,#0f1623 60%,#0a0e14 100%);
+  background: linear-gradient(180deg,#12274c 0%,#1a1d43 60%,#011330 100%);
   color:#d7deea;
   padding: 32px 0 20px;
   font-size:.95rem;
@@ -1049,9 +1049,9 @@ button, input, select, textarea {
 }
 
 .footer-brand img {
-  background:#fff;
+  background:#ffffff;
   border-radius:12px;
-  border:1px solid #e5edf7;
+  border:1px solid #ffffff;
   margin-bottom:10px;
 }
 
@@ -1101,7 +1101,7 @@ button, input, select, textarea {
   transition:background .3s,transform .3s;
 }
 .footer-social a:hover {
-  background:#0f1623;
+  background:#6581b5;
   transform:translateY(-2px);
 }
 
