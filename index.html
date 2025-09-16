@@ -1,141 +1,111 @@
 <!doctype html>
-<html lang="en" dir="ltr">
+<html lang="en-IN">
 <head>
-  <!-- Noble Dental Care — Landing Page (Polished Version) -->
-  <meta charset="utf-8">
-  <meta http-equiv="x-ua-compatible" content="ie=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
+  <meta name="color-scheme" content="light dark" />
+  <meta name="theme-color" content="#ffffff" />
 
-  <title>Noble Dental Care, Nallagandla • Same-day Painless RCT, Implants, Braces & Emergency Dentistry</title>
-  <meta name="description" content="Noble Dental Care in Nallagandla, Hyderabad offers painless root canals, implants, braces, pediatric and preventive dentistry, cosmetic dentistry, and 24×7 emergency care. Reviewed by Dr Dhivakaran & NDC-D Team.">
+  <title>Dentist in Nallagandla | Noble Dental Care</title>
+  <meta name="description" content="Same-day painless RCT, precise Implants, smile-first Braces, pediatric-friendly care, and 24×7 Emergency dentistry in Nallagandla." />
 
-  <!-- Canonical & Indexing -->
-  <link rel="canonical" href="https://www.nobledentalcare.in/">
-  <meta name="robots" content="index,follow,max-snippet:-1,max-image-preview:large,max-video-preview:-1">
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" />
+  <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
 
-  <!-- Social / Open Graph -->
-  <meta property="og:type" content="website">
-  <meta property="og:title" content="Noble Dental Care • Nallagandla">
-  <meta property="og:description" content="Painless RCT, implants, braces, preventive and cosmetic dentistry, pediatric care & emergency treatment. Book online.">
-  <meta property="og:url" content="https://www.nobledentalcare.in/">
-  <meta property="og:image" content="https://www.nobledentalcare.in/og/clinic-hero.jpg">
-  <meta name="twitter:card" content="summary_large_image">
-
-  <!-- Favicons -->
-  <link rel="icon" href="/favicon.ico" type="image/x-icon">
-  <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png">
-
-  <!-- Theme color -->
-  <meta name="theme-color" content="#0EA5A3">
-
-  <!-- Fonts -->
-  <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&display=swap" rel="stylesheet">
-
-  <!-- Stylesheet -->
-  <link rel="stylesheet" href="styles.css">
-
-  <!-- Scripts -->
-  <script src="main.js" defer></script>
-
-  <!-- Sitemap -->
-  <link rel="sitemap" type="application/xml" title="Sitemap" href="/sitemap.xml">
-
-  <!-- Preload video -->
-  <link rel="preload" as="video" href="/media/hero-orb.mp4" type="video/mp4">
-
-  <!-- Security CSP -->
-  <meta http-equiv="Content-Security-Policy"
-        content="
-          default-src 'self';
-          img-src 'self' https: data:;
-          script-src 'self' https://www.googletagmanager.com https://www.gstatic.com;
-          style-src 'self' https://fonts.googleapis.com 'unsafe-inline';
-          font-src 'self' https://fonts.gstatic.com data:;
-          connect-src 'self' https://www.google-analytics.com https://wa.me;
-          frame-ancestors 'none';
-        ">
-  <meta name="referrer" content="strict-origin-when-cross-origin">
-
-  <!-- Author -->
-  <meta name="author" content="Reviewed by Dr Dhivakaran & NDC-D Team">
 </head>
 <body>
-
-  <!-- Skip link -->
-  <a href="#main-content" class="skip-link">Skip to main content</a>
-
-  <!-- Scroll Progress -->
-  <div id="scrollIndicator" aria-hidden="true"></div>
-
-  <!-- HEADER -->
+  <!-- ================= HEADER ================= -->
   <header class="site-header" role="banner">
-    <a class="brand" href="/" aria-label="Noble Dental Care Home">
-      <img src="/images/logo.svg" alt="Noble Dental Care logo" width="40" height="40" decoding="async" loading="eager">
-      <h1 class="brand-title">Noble Dental Care</h1>
+    <a href="/" class="brand" aria-label="Noble Dental Care Home">
+      <img src="/images/dentalcare.nallagandla.png" alt="Noble Dental Care Logo"
+           width="40" height="40" decoding="async" fetchpriority="high" />
+      <p class="brand-title"><span>Noble</span> Dental Care</p>
     </a>
 
-    <nav class="main-nav" aria-label="Primary navigation">
-      <button id="menuToggle" class="menu-toggle" aria-controls="primaryNav" aria-expanded="false" aria-label="Toggle menu" type="button">
-        <span class="visually-hidden">Menu</span>☰
+    <nav class="main-nav" aria-label="Primary">
+      <button class="menu-toggle" id="menuToggle"
+              aria-label="Open menu" aria-expanded="false" aria-controls="primaryNav">
+        ☰
       </button>
-      <ul id="primaryNav" class="nav-pill" hidden aria-hidden="true">
-        <li><a class="nav-link" href="#services">Services</a></li>
-        <li class="has-submenu" aria-haspopup="true">
-          <button class="nav-link submenu-toggle" aria-expanded="false" aria-controls="sp-submenu" type="button">
-            Specialities <span aria-hidden="true">▾</span>
+
+      <ul class="nav-pill" id="primaryNav" role="menubar" aria-hidden="true">
+        <li role="none"><a role="menuitem" class="nav-link" href="/">Home</a></li>
+
+        <li role="none" class="has-submenu">
+          <button class="submenu-toggle nav-link"
+                  aria-haspopup="true" aria-expanded="false" aria-controls="sp-submenu">
+            Specialities ▼
           </button>
-          <div id="sp-submenu" class="submenu" hidden aria-hidden="true">
-            <a href="/specialities/root-canal.html">Root Canal (RCT)</a>
-            <a href="/specialities/implants.html">Dental Implants</a>
-            <a href="/specialities/braces.html">Braces & Aligners</a>
-            <a href="/specialities/crowns-bridges.html">Crowns & Bridges</a>
-            <a href="/specialities/scaling-whitening.html">Cleaning & Whitening</a>
-            <a href="/specialities/kids-dentistry.html">Pediatric Dentistry</a>
-          </div>
+          <ul class="submenu" id="sp-submenu" role="menu" aria-hidden="true">
+            <li><a href="/specialities/braces.html">Braces & Orthodontics</a></li>
+            <li><a href="/specialities/invisalign.html">Invisalign Clear Aligners</a></li>
+            <li><a href="/specialities/extraction.html">Tooth Extraction</a></li>
+            <li><a href="/specialities/root-canal.html">Root Canal Treatment</a></li>
+            <li><a href="/specialities/fillings.html">Tooth Fillings</a></li>
+            <li><a href="/specialities/crowns-bridges.html">Crowns & Bridges</a></li>
+            <li><a href="/specialities/implants.html">Dental Implants</a></li>
+            <li><a href="/specialities/dentures.html">Dentures</a></li>
+            <li><a href="/specialities/scaling-whitening.html">Scaling & Whitening</a></li>
+            <li><a href="/specialities/smile-design.html">Smile Designing</a></li>
+            <li><a href="/specialities/gum-surgeries.html">Gum Surgeries</a></li>
+            <li><a href="/specialities/kids-dentistry.html">Kids Dentistry</a></li>
+            <li><a href="/specialities/pregnancy-dental-care.html">Pregnancy Dental Care</a></li>
+          </ul>
         </li>
-        <li><a class="nav-link" href="#ndc-care-voka">Care Guide</a></li>
-        <li><a class="nav-link" href="#doctors">Our Team</a></li>
-        <li><a class="nav-link" href="#get-in-touch">Book</a></li>
-        <li><a class="nav-link" href="#reviews">Reviews</a></li>
-        <li><a class="nav-link" href="#contact">Contact</a></li>
+
+        <li><a class="nav-link" href="#ndc-care-voka">Care</a></li>
+        <li><a class="nav-link" href="#ndc-doctors-app">Our Team</a></li>
+        <li><a class="nav-link" href="#patient-reviews">Testimonials</a></li>
+        <li><a class="nav-link" href="#blog">Blog</a></li>
+        <li><a class="nav-link" href="/self-check#paths">Self-Check</a></li>
+        <li><a class="nav-link" href="/credentials.html">Credentials</a></li>
+        <li><a class="nav-link btn btn--primary" href="#get-in-touch">Book</a></li>
       </ul>
     </nav>
   </header>
 
-  <!-- MAIN CONTENT -->
-  <main id="main-content" tabindex="-1">
+  <!-- ================= HERO ================= -->
+  <section class="hero-background">
+    <div class="blackhole-box">
+      <video autoplay muted loop playsinline poster="/images/hero-poster.jpg">
+        <source src="/videos/blackhole.webm" type="video/webm" />
+        <source src="/videos/blackhole.mp4" type="video/mp4" />
+      </video>
+    </div>
 
-    <!-- HERO -->
-    <section class="hero-background band is-full" id="home" aria-label="Welcome to Noble Dental Care">
-      <div class="parallax-layer" data-parallax="0.15" aria-hidden="true"></div>
-      <div class="parallax-layer dots" data-parallax="0.30" aria-hidden="true"></div>
-      <div class="blackhole-box">
-        <video class="blackhole-video" autoplay muted loop playsinline preload="metadata" poster="/images/hero/poster.jpg">
-          <source src="/media/hero-orb.mp4" type="video/mp4">
-          Your browser does not support the video element.
-        </video>
+    <div class="hero-container">
+      <p class="hero-info-title">🕒 Open today • 11:00 AM – 10:00 PM</p>
+      <h1 class="hero-heading">Next Gen-Advanced, gentle <span class="gradient">Dentistry in Nallagandla</span></h1>
+      <p class="hero-sub">
+        Same-day painless Root Canal, precise Implants, smile-first Braces, pediatric-friendly care, and 24×7 Emergency dentistry.  
+        Reviewed by <strong>Dr Dhivakaran</strong> and the <strong>NDC-D Team</strong>, aligned with NHS, ADA, WHO, Mayo Clinic.
+      </p>
+      <div class="hero-buttons">
+        <a href="#get-in-touch" class="hero-button">
+          <!-- Calendar SVG -->
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+          Book Online
+        </a>
+        <a href="https://wa.me/918610425342" target="_blank" class="hero-button whatsapp">
+          <!-- WhatsApp SVG -->
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 24 24"><path d="M16.6 13.9c-.3-.1-1.8-.9-2.1-1s-.5-.1-.7.1c-.2.3-.8 1-1 1.2s-.4.2-.7.1c-.3-.1-1.2-.4-2.3-1.4-.9-.8-1.4-1.7-1.6-2-.2-.3 0-.5.1-.6.1-.1.3-.4.4-.6s.1-.4 0-.6c0-.2-.7-1.7-1-2.3-.3-.6-.5-.5-.7-.5h-.6s-.4.1-.6.3c-.2.3-.8.8-.8 1.9s.8 2.2.9 2.3c.1.1 1.6 2.5 3.9 3.5 2.3 1.1 2.3.7 2.7.6.4 0 1.3-.5 1.5-1 .2-.5.2-.9.1-1z"/><path d="M12 2C6.5 2 2 6.2 2 11.5c0 2 .6 3.8 1.7 5.3L2 22l5.4-1.7c1.5.8 3.1 1.2 4.6 1.2 5.5 0 10-4.2 10-9.5S17.5 2 12 2z"/></svg>
+          WhatsApp
+        </a>
+        <a href="tel:+918610425342" class="hero-button call">
+          <!-- Phone SVG -->
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6A19.79 19.79 0 012.08 4.18 2 2 0 014.06 2h3a2 2 0 012 1.72c.12.81.3 1.6.54 2.35a2 2 0 01-.45 2.11l-1.27 1.27a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.75.24 1.54.42 2.35.54A2 2 0 0122 16.92z"/></svg>
+          Call: +91 86104 25342
+        </a>
+        <a href="https://maps.google.com?q=Noble+Dental+Care+Nallagandla" target="_blank" class="hero-button location">
+          <!-- Location SVG -->
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 21s-6-5.2-6-10A6 6 0 0118 11c0 4.8-6 10-6 10z"/><circle cx="12" cy="11" r="2.5"/></svg>
+          Directions
+        </a>
       </div>
-
-      <div class="container hero-container">
-        <div class="hero-info-title"><span aria-hidden="true">🕒</span> Open today • 11:00 AM – 10:00 PM</div>
-        <h2 class="hero-heading">Advanced, gentle dentistry in <span class="gradient">Nallagandla</span></h2>
-        <p class="hero-sub">
-          Same-day painless <strong>Root Canal</strong>, precise <strong>Implants</strong>, smile-first <strong>Braces</strong>, pediatric-friendly care, and 24×7 <strong>Emergency dentistry</strong>.  
-          Reviewed by <em>Dr Dhivakaran and NDC-D Team</em>, aligned with <a href="https://www.nhs.uk/conditions/dental-treatment/" target="_blank" rel="noopener">NHS</a>, <a href="https://www.ada.org/" target="_blank" rel="noopener">ADA</a>, <a href="https://www.who.int/health-topics/oral-health" target="_blank" rel="noopener">WHO</a>, <a href="https://www.mayoclinic.org/" target="_blank" rel="noopener">Mayo Clinic</a>.
-        </p>
-        <div class="hero-buttons">
-          <a class="hero-button" href="#get-in-touch">Book Online</a>
-          <a class="hero-button whatsapp" href="https://wa.me/918610425342" target="_blank" rel="noopener">WhatsApp</a>
-          <a class="hero-button call" href="tel:+918610425342">Call: +91 86104 25342</a>
-          <a class="hero-button location" href="https://maps.google.com/?q=Noble+Dental+Care+Nallagandla" target="_blank" rel="noopener">Directions</a>
-        </div>
-      </div>
-      <a class="scroll-down" href="#services" aria-label="Scroll down to services"></a>
-    </section>
-
-
+    </div>
+  </section>
+  
   <!-- ================= MEET OUR SPECIALISTS ================= -->
   <section class="ndc-team-android" id="ndc-doctors-app" aria-label="Meet Our Doctors">
     <div class="ndc-screen container">
@@ -273,6 +243,41 @@
       <div class="sheet-footnote"><i class="bx bx-shield-alt-2" aria-hidden="true"></i> Evidence-based care aligned with IDA/ADA/WHO & ICMR recommendations; individualized after a clinical exam & X-rays when indicated.</div>
     </div>
   </dialog>
+  
+  
+    <!-- ================= SELF-CHECK BANNER ================= -->
+<section class="ndc-selfcheck-hero" id="self-check" aria-labelledby="sc-title">
+  <div class="ndc-selfcheck-wrap container">
+    <div class="ndc-selfcheck-copy">
+      <p class="ndc-eyebrow">Nallagandla • Hyderabad</p>
+      <h2 id="sc-title" class="ndc-title">Dentist-Reviewed Self-Check</h2>
+      <p class="ndc-sub">
+        Understand your symptoms in minutes. Pick who you are, select tooth region(s), choose symptoms, and get probable causes,
+        home care, urgency, and treatment options — reviewed by <strong>Dr. Dhivakaran R.</strong>
+      </p>
+
+      <div class="ndc-cta-row">
+        <a href="/self-check" class="ndc-btn ndc-btn--primary">Open Self-Check</a>
+        <a href="/treatments" class="ndc-btn ndc-btn--ghost">Explore Treatments</a>
+      </div>
+
+      <ul class="ndc-bullets" aria-label="Highlights">
+        <li>Interactive tooth map</li>
+        <li>Pregnancy & kids modes</li>
+        <li>Download results as PDF</li>
+      </ul>
+    </div>
+
+    <div class="ndc-selfcheck-visual">
+      <img
+        src="/images/hero-selfcheck.png"
+        alt="Preview of the Self-Check tool with tooth map and results"
+        width="720" height="560" loading="lazy" decoding="async"
+        class="ndc-hero-art">
+    </div>
+  </div>
+</section>
+  
     
   <!-- ================= APPOINTMENT (Book) ================= -->
   <section id="get-in-touch" class="band contact-band" aria-label="Get in touch & book">
@@ -340,56 +345,22 @@
     </div>
   </section>
 
-
-    <!-- SELF‑CHECK BANNER -->
-    <section id="selfcheck" class="ndc-selfcheck-hero band is-full" aria-labelledby="selfCheckTitle">
-      <div class="container ndc-selfcheck-wrap">
-        <div class="ndc-selfcheck-text">
-          <p class="ndc-eyebrow">New</p>
-          <h2 id="selfCheckTitle" class="ndc-title">Free 60‑Second Oral Health Self‑Check</h2>
-          <p class="ndc-sub">
-            Answer a few simple questions and receive a personalized  
-            oral health checklist that you can discuss with our doctors.  
-            This is <strong>not a diagnosis</strong> — just a conversation starter.  
-            <em>Reviewed by Dr Dhivakaran & NDC‑D Team</em>.
-          </p>
-
-          <div class="ndc-cta-row">
-            <a class="ndc-btn ndc-btn--primary" href="/self-check.html">Start Self‑Check</a>
-            <a class="ndc-btn ndc-btn--ghost" href="#ndc-care-voka">Browse Care Guide</a>
-          </div>
-
-          <ul class="ndc-bullets">
-            <li>Private</li>
-            <li>No signup required</li>
-            <li>Shareable PDF</li>
-          </ul>
-        </div>
-
-        <div class="ndc-selfcheck-visual">
-          <img class="ndc-hero-art" src="/images/hero/selfcheck-card.webp" alt="Oral health self‑check preview" width="480" height="360" loading="lazy">
-        </div>
-      </div>
-    </section>
-
-<!-- ===== TESTIMONIALS SECTION ===== -->
-<section id="testimonials" class="ndc-testimonials band" aria-labelledby="testTitle">
+<!-- =================== TESTIMONIALS =================== -->
+<section id="testimonials" class="ndc-section fancy-band" aria-labelledby="testTitle">
   <div class="container">
-    <p class="eyebrow">Patient Stories</p>
-    <h2 id="testTitle" class="section-title">What Patients Say About Us</h2>
-    <div class="testimonials-track" aria-label="Testimonials carousel">
-      <!-- Looping Reviews -->
-      <div class="testimonials-loop">
-        <!-- Repeat this block 10x with different content -->
-        <article class="testimonial-card" itemscope itemtype="https://schema.org/Review">
-          <div class="stars" itemprop="reviewRating" itemscope itemtype="https://schema.org/Rating">
-            <meta itemprop="ratingValue" content="5">★★★★★
-          </div>
-          <p class="quote" itemprop="reviewBody">
-            I had a severe toothache and came for an emergency root canal. The treatment was absolutely painless and completed in one sitting.
-          </p>
-          <div class="author" itemprop="author">
-            <img src="/images/reviews/patient1.webp" alt="Anjali R." loading="lazy" width="48" height="48">
+    <header class="ndc-head">
+      <p class="eyebrow">✨ Patient Stories</p>
+      <h2 id="testTitle" class="section-title">What Patients Say About Us</h2>
+    </header>
+
+    <div class="ndc-track testimonials-track">
+      <div class="ndc-loop testimonials-loop">
+        <!-- Testimonial Card -->
+        <article class="card testimonial-card">
+          <div class="stars">★★★★★</div>
+          <p class="quote">Absolutely painless root canal. Done in one sitting!</p>
+          <div class="author">
+            <img src="/images/reviews/patient1.webp" alt="Anjali R.">
             <div>
               <span class="name">Anjali R.</span><br>
               <span class="source">Google Review</span>
@@ -397,331 +368,588 @@
           </div>
         </article>
 
-        <article class="testimonial-card">
+        <article class="card testimonial-card">
           <div class="stars">★★★★½</div>
-          <p class="quote">
-            The orthodontist explained every step clearly, and I could see results within months.
-          </p>
+          <p class="quote">The orthodontist explained every step clearly. Great experience.</p>
           <div class="author">
-            <img src="/images/reviews/patient2.webp" alt="Rahul M." width="48" height="48">
-            <div><span class="name">Rahul M.</span><br><span class="source">Practo</span></div>
-          </div>
-        </article>
-
-        <article class="testimonial-card">
-          <div class="stars">★★★★★</div>
-          <p class="quote">
-            My child's first dental visit went so smoothly. Dr Idhaya is truly amazing with kids.
-          </p>
-          <div class="author">
-            <img src="/images/reviews/patient3.webp" alt="Kavitha S." width="48" height="48">
-            <div><span class="name">Kavitha S.</span><br><span class="source">Google</span></div>
-          </div>
-        </article>
-
-        <article class="testimonial-card">
-          <div class="stars">★★★★☆</div>
-          <p class="quote">
-            Clean and well-maintained clinic. The staff are courteous and helpful.
-          </p>
-          <div class="author">
-            <img src="/images/reviews/patient4.webp" alt="Suresh T." width="48" height="48">
-            <div><span class="name">Suresh T.</span><br><span class="source">Justdial</span></div>
-          </div>
-        </article>
-
-        <article class="testimonial-card">
-          <div class="stars">★★★★★</div>
-          <p class="quote">
-            Cosmetic veneers done here. Dr Aisha made everything look so natural!
-          </p>
-          <div class="author">
-            <img src="/images/reviews/patient5.webp" alt="Neha K." width="48" height="48">
-            <div><span class="name">Neha K.</span><br><span class="source">Google</span></div>
-          </div>
-        </article>
-
-        <article class="testimonial-card">
-          <div class="stars">★★★★★</div>
-          <p class="quote">
-            Emergency extraction was handled very professionally at night. Truly thankful.
-          </p>
-          <div class="author">
-            <img src="/images/reviews/patient6.webp" alt="Manoj P." width="48" height="48">
-            <div><span class="name">Manoj P.</span><br><span class="source">Google</span></div>
-          </div>
-        </article>
-
-        <article class="testimonial-card">
-          <div class="stars">★★★★☆</div>
-          <p class="quote">
-            Transparent pricing and excellent follow-up after implant procedure.
-          </p>
-          <div class="author">
-            <img src="/images/reviews/patient7.webp" alt="Harish V." width="48" height="48">
-            <div><span class="name">Harish V.</span><br><span class="source">Facebook</span></div>
-          </div>
-        </article>
-
-        <article class="testimonial-card">
-          <div class="stars">★★★★★</div>
-          <p class="quote">
-            Best dental experience I’ve had. Thank you Noble Dental!
-          </p>
-          <div class="author">
-            <img src="/images/reviews/patient8.webp" alt="Sangeetha D." width="48" height="48">
-            <div><span class="name">Sangeetha D.</span><br><span class="source">Google</span></div>
-          </div>
-        </article>
-
-        <article class="testimonial-card">
-          <div class="stars">★★★★½</div>
-          <p class="quote">
-            Very prompt communication. Helped me get an appointment even on a busy day.
-          </p>
-          <div class="author">
-            <img src="/images/reviews/patient9.webp" alt="Vijay R." width="48" height="48">
-            <div><span class="name">Vijay R.</span><br><span class="source">Justdial</span></div>
-          </div>
-        </article>
-
-        <article class="testimonial-card">
-          <div class="stars">★★★★★</div>
-          <p class="quote">
-            The smile design was spot on. I’m very confident now!
-          </p>
-          <div class="author">
-            <img src="/images/reviews/patient10.webp" alt="Aarthi N." width="48" height="48">
-            <div><span class="name">Aarthi N.</span><br><span class="source">Instagram</span></div>
+            <img src="/images/reviews/patient2.webp" alt="Rahul M.">
+            <div>
+              <span class="name">Rahul M.</span><br>
+              <span class="source">Practo</span>
+            </div>
           </div>
         </article>
       </div>
     </div>
   </div>
 </section>
- 
 
-<!-- ======================= CERTIFICATES & MEMBERSHIPS ======================= -->
-<section id="certs" class="ndc-certs band" aria-labelledby="credTitle">
-  <div>
-    <p class="eyebrow">Credentials</p>
-    <h2 id="credTitle" class="section-title">Certifications & Memberships</h2>
-    <p class="section-sub">
-      Our team’s qualifications are globally recognized.  
-      Certifications ensure evidence-based, safe, and effective care.  
-      <em>Reviewed by Dr Dhivakaran & NDC-D Team</em>.
-    </p>
 
-    <!-- Counter -->
-    <p class="cert-count">
-      Showing <span id="certTotal">0</span> certifications
-    </p>
+<!-- =================== BLOG =================== -->
+<section id="blog" class="ndc-section fancy-band" aria-labelledby="blogTitle">
+  <div class="container">
+    <header class="ndc-head">
+      <p class="eyebrow">📰 Dental Knowledge</p>
+      <h2 id="blogTitle" class="section-title">Latest Insights & Guides</h2>
+    </header>
 
-    <!-- Slider viewport -->
-    <div class="certs-viewport">
-      <div class="certs-track">
+    <div class="blog-grid">
+      <!-- Blog Post Card -->
+      <article class="card blog-card">
+        <img src="/images/blog/whitening.webp" alt="Is teeth whitening safe?" class="blog-thumb">
+        <div class="blog-content">
+          <h3 class="blog-title">Is Teeth Whitening Safe?</h3>
+          <p class="blog-excerpt">
+            Whitening gels are safe under dentist supervision. NHS & ADA guidelines recommend gum protection...
+          </p>
+          <a href="/blog/teeth-whitening" class="blog-read">Read More →</a>
+        </div>
+      </article>
 
-        <!-- Certificate 1 -->
-        <article class="cert-card">
-          <img src="/images/certs/ada.webp" alt="ADA Membership" loading="lazy" width="120" height="120">
-          <h3 class="cert-title">ADA Membership</h3>
-          <p class="cert-desc">Ensures adherence to international dental standards & continuous education.</p>
-        </article>
+      <article class="card blog-card">
+        <img src="/images/blog/implants.webp" alt="Dental Implants Timeline" class="blog-thumb">
+        <div class="blog-content">
+          <h3 class="blog-title">How Long Do Implants Take?</h3>
+          <p class="blog-excerpt">
+            From placement to crown fitting: 3–6 months on average. Depends on bone quality and grafting needs...
+          </p>
+          <a href="/blog/implants" class="blog-read">Read More →</a>
+        </div>
+      </article>
+    </div>
 
-        <!-- Certificate 2 -->
-        <article class="cert-card">
-          <img src="/images/certs/iti.webp" alt="ITI Implantology" loading="lazy" width="120" height="120">
-          <h3 class="cert-title">ITI Implantology</h3>
-          <p class="cert-desc">Expertise in advanced implantology techniques with ITI certification.</p>
-        </article>
+    <!-- View All Button -->
+    <div class="blog-cta">
+      <a href="/blog" class="btn-viewall">View All Blog Posts</a>
+    </div>
+  </div>
+</section>
+  
+<!-- =================== FAQ =================== -->
+<section id="faq" class="ndc-faq band" aria-labelledby="faqTitle" itemscope itemtype="https://schema.org/FAQPage">
+  <div class="container">
+    <p class="eyebrow">FAQs</p>
+    <h2 id="faqTitle" class="section-title">Common Questions — Clear Answers</h2>
 
-        <!-- Certificate 3 -->
-        <article class="cert-card">
-          <img src="/images/certs/iso.webp" alt="ISO 9001 Certification" loading="lazy" width="120" height="120">
-          <h3 class="cert-title">ISO 9001:2015</h3>
-          <p class="cert-desc">International quality certification for patient safety & clinical management.</p>
-        </article>
+    <div class="faq-list">
+      <!-- Q1 -->
+      <details id="faq-1" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+        <summary itemprop="name">How long does recovery take after a root canal?</summary>
+        <div class="faq-answer" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
+          <p itemprop="text">
+            Most patients experience mild discomfort for 1–3 days. Some sensitivity or swelling may last up to a week, while full tissue healing can take weeks.  
+            <a href="https://celinedental.com/how-long-does-it-take-to-recover-from-a-root-canal/" target="_blank" rel="noopener">Source</a>
+          </p>
+        </div>
+      </details>
 
-        <!-- Certificate 4 -->
-        <article class="cert-card">
-          <img src="/images/certs/dci.webp" alt="DCI Registration" loading="lazy" width="120" height="120">
-          <h3 class="cert-title">DCI Registration</h3>
-          <p class="cert-desc">Dental Council of India registration ensures licensed, ethical practice.</p>
-        </article>
+      <!-- Q2 -->
+      <details id="faq-2" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+        <summary itemprop="name">How safe are dental X-rays?</summary>
+        <div class="faq-answer" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
+          <p itemprop="text">
+            Dental X-rays involve very low radiation, comparable to a few days of natural exposure. Protective shielding is used when required.  
+            <a href="https://www.nhs.uk/tests-and-treatments/x-ray/" target="_blank" rel="noopener">NHS</a>
+          </p>
+        </div>
+      </details>
 
-        <!-- Certificate 5 -->
-        <article class="cert-card">
-          <img src="/images/certs/who.webp" alt="WHO Oral Health Program" loading="lazy" width="120" height="120">
-          <h3 class="cert-title">WHO Oral Health</h3>
-          <p class="cert-desc">Follows WHO oral health protocols for prevention & global standards.</p>
-        </article>
+      <!-- Q3 -->
+      <details id="faq-3" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+        <summary itemprop="name">How long does a root canal-treated tooth last?</summary>
+        <div class="faq-answer" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
+          <p itemprop="text">
+            With good oral hygiene and a crown restoration, root canal-treated teeth can last many years, often a lifetime.  
+            <a href="https://www.drkatarmal.com/2014/01/how-long-do-root-canal-treated-tooth-last.html" target="_blank" rel="noopener">Source</a>
+          </p>
+        </div>
+      </details>
 
-      </div>
+      <!-- Q4 -->
+      <details id="faq-4" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+        <summary itemprop="name">Can I go back to work right after dental procedures?</summary>
+        <div class="faq-answer" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
+          <p itemprop="text">
+            In most cases, yes. Patients can return to normal activities the same day, but avoid chewing on treated teeth until numbness fades.  
+            <a href="https://celinedental.com/how-long-does-it-take-to-recover-from-a-root-canal/" target="_blank" rel="noopener">Source</a>
+          </p>
+        </div>
+      </details>
+
+      <!-- Q5 -->
+      <details id="faq-5" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+        <summary itemprop="name">What should I do if I feel pain or swelling after treatment?</summary>
+        <div class="faq-answer" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
+          <p itemprop="text">
+            Mild swelling and pain are common, but if symptoms worsen after a few days, contact your dentist. Use prescribed medication, OTC pain relief, or cold compresses as directed.  
+            <a href="https://dentakademiglobal.com/how-many-days-does-it-take-to-recover-after-a-root-canal-root-canal-healing-process/" target="_blank" rel="noopener">Source</a>
+          </p>
+        </div>
+      </details>
+    </div>
+  </div>
+</section>
+
+  
+<!-- ================= CERTIFICATES TICKER ================= -->
+<section class="band" id="certs-ticker" aria-label="Certificates ticker">
+  <div class="container">
+    <header class="ticker-head">
+      <p class="eyebrow center">CREDENTIALS</p>
+      <h2 class="section-title center">Our Certifications & Registrations</h2>
+      <p class="section-sub center">Hover to pause. Click to explore.</p>
+    </header>
+
+    <div class="ticker-viewport" role="group" aria-roledescription="carousel" aria-label="Certificate highlights">
+      <ul class="ticker-track" id="certsTrack" aria-live="off">
+        <li><img src="/images/certs/ada.webp" alt="ADA Membership"></li>
+        <li><img src="/images/certs/iti.webp" alt="ITI Implantology"></li>
+        <li><img src="/images/certs/iso.webp" alt="ISO 9001"></li>
+        <li><img src="/images/certs/dci.webp" alt="DCI Registration"></li>
+        <li><img src="/images/certs/who.webp" alt="WHO Oral Health"></li>
+      </ul>
+
+      <button class="ticker-ctrl prev" type="button" aria-label="Scroll left"><i class="bx bx-left-arrow-alt"></i></button>
+      <button class="ticker-ctrl next" type="button" aria-label="Scroll right"><i class="bx bx-right-arrow-alt"></i></button>
+    </div>
+
+    <div class="rev-cta" style="margin-top:20px; text-align:center;">
+      <a class="btn outline" href="/credentials.html"><i class="bx bx-collection"></i> View all credentials</a>
     </div>
   </div>
 </section>
 
 
-    <!-- FAQ -->
-    <section id="faq" class="ndc-faq band" aria-labelledby="faqTitle">
-      <div class="container">
-        <p class="eyebrow">FAQs</p>
-        <h2 id="faqTitle" class="section-title">Common Questions — Clear Answers</h2>
-        <p class="section-sub">
-          Evidence‑based answers, patient friendly, referenced from <a href="https://www.nhs.uk/" target="_blank" rel="noopener">NHS</a>,
-          <a href="https://www.ada.org/" target="_blank" rel="noopener">ADA</a>, and standard textbooks.  
-          <em>Reviewed by Dr Dhivakaran & NDC‑D Team</em>.
-        </p>
+<!-- ================= FOOTER ================= -->
+<footer class="site-footer" id="footer" role="contentinfo">
+  <div class="container footer-grid">
 
-        <div class="faq-list">
-          <details itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
-            <summary itemprop="name">Is teeth whitening safe?</summary>
-            <div class="faq-answer" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
-              <p itemprop="text">
-                Yes, when supervised by a dentist. NHS & ADA guidance supports peroxide‑based gels  
-                with gum protection. Temporary sensitivity is common and usually resolves in 24–48h.  
-                <a href="https://www.nhs.uk/conditions/teeth-whitening/" target="_blank" rel="noopener">NHS Reference</a>.
-              </p>
-            </div>
-          </details>
-          <details itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
-            <summary itemprop="name">How long does a dental implant take?</summary>
-            <div class="faq-answer" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
-              <p itemprop="text">
-                Typical healing is 3–6 months from implant placement to crown fitting, depending on bone quality and grafting needs.  
-                <a href="https://www.iti.org/" target="_blank" rel="noopener">ITI Consensus</a>.
-              </p>
-            </div>
-          </details>
-          <details itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
-            <summary itemprop="name">Are dental X‑rays safe?</summary>
-            <div class="faq-answer" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
-              <p itemprop="text">
-                Dental radiographs use very low doses of radiation. Benefits outweigh risks when used appropriately with shielding.  
-                <a href="https://www.fda.gov/radiation-emitting-products/medical-x-ray-imaging/dental-radiography" target="_blank" rel="noopener">FDA Reference</a>.
-              </p>
-            </div>
-          </details>
-        </div>
-      </div>
-    </section>
+    <!-- Brand -->
+    <div class="footer-brand">
+      <img src="/images/logo-footer.webp" alt="Noble Dental Care logo" width="48" height="48" loading="lazy" decoding="async">
+      <p><strong>Noble Dental Care – Nallagandla</strong><br> Ethical, patient-first dentistry in Hyderabad.</p>
+    </div>
 
-  </main>
+    <!-- Nav -->
+    <nav class="footer-nav" aria-label="Footer">
+      <h4>Quick Links</h4>
+      <ul>
+        <li><a href="/">Home</a></li>
+        <li><a href="/self-check">Self-Check</a></li>
+        <li><a href="#ndc-care-voka">Care Guide</a></li>
+        <li><a href="#ndc-doctors-app">Our Team</a></li>
+        <li><a href="#get-in-touch">Book Appointment</a></li>
+      </ul>
+    </nav>
 
-  <!-- FOOTER -->
-  <footer id="contact" class="site-footer band is-full" role="contentinfo">
-    <div class="container">
-      <div class="footer-grid">
-        <div class="footer-brand">
-          <img src="/images/logo.svg" alt="Noble Dental Care Logo" width="54" height="54">
-          <p>
-            <strong>Noble Dental Care</strong><br>
-            Nallagandla, Hyderabad 500019<br>
-            <a href="tel:+918610425342">+91 86104 25342</a><br>
-            <a href="mailto:care@nobledentalcare.in">care@nobledentalcare.in</a>
-          </p>
-        </div>
-        <nav class="footer-nav" aria-label="Footer navigation">
-          <h4>Explore</h4>
-          <ul>
-            <li><a href="/specialities/root-canal.html">Root Canal</a></li>
-            <li><a href="/specialities/implants.html">Implants</a></li>
-            <li><a href="/specialities/braces.html">Braces & Aligners</a></li>
-            <li><a href="/specialities/crowns-bridges.html">Crowns & Bridges</a></li>
-            <li><a href="/blog/">Blog</a></li>
-          </ul>
-        </nav>
-        <div class="footer-contact">
-          <h4>Hours</h4>
-          <p>Mon–Sun: 11:00 AM – 10:00 PM</p>
-          <h4>Emergency</h4>
-          <p><a href="tel:+918610425342">Call now</a> for urgent pain/swelling/trauma.</p>
-        </div>
-        <div class="footer-social">
-          <h4>Connect</h4>
-          <a aria-label="Google Maps" href="https://maps.google.com/?q=Noble+Dental+Care+Nallagandla" target="_blank" rel="noopener">G</a>
-          <a aria-label="WhatsApp" href="https://wa.me/918610425342" target="_blank" rel="noopener">WA</a>
-          <a aria-label="Instagram" href="https://instagram.com/" target="_blank" rel="noopener">IG</a>
-        </div>
-      </div>
-      <div class="footer-bottom">
-        <small>© <span id="year">2025</span> Noble Dental Care. Educational content only. <a href="/privacy.html">Privacy</a> • <a href="/terms.html">Terms</a></small>
+    <!-- Contact -->
+    <div class="footer-contact">
+      <h4>Find Us</h4>
+      <p>Nallagandla Main Road,<br> Hyderabad, Telangana – 500019</p>
+      <p><a href="tel:+918610425342">+91 86104 25342</a></p>
+      <a href="https://maps.app.goo.gl/hy8B9WiQHtnaUqdPA" target="_blank" rel="noopener">Open in Google Maps</a>
+
+      <div class="footer-map">
+        <iframe title="Clinic Location Map" loading="lazy" width="100%" height="140" style="border:0;" allowfullscreen 
+          referrerpolicy="no-referrer-when-downgrade"
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3806.7647515788543!2d78.3059953759854!3d17.473963183366812!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bcb93e36f4d1a5d%3A0xd8c1f2a189d7f5cc!2sNoble%20Dental%20Care%20-%20Nallagandla!5e0!3m2!1sen!2sin!4v1699271020999!5m2!1sen!2sin">
+        </iframe>
       </div>
     </div>
-  </footer>
 
-  <!-- JSON-LD -->
-  <script type="application/ld+json">
-  {
-    "@context":"https://schema.org",
-    "@graph":[
-      {
-        "@type":"Dentist",
-        "@id":"https://www.nobledentalcare.in/#dentist",
-        "name":"Noble Dental Care",
-        "image":"https://www.nobledentalcare.in/og/clinic-hero.jpg",
-        "url":"https://www.nobledentalcare.in/",
-        "telephone":"+91-86104-25342",
-        "priceRange":"₹₹",
-        "address":{"@type":"PostalAddress","streetAddress":"Nallagandla","addressLocality":"Hyderabad","postalCode":"500019","addressRegion":"Telangana","addressCountry":"IN"},
-        "geo":{"@type":"GeoCoordinates","latitude":17.456,"longitude":78.321},
-        "areaServed":["Nallagandla","Lingampally","Tellapur","Hyderabad","Gachibowli"],
-        "openingHoursSpecification":[{"@type":"OpeningHoursSpecification","dayOfWeek":["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"],"opens":"11:00","closes":"22:00"}],
-        "sameAs":["https://maps.google.com/?q=Noble+Dental+Care+Nallagandla","https://instagram.com/"],
-        "founder":{"@type":"Person","name":"Dr Dhivakaran","jobTitle":"Chief Medical Director"}
+    <!-- Social -->
+    <div class="footer-social">
+      <h4>Connect</h4>
+      <a href="https://facebook.com" aria-label="Facebook" target="_blank" rel="noopener">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512" class="icon">
+          <path d="M279.14 288l14.22-92.66h-88.91V127.36c0-25.35 
+          12.42-50.06 52.24-50.06h40.42V6.26S293.3 0 268.1 
+          0c-73.11 0-121.12 44.38-121.12 124.72v70.62H86.4V288h60.57v224h92.66V288z"/>
+        </svg>
+      </a>
+      <a href="https://instagram.com" aria-label="Instagram" target="_blank" rel="noopener">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" class="icon">
+          <path d="M224.1 141c-63.6 0-114.9 51.3-114.9 
+          114.9s51.3 114.9 114.9 114.9S339 319.5 339 
+          255.9 287.7 141 224.1 141zm146.4-33.5c0 
+          14.9-12 26.9-26.9 26.9s-26.9-12-26.9-26.9 
+          12-26.9 26.9-26.9 26.9 12 26.9 26.9zM398.8 
+          80c-7.8-19.6-22.9-34.7-42.6-42.6C336.7 32 
+          279.6 32 224 32s-112.7 0-132.2 5.4c-19.6 
+          7.8-34.7 22.9-42.6 42.6C32 103.3 32 
+          160.4 32 216s0 112.7 5.4 132.2c7.8 
+          19.6 22.9 34.7 42.6 42.6C111.3 416 
+          168.4 416 224 416s112.7 0 132.2-5.4c19.6-7.8 
+          34.7-22.9 42.6-42.6C416 328.7 416 
+          271.6 416 216s0-112.7-5.4-132.2z"/>
+        </svg>
+      </a>
+      <a href="https://x.com" aria-label="X (Twitter)" target="_blank" rel="noopener">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="icon">
+          <path d="M459.4 151.7c.3 4.5.3 
+          9.1.3 13.6 0 138.7-105.6 
+          298.6-298.6 298.6-59.5 
+          0-114.9-17.2-161.5-47.1 8.4 
+          1 16.8 1.6 25.6 1.6 49.5 
+          0 95-16.8 131.1-45.8-46.3-1-85-31.2-98.5-72.8 
+          6.5 1 13.1 1.6 20 1.6 
+          9.4 0 18.8-1.3 27.6-3.6 
+          -48.5-9.7-85-52.4-85-103.6v-1.3c14.1 
+          7.8 30.2 12.6 47.4 13.1-28.3-18.8-46.3-51-46.3-87.4 
+          0-19.1 5.2-36.4 14.4-51.6 
+          52.4 64.4 131.1 106.5 219.2 110.8-1.9-7.8-2.9-15.9-2.9-24.3 
+          0-57.5 46.6-104.1 104.1-104.1 
+          29.9 0 56.9 12.6 75.8 32.9 
+          23.4-4.5 45.8-13.1 65.8-25.6 
+          -7.8 24.6-24.6 45.8-46.3 59.2 
+          20.8-2.6 41.6-8.1 60.3-16.2 
+          -14.4 20.5-32.6 38.6-53.6 53z"/>
+        </svg>
+      </a>
+    </div>
+  </div>
+
+  <!-- Bottom -->
+  <div class="footer-bottom">
+    <p>&copy; <span id="year"></span> Noble Dental Care, Nallagandla. Reviewed by Dr. Dhivakaran R. | All Rights Reserved.</p>
+    <button id="backToTop" aria-label="Back to top">↑</button>
+  </div>
+</footer>
+
+<!-- ================= JSON-LD Schema (Full Merged) ================= -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+
+    /* =========================
+       Noble Dental Care Organization
+    ========================= */
+    {
+      "@type": "MedicalOrganization",
+      "@id": "https://nobledentalcare.in/#organization",
+      "name": "Noble Dental Care - Nallagandla",
+      "url": "https://nobledentalcare.in",
+      "logo": "https://nobledentalcare.in/images/logo-footer.webp",
+      "image": [
+        "https://nobledentalcare.in/images/clinic-exterior.webp",
+        "https://nobledentalcare.in/images/clinic-interior.webp",
+        "https://nobledentalcare.in/images/doctors/dhivakaran.webp"
+      ],
+      "telephone": "+91-86104-25342",
+      "priceRange": "₹₹",
+      "description": "Advanced, gentle dentistry in Nallagandla, Hyderabad. Same-day painless Root Canal, precise Implants, smile-first Braces, pediatric-friendly care, and 24×7 Emergency dentistry. Reviewed by Dr Dhivakaran and NDC-D Team, aligned with NHS, ADA, WHO, Mayo Clinic.",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Nallagandla Main Road",
+        "addressLocality": "Hyderabad",
+        "addressRegion": "Telangana",
+        "postalCode": "500019",
+        "addressCountry": "IN"
       },
-      {
-        "@type":"MedicalClinic",
-        "name":"Noble Dental Care",
-        "department":["Endodontics","Orthodontics","Prosthodontics","Oral Surgery","Pediatric Dentistry"],
-        "medicalSpecialty":["Dentistry","Implantology","Preventive"],
-        "parentOrganization":{"@id":"https://www.nobledentalcare.in/#dentist"}
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": 17.473963,
+        "longitude": 78.305995
       },
-      {
-        "@type":"WebSite",
-        "url":"https://www.nobledentalcare.in/",
-        "name":"Noble Dental Care",
-        "potentialAction":{"@type":"SearchAction","target":"https://www.nobledentalcare.in/search?q={query}","query-input":"required name=query"}
+      "openingHoursSpecification": [
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"],
+          "opens": "11:00",
+          "closes": "22:00"
+        },
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": "Sunday",
+          "opens": "15:00",
+          "closes": "22:00"
+        }
+      ],
+      "sameAs": [
+        "https://www.facebook.com/",
+        "https://www.instagram.com/",
+        "https://x.com/"
+      ]
+    },
+
+    /* =========================
+       Dentist Profile - Dr Dhivakaran
+    ========================= */
+    {
+      "@type": "Dentist",
+      "@id": "https://nobledentalcare.in/#drdhivakaran",
+      "name": "Dr Dhivakaran",
+      "jobTitle": "Chief Medical Director & Dentist",
+      "url": "https://nobledentalcare.in",
+      "image": "https://nobledentalcare.in/images/doctors/dhivakaran.webp",
+      "worksFor": {
+        "@id": "https://nobledentalcare.in/#organization"
       },
-      {
-        "@type":"BreadcrumbList",
-        "itemListElement":[
-          {"@type":"ListItem","position":1,"name":"Home","item":"https://www.nobledentalcare.in/"},
-          {"@type":"ListItem","position":2,"name":"Specialities","item":"https://www.nobledentalcare.in/specialities/"},
-          {"@type":"ListItem","position":3,"name":"Book","item":"https://www.nobledentalcare.in/#get-in-touch"}
+      "alumniOf": {
+        "@type": "CollegeOrUniversity",
+        "name": "Dr. MGR Medical University"
+      },
+      "medicalSpecialty": [
+        "Root Canal Therapy",
+        "Implantology",
+        "Preventive Dentistry"
+      ],
+      "sameAs": [
+        "https://www.linkedin.com/",
+        "https://www.facebook.com/",
+        "https://www.instagram.com/"
+      ]
+    },
+
+    /* =========================
+       Offered Services
+    ========================= */
+    {
+      "@type": "Service",
+      "@id": "https://nobledentalcare.in/#services",
+      "serviceType": "Dental Services",
+      "provider": {
+        "@id": "https://nobledentalcare.in/#organization"
+      },
+      "hasOfferCatalog": {
+        "@type": "OfferCatalog",
+        "name": "Dental Care Services",
+        "itemListElement": [
+          {
+            "@type": "Offer",
+            "itemOffered": { "@type": "MedicalProcedure", "name": "Root Canal Treatment", "howPerformed": "Single-sitting, painless RCT with rotary systems", "followup": "1 week review" }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": { "@type": "MedicalProcedure", "name": "Dental Implants", "howPerformed": "Titanium/zirconia implants with guided surgery", "followup": "3-6 months healing" }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": { "@type": "MedicalProcedure", "name": "Braces & Aligners", "howPerformed": "Self-ligating braces, Invisalign aligners", "followup": "Monthly adjustments" }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": { "@type": "MedicalProcedure", "name": "Teeth Whitening", "howPerformed": "Peroxide gels with light activation", "followup": "Repeat every 6-12 months" }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": { "@type": "MedicalProcedure", "name": "Kids Dentistry", "howPerformed": "Fluoride, sealants, pulp therapy", "followup": "Every 6 months" }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": { "@type": "MedicalProcedure", "name": "Gum Treatment", "howPerformed": "Scaling, root planing, flap surgeries", "followup": "2-4 weeks" }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": { "@type": "MedicalProcedure", "name": "Emergency Dentistry", "howPerformed": "24×7 support for pain, swelling, trauma", "followup": "Same-day / urgent care" }
+          }
         ]
-      },
-      {
-        "@type":"FAQPage",
-        "mainEntity":[
-          {"@type":"Question","name":"Is teeth whitening safe?","acceptedAnswer":{"@type":"Answer","text":"Yes, when supervised by a dentist. NHS & ADA guidance supports peroxide-based gels with gum protection. Temporary sensitivity is common and usually resolves in 24–48h."}},
-          {"@type":"Question","name":"How long does a dental implant take?","acceptedAnswer":{"@type":"Answer","text":"Most cases take 3–6 months from placement to crown, depending on bone healing and grafting needs."}},
-          {"@type":"Question","name":"Are dental X-rays safe?","acceptedAnswer":{"@type":"Answer","text":"Dental radiographs use very low doses. Benefits outweigh risks when justified with shielding."}}
-        ]
-      },
-      {
-        "@type":"Service","serviceType":"Root Canal Treatment","description":"Removes infected pulp tissue, relieves pain, preserves tooth function.","provider":{"@id":"https://www.nobledentalcare.in/#dentist"}
-      },
-      {
-        "@type":"Service","serviceType":"Dental Implants","description":"Titanium implants with crowns for fixed, natural-feeling teeth.","provider":{"@id":"https://www.nobledentalcare.in/#dentist"}
-      },
-      {
-        "@type":"Service","serviceType":"Braces & Aligners","description":"Straightens teeth with braces or clear aligners, improving bite and aesthetics.","provider":{"@id":"https://www.nobledentalcare.in/#dentist"}
-      },
-      {
-        "@type":"Service","serviceType":"Cleaning & Whitening","description":"Professional cleaning and safe peroxide-based whitening.","provider":{"@id":"https://www.nobledentalcare.in/#dentist"}
-      },
-      {
-        "@type":"Service","serviceType":"Pediatric Dentistry","description":"Dental care for children, from prevention to treatment of cavities.","provider":{"@id":"https://www.nobledentalcare.in/#dentist"}
-      },
-      {
-        "@type":"AggregateRating","itemReviewed":{"@id":"https://www.nobledentalcare.in/#dentist"},"ratingValue":"4.9","bestRating":"5","ratingCount":"500"
       }
-    ]
-  }
-  </script>
+    },
 
-  <!-- Footer year -->
-  <script>document.addEventListener('DOMContentLoaded',()=>{const y=document.getElementById('year');if(y)y.textContent=new Date().getFullYear();});</script>
+    /* =========================
+       Reviews / Testimonials
+    ========================= */
+    {
+      "@type": "ItemList",
+      "@id": "https://nobledentalcare.in/#reviews",
+      "itemListElement": [
+        {
+          "@type": "Review",
+          "reviewBody": "I had a severe toothache and came for an emergency root canal. The treatment was absolutely painless and completed in one sitting.",
+          "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" },
+          "author": { "@type": "Person", "name": "Anjali R." },
+          "publisher": { "@type": "Organization", "name": "Google Review" }
+        },
+        {
+          "@type": "Review",
+          "reviewBody": "The orthodontist explained every step clearly, and I could see results within months.",
+          "reviewRating": { "@type": "Rating", "ratingValue": "4.5", "bestRating": "5" },
+          "author": { "@type": "Person", "name": "Rahul M." },
+          "publisher": { "@type": "Organization", "name": "Practo" }
+        },
+        {
+          "@type": "Review",
+          "reviewBody": "My child's first dental visit went so smoothly. Dr Idhaya is truly amazing with kids.",
+          "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" },
+          "author": { "@type": "Person", "name": "Kavitha S." },
+          "publisher": { "@type": "Organization", "name": "Google" }
+        },
+        {
+          "@type": "Review",
+          "reviewBody": "Clean and well-maintained clinic. The staff are courteous and helpful.",
+          "reviewRating": { "@type": "Rating", "ratingValue": "4", "bestRating": "5" },
+          "author": { "@type": "Person", "name": "Suresh T." },
+          "publisher": { "@type": "Organization", "name": "Justdial" }
+        },
+        {
+          "@type": "Review",
+          "reviewBody": "Cosmetic veneers done here. Dr Aisha made everything look so natural!",
+          "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" },
+          "author": { "@type": "Person", "name": "Neha K." },
+          "publisher": { "@type": "Organization", "name": "Google" }
+        },
+        {
+          "@type": "Review",
+          "reviewBody": "Emergency extraction was handled very professionally at night. Truly thankful.",
+          "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" },
+          "author": { "@type": "Person", "name": "Manoj P." },
+          "publisher": { "@type": "Organization", "name": "Google" }
+        },
+        {
+          "@type": "Review",
+          "reviewBody": "Transparent pricing and excellent follow-up after implant procedure.",
+          "reviewRating": { "@type": "Rating", "ratingValue": "4", "bestRating": "5" },
+          "author": { "@type": "Person", "name": "Harish V." },
+          "publisher": { "@type": "Organization", "name": "Facebook" }
+        },
+        {
+          "@type": "Review",
+          "reviewBody": "Best dental experience I’ve had. Thank you Noble Dental!",
+          "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" },
+          "author": { "@type": "Person", "name": "Sangeetha D." },
+          "publisher": { "@type": "Organization", "name": "Google" }
+        },
+        {
+          "@type": "Review",
+          "reviewBody": "Very prompt communication. Helped me get an appointment even on a busy day.",
+          "reviewRating": { "@type": "Rating", "ratingValue": "4.5", "bestRating": "5" },
+          "author": { "@type": "Person", "name": "Vijay R." },
+          "publisher": { "@type": "Organization", "name": "Justdial" }
+        },
+        {
+          "@type": "Review",
+          "reviewBody": "The smile design was spot on. I’m very confident now!",
+          "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" },
+          "author": { "@type": "Person", "name": "Aarthi N." },
+          "publisher": { "@type": "Organization", "name": "Instagram" }
+        }
+      ]
+    },
+
+    /* =========================
+       FAQ Section
+    ========================= */
+    {
+      "@type": "FAQPage",
+      "@id": "https://nobledentalcare.in/#faqs",
+      "mainEntity": [
+        { "@type": "Question", "name": "Is teeth whitening safe?", "acceptedAnswer": { "@type": "Answer", "text": "Yes, when supervised by a dentist. NHS & ADA guidance supports peroxide-based gels with gum protection. Temporary sensitivity is common and usually resolves in 24–48h. Source: NHS." } },
+        { "@type": "Question", "name": "How long does a dental implant take?", "acceptedAnswer": { "@type": "Answer", "text": "Typical healing is 3–6 months from implant placement to crown fitting, depending on bone quality and grafting needs. Source: ITI Consensus." } },
+        { "@type": "Question", "name": "Are dental X-rays safe?", "acceptedAnswer": { "@type": "Answer", "text": "Dental radiographs use very low doses of radiation. Benefits outweigh risks when used appropriately with shielding. Source: FDA." } },
+        { "@type": "Question", "name": "Do braces hurt?", "acceptedAnswer": { "@type": "Answer", "text": "Mild discomfort is expected during initial placement and adjustments, but it typically subsides in a few days. Source: ADA." } },
+        { "@type": "Question", "name": "When should children first see a dentist?", "acceptedAnswer": { "@type": "Answer", "text": "The ADA recommends a first dental visit by age 1, or within 6 months of the first tooth eruption. This helps establish preventive care early. Source: ADA & NHS." } }
+      ]
+    },
+
+    /* =========================
+       Website + Search
+    ========================= */
+    {
+      "@type": "WebSite",
+      "@id": "https://nobledentalcare.in/#website",
+      "url": "https://nobledentalcare.in",
+      "name": "Noble Dental Care - Nallagandla",
+      "publisher": { "@id": "https://nobledentalcare.in/#organization" },
+      "inLanguage": "en-IN",
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": "https://nobledentalcare.in/search?q={search_term_string}",
+        "query-input": "required name=search_term_string"
+      }
+    }
+  ]
+}
+</script>
+
+<!-- ================= LocalBusiness Schema (Lightweight) ================= -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Dentist",
+  "@id": "https://nobledentalcare.in/#local",
+  "name": "Noble Dental Care - Nallagandla",
+  "image": "https://nobledentalcare.in/images/logo-footer.webp",
+  "url": "https://nobledentalcare.in",
+  "telephone": "+91-86104-25342",
+  "priceRange": "₹₹",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "Nallagandla Main Road",
+    "addressLocality": "Hyderabad",
+    "addressRegion": "Telangana",
+    "postalCode": "500019",
+    "addressCountry": "IN"
+  },
+  "geo": {
+    "@type": "GeoCoordinates",
+    "latitude": 17.473963,
+    "longitude": 78.305995
+  },
+  "openingHours": [
+    "Mo-Sa 11:00-22:00",
+    "Su 15:00-22:00"
+  ],
+  "sameAs": [
+    "https://www.facebook.com/",
+    "https://www.instagram.com/",
+    "https://x.com/"
+  ],
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "4.9",
+    "reviewCount": "500"
+  },
+  "makesOffer": [
+    {
+      "@type": "Offer",
+      "itemOffered": {
+        "@type": "MedicalProcedure",
+        "name": "Root Canal Treatment",
+        "description": "Painless, single-sitting RCT with rotary systems"
+      }
+    },
+    {
+      "@type": "Offer",
+      "itemOffered": {
+        "@type": "MedicalProcedure",
+        "name": "Dental Implants",
+        "description": "Precise, guided implants with titanium/zirconia"
+      }
+    },
+    {
+      "@type": "Offer",
+      "itemOffered": {
+        "@type": "MedicalProcedure",
+        "name": "Braces & Invisalign",
+        "description": "Clear aligners, smile-first braces"
+      }
+    }
+  ],
+  "review": [
+    {
+      "@type": "Review",
+      "reviewRating": {
+        "@type": "Rating",
+        "ratingValue": "5"
+      },
+      "author": { "@type": "Person", "name": "Anjali R." },
+      "reviewBody": "Emergency root canal was painless and completed in one sitting."
+    },
+    {
+      "@type": "Review",
+      "reviewRating": {
+        "@type": "Rating",
+        "ratingValue": "5"
+      },
+      "author": { "@type": "Person", "name": "Neha K." },
+      "reviewBody": "Cosmetic veneers look very natural. Great work!"
+    }
+  ]
+}
+</script>
+
 </body>
+<script src="scripts.js"></script>
 </html>
