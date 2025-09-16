@@ -36,12 +36,16 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
     // Close submenu when clicking outside
-    document.addEventListener("click", (e) => {
-      if (!toggle.contains(e.target) && !menu.contains(e.target)) {
-        toggle.setAttribute("aria-expanded", "false");
-        menu.setAttribute("aria-hidden", "true");
-      }
-    });
+document.addEventListener("click", (e) => {
+  submenuToggles.forEach(toggle => {
+    const menuId = toggle.getAttribute("aria-controls");
+    const menu = document.getElementById(menuId);
+    if (!toggle.contains(e.target) && !menu.contains(e.target)) {
+      toggle.setAttribute("aria-expanded", "false");
+      menu.setAttribute("aria-hidden", "true");
+    }
+  });
+});
 
     // Auto-close submenu when clicking a link
     menu.querySelectorAll("a").forEach(link => {
@@ -52,6 +56,15 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 });
+
+
+function openDialog(id){
+  fillDialog(id);
+  if (typeof dlg.showModal === 'function') dlg.showModal(); 
+  else dlg.setAttribute('open','');
+  $('#docSheet .sheet-close')?.focus(); // <-- Add this line
+  history.replaceState(null, "", `#${id}`);
+}
 
 /* =========================================================
    Booking form: day/time slots + WhatsApp handoff
