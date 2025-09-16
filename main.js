@@ -1,65 +1,57 @@
-/* =========================================================
-   Noble Dental Care — Full Main JS (Optimized 2025)
-   Features:
-   - Mobile Nav (with focus trap)
-   - Doctors popup (focus trap)
-   - Booking form (voice input, autosave, WA handoff)
-   - FAQ deep-linking
-   - Dynamic JSON-LD injection
-   - Sticky booking bar + WhatsApp promo CTA
-   - Scroll depth tracking
-   - Footer year auto update
-========================================================= */
+// ✅ Helpers
+const $  = (s, scope=document) => scope.querySelector(s);
+const $$ = (s, scope=document) => Array.from(scope.querySelectorAll(s));
+const on = (el, ev, fn) => el && el.addEventListener(ev, fn);
 
-/* ---------- Helpers ---------- */
-const $ = (s, r = document) => r.querySelector(s);
-const $$ = (s, r = document) => Array.from(r.querySelectorAll(s));
-const on = (el, ev, fn, opts = false) => el && el.addEventListener(ev, fn, opts);
+document.addEventListener("DOMContentLoaded", () => {
+  const header = $(".site-header");
+  const menuToggle = $("#menuToggle");
+  const nav = $("#primaryNav");
+  const submenuToggles = $$(".submenu-toggle");
 
-/* =========================================================
-   1. Mobile Nav with Focus Trap
-========================================================= */
-(() => {
-  const nav = $('#primaryNav');
-  const btn = $('#menuToggle');
-  if (!nav || !btn) return;
-
-  let trapRemove;
-
-  function trapFocus(container) {
-    const fEls = $$(
-      'a, button, input, select, textarea, [tabindex]:not([tabindex="-1"])',
-      container
-    );
-    if (!fEls.length) return () => {};
-    const first = fEls[0], last = fEls[fEls.length - 1];
-
-    function handler(e) {
-      if (e.key === 'Tab') {
-        if (e.shiftKey && document.activeElement === first) {
-          e.preventDefault(); last.focus();
-        } else if (!e.shiftKey && document.activeElement === last) {
-          e.preventDefault(); first.focus();
-        }
-      }
-    }
-    container.addEventListener('keydown', handler);
-    return () => container.removeEventListener('keydown', handler);
-  }
-
-  on(btn, 'click', () => {
-    const open = btn.getAttribute('aria-expanded') === 'true';
-    btn.setAttribute('aria-expanded', String(!open));
-    nav.classList.toggle('is-open', !open);
-    nav.hidden = open;
-    document.body.classList.toggle('no-scroll', !open);
-
-    if (!open) {
-      trapRemove = trapFocus(nav);
-      nav.querySelector('a, button')?.focus();
-    } else if (trapRemove) trapRemove();
+  /* Shrink header on scroll */
+  window.addEventListener("scroll", () => {
+    header.classList.toggle("shrink", window.scrollY > 50);
   });
-})();
+
+  /* Mobile menu toggle */
+  menuToggle?.addEventListener("click", () => {
+    const expanded = menuToggle.getAttribute("aria-expanded") === "true";
+    menuToggle.setAttribute("aria-expanded", String(!expanded));
+    nav.classList.toggle("is-open");
+    nav.setAttribute("aria-hidden", expanded ? "true" : "false");
+    document.body.classList.toggle("no-scroll", !expanded);
+  });
+
+  /* Submenu toggle logic */
+  submenuToggles.forEach(toggle => {
+    const menuId = toggle.getAttribute("aria-controls");
+    const menu = document.getElementById(menuId);
+
+    toggle.addEventListener("click", (e) => {
+      e.preventDefault();
+      const expanded = toggle.getAttribute("aria-expanded") === "true";
+      toggle.setAttribute("aria-expanded", String(!expanded));
+      menu.setAttribute("aria-hidden", expanded ? "true" : "false");
+    });
+
+    // Close submenu when clicking outside
+    document.addEventListener("click", (e) => {
+      if (!toggle.contains(e.target) && !menu.contains(e.target)) {
+        toggle.setAttribute("aria-expanded", "false");
+        menu.setAttribute("aria-hidden", "true");
+      }
+    });
+
+    // Auto-close submenu when clicking a link
+    menu.querySelectorAll("a").forEach(link => {
+      link.addEventListener("click", () => {
+        toggle.setAttribute("aria-expanded", "false");
+        menu.setAttribute("aria-hidden", "true");
+      });
+    });
+  });
+});
 
 /* =========================================================
    Booking form: day/time slots + WhatsApp handoff
@@ -187,35 +179,52 @@ ${fd.get("notes") ? "• Notes: "+fd.get("notes") : ""}`.trim();
       </div>`).join('');
     $('#sheetBook').dataset.doc = d.name || '';
   }
+
   function openDialog(id){
     fillDialog(id);
-    if (typeof dlg.showModal === 'function') dlg.showModal(); else dlg.setAttribute('open','');
+    if (typeof dlg.showModal === 'function') dlg.showModal(); 
+    else dlg.setAttribute('open','');
     history.replaceState(null, "", `#${id}`);
   }
+
   function closeDialog(){
-    if (typeof dlg.close === 'function') dlg.close(); else dlg.removeAttribute('open');
+    if (typeof dlg.close === 'function') dlg.close(); 
+    else dlg.removeAttribute('open');
     history.replaceState(null, "", window.location.pathname + window.location.search);
   }
 
+  // Card click → open popup
   on(grid,'click',(e)=>{
     const card = e.target.closest('.ndc-card'); if (!card) return;
     if (e.target.closest('.open') || e.target.closest('.block')) openDialog(card.dataset.id);
   });
+
+  // Close popup
   on(closeBtn,'click', closeDialog);
   on(dlg,'keydown',(e)=>{ if (e.key==='Escape') closeDialog(); });
-  on(dlg,'click',(e)=>{ const r=dlg.getBoundingClientRect(); if(e.clientX<r.left||e.clientX>r.right||e.clientY<r.top||e.clientY>r.bottom) closeDialog(); });
+  on(dlg,'click',(e)=>{ 
+    const r=dlg.getBoundingClientRect(); 
+    if(e.clientX<r.left||e.clientX>r.right||e.clientY<r.top||e.clientY>r.bottom) closeDialog(); 
+  });
 
+  // Book with this doctor → scroll & close popup
   on($('#sheetBook'),'click',(e)=>{
     const name = e.currentTarget?.dataset?.doc || '';
-    const sel = $('#doctorSelect'); if (sel && name){
+    const sel = $('#doctorSelect'); 
+    if (sel && name){
       sel.value = name;
       document.querySelector('#get-in-touch')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
     }
+    closeDialog(); // ✅ now closes correctly
   });
 
   // deep-link (#dhivakaran, etc.)
-  function checkHash(){ const id = location.hash.replace('#',''); if (id && DATA[id]) openDialog(id); }
-  window.addEventListener('hashchange', checkHash); checkHash();
+  function checkHash(){ 
+    const id = location.hash.replace('#',''); 
+    if (id && DATA[id]) openDialog(id); 
+  }
+  window.addEventListener('hashchange', checkHash); 
+  checkHash();
 
   // search + filter chips
   function applyFilter(){
@@ -230,6 +239,7 @@ ${fd.get("notes") ? "• Notes: "+fd.get("notes") : ""}`.trim();
       card.style.display = (matchQ && matchF) ? '' : 'none';
     });
   }
+
   on(search,'input', applyFilter);
   on($('.ndc-search .clear'),'click', ()=>{ search.value=''; applyFilter(); });
   $$('#docFilters .chip--ghost').forEach(btn=>{
@@ -241,88 +251,68 @@ ${fd.get("notes") ? "• Notes: "+fd.get("notes") : ""}`.trim();
   });
 })();
 
-/* =========================================================
-   4. FAQ Deep-Link Expansion
-========================================================= */
+
+// Duplicate testimonials for smooth infinite loop
 (() => {
-  if(location.hash.startsWith('#faq-')){
-    const el=$(location.hash); if(el && el.tagName==='DETAILS') el.open=true;
-    el?.scrollIntoView({behavior:'smooth'});
+  const loop = document.querySelector('.testimonials-loop');
+  if (!loop) return;
+  loop.innerHTML += loop.innerHTML; // duplicate content for seamless scroll
+})();
+
+
+/* Certificates ticker auto-scroll with pause + controls */
+(() => {
+  const track = document.getElementById("certsTrack");
+  if (!track) return;
+
+  let isPaused = false;
+  track.addEventListener("mouseenter", () => isPaused = true);
+  track.addEventListener("mouseleave", () => isPaused = false);
+
+  // duplicate track for seamless loop
+  track.innerHTML += track.innerHTML;
+
+  let pos = 0;
+  function step() {
+    if (!isPaused) {
+      pos -= 0.5; // speed
+      if (Math.abs(pos) >= track.scrollWidth / 2) pos = 0;
+      track.style.transform = `translateX(${pos}px)`;
+    }
+    requestAnimationFrame(step);
   }
+  step();
+
+  // manual controls
+  document.querySelector("#certs-ticker .prev")?.addEventListener("click", () => {
+    pos += 60;
+  });
+  document.querySelector("#certs-ticker .next")?.addEventListener("click", () => {
+    pos -= 60;
+  });
 })();
 
-/* =========================================================
-   5. Dynamic JSON-LD Injection
-========================================================= */
+
+/* Footer year */
 (() => {
-  const ld = {
-    "@context":"https://schema.org","@type":"Dentist",
-    "name":"Noble Dental Care","url":location.origin,
-    "telephone":"+91-86104-25342","priceRange":"₹₹",
-    "address":{"@type":"PostalAddress","streetAddress":"Nallagandla","addressLocality":"Hyderabad","postalCode":"500019","addressRegion":"Telangana","addressCountry":"IN"},
-    "geo":{"@type":"GeoCoordinates","latitude":17.456,"longitude":78.321},
-    "openingHours":"Mo-Su 11:00-22:00","aggregateRating":{"@type":"AggregateRating","ratingValue":"4.9","bestRating":"5","ratingCount":"500"}
-  };
-  const s=document.createElement('script');s.type='application/ld+json';s.textContent=JSON.stringify(ld);document.head.appendChild(s);
+  const y = document.getElementById("year");
+  if (y) y.textContent = new Date().getFullYear();
 })();
 
-/* =========================================================
-   6. Sticky Booking Bar + WhatsApp Offer
-========================================================= */
+/* Back to top button */
 (() => {
-  const bar=document.createElement('div');
-  bar.className='sticky-bar';
-  bar.innerHTML=`<a href="#get-in-touch">📅 Book</a><a href="https://wa.me/918610425342" target="_blank">💬 WhatsApp</a><a href="tel:+918610425342">☎ Call</a>`;
-  document.body.appendChild(bar);
+  const btn = document.getElementById("backToTop");
+  if (!btn) return;
 
-  let shown=false;
-  function showOffer(){
-    if(shown)return;shown=true;
-    const cta=document.createElement('div');
-    cta.className='wa-offer';
-    cta.innerHTML=` <strong>Whatsapp</strong> this week — <a href="https://wa.me/918610425342" target="_blank">Chat Now</a>`;
-    document.body.appendChild(cta);
-  }
-  on(window,'scroll',()=>{if(window.scrollY>document.body.scrollHeight*0.6)showOffer();},{passive:true});
-  on(document,'mouseout',e=>{if(e.clientY<0)showOffer();});
-})();
-
-/* =========================================================
-   7. Scroll Depth Tracking
-========================================================= */
-(() => {
-  const marks=[0.25,0.5,0.75], fired={};
-  on(window,'scroll',()=>{
-    const h=document.documentElement.scrollHeight-window.innerHeight,y=window.scrollY;
-    marks.forEach(m=>{if(!fired[m]&&y>=h*m){fired[m]=true;console.log(`Scroll depth ${m*100}%`);}});
-  },{passive:true});
-})();
-
-/* =========================================================
-   8. Footer Year Auto Update
-========================================================= */
-(() => {const y=$('#year');if(y)y.textContent=new Date().getFullYear();})();
-
-// Inside your Doctors Popup IIFE, after closePopup is defined:
-const sheetBookBtn = $('#sheetBook');
-if (sheetBookBtn) {
-  on(sheetBookBtn, 'click', () => {
-    const docId = sheetBookBtn.dataset.doc;
-    closePopup();
-
-    // Scroll smoothly to booking section
-    const booking = document.querySelector('#get-in-touch');
-    booking?.scrollIntoView({ behavior: 'smooth' });
-
-    // Auto-fill doctor select
-    const doctorSelect = document.querySelector('#doctorSelect');
-    if (doctorSelect && docId) {
-      const d = DATA[docId];
-      if (d) {
-        doctorSelect.value = d.name;
-        const resetBtn = document.querySelector('#resetDoctor');
-        if (resetBtn) resetBtn.hidden = false;
-      }
+  window.addEventListener("scroll", () => {
+    if (window.scrollY > 400) {
+      btn.classList.add("show");
+    } else {
+      btn.classList.remove("show");
     }
   });
-}
+
+  btn.addEventListener("click", () => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  });
+})();
