@@ -21,6 +21,10 @@
   --glass-bd: rgba(0,0,0,0.08);
   --glass-shadow: 0 6px 20px rgba(0,0,0,0.12);
   --radius: 14px;
+  
+  --sc-brand2: #3b82f6; /* bright blue */
+  --sc-ring: rgba(24,154,138,.35);
+  --sc-grad: linear-gradient(135deg, var(--sc-brand), var(--sc-brand2));
 }
 
 *, *::before, *::after {
@@ -632,19 +636,13 @@ button, input, select, textarea {
   background:rgba(255,255,255,0.04);color:var(--muted)
 }
 .btn.primary{background:linear-gradient(135deg,var(--brand),var(--brand2));color:#fff;border:none;border-radius:12px;padding:12px 20px;font-weight:600}
-.t-btn{display:inline-flex;align-items:center;gap:6px;padding:8px 10px;border-radius:10px;background:color-mix(in srgb, var(--brand) 12%, transparent);color:inherit;border:1px solid var(--stroke)}
+.t-btn{display:inline-flex;align-items:center;gap:6px;padding:8px 10px;border-radius:10px;background: rgba(87,192,185,0.12);background:color-mix(in srgb, var(--brand) 12%, transparent);color:inherit;border:1px solid var(--stroke)}
 
 @media (max-width: 980px){
   .git-wrap{grid-template-columns:1fr}
 }
 
 
-:root {
-  --sc-brand: #48d1cc;   /* deeper teal */
-  --sc-brand2: #3b82f6; /* bright blue */
-  --sc-ring: rgba(24,154,138,.35);
-  --sc-grad: linear-gradient(135deg, var(--sc-brand), var(--sc-brand2));
-}
 /* ================= SELF-CHECK BANNER ================= */
 :root {
   --sc-brand: #12b2a0;
@@ -1130,50 +1128,20 @@ button, input, select, textarea {
   box-shadow:0 6px 16px rgba(0,0,0,0.3);
   transition:transform .25s;
 }
-#backToTop:hover { transform:scale(1.15); }
-.footer-social a {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 42px;
-  height: 42px;
-  border: 1px solid #233248;
-  border-radius: 12px;
-  margin-right: 6px;
-  transition: background 0.25s ease, transform 0.25s ease;
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation: none !important;
+    transition: none !important;
+  }
 }
 
-.footer-social a:hover {
-  background: #0f1623;
-  transform: translateY(-2px);
-}
-
-.footer-social .icon {
-  width: 20px;
-  height: 20px;
-  fill: #c6d3e9;
-  transition: fill 0.25s ease;
-}
-.footer-social a:hover .icon {
-  fill: var(--brand2);
-}
-
-#backToTop {
-  position: absolute;
-  right: 14px;
-  top: -22px;
-  width: 40px;
-  height: 40px;
-  border: none;
-  border-radius: 50%;
-  background: linear-gradient(135deg, var(--brand), var(--brand2));
-  color: #fff;
-  cursor: pointer;
-  font-size: 1.2rem;
-  box-shadow: 0 6px 16px rgba(0,0,0,0.3);
-  transition: transform 0.25s, background 0.25s;
-}
-#backToTop:hover {
-  transform: scale(1.15);
-  background: linear-gradient(135deg, var(--brand2), var(--brand));
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #0f172a;
+    --text: #f1f5f9;
+    --paper: #1e293b;
+    --muted: #94a3b8;
+    /* etc... */
+  }
 }
