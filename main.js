@@ -329,3 +329,26 @@ ${fd.get("notes") ? "• Notes: "+fd.get("notes") : ""}`.trim();
     window.scrollTo({ top: 0, behavior: "smooth" });
   });
 })();
+
+document.addEventListener("DOMContentLoaded", () => {
+  const menuBtn = document.getElementById("menuToggle");
+  const navList = document.getElementById("primaryNav");
+
+  if (menuBtn && navList) {
+    // Toggle menu open/close
+    menuBtn.addEventListener("click", () => {
+      const isOpen = navList.classList.toggle("is-open");
+      menuBtn.setAttribute("aria-expanded", isOpen);
+      navList.setAttribute("aria-hidden", !isOpen);
+    });
+
+    // ✅ Close menu on any link click
+    navList.querySelectorAll("a").forEach(link => {
+      link.addEventListener("click", () => {
+        navList.classList.remove("is-open");
+        menuBtn.setAttribute("aria-expanded", "false");
+        navList.setAttribute("aria-hidden", "true");
+      });
+    });
+  }
+});
