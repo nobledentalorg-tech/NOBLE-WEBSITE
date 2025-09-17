@@ -1,0 +1,300 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Scrutiny Workflow Prototype (One Case, One Hospital)</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    body { margin:0; font-family:sans-serif; height:100vh; display:flex; flex-direction:column; }
+    header { background:#004466; color:#fff; padding:10px; display:flex; justify-content:space-between; align-items:center; }
+    header select, header input { padding:5px; }
+    main { flex:1; display:flex; }
+    .sidebar { width:25%; border-right:1px solid #ccc; overflow-y:auto; padding:10px; background:#f9f9f9; }
+    .viewer { flex:1; display:flex; gap:10px; padding:10px; }
+    .pdf-container { flex:1; border:1px solid #ccc; overflow-y:auto; background:#fff; position:relative; }
+    canvas { width:100%; margin-bottom:10px; border:1px solid #ddd; }
+    .annotation-layer { position:absolute; top:0; left:0; right:0; bottom:0; pointer-events:none; }
+    .highlight { position:absolute; border:2px solid red; background:rgba(255,0,0,0.2); }
+    .flagged-item { border:1px solid #ccc; margin:6px 0; padding:6px; background:#fff; font-size:14px; }
+    .flagged-item button { margin:4px 2px; padding:3px 6px; }
+    img.corrected { max-width:100%; border:1px solid #aaa; margin-top:4px; }
+  </style>
+  <!-- PDF.js -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.16.105/pdf.min.js"></script>
+  <!-- pdf-lib -->
+  <script src="https://unpkg.com/pdf-lib@1.17.1/dist/pdf-lib.min.js"></script>
+</head>
+<body>
+
+<header>
+  <h2>Scrutiny Workflow</h2>
+  <div>
+    <label style="margin-right:6px; color:#fff;">Upload PDF:</label>
+    <input type="file" accept="application/pdf" onchange="loadUploadedPDF(event)">
+    Role: 
+    <select id="roleSwitcher" onchange="switchRole(this.value)">
+      <option value="team">Scrutiny Team</option>
+      <option value="hospital">Hospital</option>
+      <option value="review">Review Mode</option>
+    </select>
+  </div>
+</header>
+
+<main>
+  <div class="sidebar">
+    <h3>Flagged Pages</h3>
+    <div id="flaggedList"></div>
+    <div id="reviewTools" style="display:none; padding:10px;">
+      <button onclick="generateFinalPDF()">Download Final PDF</button>
+    </div>
+  </div>
+
+  <div class="viewer">
+    <div class="pdf-container" id="pdfWrapper">
+      <h4>Original PDF</h4>
+      <div id="pdfViewer"></div>
+      <div class="annotation-layer" id="annoLayer"></div>
+    </div>
+    <div class="pdf-container">
+      <h4>Corrections</h4>
+      <div id="correctedViewer"></div>
+    </div>
+  </div>
+</main>
+
+<script>
+let pdfDoc = null;
+let flaggedPages = {};
+let annotations = [];
+let originalBytes = null; // hospital PDF
+
+// === Load Uploaded PDF ===
+function loadUploadedPDF(event) {
+  const file = event.target.files[0];
+  if (!file) return;
+
+  const reader = new FileReader();
+  reader.onload = async function(e) {
+    originalBytes = e.target.result;
+    pdfDoc = await pdfjsLib.getDocument({ data: originalBytes }).promise;
+    renderAllPages();
+  };
+  reader.readAsArrayBuffer(file);
+}
+
+// === Render PDF Pages ===
+function renderAllPages() {
+  const viewer = document.getElementById("pdfViewer");
+  viewer.innerHTML = "";
+  for (let i = 1; i <= pdfDoc.numPages; i++) {
+    pdfDoc.getPage(i).then(page => {
+      const viewport = page.getViewport({ scale: 0.8 });
+      const canvas = document.createElement("canvas");
+      const ctx = canvas.getContext("2d");
+      canvas.height = viewport.height;
+      canvas.width = viewport.width;
+      page.render({ canvasContext: ctx, viewport: viewport });
+      viewer.appendChild(canvas);
+    });
+  }
+}
+
+// === Highlight Drawing (Scrutiny Team) ===
+let drawing = false, startX, startY;
+const annoLayer = document.getElementById("annoLayer");
+
+annoLayer.addEventListener("mousedown", e => {
+  if (document.getElementById("roleSwitcher").value !== "team") return;
+  drawing = true;
+  startX = e.offsetX;
+  startY = e.offsetY;
+  const rect = document.createElement("div");
+  rect.className = "highlight";
+  rect.style.left = `${startX}px`;
+  rect.style.top = `${startY}px`;
+  rect.dataset.temp = "true";
+  annoLayer.appendChild(rect);
+});
+
+annoLayer.addEventListener("mousemove", e => {
+  if (!drawing) return;
+  const rect = annoLayer.querySelector(".highlight[data-temp='true']");
+  if (!rect) return;
+  rect.style.width = `${e.offsetX - startX}px`;
+  rect.style.height = `${e.offsetY - startY}px`;
+});
+
+annoLayer.addEventListener("mouseup", e => {
+  if (!drawing) return;
+  drawing = false;
+  const rect = annoLayer.querySelector(".highlight[data-temp='true']");
+  if (!rect) return;
+  rect.removeAttribute("data-temp");
+
+  const remark = prompt("Enter remark for this highlight:");
+  if (remark) {
+    const action = prompt("Type 'replace' or 'remove' for this page:");
+    const id = Date.now();
+    flaggedPages[id] = { 
+      pageNum:"Page", 
+      remark, 
+      action: action === "remove" ? "Remove" : "Replace", 
+      status:"Pending", 
+      correction:null 
+    };
+    rect.title = remark + " ("+flaggedPages[id].action+")";
+    annotations.push({ id, x:startX, y:startY, w:e.offsetX-startX, h:e.offsetY-startY, remark, action });
+    renderFlaggedList();
+  } else {
+    rect.remove();
+  }
+});
+
+// === Flagged List ===
+function renderFlaggedList() {
+  const flaggedList = document.getElementById("flaggedList");
+  flaggedList.innerHTML = "";
+  Object.keys(flaggedPages).forEach(id => {
+    const f = flaggedPages[id];
+    const div = document.createElement("div");
+    div.className = "flagged-item";
+    div.innerHTML = `
+      <strong>${f.pageNum} (${f.action})</strong><br>
+      Remark: ${f.remark}<br>
+      Status: ${f.status}<br>
+    `;
+
+    if (document.getElementById("roleSwitcher").value === "hospital") {
+      if (f.action === "Replace") {
+        div.innerHTML += `
+          Upload correction: <input type="file" accept="application/pdf,image/*"
+          onchange="previewCorrection(event, ${id})">
+        `;
+      } else if (f.action === "Remove" && f.status === "Pending") {
+        div.innerHTML += `<button onclick="confirmRemoval(${id})">Confirm Removal</button>`;
+      }
+    }
+
+    if (document.getElementById("roleSwitcher").value === "review" && (f.correction || f.action==="Remove")) {
+      div.innerHTML += `
+        <button onclick="approve(${id})">Approve</button>
+        <button onclick="reject(${id})">Reject</button>
+      `;
+    }
+
+    flaggedList.appendChild(div);
+  });
+}
+
+// === Hospital Upload / Removal ===
+function previewCorrection(event, id) {
+  const file = event.target.files[0];
+  if (!file) return;
+
+  const reader = new FileReader();
+  reader.onload = e => {
+    flaggedPages[id].correction = e.target.result;
+    flaggedPages[id].status = "Resubmitted";
+
+    const correctedViewer = document.getElementById("correctedViewer");
+    const div = document.createElement("div");
+    div.innerHTML = `<p><strong>Correction for ${flaggedPages[id].pageNum}:</strong></p>`;
+
+    if (file.type.startsWith("image/")) {
+      const img = document.createElement("img");
+      img.src = URL.createObjectURL(file);
+      img.className = "corrected";
+      div.appendChild(img);
+    } else if (file.type === "application/pdf") {
+      pdfjsLib.getDocument({ data: e.target.result }).promise.then(doc => {
+        doc.getPage(1).then(page => {
+          const viewport = page.getViewport({ scale: 0.6 });
+          const canvas = document.createElement("canvas");
+          const ctx = canvas.getContext("2d");
+          canvas.height = viewport.height;
+          canvas.width = viewport.width;
+          page.render({ canvasContext: ctx, viewport: viewport });
+          div.appendChild(canvas);
+        });
+      });
+    }
+    correctedViewer.appendChild(div);
+    renderFlaggedList();
+  };
+  reader.readAsArrayBuffer(file);
+}
+
+function confirmRemoval(id) {
+  flaggedPages[id].status = "Removal Confirmed";
+  renderFlaggedList();
+}
+
+// === Review Actions ===
+function approve(id) {
+  flaggedPages[id].status = "Approved";
+  renderFlaggedList();
+}
+function reject(id) {
+  flaggedPages[id].status = "Rejected – resend needed";
+  renderFlaggedList();
+}
+
+// === Role Switching ===
+function switchRole(role) {
+  annoLayer.style.pointerEvents = role === "team" ? "auto" : "none";
+  document.getElementById("reviewTools").style.display = role === "review" ? "block" : "none";
+  document.getElementById("correctedViewer").innerHTML = "";
+  renderFlaggedList();
+}
+
+// === Generate Final PDF ===
+async function generateFinalPDF() {
+  if (!originalBytes) return alert("Please upload a PDF first");
+
+  const originalPdf = await PDFLib.PDFDocument.load(originalBytes);
+  const finalPdf = await PDFLib.PDFDocument.create();
+
+  for (let i = 0; i < originalPdf.getPageCount(); i++) {
+    let skip = false, replaceBytes = null;
+
+    for (const id of Object.keys(flaggedPages)) {
+      const f = flaggedPages[id];
+      if (f.action === "Remove" && f.status === "Approved") {
+        skip = true;
+      } else if (f.action === "Replace" && f.status === "Approved" && f.correction) {
+        replaceBytes = f.correction;
+      }
+    }
+
+    if (skip) continue;
+
+    if (replaceBytes) {
+      try {
+        const correctedPdf = await PDFLib.PDFDocument.load(replaceBytes);
+        const [correctedPage] = await finalPdf.copyPages(correctedPdf, [0]);
+        finalPdf.addPage(correctedPage);
+      } catch (err) {
+        console.error("Error inserting corrected page", err);
+      }
+    } else {
+      const [origPage] = await finalPdf.copyPages(originalPdf, [i]);
+      finalPdf.addPage(origPage);
+    }
+  }
+
+  const pdfBytes = await finalPdf.save();
+  download(pdfBytes, "Final-Document.pdf", "application/pdf");
+}
+
+function download(data, filename, type) {
+  const blob = new Blob([data], { type });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement("a");
+  a.href = url;
+  a.download = filename;
+  a.click();
+  URL.revokeObjectURL(url);
+}
+</script>
+</body>
+</html>
