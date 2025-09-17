@@ -1298,8 +1298,59 @@ html, body {
   margin-bottom: env(safe-area-inset-bottom);
 }
 
-<div class="sticky-cta-bar">
-  <a href="tel:+918610425342"><i class="bx bxs-phone"></i> Call</a>
-  <a href="https://wa.me/918610425342" target="_blank" rel="noopener"><i class="bx bxl-whatsapp"></i> WhatsApp</a>
-  <a href="#get-in-touch"><i class="bx bx-calendar-check"></i> Book</a>
-</div>
+/* =================== FOOTER SOCIAL ICON FIX =================== */
+.footer-social a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 42px;
+  height: 42px;
+  border: 1px solid #233248;
+  border-radius: 10px;
+  margin-right: 6px;
+  background: #0f172a;
+  transition: background .3s, transform .3s;
+}
+
+.footer-social a svg {
+  width: 20px;
+  height: 20px;
+  fill: currentColor;   /* makes them inherit text color */
+  display: block;
+}
+
+.footer-social a:hover {
+  background: var(--brand);
+  color: #fff;
+  border-color: var(--brand2);
+  transform: translateY(-2px);
+}
+
+/* =================== FOOTER SOCIAL TOOLTIP =================== */
+.footer-social a {
+  position: relative; /* anchor tooltip */
+}
+
+.footer-social a::after {
+  content: attr(data-tooltip);
+  position: absolute;
+  bottom: 110%; /* above the icon */
+  left: 50%;
+  transform: translateX(-50%);
+  background: #111827;
+  color: #fff;
+  font-size: 0.75rem;
+  font-weight: 600;
+  padding: 4px 8px;
+  border-radius: 6px;
+  white-space: nowrap;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity .25s, transform .25s;
+}
+
+.footer-social a:hover::after {
+  opacity: 1;
+  transform: translateX(-50%) translateY(-4px);
+}
+
