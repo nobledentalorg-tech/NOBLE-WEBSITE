@@ -1145,3 +1145,161 @@ button, input, select, textarea {
     /* etc... */
   }
 }
+
+/* =================== MOBILE OPTIMIZATIONS =================== */
+
+/* Global container padding fix */
+.container {
+  max-width: var(--max);
+  margin-inline: auto;
+  padding-inline: var(--pad);
+}
+
+/* Hero - better mobile flow */
+@media (max-width: 640px) {
+  .hero-container {
+    text-align: center;
+    padding: 0 var(--pad);
+  }
+  .hero-info-title {
+    justify-content: center;
+  }
+  .hero-buttons {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .hero-button {
+    justify-content: center;
+    width: 100%;
+  }
+}
+
+/* Doctor cards grid mobile */
+@media (max-width: 600px) {
+  .ndc-cards {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+  .ndc-card {
+    max-width: 100%;
+    min-height: auto;
+  }
+}
+
+/* Booking form mobile */
+@media (max-width: 768px) {
+  .git-wrap {
+    grid-template-columns: 1fr;
+    padding: 0 var(--pad);
+  }
+  .git-card {
+    padding: 20px;
+  }
+  .f input, .f select, .f textarea {
+    width: 100%;
+  }
+  .git-actions {
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+  .git-summary {
+    font-size: 0.9rem;
+  }
+}
+
+/* Self-check banner mobile */
+@media (max-width: 768px) {
+  .ndc-selfcheck-wrap {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+  .ndc-selfcheck-copy {
+    text-align: center;
+  }
+  .ndc-cta-row {
+    justify-content: center;
+  }
+  .ndc-bullets {
+    justify-content: center;
+  }
+}
+
+/* Blog cards */
+@media (max-width: 600px) {
+  .blog-grid {
+    grid-template-columns: 1fr;
+  }
+  .blog-card {
+    max-width: 100%;
+  }
+}
+
+/* FAQ */
+@media (max-width: 640px) {
+  .ndc-faq .container {
+    padding-inline: var(--pad);
+  }
+}
+
+/* Certificates ticker */
+@media (max-width: 640px) {
+  #certs-ticker .ticker-viewport {
+    padding: 24px;
+  }
+  .ticker-track li img {
+    height: 120px;
+  }
+}
+
+/* Footer */
+@media (max-width: 768px) {
+  .footer-grid {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+  .footer-brand,
+  .footer-contact,
+  .footer-social {
+    margin-bottom: 20px;
+  }
+  .footer-social a {
+    margin: 4px;
+  }
+}
+
+/* =================== SAFE AREA INSETS =================== */
+html, body {
+  /* Prevent content bleed into notches / home bar */
+  padding-left: max(var(--pad), env(safe-area-inset-left));
+  padding-right: max(var(--pad), env(safe-area-inset-right));
+}
+
+.site-header,
+.footer-bottom,
+.container,
+.hero-container,
+.git-wrap,
+.ndc-selfcheck-wrap,
+.ndc-faq .container,
+.blog-grid {
+  padding-left: max(var(--pad), env(safe-area-inset-left));
+  padding-right: max(var(--pad), env(safe-area-inset-right));
+}
+
+/* Bottom safe space for buttons, booking forms, sticky bars */
+.hero-buttons,
+.git-summary,
+.footer-bottom {
+  padding-bottom: env(safe-area-inset-bottom);
+}
+
+/* Back-to-top button (avoid notch overlap) */
+#backToTop {
+  margin-bottom: env(safe-area-inset-bottom);
+}
+
+<div class="sticky-cta-bar">
+  <a href="tel:+918610425342"><i class="bx bxs-phone"></i> Call</a>
+  <a href="https://wa.me/918610425342" target="_blank" rel="noopener"><i class="bx bxl-whatsapp"></i> WhatsApp</a>
+  <a href="#get-in-touch"><i class="bx bx-calendar-check"></i> Book</a>
+</div>
