@@ -22,4 +22,16 @@
     </image:image>
   </url>
 
+  <url>
+    <loc>https://nobledentalcare.in/about.html</loc>
+    <image:image>
+      <image:loc>https://nobledentalcare.in/images/dhivakaran.webp</image:loc>
+      <image:title>Dr Dhivakaran - Chief Medical Director</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://nobledentalcare.in/images/roger.webp</image:loc>
+      <image:title>Dr Roger Ronaldo - Oral Surgeon</image:title>
+    </image:image>
+  </url>
+
 </urlset>
