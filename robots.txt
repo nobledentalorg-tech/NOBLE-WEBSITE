@@ -6,9 +6,9 @@ Disallow: /tmp/
 Disallow: /search?
 
 # Primary sitemaps
-Sitemap: https://nobledentalcare.in/sitemap.xml
-Sitemap: https://nobledentalcare.in/sitemap-news.xml
-Sitemap: https://nobledentalcare.in/sitemap-images.xml
+Sitemap: https://nobledentalnallagandla.in/sitemap.xml
+Sitemap: https://nobledentalnallagandla.in/sitemap-news.xml
+Sitemap: https://nobledentalnallagandla.in/sitemap-images.xml
 
 # Crawl delay (respected by Bing/Yandex, ignored by Google)
 Crawl-delay: 2
