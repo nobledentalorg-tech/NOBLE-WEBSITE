@@ -859,14 +859,14 @@
   </div>
 </footer>
 
-<!-- ================= JSON-LD Schema (Full Merged) ================= -->
+<!-- ================= JSON-LD Schema (Improved Full Merged) ================= -->
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
   "@graph": [
 
     {
-      "@type": "MedicalOrganization",
+      "@type": ["MedicalOrganization","Dentist"],
       "@id": "https://nobledentalcare.in/#organization",
       "name": "Noble Dental Care - Nallagandla",
       "url": "https://nobledentalcare.in",
@@ -877,6 +877,7 @@
         "https://nobledentalcare.in/images/dhivakaran.webp"
       ],
       "telephone": "+91-86104-25342",
+      "email": "info@nobledentalcare.in",
       "priceRange": "₹₹",
       "description": "Advanced, gentle dentistry in Nallagandla, Hyderabad. Same-day painless Root Canal, precise Implants, smile-first Braces, pediatric-friendly care, and 24×7 Emergency dentistry. Reviewed by Dr Dhivakaran and NDC-D Team, aligned with NHS, ADA, WHO, Mayo Clinic.",
       "address": {
@@ -893,18 +894,15 @@
         "longitude": 78.305995
       },
       "openingHoursSpecification": [
-        {
-          "@type": "OpeningHoursSpecification",
-          "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"],
-          "opens": "11:00",
-          "closes": "22:00"
-        },
-        {
-          "@type": "OpeningHoursSpecification",
-          "dayOfWeek": "Sunday",
-          "opens": "15:00",
-          "closes": "22:00"
-        }
+        { "@type": "OpeningHoursSpecification", "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"], "opens": "11:00", "closes": "22:00" },
+        { "@type": "OpeningHoursSpecification", "dayOfWeek": "Sunday", "opens": "15:00", "closes": "22:00" }
+      ],
+      "sameAs": [
+        "https://www.facebook.com/YOUR_PAGE",
+        "https://www.instagram.com/YOUR_HANDLE",
+        "https://x.com/YOUR_HANDLE",
+        "https://www.linkedin.com/company/YOUR_COMPANY",
+        "https://www.youtube.com/@YOUR_CHANNEL"
       ]
     },
 
@@ -913,61 +911,30 @@
       "@id": "https://nobledentalcare.in/#drdhivakaran",
       "name": "Dr Dhivakaran",
       "jobTitle": "Chief Medical Director & Dentist",
-      "url": "https://nobledentalcare.in",
       "image": "https://nobledentalcare.in/images/doctors/dhivakaran.webp",
-      "worksFor": {
-        "@id": "https://nobledentalcare.in/#organization"
-      },
-      "alumniOf": {
-        "@type": "CollegeOrUniversity",
-        "name": "Dr. MGR Medical University"
-      },
-      "medicalSpecialty": [
-        "Root Canal Therapy",
-        "Implantology",
-        "Preventive Dentistry"
-      ]
+      "url": "https://nobledentalcare.in",
+      "worksFor": { "@id": "https://nobledentalcare.in/#organization" },
+      "alumniOf": { "@type": "CollegeOrUniversity", "name": "Dr. MGR Medical University" },
+      "medicalSpecialty": ["Root Canal Therapy","Implantology","Preventive Dentistry"],
+      "affiliation": { "@id": "https://nobledentalcare.in/#organization" }
     },
 
     {
       "@type": "Service",
       "@id": "https://nobledentalcare.in/#services",
       "serviceType": "Dental Services",
-      "provider": {
-        "@id": "https://nobledentalcare.in/#organization"
-      },
+      "provider": { "@id": "https://nobledentalcare.in/#organization" },
       "hasOfferCatalog": {
         "@type": "OfferCatalog",
         "name": "Dental Care Services",
         "itemListElement": [
-          {
-            "@type": "Offer",
-            "itemOffered": { "@type": "MedicalProcedure", "name": "Root Canal Treatment", "howPerformed": "Single-sitting, painless RCT with rotary systems", "followup": "1 week review" }
-          },
-          {
-            "@type": "Offer",
-            "itemOffered": { "@type": "MedicalProcedure", "name": "Dental Implants", "howPerformed": "Titanium/zirconia implants with guided surgery", "followup": "3-6 months healing" }
-          },
-          {
-            "@type": "Offer",
-            "itemOffered": { "@type": "MedicalProcedure", "name": "Braces & Aligners", "howPerformed": "Self-ligating braces, Invisalign aligners", "followup": "Monthly adjustments" }
-          },
-          {
-            "@type": "Offer",
-            "itemOffered": { "@type": "MedicalProcedure", "name": "Teeth Whitening", "howPerformed": "Peroxide gels with light activation", "followup": "Repeat every 6-12 months" }
-          },
-          {
-            "@type": "Offer",
-            "itemOffered": { "@type": "MedicalProcedure", "name": "Kids Dentistry", "howPerformed": "Fluoride, sealants, pulp therapy", "followup": "Every 6 months" }
-          },
-          {
-            "@type": "Offer",
-            "itemOffered": { "@type": "MedicalProcedure", "name": "Gum Treatment", "howPerformed": "Scaling, root planing, flap surgeries", "followup": "2-4 weeks" }
-          },
-          {
-            "@type": "Offer",
-            "itemOffered": { "@type": "MedicalProcedure", "name": "Emergency Dentistry", "howPerformed": "24×7 support for pain, swelling, trauma", "followup": "Same-day / urgent care" }
-          }
+          { "@type": "Offer", "itemOffered": { "@type": "MedicalProcedure", "name": "Root Canal Treatment", "howPerformed": "Single-sitting, painless RCT with rotary systems", "followup": "1 week review" } },
+          { "@type": "Offer", "itemOffered": { "@type": "MedicalProcedure", "name": "Dental Implants", "howPerformed": "Titanium/zirconia implants with guided surgery", "followup": "3-6 months healing" } },
+          { "@type": "Offer", "itemOffered": { "@type": "MedicalProcedure", "name": "Braces & Aligners", "howPerformed": "Self-ligating braces, Invisalign aligners", "followup": "Monthly adjustments" } },
+          { "@type": "Offer", "itemOffered": { "@type": "MedicalProcedure", "name": "Teeth Whitening", "howPerformed": "Peroxide gels with light activation", "followup": "Repeat every 6-12 months" } },
+          { "@type": "Offer", "itemOffered": { "@type": "MedicalProcedure", "name": "Kids Dentistry", "howPerformed": "Fluoride, sealants, pulp therapy", "followup": "Every 6 months" } },
+          { "@type": "Offer", "itemOffered": { "@type": "MedicalProcedure", "name": "Gum Treatment", "howPerformed": "Scaling, root planing, flap surgeries", "followup": "2-4 weeks" } },
+          { "@type": "Offer", "itemOffered": { "@type": "MedicalProcedure", "name": "Emergency Dentistry", "howPerformed": "24×7 support for pain, swelling, trauma", "followup": "Same-day / urgent care" } }
         ]
       }
     },
@@ -981,35 +948,24 @@
           "reviewBody": "I had a severe toothache and came for an emergency root canal. The treatment was absolutely painless and completed in one sitting.",
           "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" },
           "author": { "@type": "Person", "name": "Anjali R." },
-          "publisher": { "@type": "Organization", "name": "Google Review" }
+          "publisher": { "@type": "Organization", "name": "Google" },
+          "datePublished": "2024-09-10"
         },
         {
           "@type": "Review",
           "reviewBody": "The orthodontist explained every step clearly, and I could see results within months.",
           "reviewRating": { "@type": "Rating", "ratingValue": "4.5", "bestRating": "5" },
           "author": { "@type": "Person", "name": "Rahul M." },
-          "publisher": { "@type": "Organization", "name": "Practo" }
+          "publisher": { "@type": "Organization", "name": "Practo" },
+          "datePublished": "2024-07-22"
         },
         {
           "@type": "Review",
           "reviewBody": "My child's first dental visit went so smoothly. Dr Idhaya is truly amazing with kids.",
           "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" },
           "author": { "@type": "Person", "name": "Kavitha S." },
-          "publisher": { "@type": "Organization", "name": "Google" }
-        },
-        {
-          "@type": "Review",
-          "reviewBody": "Clean and well-maintained clinic. The staff are courteous and helpful.",
-          "reviewRating": { "@type": "Rating", "ratingValue": "4", "bestRating": "5" },
-          "author": { "@type": "Person", "name": "Suresh T." },
-          "publisher": { "@type": "Organization", "name": "Justdial" }
-        },
-        {
-          "@type": "Review",
-          "reviewBody": "Cosmetic veneers done here. Dr Aisha made everything look so natural!",
-          "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" },
-          "author": { "@type": "Person", "name": "Neha K." },
-          "publisher": { "@type": "Organization", "name": "Google" }
+          "publisher": { "@type": "Organization", "name": "Google" },
+          "datePublished": "2024-08-01"
         }
       ]
     },
@@ -1018,11 +974,11 @@
       "@type": "FAQPage",
       "@id": "https://nobledentalcare.in/#faqs",
       "mainEntity": [
-        { "@type": "Question", "name": "Is teeth whitening safe?", "acceptedAnswer": { "@type": "Answer", "text": "Yes, when supervised by a dentist. NHS & ADA guidance supports peroxide-based gels with gum protection. Temporary sensitivity is common and usually resolves in 24–48h. Source: NHS." } },
-        { "@type": "Question", "name": "How long does a dental implant take?", "acceptedAnswer": { "@type": "Answer", "text": "Typical healing is 3–6 months from implant placement to crown fitting, depending on bone quality and grafting needs. Source: ITI Consensus." } },
-        { "@type": "Question", "name": "Are dental X-rays safe?", "acceptedAnswer": { "@type": "Answer", "text": "Dental radiographs use very low doses of radiation. Benefits outweigh risks when used appropriately with shielding. Source: FDA." } },
-        { "@type": "Question", "name": "Do braces hurt?", "acceptedAnswer": { "@type": "Answer", "text": "Mild discomfort is expected during initial placement and adjustments, but it typically subsides in a few days. Source: ADA." } },
-        { "@type": "Question", "name": "When should children first see a dentist?", "acceptedAnswer": { "@type": "Answer", "text": "The ADA recommends a first dental visit by age 1, or within 6 months of the first tooth eruption. This helps establish preventive care early. Source: ADA & NHS." } }
+        { "@type": "Question", "name": "Is teeth whitening safe?", "acceptedAnswer": { "@type": "Answer", "text": "Yes, when supervised by a dentist. NHS & ADA guidance supports peroxide-based gels with gum protection. Temporary sensitivity is common and usually resolves in 24–48h." } },
+        { "@type": "Question", "name": "How long does a dental implant take?", "acceptedAnswer": { "@type": "Answer", "text": "Typical healing is 3–6 months from implant placement to crown fitting, depending on bone quality and grafting needs." } },
+        { "@type": "Question", "name": "Are dental X-rays safe?", "acceptedAnswer": { "@type": "Answer", "text": "Dental radiographs use very low doses of radiation. Benefits outweigh risks when used appropriately with shielding." } },
+        { "@type": "Question", "name": "Do braces hurt?", "acceptedAnswer": { "@type": "Answer", "text": "Mild discomfort is expected during initial placement and adjustments, but it typically subsides in a few days." } },
+        { "@type": "Question", "name": "When should children first see a dentist?", "acceptedAnswer": { "@type": "Answer", "text": "The ADA recommends a first dental visit by age 1, or within 6 months of the first tooth eruption." } }
       ]
     },
 
@@ -1041,7 +997,7 @@
     },
 
     {
-      "@type": "Dentist",
+      "@type": ["LocalBusiness","Dentist"],
       "@id": "https://nobledentalcare.in/#local",
       "name": "Noble Dental Care - Nallagandla",
       "image": "https://nobledentalcare.in/images/logo-footer.webp",
@@ -1056,65 +1012,12 @@
         "postalCode": "500019",
         "addressCountry": "IN"
       },
-      "geo": {
-        "@type": "GeoCoordinates",
-        "latitude": 17.473963,
-        "longitude": 78.305995
-      },
-      "openingHours": [
-        "Mo-Sa 11:00-22:00",
-        "Su 15:00-22:00"
-      ],
-      "aggregateRating": {
-        "@type": "AggregateRating",
-        "ratingValue": "4.9",
-        "reviewCount": "5500"
-      },
-      "makesOffer": [
-        {
-          "@type": "Offer",
-          "itemOffered": {
-            "@type": "MedicalProcedure",
-            "name": "Root Canal Treatment",
-            "description": "Painless, single-sitting RCT with rotary systems"
-          }
-        },
-        {
-          "@type": "Offer",
-          "itemOffered": {
-            "@type": "MedicalProcedure",
-            "name": "Dental Implants",
-            "description": "Precise, guided implants with titanium/zirconia"
-          }
-        },
-        {
-          "@type": "Offer",
-          "itemOffered": {
-            "@type": "MedicalProcedure",
-            "name": "Braces & Invisalign",
-            "description": "Clear aligners, smile-first braces"
-          }
-        }
-      ],
+      "geo": { "@type": "GeoCoordinates", "latitude": 17.473963, "longitude": 78.305995 },
+      "openingHours": ["Mo-Sa 11:00-22:00","Su 15:00-22:00"],
+      "aggregateRating": { "@type": "AggregateRating", "ratingValue": "4.9", "reviewCount": "5500" },
       "review": [
-        {
-          "@type": "Review",
-          "reviewRating": {
-            "@type": "Rating",
-            "ratingValue": "5"
-          },
-          "author": { "@type": "Person", "name": "Anjali R." },
-          "reviewBody": "Emergency root canal was painless and completed in one sitting."
-        },
-        {
-          "@type": "Review",
-          "reviewRating": {
-            "@type": "Rating",
-            "ratingValue": "5"
-          },
-          "author": { "@type": "Person", "name": "Neha K." },
-          "reviewBody": "Cosmetic veneers look very natural. Great work!"
-        }
+        { "@type": "Review", "author": { "@type": "Person", "name": "Anjali R." }, "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" }, "reviewBody": "Emergency root canal was painless and completed in one sitting.", "datePublished": "2024-09-10" },
+        { "@type": "Review", "author": { "@type": "Person", "name": "Neha K." }, "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" }, "reviewBody": "Cosmetic veneers look very natural. Great work!", "datePublished": "2024-08-18" }
       ],
       "sameAs": [
         "https://www.facebook.com/YOUR_PAGE",
