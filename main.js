@@ -1,343 +1,236 @@
-// ✅ Helpers
-const $  = (s, scope=document) => scope.querySelector(s);
-const $$ = (s, scope=document) => Array.from(scope.querySelectorAll(s));
-const on = (el, ev, fn) => el && el.addEventListener(ev, fn);
+/* =========================================================
+   Noble Dental Care — main.js
+   Features:
+   - Header shrink on scroll
+   - Mobile navigation (with submenu)
+   - Doctor cards → popup sheet
+   - Booking form (day/time auto-fill + WA handoff)
+   - Testimonials auto-scroll
+   - Certificates ticker controls
+   - Footer year auto-update
+   - Back-to-top button
+========================================================= */
 
 document.addEventListener("DOMContentLoaded", () => {
+
+  /* ---------- Helpers ---------- */
+  const $  = (s, r = document) => r.querySelector(s);
+  const $$ = (s, r = document) => Array.from(r.querySelectorAll(s));
+  const on = (el, ev, fn, opts = false) => el && el.addEventListener(ev, fn, opts);
+
+  /* =========================================================
+     1. Header: shrink on scroll
+  ========================================================= */
   const header = $(".site-header");
+  const shrinkHeader = () => {
+    if (window.scrollY > 10) header.classList.add("shrink");
+    else header.classList.remove("shrink");
+  };
+  shrinkHeader();
+  on(window, "scroll", shrinkHeader, { passive: true });
+
+  /* =========================================================
+     2. Navigation: mobile + submenu
+  ========================================================= */
   const menuToggle = $("#menuToggle");
-  const nav = $("#primaryNav");
-  const submenuToggles = $$(".submenu-toggle");
-  let backdrop;
+  const primaryNav = $("#primaryNav");
+  const submenuToggle = $(".submenu-toggle");
+  const submenu = $("#specialitiesMenu");
 
-  /* Shrink header on scroll */
-  window.addEventListener("scroll", () => {
-    header?.classList.toggle("shrink", window.scrollY > 50);
-  });
-
-  /* ================= MOBILE MENU (Side Drawer) ================= */
-  function closeMenu() {
-    nav.classList.remove("is-open");
-    menuToggle.setAttribute("aria-expanded", "false");
-    nav.setAttribute("aria-hidden", "true");
-    document.body.classList.remove("no-scroll");
-    backdrop?.remove();
+  if (menuToggle && primaryNav) {
+    on(menuToggle, "click", () => {
+      const expanded = menuToggle.getAttribute("aria-expanded") === "true";
+      menuToggle.setAttribute("aria-expanded", String(!expanded));
+      primaryNav.hidden = expanded;
+      primaryNav.classList.toggle("is-open", !expanded);
+    });
   }
 
-  on(menuToggle, "click", () => {
-    const isOpen = nav.classList.toggle("is-open");
-    menuToggle.setAttribute("aria-expanded", isOpen);
-    nav.setAttribute("aria-hidden", !isOpen);
+  if (submenuToggle && submenu) {
+    on(submenuToggle, "click", () => {
+      const expanded = submenuToggle.getAttribute("aria-expanded") === "true";
+      submenuToggle.setAttribute("aria-expanded", String(!expanded));
+      submenu.setAttribute("aria-hidden", String(expanded));
+    });
+  }
 
-    if (isOpen) {
-      backdrop = document.createElement("div");
-      backdrop.className = "menu-backdrop";
-      document.body.appendChild(backdrop);
-      document.body.classList.add("no-scroll");
-
-      on(backdrop, "click", closeMenu);
-      on(document, "keydown", (e) => { if (e.key === "Escape") closeMenu(); });
-    } else {
-      closeMenu();
+  // Close on Escape
+  on(document, "keydown", (e) => {
+    if (e.key === "Escape") {
+      if (menuToggle?.getAttribute("aria-expanded") === "true") menuToggle.click();
+      if (submenuToggle?.getAttribute("aria-expanded") === "true") submenuToggle.click();
     }
   });
 
-  nav.querySelectorAll("a").forEach(link => {
-    on(link, "click", closeMenu);
+  // Close nav when clicking outside
+  on(document, "click", (e) => {
+    if (
+      primaryNav?.classList.contains("is-open") &&
+      !primaryNav.contains(e.target) &&
+      !menuToggle.contains(e.target)
+    ) {
+      menuToggle.click();
+    }
   });
 
-  /* ================= SUBMENU LOGIC ================= */
-  submenuToggles.forEach(toggle => {
-    const menuId = toggle.getAttribute("aria-controls");
-    const menu = document.getElementById(menuId);
+  /* =========================================================
+     3. Doctor cards → popup sheet
+  ========================================================= */
+  const docGrid = $("#docGrid");
+  const docSheet = $("#docSheet");
+  const sheetTitle = $("#sheetTitle");
+  const sheetRole = $("#sheetRole");
+  const sheetBio = $("#sheetBio");
+  const sheetHero = $("#sheetHero");
+  const sheetExpertise = $("#sheetExpertise");
+  const sheetBooks = $("#sheetBooks");
+  const sheetBook = $("#sheetBook");
+  const sheetClose = $(".sheet-close");
 
-    on(toggle, "click", (e) => {
-      e.preventDefault();
-      const expanded = toggle.getAttribute("aria-expanded") === "true";
-      toggle.setAttribute("aria-expanded", String(!expanded));
-      menu.setAttribute("aria-hidden", expanded ? "true" : "false");
-    });
+  if (docGrid && docSheet) {
+    $$(".ndc-card", docGrid).forEach((card) => {
+      const openBtn = card.querySelector(".open, .block");
+      on(openBtn, "click", (e) => {
+        e.preventDefault();
+        const name = card.querySelector(".name")?.textContent || "";
+        const role = card.querySelector(".role")?.textContent || "";
+        const img = card.querySelector("img")?.src || "";
 
-    // Close submenu when clicking outside
-    document.addEventListener("click", (e) => {
-      if (!toggle.contains(e.target) && !menu.contains(e.target)) {
-        toggle.setAttribute("aria-expanded", "false");
-        menu.setAttribute("aria-hidden", "true");
-      }
-    });
+        sheetTitle.textContent = name;
+        sheetRole.textContent = role;
+        sheetHero.src = img;
+        sheetHero.alt = name;
 
-    // Auto-close submenu when clicking a link
-    menu.querySelectorAll("a").forEach(link => {
-      on(link, "click", () => {
-        toggle.setAttribute("aria-expanded", "false");
-        menu.setAttribute("aria-hidden", "true");
+        // Reset extras
+        sheetBio.textContent = "";
+        sheetExpertise.innerHTML = "";
+        sheetBooks.innerHTML = "";
+
+        // Set booking link
+        sheetBook.dataset.doc = name;
+
+        docSheet.showModal();
       });
     });
-  });
-});
 
-/* =========================================================
-   Doctors directory: search/filter, dialog, deep link
-========================================================= */
-(() => {
-  const grid = $('#docGrid');
-  const dlg = $('#docSheet');
-  if (!grid || !dlg) return;
-  const closeBtn = $('.sheet-close', dlg);
-  const search = $('#docSearch');
-
-  const DATA = {
-    dhivakaran:{ name:"Dr Dhivakaran", role:"Chief Medical Director", hero:"/images/doctors/dhivakaran-hero.webp", bio:"Chief Medical Director at Noble Dental Care. Director, Healthflo (557 hospitals). Contributor to Triumph’s Complete Review of Dentistry.", expertise:["Painless RCT","Dental Implants","Preventive Dentistry"], books:[{t:"Triumph’s Complete Review of Dentistry",p:"Wolters Kluwer • 2018",img:"/images/books/triumph.webp",href:"https://play.google.com/store/books/details?id=ZTjvDwAAQBAJ"}] },
-    roger:{ name:"Dr Roger Ronaldo", role:"Oral & Maxillofacial Surgeon", hero:"/images/doctors/roger-hero.webp", bio:"Surgeon focusing on implants, orthognathic & reconstruction, and facial trauma.", expertise:["Implantology","Orthognathic & Reconstruction","Trauma Surgery"], books:[] },
-    thikvijay:{ name:"Dr Thikvijay", role:"Aesthetic & Medical Cosmetologist", hero:"/images/doctors/thikvijay-hero.webp", bio:"FMC (Germany), ISHR. Trichology, Aesthetic & Medical Cosmetology, Hair & Scalp Restoration.", expertise:["Trichology","Aesthetic Medicine","Hair & Scalp Restoration"], books:[] },
-    deepak:{ name:"Dr Deepak", role:"Orthodontist", hero:"/images/doctors/deepak-hero.webp", bio:"Assistant Professor. Smile design, clear aligners, complex malocclusion.", expertise:["Smile Design","Clear Aligners","Complex Malocclusion"], books:[] },
-    idhaya:{ name:"Dr Idhaya", role:"Preventive & Tourism Dentistry", hero:"/images/doctors/idhaya-hero.webp", bio:"Preventive programs, insurance advisory and medical tourism coordination.", expertise:["Preventive Dentistry","Insurance Advisory","Medical Tourism"], books:[] }
-  };
-
-  function fillDialog(id){
-    const d = DATA[id]; if (!d) return;
-    $('#sheetHero').src = d.hero || '';
-    $('#sheetHero').alt = d.name || '';
-    $('#sheetTitle').textContent = d.name || '';
-    $('#sheetRole').textContent = d.role || '';
-    $('#sheetBio').textContent = d.bio || '';
-    $('#sheetExpertise').innerHTML = (d.expertise||[]).map(x=>`<span class="chip">${x}</span>`).join('');
-    $('#sheetBooks').innerHTML = (d.books||[]).map(b=>`
-      <div class="book">
-        <img src="${b.img||''}" alt="">
-        <div>
-          <div class="t">${b.t||''}</div>
-          <div class="p">${b.p||''}</div>
-          ${b.href?`<a class="t-btn" href="${b.href}" target="_blank" rel="noopener">View</a>`:''}
-        </div>
-      </div>`).join('');
-    $('#sheetBook').dataset.doc = d.name || '';
+    on(sheetClose, "click", () => docSheet.close());
   }
 
-  function openDialog(id){
-    fillDialog(id);
-    if (typeof dlg.showModal === 'function') dlg.showModal(); 
-    else dlg.setAttribute('open','');
-    history.replaceState(null, "", `#${id}`);
-  }
-
-  function closeDialog(){
-    if (typeof dlg.close === 'function') dlg.close(); 
-    else dlg.removeAttribute('open');
-    history.replaceState(null, "", window.location.pathname + window.location.search);
-  }
-
-  // Card click → open popup
-  on(grid,'click',(e)=>{
-    const card = e.target.closest('.ndc-card'); if (!card) return;
-    if (e.target.closest('.open') || e.target.closest('.block')) openDialog(card.dataset.id);
-  });
-
-  // Close popup
-  on(closeBtn,'click', closeDialog);
-  on(dlg,'keydown',(e)=>{ if (e.key==='Escape') closeDialog(); });
-  on(dlg,'click',(e)=>{ 
-    const r=dlg.getBoundingClientRect(); 
-    if(e.clientX<r.left||e.clientX>r.right||e.clientY<r.top||e.clientY>r.bottom) closeDialog(); 
-  });
-
-  // Book with this doctor → scroll & close popup
-  on($('#sheetBook'),'click',(e)=>{
-    const name = e.currentTarget?.dataset?.doc || '';
-    const sel = $('#doctorSelect'); 
-    if (sel && name){
-      sel.value = name;
-      document.querySelector('#get-in-touch')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    }
-    closeDialog();
-  });
-
-  // deep-link (#dhivakaran, etc.)
-  function checkHash(){ 
-    const id = location.hash.replace('#',''); 
-    if (id && DATA[id]) openDialog(id); 
-  }
-  window.addEventListener('hashchange', checkHash); 
-  checkHash();
-
-  // search + filter chips
-  function applyFilter(){
-    const q = (search.value||'').toLowerCase().trim();
-    const pressed = $$('#docFilters .chip--ghost').find(b=>b.getAttribute('aria-pressed')==='true');
-    const f = pressed ? pressed.dataset.filter : 'all';
-    $$('.ndc-card', grid).forEach(card=>{
-      const tags = (card.getAttribute('data-tags')||'').toLowerCase();
-      const text = (card.textContent||'').toLowerCase();
-      const matchQ = !q || tags.includes(q) || text.includes(q);
-      const matchF = (f==='all') || tags.includes(f);
-      card.style.display = (matchQ && matchF) ? '' : 'none';
-    });
-  }
-
-  on(search,'input', applyFilter);
-  on($('.ndc-search .clear'),'click', ()=>{ search.value=''; applyFilter(); });
-  $$('#docFilters .chip--ghost').forEach(btn=>{
-    on(btn,'click', ()=>{
-      $$('#docFilters .chip--ghost').forEach(b=>b.setAttribute('aria-pressed','false'));
-      btn.setAttribute('aria-pressed','true');
-      applyFilter();
-    });
-  });
-})();
-
-/* =========================================================
-   Booking form: WhatsApp handoff
-========================================================= */
-(() => {
-  const tz = "Asia/Kolkata";
-  const form = $("#apptForm");
-  if (!form) return;
-
+  /* =========================================================
+     4. Booking form: dynamic select + WA handoff
+  ========================================================= */
+  const apptForm = $("#apptForm");
   const daySelect = $("#daySelect");
   const timeSelect = $("#timeSelect");
-  const summary = $("#summaryText");
+  const summaryText = $("#summaryText");
   const bookBtn = $("#bookBtn");
-  const toast = $("#apptToast");
-  const waFill = $("#waFill");
-  const waQuick = $("#waQuick");
+  const apptToast = $("#apptToast");
 
-  // Opening hours (0=Sun … 6=Sat)
-  const hours = { 
-    0:[15,22], 
-    1:[11,22], 2:[11,22], 3:[11,22], 
-    4:[11,22], 5:[11,22], 6:[11,22] 
-  };
-
-  const fmtDay  = (d) => d.toLocaleDateString("en-IN", { timeZone: tz, weekday:"short", day:"2-digit", month:"short" });
-  const fmtTime = (d) => d.toLocaleTimeString("en-IN", { timeZone: tz, hour:"2-digit", minute:"2-digit" });
-
-  // Build next 14 days
-  function buildDays(){
-    daySelect.innerHTML = "";
+  // Populate next 7 days
+  if (daySelect) {
     const today = new Date();
-    for (let i=0; i<14; i++){
+    for (let i = 0; i < 7; i++) {
       const d = new Date(today);
-      d.setDate(d.getDate()+i);
+      d.setDate(today.getDate() + i);
       const opt = document.createElement("option");
-      opt.value = d.toISOString();
-      opt.textContent = fmtDay(d);
+      opt.value = d.toDateString();
+      opt.textContent = d.toLocaleDateString("en-IN", {
+        weekday: "short", month: "short", day: "numeric"
+      });
       daySelect.appendChild(opt);
     }
   }
 
-  // Build times for chosen day
-  function buildTimes(dayIso){
-    timeSelect.innerHTML = '<option value="">Select a time</option>';
-    if (!dayIso) return;
-    const d = new Date(dayIso);
-    const [open, close] = hours[d.getDay()] || [0,0];
-    const start = new Date(d); start.setHours(open,0,0,0);
-    const end   = new Date(d); end.setHours(close,0,0,0);
-    const now = new Date();
-
-    for (let t = new Date(start); t < end; t.setMinutes(t.getMinutes()+30)){
-      if (t < now) continue;
-      const iso = t.toISOString();
+  // Populate time slots
+  if (timeSelect) {
+    const slots = [
+      "11:00 AM","12:00 PM","1:00 PM","2:00 PM","3:00 PM",
+      "4:00 PM","5:00 PM","6:00 PM","7:00 PM","8:00 PM","9:00 PM"
+    ];
+    slots.forEach((t) => {
       const opt = document.createElement("option");
-      opt.value = iso;
-      opt.textContent = fmtTime(new Date(iso));
+      opt.value = t; opt.textContent = t;
       timeSelect.appendChild(opt);
-    }
+    });
   }
 
-  // Update summary text
-  function updateSummary(){
-    const d = daySelect.value ? new Date(daySelect.value) : null;
-    const t = timeSelect.value ? new Date(timeSelect.value) : null;
-    if (d && t){
-      summary.textContent = `${fmtDay(d)} • ${fmtTime(t)} (IST)`;
-      bookBtn.disabled = false;
-    } else {
-      summary.textContent = "Choose a day & time to continue.";
-      bookBtn.disabled = true;
-    }
-    updateWA();
+  if (apptForm) {
+    on(apptForm, "change", () => {
+      const day = daySelect.value;
+      const time = timeSelect.value;
+      if (day && time) {
+        summaryText.textContent = `Booking on ${day} at ${time}`;
+        bookBtn.disabled = false;
+      } else {
+        summaryText.textContent = "Choose a day & time to continue.";
+        bookBtn.disabled = true;
+      }
+    });
+
+    on(apptForm, "submit", (e) => {
+      e.preventDefault();
+      apptToast.hidden = false;
+      const data = new FormData(apptForm);
+      const msg = `Hello! I want to book an appointment with ${data.get("doctor")} for ${data.get("service")} on ${data.get("day")} at ${data.get("time")}. Name: ${data.get("name")}, Phone: ${data.get("phone")}. Notes: ${data.get("notes") || "-"}`;
+      const url = `https://wa.me/918610425342?text=${encodeURIComponent(msg)}`;
+      window.open(url, "_blank");
+    });
   }
 
-  // Build WhatsApp message
-  function updateWA(){
-    const fd = new FormData(form);
-    const d = daySelect.value ? new Date(daySelect.value) : null;
-    const t = timeSelect.value ? new Date(timeSelect.value) : null;
-
-    const msg = `Hi Noble Dental Care,
-I'd like to book:
-• Name: ${fd.get("name")||""}
-• Phone: ${fd.get("phone")||""}
-• Service: ${fd.get("service")||""}
-• Doctor: ${fd.get("doctor")||""}
-• Time: ${d?fmtDay(d):"-"} • ${t?fmtTime(t):"-"} (IST)
-${fd.get("notes") ? "• Notes: "+fd.get("notes") : ""}`.trim();
-
-    const url = `https://wa.me/918610425342?text=${encodeURIComponent(msg)}`;
-    if (waFill)  waFill.href = url;
-    if (waQuick) waQuick.href = url;
+  /* =========================================================
+     5. Testimonials auto-scroll
+  ========================================================= */
+  const testimonialsLoop = $(".testimonials-loop");
+  if (testimonialsLoop) {
+    let isPaused = false;
+    on(testimonialsLoop.parentElement, "mouseenter", () => { isPaused = true; testimonialsLoop.style.animationPlayState = "paused"; });
+    on(testimonialsLoop.parentElement, "mouseleave", () => { isPaused = false; testimonialsLoop.style.animationPlayState = "running"; });
   }
 
-  // Events
-  on(daySelect,'change', ()=>{ buildTimes(daySelect.value); updateSummary(); });
-  on(timeSelect,'change', updateSummary);
-  on(form,'input', updateWA);
+  /* =========================================================
+     6. Certificates ticker controls
+  ========================================================= */
+  const track = $("#certsTrack");
+  const btnPrev = $(".ticker-ctrl.prev");
+  const btnNext = $(".ticker-ctrl.next");
 
-  on(form,'submit',(e)=>{
-    e.preventDefault();
-    if (bookBtn.disabled) return;
-    updateWA();
-    if (toast){ toast.hidden = false; setTimeout(()=> (toast.hidden = true), 2000); }
-    window.open(waFill.href, "_blank", "noopener");
-  });
-
-  // Init
-  buildDays();
-  buildTimes(daySelect.value);
-  updateSummary();
-})();
-
-
-/* =========================================================
-   Testimonials, Certificates, Footer
-========================================================= */
-(() => {
-  const loop = document.querySelector('.testimonials-loop');
-  if (loop) loop.innerHTML += loop.innerHTML;
-})();
-
-(() => {
-  const track = document.getElementById("certsTrack");
-  if (!track) return;
-  let isPaused = false;
-  track.addEventListener("mouseenter", () => isPaused = true);
-  track.addEventListener("mouseleave", () => isPaused = false);
-  track.innerHTML += track.innerHTML;
-  let pos = 0;
-  function step() {
-    if (!isPaused) {
-      pos -= 0.5;
-      if (Math.abs(pos) >= track.scrollWidth / 2) pos = 0;
-      track.style.transform = `translateX(${pos}px)`;
-    }
-    requestAnimationFrame(step);
+  if (track && btnPrev && btnNext) {
+    let scrollPos = 0;
+    const step = 260; // px per click
+    on(btnPrev, "click", () => {
+      scrollPos = Math.max(0, scrollPos - step);
+      track.scrollTo({ left: scrollPos, behavior: "smooth" });
+    });
+    on(btnNext, "click", () => {
+      scrollPos += step;
+      track.scrollTo({ left: scrollPos, behavior: "smooth" });
+    });
   }
-  step();
-  document.querySelector("#certs-ticker .prev")?.addEventListener("click", () => { pos += 60; });
-  document.querySelector("#certs-ticker .next")?.addEventListener("click", () => { pos -= 60; });
-})();
 
-(() => {
-  const y = document.getElementById("year");
-  if (y) y.textContent = new Date().getFullYear();
-})();
+  /* =========================================================
+     7. Footer year auto-update
+  ========================================================= */
+  const yearEl = $("#year");
+  if (yearEl) yearEl.textContent = new Date().getFullYear();
 
-(() => {
-  const btn = document.getElementById("backToTop");
-  if (!btn) return;
+  /* =========================================================
+     8. Back-to-top button
+  ========================================================= */
+  const backToTop = $("#backToTop");
+  if (backToTop) {
+    on(backToTop, "click", () => {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    });
+  }
+
+});
+
+
+/* Floating CTA show/hide */
+const floatingCta = document.getElementById("floatingCta");
+if (floatingCta) {
   window.addEventListener("scroll", () => {
-    btn.classList.toggle("show", window.scrollY > 400);
-  });
-  on(btn,"click", () => window.scrollTo({ top: 0, behavior: "smooth" }));
-})();
+    if (window.scrollY > 400) floatingCta.classList.add("show");
+    else floatingCta.classList.remove("show");
+  }, { passive: true });
+}
