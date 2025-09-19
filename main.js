@@ -8,27 +8,50 @@ document.addEventListener("DOMContentLoaded", () => {
   const menuToggle = $("#menuToggle");
   const nav = $("#primaryNav");
   const submenuToggles = $$(".submenu-toggle");
+  let backdrop;
 
   /* Shrink header on scroll */
   window.addEventListener("scroll", () => {
-    header.classList.toggle("shrink", window.scrollY > 50);
+    header?.classList.toggle("shrink", window.scrollY > 50);
   });
 
-  /* Mobile menu toggle */
-  menuToggle?.addEventListener("click", () => {
-    const expanded = menuToggle.getAttribute("aria-expanded") === "true";
-    menuToggle.setAttribute("aria-expanded", String(!expanded));
-    nav.classList.toggle("is-open");
-    nav.setAttribute("aria-hidden", expanded ? "true" : "false");
-    document.body.classList.toggle("no-scroll", !expanded);
+  /* ================= MOBILE MENU (Side Drawer) ================= */
+  function closeMenu() {
+    nav.classList.remove("is-open");
+    menuToggle.setAttribute("aria-expanded", "false");
+    nav.setAttribute("aria-hidden", "true");
+    document.body.classList.remove("no-scroll");
+    backdrop?.remove();
+  }
+
+  on(menuToggle, "click", () => {
+    const isOpen = nav.classList.toggle("is-open");
+    menuToggle.setAttribute("aria-expanded", isOpen);
+    nav.setAttribute("aria-hidden", !isOpen);
+
+    if (isOpen) {
+      backdrop = document.createElement("div");
+      backdrop.className = "menu-backdrop";
+      document.body.appendChild(backdrop);
+      document.body.classList.add("no-scroll");
+
+      on(backdrop, "click", closeMenu);
+      on(document, "keydown", (e) => { if (e.key === "Escape") closeMenu(); });
+    } else {
+      closeMenu();
+    }
   });
 
-  /* Submenu toggle logic */
+  nav.querySelectorAll("a").forEach(link => {
+    on(link, "click", closeMenu);
+  });
+
+  /* ================= SUBMENU LOGIC ================= */
   submenuToggles.forEach(toggle => {
     const menuId = toggle.getAttribute("aria-controls");
     const menu = document.getElementById(menuId);
 
-    toggle.addEventListener("click", (e) => {
+    on(toggle, "click", (e) => {
       e.preventDefault();
       const expanded = toggle.getAttribute("aria-expanded") === "true";
       toggle.setAttribute("aria-expanded", String(!expanded));
@@ -36,20 +59,16 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
     // Close submenu when clicking outside
-document.addEventListener("click", (e) => {
-  submenuToggles.forEach(toggle => {
-    const menuId = toggle.getAttribute("aria-controls");
-    const menu = document.getElementById(menuId);
-    if (!toggle.contains(e.target) && !menu.contains(e.target)) {
-      toggle.setAttribute("aria-expanded", "false");
-      menu.setAttribute("aria-hidden", "true");
-    }
-  });
-});
+    document.addEventListener("click", (e) => {
+      if (!toggle.contains(e.target) && !menu.contains(e.target)) {
+        toggle.setAttribute("aria-expanded", "false");
+        menu.setAttribute("aria-hidden", "true");
+      }
+    });
 
     // Auto-close submenu when clicking a link
     menu.querySelectorAll("a").forEach(link => {
-      link.addEventListener("click", () => {
+      on(link, "click", () => {
         toggle.setAttribute("aria-expanded", "false");
         menu.setAttribute("aria-hidden", "true");
       });
@@ -57,111 +76,9 @@ document.addEventListener("click", (e) => {
   });
 });
 
-
-function openDialog(id){
-  fillDialog(id);
-  if (typeof dlg.showModal === 'function') dlg.showModal(); 
-  else dlg.setAttribute('open','');
-  $('#docSheet .sheet-close')?.focus(); // <-- Add this line
-  history.replaceState(null, "", `#${id}`);
-}
-
 /* =========================================================
-   Booking form: day/time slots + WhatsApp handoff
-   ========================================================= */
-(() => {
-  const tz = "Asia/Kolkata";
-  const form = $("#apptForm");
-  if (!form) return;
-
-  const daySelect = $("#daySelect");
-  const timeSelect = $("#timeSelect");
-  const summary = $("#summaryText");
-  const bookBtn = $("#bookBtn");
-  const toast = $("#apptToast");
-  const waFill = $("#waFill");
-  const waQuick = $("#waQuick");
-
-  // opening hours (0=Sun)
-  const hours = { 0: [15,22], 1:[11,22], 2:[11,22], 3:[11,22], 4:[11,22], 5:[11,22], 6:[11,22] };
-
-  const fmtDay  = (d) => d.toLocaleDateString("en-IN",{ timeZone: tz, weekday:"short", day:"2-digit", month:"short" });
-  const fmtTime = (d) => d.toLocaleTimeString("en-IN",{ timeZone: tz, hour:"2-digit", minute:"2-digit" });
-
-  function buildDays(){
-    daySelect.innerHTML = "";
-    const today = new Date();
-    for (let i=0;i<14;i++){
-      const d = new Date(today); d.setDate(d.getDate()+i);
-      const opt = document.createElement("option");
-      opt.value = d.toISOString();
-      opt.textContent = fmtDay(d);
-      daySelect.appendChild(opt);
-    }
-  }
-
-  function buildTimes(dayIso){
-    timeSelect.innerHTML = '<option value="">Select a time</option>';
-    if (!dayIso) return;
-    const d = new Date(dayIso);
-    const [open, close] = hours[d.getDay()] || [0,0];
-    const start = new Date(d); start.setHours(open,0,0,0);
-    const end   = new Date(d); end.setHours(close,0,0,0);
-    const now = new Date();
-
-    for (let t = new Date(start); t < end; t.setMinutes(t.getMinutes()+30)){
-      if (t < now) continue;
-      const iso = t.toISOString();
-      const opt = document.createElement("option");
-      opt.value = iso;
-      opt.textContent = fmtTime(new Date(iso));
-      timeSelect.appendChild(opt);
-    }
-  }
-
-  function updateSummary(){
-    const d = daySelect.value ? new Date(daySelect.value) : null;
-    const t = timeSelect.value ? new Date(timeSelect.value) : null;
-    if (d && t){ summary.textContent = `${fmtDay(d)} • ${fmtTime(t)} (IST)`; bookBtn.disabled = false; }
-    else { summary.textContent = "Choose a day & time to continue."; bookBtn.disabled = true; }
-    updateWA();
-  }
-
-  function updateWA(){
-    const fd = new FormData(form);
-    const d = daySelect.value ? new Date(daySelect.value) : null;
-    const t = timeSelect.value ? new Date(timeSelect.value) : null;
-    const msg = `Hi Noble Dental Care,
-I'd like to book:
-• Name: ${fd.get("name")||""}
-• Phone: ${fd.get("phone")||""}
-• Service: ${fd.get("service")||""}
-• Doctor: ${fd.get("doctor")||""}
-• Time: ${d?fmtDay(d):"-"} • ${t?fmtTime(t):"-"} (IST)
-${fd.get("notes") ? "• Notes: "+fd.get("notes") : ""}`.trim();
-    const url = `https://wa.me/918610425342?text=${encodeURIComponent(msg)}`;
-    if (waFill)  waFill.href = url;
-    if (waQuick) waQuick.href = url;
-  }
-
-  on(daySelect,'change', ()=>{ buildTimes(daySelect.value); updateSummary(); });
-  on(timeSelect,'change', updateSummary);
-  on(form,'input', updateWA);
-
-  on(form,'submit',(e)=>{
-    e.preventDefault();
-    if (bookBtn.disabled) return;
-    updateWA();
-    if (toast){ toast.hidden = false; setTimeout(()=> (toast.hidden = true), 2000); }
-    window.open(waFill.href, "_blank", "noopener");
-  });
-
-  buildDays(); buildTimes(daySelect.value); updateSummary();
-})();
-
-/* =========================================================
-   Doctors directory: search/filter, dialog, deep link, preselect
-   ========================================================= */
+   Doctors directory: search/filter, dialog, deep link
+========================================================= */
 (() => {
   const grid = $('#docGrid');
   const dlg = $('#docSheet');
@@ -188,7 +105,11 @@ ${fd.get("notes") ? "• Notes: "+fd.get("notes") : ""}`.trim();
     $('#sheetBooks').innerHTML = (d.books||[]).map(b=>`
       <div class="book">
         <img src="${b.img||''}" alt="">
-        <div><div class="t">${b.t||''}</div><div class="p">${b.p||''}</div>${b.href?`<a class="t-btn" href="${b.href}" target="_blank" rel="noopener">View</a>`:''}</div>
+        <div>
+          <div class="t">${b.t||''}</div>
+          <div class="p">${b.p||''}</div>
+          ${b.href?`<a class="t-btn" href="${b.href}" target="_blank" rel="noopener">View</a>`:''}
+        </div>
       </div>`).join('');
     $('#sheetBook').dataset.doc = d.name || '';
   }
@@ -228,7 +149,7 @@ ${fd.get("notes") ? "• Notes: "+fd.get("notes") : ""}`.trim();
       sel.value = name;
       document.querySelector('#get-in-touch')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
     }
-    closeDialog(); // ✅ now closes correctly
+    closeDialog();
   });
 
   // deep-link (#dhivakaran, etc.)
@@ -264,91 +185,159 @@ ${fd.get("notes") ? "• Notes: "+fd.get("notes") : ""}`.trim();
   });
 })();
 
-
-// Duplicate testimonials for smooth infinite loop
+/* =========================================================
+   Booking form: WhatsApp handoff
+========================================================= */
 (() => {
-  const loop = document.querySelector('.testimonials-loop');
-  if (!loop) return;
-  loop.innerHTML += loop.innerHTML; // duplicate content for seamless scroll
+  const tz = "Asia/Kolkata";
+  const form = $("#apptForm");
+  if (!form) return;
+
+  const daySelect = $("#daySelect");
+  const timeSelect = $("#timeSelect");
+  const summary = $("#summaryText");
+  const bookBtn = $("#bookBtn");
+  const toast = $("#apptToast");
+  const waFill = $("#waFill");
+  const waQuick = $("#waQuick");
+
+  // Opening hours (0=Sun … 6=Sat)
+  const hours = { 
+    0:[15,22], 
+    1:[11,22], 2:[11,22], 3:[11,22], 
+    4:[11,22], 5:[11,22], 6:[11,22] 
+  };
+
+  const fmtDay  = (d) => d.toLocaleDateString("en-IN", { timeZone: tz, weekday:"short", day:"2-digit", month:"short" });
+  const fmtTime = (d) => d.toLocaleTimeString("en-IN", { timeZone: tz, hour:"2-digit", minute:"2-digit" });
+
+  // Build next 14 days
+  function buildDays(){
+    daySelect.innerHTML = "";
+    const today = new Date();
+    for (let i=0; i<14; i++){
+      const d = new Date(today);
+      d.setDate(d.getDate()+i);
+      const opt = document.createElement("option");
+      opt.value = d.toISOString();
+      opt.textContent = fmtDay(d);
+      daySelect.appendChild(opt);
+    }
+  }
+
+  // Build times for chosen day
+  function buildTimes(dayIso){
+    timeSelect.innerHTML = '<option value="">Select a time</option>';
+    if (!dayIso) return;
+    const d = new Date(dayIso);
+    const [open, close] = hours[d.getDay()] || [0,0];
+    const start = new Date(d); start.setHours(open,0,0,0);
+    const end   = new Date(d); end.setHours(close,0,0,0);
+    const now = new Date();
+
+    for (let t = new Date(start); t < end; t.setMinutes(t.getMinutes()+30)){
+      if (t < now) continue;
+      const iso = t.toISOString();
+      const opt = document.createElement("option");
+      opt.value = iso;
+      opt.textContent = fmtTime(new Date(iso));
+      timeSelect.appendChild(opt);
+    }
+  }
+
+  // Update summary text
+  function updateSummary(){
+    const d = daySelect.value ? new Date(daySelect.value) : null;
+    const t = timeSelect.value ? new Date(timeSelect.value) : null;
+    if (d && t){
+      summary.textContent = `${fmtDay(d)} • ${fmtTime(t)} (IST)`;
+      bookBtn.disabled = false;
+    } else {
+      summary.textContent = "Choose a day & time to continue.";
+      bookBtn.disabled = true;
+    }
+    updateWA();
+  }
+
+  // Build WhatsApp message
+  function updateWA(){
+    const fd = new FormData(form);
+    const d = daySelect.value ? new Date(daySelect.value) : null;
+    const t = timeSelect.value ? new Date(timeSelect.value) : null;
+
+    const msg = `Hi Noble Dental Care,
+I'd like to book:
+• Name: ${fd.get("name")||""}
+• Phone: ${fd.get("phone")||""}
+• Service: ${fd.get("service")||""}
+• Doctor: ${fd.get("doctor")||""}
+• Time: ${d?fmtDay(d):"-"} • ${t?fmtTime(t):"-"} (IST)
+${fd.get("notes") ? "• Notes: "+fd.get("notes") : ""}`.trim();
+
+    const url = `https://wa.me/918610425342?text=${encodeURIComponent(msg)}`;
+    if (waFill)  waFill.href = url;
+    if (waQuick) waQuick.href = url;
+  }
+
+  // Events
+  on(daySelect,'change', ()=>{ buildTimes(daySelect.value); updateSummary(); });
+  on(timeSelect,'change', updateSummary);
+  on(form,'input', updateWA);
+
+  on(form,'submit',(e)=>{
+    e.preventDefault();
+    if (bookBtn.disabled) return;
+    updateWA();
+    if (toast){ toast.hidden = false; setTimeout(()=> (toast.hidden = true), 2000); }
+    window.open(waFill.href, "_blank", "noopener");
+  });
+
+  // Init
+  buildDays();
+  buildTimes(daySelect.value);
+  updateSummary();
 })();
 
 
-/* Certificates ticker auto-scroll with pause + controls */
+/* =========================================================
+   Testimonials, Certificates, Footer
+========================================================= */
+(() => {
+  const loop = document.querySelector('.testimonials-loop');
+  if (loop) loop.innerHTML += loop.innerHTML;
+})();
+
 (() => {
   const track = document.getElementById("certsTrack");
   if (!track) return;
-
   let isPaused = false;
   track.addEventListener("mouseenter", () => isPaused = true);
   track.addEventListener("mouseleave", () => isPaused = false);
-
-  // duplicate track for seamless loop
   track.innerHTML += track.innerHTML;
-
   let pos = 0;
   function step() {
     if (!isPaused) {
-      pos -= 0.5; // speed
+      pos -= 0.5;
       if (Math.abs(pos) >= track.scrollWidth / 2) pos = 0;
       track.style.transform = `translateX(${pos}px)`;
     }
     requestAnimationFrame(step);
   }
   step();
-
-  // manual controls
-  document.querySelector("#certs-ticker .prev")?.addEventListener("click", () => {
-    pos += 60;
-  });
-  document.querySelector("#certs-ticker .next")?.addEventListener("click", () => {
-    pos -= 60;
-  });
+  document.querySelector("#certs-ticker .prev")?.addEventListener("click", () => { pos += 60; });
+  document.querySelector("#certs-ticker .next")?.addEventListener("click", () => { pos -= 60; });
 })();
 
-
-/* Footer year */
 (() => {
   const y = document.getElementById("year");
   if (y) y.textContent = new Date().getFullYear();
 })();
 
-/* Back to top button */
 (() => {
   const btn = document.getElementById("backToTop");
   if (!btn) return;
-
   window.addEventListener("scroll", () => {
-    if (window.scrollY > 400) {
-      btn.classList.add("show");
-    } else {
-      btn.classList.remove("show");
-    }
+    btn.classList.toggle("show", window.scrollY > 400);
   });
-
-  btn.addEventListener("click", () => {
-    window.scrollTo({ top: 0, behavior: "smooth" });
-  });
+  on(btn,"click", () => window.scrollTo({ top: 0, behavior: "smooth" }));
 })();
-
-document.addEventListener("DOMContentLoaded", () => {
-  const menuBtn = document.getElementById("menuToggle");
-  const navList = document.getElementById("primaryNav");
-
-  if (menuBtn && navList) {
-    // Toggle menu open/close
-    menuBtn.addEventListener("click", () => {
-      const isOpen = navList.classList.toggle("is-open");
-      menuBtn.setAttribute("aria-expanded", isOpen);
-      navList.setAttribute("aria-hidden", !isOpen);
-    });
-
-    // ✅ Close menu on any link click
-    navList.querySelectorAll("a").forEach(link => {
-      link.addEventListener("click", () => {
-        navList.classList.remove("is-open");
-        menuBtn.setAttribute("aria-expanded", "false");
-        navList.setAttribute("aria-hidden", "true");
-      });
-    });
-  }
-});
