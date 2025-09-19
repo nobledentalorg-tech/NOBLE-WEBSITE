@@ -3,33 +3,33 @@
         xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
 
   <url>
-    <loc>https://nobledentalcare.in/</loc>
+    <loc>https://nobledentalnallagandla.in//</loc>
     <image:image>
-      <image:loc>https://nobledentalcare.in/images/clinic-exterior.webp</image:loc>
+      <image:loc>https://nobledentalnallagandla.in/images/clinic-exterior.webp</image:loc>
       <image:title>Dental Clinic Exterior - Noble Dental Care Nallagandla</image:title>
     </image:image>
     <image:image>
-      <image:loc>https://nobledentalcare.in/images/clinic-interior.webp</image:loc>
+      <image:loc>https://nobledentalnallagandla.in/images/clinic-interior.webp</image:loc>
       <image:title>Modern Dental Setup - Noble Dental Care</image:title>
     </image:image>
   </url>
 
   <url>
-    <loc>https://nobledentalcare.in/services/implants.html</loc>
+    <loc>https://nobledentalnallagandla.in/services/implants.html</loc>
     <image:image>
-      <image:loc>https://nobledentalcare.in/images/treatments/implants.webp</image:loc>
+      <image:loc>https://nobledentalnallagandla.in/images/treatments/implants.webp</image:loc>
       <image:title>Dental Implants in Nallagandla - Noble Dental Care</image:title>
     </image:image>
   </url>
 
   <url>
-    <loc>https://nobledentalcare.in/about.html</loc>
+    <loc>https://nobledentalnallagandla.in/about.html</loc>
     <image:image>
-      <image:loc>https://nobledentalcare.in/images/dhivakaran.webp</image:loc>
+      <image:loc>https://nobledentalnallagandla.in/images/dhivakaran.webp</image:loc>
       <image:title>Dr Dhivakaran - Chief Medical Director</image:title>
     </image:image>
     <image:image>
-      <image:loc>https://nobledentalcare.in/images/roger.webp</image:loc>
+      <image:loc>https://nobledentalnallagandla.in/images/roger.webp</image:loc>
       <image:title>Dr Roger Ronaldo - Oral Surgeon</image:title>
     </image:image>
   </url>
