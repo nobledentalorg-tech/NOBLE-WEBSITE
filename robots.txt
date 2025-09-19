@@ -1,0 +1,17 @@
+# ================== Noble Dental Care — robots.txt ==================
+User-agent: *
+Allow: /
+Disallow: /admin/
+Disallow: /cgi-bin/
+Disallow: /tmp/
+Disallow: /search?
+
+# Crawl delay (keeps servers light, but still fast for Google)
+Crawl-delay: 2
+
+# Sitemap locations
+Sitemap: https://nobledentalcare.in/sitemap.xml
+
+# Boost visibility in India (AI/Local search geo-targeting hint)
+# Not a standard directive but helps context
+# Location: Nallagandla, Hyderabad, Telangana, India
