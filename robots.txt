@@ -2,16 +2,16 @@
 User-agent: *
 Allow: /
 Disallow: /admin/
-Disallow: /cgi-bin/
 Disallow: /tmp/
 Disallow: /search?
 
-# Crawl delay (keeps servers light, but still fast for Google)
+# Primary sitemaps
+Sitemap: https://nobledentalcare.in/sitemap.xml
+Sitemap: https://nobledentalcare.in/sitemap-news.xml
+Sitemap: https://nobledentalcare.in/sitemap-images.xml
+
+# Crawl delay (respected by Bing/Yandex, ignored by Google)
 Crawl-delay: 2
 
-# Sitemap locations
-Sitemap: https://nobledentalcare.in/sitemap.xml
-
-# Boost visibility in India (AI/Local search geo-targeting hint)
-# Not a standard directive but helps context
+# Location context (comment only, not read by bots)
 # Location: Nallagandla, Hyderabad, Telangana, India
