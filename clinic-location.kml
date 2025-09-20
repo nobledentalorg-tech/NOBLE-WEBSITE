@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://www.opengis.net/kml/2.2">
+  <Document>
+    <name>Noble Dental Care - Nallagandla</name>
+    <description>
+      Noble Dental Care | Trusted Dentist in Nallagandla, Hyderabad.
+      Services: Root Canal, Implants, Braces, Whitening, Kids Dentistry, Gum Treatment, 24x7 Emergency Care.
+      Reviewed by Dr. Dhivakaran & Team.
+    </description>
+
+    <!-- ===================== Main Clinic ===================== -->
+    <Placemark>
+      <name>Dentist Near Me - Noble Dental Care Nallagandla Hyderabad</name>
+      <description><![CDATA[
+        <strong>Noble Dental Care</strong><br/>
+        Nallagandla Main Road, Hyderabad, Telangana 500019<br/>
+        Phone: <a href="tel:+918610425342">+91-86104-25342</a><br/>
+        Email: <a href="mailto:info@nobledentalcare.in">info@nobledentalcare.in</a><br/>
+        <a href="https://nobledentalnallagandla.in/">Website</a> |
+        <a href="https://maps.app.goo.gl/hy8B9WiQHtnaUqdPA">Google Maps</a>
+      ]]></description>
+      <Point><coordinates>78.305995,17.473963,0</coordinates></Point>
+    </Placemark>
+
+    <!-- ===================== Emergency ===================== -->
+    <Placemark>
+      <name>24x7 Emergency Dentist - Hyderabad</name>
+      <description>Immediate dental care for trauma, swelling, pain, and urgent cases. Available daily at Noble Dental Care.</description>
+      <Point><coordinates>78.305995,17.473963,0</coordinates></Point>
+    </Placemark>
+
+    <!-- ===================== Implants ===================== -->
+    <Placemark>
+      <name>Dental Implants Specialist - Nallagandla Hyderabad</name>
+      <description>Guided implant surgery (Titanium & Zirconia) with PRF & bone graft support. Long-lasting, natural-looking implants.</description>
+      <Point><coordinates>78.305995,17.473963,0</coordinates></Point>
+    </Placemark>
+
+    <!-- ===================== Root Canal ===================== -->
+    <Placemark>
+      <name>Painless Root Canal Treatment - Noble Dental Care</name>
+      <description>Single-sitting, rotary RCT with digital precision. Gentle, fast, and reviewed by Dr. Dhivakaran.</description>
+      <Point><coordinates>78.305995,17.473963,0</coordinates></Point>
+    </Placemark>
+
+    <!-- ===================== Braces ===================== -->
+    <Placemark>
+      <name>Braces & Invisalign Aligners - Hyderabad</name>
+      <description>Smile-first orthodontics: Self-ligating braces & clear aligners for teens and adults in Nallagandla Hyderabad.</description>
+      <Point><coordinates>78.305995,17.473963,0</coordinates></Point>
+    </Placemark>
+
+    <!-- ===================== Whitening ===================== -->
+    <Placemark>
+      <name>Teeth Whitening Dentist - Nallagandla Hyderabad</name>
+      <description>Professional whitening with peroxide gels and light activation. Safe, fast, and ADA/NHS approved.</description>
+      <Point><coordinates>78.305995,17.473963,0</coordinates></Point>
+    </Placemark>
+
+    <!-- ===================== Kids Dentistry ===================== -->
+    <Placemark>
+      <name>Kids Dentist - Child Friendly Clinic Hyderabad</name>
+      <description>Pediatric dentistry with fluoride, sealants, pulp therapy. Gentle care for children by Dr. Idhaya.</description>
+      <Point><coordinates>78.305995,17.473963,0</coordinates></Point>
+    </Placemark>
+
+    <!-- ===================== Gum Treatments ===================== -->
+    <Placemark>
+      <name>Gum Disease Treatment - Nallagandla Hyderabad</name>
+      <description>Scaling, root planing, flap surgeries. Advanced periodontal therapy at Noble Dental Care.</description>
+      <Point><coordinates>78.305995,17.473963,0</coordinates></Point>
+    </Placemark>
+
+    <!-- ===================== Cosmetic Dentistry ===================== -->
+    <Placemark>
+      <name>Cosmetic Dentistry - Veneers & Smile Design Hyderabad</name>
+      <description>Cosmetic veneers, bonding, and smile makeovers designed with precision for natural aesthetics.</description>
+      <Point><coordinates>78.305995,17.473963,0</coordinates></Point>
+    </Placemark>
+
+    <!-- ===================== Local Landmark Context ===================== -->
+    <Placemark>
+      <name>Noble Dental Care near Nallagandla Lake, Hyderabad</name>
+      <description>Conveniently located near Nallagandla Lake & Gachibowli IT hub for easy access from Hitech City, Lingampally, and Kondapur.</description>
+      <Point><coordinates>78.305995,17.473963,0</coordinates></Point>
+    </Placemark>
+
+  </Document>
+</kml>
