@@ -2,35 +2,42 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
         xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
 
+  <!-- Homepage images -->
   <url>
-    <loc>https://nobledentalnallagandla.in//</loc>
+    <loc>https://nobledentalnallagandla.in/</loc>
     <image:image>
       <image:loc>https://nobledentalnallagandla.in/images/clinic-exterior.webp</image:loc>
-      <image:title>Dental Clinic Exterior - Noble Dental Care Nallagandla</image:title>
+      <image:caption>Noble Dental Care Clinic Exterior – Nallagandla Hyderabad</image:caption>
     </image:image>
     <image:image>
       <image:loc>https://nobledentalnallagandla.in/images/clinic-interior.webp</image:loc>
-      <image:title>Modern Dental Setup - Noble Dental Care</image:title>
+      <image:caption>Clinic Interior – Modern dental equipment</image:caption>
     </image:image>
   </url>
 
-  <url>
-    <loc>https://nobledentalnallagandla.in/services/implants.html</loc>
-    <image:image>
-      <image:loc>https://nobledentalnallagandla.in/images/treatments/implants.webp</image:loc>
-      <image:title>Dental Implants in Nallagandla - Noble Dental Care</image:title>
-    </image:image>
-  </url>
-
+  <!-- Doctors -->
   <url>
     <loc>https://nobledentalnallagandla.in/about.html</loc>
     <image:image>
-      <image:loc>https://nobledentalnallagandla.in/images/dhivakaran.webp</image:loc>
-      <image:title>Dr Dhivakaran - Chief Medical Director</image:title>
+      <image:loc>https://nobledentalnallagandla.in/images/doctors/dhivakaran.webp</image:loc>
+      <image:caption>Dr Dhivakaran – Chief Dentist</image:caption>
     </image:image>
     <image:image>
-      <image:loc>https://nobledentalnallagandla.in/images/roger.webp</image:loc>
-      <image:title>Dr Roger Ronaldo - Oral Surgeon</image:title>
+      <image:loc>https://nobledentalnallagandla.in/images/doctors/team.webp</image:loc>
+      <image:caption>Our dental specialists team – Nallagandla Hyderabad</image:caption>
+    </image:image>
+  </url>
+
+  <!-- Services -->
+  <url>
+    <loc>https://nobledentalnallagandla.in/services.html</loc>
+    <image:image>
+      <image:loc>https://nobledentalnallagandla.in/images/treatments/implants.webp</image:loc>
+      <image:caption>Dental Implants procedure – Noble Dental Care</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://nobledentalnallagandla.in/images/treatments/whitening.webp</image:loc>
+      <image:caption>Teeth Whitening – Safe cosmetic dentistry</image:caption>
     </image:image>
   </url>
 
