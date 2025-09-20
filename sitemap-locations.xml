@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:geo="http://www.google.com/geo/schemas/sitemap/1.0">
+
+  <!-- Primary Clinic -->
+  <url>
+    <loc>https://nobledentalnallagandla.in/</loc>
+    <lastmod>2025-09-19</lastmod>
+    <priority>1.0</priority>
+    <changefreq>daily</changefreq>
+    <geo:geo>
+      <geo:format>kml</geo:format>
+      <geo:point>17.473963,78.305995</geo:point>
+      <geo:placename>Dentist in Nallagandla Hyderabad | Noble Dental Care</geo:placename>
+      <geo:address>Nallagandla Main Road, Hyderabad, Telangana 500019, India</geo:address>
+    </geo:geo>
+  </url>
+
+  <!-- Contact -->
+  <url>
+    <loc>https://nobledentalnallagandla.in/contact.html</loc>
+    <lastmod>2025-09-19</lastmod>
+    <priority>0.95</priority>
+    <changefreq>weekly</changefreq>
+    <geo:geo>
+      <geo:point>17.473963,78.305995</geo:point>
+      <geo:placename>Dentist Near Me – Contact Noble Dental Care Hyderabad</geo:placename>
+      <geo:address>Nallagandla Main Road, Hyderabad, Telangana 500019</geo:address>
+    </geo:geo>
+  </url>
+
+  <!-- Emergency Dentistry -->
+  <url>
+    <loc>https://nobledentalnallagandla.in/services/emergency.html</loc>
+    <lastmod>2025-09-19</lastmod>
+    <priority>1.0</priority>
+    <changefreq>daily</changefreq>
+    <geo:geo>
+      <geo:point>17.473963,78.305995</geo:point>
+      <geo:placename>24x7 Emergency Dentist in Nallagandla Hyderabad</geo:placename>
+      <geo:address>Nallagandla Main Road, Hyderabad, Telangana 500019</geo:address>
+    </geo:geo>
+  </url>
+
+  <!-- Root Canal -->
+  <url>
+    <loc>https://nobledentalnallagandla.in/services/root-canal.html</loc>
+    <lastmod>2025-09-19</lastmod>
+    <priority>0.9</priority>
+    <changefreq>weekly</changefreq>
+    <geo:geo>
+      <geo:point>17.473963,78.305995</geo:point>
+      <geo:placename>Painless Root Canal Treatment – Hyderabad Dentist</geo:placename>
+      <geo:address>Nallagandla Main Road, Hyderabad, Telangana 500019</geo:address>
+    </geo:geo>
+  </url>
+
+  <!-- Dental Implants -->
+  <url>
+    <loc>https://nobledentalnallagandla.in/services/implants.html</loc>
+    <lastmod>2025-09-19</lastmod>
+    <priority>0.95</priority>
+    <changefreq>weekly</changefreq>
+    <geo:geo>
+      <geo:point>17.473963,78.305995</geo:point>
+      <geo:placename>Dental Implants Specialist in Nallagandla Hyderabad</geo:placename>
+      <geo:address>Nallagandla Main Road, Hyderabad, Telangana 500019</geo:address>
+    </geo:geo>
+  </url>
+
+  <!-- Braces & Aligners -->
+  <url>
+    <loc>https://nobledentalnallagandla.in/services/braces.html</loc>
+    <lastmod>2025-09-19</lastmod>
+    <priority>0.9</priority>
+    <changefreq>weekly</changefreq>
+    <geo:geo>
+      <geo:point>17.473963,78.305995</geo:point>
+      <geo:placename>Braces & Invisalign in Hyderabad – Noble Dental Care</geo:placename>
+      <geo:address>Nallagandla Main Road, Hyderabad, Telangana 500019</geo:address>
+    </geo:geo>
+  </url>
+
+  <!-- Teeth Whitening -->
+  <url>
+    <loc>https://nobledentalnallagandla.in/services/whitening.html</loc>
+    <lastmod>2025-09-19</lastmod>
+    <priority>0.85</priority>
+    <changefreq>weekly</changefreq>
+    <geo:geo>
+      <geo:point>17.473963,78.305995</geo:point>
+      <geo:placename>Teeth Whitening Dentist – Nallagandla Hyderabad</geo:placename>
+      <geo:address>Nallagandla Main Road, Hyderabad, Telangana 500019</geo:address>
+    </geo:geo>
+  </url>
+
+  <!-- Kids Dentistry -->
+  <url>
+    <loc>https://nobledentalnallagandla.in/services/kids.html</loc>
+    <lastmod>2025-09-19</lastmod>
+    <priority>0.85</priority>
+    <changefreq>weekly</changefreq>
+    <geo:geo>
+      <geo:point>17.473963,78.305995</geo:point>
+      <geo:placename>Kids Dentistry – Child Friendly Dentist in Hyderabad</geo:placename>
+      <geo:address>Nallagandla Main Road, Hyderabad, Telangana 500019</geo:address>
+    </geo:geo>
+  </url>
+
+  <!-- Gum Treatments -->
+  <url>
+    <loc>https://nobledentalnallagandla.in/services/gum-treatment.html</loc>
+    <lastmod>2025-09-19</lastmod>
+    <priority>0.85</priority>
+    <changefreq>weekly</changefreq>
+    <geo:geo>
+      <geo:point>17.473963,78.305995</geo:point>
+      <geo:placename>Gum Disease Treatment – Nallagandla Hyderabad</geo:placename>
+      <geo:address>Nallagandla Main Road, Hyderabad, Telangana 500019</geo:address>
+    </geo:geo>
+  </url>
+
+  <!-- Google Maps Direct -->
+  <url>
+    <loc>https://maps.app.goo.gl/hy8B9WiQHtnaUqdPA</loc>
+    <lastmod>2025-09-19</lastmod>
+    <priority>0.9</priority>
+    <changefreq>monthly</changefreq>
+    <geo:geo>
+      <geo:point>17.473963,78.305995</geo:point>
+      <geo:placename>Noble Dental Care on Google Maps – Hyderabad</geo:placename>
+      <geo:address>Nallagandla Main Road, Hyderabad, Telangana 500019</geo:address>
+    </geo:geo>
+  </url>
+
+</urlset>
