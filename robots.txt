@@ -1,17 +1,19 @@
-# ================== Noble Dental Care — robots.txt ==================
 User-agent: *
 Allow: /
 Disallow: /admin/
 Disallow: /tmp/
 Disallow: /search?
 
-# Primary sitemaps
+# Main Index
+Sitemap: https://nobledentalnallagandla.in/sitemap-index.xml
+
+# Bonus Direct Access
 Sitemap: https://nobledentalnallagandla.in/sitemap.xml
+Sitemap: https://nobledentalnallagandla.in/sitemap-services.xml
 Sitemap: https://nobledentalnallagandla.in/sitemap-news.xml
 Sitemap: https://nobledentalnallagandla.in/sitemap-images.xml
+Sitemap: https://nobledentalnallagandla.in/sitemap-locations.xml
+Sitemap: https://nobledentalnallagandla.in/clinic-location.kml
+Sitemap: https://nobledentalnallagandla.in/clinic-location.json
 
-# Crawl delay (respected by Bing/Yandex, ignored by Google)
 Crawl-delay: 2
-
-# Location context (comment only, not read by bots)
-# Location: Nallagandla, Hyderabad, Telangana, India
