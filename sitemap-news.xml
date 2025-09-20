@@ -3,26 +3,26 @@
         xmlns:news="http://www.google.com/schemas/sitemap-news/0.9">
 
   <url>
-    <loc>https://nobledentalnallagandla.in/blog/teeth-whitening</loc>
+    <loc>https://nobledentalnallagandla.in/blog/</loc>
     <news:news>
       <news:publication>
         <news:name>Noble Dental Care Blog</news:name>
         <news:language>en</news:language>
       </news:publication>
-      <news:publication_date>2025-09-15</news:publication_date>
-      <news:title>Is Teeth Whitening Safe?</news:title>
+      <news:publication_date>2025-09-19</news:publication_date>
+      <news:title>How to Handle Dental Emergencies in Hyderabad</news:title>
     </news:news>
   </url>
 
   <url>
-    <loc>https://nobledentalnallagandla.in/blog/implants</loc>
+    <loc>https://nobledentalnallagandla.in/blog/teeth-whitening-benefits.html</loc>
     <news:news>
       <news:publication>
         <news:name>Noble Dental Care Blog</news:name>
         <news:language>en</news:language>
       </news:publication>
-      <news:publication_date>2025-09-10</news:publication_date>
-      <news:title>How Long Do Implants Take?</news:title>
+      <news:publication_date>2025-09-12</news:publication_date>
+      <news:title>Teeth Whitening – Safety & Results Explained</news:title>
     </news:news>
   </url>
 
