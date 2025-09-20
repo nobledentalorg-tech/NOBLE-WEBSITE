@@ -1,18 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
+  <!-- Main Pages -->
   <sitemap>
     <loc>https://nobledentalnallagandla.in/sitemap.xml</loc>
     <lastmod>2025-09-19</lastmod>
   </sitemap>
 
+  <!-- Services -->
   <sitemap>
-    <loc>https://nobledentalnallagandla.in/sitemap-news.xml</loc>
+    <loc>https://nobledentalnallagandla.in/sitemap-services.xml</loc>
     <lastmod>2025-09-19</lastmod>
   </sitemap>
 
+  <!-- Images -->
   <sitemap>
     <loc>https://nobledentalnallagandla.in/sitemap-images.xml</loc>
+    <lastmod>2025-09-19</lastmod>
+  </sitemap>
+
+  <!-- News / Blog -->
+  <sitemap>
+    <loc>https://nobledentalnallagandla.in/sitemap-news.xml</loc>
     <lastmod>2025-09-19</lastmod>
   </sitemap>
 
