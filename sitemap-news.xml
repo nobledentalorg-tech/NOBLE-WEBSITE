@@ -2,27 +2,55 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
         xmlns:news="http://www.google.com/schemas/sitemap-news/0.9">
 
+  <!-- Example Blog Post 1 -->
   <url>
-    <loc>https://nobledentalnallagandla.in/blog/</loc>
+    <loc>https://nobledentalnallagandla.in/blog/painless-root-canal.html</loc>
     <news:news>
       <news:publication>
-        <news:name>Noble Dental Care Blog</news:name>
+        <news:name>Noble Dental Care - Nallagandla</news:name>
         <news:language>en</news:language>
       </news:publication>
-      <news:publication_date>2025-09-19</news:publication_date>
-      <news:title>How to Handle Dental Emergencies in Hyderabad</news:title>
+      <news:publication_date>2025-09-10</news:publication_date>
+      <news:title>Painless Single Sitting Root Canal in Hyderabad – Dr. Dhivakaran</news:title>
     </news:news>
   </url>
 
+  <!-- Example Blog Post 2 -->
   <url>
-    <loc>https://nobledentalnallagandla.in/blog/teeth-whitening-benefits.html</loc>
+    <loc>https://nobledentalnallagandla.in/blog/dental-implants-guide.html</loc>
     <news:news>
       <news:publication>
-        <news:name>Noble Dental Care Blog</news:name>
+        <news:name>Noble Dental Care - Nallagandla</news:name>
         <news:language>en</news:language>
       </news:publication>
-      <news:publication_date>2025-09-12</news:publication_date>
-      <news:title>Teeth Whitening – Safety & Results Explained</news:title>
+      <news:publication_date>2025-09-15</news:publication_date>
+      <news:title>Dental Implants in Hyderabad – Complete Guide to PRF, Bone Graft, and Recovery</news:title>
+    </news:news>
+  </url>
+
+  <!-- Example Blog Post 3 -->
+  <url>
+    <loc>https://nobledentalnallagandla.in/blog/kids-dentistry-tips.html</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Noble Dental Care - Nallagandla</news:name>
+        <news:language>en</news:language>
+      </news:publication>
+      <news:publication_date>2025-09-18</news:publication_date>
+      <news:title>Top 7 Pediatric Dentistry Tips for Parents in Hyderabad</news:title>
+    </news:news>
+  </url>
+
+  <!-- Example Blog Post 4 -->
+  <url>
+    <loc>https://nobledentalnallagandla.in/blog/teeth-whitening-options.html</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Noble Dental Care - Nallagandla</news:name>
+        <news:language>en</news:language>
+      </news:publication>
+      <news:publication_date>2025-09-19</news:publication_date>
+      <news:title>Best Teeth Whitening Options in Nallagandla Hyderabad</news:title>
     </news:news>
   </url>
 
