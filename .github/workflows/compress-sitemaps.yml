@@ -1,0 +1,54 @@
+name: Auto Compress Sitemaps
+
+on:
+  push:
+    branches: [ main ]   # run when you push to main
+  schedule:
+    - cron: "0 3 * * *"  # also run daily at 3 AM UTC (auto-refresh sitemaps)
+
+jobs:
+  compress:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write   # allow pushing changes
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0   # fetch full history for proper diff checks
+
+      - name: Compress sitemap files
+        run: |
+          mkdir -p compressed
+          for file in sitemap.xml sitemap-services.xml sitemap-treatments.xml sitemap-news.xml sitemap-images.xml sitemap-locations.xml; do
+            if [ -f "$file" ]; then
+              echo "Compressing $file ..."
+              gzip -9 -c "$file" > "compressed/$file.gz"
+            else
+              echo "Skipping $file (not found)"
+            fi
+          done
+
+      - name: Move compressed files
+        run: |
+          cp compressed/*.gz . || true
+          ls -lh *.gz || true
+
+      - name: Commit compressed sitemaps
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          git add *.xml.gz || true
+          if git diff --cached --quiet; then
+            echo "✅ No changes to commit"
+          else
+            git commit -m "🤖 Auto-compressed sitemap updates [skip ci]"
+            git push
+          fi
+
+      - name: Upload compressed sitemaps (artifact)
+        uses: actions/upload-artifact@v4
+        with:
+          name: compressed-sitemaps
+          path: compressed/*.gz
