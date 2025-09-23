@@ -1,10 +1,10 @@
-name: Auto Compress + Update Sitemap Index
+name: Auto Compress + Update Sitemap Index + Ping SE
 
 on:
   push:
-    branches: [ main ]   # run on push
+    branches: [ main ]
   schedule:
-    - cron: "0 3 * * *"  # daily at 3 AM UTC
+    - cron: "0 3 * * *"   # run daily at 3 AM UTC
 
 jobs:
   compress:
@@ -65,3 +65,11 @@ jobs:
         with:
           name: compressed-sitemaps
           path: compressed/*.gz
+
+      - name: Ping Google & Bing
+        run: |
+          INDEX_URL="https://nobledentalnallagandla.in/sitemap-index.xml"
+          echo "🔔 Pinging Google..."
+          curl -s "http://www.google.com/ping?sitemap=$INDEX_URL" || true
+          echo "🔔 Pinging Bing..."
+          curl -s "http://www.bing.com/ping?sitemap=$INDEX_URL" || true
