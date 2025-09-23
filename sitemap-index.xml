@@ -1,52 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-
-  <!-- Main Pages Sitemap -->
   <sitemap>
-    <loc>https://nobledentalnallagandla.in/sitemap.xml</loc>
+    <loc>https://nobledentalnallagandla.in/sitemap-images.xml.gz</loc>
     <lastmod>2025-09-23</lastmod>
   </sitemap>
-
-  <!-- Services Overview Sitemap -->
   <sitemap>
-    <loc>https://nobledentalnallagandla.in/sitemap-services.xml</loc>
+    <loc>https://nobledentalnallagandla.in/sitemap-locations.xml.gz</loc>
     <lastmod>2025-09-23</lastmod>
   </sitemap>
-
-  <!-- 100 Treatments Sitemap (Detailed Pages) -->
   <sitemap>
-    <loc>https://nobledentalnallagandla.in/sitemap-treatments.xml</loc>
+    <loc>https://nobledentalnallagandla.in/sitemap-news.xml.gz</loc>
     <lastmod>2025-09-23</lastmod>
   </sitemap>
-
-  <!-- Blog/News Sitemap -->
   <sitemap>
-    <loc>https://nobledentalnallagandla.in/sitemap-news.xml</loc>
+    <loc>https://nobledentalnallagandla.in/sitemap-services.xml.gz</loc>
     <lastmod>2025-09-23</lastmod>
   </sitemap>
-
-  <!-- Images Sitemap -->
   <sitemap>
-    <loc>https://nobledentalnallagandla.in/sitemap-images.xml</loc>
+    <loc>https://nobledentalnallagandla.in/sitemap-treatments.xml.gz</loc>
     <lastmod>2025-09-23</lastmod>
   </sitemap>
-
-  <!-- Location Sitemap (Geo XML) -->
   <sitemap>
-    <loc>https://nobledentalnallagandla.in/sitemap-locations.xml</loc>
+    <loc>https://nobledentalnallagandla.in/sitemap.xml.gz</loc>
     <lastmod>2025-09-23</lastmod>
   </sitemap>
-
-  <!-- KML (Legacy but still parsed by Maps/AI) -->
-  <sitemap>
-    <loc>https://nobledentalnallagandla.in/clinic-location.kml</loc>
-    <lastmod>2025-09-23</lastmod>
-  </sitemap>
-
-  <!-- GeoJSON (Modern AI & API friendly) -->
-  <sitemap>
-    <loc>https://nobledentalnallagandla.in/clinic-location.json</loc>
-    <lastmod>2025-09-23</lastmod>
-  </sitemap>
-
 </sitemapindex>
