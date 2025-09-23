@@ -1,13 +1,47 @@
+# ================================
+# Noble Dental Care - Robots.txt
+# SEO + AI Optimized
+# ================================
+
 User-agent: *
 Allow: /
 Disallow: /admin/
 Disallow: /tmp/
 Disallow: /search?
+Disallow: /cgi-bin/
+Disallow: /private/
+Disallow: /*?sessionid=
+Disallow: /*?ref=
 
-# Main Index
+# Special: block duplicate feeds/canonicals
+Disallow: /*?utm_*
+Disallow: /*?fbclid=*
+
+# ================================
+# AI & Research Bots
+# ================================
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: GPTBot
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: anthropic-ai
+Allow: /
+
+# ================================
+# Sitemaps
+# ================================
 Sitemap: https://nobledentalnallagandla.in/sitemap-index.xml
-
-# Bonus Direct Access
 Sitemap: https://nobledentalnallagandla.in/sitemap.xml
 Sitemap: https://nobledentalnallagandla.in/sitemap-services.xml
 Sitemap: https://nobledentalnallagandla.in/sitemap-news.xml
@@ -16,4 +50,7 @@ Sitemap: https://nobledentalnallagandla.in/sitemap-locations.xml
 Sitemap: https://nobledentalnallagandla.in/clinic-location.kml
 Sitemap: https://nobledentalnallagandla.in/clinic-location.json
 
+# ================================
+# Crawl Control
+# ================================
 Crawl-delay: 2
