@@ -1363,8 +1363,9 @@ button, input, select, textarea {
 .filter-bar {
   display: flex;
   flex-wrap: wrap;
-  gap: 15px;
+  gap: 12px;
   margin-bottom: 25px;
+  position: relative;
 }
 
 .filter-bar input,
@@ -1386,6 +1387,27 @@ button, input, select, textarea {
   outline: none;
 }
 
+/* Clear button */
+.clear-btn {
+  background: #e74c3c;
+  color: #fff;
+  border: none;
+  padding: 8px 14px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 0.85rem;
+  transition: background 0.3s, opacity 0.3s;
+  display: none; /* hidden by default */
+}
+
+.clear-btn.show {
+  display: inline-block;
+}
+
+.clear-btn:hover {
+  background: #c0392b;
+}
+
 /* Grid container */
 #slides {
   display: grid;
@@ -1394,7 +1416,7 @@ button, input, select, textarea {
   transition: all 0.4s ease;
 }
 
-/* Default card */
+/* Card */
 .service-card {
   display: flex;
   flex-direction: row;
@@ -1408,10 +1430,22 @@ button, input, select, textarea {
   opacity: 0;
   transform: translateY(15px);
   animation: fadeIn 0.6s forwards;
+  transition: transform 0.4s ease, background 0.3s ease;
 }
 
 .service-card:hover {
   background: #d0e9ff;
+  transform: scale(1.05);
+}
+
+/* Zoom contents */
+.service-card:hover .text-section,
+.service-card:hover h3,
+.service-card:hover p,
+.service-card:hover ul,
+.service-card:hover .read-more {
+  transform: scale(1.05);
+  transition: transform 0.4s ease;
 }
 
 /* Fade animation */
@@ -1432,7 +1466,7 @@ button, input, select, textarea {
   margin: 0 0 10px;
   color: #13191c;
   font-weight: 600;
-  transition: font-size 0.4s ease;
+  transition: font-size 0.4s ease, transform 0.4s ease;
 }
 
 .service-card p {
@@ -1440,7 +1474,7 @@ button, input, select, textarea {
   color: #555;
   margin: 0 0 14px;
   line-height: 1.5;
-  transition: font-size 0.4s ease;
+  transition: font-size 0.4s ease, transform 0.4s ease;
 }
 
 .service-card ul.tips {
@@ -1448,10 +1482,10 @@ button, input, select, textarea {
   margin: 0 0 14px;
   font-size: 0.85rem;
   color: #444;
-  transition: font-size 0.4s ease;
+  transition: font-size 0.4s ease, transform 0.4s ease;
 }
 
-/* Image with zoom effect */
+/* Image */
 .service-card img {
   width: 40%;
   height: 100%;
@@ -1471,7 +1505,7 @@ button, input, select, textarea {
   border-radius: 6px;
   font-size: 0.85rem;
   text-decoration: none;
-  transition: background 0.3s;
+  transition: background 0.3s, transform 0.4s ease;
 }
 
 .read-more:hover {
@@ -1486,28 +1520,14 @@ button, input, select, textarea {
 #slides.single-view .service-card {
   grid-column: span 2;
   height: 420px;
+  transform: scale(1) !important;
 }
 
-#slides.single-view .text-section {
-  padding: 30px;
-}
-
-#slides.single-view h3 {
-  font-size: 1.8rem;
-}
-
-#slides.single-view p {
-  font-size: 1.1rem;
-}
-
-#slides.single-view ul.tips {
-  font-size: 1rem;
-}
-
-#slides.single-view img {
-  width: 45%;
-  height: 100%;
-}
+#slides.single-view .text-section { padding: 30px; }
+#slides.single-view h3 { font-size: 1.8rem; }
+#slides.single-view p { font-size: 1.1rem; }
+#slides.single-view ul.tips { font-size: 1rem; }
+#slides.single-view img { width: 45%; height: 100%; }
 
 /* ========= CONTROLS ========= */
 .controls {
@@ -1519,6 +1539,7 @@ button, input, select, textarea {
   justify-content: space-between;
   transform: translateY(-50%);
   pointer-events: none;
+  z-index: 5;
 }
 
 .controls button {
@@ -1528,7 +1549,7 @@ button, input, select, textarea {
   color: #fff;
   font-size: 1.8rem;
   cursor: pointer;
-  padding: 8px 14px;
+  padding: 10px 16px;
   border-radius: 50%;
   transition: background 0.3s;
 }
@@ -1539,26 +1560,9 @@ button, input, select, textarea {
 
 /* Responsive */
 @media (max-width: 768px) {
-  #slides {
-    grid-template-columns: 1fr;
-  }
-
-  .service-card {
-    flex-direction: column;
-    height: auto;
-  }
-
-  .service-card img {
-    width: 100%;
-    height: 220px;
-  }
-
-  #slides.single-view .service-card {
-    height: auto;
-  }
-
-  #slides.single-view img {
-    width: 100%;
-    height: 260px;
-  }
+  #slides { grid-template-columns: 1fr; }
+  .service-card { flex-direction: column; height: auto; }
+  .service-card img { width: 100%; height: 220px; }
+  #slides.single-view .service-card { height: auto; }
+  #slides.single-view img { width: 100%; height: 260px; }
 }
