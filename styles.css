@@ -1338,117 +1338,64 @@ button, input, select, textarea {
 
 /* =================== SECTION BASE =================== */
 #treatments {
-  max-width: 1200px;
-  margin: 40px auto;   /* ⬅️ reduced top/bottom space (was 60px) */
-  padding: 40px 15px;  /* ⬅️ smaller padding */
+  max-width: 1300px; /* bigger */
+  margin: 40px auto;
+  padding: 50px 20px;
   font-family: var(--font-main);
   text-align: center;
 
-  /* 🔥 New attractive gradient background */
+  /* Matte black overlay with gradient */
   background: linear-gradient(135deg,
-    #e0f7fa 0%,
-    #c3e5f7 30%,
-    #d7c9f7 70%,
-    #fce4ec 100%
-  );
+    rgba(19, 25, 28, 0.92) 0%,
+    rgba(19, 25, 28, 0.85) 40%,
+    rgba(19, 25, 28, 0.95) 100%
+  ),
+  linear-gradient(135deg, #edf2f2 0%, #eef5f7 30%, #f7f7f7 100%);
+  background-blend-mode: overlay;
 
   border-radius: var(--radius-lg);
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08); /* subtle depth */
+  box-shadow: 0 8px 26px rgba(0, 0, 0, 0.15);
 }
 
 /* =================== BIG HEADER =================== */
 #treatments h2 {
-  font-size: 2.2rem; /* slightly smaller for balance */
+  font-size: 1.9rem; /* smaller */
   font-weight: 700;
-  margin-bottom: 10px;
+  margin-bottom: 8px;
 
-  /* 🎨 Gradient text: teal → blue → purple */
-  background: linear-gradient(90deg, #00bcd4, #3f51b5, #8e24aa);
+  /* Gradient text effect */
+  background: linear-gradient(90deg, #48c6ef, #6f86d6, #00cba9);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
-  line-height: 1.2;
 }
 
 /* =================== PARAGRAPH =================== */
 #treatments p {
-  color: var(--color-muted);
-  font-size: 1rem;
-  margin: 0 auto 20px;
-  max-width: 700px;
-  line-height: 1.6;
+  color: #cfd8dc;
+  font-size: 0.95rem;
+  margin: 0 auto 16px;
+  max-width: 640px;
+  line-height: 1.5;
 }
-
-#treatments p a {
-  color: var(--color-brand);
-  font-weight: 500;
-  text-decoration: none;
-  transition: color 0.3s ease;
-}
-#treatments p a:hover {
-  color: var(--color-brand-dark);
-}
-
-/* =================== SUB HEADER =================== */
-.service-card h3 {
-  font-size: 1.2rem;
-  font-weight: 600;
-  color: var(--color-dark);
-  margin-bottom: 8px;
-}
-
-
-/* =================== FILTER BAR =================== */
-.filter-bar {
-  display: flex;
-  gap: 10px;
-  margin-bottom: 20px;
-  position: relative; /* for autocomplete box */
-}
-#treatmentSearch,
-#categoryFilter {
-  flex: 1;
-  padding: 12px 15px;
-  border: 1px solid #ccc;
-  border-radius: var(--radius);
-  font-size: 1rem;
-  outline: none;
-  transition: border var(--transition), box-shadow var(--transition);
-}
-#treatmentSearch:focus,
-#categoryFilter:focus {
-  border-color: var(--color-brand);
-  box-shadow: 0 0 6px rgba(52, 152, 219, 0.4);
-}
-
-/* =================== SLIDER =================== */
-.slider {
-  position: relative;
-  border-radius: var(--radius-lg);
-  background: #fff;
-  box-shadow: var(--shadow);
-  overflow: hidden;
-}
-.slides { width: 100%; }
 
 /* =================== SERVICE CARD =================== */
 .service-card {
   display: none;
   opacity: 0;
-  transform: scale(0.96);
-  transition: opacity 0.35s ease, transform 0.35s ease;
-  background: #fff;
+  transform: scale(0.94);
+  transition: opacity 0.4s ease, transform 0.4s ease, box-shadow 0.4s ease, background 0.4s ease;
+  background: #f9f9f9;
   border-radius: var(--radius-lg);
   flex-direction: row;
   align-items: stretch;
   text-align: left;
-  margin: 0 30px; /* ⬅️ right & left gaps */
-  box-shadow: var(--shadow);
+  margin: 0 20px;
+  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.1);
   overflow: hidden;
-
-  /* better height */
-  min-height: 480px;
+  min-height: 520px; /* larger card */
 }
+
 .service-card.active {
   display: flex !important;
   opacity: 1;
@@ -1456,51 +1403,73 @@ button, input, select, textarea {
   z-index: 2;
   position: relative;
 }
-.service-card:hover {
-  background: #f6fbff;
-  box-shadow: var(--shadow-hover);
-  transform: scale(1.01);
-}
-.service-card:hover img { transform: scale(1.06); }
 
+.service-card:hover {
+  background: #f0fdf7; /* pastel green hover */
+  box-shadow: 0 12px 34px rgba(0, 0, 0, 0.2);
+  transform: scale(1.02);
+}
+
+/* =================== IMAGE EFFECT =================== */
+.service-card img {
+  width: 42%;
+  max-width: 480px;
+  object-fit: cover;
+  border-radius: 0 var(--radius-lg) var(--radius-lg) 0;
+  transition: transform 0.6s ease, filter 0.6s ease;
+  filter: brightness(0.95) contrast(1.05);
+}
+
+.service-card:hover img {
+  transform: scale(1.12); /* zoom-in */
+  filter: brightness(1.05) contrast(1.1);
+}
+
+/* =================== TEXT =================== */
 .service-card .text-section {
   flex: 1;
-  padding: 32px;
+  padding: 36px;
   display: flex;
   flex-direction: column;
   justify-content: center;
 }
+
 .service-card h3 {
-  font-size: 1.8rem;
-  margin-bottom: 14px;
-  color: var(--color-dark);
-}
-.service-card p {
-  font-size: 1rem;
-  margin-bottom: 18px;
-  color: var(--color-text);
-  line-height: 1.6;
-}
-.service-card img {
-  width: 40%;
-  max-width: 420px;
-  height: auto;
-  object-fit: cover;
-  border-radius: 0 var(--radius-lg) var(--radius-lg) 0;
-  transition: transform var(--transition);
+  font-size: 1.5rem; /* reduced */
+  margin-bottom: 12px;
+  color: #212121;
 }
 
-/* Responsive */
+.service-card p {
+  font-size: 0.95rem; /* smaller text */
+  margin-bottom: 16px;
+  color: #333;
+  line-height: 1.5;
+}
+
+/* =================== RESPONSIVE =================== */
 @media (max-width: 768px) {
-  .service-card { flex-direction: column; margin: 0 12px; min-height: auto; }
+  .service-card {
+    flex-direction: column;
+    margin: 0 12px;
+    min-height: auto;
+  }
   .service-card img {
     width: 100%;
     height: 240px;
     border-radius: 0 0 var(--radius-lg) var(--radius-lg);
   }
-  .service-card .text-section { padding: 22px; }
-  .service-card h3 { font-size: 1.4rem; }
+  .service-card .text-section {
+    padding: 22px;
+  }
+  .service-card h3 {
+    font-size: 1.3rem;
+  }
+  .service-card p {
+    font-size: 0.9rem;
+  }
 }
+
 
 /* =================== READ MORE BUTTON =================== */
 .read-more {
@@ -1626,3 +1595,4 @@ button, input, select, textarea {
 }
 .suggestion-box li:hover { background: #f0f0f0; }
 .suggestion-box strong { color: var(--color-brand); }
+
