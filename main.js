@@ -241,35 +241,44 @@ document.addEventListener("DOMContentLoaded", () => {
   const searchInput = document.getElementById("treatmentSearch");
   const filterSelect = document.getElementById("categoryFilter");
 
+  // Add clear button dynamically
+  let clearBtn = document.createElement("button");
+  clearBtn.textContent = "Clear";
+  clearBtn.classList.add("clear-btn");
+  document.querySelector(".filter-bar").appendChild(clearBtn);
+
   let currentIndex = 0;
   let filteredCards = [...allCards];
-  const defaultCardsPerPage = 4; // normal mode
-  const singleCardView = 1;      // search/filter mode
+  const defaultCardsPerPage = 4;
+  const singleCardView = 1;
   let autoRotateInterval;
   let searchActive = false;
 
-  // Render cards
   function renderCards() {
     allCards.forEach(card => (card.style.display = "none"));
-
     const cardsPerPage = searchActive ? singleCardView : defaultCardsPerPage;
 
-    // toggle single-view CSS
     slides.classList.toggle("single-view", searchActive);
 
     filteredCards
       .slice(currentIndex, currentIndex + cardsPerPage)
       .forEach(card => {
         card.style.display = "flex";
-        card.style.animation = "fadeIn 0.6s forwards"; // fade effect
+        card.style.animation = "fadeIn 0.6s forwards";
       });
   }
 
-  // Apply search + filter
+  function updateClearButton() {
+    if (searchInput.value || filterSelect.value) {
+      clearBtn.classList.add("show");
+    } else {
+      clearBtn.classList.remove("show");
+    }
+  }
+
   function applyFilter() {
     const query = searchInput.value.toLowerCase();
     const category = filterSelect.value;
-
     searchActive = !!query || !!category;
 
     filteredCards = allCards.filter(card => {
@@ -282,9 +291,9 @@ document.addEventListener("DOMContentLoaded", () => {
     currentIndex = 0;
     renderCards();
     restartAutoRotate();
+    updateClearButton();
   }
 
-  // Auto rotation (default only)
   function autoRotate() {
     if (!searchActive && filteredCards.length > defaultCardsPerPage) {
       currentIndex += defaultCardsPerPage;
@@ -295,17 +304,20 @@ document.addEventListener("DOMContentLoaded", () => {
 
   function restartAutoRotate() {
     clearInterval(autoRotateInterval);
-    autoRotateInterval = setInterval(autoRotate, 7000); // 7 seconds
+    autoRotateInterval = setInterval(autoRotate, 7000);
   }
 
-  // Controls
-  const controls = document.createElement("div");
-  controls.classList.add("controls");
-  controls.innerHTML = `
-    <button id="prev">&#10094;</button>
-    <button id="next">&#10095;</button>
-  `;
-  slides.parentElement.appendChild(controls);
+  // Prev/Next controls
+  let controls = document.querySelector(".controls");
+  if (!controls) {
+    controls = document.createElement("div");
+    controls.classList.add("controls");
+    controls.innerHTML = `
+      <button id="prev">&#10094;</button>
+      <button id="next">&#10095;</button>
+    `;
+    slides.parentElement.appendChild(controls);
+  }
 
   document.getElementById("prev").addEventListener("click", () => {
     const step = searchActive ? singleCardView : defaultCardsPerPage;
@@ -325,11 +337,28 @@ document.addEventListener("DOMContentLoaded", () => {
     restartAutoRotate();
   });
 
-  // Events
+  // Pause auto-rotation on hover
+  slides.addEventListener("mouseenter", () => clearInterval(autoRotateInterval));
+  slides.addEventListener("mouseleave", restartAutoRotate);
+
+  // Clear button resets search + filter
+  clearBtn.addEventListener("click", () => {
+    searchInput.value = "";
+    filterSelect.value = "";
+    searchActive = false;
+    filteredCards = [...allCards];
+    currentIndex = 0;
+    renderCards();
+    restartAutoRotate();
+    updateClearButton();
+  });
+
+  // Listeners
   if (searchInput) searchInput.addEventListener("input", applyFilter);
   if (filterSelect) filterSelect.addEventListener("change", applyFilter);
 
   // Init
   renderCards();
   restartAutoRotate();
+  updateClearButton();
 });
