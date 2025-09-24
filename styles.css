@@ -1338,29 +1338,36 @@ button, input, select, textarea {
 
 /* =================== SECTION BASE =================== */
 #treatments {
-  max-width: 1450px;
-  margin: 60px auto;
-  padding: 60px 15px;
+  max-width: 1200px;
+  margin: 40px auto;   /* ⬅️ reduced top/bottom space (was 60px) */
+  padding: 40px 15px;  /* ⬅️ smaller padding */
   font-family: var(--font-main);
   text-align: center;
 
-  /* Multi-color gradient background */
-  background: linear-gradient(90deg,rgba(228, 240, 237, 0.94) 1%, rgba(154, 168, 227, 0.85) 54%, rgba(208, 239, 245, 1) 100%);
+  /* 🔥 New attractive gradient background */
+  background: linear-gradient(135deg,
+    #e0f7fa 0%,
+    #c3e5f7 30%,
+    #d7c9f7 70%,
+    #fce4ec 100%
+  );
 
   border-radius: var(--radius-lg);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08); /* subtle depth */
 }
 
 /* =================== BIG HEADER =================== */
 #treatments h2 {
-  font-size: 2.4rem;
+  font-size: 2.2rem; /* slightly smaller for balance */
   font-weight: 700;
-  margin-bottom: 12px;
+  margin-bottom: 10px;
 
-  /* Gradient text: black → dark grey → blue */
-  background: linear-gradient(90deg, #111827, #1f2937, #2563eb);
+  /* 🎨 Gradient text: teal → blue → purple */
+  background: linear-gradient(90deg, #00bcd4, #3f51b5, #8e24aa);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
+  line-height: 1.2;
 }
 
 /* =================== PARAGRAPH =================== */
@@ -1428,16 +1435,19 @@ button, input, select, textarea {
 .service-card {
   display: none;
   opacity: 0;
-  transform: scale(0.98);
+  transform: scale(0.96);
   transition: opacity 0.35s ease, transform 0.35s ease;
   background: #fff;
   border-radius: var(--radius-lg);
   flex-direction: row;
   align-items: stretch;
   text-align: left;
+  margin: 0 30px; /* ⬅️ right & left gaps */
+  box-shadow: var(--shadow);
+  overflow: hidden;
 
-  /* ⬆️ Increase height */
-  min-height: 480px; /* was ~default based on content */
+  /* better height */
+  min-height: 480px;
 }
 .service-card.active {
   display: flex !important;
@@ -1447,31 +1457,32 @@ button, input, select, textarea {
   position: relative;
 }
 .service-card:hover {
-  background: #e9f9ef;
+  background: #f6fbff;
   box-shadow: var(--shadow-hover);
-  transform: scale(1.02);
+  transform: scale(1.01);
 }
-.service-card:hover img { transform: scale(1.05); }
+.service-card:hover img { transform: scale(1.06); }
+
 .service-card .text-section {
   flex: 1;
-  padding: 28px; /* slightly more padding */
+  padding: 32px;
   display: flex;
   flex-direction: column;
   justify-content: center;
 }
 .service-card h3 {
-  font-size: 1.8rem; /* bump up */
+  font-size: 1.8rem;
   margin-bottom: 14px;
   color: var(--color-dark);
 }
 .service-card p {
   font-size: 1rem;
-  margin-bottom: 16px;
+  margin-bottom: 18px;
   color: var(--color-text);
-  line-height: 1.55;
+  line-height: 1.6;
 }
 .service-card img {
-  width: 38%; /* slightly narrower image */
+  width: 40%;
   max-width: 420px;
   height: auto;
   object-fit: cover;
@@ -1481,35 +1492,64 @@ button, input, select, textarea {
 
 /* Responsive */
 @media (max-width: 768px) {
-  .service-card { flex-direction: column; min-height: auto; }
+  .service-card { flex-direction: column; margin: 0 12px; min-height: auto; }
   .service-card img {
     width: 100%;
-    height: 240px; /* slightly taller image on mobile */
+    height: 240px;
     border-radius: 0 0 var(--radius-lg) var(--radius-lg);
   }
-  .service-card .text-section { padding: 20px; }
-  .service-card h3 { font-size: 1.5rem; }
+  .service-card .text-section { padding: 22px; }
+  .service-card h3 { font-size: 1.4rem; }
 }
 
 /* =================== READ MORE BUTTON =================== */
 .read-more {
   background: var(--color-brand);
   color: #fff;
-  padding: 6px 10px; /* narrower */
+  padding: 10px 18px; /* balanced button */
   border-radius: 6px;
-  font-size: 0.85rem;
+  font-size: 0.9rem;
   text-decoration: none;
-  font-weight: 500;
+  font-weight: 600;
   transition: background var(--transition), transform 0.2s;
   display: inline-block;
-  width: auto;
-  min-width: 90px; /* was wider */
+  min-width: 120px; /* looks more natural */
   text-align: center;
 }
 .read-more:hover {
   background: var(--color-brand-dark);
   transform: translateY(-2px);
 }
+
+/* =================== SLIDER CONTROLS =================== */
+.controls {
+  position: absolute;
+  top: 50%; /* ⬅️ vertically centered over card */
+  left: 0; right: 0;
+  display: flex;
+  justify-content: space-between;
+  transform: translateY(-50%);
+  pointer-events: none; /* only buttons clickable */
+  z-index: 10;
+}
+.controls button {
+  background: rgba(0, 0, 0, 0.5);
+  color: #fff;
+  border: none;
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  cursor: pointer;
+  font-size: 22px;
+  pointer-events: auto;
+  transition: background var(--transition), transform var(--transition);
+  backdrop-filter: blur(6px);
+}
+.controls button:hover {
+  background: rgba(0, 0, 0, 0.7);
+  transform: scale(1.1);
+}
+.controls button:active { transform: scale(0.95); }
 
 /* =================== PREVIEW RAIL =================== */
 .preview-rail {
