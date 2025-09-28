@@ -1,0 +1,140 @@
+{
+  "@context": "https://schema.org",
+  "@type": "Dentist",
+  "@id": "https://nobledentalnallagandla.in/#dr-dhivakaran",
+  "name": "Dr. Dhivakaran",
+  "alternateName": "Dhivakaran Dentist Nallagandla",
+  "jobTitle": "Chief Dental Surgeon & Managing Director",
+  "affiliation": {
+    "@type": "Organization",
+    "@id": "https://nobledentalnallagandla.in/#noble-dental",
+    "name": "Noble Dental Care - Nallagandla",
+    "alternateName": "Noble Dental Hyderabad",
+    "url": "https://nobledentalnallagandla.in/",
+    "description": "Modern dental clinic in Nallagandla, Hyderabad providing advanced treatments including root canal, implants, braces, smile makeover, and pediatric dentistry.",
+    "logo": "https://nobledentalnallagandla.in/images/logo.webp",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "Nallagandla Main Road",
+      "addressLocality": "Hyderabad",
+      "addressRegion": "Telangana",
+      "postalCode": "500019",
+      "addressCountry": "IN"
+    },
+    "geo": {
+      "@type": "GeoCoordinates",
+      "latitude": "17.473963",
+      "longitude": "78.305995"
+    },
+    "telephone": "+91-9999999999",
+    "sameAs": [
+      "https://www.google.com/maps/place/Noble+Dental+Care+Nallagandla/",
+      "https://www.instagram.com/nobledentalnallagandla/",
+      "https://www.facebook.com/nobledentalnallagandla/",
+      "https://www.linkedin.com/company/nobledentalnallagandla/"
+    ]
+  },
+  "url": "https://nobledentalnallagandla.in/about.html",
+  "image": "https://nobledentalnallagandla.in/images/doctors/dr-dhivakaran.webp",
+  "worksFor": {
+    "@id": "https://nobledentalnallagandla.in/#noble-dental"
+  },
+  "alumniOf": {
+    "@type": "CollegeOrUniversity",
+    "name": "The Tamil Nadu Dr. M.G.R. Medical University"
+  },
+  "knowsAbout": [
+    "Root Canal Treatment",
+    "Dental Implants",
+    "Cosmetic Dentistry",
+    "Braces and Aligners",
+    "Pediatric Dentistry",
+    "Full Mouth Rehabilitation",
+    "Digital Smile Design",
+    "Laser Dentistry",
+    "Emergency Dental Care"
+  ],
+  "hasCredential": [
+    {
+      "@type": "EducationalOccupationalCredential",
+      "credentialCategory": "BDS"
+    },
+    {
+      "@type": "EducationalOccupationalCredential",
+      "credentialCategory": "MDS (Prosthodontics)"
+    }
+  ],
+  "memberOf": {
+    "@type": "Organization",
+    "name": "Indian Dental Association (IDA)"
+  },
+  "worksLocation": {
+    "@type": "Place",
+    "name": "Noble Dental Care",
+    "geo": {
+      "@type": "GeoCoordinates",
+      "latitude": "17.473963",
+      "longitude": "78.305995"
+    },
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "Nallagandla Main Road",
+      "addressLocality": "Hyderabad",
+      "addressRegion": "Telangana",
+      "postalCode": "500019",
+      "addressCountry": "IN"
+    }
+  },
+  "hasOfferCatalog": {
+    "@type": "OfferCatalog",
+    "name": "Dental Treatments",
+    "itemListElement": [
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "MedicalProcedure",
+          "name": "Root Canal Treatment",
+          "url": "https://nobledentalnallagandla.in/treatments/root-canal.html"
+        }
+      },
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "MedicalProcedure",
+          "name": "Dental Implants",
+          "url": "https://nobledentalnallagandla.in/treatments/implants.html"
+        }
+      },
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "MedicalProcedure",
+          "name": "Braces & Aligners",
+          "url": "https://nobledentalnallagandla.in/treatments/braces.html"
+        }
+      },
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "MedicalProcedure",
+          "name": "Smile Design & Veneers",
+          "url": "https://nobledentalnallagandla.in/treatments/veneers.html"
+        }
+      },
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "MedicalProcedure",
+          "name": "Full Mouth Rehabilitation",
+          "url": "https://nobledentalnallagandla.in/treatments/full-mouth-rehabilitation.html"
+        }
+      }
+    ]
+  },
+  "sameAs": [
+    "https://www.google.com/maps/place/Noble+Dental+Care+Nallagandla/",
+    "https://www.instagram.com/nobledentalnallagandla/",
+    "https://www.facebook.com/nobledentalnallagandla/",
+    "https://www.linkedin.com/company/nobledentalnallagandla/"
+  ]
+}
