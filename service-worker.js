@@ -1,12 +1,14 @@
-const CACHE_NAME = "ndc-cache-v1";
+const CACHE_NAME = "nobledental-pwa-v1";
 const urlsToCache = [
   "/",
   "/index.html",
+  "/about.html",
+  "/contact.html",
+  "/services.html",
   "/styles.css",
   "/main.js",
   "/images/logo-footer.webp",
-  "/contact.html",
-  "/about.html"
+  "/images/clinic-exterior.webp"
 ];
 
 // Install
