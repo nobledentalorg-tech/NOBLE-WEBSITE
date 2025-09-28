@@ -55,3 +55,21 @@ document.addEventListener("DOMContentLoaded", () => {
     new WOW().init();
   }
 });
+
+$(document).ready(function(){
+  if ($('.datatable').length) {
+    $('.datatable').DataTable({
+      pageLength: 10,
+      lengthChange: true,
+      searching: true,
+      ordering: true,
+      responsive: true,
+      language: {
+        search: "🔍 Search:",
+        lengthMenu: "Show _MENU_ entries",
+        info: "Showing _START_–_END_ of _TOTAL_",
+        paginate: { previous: "←", next: "→" }
+      }
+    });
+  }
+});
