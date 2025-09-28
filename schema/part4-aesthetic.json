@@ -1,0 +1,227 @@
+{
+  "@context": "https://schema.org",
+  "@type": "MedicalWebPage",
+  "@id": "https://nobledentalnallagandla.in/#aesthetic-dentistry",
+  "url": "https://nobledentalnallagandla.in/specialities/aesthetic-dentistry.html",
+  "name": "Aesthetic & Smile Design Dentistry — Veneers, Whitening, Prosthetics, Pediatric Esthetics",
+  "alternateName": [
+    "Cosmetic Dentistry",
+    "Smile Design",
+    "Dental Veneers",
+    "Tooth Whitening",
+    "Aesthetic Prosthodontics"
+  ],
+  "description": "Comprehensive approach to smile enhancement, color and shape correction, veneers, whitening, bonding, and fixed prosthodontic artistry. Integrates digital smile design, facial harmony analysis, pediatric esthetics, and minimally invasive techniques aligned with global standards.",
+  "inLanguage": "en-IN",
+  "isPartOf": { "@id": "https://nobledentalnallagandla.in/#organization" },
+  "medicalSpecialty": ["Dentistry", "Prosthodontics", "CosmeticDentistry", "PediatricDentistry"],
+  "keywords": "aesthetic dentistry, smile design, veneers, laminates, tooth whitening, composite bonding, crowns, bridges, smile correction, pediatric esthetics, digital smile design, tooth reshaping, diastema closure, prosthetic rehabilitation",
+  "datePublished": "2025-09-28",
+  "lastReviewed": "2025-09-28",
+  "publisher": {
+    "@type": "MedicalOrganization",
+    "name": "Noble Dental Care – Nallagandla",
+    "logo": { "@type": "ImageObject", "url": "https://nobledentalnallagandla.in/images/logo-footer.webp" }
+  },
+  "reviewedBy": {
+    "@type": "Dentist",
+    "name": "Cosmetic & Prosthodontic Team",
+    "worksFor": { "@id": "https://nobledentalnallagandla.in/#organization" }
+  },
+  "speakable": {
+    "@type": "SpeakableSpecification",
+    "cssSelector": ["header h1", ".summary", ".lead"]
+  },
+
+  "about": [
+    "Smile design",
+    "Veneers",
+    "Whitening",
+    "Crown and bridge esthetics",
+    "Tooth reshaping",
+    "Digital smile simulation"
+  ],
+
+  "mainEntityOfPage": "https://nobledentalnallagandla.in/specialities/veneers.html",
+
+  "hasPart": [
+    {
+      "@type": "MedicalProcedure",
+      "@id": "https://nobledentalnallagandla.in/#veneers",
+      "name": "Dental Veneers (Porcelain / Composite Laminates)",
+      "alternateName": ["Smile Design Veneers", "Laminates"],
+      "description": "Thin custom shells bonded to front teeth to improve color, shape, and alignment. Designed digitally and crafted from porcelain or composite.",
+      "procedureType": "Aesthetic restorative",
+      "possibleComplication": ["Postoperative sensitivity", "Debonding if overloaded"],
+      "followup": "Polishing and review at 1–2 weeks; bite assessment.",
+      "supply": [
+        { "@type": "HowToSupply", "name": "Porcelain or composite laminate" },
+        { "@type": "HowToSupply", "name": "Resin cement" }
+      ],
+      "guideline": {
+        "@type": "MedicalGuideline",
+        "guidelineSubject": "Smile design veneer preparation and bonding protocol",
+        "evidenceLevel": "High"
+      },
+      "study": [
+        { "@type": "MedicalStudy", "studySubject": "Longevity of porcelain veneers (10-year survival >90%)" }
+      ]
+    },
+
+    {
+      "@type": "MedicalProcedure",
+      "@id": "https://nobledentalnallagandla.in/#whitening",
+      "name": "Tooth Whitening (Bleaching)",
+      "alternateName": ["Teeth Whitening", "Dental Bleaching"],
+      "description": "Safe peroxide-based whitening under dental supervision. Improves brightness by 5–7 shades. Options: In-office light activation or home trays.",
+      "procedureType": "Aesthetic treatment",
+      "instrument": ["Whitening gel", "LED accelerator light"],
+      "possibleComplication": ["Transient sensitivity", "Gingival irritation"],
+      "guideline": {
+        "@type": "MedicalGuideline",
+        "guidelineSubject": "Hydrogen or carbamide peroxide use in whitening",
+        "evidenceLevel": "Moderate"
+      }
+    },
+
+    {
+      "@type": "MedicalProcedure",
+      "@id": "https://nobledentalnallagandla.in/#composite-bonding",
+      "name": "Composite Bonding",
+      "description": "Resin restoration to close gaps, fix minor chips, and correct tooth contour. Single-visit esthetic correction.",
+      "procedureType": "Direct bonding",
+      "followup": "Polishing visit after 1 week",
+      "possibleComplication": ["Color mismatch over time", "Surface wear"],
+      "instrument": ["Resin composite", "Curing light"]
+    },
+
+    {
+      "@type": "MedicalProcedure",
+      "@id": "https://nobledentalnallagandla.in/#crown-bridge",
+      "name": "Crown & Bridge Prosthodontics",
+      "description": "Full-coverage restorations for damaged or missing teeth. Metal-ceramic, all-ceramic, or zirconia materials used for strength and esthetics.",
+      "procedureType": "Fixed prosthodontics",
+      "possibleTreatment": [
+        { "@type": "MedicalDevice", "name": "Zirconia crown" },
+        { "@type": "MedicalDevice", "name": "All-ceramic bridge" }
+      ],
+      "followup": "Annual review for occlusion, hygiene, and crown integrity.",
+      "study": [
+        { "@type": "MedicalStudy", "studySubject": "Survival rates of zirconia crowns — 5-year >95%" }
+      ]
+    },
+
+    {
+      "@type": "MedicalGuideline",
+      "@id": "https://nobledentalnallagandla.in/#digital-smile-design",
+      "name": "Digital Smile Design (DSD)",
+      "description": "Photography and facial analysis-based smile simulation for preview and treatment planning.",
+      "guidelineSubject": "Digital planning and patient-centered esthetic design",
+      "evidenceLevel": "Emerging Clinical Consensus"
+    },
+
+    {
+      "@type": "MedicalCondition",
+      "@id": "https://nobledentalnallagandla.in/#discoloration",
+      "name": "Tooth Discoloration",
+      "alternateName": ["Stained Teeth", "Yellow Teeth"],
+      "description": "Extrinsic (surface stain) or intrinsic (internal) discoloration due to coffee, tobacco, trauma, or aging.",
+      "signOrSymptom": ["Dark, yellow, or grayish shade"],
+      "possibleTreatment": [
+        { "@type": "MedicalProcedure", "name": "Professional cleaning and polishing" },
+        { "@type": "MedicalProcedure", "name": "Whitening" },
+        { "@type": "MedicalProcedure", "name": "Veneers for intrinsic stains" }
+      ]
+    },
+
+    {
+      "@type": "MedicalCondition",
+      "@id": "https://nobledentalnallagandla.in/#spacing-diastema",
+      "name": "Diastema (Tooth Gap)",
+      "description": "Midline or interdental space due to size–arch mismatch or habits.",
+      "possibleTreatment": [
+        { "@type": "MedicalProcedure", "name": "Composite bonding" },
+        { "@type": "MedicalProcedure", "name": "Orthodontic alignment" }
+      ]
+    },
+
+    {
+      "@type": "MedicalCondition",
+      "@id": "https://nobledentalnallagandla.in/#fractured-anterior",
+      "name": "Fractured Front Tooth",
+      "description": "Aesthetic and functional emergency following trauma.",
+      "possibleTreatment": [
+        { "@type": "MedicalProcedure", "name": "Bonding or veneer" },
+        { "@type": "MedicalProcedure", "name": "RCT + crown if pulp involved" }
+      ]
+    },
+
+    {
+      "@type": "MedicalProcedure",
+      "@id": "https://nobledentalnallagandla.in/#tooth-reshaping",
+      "name": "Tooth Contouring & Reshaping",
+      "description": "Minor enamel adjustments to improve alignment or shape; often combined with bonding.",
+      "procedureType": "Aesthetic recontouring"
+    },
+
+    {
+      "@type": "MedicalProcedure",
+      "@id": "https://nobledentalnallagandla.in/#pediatric-esthetics",
+      "name": "Pediatric Esthetic Dentistry",
+      "description": "Restoration of primary teeth with tooth-colored materials; prevention of trauma discoloration; stainless steel or zirconia crowns for function and appearance.",
+      "audience": { "@type": "PeopleAudience", "suggestedMinAge": 2, "suggestedMaxAge": 14 },
+      "possibleTreatment": [
+        { "@type": "MedicalProcedure", "name": "Strip crown or zirconia crown in children" },
+        { "@type": "MedicalProcedure", "name": "Composite build-up for fractured primary tooth" }
+      ]
+    }
+  ],
+
+  "subjectOf": [
+    {
+      "@type": "MedicalGuideline",
+      "@id": "https://nobledentalnallagandla.in/#esthetic-principles",
+      "name": "Principles of Smile Esthetics",
+      "description": "Balance, proportion, harmony, midline, incisal curve, gingival zenith; used in DSD and clinical evaluation."
+    },
+    {
+      "@type": "MedicalGuideline",
+      "@id": "https://nobledentalnallagandla.in/#bleaching-safety",
+      "name": "Safety of Tooth Whitening",
+      "description": "Ensure proper isolation, avoid overuse, assess sensitivity; hydrogen peroxide concentration ≤6% for home kits."
+    }
+  ],
+
+  "citation": [
+    {
+      "@type": "CreativeWork",
+      "name": "Fundamentals of Esthetic Dentistry",
+      "publisher": { "@type": "Organization", "name": "British Dental Journal (Nature Publishing)" },
+      "sameAs": "https://www.nature.com/bdj/"
+    },
+    {
+      "@type": "CreativeWork",
+      "name": "Smile Design: From Digital Planning to Clinical Execution",
+      "author": [{ "@type": "Person", "name": "Christian Coachman" }],
+      "publisher": { "@type": "Organization", "name": "Quintessence Publishing" }
+    },
+    {
+      "@type": "CreativeWork",
+      "name": "Aesthetic Restorative Dentistry — Principles & Practice",
+      "author": [{ "@type": "Person", "name": "Dieter Dietschi" }],
+      "publisher": { "@type": "Organization", "name": "Quintessence" }
+    },
+    {
+      "@type": "CreativeWork",
+      "name": "Contemporary Fixed Prosthodontics (Esthetic Focus)",
+      "author": [{ "@type": "Person", "name": "Stephen F. Rosenstiel" }],
+      "publisher": { "@type": "Organization", "name": "Elsevier" }
+    }
+  ],
+
+  "audience": {
+    "@type": "Audience",
+    "audienceType": "Patients seeking smile enhancement or pediatric esthetics",
+    "geographicArea": { "@type": "AdministrativeArea", "name": "Nallagandla, Hyderabad" }
+  }
+}
