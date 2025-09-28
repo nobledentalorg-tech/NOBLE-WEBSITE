@@ -1,0 +1,133 @@
+{
+  "@context": "https://schema.org",
+  "@type": "SiteNavigationElement",
+  "@id": "https://nobledentalnallagandla.in/#navigation",
+  "name": "Noble Dental Care Navigation Menu",
+  "description": "Primary site navigation for Noble Dental Care – Nallagandla, Hyderabad. Includes top-level services, specialities, and essential patient pages.",
+  "inLanguage": "en-IN",
+  "hasPart": [
+    {
+      "@type": "WebPage",
+      "name": "Home",
+      "url": "https://nobledentalnallagandla.in/",
+      "about": "Clinic overview, team introduction, and booking access"
+    },
+    {
+      "@type": "WebPage",
+      "name": "About Us",
+      "url": "https://nobledentalnallagandla.in/about.html",
+      "about": "Our team of doctors, mission, and clinical experience"
+    },
+    {
+      "@type": "WebPage",
+      "name": "Treatments & Services",
+      "url": "https://nobledentalnallagandla.in/services.html",
+      "about": "Full list of dental treatments including Root Canal, Implants, Braces, and Cosmetic Dentistry",
+      "hasPart": [
+        {
+          "@type": "WebPage",
+          "name": "Root Canal Treatment",
+          "url": "https://nobledentalnallagandla.in/specialities/root-canal.html"
+        },
+        {
+          "@type": "WebPage",
+          "name": "Dental Implants",
+          "url": "https://nobledentalnallagandla.in/specialities/implants.html"
+        },
+        {
+          "@type": "WebPage",
+          "name": "Orthodontic Braces & Aligners",
+          "url": "https://nobledentalnallagandla.in/specialities/braces.html"
+        },
+        {
+          "@type": "WebPage",
+          "name": "Teeth Whitening & Smile Design",
+          "url": "https://nobledentalnallagandla.in/specialities/aesthetic.html"
+        },
+        {
+          "@type": "WebPage",
+          "name": "Pediatric Dentistry",
+          "url": "https://nobledentalnallagandla.in/specialities/pediatric.html"
+        },
+        {
+          "@type": "WebPage",
+          "name": "Preventive Dental Care",
+          "url": "https://nobledentalnallagandla.in/specialities/preventive.html"
+        }
+      ]
+    },
+    {
+      "@type": "WebPage",
+      "name": "Specialities",
+      "url": "https://nobledentalnallagandla.in/specialities/",
+      "hasPart": [
+        {
+          "@type": "WebPage",
+          "name": "General Dentistry",
+          "url": "https://nobledentalnallagandla.in/specialities/general.html"
+        },
+        {
+          "@type": "WebPage",
+          "name": "Restorative Dentistry",
+          "url": "https://nobledentalnallagandla.in/specialities/restorative.html"
+        },
+        {
+          "@type": "WebPage",
+          "name": "Aesthetic Dentistry",
+          "url": "https://nobledentalnallagandla.in/specialities/aesthetic.html"
+        },
+        {
+          "@type": "WebPage",
+          "name": "Emergency Dental Care",
+          "url": "https://nobledentalnallagandla.in/specialities/emergency.html"
+        }
+      ]
+    },
+    {
+      "@type": "WebPage",
+      "name": "Contact & Appointment",
+      "url": "https://nobledentalnallagandla.in/contact.html",
+      "about": "Clinic contact details, Google Maps location, and appointment booking form"
+    },
+    {
+      "@type": "WebPage",
+      "name": "Patient Care Guide",
+      "url": "https://nobledentalnallagandla.in/patient-guide.html",
+      "about": "Dental self-check, post-treatment care, and oral hygiene tips"
+    },
+    {
+      "@type": "WebPage",
+      "name": "Blog & Updates",
+      "url": "https://nobledentalnallagandla.in/blog/",
+      "about": "Educational dental articles and awareness updates"
+    }
+  ],
+  "publisher": {
+    "@type": "Organization",
+    "name": "Noble Dental Care – Nallagandla",
+    "url": "https://nobledentalnallagandla.in/",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://nobledentalnallagandla.in/images/logo-footer.webp"
+    }
+  },
+  "potentialAction": {
+    "@type": "SearchAction",
+    "target": "https://nobledentalnallagandla.in/search?q={query}",
+    "query-input": "required name=query"
+  },
+  "lastReviewed": "2025-09-28",
+  "version": "2025.3",
+  "isPartOf": {
+    "@type": "WebSite",
+    "@id": "https://nobledentalnallagandla.in/#website"
+  },
+  "keywords": [
+    "Dental Sitemap",
+    "Website Navigation Schema",
+    "Structured Data",
+    "Local SEO Menu",
+    "AI Discoverable Links",
+    "SGE Friendly Schema"
+  ]
+}
