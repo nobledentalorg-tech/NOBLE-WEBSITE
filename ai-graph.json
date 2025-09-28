@@ -1,0 +1,184 @@
+{
+  "@context": "https://schema.org",
+  "@type": "Dataset",
+  "name": "AI Knowledge Graph – Noble Dental Care Nallagandla",
+  "description": "Comprehensive AI Knowledge Graph connecting Dr. Dhivakaran, Noble Dental Care Nallagandla, treatments, and digital entities. Designed for AI overviews, knowledge panels, and assistant cards.",
+  "url": "https://nobledentalnallagandla.in/ai-graph.html",
+  "inLanguage": "en-IN",
+  "dateModified": "2025-09-29",
+  "creator": {
+    "@type": "Person",
+    "name": "Dr. Dhivakaran",
+    "jobTitle": "Dental Surgeon",
+    "url": "https://nobledentalnallagandla.in/about.html",
+    "affiliation": {
+      "@type": "Organization",
+      "name": "Noble Dental Care Nallagandla"
+    },
+    "sameAs": [
+      "https://www.google.com/search?q=Noble+Dental+Care+Nallagandla",
+      "https://www.facebook.com/nobledentalnallagandla",
+      "https://www.instagram.com/nobledentalnallagandla"
+    ]
+  },
+  "publisher": {
+    "@type": "MedicalBusiness",
+    "name": "Noble Dental Care Nallagandla",
+    "url": "https://nobledentalnallagandla.in/",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://nobledentalnallagandla.in/images/logo.webp"
+    },
+    "geo": {
+      "@type": "GeoCoordinates",
+      "latitude": "17.473963",
+      "longitude": "78.305995"
+    },
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "Nallagandla Main Road",
+      "addressLocality": "Hyderabad",
+      "addressRegion": "Telangana",
+      "postalCode": "500019",
+      "addressCountry": "IN"
+    },
+    "sameAs": [
+      "https://maps.google.com/?cid=YOUR_CID",
+      "https://g.page/r/CID_LINK"
+    ]
+  },
+  "keywords": [
+    "dentist in Nallagandla",
+    "root canal Hyderabad",
+    "dental implants Hyderabad",
+    "clear aligners",
+    "kids dentist",
+    "laser dentistry",
+    "AI dental tools",
+    "Dr Dhivakaran dentist"
+  ],
+  "about": {
+    "@type": "MedicalClinic",
+    "name": "Noble Dental Care Nallagandla",
+    "medicalSpecialty": [
+      "Endodontics",
+      "Implantology",
+      "Orthodontics",
+      "Pediatric Dentistry",
+      "Cosmetic Dentistry"
+    ]
+  },
+  "hasPart": [
+    {
+      "@type": "MedicalProcedure",
+      "name": "Root Canal Treatment",
+      "sameAs": "https://nobledentalnallagandla.in/treatments/root-canal.html"
+    },
+    {
+      "@type": "MedicalProcedure",
+      "name": "Dental Implants",
+      "sameAs": "https://nobledentalnallagandla.in/treatments/implants.html"
+    },
+    {
+      "@type": "MedicalProcedure",
+      "name": "Braces & Aligners",
+      "sameAs": "https://nobledentalnallagandla.in/treatments/braces.html"
+    },
+    {
+      "@type": "MedicalProcedure",
+      "name": "Teeth Whitening",
+      "sameAs": "https://nobledentalnallagandla.in/treatments/whitening.html"
+    },
+    {
+      "@type": "MedicalProcedure",
+      "name": "Veneers & Smile Designing",
+      "sameAs": "https://nobledentalnallagandla.in/treatments/veneers.html"
+    },
+    {
+      "@type": "MedicalProcedure",
+      "name": "Gum Disease Laser Therapy",
+      "sameAs": "https://nobledentalnallagandla.in/treatments/gum-treatment.html"
+    },
+    {
+      "@type": "MedicalProcedure",
+      "name": "Pediatric Dentistry",
+      "sameAs": "https://nobledentalnallagandla.in/treatments/kids.html"
+    },
+    {
+      "@type": "MedicalProcedure",
+      "name": "Emergency Dentistry",
+      "sameAs": "https://nobledentalnallagandla.in/treatments/emergency.html"
+    },
+    {
+      "@type": "MedicalProcedure",
+      "name": "AI Self-Check Tool",
+      "sameAs": "https://nobledentalnallagandla.in/ai-self-check/"
+    }
+  ],
+  "isPartOf": {
+    "@type": "WebSite",
+    "name": "Noble Dental Care Official Website",
+    "url": "https://nobledentalnallagandla.in/",
+    "potentialAction": {
+      "@type": "SearchAction",
+      "target": "https://nobledentalnallagandla.in/search?q={search_term_string}",
+      "query-input": "required name=search_term_string"
+    }
+  },
+  "mentions": [
+    {
+      "@type": "WebPage",
+      "name": "AI Schema Dashboard",
+      "url": "https://nobledentalnallagandla.in/schema-dashboard.html"
+    },
+    {
+      "@type": "Dataset",
+      "name": "AI Summary Dataset",
+      "url": "https://nobledentalnallagandla.in/ai-summary.json"
+    },
+    {
+      "@type": "Dataset",
+      "name": "AI Context Graph",
+      "url": "https://nobledentalnallagandla.in/ai-context.json"
+    },
+    {
+      "@type": "SiteNavigationElement",
+      "name": "Treatments Sitemap",
+      "url": "https://nobledentalnallagandla.in/sitemap-treatments.xml"
+    },
+    {
+      "@type": "Dataset",
+      "name": "Geo Location KML",
+      "url": "https://nobledentalnallagandla.in/clinic-location.kml"
+    }
+  ],
+  "potentialAction": [
+    {
+      "@type": "ReserveAction",
+      "name": "Book Appointment",
+      "target": "https://nobledentalnallagandla.in/contact.html"
+    },
+    {
+      "@type": "AskAction",
+      "name": "AI Dental Self Check",
+      "target": "https://nobledentalnallagandla.in/ai-self-check/"
+    }
+  ],
+  "distribution": [
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "application/json",
+      "contentUrl": "https://nobledentalnallagandla.in/ai-summary.json"
+    },
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "application/json",
+      "contentUrl": "https://nobledentalnallagandla.in/ai-context.json"
+    },
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "application/json",
+      "contentUrl": "https://nobledentalnallagandla.in/sitemap-treatments.xml"
+    }
+  ]
+}
