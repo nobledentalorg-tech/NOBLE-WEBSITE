@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en-IN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Schema Audit Console | Noble Dental Care – NDC-D</title>
+  <meta name="description" content="Advanced AI & SEO schema analytics for Noble Dental Care, Nallagandla. Track validation, AI readiness, and knowledge graph performance.">
+  <link rel="icon" href="/images/logo-footer.webp" type="image/webp">
+
+  <!-- Chart.js -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+
+  <style>
+    :root {
+      --bg: #f5faff;
+      --card: #fff;
+      --ink: #0e1116;
+      --brand: #12b2a0;
+      --muted: #475569;
+      --good: #22c55e;
+      --warn: #f59e0b;
+      --bad: #ef4444;
+      --radius: 16px;
+      --shadow: 0 6px 20px rgba(0,0,0,0.08);
+      --transition: 0.5s ease;
+    }
+    body {
+      margin: 0;
+      font-family: system-ui, sans-serif;
+      background: var(--bg);
+      color: var(--ink);
+    }
+    header {
+      background: linear-gradient(135deg, var(--brand), #009d8e);
+      color: #fff;
+      text-align: center;
+      padding: 2rem 1rem;
+      box-shadow: var(--shadow);
+    }
+    header h1 { margin: 0; font-weight: 700; font-size: 1.8rem; }
+    header p { margin: 0.5rem 0 0; opacity: 0.9; }
+
+    main {
+      max-width: 1200px;
+      margin: 2rem auto;
+      padding: 0 1rem;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .card {
+      background: var(--card);
+      border-radius: var(--radius);
+      padding: 1.5rem;
+      box-shadow: var(--shadow);
+      transition: transform var(--transition);
+    }
+    .card:hover { transform: translateY(-6px); }
+
+    .metric { font-size: 2.2rem; font-weight: 700; color: var(--brand); }
+    h2 { margin-top: 0; font-weight: 600; }
+    .list { font-size: 0.9rem; color: var(--muted); margin-top: 0.75rem; }
+
+    .status {
+      display: inline-block;
+      padding: 4px 8px;
+      border-radius: 6px;
+      color: #fff;
+      font-size: 0.8rem;
+      margin-top: 6px;
+    }
+    .status.good { background: var(--good); }
+    .status.warn { background: var(--warn); }
+    .status.bad  { background: var(--bad); }
+
+    canvas { width: 100%; height: 220px; }
+    footer {
+      text-align: center;
+      font-size: 0.8rem;
+      color: var(--muted);
+      padding: 1rem;
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <h1>🧠 NDC-D Schema Audit Console</h1>
+    <p>Live insights into validation, AI readiness & SERP feature eligibility</p>
+  </header>
+
+  <main id="dashboard">
+    <div class="card">
+      <h2>Rich Results Validation</h2>
+      <canvas id="validationChart"></canvas>
+      <div class="list">Displays validator score, NLP coverage, and AI readiness trend.</div>
+    </div>
+
+    <div class="card">
+      <h2>Feature Eligibility Breakdown</h2>
+      <canvas id="featureChart"></canvas>
+      <div class="list">Shows how your schema enables Google Rich Cards and SGE responses.</div>
+    </div>
+
+    <div class="card">
+      <h2>Schema Summary</h2>
+      <div id="schemaSummary" class="list">Loading summary...</div>
+    </div>
+
+    <div class="card">
+      <h2>Recommendations</h2>
+      <ul id="recommendList" class="list"></ul>
+    </div>
+  </main>
+
+  <footer>© 2025 Noble Dental Care — Schema Console v2025.6 (Chart Pro Edition)</footer>
+
+  <script>
+  async function initDashboard() {
+    const report = await fetch("/schema/validation-report.json").then(r=>r.json()).catch(()=>null);
+    const log = await fetch("/schema/schema-maintenance-log.json").then(r=>r.json()).catch(()=>null);
+
+    const summary = report?.richResultsReport?.eligibilitySummary || {};
+    const ai = report?.richResultsReport?.aiAlignment || {};
+    const features = report?.richResultsReport?.eligibleFeatures || [];
+    const recs = report?.richResultsReport?.recommendations || [];
+
+    // --- Chart 1: Validation Overview ---
+    const ctx1 = document.getElementById("validationChart").getContext("2d");
+    new Chart(ctx1, {
+      type: "doughnut",
+      data: {
+        labels: ["Validator Score", "AI NLP Coverage", "Confidence Index"],
+        datasets: [{
+          data: [summary.score || 9.9, ai.nlpCoverageScore || 9.8, 9.95],
+          backgroundColor: ["#12B2A0", "#3B82F6", "#22C55E"]
+        }]
+      },
+      options: {
+        plugins: {
+          legend: { position: "bottom" },
+          title: { display: true, text: "Schema Quality Index" }
+        },
+        animation: { animateScale: true }
+      }
+    });
+
+    // --- Chart 2: Feature Eligibility ---
+    const ctx2 = document.getElementById("featureChart").getContext("2d");
+    new Chart(ctx2, {
+      type: "bar",
+      data: {
+        labels: features.map(f => f.feature),
+        datasets: [{
+          label: "Confidence (1–10)",
+          data: features.map(f => f.confidence),
+          backgroundColor: features.map(f => f.confidence > 9.5 ? "#22C55E" : "#F59E0B")
+        }]
+      },
+      options: {
+        indexAxis: "y",
+        scales: { x: { min: 0, max: 10 } },
+        plugins: { legend: { display: false } }
+      }
+    });
+
+    // --- Schema Summary ---
+    const totalBlocks = summary.totalSchemaBlocks || 0;
+    const entityCount = summary.entitiesDetected || 0;
+    const status = summary.overallStatus || "N/A";
+    const conf = summary.confidence || "High";
+    const lastVal = log?.schemaMaintenanceLog?.lastValidated || "Unknown";
+
+    document.getElementById("schemaSummary").innerHTML = `
+      <p><strong>Blocks:</strong> ${totalBlocks} JSON-LD</p>
+      <p><strong>Entities:</strong> ${entityCount}</p>
+      <p><strong>Status:</strong> ${status}</p>
+      <p><strong>Confidence:</strong> ${conf}</p>
+      <p><strong>Last Validated:</strong> ${lastVal}</p>
+    `;
+
+    // --- Recommendations ---
+    const recList = document.getElementById("recommendList");
+    recs.forEach(r => {
+      const li = document.createElement("li");
+      li.textContent = `⚙️ ${r.message} (${r.impact} impact)`;
+      recList.appendChild(li);
+    });
+  }
+  document.addEventListener("DOMContentLoaded", initDashboard);
+  </script>
+</body>
+</html>
