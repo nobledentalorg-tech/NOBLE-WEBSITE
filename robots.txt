@@ -81,6 +81,7 @@ Sitemap: https://nobledentalnallagandla.in/clinic-location.kml
 Sitemap: https://nobledentalnallagandla.in/clinic-location.json
 Sitemap: https://nobledentalnallagandla.in/ai-summary.json
 Sitemap: https://nobledentalnallagandla.in/ai-graph.json
+Sitemap: https://nobledentalnallagandla.in/ai-context.json
 
 # ================================
 # Crawl Rate & Optimization
