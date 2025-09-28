@@ -60,6 +60,7 @@ Allow: /schema/
 Allow: /schema-dashboard.html
 Allow: /js/ai-schema-engine.js
 Allow: /js/ai-schema-insights.js
+Allow: /ai-schema-dashboard.html
 
 # Enable AI engines to read structured data
 Allow: /schema/validation-report.json
