@@ -1,24 +1,24 @@
 # ================================
 # Noble Dental Care - Robots.txt
-# SEO + AI Optimized
+# SEO + AI Optimized (2025 Pro Edition)
 # ================================
 
 User-agent: *
 Allow: /
 Disallow: /admin/
 Disallow: /tmp/
-Disallow: /search?
-Disallow: /cgi-bin/
 Disallow: /private/
+Disallow: /drafts/
+Disallow: /old/
+Disallow: /cgi-bin/
+Disallow: /search?
 Disallow: /*?sessionid=
 Disallow: /*?ref=
-
-# Special: block duplicate feeds/canonicals
 Disallow: /*?utm_*
 Disallow: /*?fbclid=*
 
 # ================================
-# AI & Research Bots
+# AI & Research Bots (Knowledge Graph + LLM)
 # ================================
 User-agent: ChatGPT-User
 Allow: /
@@ -26,10 +26,16 @@ Allow: /
 User-agent: GPTBot
 Allow: /
 
-User-agent: PerplexityBot
+User-agent: Googlebot
 Allow: /
 
 User-agent: Google-Extended
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+User-agent: BingAI
 Allow: /
 
 User-agent: ClaudeBot
@@ -38,12 +44,36 @@ Allow: /
 User-agent: anthropic-ai
 Allow: /
 
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: DuckDuckBot
+Allow: /
+
+User-agent: CCBot
+Allow: /
+
 # ================================
-# Sitemaps
+# Schema & AI Data Access
+# ================================
+Allow: /schema/
+Allow: /schema-dashboard.html
+Allow: /js/ai-schema-engine.js
+Allow: /js/ai-schema-insights.js
+
+# Enable AI engines to read structured data
+Allow: /schema/validation-report.json
+Allow: /schema/schema-maintenance-log.json
+Allow: /schema/richresults-eligibility.json
+Allow: /schema/schema-intelligence-dashboard.json
+
+# ================================
+# Sitemap Indexes
 # ================================
 Sitemap: https://nobledentalnallagandla.in/sitemap-index.xml
 Sitemap: https://nobledentalnallagandla.in/sitemap.xml
 Sitemap: https://nobledentalnallagandla.in/sitemap-services.xml
+Sitemap: https://nobledentalnallagandla.in/sitemap-treatments.xml
 Sitemap: https://nobledentalnallagandla.in/sitemap-news.xml
 Sitemap: https://nobledentalnallagandla.in/sitemap-images.xml
 Sitemap: https://nobledentalnallagandla.in/sitemap-locations.xml
@@ -51,6 +81,13 @@ Sitemap: https://nobledentalnallagandla.in/clinic-location.kml
 Sitemap: https://nobledentalnallagandla.in/clinic-location.json
 
 # ================================
-# Crawl Control
+# Crawl Rate & Optimization
 # ================================
 Crawl-delay: 2
+
+# ================================
+# AI Visibility Notes:
+# - Enables AI engines to parse Noble Dental schema & JSON-LD.
+# - Ensures inclusion in AI Overview (SGE), ChatGPT Browse, and BingAI Cards.
+# - Supports Knowledge Graph panels and voice search discovery.
+# ================================
