@@ -1,19 +1,37 @@
 /* =========================================================
-   Responsive Layout
+   Responsive Layout – Noble Dental Care
+   Optimized for tablets & mobile screens
 ========================================================= */
+
+/* ===== Large Tablets (≤992px) ===== */
 @media (max-width: 992px) {
   body { margin-left: 0 !important; }
-  .sidebar { display:none; }
-  header.navbar { position:sticky; top:0; z-index:1000; }
+  .sidebar { display: none !important; }
+  header.navbar { position: sticky; top: 0; z-index: 1000; }
+  .container-fluid { padding: 1rem !important; }
+  .card { margin-bottom: 1rem; }
 }
 
+/* ===== Tablets (≤768px) ===== */
 @media (max-width: 768px) {
-  h2 { font-size: 1.4rem; }
-  .card h2 { font-size: 1.25rem; }
-  .btn { font-size: 0.9rem; padding: 6px 12px; }
+  h2, h3, h4 { font-size: 1.3rem; }
+  .card h2 { font-size: 1.15rem; }
+  .btn {
+    font-size: 0.9rem;
+    padding: 6px 12px;
+    border-radius: 6px;
+  }
+  .table { font-size: 0.9rem; }
+  .navbar-brand { font-size: 1.1rem; }
+  .sidebar { width: 100%; position: absolute; z-index: 9999; }
 }
 
+/* ===== Mobile (≤576px) ===== */
 @media (max-width: 576px) {
   .card { padding: 1rem; }
   table { font-size: 0.85rem; }
+  .btn { display: block; width: 100%; margin-bottom: 0.5rem; }
+  h2, h3 { font-size: 1.1rem; }
+  .card h5 { font-size: 1rem; }
+  footer { text-align: center; padding: 0.75rem; }
 }
