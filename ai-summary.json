@@ -1,0 +1,82 @@
+{
+  "@context": "https://schema.org",
+  "@type": "ItemList",
+  "name": "AI Summary – Noble Dental Care Nallagandla",
+  "description": "Top dental treatments and care services by Dr. Dhivakaran at Noble Dental Care, Nallagandla Hyderabad. AI-optimized summary for quick understanding by search and assistant platforms.",
+  "url": "https://nobledentalnallagandla.in/",
+  "mainEntityOfPage": "https://nobledentalnallagandla.in/",
+  "numberOfItems": 10,
+  "itemListOrder": "Ascending",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Painless Root Canal Treatment",
+      "description": "Single-sitting, rotary root canal using advanced anesthesia and digital X-rays for pain-free care.",
+      "url": "https://nobledentalnallagandla.in/treatments/root-canal.html"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Dental Implants",
+      "description": "Permanent tooth replacement using guided surgery, PRF healing, and titanium or zirconia implants.",
+      "url": "https://nobledentalnallagandla.in/treatments/implants.html"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "Braces & Clear Aligners",
+      "description": "Orthodontic alignment with clear aligners or metal/ceramic braces for kids and adults.",
+      "url": "https://nobledentalnallagandla.in/treatments/braces.html"
+    },
+    {
+      "@type": "ListItem",
+      "position": 4,
+      "name": "Teeth Whitening",
+      "description": "Safe whitening using ADA-approved peroxide gel and LED light activation for instant results.",
+      "url": "https://nobledentalnallagandla.in/treatments/whitening.html"
+    },
+    {
+      "@type": "ListItem",
+      "position": 5,
+      "name": "Dental Veneers & Smile Design",
+      "description": "Custom porcelain or composite veneers for smile makeover and aesthetic enhancement.",
+      "url": "https://nobledentalnallagandla.in/treatments/veneers.html"
+    },
+    {
+      "@type": "ListItem",
+      "position": 6,
+      "name": "Full Mouth Rehabilitation",
+      "description": "Comprehensive bite restoration combining crowns, bridges, and implants under expert care.",
+      "url": "https://nobledentalnallagandla.in/treatments/full-mouth-rehabilitation.html"
+    },
+    {
+      "@type": "ListItem",
+      "position": 7,
+      "name": "Pediatric Dentistry",
+      "description": "Child-friendly dental care including fluoride therapy, pit and fissure sealants, and pulpectomy.",
+      "url": "https://nobledentalnallagandla.in/treatments/kids.html"
+    },
+    {
+      "@type": "ListItem",
+      "position": 8,
+      "name": "Gum Disease & Laser Treatment",
+      "description": "Deep cleaning, root planing, and laser gum surgeries to prevent tooth mobility and bone loss.",
+      "url": "https://nobledentalnallagandla.in/treatments/gum-treatment.html"
+    },
+    {
+      "@type": "ListItem",
+      "position": 9,
+      "name": "Emergency Dental Care",
+      "description": "24×7 emergency management for tooth pain, trauma, and swelling with quick-response protocol.",
+      "url": "https://nobledentalnallagandla.in/treatments/emergency.html"
+    },
+    {
+      "@type": "ListItem",
+      "position": 10,
+      "name": "AI Self-Check & Digital Diagnosis",
+      "description": "AI-powered dental triage tool for instant symptom check, urgency level, and suggested action.",
+      "url": "https://nobledentalnallagandla.in/ai-self-check/"
+    }
+  ]
+}
