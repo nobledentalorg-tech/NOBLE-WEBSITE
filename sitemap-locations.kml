@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://www.opengis.net/kml/2.2">
+  <Document>
+    <name>Noble Dental Care - Treatment Locations (Hyderabad)</name>
+    <description>All treatment service URLs of Noble Dental Care, Nallagandla, Hyderabad with GEO coordinates for Google Maps & Earth.</description>
+
+    <!-- ===== Core Services ===== -->
+    <Placemark><name>Root Canal Treatment</name><description>https://nobledentalnallagandla.in/treatments/root-canal.html</description><Point><coordinates>78.305995,17.473963,0</coordinates></Point></Placemark>
+    <Placemark><name>Dental Implants</name><description>https://nobledentalnallagandla.in/treatments/implants.html</description><Point><coordinates>78.305995,17.473963,0</coordinates></Point></Placemark>
+    <Placemark><name>Braces & Aligners</name><description>https://nobledentalnallagandla.in/treatments/braces.html</description><Point><coordinates>78.305995,17.473963,0</coordinates></Point></Placemark>
+    <Placemark><name>Teeth Whitening</name><description>https://nobledentalnallagandla.in/treatments/whitening.html</description><Point><coordinates>78.305995,17.473963,0</coordinates></Point></Placemark>
+    <Placemark><name>Teeth Cleaning / Dental Scaling</name><description>https://nobledentalnallagandla.in/treatments/cleaning.html</description><Point><coordinates>78.305995,17.473963,0</coordinates></Point></Placemark>
+    <Placemark><name>Gum Disease Treatment</name><description>https://nobledentalnallagandla.in/treatments/gum-treatment.html</description><Point><coordinates>78.305995,17.473963,0</coordinates></Point></Placemark>
+    <Placemark><name>Kids Dentistry</name><description>https://nobledentalnallagandla.in/treatments/kids.html</description><Point><coordinates>78.305995,17.473963,0</coordinates></Point></Placemark>
+    <Placemark><name>Emergency Dentistry</name><description>https://nobledentalnallagandla.in/treatments/emergency.html</description><Point><coordinates>78.305995,17.473963,0</coordinates></Point></Placemark>
+    <Placemark><name>Tooth Extraction</name><description>https://nobledentalnallagandla.in/treatments/tooth-extraction.html</description><Point><coordinates>78.305995,17.473963,0</coordinates></Point></Placemark>
+    <Placemark><name>Dental Crowns</name><description>https://nobledentalnallagandla.in/treatments/dental-crowns.html</description><Point><coordinates>78.305995,17.473963,0</coordinates></Point></Placemark>
+    <Placemark><name>Veneers</name><description>https://nobledentalnallagandla.in/treatments/veneers.html</description><Point><coordinates>78.305995,17.473963,0</coordinates></Point></Placemark>
+    <Placemark><name>Dentures</name><description>https://nobledentalnallagandla.in/treatments/dentures.html</description><Point><coordinates>78.305995,17.473963,0</coordinates></Point></Placemark>
+    <Placemark><name>Smile Makeover</name><description>https://nobledentalnallagandla.in/treatments/smile-makeover.html</description><Point><coordinates>78.305995,17.473963,0</coordinates></Point></Placemark>
+    <Placemark><name>Full Mouth Rehabilitation</name><description>https://nobledentalnallagandla.in/treatments/full-mouth-rehabilitation.html</description><Point><coordinates>78.305995,17.473963,0</coordinates></Point></Placemark>
+    <Placemark><name>Wisdom Tooth Surgery</name><description>https://nobledentalnallagandla.in/treatments/wisdom-tooth.html</description><Point><coordinates>78.305995,17.473963,0</coordinates></Point></Placemark>
+
+    <!-- ===== Surgical / Advanced ===== -->
+    <Placemark><name>Orthognathic Surgery</name><description>https://nobledentalnallagandla.in/treatments/orthognathic-surgery.html</description><Point><coordinates>78.305995,17.473963,0</coordinates></Point></Placemark>
+    <Placemark><name>TMJ Disorder Treatment</name><description>https://nobledentalnallagandla.in/treatments/tmj-treatment.html</description><Point><coordinates>78.305995,17.473963,0</coordinates></Point></Placemark>
+    <Placemark><name>Jaw Fracture & Facial Trauma</name><description>https://nobledentalnallagandla.in/treatments/jaw-fracture.html</description><Point><coordinates>78.305995,17.473963,0</coordinates></Point></Placemark>
+    <Placemark><name>Mouth Ulcer / Lesion Treatment</name><description>https://nobledentalnallagandla.in/treatments/mouth-ulcer.html</description><Point><coordinates>78.305995,17.473963,0</coordinates></Point></Placemark>
+
+    <!-- ===== Preventive & Diagnostic ===== -->
+    <Placemark><name>Preventive Dentistry</name><description>https://nobledentalnallagandla.in/treatments/preventive.html</description><Point><coordinates>78.305995,17.473963,0</coordinates></Point></Placemark>
+    <Placemark><name>Oral Cancer Screening</name><description>https://nobledentalnallagandla.in/treatments/oral-cancer-screening.html</description><Point><coordinates>78.305995,17.473963,0</coordinates></Point></Placemark>
+    <Placemark><name>Digital X-Rays</name><description>https://nobledentalnallagandla.in/treatments/digital-xrays.html</description><Point><coordinates>78.305995,17.473963,0</coordinates></Point></Placemark>
+    <Placemark><name>CBCT 3D Scans</name><description>https://nobledentalnallagandla.in/treatments/cbct.html</description><Point><coordinates>78.305995,17.473963,0</coordinates></Point></Placemark>
+    <Placemark><name>Laser Dentistry</name><description>https://nobledentalnallagandla.in/treatments/laser-dentistry.html</description><Point><coordinates>78.305995,17.473963,0</coordinates></Point></Placemark>
+    <Placemark><name>Sedation Dentistry</name><description>https://nobledentalnallagandla.in/treatments/sedation.html</description><Point><coordinates>78.305995,17.473963,0</coordinates></Point></Placemark>
+
+    <!-- ===== Pediatric & Preventive Care ===== -->
+    <Placemark><name>Pulp Therapy for Kids</name><description>https://nobledentalnallagandla.in/treatments/pulp-therapy.html</description><Point><coordinates>78.305995,17.473963,0</coordinates></Point></Placemark>
+    <Placemark><name>Habit Breaking Appliances</name><description>https://nobledentalnallagandla.in/treatments/habit-appliances.html</description><Point><coordinates>78.305995,17.473963,0</coordinates></Point></Placemark>
+    <Placemark><name>Space Maintainers</name><description>https://nobledentalnallagandla.in/treatments/space-maintainers.html</description><Point><coordinates>78.305995,17.473963,0</coordinates></Point></Placemark>
+    <Placemark><name>Fluoride Treatments</name><description>https://nobledentalnallagandla.in/treatments/fluoride.html</description><Point><coordinates>78.305995,17.473963,0</coordinates></Point></Placemark>
+    <Placemark><name>Dental Sealants</name><description>https://nobledentalnallagandla.in/treatments/dental-sealants.html</description><Point><coordinates>78.305995,17.473963,0</coordinates></Point></Placemark>
+
+    <!-- ===== Cosmetic & Restorative ===== -->
+    <Placemark><name>Dental Fillings</name><description>https://nobledentalnallagandla.in/treatments/dental-fillings.html</description><Point><coordinates>78.305995,17.473963,0</coordinates></Point></Placemark>
+    <Placemark><name>Inlays & Onlays</name><description>https://nobledentalnallagandla.in/treatments/inlays-onlays.html</description><Point><coordinates>78.305995,17.473963,0</coordinates></Point></Placemark>
+    <Placemark><name>Cavity Prevention</name><description>https://nobledentalnallagandla.in/treatments/cavity-prevention.html</description><Point><coordinates>78.305995,17.473963,0</coordinates></Point></Placemark>
+    <Placemark><name>Oral Prophylaxis</name><description>https://nobledentalnallagandla.in/treatments/oral-prophylaxis.html</description><Point><coordinates>78.305995,17.473963,0</coordinates></Point></Placemark>
+    <Placemark><name>Crown Lengthening</name><description>https://nobledentalnallagandla.in/treatments/crown-lengthening.html</description><Point><coordinates>78.305995,17.473963,0</coordinates></Point></Placemark>
+    <Placemark><name>Bone Grafting</name><description>https://nobledentalnallagandla.in/treatments/bone-grafting.html</description><Point><coordinates>78.305995,17.473963,0</coordinates></Point></Placemark>
+    <Placemark><name>Sinus Lift</name><description>https://nobledentalnallagandla.in/treatments/sinus-lift.html</description><Point><coordinates>78.305995,17.473963,0</coordinates></Point></Placemark>
+
+    <!-- ===== Advanced Digital & AI ===== -->
+    <Placemark><name>CAD/CAM Dentistry</name><description>https://nobledentalnallagandla.in/treatments/cad-cam.html</description><Point><coordinates>78.305995,17.473963,0</coordinates></Point></Placemark>
+    <Placemark><name>3D Printing in Dentistry</name><description>https://nobledentalnallagandla.in/treatments/3d-printing.html</description><Point><coordinates>78.305995,17.473963,0</coordinates></Point></Placemark>
+    <Placemark><name>AI in Dentistry</name><description>https://nobledentalnallagandla.in/treatments/ai-dentistry.html</description><Point><coordinates>78.305995,17.473963,0</coordinates></Point></Placemark>
+    <Placemark><name>Digital Smile Design</name><description>https://nobledentalnallagandla.in/treatments/digital-smile-design.html</description><Point><coordinates>78.305995,17.473963,0</coordinates></Point></Placemark>
+
+    <!-- ===== Others ===== -->
+    <Placemark><name>Night Guards</name><description>https://nobledentalnallagandla.in/treatments/night-guards.html</description><Point><coordinates>78.305995,17.473963,0</coordinates></Point></Placemark>
+    <Placemark><name>Sports Mouthguards</name><description>https://nobledentalnallagandla.in/treatments/sports-mouthguards.html</description><Point><coordinates>78.305995,17.473963,0</coordinates></Point></Placemark>
+    <Placemark><name>Post & Core Restoration</name><description>https://nobledentalnallagandla.in/treatments/post-core.html</description><Point><coordinates>78.305995,17.473963,0</coordinates></Point></Placemark>
+    <Placemark><name>Dental Bridges</name><description>https://nobledentalnallagandla.in/treatments/dental-bridges.html</description><Point><coordinates>78.305995,17.473963,0</coordinates></Point></Placemark>
+    <Placemark><name>Dental Bonding</name><description>https://nobledentalnallagandla.in/treatments/dental-bonding.html</description><Point><coordinates>78.305995,17.473963,0</coordinates></Point></Placemark>
+    <Placemark><name>Cosmetic Dentistry</name><description>https://nobledentalnallagandla.in/treatments/cosmetic-dentistry.html</description><Point><coordinates>78.305995,17.473963,0</coordinates></Point></Placemark>
+    <Placemark><name>Oral Surgery</name><description>https://nobledentalnallagandla.in/treatments/oral-surgery.html</description><Point><coordinates>78.305995,17.473963,0</coordinates></Point></Placemark>
+
+  </Document>
+</kml>
