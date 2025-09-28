@@ -1,0 +1,93 @@
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "@id": "https://nobledentalnallagandla.in/#breadcrumbs",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://nobledentalnallagandla.in/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "About Us",
+      "item": "https://nobledentalnallagandla.in/about.html"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "Our Services",
+      "item": "https://nobledentalnallagandla.in/services.html"
+    },
+    {
+      "@type": "ListItem",
+      "position": 4,
+      "name": "Specialities",
+      "item": "https://nobledentalnallagandla.in/specialities/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 5,
+      "name": "Preventive Dentistry",
+      "item": "https://nobledentalnallagandla.in/specialities/preventive.html"
+    },
+    {
+      "@type": "ListItem",
+      "position": 6,
+      "name": "Restorative Dentistry",
+      "item": "https://nobledentalnallagandla.in/specialities/restorative.html"
+    },
+    {
+      "@type": "ListItem",
+      "position": 7,
+      "name": "Cosmetic & Aesthetic Dentistry",
+      "item": "https://nobledentalnallagandla.in/specialities/aesthetic.html"
+    },
+    {
+      "@type": "ListItem",
+      "position": 8,
+      "name": "Implants & Surgical Care",
+      "item": "https://nobledentalnallagandla.in/specialities/implants.html"
+    },
+    {
+      "@type": "ListItem",
+      "position": 9,
+      "name": "Pediatric Dentistry",
+      "item": "https://nobledentalnallagandla.in/specialities/pediatric.html"
+    },
+    {
+      "@type": "ListItem",
+      "position": 10,
+      "name": "Contact & Booking",
+      "item": "https://nobledentalnallagandla.in/contact.html"
+    }
+  ],
+  "inLanguage": "en-IN",
+  "publisher": {
+    "@type": "Organization",
+    "name": "Noble Dental Care – Nallagandla",
+    "url": "https://nobledentalnallagandla.in/",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://nobledentalnallagandla.in/images/logo-footer.webp"
+    }
+  },
+  "isPartOf": {
+    "@type": "WebSite",
+    "name": "Noble Dental Care",
+    "url": "https://nobledentalnallagandla.in/"
+  },
+  "lastReviewed": "2025-09-28",
+  "version": "2025.3",
+  "description": "Structured breadcrumb schema for Noble Dental Care Nallagandla, connecting home, specialities, and treatment pages for AI and SEO navigation. Enables rich breadcrumbs in Google SERP and SGE panels.",
+  "keywords": [
+    "Dental Breadcrumbs",
+    "Schema Navigation",
+    "SEO Structure",
+    "Noble Dental Nallagandla",
+    "AI Sitemap",
+    "SGE Pathways"
+  ]
+}
