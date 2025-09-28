@@ -1,9 +1,8 @@
 <?php
 /**
- * PRINT PRESCRIPTION
+ * PRINT PRESCRIPTION – DIGITAL SIGNATURE EDITION
  * -------------------------------------------------------
- * Generates a printable / downloadable prescription PDF
- * for Noble Dental Care – with clinic branding and signature
+ * Branded PDF with logo, QR verification, watermark & e-signature
  */
 
 require_once '../../config/db_connect.php';
@@ -12,39 +11,36 @@ require_once '../../core/functions.php';
 
 checkLogin();
 
-require_once '../../vendor/autoload.php'; // if you use composer (dompdf/mpdf)
+require_once '../../vendor/autoload.php';
 use Dompdf\Dompdf;
+use Dompdf\Options;
 
 // ----------------------------
-// Input Handling
+// Inputs
 // ----------------------------
-$patient_id = $_GET['pid'] ?? 0;
-$prescription_id = $_GET['id'] ?? 0;
-
-if (!$patient_id || !$prescription_id) {
-  die("Invalid request");
-}
+$pid = $_GET['pid'] ?? 0;
+$rxid = $_GET['id'] ?? 0;
+if (!$pid || !$rxid) die("Invalid request.");
 
 // ----------------------------
-// Fetch Data
+// Data Fetch
 // ----------------------------
-$stmtP = $pdo->prepare("SELECT * FROM patients WHERE patient_id = ?");
-$stmtP->execute([$patient_id]);
+$stmtP = $pdo->prepare("SELECT * FROM patients WHERE patient_id=?");
+$stmtP->execute([$pid]);
 $patient = $stmtP->fetch(PDO::FETCH_ASSOC);
 
 $stmtRx = $pdo->prepare("
-  SELECT drug_name, dose, frequency, duration, remarks 
-  FROM prescriptions_items 
-  WHERE prescription_id = ?
+  SELECT drug_name, dose, frequency, duration, remarks
+  FROM prescriptions_items WHERE prescription_id=?
 ");
-$stmtRx->execute([$prescription_id]);
+$stmtRx->execute([$rxid]);
 $items = $stmtRx->fetchAll(PDO::FETCH_ASSOC);
 
-if (!$patient) die("Patient not found");
-if (!$items) die("No prescription data available");
+if (!$patient) die("Patient not found.");
+if (!$items) die("No drugs in prescription.");
 
 // ----------------------------
-// Clinic Info (could come from settings)
+// Clinic / Branding
 // ----------------------------
 $clinic = [
   "name" => "Noble Dental Care",
@@ -52,8 +48,16 @@ $clinic = [
   "phone" => "+91-XXXXXXXXXX",
   "email" => "contact@nobledentalnallagandla.in",
   "doctor" => $_SESSION['full_name'] ?? "Dr. Dhivakaran",
-  "regno" => "TS/DC/2025/XXXX"
+  "regno" => "TS/DC/2025/XXXX",
+  "logo" => "https://nobledentalnallagandla.in/assets/images/logo-footer.webp",
+  "signature" => "https://nobledentalnallagandla.in/assets/images/digital-signature.webp"
 ];
+
+// Unique verification URL / QR target
+$verifyUrl = "https://nobledentalnallagandla.in/verify.php?rx=" . urlencode($rxid);
+
+// Generate inline QR (Google Charts API)
+$qr = "https://chart.googleapis.com/chart?chs=120x120&cht=qr&chl=" . urlencode($verifyUrl);
 
 // ----------------------------
 // Build HTML
@@ -62,52 +66,57 @@ $html = '
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Prescription - '.$clinic['name'].'</title>
-  <style>
-    body { font-family: DejaVu Sans, sans-serif; color:#0f172a; }
-    .header { text-align:center; border-bottom:2px solid #12B2A0; margin-bottom:10px; }
-    .clinic-name { font-size:20px; font-weight:bold; color:#12B2A0; }
-    .contact { font-size:12px; color:#475569; }
-    table { width:100%; border-collapse:collapse; margin-top:15px; }
-    th, td { border:1px solid #ccc; padding:8px; font-size:13px; }
-    th { background:#12B2A0; color:#fff; }
-    h3 { margin-top:20px; }
-    .footer { text-align:center; font-size:11px; color:#475569; margin-top:20px; }
-    .sign { text-align:right; margin-top:40px; }
-  </style>
+<meta charset="UTF-8">
+<title>Prescription – '.$clinic['name'].'</title>
+<style>
+@page { margin: 30px; }
+body {
+  font-family: DejaVu Sans, sans-serif;
+  color: #0f172a;
+  background: url("data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' width=\'600\' height=\'600\'%3E%3Ctext x=\'50%25\' y=\'50%25\' dominant-baseline=\'middle\' text-anchor=\'middle\' fill=\'%23a3a3a310\' font-size=\'60\' font-family=\'sans-serif\'%3ENoble Dental Care%3C/text%3E%3C/svg%3E") center center no-repeat;
+  background-size: 400px;
+}
+.header { text-align:center; border-bottom:2px solid #12B2A0; padding-bottom:6px; margin-bottom:12px; }
+.header img { height:60px; margin-bottom:4px; }
+.clinic-name { font-size:22px; font-weight:700; color:#12B2A0; }
+.contact { font-size:12px; color:#475569; }
+table { width:100%; border-collapse:collapse; margin-top:12px; }
+th,td { border:1px solid #ccc; padding:6px 8px; font-size:13px; }
+th { background:#12B2A0; color:#fff; }
+.section-title { margin-top:16px; font-size:15px; color:#0f172a; border-bottom:1px solid #12B2A0; }
+.footer { text-align:center; font-size:11px; color:#475569; margin-top:20px; }
+.sign-block { margin-top:40px; text-align:right; }
+.sign-block img { height:50px; display:block; margin-left:auto; }
+.qr-block { position:absolute; bottom:40px; left:40px; }
+</style>
 </head>
 <body>
 
 <div class="header">
+  <img src="'.$clinic['logo'].'" alt="Clinic Logo">
   <div class="clinic-name">'.$clinic['name'].'</div>
   <div class="contact">'.$clinic['address'].'<br>
-  Phone: '.$clinic['phone'].' | Email: '.$clinic['email'].'</div>
+  Phone: '.$clinic['phone'].' | '.$clinic['email'].'</div>
 </div>
 
-<h3>Patient Details</h3>
+<h3 class="section-title">Patient Details</h3>
 <table>
-  <tr><td><strong>Name:</strong> '.sanitize($patient['full_name']).'</td>
-      <td><strong>Gender:</strong> '.$patient['gender'].'</td>
-      <td><strong>Age:</strong> '.(date('Y')-date('Y',strtotime($patient['dob']))).'</td></tr>
-  <tr><td colspan="3"><strong>Address:</strong> '.sanitize($patient['address']).'</td></tr>
+<tr>
+  <td><strong>Name:</strong> '.sanitize($patient['full_name']).'</td>
+  <td><strong>Gender:</strong> '.$patient['gender'].'</td>
+  <td><strong>Age:</strong> '.(date('Y')-date('Y',strtotime($patient['dob']))).'</td>
+</tr>
+<tr><td colspan="3"><strong>Address:</strong> '.sanitize($patient['address']).'</td></tr>
 </table>
 
-<h3>Prescription</h3>
+<h3 class="section-title">Prescription</h3>
 <table>
-  <thead><tr>
-    <th>#</th>
-    <th>Drug</th>
-    <th>Dose</th>
-    <th>Frequency</th>
-    <th>Duration</th>
-    <th>Remarks</th>
-  </tr></thead>
-  <tbody>';
-
-$i = 1;
-foreach ($items as $r) {
-  $html .= "<tr>
+<thead><tr>
+<th>#</th><th>Drug</th><th>Dose</th><th>Frequency</th><th>Duration</th><th>Remarks</th>
+</tr></thead><tbody>';
+$i=1;
+foreach($items as $r){
+  $html.="<tr>
     <td>{$i}</td>
     <td>".sanitize($r['drug_name'])."</td>
     <td>".sanitize($r['dose'])."</td>
@@ -117,35 +126,38 @@ foreach ($items as $r) {
   </tr>";
   $i++;
 }
+$html.='</tbody></table>
 
-$html .= '
-  </tbody>
-</table>
-
-<div class="sign">
+<div class="sign-block">
+  <img src="'.$clinic['signature'].'" alt="Digital Signature"><br>
   <strong>'.$clinic['doctor'].'</strong><br>
   Reg No: '.$clinic['regno'].'<br>
-  <em>Signature</em>
+  <em>Digitally Signed</em>
+</div>
+
+<div class="qr-block">
+  <img src="'.$qr.'" alt="QR Code">
+  <small>Scan to verify</small>
 </div>
 
 <div class="footer">
-  This prescription is computer-generated and valid only for the mentioned patient.<br>
-  Always follow dosage instructions and precautions as advised by your dentist.
+  This is a computer-generated digital prescription for the mentioned patient only.<br>
+  Verify authenticity at <strong>'.$clinic['name'].'</strong>.<br>
+  Follow all dosage &amp; precautions as advised.
 </div>
 
-</body>
-</html>
-';
+</body></html>';
 
 // ----------------------------
-// Generate PDF (Dompdf)
+// PDF Render
 // ----------------------------
-$dompdf = new Dompdf();
+$options = new Options();
+$options->set('isRemoteEnabled', true);
+$dompdf = new Dompdf($options);
 $dompdf->loadHtml($html);
 $dompdf->setPaper('A4', 'portrait');
 $dompdf->render();
 
-// Stream to browser
-$filename = "Prescription_" . preg_replace('/\s+/', '_', $patient['full_name']) . ".pdf";
-$dompdf->stream($filename, ["Attachment" => false]); // open in browser
+$filename = "Prescription_".preg_replace('/\s+/', '_', $patient['full_name']).".pdf";
+$dompdf->stream($filename, ["Attachment"=>false]);
 exit;
