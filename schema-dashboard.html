@@ -4,11 +4,13 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <title>AI Schema & SEO Intelligence Dashboard | Noble Dental Care – NDC-D</title>
-  <meta name="description" content="Live analytics for schema validation, AI readiness, and SERP feature performance of Noble Dental Care, Nallagandla. Includes Rich Results, AI Healing, and NLP coverage.">
+  <meta name="description" content="Live analytics for schema validation, AI readiness, and SERP performance of Noble Dental Care, Nallagandla. Includes GPT layer detection, Rich Results, AI healing, and NLP coverage.">
   <link rel="icon" href="/images/logo-footer.webp" type="image/webp">
 
   <!-- Chart.js -->
   <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+  
+  <!-- AI Schema Modules -->
   <script defer src="/js/ai-schema-engine.js"></script>
   <script defer src="/js/ai-schema-insights.js"></script>
   <script defer src="/js/gptengineer.js"></script>
@@ -77,8 +79,8 @@
 
 <body>
   <header>
-    <h1>🧠 Schema Intelligence Dashboard</h1>
-    <p>AI-Driven Validation, SEO Readiness & Healing Overview</p>
+    <h1>🧠 AI Schema Intelligence Dashboard</h1>
+    <p>AI-Driven Validation, GPT Layer Detection & SEO Readiness</p>
     <button class="refresh" onclick="location.reload()">🔄 Re-analyze Schema</button>
   </header>
 
@@ -86,18 +88,23 @@
     <div class="card">
       <h2>AI Schema Health Index</h2>
       <canvas id="healthChart"></canvas>
-      <div class="list">AI composite score combining NLP coverage, Rich Result eligibility, and healing data.</div>
+      <div class="list">Composite score combining NLP coverage, Rich Result eligibility, and auto-healing data.</div>
     </div>
 
     <div class="card">
       <h2>Entity Type Distribution</h2>
       <canvas id="typeChart"></canvas>
-      <div class="list">Breakdown of schema entity types (LocalBusiness, MedicalCondition, etc.)</div>
+      <div class="list">Breakdown of schema entity types (LocalBusiness, Person, MedicalCondition, etc.)</div>
     </div>
 
     <div class="card">
       <h2>Eligibility Summary</h2>
       <div id="summary" class="list">Loading summary...</div>
+    </div>
+
+    <div class="card" id="gptCard">
+      <h2>GPT Engineer Layer</h2>
+      <div id="gptStatus" class="list">Detecting GPT layer...</div>
     </div>
 
     <div class="card">
@@ -130,7 +137,7 @@
     const base = summaryRR.score || 9.8;
     const aiScore = ai.nlpCoverageScore || 9.9;
     const penalty = Math.min(errors.length * 0.05 + healed.length * 0.02, 1.0);
-    const finalScore = Math.max(0, ((base + aiScore) / 2) - penalty);
+    const finalScore = Math.max(0, ((base + aiScore) / 2) - penalty + (window.__GPT_READY ? 0.2 : 0));
 
     // 🥇 Chart 1: AI Health Index
     const ctx1 = document.getElementById("healthChart").getContext("2d");
@@ -147,7 +154,8 @@
         plugins: {
           legend: { position: "bottom" },
           title: { display: true, text: "AI Schema Health Index" }
-        }
+        },
+        animation: { animateRotate: true, animateScale: true }
       }
     });
 
@@ -207,6 +215,33 @@
       recList.appendChild(li);
     });
   }
+
+  /* ============================================================
+     GPT Engineer Layer Integration
+  ============================================================ */
+  document.addEventListener("gpt-engineer-ready", (e) => {
+    const info = e.detail || {};
+    const el = document.getElementById("gptStatus");
+    const name = info.name || "GPT Integration";
+    const ver = info.softwareVersion || "Unknown";
+    const date = new Date(info.dateCreated).toLocaleString();
+
+    el.innerHTML = `
+      <p><strong>${name}</strong></p>
+      <p>Version: <strong>${ver}</strong></p>
+      <p>Status: <span class="status good">Active ✅</span></p>
+      <p>Synced On: ${date}</p>
+      <p><strong>Purpose:</strong> ${info.description}</p>
+    `;
+    console.log("✅ GPT Layer Detected:", info);
+  });
+
+  setTimeout(() => {
+    if (window.__GPT_READY && window.__GPT_ENGINEER) {
+      const evt = new CustomEvent("gpt-engineer-ready", { detail: window.__GPT_ENGINEER });
+      document.dispatchEvent(evt);
+    }
+  }, 1500);
   </script>
 </body>
 </html>
