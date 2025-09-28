@@ -1,0 +1,304 @@
+{
+  "@context": "https://schema.org",
+  "@type": "MedicalWebPage",
+  "@id": "https://nobledentalnallagandla.in/#general-oral-health",
+  "url": "https://nobledentalnallagandla.in/specialities/general-oral-health.html",
+  "name": "General Oral Health — Conditions, Prevention & Early Care",
+  "alternateName": [
+    "Common Dental Issues",
+    "Everyday Mouth Care",
+    "General Dentistry Basics"
+  ],
+  "description": "Clinically oriented overview of common, early-stage oral health conditions and prevention approaches—covering halitosis, dental plaque, tooth sensitivity, enamel wear, gingivitis, and early caries risk. Includes risk factors, signs/symptoms, guideline-aligned care options, and references to international professional bodies.",
+  "inLanguage": "en-IN",
+  "isPartOf": {
+    "@type": "WebSite",
+    "@id": "https://nobledentalnallagandla.in/"
+  },
+  "about": [
+    "Dental hygiene",
+    "Plaque control",
+    "Gingival health",
+    "Tooth sensitivity",
+    "Enamel erosion",
+    "Early caries risk"
+  ],
+  "keywords": "oral hygiene, plaque, halitosis, gingivitis, dentin hypersensitivity, enamel wear, erosion, scaling and polishing, fluoride, chlorhexidine, prevention",
+  "medicalSpecialty": [
+    "Dentistry",
+    "OralMedicine"
+  ],
+  "lastReviewed": "2025-09-28",
+  "datePublished": "2025-09-15",
+  "publisher": {
+    "@type": "Organization",
+    "name": "Noble Dental Care – Nallagandla",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://nobledentalnallagandla.in/images/logo-footer.webp"
+    }
+  },
+  "reviewedBy": {
+    "@type": "Dentist",
+    "name": "Clinical Team, Noble Dental Care",
+    "medicalSpecialty": "Dentistry",
+    "worksFor": { "@id": "https://nobledentalnallagandla.in/" }
+  },
+  "speakable": {
+    "@type": "SpeakableSpecification",
+    "cssSelector": [
+      "header h1",
+      ".lead",
+      "article .keypoints"
+    ]
+  },
+  "hasPart": [
+    {
+      "@type": "MedicalCondition",
+      "@id": "https://nobledentalnallagandla.in/#halitosis",
+      "name": "Halitosis",
+      "alternateName": ["Bad Breath", "Oral Malodor"],
+      "description": "Persistent unpleasant oral odor commonly associated with tongue coating, plaque accumulation, xerostomia, or periodontal inflammation.",
+      "code": {
+        "@type": "MedicalCode",
+        "code": "R19.6",
+        "codingSystem": "ICD-10"
+      },
+      "signOrSymptom": [
+        "Unpleasant breath noted on waking or after meals",
+        "Dry mouth",
+        "Tongue coating"
+      ],
+      "riskFactor": [
+        { "@type": "MedicalRiskFactor", "name": "Inadequate oral hygiene" },
+        { "@type": "MedicalRiskFactor", "name": "Periodontal disease" },
+        { "@type": "MedicalRiskFactor", "name": "Xerostomia / low salivary flow" },
+        { "@type": "MedicalRiskFactor", "name": "Tobacco" }
+      ],
+      "possibleTreatment": [
+        { "@type": "MedicalProcedure", "name": "Oral prophylaxis (scaling and polishing)" },
+        { "@type": "MedicalTherapy", "name": "Mechanical tongue cleaning" },
+        { "@type": "MedicalTherapy", "name": "Short-term antiseptic rinse (e.g., chlorhexidine as indicated)" }
+      ],
+      "guideline": {
+        "@type": "MedicalGuideline",
+        "name": "Professional assessment with hygiene optimization and tongue cleaning",
+        "guidelineSubject": "Halitosis—first-line care"
+      }
+    },
+    {
+      "@type": "MedicalCondition",
+      "@id": "https://nobledentalnallagandla.in/#dental-plaque",
+      "name": "Dental Plaque (Biofilm)",
+      "alternateName": ["Plaque", "Tartar Build-up (when calcified)"],
+      "description": "Soft biofilm on tooth surfaces that drives gingival inflammation and caries when not regularly disrupted.",
+      "code": {
+        "@type": "MedicalCode",
+        "code": "K05.1",
+        "codingSystem": "ICD-10 (gingivitis commonly co-presents)"
+      },
+      "cause": "Biofilm-mediated process with fermentable carbohydrate exposure and inadequate mechanical disruption.",
+      "signOrSymptom": [
+        "Soft deposits along gingival margin",
+        "Gingival bleeding on brushing",
+        "Halitosis"
+      ],
+      "riskFactor": [
+        { "@type": "MedicalRiskFactor", "name": "Infrequent or ineffective brushing" },
+        { "@type": "MedicalRiskFactor", "name": "High-frequency sugar intake" }
+      ],
+      "possibleTreatment": [
+        { "@type": "MedicalProcedure", "name": "Scaling and polishing" },
+        { "@type": "MedicalTherapy", "name": "Toothbrushing twice daily with fluoride toothpaste" },
+        { "@type": "MedicalTherapy", "name": "Interdental cleaning (floss/brushes)" }
+      ],
+      "guideline": {
+        "@type": "MedicalGuideline",
+        "name": "Daily mechanical plaque control plus professional prophylaxis as indicated",
+        "guidelineSubject": "Plaque control—home and professional care"
+      }
+    },
+    {
+      "@type": "MedicalCondition",
+      "@id": "https://nobledentalnallagandla.in/#tooth-sensitivity",
+      "name": "Dentin Hypersensitivity",
+      "alternateName": ["Tooth Sensitivity"],
+      "description": "Short, sharp pain from exposed dentin in response to thermal, tactile, osmotic or chemical stimuli in otherwise healthy teeth.",
+      "code": {
+        "@type": "MedicalCode",
+        "code": "K03.6",
+        "codingSystem": "ICD-10"
+      },
+      "differentialDiagnosis": "Reversible pulpitis, cracked tooth, caries, defective restoration margins.",
+      "signOrSymptom": [
+        "Brief pain on cold/sweet exposure",
+        "Pain on air stimulus during examination"
+      ],
+      "riskFactor": [
+        { "@type": "MedicalRiskFactor", "name": "Enamel erosion/abrasion" },
+        { "@type": "MedicalRiskFactor", "name": "Gingival recession" },
+        { "@type": "MedicalRiskFactor", "name": "Aggressive brushing technique" }
+      ],
+      "possibleTreatment": [
+        { "@type": "MedicalTherapy", "name": "Desensitizing toothpaste (e.g., potassium nitrate; stannous fluoride)" },
+        { "@type": "MedicalProcedure", "name": "Fluoride varnish or resin sealant on exposed dentin" },
+        { "@type": "MedicalTherapy", "name": "Technique & diet modification to reduce erosive/abrasive triggers" }
+      ],
+      "guideline": {
+        "@type": "MedicalGuideline",
+        "name": "Rule out pathology; start with non-invasive desensitizing agents",
+        "guidelineSubject": "Dentin hypersensitivity—stepwise care"
+      }
+    },
+    {
+      "@type": "MedicalCondition",
+      "@id": "https://nobledentalnallagandla.in/#enamel-wear",
+      "name": "Enamel Wear / Erosion",
+      "alternateName": ["Dental Erosion", "Attrition/Abrasion (mechanical wear)"],
+      "description": "Loss of enamel from chemical erosion (acidic exposure) or mechanical wear; often multifactorial.",
+      "code": {
+        "@type": "MedicalCode",
+        "code": "K03.0",
+        "codingSystem": "ICD-10"
+      },
+      "cause": "Intrinsic/extrinsic acids, parafunction (bruxism), abrasive brushing, or dietary habits.",
+      "signOrSymptom": [
+        "Cupped occlusal surfaces",
+        "Smooth, glossy enamel loss on palatal/lingual surfaces",
+        "Sensitivity"
+      ],
+      "riskFactor": [
+        { "@type": "MedicalRiskFactor", "name": "Frequent acidic beverages" },
+        { "@type": "MedicalRiskFactor", "name": "Gastroesophageal reflux" },
+        { "@type": "MedicalRiskFactor", "name": "Bruxism" }
+      ],
+      "possibleTreatment": [
+        { "@type": "MedicalTherapy", "name": "Topical fluorides and remineralization strategies" },
+        { "@type": "MedicalProcedure", "name": "Selective composite/resin restorations where indicated" },
+        { "@type": "MedicalTherapy", "name": "Dietary counseling; night guard for bruxism" }
+      ],
+      "guideline": {
+        "@type": "MedicalGuideline",
+        "name": "Identify erosive source and adopt preventive/occlusal protection before restorations",
+        "guidelineSubject": "Tooth wear—risk-based management"
+      }
+    },
+    {
+      "@type": "MedicalCondition",
+      "@id": "https://nobledentalnallagandla.in/#gingivitis",
+      "name": "Gingivitis (Plaque-Induced)",
+      "description": "Reversible inflammation of gingival tissues without attachment loss, typically driven by plaque biofilm.",
+      "code": {
+        "@type": "MedicalCode",
+        "code": "K05.1",
+        "codingSystem": "ICD-10"
+      },
+      "signOrSymptom": [
+        "Bleeding on brushing/flossing",
+        "Erythema and edema of gingiva",
+        "Halitosis"
+      ],
+      "riskFactor": [
+        { "@type": "MedicalRiskFactor", "name": "Plaque accumulation" },
+        { "@type": "MedicalRiskFactor", "name": "Smoking" },
+        { "@type": "MedicalRiskFactor", "name": "Diabetes mellitus (poor control)" },
+        { "@type": "MedicalRiskFactor", "name": "Hormonal changes (e.g., pregnancy)" }
+      ],
+      "possibleTreatment": [
+        { "@type": "MedicalProcedure", "name": "Scaling and polishing; professional oral hygiene instruction" },
+        { "@type": "MedicalTherapy", "name": "Twice-daily brushing with fluoride toothpaste; interdental cleaning" }
+      ],
+      "epidemiology": "Highly prevalent and reversible with adequate plaque control.",
+      "guideline": {
+        "@type": "MedicalGuideline",
+        "name": "Biofilm disruption and risk control; reassess bleeding indices",
+        "guidelineSubject": "Gingivitis—primary prevention"
+      }
+    },
+    {
+      "@type": "MedicalCondition",
+      "@id": "https://nobledentalnallagandla.in/#early-caries-risk",
+      "name": "Early Caries Risk (Non-cavitated)",
+      "alternateName": ["Initial Caries Lesion", "White Spot Lesion"],
+      "description": "Demineralization of enamel without cavitation due to sustained biofilm-sugar-acid cycles; amenable to non-invasive remineralization.",
+      "code": {
+        "@type": "MedicalCode",
+        "code": "K02.9",
+        "codingSystem": "ICD-10"
+      },
+      "signOrSymptom": [
+        "Chalky white spot near gingival margin",
+        "Sensitivity to sweet/cold (sometimes absent)"
+      ],
+      "riskFactor": [
+        { "@type": "MedicalRiskFactor", "name": "High-frequency free sugar intake" },
+        { "@type": "MedicalRiskFactor", "name": "Low fluoride exposure" },
+        { "@type": "MedicalRiskFactor", "name": "Inadequate plaque control" }
+      ],
+      "possibleTreatment": [
+        { "@type": "MedicalTherapy", "name": "Topical fluoride varnish or high-fluoride toothpaste as indicated" },
+        { "@type": "MedicalTherapy", "name": "Dietary counseling to reduce cariogenic frequency" },
+        { "@type": "MedicalTherapy", "name": "Sealants or resin infiltration where appropriate" }
+      ],
+      "guideline": {
+        "@type": "MedicalGuideline",
+        "name": "Non-invasive remineralization strategies prioritized; restorations only if cavitated",
+        "guidelineSubject": "Caries management—minimally invasive dentistry"
+      }
+    }
+  ],
+  "citation": [
+    {
+      "@type": "CreativeWork",
+      "name": "Professional statements and clinical position documents from international organizations",
+      "publisher": {
+        "@type": "Organization",
+        "name": "World Health Organization (WHO)"
+      },
+      "sameAs": "https://www.who.int/"
+    },
+    {
+      "@type": "CreativeWork",
+      "name": "Evidence syntheses and oral health guidance",
+      "publisher": {
+        "@type": "Organization",
+        "name": "Cochrane Oral Health"
+      },
+      "sameAs": "https://www.cochrane.org/communities/oral-health"
+    },
+    {
+      "@type": "CreativeWork",
+      "name": "Clinical practice guidance and policy statements",
+      "publisher": {
+        "@type": "Organization",
+        "name": "American Dental Association (ADA)"
+      },
+      "sameAs": "https://www.ada.org/"
+    },
+    {
+      "@type": "CreativeWork",
+      "name": "Global advocacy and consensus on caries prevention",
+      "publisher": {
+        "@type": "Organization",
+        "name": "FDI World Dental Federation"
+      },
+      "sameAs": "https://www.fdiworlddental.org/"
+    },
+    {
+      "@type": "CreativeWork",
+      "name": "Academic authors frequently cited in cariology and erosion research (examples)",
+      "author": [
+        { "@type": "Person", "name": "J. D. B. Featherstone" },
+        { "@type": "Person", "name": "K. Donnelly" },
+        { "@type": "Person", "name": "N. X. West" },
+        { "@type": "Person", "name": "D. Bartlett" }
+      ],
+      "description": "Representative researchers in cariology and tooth wear; include as general scholarly context without implying a specific paper."
+    }
+  ],
+  "audience": {
+    "@type": "Audience",
+    "audienceType": "General Public",
+    "geographicArea": { "@type": "AdministrativeArea", "name": "Nallagandla, Hyderabad, India" }
+  }
+}
