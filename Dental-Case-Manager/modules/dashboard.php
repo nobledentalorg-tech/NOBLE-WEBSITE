@@ -38,6 +38,8 @@ $upcoming_appointments = $pdo->query("
   <title>Dashboard | Noble Dental Care</title>
   <link rel="stylesheet" href="../assets/css/bootstrap.min.css">
   <link rel="stylesheet" href="../assets/css/style.css">
+  <script src="../assets/js/chart.js"></script>
+
 </head>
 <body>
 <?php include '../includes/header.php'; ?>
@@ -74,6 +76,23 @@ $upcoming_appointments = $pdo->query("
     </div>
   </div>
 
+<!-- ===== CHARTS & ANALYTICS ===== -->
+<div class="row mt-4">
+  <div class="col-md-6">
+    <div class="card shadow-sm p-3">
+      <h5>Monthly Revenue Trend</h5>
+      <canvas id="revenueChart" height="160"></canvas>
+    </div>
+  </div>
+  <div class="col-md-6">
+    <div class="card shadow-sm p-3">
+      <h5>Patient Registrations (Last 6 Months)</h5>
+      <canvas id="patientChart" height="160"></canvas>
+    </div>
+  </div>
+</div>
+
+  
   <!-- ===== RECENT CASES ===== -->
   <div class="row mt-4">
     <div class="col-md-6">
@@ -137,5 +156,43 @@ $upcoming_appointments = $pdo->query("
 <?php include '../includes/footer.php'; ?>
 <script src="../assets/js/jquery.min.js"></script>
 <script src="../assets/js/bootstrap.min.js"></script>
+
+  <script>
+// Example datasets (replace later with live SQL data)
+const months = ['Apr','May','Jun','Jul','Aug','Sep'];
+const revenueData = [54000,62000,59000,66000,70000,75000];
+const patientData = [32,40,38,45,50,55];
+
+// Revenue Chart
+new Chart(document.getElementById('revenueChart'), {
+  type: 'line',
+  data: { 
+    labels: months,
+    datasets: [{
+      label: 'Revenue (₹)',
+      data: revenueData,
+      borderColor: '#12B2A0',
+      fill: false,
+      tension: 0.3
+    }]
+  },
+  options: { responsive:true, plugins:{ legend:{display:false} } }
+});
+
+// Patient Chart
+new Chart(document.getElementById('patientChart'), {
+  type: 'bar',
+  data: { 
+    labels: months,
+    datasets: [{
+      label: 'New Patients',
+      data: patientData,
+      backgroundColor: '#7AA3FF'
+    }]
+  },
+  options: { responsive:true, plugins:{ legend:{display:false} } }
+});
+</script>
+
 </body>
 </html>
