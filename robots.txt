@@ -76,7 +76,6 @@ Sitemap: https://nobledentalnallagandla.in/sitemap-services.xml
 Sitemap: https://nobledentalnallagandla.in/sitemap-treatments.xml
 Sitemap: https://nobledentalnallagandla.in/sitemap-news.xml
 Sitemap: https://nobledentalnallagandla.in/sitemap-images.xml
-Sitemap: https://nobledentalnallagandla.in/sitemap-locations.xml
 Sitemap: https://nobledentalnallagandla.in/clinic-location.kml
 Sitemap: https://nobledentalnallagandla.in/clinic-location.json
 Sitemap: https://nobledentalnallagandla.in/ai-summary.json
