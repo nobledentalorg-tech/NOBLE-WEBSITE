@@ -1,0 +1,102 @@
+/* =========================================================
+   NOBLE DENTAL CARE – STYLE.CSS
+   Clean, professional UI with teal/blue/white palette
+========================================================= */
+
+/* =========== Root Tokens =========== */
+:root {
+  --font: 'Manrope', ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+  --bg: #f8fafc;
+  --paper: #ffffff;
+  --ink: #0f172a;
+  --muted: #475569;
+  --brand: #12B2A0;     /* Teal */
+  --brand2: #7AA3FF;    /* Accent blue */
+  --danger: #ef4444;
+  --radius: 10px;
+  --shadow: 0 3px 10px rgba(0,0,0,0.08);
+}
+
+/* =========== Base Reset =========== */
+html, body {
+  font-family: var(--font);
+  background: var(--bg);
+  color: var(--ink);
+  min-height: 100vh;
+}
+
+a { text-decoration: none; color: var(--brand2); }
+a:hover { text-decoration: underline; }
+
+.card {
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  background: var(--paper);
+}
+
+/* =========== Header =========== */
+header.navbar {
+  background-color: var(--brand);
+}
+header .navbar-brand {
+  font-weight: 700;
+  letter-spacing: 0.3px;
+}
+
+/* =========== Sidebar =========== */
+.sidebar {
+  background: #fff;
+  box-shadow: 2px 0 10px rgba(0,0,0,0.05);
+}
+.sidebar .nav-link {
+  color: var(--muted);
+  font-weight: 500;
+  border-radius: 8px;
+  margin: 2px 0;
+}
+.sidebar .nav-link:hover,
+.sidebar .nav-link.active {
+  background: var(--brand2);
+  color: #fff !important;
+}
+
+/* =========== Buttons =========== */
+.btn-primary {
+  background: var(--brand);
+  border-color: var(--brand);
+}
+.btn-primary:hover {
+  background: #0e9c8c;
+}
+.btn-outline-primary {
+  color: var(--brand);
+  border-color: var(--brand);
+}
+.btn-outline-primary:hover {
+  background: var(--brand);
+  color: #fff;
+}
+
+/* =========== Tables =========== */
+.table thead {
+  background: var(--brand2);
+  color: #fff;
+}
+.table-sm td, .table-sm th {
+  vertical-align: middle;
+}
+
+/* =========== Utilities =========== */
+.text-brand { color: var(--brand) !important; }
+.bg-brand { background: var(--brand) !important; color:#fff; }
+
+/* =========== Footer =========== */
+footer {
+  background: #fff;
+}
+
+/* Small animations */
+.card:hover {
+  transform: translateY(-2px);
+  transition: all 0.2s ease;
+}
