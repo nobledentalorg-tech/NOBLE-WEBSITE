@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en-IN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="AI Schema Dashboard for Noble Dental Care – Visualize and validate AI datasets including schema, summary, graph, and context.">
+  <title>AI Schema Dashboard | Noble Dental Care</title>
+  <link rel="canonical" href="https://nobledentalnallagandla.in/ai-schema-dashboard.html">
+
+  <!-- Schema.org Type -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "name": "AI Schema Dashboard – Noble Dental Care",
+    "description": "AI Schema Dashboard for schema validation, JSON graph visualization, and AI context linking.",
+    "url": "https://nobledentalnallagandla.in/ai-schema-dashboard.html",
+    "about": {
+      "@type": "MedicalOrganization",
+      "name": "Noble Dental Care Nallagandla"
+    },
+    "creator": {
+      "@type": "Dentist",
+      "name": "Dr. Dhivakaran"
+    },
+    "mainEntityOfPage": "https://nobledentalnallagandla.in/"
+  }
+  </script>
+
+  <style>
+    :root {
+      --brand: #00bfa5;
+      --bg: #f9fafb;
+      --text: #0f172a;
+      --card: #fff;
+      --shadow: 0 6px 20px rgba(0,0,0,0.08);
+    }
+
+    body {
+      font-family: system-ui, "Segoe UI", Roboto, Arial;
+      background: var(--bg);
+      color: var(--text);
+      margin: 0;
+      padding: 0;
+      line-height: 1.6;
+    }
+
+    header {
+      background: var(--brand);
+      color: #fff;
+      padding: 1.5rem;
+      text-align: center;
+      box-shadow: var(--shadow);
+    }
+
+    header h1 {
+      font-size: 1.75rem;
+      margin: 0;
+    }
+
+    main {
+      max-width: 1100px;
+      margin: 2rem auto;
+      padding: 1rem;
+    }
+
+    .section {
+      background: var(--card);
+      border-radius: 1rem;
+      box-shadow: var(--shadow);
+      padding: 1.5rem 2rem;
+      margin-bottom: 2rem;
+    }
+
+    .section h2 {
+      border-bottom: 2px solid var(--brand);
+      padding-bottom: 0.5rem;
+      margin-bottom: 1rem;
+      font-size: 1.3rem;
+    }
+
+    a {
+      color: var(--brand);
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    ul {
+      list-style: none;
+      padding-left: 1.2rem;
+    }
+
+    li::before {
+      content: "🟢 ";
+    }
+
+    .note {
+      font-size: 0.9rem;
+      color: #555;
+      margin-top: 0.5rem;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1rem;
+    }
+
+    .dataset-card {
+      background: var(--card);
+      border-radius: 1rem;
+      padding: 1rem;
+      box-shadow: var(--shadow);
+      text-align: center;
+    }
+
+    .dataset-card h3 {
+      margin: 0.5rem 0;
+    }
+
+    footer {
+      text-align: center;
+      padding: 2rem;
+      font-size: 0.85rem;
+      color: #666;
+    }
+
+    code {
+      background: #f3f4f6;
+      padding: 3px 6px;
+      border-radius: 4px;
+      font-size: 0.9em;
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <h1>AI Schema Dashboard – Noble Dental Care</h1>
+    <p>Monitor your JSON-LD, Graph, Summary, and Sitemap health</p>
+  </header>
+
+  <main>
+    <section class="section">
+      <h2>🔗 Quick Access – AI Data Files</h2>
+      <ul>
+        <li><a href="/ai-summary.json" target="_blank">AI Summary</a> — key treatments overview</li>
+        <li><a href="/ai-context.json" target="_blank">AI Context</a> — entity graph (Doctor, Clinic, Treatments, Place)</li>
+        <li><a href="/ai-graph.html" target="_blank">AI Graph HTML</a> — visual relationship graph</li>
+        <li><a href="/sitemap-index.xml" target="_blank">Sitemap Index</a> — core sitemap structure</li>
+        <li><a href="/clinic-location.kml" target="_blank">KML Map Coordinates</a> — for Google Maps and AI geo agents</li>
+      </ul>
+      <p class="note">✅ Make sure each file is live, accessible (HTTP 200), and passes JSON-LD validation.</p>
+    </section>
+
+    <section class="section">
+      <h2>🧠 Entity Relationships (AI Knowledge Graph)</h2>
+      <div class="grid">
+        <div class="dataset-card">
+          <h3>👨‍⚕️ Dr. Dhivakaran</h3>
+          <p>Chief Dental Surgeon & Managing Director</p>
+          <p><a href="/about.html" target="_blank">View Profile</a></p>
+        </div>
+
+        <div class="dataset-card">
+          <h3>🏥 Noble Dental Care</h3>
+          <p>Multispecialty Dental Clinic in Nallagandla</p>
+          <p><a href="/" target="_blank">Homepage</a></p>
+        </div>
+
+        <div class="dataset-card">
+          <h3>🦷 Treatments</h3>
+          <p>Root Canal • Implants • Braces • Smile Design</p>
+          <p><a href="/services.html" target="_blank">View Services</a></p>
+        </div>
+
+        <div class="dataset-card">
+          <h3>📍 Clinic Location</h3>
+          <p>Nallagandla, Hyderabad – 17.473963, 78.305995</p>
+          <p><a href="https://www.google.com/maps/place/Noble+Dental+Care+Nallagandla/" target="_blank">View on Google Maps</a></p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2>⚙️ Validation Tools</h2>
+      <ul>
+        <li><a href="https://search.google.com/test/rich-results" target="_blank">Google Rich Results Test</a></li>
+        <li><a href="https://validator.schema.org/" target="_blank">Schema.org Validator</a></li>
+        <li><a href="https://technicalseo.com/tools/schema-markup-generator/" target="_blank">TechnicalSEO Validator</a></li>
+        <li><a href="https://chat.openai.com/" target="_blank">ChatGPT Visibility Test</a></li>
+        <li><a href="https://www.bing.com/new" target="_blank">Bing Copilot View</a></li>
+      </ul>
+      <p class="note">🧩 Tip: Test <code>/ai-summary.json</code> and <code>/ai-context.json</code> separately for clean JSON-LD output.</p>
+    </section>
+
+    <section class="section">
+      <h2>📈 AI Discovery Status</h2>
+      <p>Monitor how your data appears across platforms:</p>
+      <ul>
+        <li>Google AI Overviews → <em>search “Noble Dental Nallagandla”</em></li>
+        <li>ChatGPT Browse → <em>ask “Who is Dr Dhivakaran dentist Hyderabad?”</em></li>
+        <li>Bing Copilot → <em>“Best dentist in Nallagandla Hyderabad”</em></li>
+        <li>Perplexity → <em>“Noble Dental Care services Hyderabad”</em></li>
+      </ul>
+      <p class="note">✅ Once JSON-LD is indexed, AI tools will summarize your clinic, doctor, and treatments directly.</p>
+    </section>
+  </main>
+
+  <footer>
+    <p>© 2025 Noble Dental Care Nallagandla | AI Schema Dashboard | Built for LLM & SEO Visibility</p>
+  </footer>
+</body>
+</html>
