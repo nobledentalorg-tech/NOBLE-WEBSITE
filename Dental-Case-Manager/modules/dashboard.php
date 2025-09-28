@@ -36,6 +36,8 @@ $upcoming_appointments = $pdo->query("
   <meta charset="UTF-8">
   <title>Dashboard | Noble Dental Care</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- Styles -->
   <link rel="stylesheet" href="../assets/css/bootstrap.min.css">
   <link rel="stylesheet" href="../assets/css/style.css">
 
@@ -194,41 +196,43 @@ function loadNotifications(){
 loadNotifications();
 setInterval(loadNotifications, 5000); // every 5 seconds
 
-// ================= Charts =================
+// ================= Charts (Dynamic) =================
 document.addEventListener("DOMContentLoaded", () => {
-  const months = ['Apr','May','Jun','Jul','Aug','Sep'];
-  const revenueData = [54000,62000,59000,66000,70000,75000];
-  const patientData = [32,40,38,45,50,55];
+  $.get('../modules/analytics/chart_data.php', function(data){
+    const months = data.months;
+    const revenueData = data.revenue;
+    const patientData = data.patients;
 
-  // Revenue Chart
-  new Chart(document.getElementById('revenueChart'), {
-    type: 'line',
-    data: { 
-      labels: months,
-      datasets: [{
-        label: 'Revenue (₹)',
-        data: revenueData,
-        borderColor: '#12B2A0',
-        backgroundColor: 'rgba(18,178,160,0.15)',
-        fill: true,
-        tension: 0.3
-      }]
-    },
-    options: { responsive:true, plugins:{ legend:{display:false} } }
-  });
+    // Revenue Chart
+    new Chart(document.getElementById('revenueChart'), {
+      type: 'line',
+      data: { 
+        labels: months,
+        datasets: [{
+          label: 'Revenue (₹)',
+          data: revenueData,
+          borderColor: '#12B2A0',
+          backgroundColor: 'rgba(18,178,160,0.15)',
+          fill: true,
+          tension: 0.3
+        }]
+      },
+      options: { responsive:true, plugins:{ legend:{display:false} } }
+    });
 
-  // Patient Chart
-  new Chart(document.getElementById('patientChart'), {
-    type: 'bar',
-    data: { 
-      labels: months,
-      datasets: [{
-        label: 'New Patients',
-        data: patientData,
-        backgroundColor: '#7AA3FF'
-      }]
-    },
-    options: { responsive:true, plugins:{ legend:{display:false} } }
+    // Patient Chart
+    new Chart(document.getElementById('patientChart'), {
+      type: 'bar',
+      data: { 
+        labels: months,
+        datasets: [{
+          label: 'New Patients',
+          data: patientData,
+          backgroundColor: '#7AA3FF'
+        }]
+      },
+      options: { responsive:true, plugins:{ legend:{display:false} } }
+    });
   });
 });
 </script>
