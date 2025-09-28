@@ -1,14 +1,13 @@
 <?php
 /**
- * PRINT PRESCRIPTION – DIGITAL SIGNATURE EDITION
- * -------------------------------------------------------
- * Branded PDF with logo, QR verification, watermark & e-signature
+ * PRINT PRESCRIPTION – DIGITAL SIGNATURE EDITION (SECURE QR)
+ * ------------------------------------------------------------
+ * Branded PDF with logo, watermark, e-signature, and QR verification link
  */
 
 require_once '../../config/db_connect.php';
 require_once '../../core/auth.php';
 require_once '../../core/functions.php';
-
 checkLogin();
 
 require_once '../../vendor/autoload.php';
@@ -18,7 +17,7 @@ use Dompdf\Options;
 // ----------------------------
 // Inputs
 // ----------------------------
-$pid = $_GET['pid'] ?? 0;
+$pid  = $_GET['pid'] ?? 0;
 $rxid = $_GET['id'] ?? 0;
 if (!$pid || !$rxid) die("Invalid request.");
 
@@ -37,30 +36,37 @@ $stmtRx->execute([$rxid]);
 $items = $stmtRx->fetchAll(PDO::FETCH_ASSOC);
 
 if (!$patient) die("Patient not found.");
-if (!$items) die("No drugs in prescription.");
+if (!$items)   die("No drugs in prescription.");
 
 // ----------------------------
 // Clinic / Branding
 // ----------------------------
 $clinic = [
-  "name" => "Noble Dental Care",
-  "address" => "Nallagandla, Hyderabad, Telangana, India",
-  "phone" => "+91-XXXXXXXXXX",
-  "email" => "contact@nobledentalnallagandla.in",
-  "doctor" => $_SESSION['full_name'] ?? "Dr. Dhivakaran",
-  "regno" => "TS/DC/2025/XXXX",
-  "logo" => "https://nobledentalnallagandla.in/assets/images/logo-footer.webp",
-  "signature" => "https://nobledentalnallagandla.in/assets/images/digital-signature.webp"
+  "name"       => "Noble Dental Care",
+  "address"    => "Nallagandla, Hyderabad, Telangana, India",
+  "phone"      => "+91-XXXXXXXXXX",
+  "email"      => "contact@nobledentalnallagandla.in",
+  "doctor"     => $_SESSION['full_name'] ?? "Dr. Dhivakaran",
+  "regno"      => "TS/DC/2025/XXXX",
+  "logo"       => "https://nobledentalnallagandla.in/assets/images/logo-footer.webp",
+  "signature"  => "https://nobledentalnallagandla.in/assets/images/digital-signature.webp"
 ];
 
-// Unique verification URL / QR target
-$verifyUrl = "https://nobledentalnallagandla.in/verify.php?rx=" . urlencode($rxid);
+// ----------------------------
+// Secure QR Verification URL
+// ----------------------------
+$secret = "NDCaseManager2025"; // 🔑 move to .env later
+// Build HMAC signature to prevent tampering
+$sig = hash_hmac('sha256', $rxid . $patient['patient_id'] . date('Y-m-d'), $secret);
+
+// Final verify URL
+$verifyUrl = "https://nobledentalnallagandla.in/verify.php?rx=" . urlencode($rxid) . "&sig=" . urlencode($sig);
 
 // Generate inline QR (Google Charts API)
 $qr = "https://chart.googleapis.com/chart?chs=120x120&cht=qr&chl=" . urlencode($verifyUrl);
 
 // ----------------------------
-// Build HTML
+// Build HTML for PDF
 // ----------------------------
 $html = '
 <!DOCTYPE html>
@@ -87,7 +93,7 @@ th { background:#12B2A0; color:#fff; }
 .footer { text-align:center; font-size:11px; color:#475569; margin-top:20px; }
 .sign-block { margin-top:40px; text-align:right; }
 .sign-block img { height:50px; display:block; margin-left:auto; }
-.qr-block { position:absolute; bottom:40px; left:40px; }
+.qr-block { position:absolute; bottom:40px; left:40px; text-align:center; font-size:10px; }
 </style>
 </head>
 <body>
@@ -104,19 +110,22 @@ th { background:#12B2A0; color:#fff; }
 <tr>
   <td><strong>Name:</strong> '.sanitize($patient['full_name']).'</td>
   <td><strong>Gender:</strong> '.$patient['gender'].'</td>
-  <td><strong>Age:</strong> '.(date('Y')-date('Y',strtotime($patient['dob']))).'</td>
+  <td><strong>Age:</strong> '.(date('Y') - date('Y', strtotime($patient['dob']))).'</td>
 </tr>
 <tr><td colspan="3"><strong>Address:</strong> '.sanitize($patient['address']).'</td></tr>
 </table>
 
 <h3 class="section-title">Prescription</h3>
 <table>
-<thead><tr>
+<thead>
+<tr>
 <th>#</th><th>Drug</th><th>Dose</th><th>Frequency</th><th>Duration</th><th>Remarks</th>
-</tr></thead><tbody>';
-$i=1;
-foreach($items as $r){
-  $html.="<tr>
+</tr>
+</thead>
+<tbody>';
+$i = 1;
+foreach ($items as $r) {
+  $html .= "<tr>
     <td>{$i}</td>
     <td>".sanitize($r['drug_name'])."</td>
     <td>".sanitize($r['dose'])."</td>
@@ -126,7 +135,7 @@ foreach($items as $r){
   </tr>";
   $i++;
 }
-$html.='</tbody></table>
+$html .= '</tbody></table>
 
 <div class="sign-block">
   <img src="'.$clinic['signature'].'" alt="Digital Signature"><br>
@@ -136,8 +145,8 @@ $html.='</tbody></table>
 </div>
 
 <div class="qr-block">
-  <img src="'.$qr.'" alt="QR Code">
-  <small>Scan to verify</small>
+  <img src="'.$qr.'" alt="QR Code"><br>
+  Scan to verify
 </div>
 
 <div class="footer">
@@ -153,11 +162,12 @@ $html.='</tbody></table>
 // ----------------------------
 $options = new Options();
 $options->set('isRemoteEnabled', true);
+
 $dompdf = new Dompdf($options);
 $dompdf->loadHtml($html);
 $dompdf->setPaper('A4', 'portrait');
 $dompdf->render();
 
-$filename = "Prescription_".preg_replace('/\s+/', '_', $patient['full_name']).".pdf";
-$dompdf->stream($filename, ["Attachment"=>false]);
+$filename = "Prescription_" . preg_replace('/\s+/', '_', $patient['full_name']) . ".pdf";
+$dompdf->stream($filename, ["Attachment" => false]);
 exit;
