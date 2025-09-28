@@ -1,6 +1,9 @@
 /* =========================================================
    DARK MODE – Optional
+   Subtle, modern theme for night use
 ========================================================= */
+
+/* ===== Root Variables for Dark Mode ===== */
 :root.dark {
   --bg: #0f172a;
   --paper: #1e293b;
@@ -8,17 +11,66 @@
   --muted: #cbd5e1;
   --brand: #12B2A0;
   --brand2: #3b82f6;
+  --shadow: 0 2px 10px rgba(255, 255, 255, 0.05);
 }
 
+/* ===== Base Elements ===== */
 body.dark {
   background: var(--bg);
   color: var(--ink);
+  transition: background 0.3s ease, color 0.3s ease;
 }
+
+body.dark a { color: var(--brand2); }
+body.dark a:hover { opacity: 0.8; }
+
 body.dark .card {
   background: var(--paper);
-  box-shadow: 0 2px 10px rgba(255,255,255,0.05);
+  box-shadow: var(--shadow);
+  border: 1px solid rgba(255,255,255,0.08);
 }
+
+/* ===== Sidebar ===== */
 body.dark .sidebar {
   background: #1e293b;
 }
-body.dark a { color: var(--brand2); }
+body.dark .sidebar .nav-link {
+  color: var(--muted);
+}
+body.dark .sidebar .nav-link.active,
+body.dark .sidebar .nav-link:hover {
+  background: var(--brand2);
+  color: #fff !important;
+}
+
+/* ===== Tables ===== */
+body.dark table {
+  color: var(--ink);
+  background: var(--paper);
+}
+body.dark .table thead {
+  background: var(--brand2);
+}
+body.dark .table tbody tr:hover {
+  background: rgba(59,130,246,0.08);
+}
+
+/* ===== Buttons ===== */
+body.dark .btn-primary {
+  background: var(--brand);
+  border-color: var(--brand);
+}
+body.dark .btn-outline-primary {
+  color: var(--brand2);
+  border-color: var(--brand2);
+}
+body.dark .btn-outline-primary:hover {
+  background: var(--brand2);
+  color: #fff;
+}
+
+/* ===== Footer ===== */
+body.dark footer {
+  background: #1e293b;
+  color: var(--muted);
+}
