@@ -1,0 +1,19 @@
+/* =========================================================
+   Responsive Layout
+========================================================= */
+@media (max-width: 992px) {
+  body { margin-left: 0 !important; }
+  .sidebar { display:none; }
+  header.navbar { position:sticky; top:0; z-index:1000; }
+}
+
+@media (max-width: 768px) {
+  h2 { font-size: 1.4rem; }
+  .card h2 { font-size: 1.25rem; }
+  .btn { font-size: 0.9rem; padding: 6px 12px; }
+}
+
+@media (max-width: 576px) {
+  .card { padding: 1rem; }
+  table { font-size: 0.85rem; }
+}
