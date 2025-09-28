@@ -5,10 +5,10 @@ const urlsToCache = [
   "/about.html",
   "/contact.html",
   "/services.html",
+  "/offline.html",
   "/styles.css",
   "/main.js",
-  "/images/logo-footer.webp",
-  "/images/clinic-exterior.webp"
+  "/images/logo-footer.webp"
 ];
 
 // Install
@@ -27,11 +27,11 @@ self.addEventListener("activate", (event) => {
   );
 });
 
-// Fetch
+// Fetch with Offline Fallback
 self.addEventListener("fetch", (event) => {
   event.respondWith(
-    caches.match(event.request).then(
-      (response) => response || fetch(event.request)
-    )
+    fetch(event.request).catch(() => caches.match(event.request).then(
+      (response) => response || caches.match("/offline.html")
+    ))
   );
 });
