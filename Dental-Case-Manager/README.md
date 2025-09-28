@@ -18,4 +18,4 @@ A secure, modern PHP-based patient and case management system for dental clinics
 - Progressive Web App (PWA) ready
 
 ## 👨‍⚕️ Developer
-Dr. Dhivakaran – Noble Dental Care
+Akhila, Dr. Dhivakaran – Noble Dental Care
