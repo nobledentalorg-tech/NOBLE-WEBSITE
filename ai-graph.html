@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en-IN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>AI Knowledge Graph – Noble Dental Care</title>
+  <meta name="description" content="Interactive AI Knowledge Graph of Noble Dental Care in Nallagandla Hyderabad — built for search engines and AI visibility.">
+  <style>
+    :root {
+      --bg: #f9fbfc;
+      --text: #0f172a;
+      --teal: #00bfa5;
+      --accent: #0091ea;
+      --muted: #64748b;
+    }
+    body {
+      margin: 0;
+      font-family: "Inter", system-ui, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      overflow-x: hidden;
+    }
+    h1 {
+      text-align: center;
+      margin: 1.2em 0 0.2em;
+      color: var(--teal);
+      font-size: 1.8rem;
+    }
+    p.subtitle {
+      text-align: center;
+      color: var(--muted);
+      font-size: 1rem;
+      margin-bottom: 1.5em;
+    }
+    .graph-container {
+      position: relative;
+      width: 100%;
+      height: 900px;
+      overflow: hidden;
+    }
+    svg {
+      width: 100%;
+      height: 100%;
+    }
+    .node circle {
+      transition: transform 0.3s ease, fill 0.3s ease;
+      cursor: pointer;
+    }
+    .node:hover circle {
+      transform: scale(1.15);
+      fill: var(--teal);
+    }
+    .node text {
+      pointer-events: none;
+      font-size: 13px;
+      font-weight: 500;
+    }
+    .tooltip {
+      position: absolute;
+      background: #ffffffdd;
+      color: var(--text);
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      padding: 6px 10px;
+      font-size: 12px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.12);
+      pointer-events: none;
+      opacity: 0;
+      transition: opacity 0.2s ease, transform 0.2s ease;
+      transform: translateY(8px);
+    }
+  </style>
+</head>
+<body>
+  <h1>AI Knowledge Graph</h1>
+  <p class="subtitle">Explore interconnected entities of Noble Dental Care for AI visibility and schema mapping.</p>
+
+  <div class="graph-container" id="graph">
+    <svg viewBox="0 0 1600 1000">
+
+      <!-- Main Node -->
+      <g class="node" data-name="Noble Dental Care" data-url="https://nobledentalnallagandla.in/">
+        <circle cx="800" cy="500" r="80" fill="#00bfa5"></circle>
+        <text x="800" y="505" text-anchor="middle" fill="#fff" font-size="16" font-weight="700">Noble Dental Care</text>
+      </g>
+
+      <!-- Doctor Node -->
+      <line x1="860" y1="460" x2="1040" y2="370" stroke="#00796b" stroke-width="2"></line>
+      <g class="node" data-name="Dr. Dhivakaran" data-url="https://nobledentalnallagandla.in/about.html">
+        <circle cx="1100" cy="350" r="60" fill="#00897b"></circle>
+        <text x="1100" y="355" text-anchor="middle" fill="#fff" font-weight="600">Dr. Dhivakaran</text>
+      </g>
+
+      <!-- Location Node -->
+      <line x1="740" y1="460" x2="540" y2="370" stroke="#0288d1" stroke-width="2"></line>
+      <g class="node" data-name="Nallagandla Hyderabad" data-url="https://maps.app.goo.gl/J4z6M6z7WXgkz1X19">
+        <circle cx="500" cy="350" r="60" fill="#0091ea"></circle>
+        <text x="500" y="355" text-anchor="middle" fill="#fff">Nallagandla</text>
+      </g>
+
+      <!-- Services Node -->
+      <line x1="800" y1="580" x2="800" y2="680" stroke="#00796b" stroke-width="2"></line>
+      <g class="node" data-name="Dental Services" data-url="https://nobledentalnallagandla.in/services.html">
+        <circle cx="800" cy="750" r="70" fill="#26a69a"></circle>
+        <text x="800" y="755" text-anchor="middle" fill="#fff" font-weight="600">Services</text>
+      </g>
+
+      <!-- Service Subnodes -->
+      <line x1="740" y1="790" x2="630" y2="835" stroke="#009688" stroke-width="2"></line>
+      <g class="node" data-name="Root Canal Treatment" data-url="https://nobledentalnallagandla.in/treatments/root-canal.html">
+        <circle cx="600" cy="850" r="45" fill="#80cbc4"></circle>
+        <text x="600" y="855" text-anchor="middle" fill="#004d40">Root Canal</text>
+      </g>
+
+      <line x1="780" y1="820" x2="760" y2="870" stroke="#009688" stroke-width="2"></line>
+      <g class="node" data-name="Dental Implants" data-url="https://nobledentalnallagandla.in/treatments/implants.html">
+        <circle cx="750" cy="900" r="45" fill="#80cbc4"></circle>
+        <text x="750" y="905" text-anchor="middle" fill="#004d40">Implants</text>
+      </g>
+
+      <line x1="860" y1="790" x2="930" y2="835" stroke="#009688" stroke-width="2"></line>
+      <g class="node" data-name="Braces & Aligners" data-url="https://nobledentalnallagandla.in/treatments/braces.html">
+        <circle cx="950" cy="850" r="45" fill="#80cbc4"></circle>
+        <text x="950" y="855" text-anchor="middle" fill="#004d40">Braces</text>
+      </g>
+
+      <line x1="860" y1="700" x2="970" y2="720" stroke="#009688" stroke-width="2"></line>
+      <g class="node" data-name="Teeth Whitening" data-url="https://nobledentalnallagandla.in/treatments/whitening.html">
+        <circle cx="1000" cy="720" r="45" fill="#80cbc4"></circle>
+        <text x="1000" y="725" text-anchor="middle" fill="#004d40">Whitening</text>
+      </g>
+
+      <!-- Knowledge Node -->
+      <line x1="860" y1="540" x2="1100" y2="580" stroke="#673ab7" stroke-width="2"></line>
+      <g class="node" data-name="Expertise & Specializations" data-url="https://nobledentalnallagandla.in/about.html#expertise">
+        <circle cx="1150" cy="600" r="60" fill="#7e57c2"></circle>
+        <text x="1150" y="605" text-anchor="middle" fill="#fff" font-weight="600">Expertise</text>
+      </g>
+
+      <!-- Social Node -->
+      <line x1="740" y1="560" x2="520" y2="680" stroke="#fbc02d" stroke-width="2"></line>
+      <g class="node" data-name="Online Presence & Social Media" data-url="https://nobledentalnallagandla.in/">
+        <circle cx="500" cy="700" r="55" fill="#ffb300"></circle>
+        <text x="500" y="705" text-anchor="middle" fill="#212121" font-weight="600">Social</text>
+      </g>
+    </svg>
+
+    <div class="tooltip" id="tooltip"></div>
+  </div>
+
+  <script>
+    const tooltip = document.getElementById("tooltip");
+    const nodes = document.querySelectorAll(".node");
+
+    nodes.forEach(node => {
+      const circle = node.querySelector("circle");
+      const name = node.dataset.name;
+      const url = node.dataset.url;
+
+      node.addEventListener("mouseenter", e => {
+        tooltip.innerText = name;
+        tooltip.style.opacity = 1;
+        tooltip.style.transform = "translateY(0px)";
+      });
+
+      node.addEventListener("mousemove", e => {
+        tooltip.style.left = (e.pageX + 15) + "px";
+        tooltip.style.top = (e.pageY - 10) + "px";
+      });
+
+      node.addEventListener("mouseleave", () => {
+        tooltip.style.opacity = 0;
+        tooltip.style.transform = "translateY(8px)";
+      });
+
+      node.addEventListener("click", () => {
+        if (url && url.startsWith("http")) {
+          window.open(url, "_blank");
+        }
+      });
+    });
+  </script>
+</body>
+</html>
