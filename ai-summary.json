@@ -2,11 +2,89 @@
   "@context": "https://schema.org",
   "@type": "ItemList",
   "name": "AI Summary – Noble Dental Care Nallagandla",
-  "description": "Top dental treatments and care services by Dr. Dhivakaran at Noble Dental Care, Nallagandla Hyderabad. AI-optimized summary for quick understanding by search and assistant platforms.",
+  "alternateName": [
+    "AI Overview Summary – Noble Dental Care",
+    "Noble Dental Clinic Hyderabad AI Summary"
+  ],
+  "description": "Comprehensive AI-optimized summary of top dental treatments and services by Dr. Dhivakaran at Noble Dental Care, Nallagandla, Hyderabad. Curated for AI search, SGE, ChatGPT, Bing AI, and voice assistants.",
   "url": "https://nobledentalnallagandla.in/",
   "mainEntityOfPage": "https://nobledentalnallagandla.in/",
+  "inLanguage": "en-IN",
+  "dateModified": "2025-09-29",
   "numberOfItems": 10,
   "itemListOrder": "Ascending",
+  "author": {
+    "@type": "Person",
+    "name": "Dr. Dhivakaran",
+    "jobTitle": "Dental Surgeon",
+    "worksFor": {
+      "@type": "Organization",
+      "name": "Noble Dental Care Nallagandla",
+      "url": "https://nobledentalnallagandla.in/"
+    }
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Noble Dental Care Nallagandla",
+    "url": "https://nobledentalnallagandla.in/",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://nobledentalnallagandla.in/images/logo.webp"
+    },
+    "sameAs": [
+      "https://maps.google.com/?cid=YOUR_CID",
+      "https://www.facebook.com/nobledentalnallagandla",
+      "https://www.instagram.com/nobledentalnallagandla"
+    ]
+  },
+  "about": {
+    "@type": "MedicalBusiness",
+    "name": "Noble Dental Care Nallagandla",
+    "medicalSpecialty": [
+      "Endodontics",
+      "Implantology",
+      "Orthodontics",
+      "Cosmetic Dentistry",
+      "Pediatric Dentistry"
+    ],
+    "areaServed": {
+      "@type": "Place",
+      "name": "Nallagandla, Hyderabad",
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": "17.473963",
+        "longitude": "78.305995"
+      }
+    }
+  },
+  "keywords": [
+    "dentist in Nallagandla",
+    "dental clinic Hyderabad",
+    "root canal treatment",
+    "dental implants",
+    "invisalign aligners",
+    "pediatric dentist",
+    "laser dentistry",
+    "emergency dentist",
+    "smile makeover",
+    "AI dental self check"
+  ],
+  "spatialCoverage": {
+    "@type": "Place",
+    "geo": {
+      "@type": "GeoCoordinates",
+      "latitude": "17.473963",
+      "longitude": "78.305995"
+    },
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "Nallagandla Main Road",
+      "addressLocality": "Hyderabad",
+      "addressRegion": "Telangana",
+      "postalCode": "500019",
+      "addressCountry": "IN"
+    }
+  },
   "itemListElement": [
     {
       "@type": "ListItem",
