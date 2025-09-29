@@ -1,8 +1,8 @@
--- =====================================
--- Noble Dental Care – Initial Users / Roles
--- =====================================
+-- ==========================================================
+-- Noble Dental Care – Initial Users / Roles Seed Data
+-- ==========================================================
 
--- 👨‍⚕️ Admin user
+-- 👨‍⚕️ Admin User
 INSERT INTO users (full_name, email, password, role)
 VALUES (
   'Dr. Admin',
@@ -11,7 +11,7 @@ VALUES (
   'Admin'
 );
 
--- 👨‍⚕️ Doctor user
+-- 👨‍⚕️ Doctor User
 INSERT INTO users (full_name, email, password, role)
 VALUES (
   'Dr. Dhivakaran',
@@ -20,7 +20,7 @@ VALUES (
   'Doctor'
 );
 
--- 🧑‍💼 Receptionist user
+-- 🧑‍💼 Receptionist User
 INSERT INTO users (full_name, email, password, role)
 VALUES (
   'Front Desk',
