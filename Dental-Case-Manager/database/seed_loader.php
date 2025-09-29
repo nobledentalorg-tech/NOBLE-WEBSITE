@@ -2,44 +2,65 @@
 /**
  * SEED LOADER
  * ----------------------------------------
- * Runs all .sql seed files from /database/seeds/
- * in alphabetical order using PDO connection.
+ * Imports initial data into the database
+ * - Roles / Sample Users
+ * - Patients / Demo Cases (if available)
+ *
+ * Usage: Run via browser → /database/seed_loader.php
  */
 
-require_once __DIR__ . '/../config/db_connect.php';
+ini_set('display_errors', 1);
+error_reporting(E_ALL);
 
-echo "<h2 style='font-family:sans-serif;color:#12B2A0;'>🌱 Noble Dental Case Manager – Seed Loader</h2>";
+// ============================
+// DB CONNECTION
+// ============================
+$host = 'localhost';
+$db   = 'dental_case_manager';
+$user = 'root';         // ⚙️ Change if needed
+$pass = '';             // ⚙️ Set your MySQL password
+$charset = 'utf8mb4';
+
+$dsn = "mysql:host=$host;dbname=$db;charset=$charset";
+$options = [
+  PDO::ATTR_ERRMODE            => PDO::ERRMODE_EXCEPTION,
+  PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
+  PDO::ATTR_EMULATE_PREPARES   => false,
+];
 
 try {
-    $seedDir = __DIR__ . '/seeds';
-    $files = glob($seedDir . '/*.sql');
-
-    if (empty($files)) {
-        echo "<p style='color:red;'>❌ No seed files found in /database/seeds/</p>";
-        exit;
-    }
-
-    // Sort alphabetically to ensure correct load order
-    sort($files);
-
-    foreach ($files as $file) {
-        $sql = file_get_contents($file);
-        if (trim($sql) === '') continue;
-
-        echo "<p>⏳ Running <strong>" . basename($file) . "</strong> ...</p>";
-
-        try {
-            $pdo->exec($sql);
-            echo "<p style='color:green;'>✅ Executed successfully</p>";
-        } catch (PDOException $e) {
-            echo "<p style='color:red;'>⚠️ Error in " . basename($file) . ": " . htmlspecialchars($e->getMessage()) . "</p>";
-        }
-    }
-
-    echo "<hr><h3 style='color:#12B2A0;'>✅ All seeds executed successfully!</h3>";
-
+  $pdo = new PDO($dsn, $user, $pass, $options);
 } catch (Exception $e) {
-    echo "<p style='color:red;'>❌ Seed execution failed: " . htmlspecialchars($e->getMessage()) . "</p>";
+  die("<h3>❌ Database Connection Failed:</h3><pre>" . $e->getMessage() . "</pre>");
 }
-?>
 
+// ============================
+// SEED FILES
+// ============================
+$seedDir = __DIR__;
+$seedFiles = [
+  "$seedDir/init_roles.sql",
+  "$seedDir/init_sample_data.sql"
+];
+
+echo "<h2>🦷 Noble Dental Case Manager – Database Seeder</h2>";
+echo "<p>Database: <strong>$db</strong></p><hr>";
+
+foreach ($seedFiles as $file) {
+  if (!file_exists($file)) {
+    echo "<p style='color:red;'>⚠️ Missing file: $file</p>";
+    continue;
+  }
+
+  try {
+    $sql = file_get_contents($file);
+    $pdo->exec($sql);
+    echo "<p style='color:green;'>✅ Seeded successfully from: <strong>" . basename($file) . "</strong></p>";
+  } catch (Exception $e) {
+    echo "<p style='color:red;'>❌ Error seeding " . basename($file) . ": " . $e->getMessage() . "</p>";
+  }
+}
+
+echo "<hr><p>🎉 Database seeding completed.</p>";
+echo "<p>👉 You can now log in using default admin credentials: <code>admin@nobledental.in</code></p>";
+?>
