@@ -9,30 +9,55 @@
     "Daily Oral Hygiene",
     "Caries & Gum Disease Prevention"
   ],
-  "description": "Practical, guideline-aligned prevention for caries and gingival disease: fluoride use, brushing and interdental cleaning, sealants, diet counseling, tobacco cessation, professional prophylaxis, recall intervals, and special populations (children, pregnancy, diabetes, xerostomia).",
+  "description": "Practical, guideline-aligned prevention for caries and gingival disease including fluoride use, brushing, interdental cleaning, sealants, diet counseling, tobacco cessation, professional prophylaxis, recall intervals, and care for children, pregnancy, diabetes, and xerostomia.",
   "inLanguage": "en-IN",
-  "isPartOf": { "@type": "WebSite", "@id": "https://nobledentalnallagandla.in/" },
-  "medicalSpecialty": ["Dentistry", "OralMedicine", "Pediatric"],
+  "isPartOf": {
+    "@type": "WebSite",
+    "@id": "https://nobledentalnallagandla.in/"
+  },
+  "medicalSpecialty": [
+    "Dentistry",
+    "OralMedicine",
+    "Pediatric"
+  ],
   "keywords": "preventive dentistry, fluoride toothpaste, fluoride varnish, dental sealants, interdental cleaning, floss, interdental brushes, diet counseling, tobacco cessation, prophylaxis, recall interval, caries prevention, gingivitis prevention",
   "lastReviewed": "2025-09-28",
   "datePublished": "2025-09-15",
+
   "publisher": {
     "@type": "Organization",
     "name": "Noble Dental Care – Nallagandla",
     "logo": {
       "@type": "ImageObject",
       "url": "https://nobledentalnallagandla.in/images/logo-footer.webp"
-    }
+    },
+    "url": "https://nobledentalnallagandla.in/"
   },
+
   "reviewedBy": {
     "@type": "Dentist",
     "name": "Clinical Team, Noble Dental Care",
     "medicalSpecialty": "Dentistry",
-    "worksFor": { "@id": "https://nobledentalnallagandla.in/" }
+    "worksFor": {
+      "@id": "https://nobledentalnallagandla.in/"
+    }
   },
+
   "speakable": {
     "@type": "SpeakableSpecification",
-    "cssSelector": ["header h1", ".lead", "article .keypoints"]
+    "cssSelector": [
+      "header h1",
+      ".lead",
+      "article .keypoints"
+    ]
+  },
+
+  "breadcrumb": {
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://nobledentalnallagandla.in/" },
+      { "@type": "ListItem", "position": 2, "name": "Preventive Dentistry", "item": "https://nobledentalnallagandla.in/specialities/preventive-dentistry.html" }
+    ]
   },
 
   "about": [
@@ -45,6 +70,19 @@
     "Professional prophylaxis"
   ],
 
+  "mentions": [
+    { "@type": "MedicalTherapy", "name": "Fluoride toothpaste" },
+    { "@type": "MedicalProcedure", "name": "Scaling and polishing" },
+    { "@type": "MedicalDevice", "name": "Interdental brush" },
+    { "@type": "MedicalProcedure", "name": "Fissure sealant placement" }
+  ],
+
+  "mainEntity": [
+    { "@id": "https://nobledentalnallagandla.in/#fluoride-prevention" },
+    { "@id": "https://nobledentalnallagandla.in/#sealants" },
+    { "@id": "https://nobledentalnallagandla.in/#professional-prophylaxis" }
+  ],
+
   "hasPart": [
     {
       "@type": "MedicalGuideline",
@@ -52,7 +90,10 @@
       "name": "Fluoride for Caries Prevention (Home & Professional)",
       "guidelineDate": "2025-01-01",
       "guidelineSubject": "Caries prevention using topical fluoride",
-      "recognizingAuthority": { "@type": "Organization", "name": "FDI / ADA / WHO — evidence-based consensus (general reference)" },
+      "recognizingAuthority": {
+        "@type": "Organization",
+        "name": "FDI / ADA / WHO (evidence-based consensus)"
+      },
       "recommendationStrength": "Evidence-based",
       "evidenceLevel": "High",
       "possibleTreatment": [
@@ -68,145 +109,43 @@
           }
         },
         { "@type": "MedicalProcedure", "name": "Topical fluoride varnish applications (risk-based frequency)" }
-      ],
-      "study": [
-        {
-          "@type": "MedicalStudy",
-          "studySubject": "Topical fluorides for prevention of dental caries",
-          "studyDesign": "Systematic reviews / RCTs summarized by professional bodies"
-        }
       ]
     },
-
     {
       "@type": "HowTo",
       "@id": "https://nobledentalnallagandla.in/#toothbrushing-technique",
       "name": "Toothbrushing Technique (2× daily, 2 minutes)",
-      "description": "Simple steps for effective plaque removal with soft-bristled brush and fluoride toothpaste.",
+      "description": "Step-by-step method for effective brushing using soft-bristled toothbrush and fluoride toothpaste.",
       "totalTime": "PT2M",
-      "estimatedCost": { "@type": "MonetaryAmount", "currency": "INR", "value": "0" },
       "supply": [
-        { "@type": "HowToSupply", "name": "Soft-bristled manual or powered toothbrush" },
-        { "@type": "HowToSupply", "name": "Fluoride toothpaste (pea-sized for adults; smear/pea for children as advised)" }
+        { "@type": "HowToSupply", "name": "Soft-bristled toothbrush" },
+        { "@type": "HowToSupply", "name": "Fluoride toothpaste" }
       ],
       "step": [
-        { "@type": "HowToStep", "text": "Place brush at 45° to gumline; use small circular or gentle vibratory strokes." },
-        { "@type": "HowToStep", "text": "Systematically brush outer, inner, and chewing surfaces of all teeth." },
-        { "@type": "HowToStep", "text": "Brush along gumline; avoid aggressive scrubbing that can cause recession." },
-        { "@type": "HowToStep", "text": "Spit; avoid rinsing immediately to maximize fluoride contact time." }
+        { "@type": "HowToStep", "text": "Hold brush at 45° to gumline and use small circular strokes." },
+        { "@type": "HowToStep", "text": "Brush all outer, inner, and chewing surfaces." },
+        { "@type": "HowToStep", "text": "Spit without rinsing to retain fluoride contact." }
       ]
     },
-
     {
       "@type": "HowTo",
       "@id": "https://nobledentalnallagandla.in/#interdental-cleaning",
       "name": "Interdental Cleaning (Daily)",
-      "description": "Floss or interdental brushes to disrupt plaque between teeth and reduce gingival bleeding.",
+      "description": "Floss or interdental brushes to remove plaque between teeth and improve gum health.",
       "supply": [
-        { "@type": "HowToSupply", "name": "Dental floss or tape" },
-        { "@type": "HowToSupply", "name": "Interdental brushes (size matched to spaces, as advised)" }
-      ],
-      "step": [
-        { "@type": "HowToStep", "text": "Gently pass floss/brush between contact points without snapping." },
-        { "@type": "HowToStep", "text": "Curve floss in a C-shape against each surface; move up-down below the gumline." },
-        { "@type": "HowToStep", "text": "For interdental brushes, use the largest comfortable size and move back-and-forth once or twice." }
-      ],
-      "performer": { "@type": "Person", "name": "Patient / Caregiver" }
-    },
-
-    {
-      "@type": "MedicalGuideline",
-      "@id": "https://nobledentalnallagandla.in/#diet-counseling",
-      "name": "Dietary Counseling to Reduce Cariogenic Frequency",
-      "guidelineSubject": "Free sugars and acidic exposures",
-      "recommendationStrength": "Evidence-based",
-      "evidenceLevel": "High",
-      "description": "Limit frequency of free sugars; water or milk preferred; manage acidic beverages; avoid bedtime sugars for children.",
-      "riskFactor": [
-        { "@type": "MedicalRiskFactor", "name": "High-frequency sugar intake" },
-        { "@type": "MedicalRiskFactor", "name": "Acidic beverages and snacking" }
-      ],
-      "possibleTreatment": [
-        { "@type": "MedicalTherapy", "name": "Counseling on meal timing and beverage choices" }
+        { "@type": "HowToSupply", "name": "Dental floss" },
+        { "@type": "HowToSupply", "name": "Interdental brushes" }
       ]
     },
-
     {
       "@type": "MedicalGuideline",
       "@id": "https://nobledentalnallagandla.in/#sealants",
       "name": "Pit and Fissure Sealants (Children & High-risk Adults)",
       "guidelineSubject": "Sealing caries-susceptible pits/fissures",
-      "recommendationStrength": "Evidence-based",
-      "evidenceLevel": "High",
-      "description": "Resin or glass-ionomer sealants on permanent molars reduce occlusal caries risk, especially in children and high-risk patients.",
+      "description": "Resin or glass-ionomer sealants on permanent molars reduce occlusal caries risk.",
       "possibleTreatment": [
-        { "@type": "MedicalProcedure", "name": "Resin-based sealant placement on sound, high-risk pits/fissures" }
-      ],
-      "study": [
-        { "@type": "MedicalStudy", "studySubject": "Effectiveness of fissure sealants in caries prevention" }
+        { "@type": "MedicalProcedure", "name": "Sealant placement on high-risk pits/fissures" }
       ]
-    },
-
-    {
-      "@type": "MedicalGuideline",
-      "@id": "https://nobledentalnallagandla.in/#tobacco-cessation",
-      "name": "Tobacco Cessation Brief Intervention",
-      "guidelineSubject": "Ask–Advise–Assist for oral and general health",
-      "description": "Brief counseling and referral pathways to reduce tobacco-related oral disease risk.",
-      "riskFactor": [{ "@type": "MedicalRiskFactor", "name": "Tobacco use (smoked/smokeless)" }],
-      "possibleTreatment": [
-        { "@type": "MedicalTherapy", "name": "Brief advice and referral to cessation services" }
-      ]
-    },
-
-    {
-      "@type": "MedicalGuideline",
-      "@id": "https://nobledentalnallagandla.in/#professional-prophylaxis",
-      "name": "Professional Prophylaxis & Risk-Based Recall",
-      "guidelineSubject": "Scaling/polishing and individualized recall intervals",
-      "description": "Plaque/tartar removal and personalized recall intervals based on caries/periodontal risk and patient factors.",
-      "possibleTreatment": [
-        { "@type": "MedicalProcedure", "name": "Oral prophylaxis (scaling and polishing)" }
-      ],
-      "study": [
-        { "@type": "MedicalStudy", "studySubject": "Risk-based recall intervals for dental check-ups" }
-      ]
-    },
-
-    {
-      "@type": "MedicalGuideline",
-      "@id": "https://nobledentalnallagandla.in/#children-prevention",
-      "name": "Paediatric Prevention",
-      "guidelineSubject": "Fluoride use, sealants, diet, caregiver involvement",
-      "description": "Age-appropriate fluoride, supervised brushing, sugar timing control, and sealants on permanent molars.",
-      "audience": { "@type": "PeopleAudience", "suggestedMinAge": 0, "suggestedMaxAge": 14 }
-    },
-
-    {
-      "@type": "MedicalGuideline",
-      "@id": "https://nobledentalnallagandla.in/#pregnancy-oral-health",
-      "name": "Pregnancy & Oral Health",
-      "guidelineSubject": "Hygiene optimization and safe routine care",
-      "description": "Prevention and routine dental care are generally safe during pregnancy; focus on plaque control, diet, and nausea/erosion management.",
-      "audience": { "@type": "PeopleAudience", "audienceType": "Pregnant people" }
-    },
-
-    {
-      "@type": "MedicalGuideline",
-      "@id": "https://nobledentalnallagandla.in/#diabetes-oral-care",
-      "name": "Diabetes & Periodontal Risk Reduction",
-      "guidelineSubject": "Plaque control and medical collaboration",
-      "description": "Optimized oral hygiene and professional care support periodontal health; coordinate with diabetes care for glycaemic control.",
-      "audience": { "@type": "PeopleAudience", "audienceType": "Adults with diabetes" }
-    },
-
-    {
-      "@type": "MedicalGuideline",
-      "@id": "https://nobledentalnallagandla.in/#xerostomia-prevention",
-      "name": "Xerostomia (Dry Mouth) Supportive Measures",
-      "guidelineSubject": "Salivary protection and caries prevention",
-      "description": "Hydration, saliva substitutes/sugar-free gum, high-fluoride toothpaste/varnish where indicated, and diet modification.",
-      "riskFactor": [{ "@type": "MedicalRiskFactor", "name": "Medications causing hyposalivation" }]
     }
   ],
 
@@ -215,16 +154,14 @@
       "@type": "MedicalRiskEstimator",
       "@id": "https://nobledentalnallagandla.in/#caries-risk-estimator",
       "name": "Basic Caries Risk Estimator (Qualitative)",
-      "estimatesRiskOf": { "@type": "MedicalCondition", "name": "Dental caries" },
-      "guideline": {
-        "@type": "MedicalGuideline",
-        "name": "Risk grouping for individualized recall and fluoride/sealant intensity"
+      "estimatesRiskOf": {
+        "@type": "MedicalCondition",
+        "name": "Dental caries"
       },
       "riskFactor": [
-        { "@type": "MedicalRiskFactor", "name": "High-frequency sugar intake" },
-        { "@type": "MedicalRiskFactor", "name": "Visible plaque and gingival bleeding" },
-        { "@type": "MedicalRiskFactor", "name": "Low fluoride exposure" },
-        { "@type": "MedicalRiskFactor", "name": "Past caries experience" }
+        { "@type": "MedicalRiskFactor", "name": "High sugar intake" },
+        { "@type": "MedicalRiskFactor", "name": "Visible plaque or gingival bleeding" },
+        { "@type": "MedicalRiskFactor", "name": "Low fluoride exposure" }
       ]
     }
   ],
@@ -238,38 +175,30 @@
     },
     {
       "@type": "CreativeWork",
-      "name": "Caries prevention, fluoride toothpastes and varnish — evidence syntheses",
+      "name": "Caries prevention and fluoride evidence syntheses",
       "publisher": { "@type": "Organization", "name": "Cochrane Oral Health" },
       "sameAs": "https://www.cochrane.org/communities/oral-health"
     },
     {
       "@type": "CreativeWork",
-      "name": "Professional guidance on prevention, sealants, and risk-based care",
+      "name": "ADA guidelines on prevention and sealants",
       "publisher": { "@type": "Organization", "name": "American Dental Association (ADA)" },
       "sameAs": "https://www.ada.org/"
     },
     {
       "@type": "CreativeWork",
-      "name": "Global policy and clinical recommendations on prevention",
+      "name": "FDI policy on global caries prevention",
       "publisher": { "@type": "Organization", "name": "FDI World Dental Federation" },
       "sameAs": "https://www.fdiworlddental.org/"
-    },
-    {
-      "@type": "CreativeWork",
-      "name": "Representative academic authors in prevention and cariology (examples)",
-      "author": [
-        { "@type": "Person", "name": "J. D. B. Featherstone" },
-        { "@type": "Person", "name": "R. Twetman" },
-        { "@type": "Person", "name": "N. X. West" },
-        { "@type": "Person", "name": "D. Bartlett" }
-      ],
-      "description": "Listed to reflect scholarship breadth; does not cite a specific article."
     }
   ],
 
   "audience": {
     "@type": "Audience",
     "audienceType": "General Public",
-    "geographicArea": { "@type": "AdministrativeArea", "name": "Nallagandla, Hyderabad, India" }
+    "geographicArea": {
+      "@type": "AdministrativeArea",
+      "name": "Nallagandla, Hyderabad, India"
+    }
   }
 }
