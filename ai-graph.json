@@ -1,19 +1,26 @@
 {
   "@context": "https://schema.org",
   "@type": "Dataset",
+  "@id": "https://nobledentalnallagandla.in/ai-graph.json",
   "name": "AI Knowledge Graph – Noble Dental Care Nallagandla",
-  "description": "Comprehensive AI Knowledge Graph connecting Dr. Dhivakaran, Noble Dental Care Nallagandla, treatments, and digital entities. Designed for AI overviews, knowledge panels, and assistant cards.",
+  "alternateName": [
+    "NDC-D AI Graph",
+    "Noble Dental AI Schema Graph"
+  ],
+  "description": "Comprehensive AI Knowledge Graph connecting Dr. Dhivakaran, Noble Dental Care Nallagandla, treatments, and digital datasets. Enables AI Overview, Knowledge Panel linking, and assistant card generation.",
   "url": "https://nobledentalnallagandla.in/ai-graph.html",
   "inLanguage": "en-IN",
-  "dateModified": "2025-09-29",
+  "dateModified": "2025-09-30T21:45:00+05:30",
+
   "creator": {
     "@type": "Person",
     "name": "Dr. Dhivakaran",
     "jobTitle": "Dental Surgeon",
     "url": "https://nobledentalnallagandla.in/about.html",
     "affiliation": {
-      "@type": "Organization",
-      "name": "Noble Dental Care Nallagandla"
+      "@type": "MedicalOrganization",
+      "name": "Noble Dental Care – Nallagandla",
+      "url": "https://nobledentalnallagandla.in/"
     },
     "sameAs": [
       "https://www.google.com/search?q=Noble+Dental+Care+Nallagandla",
@@ -21,13 +28,15 @@
       "https://www.instagram.com/nobledentalnallagandla"
     ]
   },
+
   "publisher": {
     "@type": "MedicalBusiness",
+    "@id": "https://nobledentalnallagandla.in/#organization",
     "name": "Noble Dental Care Nallagandla",
     "url": "https://nobledentalnallagandla.in/",
     "logo": {
       "@type": "ImageObject",
-      "url": "https://nobledentalnallagandla.in/images/logo.webp"
+      "url": "https://nobledentalnallagandla.in/images/logo-footer.webp"
     },
     "geo": {
       "@type": "GeoCoordinates",
@@ -47,19 +56,23 @@
       "https://g.page/r/CID_LINK"
     ]
   },
+
   "keywords": [
     "dentist in Nallagandla",
     "root canal Hyderabad",
     "dental implants Hyderabad",
     "clear aligners",
-    "kids dentist",
+    "kids dentist Hyderabad",
     "laser dentistry",
     "AI dental tools",
     "Dr Dhivakaran dentist"
   ],
+
   "about": {
     "@type": "MedicalClinic",
+    "@id": "https://nobledentalnallagandla.in/#clinic",
     "name": "Noble Dental Care Nallagandla",
+    "url": "https://nobledentalnallagandla.in/",
     "medicalSpecialty": [
       "Endodontics",
       "Implantology",
@@ -68,55 +81,60 @@
       "Cosmetic Dentistry"
     ]
   },
+
   "hasPart": [
     {
       "@type": "MedicalProcedure",
       "name": "Root Canal Treatment",
-      "sameAs": "https://nobledentalnallagandla.in/treatments/root-canal.html"
+      "url": "https://nobledentalnallagandla.in/specialities/root-canal.html",
+      "sameAs": "https://nobledentalnallagandla.in/specialities/root-canal.html"
     },
     {
       "@type": "MedicalProcedure",
       "name": "Dental Implants",
-      "sameAs": "https://nobledentalnallagandla.in/treatments/implants.html"
+      "url": "https://nobledentalnallagandla.in/specialities/implants.html"
     },
     {
       "@type": "MedicalProcedure",
-      "name": "Braces & Aligners",
-      "sameAs": "https://nobledentalnallagandla.in/treatments/braces.html"
+      "name": "Braces & Clear Aligners",
+      "url": "https://nobledentalnallagandla.in/specialities/braces.html"
     },
     {
       "@type": "MedicalProcedure",
       "name": "Teeth Whitening",
-      "sameAs": "https://nobledentalnallagandla.in/treatments/whitening.html"
+      "url": "https://nobledentalnallagandla.in/specialities/whitening.html"
     },
     {
       "@type": "MedicalProcedure",
-      "name": "Veneers & Smile Designing",
-      "sameAs": "https://nobledentalnallagandla.in/treatments/veneers.html"
+      "name": "Smile Designing & Veneers",
+      "url": "https://nobledentalnallagandla.in/specialities/aesthetic.html"
     },
     {
       "@type": "MedicalProcedure",
-      "name": "Gum Disease Laser Therapy",
-      "sameAs": "https://nobledentalnallagandla.in/treatments/gum-treatment.html"
+      "name": "Laser Gum Therapy",
+      "url": "https://nobledentalnallagandla.in/specialities/laser.html"
     },
     {
       "@type": "MedicalProcedure",
-      "name": "Pediatric Dentistry",
-      "sameAs": "https://nobledentalnallagandla.in/treatments/kids.html"
+      "name": "Pediatric Dental Care",
+      "url": "https://nobledentalnallagandla.in/specialities/pediatric.html"
     },
     {
       "@type": "MedicalProcedure",
       "name": "Emergency Dentistry",
-      "sameAs": "https://nobledentalnallagandla.in/treatments/emergency.html"
+      "url": "https://nobledentalnallagandla.in/specialities/emergency.html"
     },
     {
-      "@type": "MedicalProcedure",
-      "name": "AI Self-Check Tool",
-      "sameAs": "https://nobledentalnallagandla.in/ai-self-check/"
+      "@type": "SoftwareApplication",
+      "name": "AI Dental Self-Check Tool",
+      "applicationCategory": "Health & Wellness App",
+      "url": "https://nobledentalnallagandla.in/ai-self-check/"
     }
   ],
+
   "isPartOf": {
     "@type": "WebSite",
+    "@id": "https://nobledentalnallagandla.in/#website",
     "name": "Noble Dental Care Official Website",
     "url": "https://nobledentalnallagandla.in/",
     "potentialAction": {
@@ -125,6 +143,7 @@
       "query-input": "required name=search_term_string"
     }
   },
+
   "mentions": [
     {
       "@type": "WebPage",
@@ -150,8 +169,19 @@
       "@type": "Dataset",
       "name": "Geo Location KML",
       "url": "https://nobledentalnallagandla.in/clinic-location.kml"
+    },
+    {
+      "@type": "TechArticle",
+      "name": "Schema Maintenance Log",
+      "url": "https://nobledentalnallagandla.in/schema/schema-maintenance-log.json"
+    },
+    {
+      "@type": "Dataset",
+      "name": "Validation Report",
+      "url": "https://nobledentalnallagandla.in/schema/validation-report.json"
     }
   ],
+
   "potentialAction": [
     {
       "@type": "ReserveAction",
@@ -160,10 +190,11 @@
     },
     {
       "@type": "AskAction",
-      "name": "AI Dental Self Check",
+      "name": "AI Dental Self-Check",
       "target": "https://nobledentalnallagandla.in/ai-self-check/"
     }
   ],
+
   "distribution": [
     {
       "@type": "DataDownload",
@@ -177,8 +208,12 @@
     },
     {
       "@type": "DataDownload",
-      "encodingFormat": "application/json",
+      "encodingFormat": "application/xml",
       "contentUrl": "https://nobledentalnallagandla.in/sitemap-treatments.xml"
     }
-  ]
+  ],
+
+  "license": "https://creativecommons.org/licenses/by/4.0/",
+  "measurementTechnique": "AI Schema Intelligence Graph Fusion v2025.9",
+  "version": "2025.5"
 }
