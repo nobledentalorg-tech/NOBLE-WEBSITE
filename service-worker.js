@@ -1,121 +1,130 @@
 /* ============================================================
    Noble Dental Care – Progressive Web App (PWA) Service Worker
-   Version: v2 (2025)
+   Version: v3 (2025)
    Features:
    ✅ Smart install caching
-   ✅ Automatic cache versioning
-   ✅ Robust fetch with offline fallback
-   ✅ Logs for easier debugging
+   ✅ Maintenance & offline fallback
+   ✅ Robust fetch + cache recovery
+   ✅ Automatic version cleanup
+   ✅ Error-safe responses
 ============================================================ */
 
-const CACHE_NAME = "nobledental-pwa-v2";
+const CACHE_NAME = "nobledental-pwa-v3";
+const OFFLINE_URL = "/offline.html";
+const MAINTENANCE_URL = "/maintenance.html";
 
-// ✅ Core URLs to cache for offline support
+// ✅ Core assets for reliable offline support
 const urlsToCache = [
-  "/",                   // Root
-  "/index.html",
-  "/about.html",
-  "/contact.html",
-  "/services.html",
-  "/offline.html",
-  "/styles.css",
-  "/main.js",
+  "/", "/index.html", "/about.html", "/contact.html", "/services.html",
+  "/styles.css", "/main.js",
+  OFFLINE_URL, MAINTENANCE_URL,
   "/images/logo-footer.webp"
 ];
 
 /* ------------------------------------------------------------
-   🧱 INSTALL EVENT – Pre-cache static assets
+   🧱 INSTALL EVENT – Precache essential assets
 ------------------------------------------------------------ */
 self.addEventListener("install", (event) => {
-  console.log("🪴 Installing Service Worker…");
+  console.log("🪴 Installing Service Worker v3...");
 
   event.waitUntil(
     caches.open(CACHE_NAME)
       .then((cache) => {
-        console.log("📦 Caching static assets...");
+        console.log("📦 Precaching static assets...");
         return cache.addAll(urlsToCache);
       })
-      .catch((err) => console.error("❌ Cache install failed:", err))
+      .then(() => self.skipWaiting())
+      .catch((err) => console.error("❌ Install cache failed:", err))
   );
-
-  self.skipWaiting(); // Activate new SW immediately
 });
 
 /* ------------------------------------------------------------
-   🔁 ACTIVATE EVENT – Cleanup old cache versions
+   🔁 ACTIVATE EVENT – Clear old caches & claim control
 ------------------------------------------------------------ */
 self.addEventListener("activate", (event) => {
-  console.log("🧹 Activating Service Worker…");
+  console.log("🧹 Activating Service Worker v3...");
   event.waitUntil(
     caches.keys().then((keys) =>
       Promise.all(
-        keys
-          .filter((key) => key !== CACHE_NAME)
-          .map((key) => {
-            console.log("🗑️ Deleting old cache:", key);
+        keys.map((key) => {
+          if (key !== CACHE_NAME) {
+            console.log("🗑️ Removing old cache:", key);
             return caches.delete(key);
-          })
+          }
+        })
       )
-    )
+    ).then(() => self.clients.claim())
   );
-
-  // Claim clients immediately (no reload required)
-  self.clients.claim();
-
-  console.log("✅ Service Worker activated and cache cleaned.");
 });
 
 /* ------------------------------------------------------------
-   🌐 FETCH EVENT – Cache-first with network fallback
+   🌐 FETCH EVENT – Network-first, fallback to cache or offline
 ------------------------------------------------------------ */
 self.addEventListener("fetch", (event) => {
-  // Only handle GET requests (ignore POST/PUT)
-  if (event.request.method !== "GET") return;
+  const { request } = event;
+
+  // Skip non-GET (e.g., form submissions or API posts)
+  if (request.method !== "GET") return;
 
   event.respondWith(
-    caches.match(event.request)
-      .then((cachedResponse) => {
-        // 🟢 Serve from cache first
+    (async () => {
+      try {
+        // 🧠 Try fetching from network
+        const response = await fetch(request);
+
+        // ⚠️ If backend down or 5xx error → show maintenance
+        if (response.status >= 500) {
+          console.warn("⚠️ Server error:", response.status);
+          return caches.match(MAINTENANCE_URL);
+        }
+
+        // ✅ Cache valid 200 responses (safe clone)
+        if (response.status === 200 && response.type === "basic") {
+          const responseClone = response.clone();
+          const cache = await caches.open(CACHE_NAME);
+          cache.put(request, responseClone);
+        }
+
+        return response;
+      } catch (error) {
+        console.warn("⚠️ Fetch failed, fallback in progress:", request.url);
+
+        // Try cache first
+        const cachedResponse = await caches.match(request);
         if (cachedResponse) return cachedResponse;
 
-        // 🔵 Else fetch from network
-        return fetch(event.request)
-          .then((networkResponse) => {
-            // ✅ Cache valid responses for future use
-            if (
-              networkResponse &&
-              networkResponse.status === 200 &&
-              networkResponse.type === "basic"
-            ) {
-              const responseClone = networkResponse.clone();
-              caches.open(CACHE_NAME).then((cache) => {
-                cache.put(event.request, responseClone);
-              });
-            }
-            return networkResponse;
-          })
-          .catch(() => {
-            // 🔴 Offline fallback (only for navigation/page requests)
-            if (event.request.mode === "navigate") {
-              return caches.match("/offline.html");
-            }
-          });
-      })
-      .catch((err) => {
-        console.error("⚠️ Fetch handler error:", err);
-        return caches.match("/offline.html");
-      })
+        // Show offline fallback for HTML pages
+        if (request.mode === "navigate" || request.destination === "document") {
+          return caches.match(OFFLINE_URL);
+        }
+
+        // As last resort, return a readable fallback
+        return new Response("⚠️ You are offline and the resource is unavailable.", {
+          status: 503,
+          headers: { "Content-Type": "text/plain" }
+        });
+      }
+    })()
   );
 });
 
 /* ------------------------------------------------------------
-   🧠 BONUS: Optional Background Sync / Messaging (Future Ready)
-   (You can extend this later for appointment reminders or updates)
+   🧠 OPTIONAL FUTURE: Background Sync / Notifications
 ------------------------------------------------------------ */
-
-// Example:
-// self.addEventListener("sync", event => {
+// self.addEventListener("sync", (event) => {
 //   if (event.tag === "sync-appointments") {
 //     event.waitUntil(syncAppointments());
 //   }
 // });
+
+// self.addEventListener("push", (event) => {
+//   const data = event.data.json();
+//   event.waitUntil(
+//     self.registration.showNotification(data.title, {
+//       body: data.message,
+//       icon: "/images/logo-footer.webp",
+//     })
+//   );
+// });
+
+console.log("✅ Noble Dental Care PWA v3 active.");
