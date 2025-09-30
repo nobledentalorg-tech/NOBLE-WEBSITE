@@ -1,4 +1,3 @@
-<script>
 /* ===========================================================
    NDC-D Schema Auto-Audit Console Tool — v2025.6 (Stable)
    Author: Dr. Dhivakaran
@@ -123,4 +122,4 @@
   });
   document.body.appendChild(badge);
 })();
-</script>
+
