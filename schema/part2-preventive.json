@@ -7,14 +7,19 @@
   "alternateName": [
     "Prevention in Dentistry",
     "Daily Oral Hygiene",
-    "Caries & Gum Disease Prevention"
+    "Caries and Gum Disease Prevention"
   ],
-  "description": "Practical, guideline-aligned prevention for caries and gingival disease including fluoride use, brushing, interdental cleaning, sealants, diet counseling, tobacco cessation, professional prophylaxis, recall intervals, and care for children, pregnancy, diabetes, and xerostomia.",
+  "description": "Comprehensive, guideline-aligned preventive care including fluoride therapy, sealants, interdental cleaning, diet counseling, and recall schedules for all age groups.",
   "inLanguage": "en-IN",
-
+  "version": "2025.10",
+  "lastReviewed": "2025-10-01",
+  "datePublished": "2025-09-15",
+  "aiReadinessTag": "Elite",
+  "aiVector": "preventive-care fluoride brushing sealants plaque-control recall hygiene pediatric oral health",
+  
   "isPartOf": {
     "@type": "WebSite",
-    "@id": "https://nobledentalnallagandla.in/"
+    "@id": "https://nobledentalnallagandla.in/#website"
   },
 
   "mainEntityOfPage": {
@@ -22,52 +27,62 @@
     "@id": "https://nobledentalnallagandla.in/specialities/preventive-dentistry.html"
   },
 
-  "about": [
-    "Caries prevention",
-    "Gingival disease prevention",
-    "Fluoride exposure",
-    "Interdental cleaning",
-    "Dietary sugars",
-    "Tobacco cessation",
-    "Professional prophylaxis"
-  ],
-
-  "keywords": "preventive dentistry, fluoride toothpaste, fluoride varnish, dental sealants, interdental cleaning, floss, interdental brushes, diet counseling, tobacco cessation, prophylaxis, recall interval, caries prevention, gingivitis prevention",
-
-  "medicalSpecialty": [
-    "Dentistry",
-    "OralMedicine",
-    "Pediatric"
-  ],
-
-  "lastReviewed": "2025-09-28",
-  "datePublished": "2025-09-15",
-
   "publisher": {
     "@type": "Organization",
+    "@id": "https://nobledentalnallagandla.in/#organization",
     "name": "Noble Dental Care – Nallagandla",
+    "url": "https://nobledentalnallagandla.in/",
     "logo": {
       "@type": "ImageObject",
       "url": "https://nobledentalnallagandla.in/images/logo-footer.webp"
-    },
-    "url": "https://nobledentalnallagandla.in/"
+    }
   },
 
   "reviewedBy": {
     "@type": "Dentist",
+    "@id": "https://nobledentalnallagandla.in/#clinical-team",
     "name": "Clinical Team, Noble Dental Care",
     "medicalSpecialty": "Dentistry",
-    "worksFor": { "@id": "https://nobledentalnallagandla.in/" }
+    "worksFor": { "@id": "https://nobledentalnallagandla.in/#organization" }
   },
 
   "speakable": {
     "@type": "SpeakableSpecification",
-    "cssSelector": [
-      "header h1",
-      ".lead",
-      "article .keypoints"
-    ]
+    "cssSelector": ["header h1", ".lead", "article .keypoints"]
   },
+
+  "about": [
+    "Caries prevention",
+    "Gum disease prevention",
+    "Fluoride exposure",
+    "Interdental cleaning",
+    "Dietary sugar control",
+    "Professional cleaning",
+    "Recall intervals"
+  ],
+
+  "knowsAbout": [
+    "fluoride varnish",
+    "sealants",
+    "interdental cleaning",
+    "risk-based recalls",
+    "pediatric prevention",
+    "tobacco cessation"
+  ],
+
+  "keywords": [
+    "preventive dentistry",
+    "fluoride toothpaste",
+    "fluoride varnish",
+    "dental sealants",
+    "interdental cleaning",
+    "diet counseling",
+    "oral hygiene",
+    "pediatric prevention",
+    "recall visits"
+  ],
+
+  "medicalSpecialty": ["Dentistry", "OralMedicine", "Pediatric"],
 
   "breadcrumb": {
     "@type": "BreadcrumbList",
@@ -78,6 +93,9 @@
   },
 
   "mentions": [
+    { "@id": "https://nobledentalnallagandla.in/#general-oral-health" },
+    { "@id": "https://nobledentalnallagandla.in/#restorative-dentistry" },
+    { "@id": "https://nobledentalnallagandla.in/#eeat-trustgraph" },
     { "@type": "MedicalTherapy", "name": "Fluoride toothpaste" },
     { "@type": "MedicalProcedure", "name": "Scaling and polishing" },
     { "@type": "MedicalDevice", "name": "Interdental brush" },
@@ -87,69 +105,71 @@
   "mainEntity": [
     { "@id": "https://nobledentalnallagandla.in/#fluoride-prevention" },
     { "@id": "https://nobledentalnallagandla.in/#sealants" },
-    { "@id": "https://nobledentalnallagandla.in/#professional-prophylaxis" }
+    { "@id": "https://nobledentalnallagandla.in/#professional-prophylaxis" },
+    { "@id": "https://nobledentalnallagandla.in/#toothbrushing-technique" },
+    { "@id": "https://nobledentalnallagandla.in/#interdental-cleaning" }
   ],
 
   "hasPart": [
     {
       "@type": "MedicalGuideline",
       "@id": "https://nobledentalnallagandla.in/#fluoride-prevention",
-      "name": "Fluoride for Caries Prevention (Home & Professional)",
-      "guidelineDate": "2025-01-01",
+      "name": "Fluoride for Caries Prevention (Home and Professional)",
       "guidelineSubject": "Caries prevention using topical fluoride",
       "recognizingAuthority": {
         "@type": "Organization",
-        "name": "FDI / ADA / WHO (evidence-based consensus)"
+        "name": "FDI / ADA / WHO (Evidence-based consensus)"
       },
-      "recommendationStrength": "Evidence-based",
-      "evidenceLevel": "High",
+      "recommendationStrength": "Strong",
       "possibleTreatment": [
         {
           "@type": "MedicalTherapy",
-          "name": "Twice-daily brushing with fluoride toothpaste",
+          "name": "Brushing twice daily with fluoride toothpaste",
           "drug": {
             "@type": "Drug",
             "name": "Fluoride toothpaste",
-            "activeIngredient": "Sodium fluoride or stannous fluoride",
-            "nonProprietaryName": "Fluoride",
+            "activeIngredient": "Sodium fluoride / stannous fluoride",
             "administrationRoute": "Topical oral"
           }
         },
-        { "@type": "MedicalProcedure", "name": "Topical fluoride varnish applications (risk-based frequency)" }
+        { "@type": "MedicalProcedure", "name": "Fluoride varnish application (risk-based frequency)" }
       ]
     },
+
     {
       "@type": "HowTo",
       "@id": "https://nobledentalnallagandla.in/#toothbrushing-technique",
       "name": "Toothbrushing Technique (2× daily, 2 minutes)",
-      "description": "Step-by-step method for effective brushing using soft-bristled toothbrush and fluoride toothpaste.",
+      "description": "Proper brushing technique with fluoride toothpaste and circular strokes for effective plaque control.",
       "totalTime": "PT2M",
       "supply": [
-        { "@type": "HowToSupply", "name": "Soft-bristled toothbrush" },
+        { "@type": "HowToSupply", "name": "Soft toothbrush" },
         { "@type": "HowToSupply", "name": "Fluoride toothpaste" }
       ],
       "step": [
-        { "@type": "HowToStep", "text": "Hold brush at 45° to gumline and use small circular strokes." },
-        { "@type": "HowToStep", "text": "Brush all outer, inner, and chewing surfaces." },
-        { "@type": "HowToStep", "text": "Spit without rinsing to retain fluoride contact." }
+        { "@type": "HowToStep", "text": "Hold brush at 45° to gumline using gentle circular strokes." },
+        { "@type": "HowToStep", "text": "Cover outer, inner, and chewing surfaces systematically." },
+        { "@type": "HowToStep", "text": "Spit without rinsing to retain fluoride protection." }
       ]
     },
+
     {
       "@type": "HowTo",
       "@id": "https://nobledentalnallagandla.in/#interdental-cleaning",
       "name": "Interdental Cleaning (Daily)",
-      "description": "Floss or interdental brushes to remove plaque between teeth and improve gum health.",
+      "description": "Floss or use interdental brushes daily to remove plaque between teeth.",
       "supply": [
         { "@type": "HowToSupply", "name": "Dental floss" },
         { "@type": "HowToSupply", "name": "Interdental brushes" }
       ]
     },
+
     {
       "@type": "MedicalGuideline",
       "@id": "https://nobledentalnallagandla.in/#sealants",
-      "name": "Pit and Fissure Sealants (Children & High-risk Adults)",
-      "guidelineSubject": "Sealing caries-susceptible pits/fissures",
-      "description": "Resin or glass-ionomer sealants on permanent molars reduce occlusal caries risk.",
+      "name": "Pit and Fissure Sealants (Children and High-Risk Adults)",
+      "description": "Resin or glass-ionomer sealants applied on molars to prevent occlusal caries.",
+      "guidelineSubject": "Sealant placement for caries-susceptible pits/fissures",
       "possibleTreatment": [
         { "@type": "MedicalProcedure", "name": "Sealant placement on high-risk pits/fissures" }
       ]
@@ -159,14 +179,14 @@
   "subjectOf": {
     "@type": "MedicalRiskEstimator",
     "@id": "https://nobledentalnallagandla.in/#caries-risk-estimator",
-    "name": "Basic Caries Risk Estimator (Qualitative)",
+    "name": "Basic Caries Risk Estimator",
     "estimatesRiskOf": {
       "@type": "MedicalCondition",
       "name": "Dental caries"
     },
     "riskFactor": [
-      { "@type": "MedicalRiskFactor", "name": "High sugar intake" },
-      { "@type": "MedicalRiskFactor", "name": "Visible plaque or gingival bleeding" },
+      { "@type": "MedicalRiskFactor", "name": "High sugar frequency" },
+      { "@type": "MedicalRiskFactor", "name": "Visible plaque or bleeding" },
       { "@type": "MedicalRiskFactor", "name": "Low fluoride exposure" }
     ]
   },
@@ -174,27 +194,27 @@
   "citation": [
     {
       "@type": "CreativeWork",
-      "name": "Oral health promotion & caries prevention",
-      "publisher": { "@type": "Organization", "name": "World Health Organization (WHO)" },
-      "sameAs": "https://www.who.int/"
+      "name": "WHO — Oral Health Promotion and Caries Prevention",
+      "publisher": { "@type": "Organization", "name": "World Health Organization" },
+      "url": "https://www.who.int/"
     },
     {
       "@type": "CreativeWork",
-      "name": "Caries prevention and fluoride evidence syntheses",
+      "name": "Cochrane Oral Health Reviews — Fluoride and Sealants",
       "publisher": { "@type": "Organization", "name": "Cochrane Oral Health" },
-      "sameAs": "https://www.cochrane.org/communities/oral-health"
+      "url": "https://www.cochrane.org/communities/oral-health"
     },
     {
       "@type": "CreativeWork",
-      "name": "ADA guidelines on prevention and sealants",
-      "publisher": { "@type": "Organization", "name": "American Dental Association (ADA)" },
-      "sameAs": "https://www.ada.org/"
+      "name": "ADA Guidelines on Sealants and Fluoride",
+      "publisher": { "@type": "Organization", "name": "American Dental Association" },
+      "url": "https://www.ada.org/"
     },
     {
       "@type": "CreativeWork",
-      "name": "FDI policy on global caries prevention",
+      "name": "FDI Global Caries Prevention Policy",
       "publisher": { "@type": "Organization", "name": "FDI World Dental Federation" },
-      "sameAs": "https://www.fdiworlddental.org/"
+      "url": "https://www.fdiworlddental.org/"
     }
   ],
 
