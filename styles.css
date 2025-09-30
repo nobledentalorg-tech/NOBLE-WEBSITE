@@ -78,6 +78,7 @@ button, input, select, textarea {
   padding: 12px var(--pad);
 
   background: rgba(255, 255, 255, 0.75);
+  -webkit-backdrop-filter: blur(14px) saturate(160%); /* ✅ Safari support */
   backdrop-filter: blur(14px) saturate(160%);
   border-bottom: 1px solid rgba(0, 0, 0, 0.08);
 
@@ -85,7 +86,6 @@ button, input, select, textarea {
 }
 
 .site-header.shrink {
-  min-height: 72px; /* 🔒 keep fixed height */
   background: rgba(255, 255, 255, 0.92);
   box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
 }
@@ -95,12 +95,14 @@ button, input, select, textarea {
   align-items: center;
   gap: 10px;
 }
+
 .brand-title {
   font-weight: 800;
   font-size: 1.1rem;
-  letter-spacing: .2px;
+  letter-spacing: 0.2px;
   color: var(--ink);
 }
+
 .brand-title span {
   color: var(--brand);
 }
@@ -121,6 +123,7 @@ button, input, select, textarea {
   border-radius: var(--radius);
 
   background: rgba(255,255,255,0.45);
+  -webkit-backdrop-filter: blur(12px) saturate(180%);
   backdrop-filter: blur(12px) saturate(180%);
   box-shadow:
     inset 1px 1px 2px rgba(255,255,255,0.4),
@@ -138,8 +141,6 @@ button, input, select, textarea {
   color: var(--ink);
   background: transparent;
   border: 1px solid transparent;
-
-  /* ⚡ Lighter transitions for faster INP */
   transition: background .2s ease, color .2s ease, box-shadow .2s ease, transform .2s ease;
 }
 
@@ -163,6 +164,7 @@ button, input, select, textarea {
   min-width: 480px;
 
   background: rgba(255,255,255,0.95);
+  -webkit-backdrop-filter: blur(14px) saturate(160%);
   backdrop-filter: blur(14px) saturate(160%);
   border: 1px solid rgba(0,0,0,0.08);
   border-radius: 14px;
@@ -176,7 +178,6 @@ button, input, select, textarea {
   opacity: 0;
   transform: translateY(-6px);
   pointer-events: none;
-
   transition: opacity .25s ease, transform .25s ease;
 }
 
@@ -196,6 +197,7 @@ button, input, select, textarea {
   color: var(--ink);
   transition: background .2s ease, color .2s ease;
 }
+
 .submenu a:hover,
 .submenu a:focus-visible {
   background: color-mix(in srgb, var(--brand) 16%, transparent);
@@ -229,6 +231,7 @@ button, input, select, textarea {
     padding: calc(1rem + env(safe-area-inset-top)) var(--pad)
              calc(2rem + env(safe-area-inset-bottom));
   }
+
   .nav-pill.is-open { transform: translateX(0); }
 
   .submenu {
@@ -248,22 +251,20 @@ button, input, select, textarea {
   min-height: 75vh;
   display: grid;
   align-items: center;
-
-  /* 🎨 replaced static bg with subtle animated gradient */
   background: linear-gradient(160deg, #e9f2ff 0%, #dfe7ff 50%, #c9e7e4 100%);
   background-size: 200% 200%;
   animation: softShift 16s ease-in-out infinite;
-
   overflow: hidden;
 }
+
+/* ✅ Removed blackhole layer entirely */
+.blackhole-box { display: none !important; }
 
 @keyframes softShift {
   0% { background-position: 0% 50%; }
   50% { background-position: 100% 50%; }
   100% { background-position: 0% 50%; }
 }
-
-.blackhole-box { display: none !important; } /* 🩹 Remove missing video layer */
 
 .hero-container {
   position: relative;
@@ -285,6 +286,7 @@ button, input, select, textarea {
   font-size: 0.9rem;
   font-weight: 600;
   margin-bottom: 16px;
+  -webkit-backdrop-filter: blur(6px);
   backdrop-filter: blur(6px);
 }
 
@@ -315,7 +317,6 @@ button, input, select, textarea {
   flex-wrap: wrap;
 }
 
-/* 🧠 improved INP by reducing transform and heavy shadows */
 .hero-button {
   display: inline-flex;
   align-items: center;
@@ -344,7 +345,6 @@ button, input, select, textarea {
 .hero-button.call { background: linear-gradient(135deg, #0ea5e9, #0369a1); }
 .hero-button.location { background: linear-gradient(135deg, #d946ef, #9333ea); }
 
-/* Responsive tweaks */
 @media (max-width: 640px) {
   .hero-container { text-align: center; }
   .hero-info-title { justify-content: center; }
@@ -1629,63 +1629,4 @@ button, input, select, textarea {
   .service-card img { width: 100%; height: 220px; }
   #slides.single-view .service-card { height: auto; }
   #slides.single-view img { width: 100%; height: 260px; }
-}
-
-/* =================== CLS FIX PATCH =================== */
-
-/* ✅ Prevent Blog section shift (LCP + CLS) */
-section#blog,
-section#faq,
-section#self-check,
-section#get-in-touch {
-  contain: layout paint; /* isolate heavy paints */
-}
-
-/* Blog: lock aspect ratio for thumbnails */
-.blog-card img.blog-thumb {
-  aspect-ratio: 16/9;
-  width: 100%;
-  height: auto;
-  object-fit: cover;
-  display: block;
-  background: #f4f6f8; /* placeholder to avoid white flash */
-}
-
-/* Ensure blog card always reserves space */
-.blog-card {
-  min-height: 380px; /* average height to prevent jump */
-}
-
-/* ✅ FAQ: prevent layout jump when expanding */
-.ndc-faq details {
-  overflow: hidden;
-  transition: max-height 0.3s ease, box-shadow 0.3s ease;
-  max-height: 90px; /* collapsed height */
-  will-change: max-height;
-}
-.ndc-faq details[open] {
-  max-height: 480px; /* adjust per answer length */
-}
-
-/* Smooth scroll to expanded FAQ */
-html {
-  scroll-behavior: smooth;
-}
-
-/* ✅ Self-check gradient animation optimization */
-.ndc-selfcheck-hero {
-  will-change: background-position;
-  contain: paint;
-}
-
-/* ✅ Contact section container isolation */
-.contact-band {
-  contain: layout paint;
-  will-change: transform;
-}
-
-/* ✅ Minor polish for fonts loading */
-body {
-  text-rendering: optimizeLegibility;
-  font-display: swap;
 }
