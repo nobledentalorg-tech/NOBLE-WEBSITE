@@ -1,5 +1,5 @@
 /* ===========================================================
-   NDC-D Schema Auto-Audit Console Tool — v2025.6 (Stable)
+   NDC-D Schema Auto-Audit Console Tool — v2025.7 (Stable)
    Author: Dr. Dhivakaran
    Purpose: Validates on-page JSON-LD, fetches AI/SEO reports,
    and outputs a compact console dashboard for developers.
@@ -22,13 +22,17 @@
     missingIds: [],
     crossLinkingScore: 0,
     aiReadiness: 0,
-    validatorScore: 0,
+    validatorScore: 0
   };
 
   // --- Helper: Safe JSON Parse ---
   const safeParse = (txt) => {
-    try { return JSON.parse(txt); }
-    catch { summary.errors.push("⚠️ Invalid JSON-LD detected"); return null; }
+    try {
+      return JSON.parse(txt);
+    } catch {
+      summary.errors.push("⚠️ Invalid JSON-LD detected");
+      return null;
+    }
   };
 
   // --- Step 1: Parse On-page Schemas ---
@@ -84,7 +88,7 @@
     insights.push("✅ All checks passed. Schema ecosystem is fully healthy!");
 
   // --- Step 6: Console Dashboard ---
-  console.groupCollapsed("🧠 NDC-D Schema Auto-Audit — v2025.6 (Stable)");
+  console.groupCollapsed("🧠 NDC-D Schema Auto-Audit — v2025.7 (Stable)");
   console.table({
     "📄 Total Schemas": summary.totalSchemas,
     "🧩 Entities": summary.entitiesDetected,
@@ -94,9 +98,11 @@
     "📜 Version": log?.schemaMaintenanceLog?.schemaVersion || "N/A",
     "📅 Last Validated": log?.schemaMaintenanceLog?.lastValidated || "N/A"
   });
+
   console.groupCollapsed("📢 Insights");
   insights.forEach(i => console.log(i));
   console.groupEnd();
+
   if (summary.errors.length) {
     console.groupCollapsed("🪵 Errors / Warnings");
     summary.errors.forEach(e => console.warn(e));
@@ -105,21 +111,23 @@
   console.groupEnd();
 
   // --- Step 7: On-screen Badge ---
-  const badge = document.createElement("div");
-  badge.textContent = `🧠 Schema Verified (${summary.validatorScore}/10 | AI ${summary.aiReadiness}/10)`;
-  Object.assign(badge.style, {
-    position: "fixed",
-    bottom: "12px",
-    right: "12px",
-    background: "#12B2A0",
-    color: "#fff",
-    padding: "6px 10px",
-    fontSize: "12px",
-    borderRadius: "8px",
-    fontFamily: "monospace",
-    zIndex: 9999,
-    boxShadow: "0 2px 8px rgba(0,0,0,0.25)"
-  });
-  document.body.appendChild(badge);
+  if (!document.getElementById("schema-badge")) {
+    const badge = document.createElement("div");
+    badge.id = "schema-badge";
+    badge.textContent = `🧠 Schema Verified (${summary.validatorScore}/10 | AI ${summary.aiReadiness}/10)`;
+    Object.assign(badge.style, {
+      position: "fixed",
+      bottom: "12px",
+      right: "12px",
+      background: "#12B2A0",
+      color: "#fff",
+      padding: "6px 10px",
+      fontSize: "12px",
+      borderRadius: "8px",
+      fontFamily: "monospace",
+      zIndex: 9999,
+      boxShadow: "0 2px 8px rgba(0,0,0,0.25)"
+    });
+    document.body.appendChild(badge);
+  }
 })();
-
