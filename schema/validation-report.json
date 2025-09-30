@@ -1,8 +1,18 @@
 {
   "@context": "https://schema.org",
   "@type": "Dataset",
-  "name": "Schema Validation Report",
-  "description": "Automated AI Schema Engine validation report for Noble Dental Care website, showing schema completeness and integrity checks.",
+  "@id": "https://nobledentalnallagandla.in/schema/validation-report.json",
+  "url": "https://nobledentalnallagandla.in/schema/validation-report.json",
+  "inLanguage": "en-IN",
+  "name": "Schema Validation Report | Noble Dental Care Nallagandla",
+  "description": "Comprehensive automated AI Schema Engine validation report showing schema completeness, integrity checks, and AI readiness for Noble Dental Care Nallagandla.",
+  "mainEntityOfPage": "https://nobledentalnallagandla.in/schema/validation-report.json",
+  "publisher": {
+    "@type": "Organization",
+    "name": "Noble Dental Care Nallagandla",
+    "url": "https://nobledentalnallagandla.in/"
+  },
+  "measurementTechnique": "AI Schema Engine v2.2 | JSON-LD Validator + W3C Crosscheck",
   "report": {
     "validated": true,
     "status": "OK",
@@ -15,5 +25,12 @@
       "healedFiles": 0,
       "errorCount": 0
     }
-  }
+  },
+  "distribution": [
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "application/json",
+      "contentUrl": "https://nobledentalnallagandla.in/schema/validation-report.json"
+    }
+  ]
 }
