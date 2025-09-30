@@ -14,8 +14,25 @@
   "description": "Comprehensive advanced dental care integrating implants, surgical extractions, bone grafting, lasers, sedation, digital workflows, and 24×7 emergency response. Designed for complex cases with precision-guided planning, 3D imaging, and sterile protocols.",
   "inLanguage": "en-IN",
 
-  "isPartOf": { "@id": "https://nobledentalnallagandla.in/#organization" },
-  "publisher": { "@id": "https://nobledentalnallagandla.in/#organization" },
+  "isPartOf": {
+    "@type": "WebSite",
+    "@id": "https://nobledentalnallagandla.in/"
+  },
+
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://nobledentalnallagandla.in/specialities/advanced-dentistry.html"
+  },
+
+  "publisher": {
+    "@type": "Organization",
+    "name": "Noble Dental Care – Nallagandla",
+    "url": "https://nobledentalnallagandla.in/",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://nobledentalnallagandla.in/images/logo-footer.webp"
+    }
+  },
 
   "medicalSpecialty": [
     "Dentistry",
@@ -24,14 +41,16 @@
     "LaserDentistry",
     "EmergencyDentistry"
   ],
+
   "keywords": "dental implant, surgical extraction, bone graft, sinus lift, laser dentistry, dental emergency, sedation dentistry, guided surgery, flapless implant, PRF, AI planning, 3D scan, trauma management",
+
   "datePublished": "2025-09-28",
   "lastReviewed": "2025-09-30",
 
   "reviewedBy": {
     "@type": "Dentist",
-    "name": "Surgical & Implantology Team",
-    "worksFor": { "@id": "https://nobledentalnallagandla.in/#organization" }
+    "name": "Surgical & Implantology Team, Noble Dental Care",
+    "worksFor": { "@id": "https://nobledentalnallagandla.in/" }
   },
 
   "speakable": {
@@ -47,8 +66,6 @@
     "Sedation dentistry",
     "AI-guided planning"
   ],
-
-  "mainEntityOfPage": "https://nobledentalnallagandla.in/specialities/implants.html",
 
   "hasPart": [
     {
@@ -70,7 +87,6 @@
       },
       "followup": "Prosthetic phase after 3–6 months (osseointegration period)"
     },
-
     {
       "@type": "MedicalProcedure",
       "@id": "https://nobledentalnallagandla.in/#bone-grafting",
@@ -78,9 +94,13 @@
       "description": "Regeneration or augmentation of deficient alveolar bone using autograft, allograft, or synthetic grafts prior to implant placement.",
       "procedureType": "Regenerative surgery",
       "instrument": ["PRF membrane", "Bone graft material"],
-      "possibleComplication": ["Swelling", "Infection", "Graft resorption"]
+      "possibleComplication": ["Swelling", "Infection", "Graft resorption"],
+      "guideline": {
+        "@type": "MedicalGuideline",
+        "guidelineSubject": "Ridge preservation and graft protocols",
+        "evidenceLevel": "High"
+      }
     },
-
     {
       "@type": "MedicalProcedure",
       "@id": "https://nobledentalnallagandla.in/#laser-dentistry",
@@ -95,7 +115,6 @@
         "evidenceLevel": "Moderate"
       }
     },
-
     {
       "@type": "MedicalProcedure",
       "@id": "https://nobledentalnallagandla.in/#sedation-dentistry",
@@ -111,10 +130,10 @@
       },
       "guideline": {
         "@type": "MedicalGuideline",
-        "guidelineSubject": "Safe sedation and monitoring standards (ASA / IAPD aligned)"
+        "guidelineSubject": "Safe sedation and monitoring standards (ASA / IAPD aligned)",
+        "evidenceLevel": "High"
       }
     },
-
     {
       "@type": "MedicalCondition",
       "@id": "https://nobledentalnallagandla.in/#dental-emergency",
@@ -138,7 +157,6 @@
         "evidenceLevel": "High"
       }
     },
-
     {
       "@type": "MedicalProcedure",
       "@id": "https://nobledentalnallagandla.in/#ai-guided-surgery",
@@ -159,13 +177,15 @@
       "@type": "MedicalGuideline",
       "@id": "https://nobledentalnallagandla.in/#infection-control",
       "name": "Sterilization & Infection Control Protocols",
-      "description": "ISO and CDC-compliant sterilization with autoclave tracking, PPE, and air purification."
+      "description": "ISO and CDC-compliant sterilization with autoclave tracking, PPE, and air purification.",
+      "evidenceLevel": "High"
     },
     {
       "@type": "MedicalGuideline",
       "@id": "https://nobledentalnallagandla.in/#postoperative-care",
       "name": "Postoperative Care Instructions",
-      "description": "Cold compress, prescribed medication adherence, soft diet, and follow-up scheduling."
+      "description": "Cold compress, prescribed medication adherence, soft diet, and follow-up scheduling.",
+      "evidenceLevel": "High"
     }
   ],
 
@@ -200,5 +220,23 @@
       "@type": "AdministrativeArea",
       "name": "Nallagandla, Hyderabad, India"
     }
-  }
+  },
+
+  "relatedLink": [
+    {
+      "@type": "WebPage",
+      "name": "Restorative Dentistry",
+      "url": "https://nobledentalnallagandla.in/specialities/restorative-dentistry.html"
+    },
+    {
+      "@type": "WebPage",
+      "name": "Preventive Dentistry",
+      "url": "https://nobledentalnallagandla.in/specialities/preventive-dentistry.html"
+    },
+    {
+      "@type": "WebPage",
+      "name": "Aesthetic Dentistry",
+      "url": "https://nobledentalnallagandla.in/specialities/aesthetic-dentistry.html"
+    }
+  ]
 }
