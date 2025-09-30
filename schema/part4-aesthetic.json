@@ -13,22 +13,31 @@
   ],
   "description": "Smile enhancement and aesthetic rehabilitation — including veneers, whitening, bonding, recontouring, and prosthodontic artistry. Integrates digital smile design (DSD), facial harmony, pediatric esthetics, and minimally invasive approaches aligned with international standards.",
   "inLanguage": "en-IN",
+
   "isPartOf": {
     "@type": "WebSite",
     "@id": "https://nobledentalnallagandla.in/"
   },
+
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://nobledentalnallagandla.in/specialities/aesthetic-dentistry.html"
+  },
+
   "medicalSpecialty": [
     "Dentistry",
     "Prosthodontics",
     "CosmeticDentistry",
     "PediatricDentistry"
   ],
+
   "keywords": "aesthetic dentistry, smile design, veneers, tooth whitening, composite bonding, zirconia crowns, dental laminates, diastema closure, pediatric esthetics, digital smile design, tooth reshaping, prosthetic rehabilitation",
+
   "datePublished": "2025-09-28",
   "lastReviewed": "2025-09-28",
 
   "publisher": {
-    "@type": "MedicalOrganization",
+    "@type": "Organization",
     "name": "Noble Dental Care – Nallagandla",
     "url": "https://nobledentalnallagandla.in/",
     "logo": {
@@ -106,7 +115,6 @@
         }
       ]
     },
-
     {
       "@type": "MedicalProcedure",
       "@id": "https://nobledentalnallagandla.in/#whitening",
@@ -122,7 +130,6 @@
         "evidenceLevel": "Moderate"
       }
     },
-
     {
       "@type": "MedicalProcedure",
       "@id": "https://nobledentalnallagandla.in/#composite-bonding",
@@ -132,7 +139,6 @@
       "followup": "Finishing and polish after 1 week.",
       "possibleComplication": ["Color mismatch", "Surface wear"]
     },
-
     {
       "@type": "MedicalProcedure",
       "@id": "https://nobledentalnallagandla.in/#crown-bridge",
@@ -145,7 +151,6 @@
       ],
       "followup": "Review annually for occlusion and hygiene."
     },
-
     {
       "@type": "MedicalGuideline",
       "@id": "https://nobledentalnallagandla.in/#digital-smile-design",
@@ -154,7 +159,6 @@
       "guidelineSubject": "Digital planning for smile esthetics",
       "evidenceLevel": "Emerging"
     },
-
     {
       "@type": "MedicalCondition",
       "@id": "https://nobledentalnallagandla.in/#discoloration",
@@ -167,7 +171,6 @@
         { "@type": "MedicalProcedure", "name": "Veneers" }
       ]
     },
-
     {
       "@type": "MedicalCondition",
       "@id": "https://nobledentalnallagandla.in/#diastema",
@@ -178,7 +181,6 @@
         { "@type": "MedicalProcedure", "name": "Orthodontic alignment" }
       ]
     },
-
     {
       "@type": "MedicalCondition",
       "@id": "https://nobledentalnallagandla.in/#fractured-anterior",
@@ -189,7 +191,6 @@
         { "@type": "MedicalProcedure", "name": "Root canal and crown" }
       ]
     },
-
     {
       "@type": "MedicalProcedure",
       "@id": "https://nobledentalnallagandla.in/#tooth-reshaping",
@@ -197,7 +198,6 @@
       "description": "Minor enamel adjustments for symmetry and alignment; often combined with bonding.",
       "procedureType": "Aesthetic recontouring"
     },
-
     {
       "@type": "MedicalProcedure",
       "@id": "https://nobledentalnallagandla.in/#pediatric-esthetics",
@@ -216,13 +216,15 @@
       "@type": "MedicalGuideline",
       "@id": "https://nobledentalnallagandla.in/#esthetic-principles",
       "name": "Principles of Smile Esthetics",
-      "description": "Facial balance, symmetry, incisal curve, and gingival zenith alignment guide digital and clinical design."
+      "description": "Facial balance, symmetry, incisal curve, and gingival zenith alignment guide digital and clinical design.",
+      "evidenceLevel": "Moderate"
     },
     {
       "@type": "MedicalGuideline",
       "@id": "https://nobledentalnallagandla.in/#bleaching-safety",
       "name": "Safety in Tooth Whitening",
-      "description": "Limit peroxide concentration ≤6% for home use; isolate soft tissues; manage sensitivity."
+      "description": "Limit peroxide concentration ≤6% for home use; isolate soft tissues; manage sensitivity.",
+      "evidenceLevel": "Moderate"
     }
   ],
 
@@ -230,10 +232,7 @@
     {
       "@type": "Book",
       "name": "Fundamentals of Esthetic Dentistry",
-      "publisher": {
-        "@type": "Organization",
-        "name": "British Dental Journal (Nature Publishing)"
-      },
+      "publisher": { "@type": "Organization", "name": "British Dental Journal (Nature Publishing)" },
       "sameAs": "https://www.nature.com/bdj/"
     },
     {
@@ -263,5 +262,23 @@
       "@type": "AdministrativeArea",
       "name": "Nallagandla, Hyderabad, India"
     }
-  }
+  },
+
+  "relatedLink": [
+    {
+      "@type": "WebPage",
+      "name": "Restorative Dentistry",
+      "url": "https://nobledentalnallagandla.in/specialities/restorative-dentistry.html"
+    },
+    {
+      "@type": "WebPage",
+      "name": "Preventive Dentistry",
+      "url": "https://nobledentalnallagandla.in/specialities/preventive-dentistry.html"
+    },
+    {
+      "@type": "WebPage",
+      "name": "General Oral Health",
+      "url": "https://nobledentalnallagandla.in/specialities/general-oral-health.html"
+    }
+  ]
 }
