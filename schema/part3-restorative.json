@@ -12,21 +12,30 @@
   ],
   "description": "Comprehensive, evidence-based restorative and endodontic care — including caries management, minimally invasive fillings, pulp therapy, root canal treatment, post-core buildup, crowns, and biomaterials. Integrates pain control, microscope-assisted precision, and adhesive innovations for long-term tooth preservation.",
   "inLanguage": "en-IN",
+
   "isPartOf": {
     "@type": "WebSite",
     "@id": "https://nobledentalnallagandla.in/"
   },
+
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://nobledentalnallagandla.in/specialities/restorative-dentistry.html"
+  },
+
   "medicalSpecialty": [
     "Dentistry",
     "Endodontics",
     "RestorativeDentistry"
   ],
+
   "keywords": "restorative dentistry, tooth filling, composite resin, glass ionomer, inlay, onlay, crown, bridgework, post core, root canal treatment, endodontic therapy, adhesive dentistry, caries excavation, pulp protection, biomaterials",
+
   "datePublished": "2025-09-28",
   "lastReviewed": "2025-09-28",
 
   "publisher": {
-    "@type": "MedicalOrganization",
+    "@type": "Organization",
     "name": "Noble Dental Care – Nallagandla",
     "url": "https://nobledentalnallagandla.in/",
     "logo": {
@@ -38,9 +47,7 @@
   "reviewedBy": {
     "@type": "Dentist",
     "name": "Endodontic & Restorative Team, Noble Dental Care",
-    "worksFor": {
-      "@id": "https://nobledentalnallagandla.in/"
-    }
+    "worksFor": { "@id": "https://nobledentalnallagandla.in/" }
   },
 
   "speakable": {
@@ -124,15 +131,8 @@
       "alternateName": ["RCT", "Endodontic Treatment"],
       "description": "Removes infected pulp, cleans and seals canals to retain natural tooth. Performed under local anesthesia, often microscope-assisted.",
       "followup": "Crown placement within 2–3 weeks.",
-      "instrument": [
-        "Rotary files",
-        "Irrigation system",
-        "Microscope"
-      ],
-      "possibleComplication": [
-        "Instrument separation",
-        "Post-treatment pain"
-      ],
+      "instrument": ["Rotary files", "Irrigation system", "Microscope"],
+      "possibleComplication": ["Instrument separation", "Post-treatment pain"],
       "guideline": {
         "@type": "MedicalGuideline",
         "guidelineSubject": "Root canal therapy steps and outcomes",
@@ -214,5 +214,18 @@
       "@type": "AdministrativeArea",
       "name": "Nallagandla, Hyderabad, India"
     }
-  }
+  },
+
+  "relatedLink": [
+    {
+      "@type": "WebPage",
+      "name": "General Oral Health",
+      "url": "https://nobledentalnallagandla.in/specialities/general-oral-health.html"
+    },
+    {
+      "@type": "WebPage",
+      "name": "Preventive Dentistry",
+      "url": "https://nobledentalnallagandla.in/specialities/preventive-dentistry.html"
+    }
+  ]
 }
