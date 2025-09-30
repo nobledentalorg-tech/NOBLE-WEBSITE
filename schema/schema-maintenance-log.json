@@ -1,6 +1,24 @@
 {
+  "@context": "https://schema.org",
+  "@type": "TechArticle",
+  "@id": "https://nobledentalnallagandla.in/schema/schema-maintenance-log.json",
+  "name": "Noble Dental Care – Schema Maintenance Log",
+  "headline": "NDC-D Schema Maintenance and Audit Trail – v2025.5",
+  "description": "Comprehensive change log and maintenance record for the Noble Dental Care structured data system. Tracks schema versions, AI readiness, validator performance, and audit outcomes.",
+  "inLanguage": "en-IN",
+  "dateModified": "2025-09-30T21:30:00+05:30",
+  "version": "2025.5",
+  "author": {
+    "@type": "Person",
+    "name": "Dr. Dhivakaran",
+    "jobTitle": "Chief SEO & Clinical Data Maintainer",
+    "affiliation": { "@id": "https://nobledentalnallagandla.in/#organization" },
+    "email": "info@nobledentalnallagandla.in"
+  },
+  "publisher": { "@id": "https://nobledentalnallagandla.in/#organization" },
+  "isPartOf": { "@id": "https://nobledentalnallagandla.in/schema/validation-report.json" },
+
   "schemaMaintenanceLog": {
-    "@context": "https://schema.org",
     "project": "Noble Dental Care – Nallagandla, Hyderabad",
     "targetURL": "https://nobledentalnallagandla.in/",
     "repository": "https://github.com/Nobledental/NOBLE-WEBSITE",
@@ -8,6 +26,7 @@
     "schemaFramework": "Schema.org Medical Extension + JSON-LD Modular Graph",
     "trackingStartedOn": "2025-09-28T18:00:00+05:30",
     "lastValidated": "2025-09-28T18:00:00+05:30",
+
     "maintainer": {
       "name": "Dr. Dhivakaran",
       "role": "Chief SEO/Clinical Data Maintainer",
@@ -19,8 +38,8 @@
         "version": "v2025.1",
         "date": "2025-02-15",
         "changes": [
-          "Initial schema setup for organization, person, and webpage.",
-          "Added basic LocalBusiness + WebSite SearchAction schema."
+          "Initial schema setup for Organization, Person, and WebPage.",
+          "Added base LocalBusiness and SearchAction schema."
         ],
         "validatorScore": 8.5,
         "richResultsEligibility": "Partial",
@@ -37,12 +56,12 @@
         "date": "2025-05-01",
         "changes": [
           "Added FAQPage and Review schema blocks.",
-          "Integrated AggregateRating and person-organization links."
+          "Integrated AggregateRating and Person–Organization links."
         ],
         "validatorScore": 9.3,
-        "richResultsEligibility": "Expanded",
         "aiReadinessScore": 8.8,
-        "notes": "Significant visibility gain — FAQ cards started appearing in SERP.",
+        "richResultsEligibility": "Expanded",
+        "notes": "FAQ snippets began appearing in SERP.",
         "changeImpactIndex": {
           "semanticDepth": 8.9,
           "aiDiscoveryGain": 8.6,
@@ -56,12 +75,12 @@
         "changes": [
           "Introduced MedicalCondition and MedicalProcedure schemas.",
           "Linked treatments and conditions via mainEntityOfPage.",
-          "Added multilingual language support (en, te, hi, ta)."
+          "Added multilingual support (en, te, hi, ta)."
         ],
         "validatorScore": 9.7,
         "aiReadinessScore": 9.5,
         "improvement": "+23% AI Overview visibility",
-        "notes": "Google AI Overview began parsing dental terms and treatment mapping.",
+        "notes": "Google AI Overview began parsing treatment mapping.",
         "changeImpactIndex": {
           "semanticDepth": 9.5,
           "aiDiscoveryGain": 9.2,
@@ -73,15 +92,15 @@
         "version": "v2025.4",
         "date": "2025-08-12",
         "changes": [
-          "Integrated MedicalDevice, EEAT signals, and Dr. Dhivakaran’s academic references.",
+          "Integrated MedicalDevice, E-E-A-T signals, and author citations.",
           "Added CBCT, CAD/CAM, Laser, AI Diagnostic device nodes.",
-          "Linked author citations to Wolters Kluwer publication."
+          "Linked publication with Wolters Kluwer reference."
         ],
         "validatorScore": 9.9,
         "aiReadinessScore": 9.8,
         "richResultsEligibility": "Full",
         "improvement": "+19% CTR from AI Search",
-        "notes": "Google Knowledge Graph started showing combined Clinic + Doctor panel.",
+        "notes": "Knowledge Graph merged Clinic + Doctor entity.",
         "changeImpactIndex": {
           "semanticDepth": 9.7,
           "aiDiscoveryGain": 9.8,
@@ -94,7 +113,7 @@
         "date": "2025-09-28",
         "changes": [
           "Implemented Digital Dentistry Suite and AI Discovery Tags.",
-          "Merged rich reviews, FAQPage, geo, sitelinks, and education events.",
+          "Merged rich reviews, FAQPage, Geo, and Education Event schemas.",
           "Added Schema Intelligence Dashboard and W3C Validation Summary."
         ],
         "validatorScore": 10.0,
@@ -120,7 +139,7 @@
         "Cross-check E-E-A-T signals (author, awards, memberships).",
         "Add datePublished for all new reviews.",
         "Add new FAQ based on latest patient queries.",
-        "Re-validate schema for any Schema.org v15+ updates."
+        "Re-validate schema for Schema.org v15+ updates."
       ]
     },
 
@@ -175,17 +194,17 @@
       {
         "goal": "Add VideoObject schema for procedure demonstrations.",
         "priority": "High",
-        "benefit": "Activate key moments in video-rich SERPs."
+        "benefit": "Activates key moments in video-rich SERPs."
       },
       {
         "goal": "Integrate MedicalStudy schema for ongoing case research.",
         "priority": "Medium",
-        "benefit": "Unlock 'Clinical Research Snippet' and AI scientific features."
+        "benefit": "Unlocks Clinical Research and AI scientific snippets."
       },
       {
         "goal": "Add HowTo schema for DIY oral care topics.",
         "priority": "Medium",
-        "benefit": "Increase voice search readiness and user engagement."
+        "benefit": "Boosts voice search and AI assistive results."
       }
     ],
 
