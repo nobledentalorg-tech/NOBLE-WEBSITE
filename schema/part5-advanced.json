@@ -1,208 +1,204 @@
 {
   "@context": "https://schema.org",
-  "@type": "MedicalOrganization",
-  "@id": "https://nobledentalnallagandla.in/#organization",
-  "name": "Noble Dental Care – Nallagandla",
+  "@type": "MedicalWebPage",
+  "@id": "https://nobledentalnallagandla.in/#advanced-dentistry",
+  "url": "https://nobledentalnallagandla.in/specialities/advanced-dentistry.html",
+  "name": "Advanced & Surgical Dentistry — Implants, Lasers, Sedation & Emergency Care",
   "alternateName": [
-    "Noble Dental Nallagandla",
-    "NDC-D Hyderabad",
-    "Best Dentist in Nallagandla",
-    "Dental Clinic near Tellapur"
+    "Advanced Dentistry",
+    "Surgical Dentistry",
+    "Laser Dentistry",
+    "Implant Dentistry",
+    "Emergency Dental Care"
   ],
-  "url": "https://nobledentalnallagandla.in/",
-  "logo": {
-    "@type": "ImageObject",
-    "url": "https://nobledentalnallagandla.in/images/logo-footer.webp"
-  },
-  "description": "Noble Dental Care is an ISO-certified multi-specialty dental center in Nallagandla, Hyderabad, offering microscopic root canal therapy, dental implants, smile design, pediatric care, and 24×7 emergency dentistry.",
-  "foundingDate": "2015-01-01",
+  "description": "Comprehensive advanced dental care integrating implants, surgical extractions, bone grafting, lasers, sedation, digital workflows, and 24×7 emergency response. Designed for complex cases with precision-guided planning, 3D imaging, and sterile protocols.",
+  "inLanguage": "en-IN",
 
-  "founder": {
-    "@type": "Person",
-    "@id": "https://nobledentalnallagandla.in/#dr-dhivakaran",
-    "name": "Dr. Dhivakaran",
-    "alumniOf": {
-      "@type": "CollegeOrUniversity",
-      "name": "Tamil Nadu Dr. M.G.R. Medical University"
-    }
-  },
-
-  "employee": [
-    { "@id": "https://nobledentalnallagandla.in/#dr-dhivakaran" },
-    { "@id": "https://nobledentalnallagandla.in/#dr-roger" },
-    { "@id": "https://nobledentalnallagandla.in/#dr-idhaya" },
-    { "@id": "https://nobledentalnallagandla.in/#dr-deepak" },
-    { "@id": "https://nobledentalnallagandla.in/#dr-thikvijay" }
-  ],
-
-  "department": [
-    { "@id": "https://nobledentalnallagandla.in/#endodontics" },
-    { "@id": "https://nobledentalnallagandla.in/#orthodontics" },
-    { "@id": "https://nobledentalnallagandla.in/#implantology" },
-    { "@id": "https://nobledentalnallagandla.in/#pediatric-dentistry" },
-    { "@id": "https://nobledentalnallagandla.in/#aesthetic-dentistry" }
-  ],
+  "isPartOf": { "@id": "https://nobledentalnallagandla.in/#organization" },
+  "publisher": { "@id": "https://nobledentalnallagandla.in/#organization" },
 
   "medicalSpecialty": [
-    "Endodontics",
-    "Orthodontics",
+    "Dentistry",
+    "OralSurgery",
     "Implantology",
-    "Pediatric Dentistry",
-    "Aesthetic Dentistry",
-    "Prosthodontics"
+    "LaserDentistry",
+    "EmergencyDentistry"
+  ],
+  "keywords": "dental implant, surgical extraction, bone graft, sinus lift, laser dentistry, dental emergency, sedation dentistry, guided surgery, flapless implant, PRF, AI planning, 3D scan, trauma management",
+  "datePublished": "2025-09-28",
+  "lastReviewed": "2025-09-30",
+
+  "reviewedBy": {
+    "@type": "Dentist",
+    "name": "Surgical & Implantology Team",
+    "worksFor": { "@id": "https://nobledentalnallagandla.in/#organization" }
+  },
+
+  "speakable": {
+    "@type": "SpeakableSpecification",
+    "cssSelector": ["header h1", ".lead", ".summary"]
+  },
+
+  "about": [
+    "Dental implant surgery",
+    "Bone grafting",
+    "Laser dentistry",
+    "Emergency dental care",
+    "Sedation dentistry",
+    "AI-guided planning"
   ],
 
-  "areaServed": {
-    "@type": "AdministrativeArea",
-    "name": "Hyderabad, Telangana, India"
-  },
+  "mainEntityOfPage": "https://nobledentalnallagandla.in/specialities/implants.html",
 
-  "address": {
-    "@type": "PostalAddress",
-    "streetAddress": "Nallagandla Main Road",
-    "addressLocality": "Nallagandla",
-    "addressRegion": "Telangana",
-    "postalCode": "500019",
-    "addressCountry": "IN"
-  },
-
-  "geo": {
-    "@type": "GeoCoordinates",
-    "latitude": 17.473963,
-    "longitude": 78.305995
-  },
-
-  "contactPoint": [
+  "hasPart": [
     {
-      "@type": "ContactPoint",
-      "telephone": "+91-86104-25342",
-      "contactType": "Customer Support",
-      "availableLanguage": ["English", "Telugu", "Hindi", "Tamil"]
+      "@type": "MedicalProcedure",
+      "@id": "https://nobledentalnallagandla.in/#dental-implant",
+      "name": "Dental Implant Surgery",
+      "alternateName": ["Implant Placement", "Tooth Implant"],
+      "description": "Titanium or zirconia implant placement for missing teeth, guided by 3D imaging and digital planning. Enables crown restoration with natural esthetics.",
+      "procedureType": "Oral surgical implantology",
+      "instrument": ["Surgical guide", "Implant motor", "Torque wrench"],
+      "possibleTreatment": [
+        { "@type": "MedicalDevice", "name": "Titanium dental implant" },
+        { "@type": "MedicalProcedure", "name": "Bone graft or sinus lift if required" }
+      ],
+      "guideline": {
+        "@type": "MedicalGuideline",
+        "guidelineSubject": "Implant placement and prosthetic restoration",
+        "evidenceLevel": "High"
+      },
+      "followup": "Prosthetic phase after 3–6 months (osseointegration period)"
+    },
+
+    {
+      "@type": "MedicalProcedure",
+      "@id": "https://nobledentalnallagandla.in/#bone-grafting",
+      "name": "Bone Grafting & Ridge Augmentation",
+      "description": "Regeneration or augmentation of deficient alveolar bone using autograft, allograft, or synthetic grafts prior to implant placement.",
+      "procedureType": "Regenerative surgery",
+      "instrument": ["PRF membrane", "Bone graft material"],
+      "possibleComplication": ["Swelling", "Infection", "Graft resorption"]
+    },
+
+    {
+      "@type": "MedicalProcedure",
+      "@id": "https://nobledentalnallagandla.in/#laser-dentistry",
+      "name": "Laser Dentistry",
+      "description": "Use of diode lasers for soft-tissue procedures — frenectomy, gingival contouring, depigmentation, and low-level laser therapy (LLLT).",
+      "procedureType": "Laser-assisted therapy",
+      "instrument": ["Diode laser", "Protective eyewear"],
+      "possibleComplication": ["Mild postoperative sensitivity"],
+      "guideline": {
+        "@type": "MedicalGuideline",
+        "guidelineSubject": "Laser safety and tissue protocols",
+        "evidenceLevel": "Moderate"
+      }
+    },
+
+    {
+      "@type": "MedicalProcedure",
+      "@id": "https://nobledentalnallagandla.in/#sedation-dentistry",
+      "name": "Sedation Dentistry",
+      "description": "Conscious sedation for anxious or pediatric patients; ensures comfort and cooperation during longer procedures.",
+      "procedureType": "Anxiolysis / Conscious sedation",
+      "possibleTreatment": [
+        { "@type": "MedicalTherapy", "name": "Oral or inhalation sedation (under monitoring)" }
+      ],
+      "audience": {
+        "@type": "PeopleAudience",
+        "audienceType": "Children and anxious adults"
+      },
+      "guideline": {
+        "@type": "MedicalGuideline",
+        "guidelineSubject": "Safe sedation and monitoring standards (ASA / IAPD aligned)"
+      }
+    },
+
+    {
+      "@type": "MedicalCondition",
+      "@id": "https://nobledentalnallagandla.in/#dental-emergency",
+      "name": "Dental Emergency",
+      "alternateName": ["Acute Dental Pain", "Tooth Fracture", "Avulsion", "Abscess"],
+      "description": "Sudden dental or maxillofacial issue needing immediate care — trauma, bleeding, infection, pain, or swelling.",
+      "signOrSymptom": [
+        "Severe toothache",
+        "Swelling or abscess",
+        "Tooth fracture",
+        "Avulsed tooth"
+      ],
+      "possibleTreatment": [
+        { "@type": "MedicalProcedure", "name": "Immediate pain relief and infection control" },
+        { "@type": "MedicalProcedure", "name": "Reimplantation for avulsed permanent tooth" },
+        { "@type": "MedicalTherapy", "name": "Antibiotic and analgesic prescription as per guidelines" }
+      ],
+      "guideline": {
+        "@type": "MedicalGuideline",
+        "guidelineSubject": "Emergency dental management (trauma / infection)",
+        "evidenceLevel": "High"
+      }
+    },
+
+    {
+      "@type": "MedicalProcedure",
+      "@id": "https://nobledentalnallagandla.in/#ai-guided-surgery",
+      "name": "AI-Guided Surgery & Digital Planning",
+      "description": "Integration of AI-driven CBCT analysis and guided implant workflows for precision and reduced operative time.",
+      "procedureType": "Computer-assisted surgery",
+      "instrument": ["CBCT", "3D printer", "Guided stent"],
+      "guideline": {
+        "@type": "MedicalGuideline",
+        "guidelineSubject": "AI and digital workflow validation in oral implantology",
+        "evidenceLevel": "Emerging"
+      }
     }
   ],
-
-  "sameAs": [
-    "https://maps.app.goo.gl/hy8B9WiQHtnaUqdPA",
-    "https://www.instagram.com/nobledentalnallagandla",
-    "https://www.facebook.com/NobleDentalNallagandla",
-    "https://www.linkedin.com/company/nobledentalcare",
-    "https://www.practo.com/hyderabad/clinic/noble-dental-nallagandla"
-  ],
-
-  "memberOf": {
-    "@type": "Organization",
-    "name": "Indian Dental Association (IDA)"
-  },
-
-  "hasCredential": [
-    "ISO 9001:2015 Certified",
-    "CDC-Grade Infection Control",
-    "Sterilization Protocol Compliant"
-  ],
-
-  "award": [
-    "Top Rated Dental Clinic Hyderabad 2025",
-    "Best Microscopic Endodontic Clinic – Telangana"
-  ],
-
-  "knowsAbout": [
-    "Microscopic Endodontics",
-    "Dental Implants",
-    "Digital Smile Design",
-    "Laser Dentistry",
-    "Pediatric Sedation Dentistry",
-    "AI Diagnostics and 3D Planning"
-  ],
-
-  "hasOfferCatalog": {
-    "@type": "OfferCatalog",
-    "name": "Dental Treatment Packages",
-    "itemListElement": [
-      {
-        "@type": "Offer",
-        "itemOffered": { "@id": "https://nobledentalnallagandla.in/#root-canal" },
-        "priceCurrency": "INR",
-        "availability": "InStock"
-      },
-      {
-        "@type": "Offer",
-        "itemOffered": { "@id": "https://nobledentalnallagandla.in/#implants" },
-        "priceCurrency": "INR",
-        "availability": "InStock"
-      },
-      {
-        "@type": "Offer",
-        "itemOffered": { "@id": "https://nobledentalnallagandla.in/#braces" },
-        "priceCurrency": "INR",
-        "availability": "InStock"
-      }
-    ]
-  },
-
-  "aggregateRating": {
-    "@type": "AggregateRating",
-    "ratingValue": "4.9",
-    "reviewCount": "427",
-    "bestRating": "5",
-    "worstRating": "1"
-  },
-
-  "mainEntityOfPage": "https://nobledentalnallagandla.in/about.html",
 
   "subjectOf": [
-    { "@id": "https://nobledentalnallagandla.in/#review-aggregate" },
-    { "@id": "https://nobledentalnallagandla.in/#eeat-signals" }
-  ],
-
-  "foundingLocation": {
-    "@type": "Place",
-    "@id": "https://nobledentalnallagandla.in/#geo-location",
-    "geo": {
-      "@type": "GeoCoordinates",
-      "latitude": 17.473963,
-      "longitude": 78.305995
+    {
+      "@type": "MedicalGuideline",
+      "@id": "https://nobledentalnallagandla.in/#infection-control",
+      "name": "Sterilization & Infection Control Protocols",
+      "description": "ISO and CDC-compliant sterilization with autoclave tracking, PPE, and air purification."
+    },
+    {
+      "@type": "MedicalGuideline",
+      "@id": "https://nobledentalnallagandla.in/#postoperative-care",
+      "name": "Postoperative Care Instructions",
+      "description": "Cold compress, prescribed medication adherence, soft diet, and follow-up scheduling."
     }
-  },
-
-  "employeeBenefits": [
-    "Continuing Education Programs",
-    "Clinical Research Collaboration",
-    "Academic Publishing Opportunities"
   ],
-
-  "sponsor": {
-    "@type": "Organization",
-    "name": "NDC-D Research & Innovation Cell"
-  },
 
   "citation": [
     {
-      "@type": "Book",
-      "name": "Triumph’s Complete Review of Dentistry (Vol. 1 & 2)",
-      "author": { "@id": "https://nobledentalnallagandla.in/#dr-dhivakaran" },
-      "publisher": { "@type": "Organization", "name": "Wolters Kluwer" }
+      "@type": "CreativeWork",
+      "name": "ITI Treatment Guide – Dental Implants",
+      "publisher": { "@type": "Organization", "name": "ITI Foundation" },
+      "sameAs": "https://www.iti.org/"
     },
     {
-      "@type": "Book",
-      "name": "Contemporary Fixed Prosthodontics",
-      "author": [{ "@type": "Person", "name": "Stephen F. Rosenstiel" }],
+      "@type": "CreativeWork",
+      "name": "Lasers in Dentistry — Current Concepts",
       "publisher": { "@type": "Organization", "name": "Elsevier" }
+    },
+    {
+      "@type": "CreativeWork",
+      "name": "Conscious Sedation in Dentistry",
+      "publisher": { "@type": "Organization", "name": "American Academy of Pediatric Dentistry" }
+    },
+    {
+      "@type": "CreativeWork",
+      "name": "AI-Assisted Implant Planning",
+      "publisher": { "@type": "Organization", "name": "Springer Nature" }
     }
   ],
 
-  "subOrganization": {
-    "@type": "Organization",
-    "@id": "https://nobledentalnallagandla.in/#research-hub",
-    "name": "NDC-D Clinical Research Hub",
-    "description": "Division for outcome-based clinical research and AI-driven oral health analytics."
-  },
-
-  "ethicsPolicy": "https://nobledentalnallagandla.in/privacy.html",
-  "diversityPolicy": "https://nobledentalnallagandla.in/#ethics",
-  "accessibilitySummary": "Ground floor access, wheelchair-friendly operatory, ramp assistance available.",
-  "currenciesAccepted": "INR",
-  "paymentAccepted": ["Cash", "Credit Card", "UPI", "Insurance"],
-  "publishingPrinciples": "https://nobledentalnallagandla.in/#eeat",
-  "copyrightNotice": "© 2025 Noble Dental Care – All rights reserved",
-  "copyrightYear": "2025"
+  "audience": {
+    "@type": "Audience",
+    "audienceType": "Patients seeking advanced, surgical or emergency dental care",
+    "geographicArea": {
+      "@type": "AdministrativeArea",
+      "name": "Nallagandla, Hyderabad, India"
+    }
+  }
 }
