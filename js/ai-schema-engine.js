@@ -1,13 +1,16 @@
 /* ============================================================
-   Noble Dental Care — AI Schema Engine (Safe + Self-Healing)
-   Version: 2.1 — GitHub Pages / Netlify Optimized
+   Noble Dental Care — AI Schema Engine (Self-Healing v2.2)
+   Optimized for GitHub Pages / Netlify / Sub-folders
    Author: Dr. Dhivakaran | AI Schema Lab 2025
 ============================================================ */
 
 (function () {
   "use strict";
 
-  const SCHEMA_PATH = "/schema/";
+  // ✅ Auto-detect base path for any host/subfolder
+  const BASE = window.location.origin + window.location.pathname.replace(/\/[^/]*$/, "/");
+  const SCHEMA_PATH = BASE + "schema/";
+
   const EXPECTED_PARTS = [
     "part1-general.json",
     "part2-preventive.json",
@@ -33,7 +36,7 @@
   /* ---------- 1️⃣ Safe Fetch Utility ---------- */
   async function safeFetch(url) {
     try {
-      const res = await fetch(url, { cache: "force-cache" });
+      const res = await fetch(url, { cache: "no-store" });
       if (!res.ok) throw new Error(res.status);
       return await res.json();
     } catch (err) {
@@ -49,9 +52,9 @@
       "@context": "https://schema.org",
       "@type": "WebPage",
       "name": name,
-      "description": `${name} — Auto-healed placeholder schema for SEO continuity.`,
+      "description": `${name} — Auto-healed placeholder schema for continuity.`,
       "identifier": filename,
-      "url": location.origin + SCHEMA_PATH + filename
+      "url": SCHEMA_PATH + filename
     };
     aiSchema.healed.push(filename);
     console.info("🩹 Auto-healed:", filename);
@@ -71,7 +74,6 @@
         data[key] = key === "@context" ? "https://schema.org" : `Auto-fixed ${key}`;
       }
     }
-
     return data;
   }
 
@@ -96,21 +98,17 @@
 
   /* ---------- 5️⃣ Expose to Window ---------- */
   async function initAIEngine() {
-    console.group("🤖 Noble AI Schema Engine");
+    console.groupCollapsed("🤖 Noble AI Schema Engine");
     await mergeSchemas();
 
-    // Expose unified object
     window.__AI_SCHEMA = aiSchema;
     window.__AI_INDEX = aiSchema.merged;
 
-    // Summary log
     console.table(aiSchema.summary);
     if (aiSchema.errors.length) console.warn("Schema Issues:", aiSchema.errors);
     if (aiSchema.healed.length) console.info("Healed Blocks:", aiSchema.healed);
-
     console.groupEnd();
 
-    // Dispatch global event for integration
     document.dispatchEvent(new CustomEvent("ai-schema-ready", { detail: aiSchema }));
   }
 
