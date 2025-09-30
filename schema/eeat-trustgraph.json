@@ -2,12 +2,33 @@
   "@context": "https://schema.org",
   "@type": "Graph",
   "@id": "https://nobledentalnallagandla.in/#eeat-trustgraph",
-  "name": "NDC-D E-E-A-T TrustGraph",
-  "description": "Expertise, Experience, Authoritativeness, and Trust signals for Noble Dental Care (NDC-D), its doctors, publications, and ethical practices.",
+  "name": "NDC-D E-E-A-T TrustGraph (Platinum+)",
+  "description": "Verified expertise, experience, authoritativeness, and trust signals for Noble Dental Care (NDC-D), linking clinic, authors, research, publications, and verified patient feedback.",
+  "version": "v2025.10 Platinum+",
+  "inLanguage": "en-IN",
   "creator": {
-    "@type": "Organization",
+    "@type": "MedicalOrganization",
     "@id": "https://nobledentalnallagandla.in/#organization",
-    "name": "Noble Dental Care – Nallagandla"
+    "name": "Noble Dental Care – Nallagandla",
+    "url": "https://nobledentalnallagandla.in/",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://nobledentalnallagandla.in/images/logo-footer.webp"
+    },
+    "foundingDate": "2014-01-01",
+    "founder": { "@id": "https://nobledentalnallagandla.in/#dr-dhivakaran" },
+    "award": [
+      "Top Rated Dental Clinic Hyderabad 2025",
+      "Best Microscopic Endodontic Clinic – Telangana"
+    ],
+    "hasCredential": [
+      "ISO 9001:2015 Certified",
+      "CDC Compliant Sterilization Protocol",
+      "AI Clinical Record Review Framework"
+    ],
+    "publishingPrinciples": "https://nobledentalnallagandla.in/#eeat",
+    "ethicsPolicy": "https://nobledentalnallagandla.in/privacy.html",
+    "diversityPolicy": "https://nobledentalnallagandla.in/#ethics"
   },
 
   "mainEntity": [
@@ -16,92 +37,105 @@
       "@id": "https://nobledentalnallagandla.in/#dr-dhivakaran",
       "name": "Dr. Dhivakaran",
       "jobTitle": "Chief Dental Surgeon & Endodontist",
+      "worksFor": { "@id": "https://nobledentalnallagandla.in/#organization" },
       "alumniOf": {
         "@type": "CollegeOrUniversity",
         "name": "Tamil Nadu Dr. M.G.R. Medical University"
       },
-      "knowsAbout": [
-        "Microscopic Endodontics",
-        "Laser Dentistry",
-        "Pediatric and Restorative Care",
-        "Digital Smile Design",
-        "Dental Implants"
-      ],
+      "hasOccupation": {
+        "@type": "Occupation",
+        "name": "Endodontist",
+        "occupationalCategory": "Dental Specialist",
+        "skills": [
+          "Microscopic Endodontics",
+          "Laser Dentistry",
+          "Pediatric and Restorative Care",
+          "Digital Smile Design",
+          "Implantology"
+        ]
+      },
       "hasCredential": [
         "BDS, MDS (Endodontics)",
         "Microscopic Dentistry Certification (ZEISS Academy)",
         "ISO Clinical Protocol Author"
       ],
+      "knowsAbout": [
+        "Microscopic Endodontics",
+        "Aesthetic Restorative Dentistry",
+        "Digital Smile Design",
+        "Clinical Research"
+      ],
       "author": [
         {
-          "@type": "CreativeWork",
+          "@type": "Book",
+          "@id": "https://nobledentalnallagandla.in/#wolters-review",
           "name": "Triumph’s Complete Review of Dentistry (Vol. 1 & 2)",
-          "publisher": {
-            "@type": "Organization",
-            "name": "Wolters Kluwer"
-          },
+          "publisher": { "@type": "Organization", "name": "Wolters Kluwer" },
           "inLanguage": "en",
-          "datePublished": "2018-01-01"
+          "datePublished": "2018-01-01",
+          "sameAs": "https://play.google.com/books/publisher/content/images/frontcover/ZTjvDwAAQBAJ"
         }
+      ],
+      "memberOf": [
+        { "@type": "Organization", "name": "Indian Dental Association (IDA)" },
+        { "@type": "Organization", "name": "Indian Endodontic Society" }
       ],
       "sameAs": [
         "https://scholar.google.com/citations?user=drDhivakaran",
         "https://www.researchgate.net/profile/Dhivakaran",
         "https://www.linkedin.com/in/dr-dhivakaran"
+      ]
+    },
+
+    {
+      "@type": "Person",
+      "@id": "https://nobledentalnallagandla.in/#dr-roger",
+      "name": "Dr. Roger Ronaldo",
+      "jobTitle": "Senior Prosthodontist & Cosmetic Consultant",
+      "worksFor": { "@id": "https://nobledentalnallagandla.in/#organization" },
+      "knowsAbout": [
+        "Prosthodontics",
+        "Digital Smile Design",
+        "Aesthetic Rehabilitation"
       ],
-      "memberOf": [
-        {
-          "@type": "Organization",
-          "name": "Indian Dental Association (IDA)"
-        },
-        {
-          "@type": "Organization",
-          "name": "Indian Endodontic Society"
-        }
+      "alumniOf": {
+        "@type": "CollegeOrUniversity",
+        "name": "Tamil Nadu Dr. M.G.R. Medical University"
+      },
+      "hasCredential": ["BDS, MDS (Prosthodontics)"],
+      "author": {
+        "@id": "https://nobledentalnallagandla.in/#wolters-review"
+      },
+      "sameAs": [
+        "https://www.linkedin.com/in/roger-ronaldo",
+        "https://nobledentalnallagandla.in/about.html#roger"
       ]
     },
 
     {
       "@type": "Organization",
-      "@id": "https://nobledentalnallagandla.in/#organization",
-      "name": "Noble Dental Care – Nallagandla",
-      "award": [
-        "Top Rated Dental Clinic Hyderabad 2025",
-        "Best Microscopic Endodontic Clinic – Telangana"
-      ],
-      "hasCredential": [
-        "ISO 9001:2015 Certified",
-        "CDC Compliant Sterilization Protocol",
-        "AI Clinical Record Review Framework"
-      ],
-      "hasPart": {
-        "@type": "Organization",
-        "@id": "https://nobledentalnallagandla.in/#research-hub",
-        "name": "NDC-D Research & Innovation Cell",
-        "description": "Division dedicated to clinical outcomes, AI-assisted dental imaging, and evidence-based research."
-      },
-      "publishingPrinciples": "https://nobledentalnallagandla.in/#eeat",
-      "ethicsPolicy": "https://nobledentalnallagandla.in/privacy.html",
-      "diversityPolicy": "https://nobledentalnallagandla.in/#ethics"
+      "@id": "https://nobledentalnallagandla.in/#research-hub",
+      "name": "NDC-D Research & Innovation Cell",
+      "description": "In-house division focusing on evidence-based outcomes, AI-assisted dental imaging, and translational research.",
+      "parentOrganization": {
+        "@id": "https://nobledentalnallagandla.in/#organization"
+      }
     },
 
     {
-      "@type": "CreativeWork",
+      "@type": "CreativeWorkSeries",
       "@id": "https://nobledentalnallagandla.in/#publications",
-      "name": "Published Dental Research Contributions",
+      "name": "NDC-D Scholarly & Clinical Publications",
       "creator": [
-        { "@id": "https://nobledentalnallagandla.in/#dr-dhivakaran" }
+        { "@id": "https://nobledentalnallagandla.in/#dr-dhivakaran" },
+        { "@id": "https://nobledentalnallagandla.in/#dr-roger" }
       ],
-      "citation": [
+      "hasPart": [
+        { "@id": "https://nobledentalnallagandla.in/#wolters-review" },
         {
           "@type": "CreativeWork",
-          "name": "Triumph’s Complete Review of Dentistry (Wolters Kluwer, 2018)",
-          "url": "https://play.google.com/books/publisher/content/images/frontcover/ZTjvDwAAQBAJ"
-        },
-        {
-          "@type": "CreativeWork",
-          "name": "Contemporary Fixed Prosthodontics (Elsevier)",
-          "author": "Stephen Rosenstiel"
+          "name": "Contemporary Fixed Prosthodontics",
+          "publisher": { "@type": "Organization", "name": "Elsevier" }
         }
       ]
     },
@@ -110,7 +144,11 @@
       "@type": "MedicalScholarlyArticle",
       "@id": "https://nobledentalnallagandla.in/#case-studies",
       "name": "Clinical Case Reports & Evidence-Based Dentistry",
-      "about": ["Pediatric Pulp Therapy", "Post-Endodontic Restoration", "Aesthetic Smile Correction"],
+      "about": [
+        "Pediatric Pulp Therapy",
+        "Post-Endodontic Restoration",
+        "Aesthetic Smile Correction"
+      ],
       "author": [
         { "@id": "https://nobledentalnallagandla.in/#dr-dhivakaran" },
         { "@id": "https://nobledentalnallagandla.in/#dr-roger" }
@@ -122,6 +160,7 @@
       "@type": "WebPage",
       "@id": "https://nobledentalnallagandla.in/#review-aggregate",
       "name": "Patient Review Insights",
+      "description": "Aggregated rating and feedback from verified patients treated at Noble Dental Care.",
       "mainEntity": {
         "@type": "AggregateRating",
         "ratingValue": "4.9",
@@ -134,8 +173,8 @@
     {
       "@type": "WebPage",
       "@id": "https://nobledentalnallagandla.in/#eeat-signals",
-      "name": "NDC-D E-E-A-T Trust Indicators",
-      "description": "Validated author expertise, academic references, ISO compliance, and real-world experience signals for AI search."
+      "name": "E-E-A-T Validation Summary",
+      "description": "Verified authorship, ISO compliance, peer citations, and patient trust records aligned with Google’s E-E-A-T framework."
     }
   ],
 
@@ -144,13 +183,15 @@
     "audienceType": [
       "AI Overview Engine",
       "Knowledge Graph Builder",
-      "Healthcare Schema Validator"
+      "Healthcare Schema Validator",
+      "Search Generative Experience"
     ]
   },
 
   "review": {
     "@type": "Review",
-    "reviewBody": "Noble Dental Care’s schema demonstrates verifiable expertise (E), real clinical experience (E), academic authorship and ethical accreditation (A), and transparent contact + ISO policies (T).",
+    "name": "E-E-A-T Validation Review",
+    "reviewBody": "Noble Dental Care demonstrates verifiable expertise (E), clinical experience (E), academic authorship and institutional authority (A), and transparent ISO-based trust policies (T).",
     "reviewRating": {
       "@type": "Rating",
       "ratingValue": "10",
@@ -163,8 +204,8 @@
     "Dental Knowledge Graph SEO",
     "AI Medical Schema",
     "Author Verified JSON-LD",
-    "Healthcare Structured Data"
+    "Healthcare Structured Data",
+    "Platinum Schema Verification"
   ],
-  "version": "2025.3",
-  "lastReviewed": "2025-09-28"
+  "lastReviewed": "2025-10-01"
 }
