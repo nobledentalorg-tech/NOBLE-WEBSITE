@@ -10,29 +10,54 @@
     "Root Canal Treatment",
     "Tooth Crown Restoration"
   ],
-  "description": "Comprehensive, evidence-aligned restorative dentistry including caries management, minimally invasive fillings, pulp therapy, root canal treatment (endodontics), post-core, crown, bridgework, and biomaterial choices. Integrates pain management, microscope-assisted care, and adhesive innovations for long-term preservation.",
+  "description": "Comprehensive, evidence-based restorative and endodontic care — including caries management, minimally invasive fillings, pulp therapy, root canal treatment, post-core buildup, crowns, and biomaterials. Integrates pain control, microscope-assisted precision, and adhesive innovations for long-term tooth preservation.",
   "inLanguage": "en-IN",
-  "isPartOf": { "@id": "https://nobledentalnallagandla.in/#organization" },
-  "medicalSpecialty": ["Dentistry", "Endodontics", "RestorativeDentistry"],
-  "keywords": "restorative dentistry, tooth filling, composite resin, glass ionomer, amalgam alternatives, inlay onlay, dental crown, post core, root canal treatment, endodontic therapy, microscope dentistry, adhesive dentistry, caries excavation, pulp protection, biomaterials",
+  "isPartOf": {
+    "@type": "WebSite",
+    "@id": "https://nobledentalnallagandla.in/"
+  },
+  "medicalSpecialty": [
+    "Dentistry",
+    "Endodontics",
+    "RestorativeDentistry"
+  ],
+  "keywords": "restorative dentistry, tooth filling, composite resin, glass ionomer, inlay, onlay, crown, bridgework, post core, root canal treatment, endodontic therapy, adhesive dentistry, caries excavation, pulp protection, biomaterials",
   "datePublished": "2025-09-28",
   "lastReviewed": "2025-09-28",
+
   "publisher": {
     "@type": "MedicalOrganization",
     "name": "Noble Dental Care – Nallagandla",
+    "url": "https://nobledentalnallagandla.in/",
     "logo": {
       "@type": "ImageObject",
       "url": "https://nobledentalnallagandla.in/images/logo-footer.webp"
     }
   },
+
   "reviewedBy": {
     "@type": "Dentist",
-    "name": "Endodontic & Restorative Team",
-    "worksFor": { "@id": "https://nobledentalnallagandla.in/#organization" }
+    "name": "Endodontic & Restorative Team, Noble Dental Care",
+    "worksFor": {
+      "@id": "https://nobledentalnallagandla.in/"
+    }
   },
+
   "speakable": {
     "@type": "SpeakableSpecification",
-    "cssSelector": ["header h1", ".summary", ".keypoints"]
+    "cssSelector": [
+      "header h1",
+      ".summary",
+      ".keypoints"
+    ]
+  },
+
+  "breadcrumb": {
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://nobledentalnallagandla.in/" },
+      { "@type": "ListItem", "position": 2, "name": "Restorative Dentistry", "item": "https://nobledentalnallagandla.in/specialities/restorative-dentistry.html" }
+    ]
   },
 
   "about": [
@@ -44,144 +69,94 @@
     "Adhesive dentistry"
   ],
 
-  "mainEntityOfPage": "https://nobledentalnallagandla.in/specialities/root-canal.html",
+  "mentions": [
+    { "@type": "MedicalProcedure", "name": "Tooth filling" },
+    { "@type": "MedicalProcedure", "name": "Root canal treatment" },
+    { "@type": "MedicalProcedure", "name": "Crown restoration" },
+    { "@type": "MedicalProcedure", "name": "Post and core buildup" }
+  ],
+
+  "mainEntity": [
+    { "@id": "https://nobledentalnallagandla.in/#tooth-decay" },
+    { "@id": "https://nobledentalnallagandla.in/#root-canal" },
+    { "@id": "https://nobledentalnallagandla.in/#post-core-crown" }
+  ],
 
   "hasPart": [
     {
       "@type": "MedicalCondition",
       "@id": "https://nobledentalnallagandla.in/#tooth-decay",
-      "name": "Tooth Decay (Caries)",
-      "alternateName": ["Cavity", "Dental Caries"],
-      "description": "Destruction of tooth enamel and dentin by acid-producing bacteria; common cause of pain and tooth loss if untreated.",
-      "signOrSymptom": ["Cavity", "Sensitivity", "Pain on sweets or cold"],
-      "possibleTreatment": [
-        { "@type": "MedicalProcedure", "name": "Tooth filling with composite resin or glass-ionomer" },
-        { "@type": "MedicalProcedure", "name": "Inlay or onlay restoration" },
-        { "@type": "MedicalProcedure", "name": "Root canal therapy for deep decay" }
+      "name": "Tooth Decay (Dental Caries)",
+      "description": "Progressive destruction of enamel and dentin due to bacterial acids. Common cause of tooth sensitivity, pain, and infection if untreated.",
+      "signOrSymptom": [
+        "Cavity",
+        "Pain on sweets or cold",
+        "Visible hole in tooth"
       ],
-      "associatedAnatomy": { "@type": "AnatomicalStructure", "name": "Tooth (Enamel, Dentin, Pulp)" }
+      "possibleTreatment": [
+        { "@type": "MedicalProcedure", "name": "Tooth-colored filling" },
+        { "@type": "MedicalProcedure", "name": "Inlay or onlay" },
+        { "@type": "MedicalProcedure", "name": "Root canal if pulp involved" }
+      ],
+      "associatedAnatomy": {
+        "@type": "AnatomicalStructure",
+        "name": "Tooth (Enamel, Dentin, Pulp)"
+      }
     },
-
     {
       "@type": "MedicalProcedure",
       "@id": "https://nobledentalnallagandla.in/#tooth-filling",
-      "name": "Tooth-Colored Filling (Composite / Glass Ionomer)",
-      "alternateName": ["Dental Filling", "Tooth Restoration"],
-      "description": "Restores form and function of carious tooth using adhesive resin or glass ionomer. Minimally invasive, esthetic, mercury-free.",
-      "followup": "Routine polishing and bite adjustment within 7 days.",
-      "procedureType": "Conservative restoration",
+      "name": "Tooth-Colored Filling",
+      "alternateName": ["Composite Filling", "Glass Ionomer Restoration"],
+      "description": "A minimally invasive restoration that replaces decayed tissue with adhesive, esthetic resin or glass-ionomer.",
+      "procedureType": "Direct restoration",
+      "followup": "Check occlusion and finish within 7 days.",
       "guideline": {
         "@type": "MedicalGuideline",
-        "guidelineSubject": "Minimally invasive adhesive restorations",
+        "guidelineSubject": "Adhesive restorative techniques",
         "evidenceLevel": "High"
-      },
-      "instrument": [
-        "High-speed handpiece",
-        "Matrix system",
-        "Curing light"
-      ],
-      "supply": [
-        { "@type": "HowToSupply", "name": "Composite resin material" },
-        { "@type": "HowToSupply", "name": "Etchant / bonding agent" }
-      ],
-      "study": [
-        {
-          "@type": "MedicalStudy",
-          "name": "Longevity of composite restorations",
-          "studyDesign": "Systematic review (≥5 years survival >85%)"
-        }
-      ]
+      }
     },
-
-    {
-      "@type": "MedicalProcedure",
-      "@id": "https://nobledentalnallagandla.in/#indirect-restorations",
-      "name": "Indirect Restorations (Inlays, Onlays, Crowns)",
-      "description": "Laboratory-fabricated restorations for large cavities or structurally compromised teeth. Improve strength and esthetics.",
-      "procedureType": "Indirect restorative",
-      "possibleComplication": "Marginal leakage or fracture if poorly bonded.",
-      "followup": "Recall after 6 months for evaluation."
-    },
-
-    {
-      "@type": "MedicalCondition",
-      "@id": "https://nobledentalnallagandla.in/#pulpitis",
-      "name": "Pulpitis",
-      "alternateName": ["Inflamed Pulp"],
-      "description": "Reversible or irreversible inflammation of dental pulp due to decay or trauma; causes sharp, lingering pain.",
-      "signOrSymptom": ["Throbbing pain", "Night pain", "Temperature sensitivity"],
-      "possibleTreatment": [
-        { "@type": "MedicalProcedure", "name": "Pulp capping or partial pulpotomy (reversible cases)" },
-        { "@type": "MedicalProcedure", "name": "Root canal treatment (irreversible cases)" }
-      ]
-    },
-
     {
       "@type": "MedicalProcedure",
       "@id": "https://nobledentalnallagandla.in/#root-canal",
       "name": "Root Canal Treatment (Endodontic Therapy)",
       "alternateName": ["RCT", "Endodontic Treatment"],
-      "description": "Removal of infected pulp, cleaning, shaping, and obturation of canals to preserve natural tooth. Performed under local anesthesia, often microscope-assisted.",
-      "followup": "Definitive crown placement within 2–3 weeks.",
+      "description": "Removes infected pulp, cleans and seals canals to retain natural tooth. Performed under local anesthesia, often microscope-assisted.",
+      "followup": "Crown placement within 2–3 weeks.",
       "instrument": [
-        "Endodontic files",
-        "Rotary NiTi instruments",
-        "Irrigation system"
+        "Rotary files",
+        "Irrigation system",
+        "Microscope"
       ],
-      "possibleComplication": ["Instrument separation", "Post-treatment sensitivity"],
+      "possibleComplication": [
+        "Instrument separation",
+        "Post-treatment pain"
+      ],
       "guideline": {
         "@type": "MedicalGuideline",
-        "guidelineSubject": "Root canal therapy indications and steps",
+        "guidelineSubject": "Root canal therapy steps and outcomes",
         "evidenceLevel": "High"
-      },
-      "possibleTreatment": [
-        { "@type": "MedicalTherapy", "name": "Antibiotics for systemic infection (as per guidelines)" },
-        { "@type": "MedicalProcedure", "name": "Post-core and crown restoration after RCT" }
-      ],
-      "study": [
-        {
-          "@type": "MedicalStudy",
-          "name": "Outcome of root canal treatment",
-          "studyDesign": "Systematic reviews — >90% survival with adequate restoration"
-        }
-      ],
-      "associatedAnatomy": [
-        { "@type": "AnatomicalStructure", "name": "Dental Pulp" },
-        { "@type": "AnatomicalStructure", "name": "Root Canal System" }
-      ]
+      }
     },
-
     {
       "@type": "MedicalProcedure",
       "@id": "https://nobledentalnallagandla.in/#post-core-crown",
-      "name": "Post & Core + Crown Restoration",
-      "description": "Reinforcement of endodontically treated tooth using fiber post and composite core buildup, followed by full-coverage crown.",
-      "procedureType": "Restorative reinforcement",
-      "instrument": ["Post drill", "Fiber post", "Resin cement"],
+      "name": "Post & Core with Crown",
+      "description": "Strengthens endodontically treated tooth using fiber post and composite core before full-coverage crown.",
       "possibleTreatment": [
-        { "@type": "MedicalProcedure", "name": "Zirconia or porcelain-fused-metal crown" }
+        { "@type": "MedicalProcedure", "name": "Zirconia crown" },
+        { "@type": "MedicalProcedure", "name": "Porcelain-fused-metal crown" }
       ]
     },
-
     {
       "@type": "MedicalCondition",
       "@id": "https://nobledentalnallagandla.in/#cracked-tooth",
       "name": "Cracked Tooth Syndrome",
-      "description": "Incomplete tooth fracture leading to pain on biting and temperature changes.",
+      "description": "Incomplete fracture causing sharp pain on biting and temperature sensitivity.",
       "possibleTreatment": [
-        { "@type": "MedicalProcedure", "name": "Full-coverage crown" },
-        { "@type": "MedicalProcedure", "name": "Root canal if pulp involved" }
-      ]
-    },
-
-    {
-      "@type": "MedicalCondition",
-      "@id": "https://nobledentalnallagandla.in/#discolored-tooth",
-      "name": "Discolored Non-vital Tooth",
-      "description": "Darkening following trauma or RCT; esthetic concern.",
-      "possibleTreatment": [
-        { "@type": "MedicalProcedure", "name": "Internal bleaching" },
-        { "@type": "MedicalProcedure", "name": "Veneer or crown" }
+        { "@type": "MedicalProcedure", "name": "Full coverage crown" },
+        { "@type": "MedicalProcedure", "name": "Root canal if pulp affected" }
       ]
     }
   ],
@@ -191,38 +166,41 @@
       "@type": "MedicalGuideline",
       "@id": "https://nobledentalnallagandla.in/#restorative-guideline",
       "name": "Minimally Invasive Dentistry Protocol",
-      "description": "Preserve sound tooth structure, control caries, use adhesive restorations and magnification.",
+      "description": "Emphasizes conservative cavity design, caries control, adhesive restorations, and magnification.",
       "evidenceLevel": "High"
     },
     {
       "@type": "MedicalGuideline",
       "@id": "https://nobledentalnallagandla.in/#pain-management",
       "name": "Pain Management in Endodontics",
-      "description": "Local anesthesia, occlusal adjustment, short-term analgesics as per guideline."
+      "description": "Use of local anesthesia, occlusal relief, and evidence-based analgesics."
     }
   ],
 
   "citation": [
     {
-      "@type": "CreativeWork",
+      "@type": "Book",
       "name": "Sturdevant’s Art and Science of Operative Dentistry",
       "author": [{ "@type": "Person", "name": "Theodore M. Roberson" }],
       "publisher": { "@type": "Organization", "name": "Elsevier" }
     },
     {
-      "@type": "CreativeWork",
+      "@type": "Book",
       "name": "Pathways of the Pulp",
-      "author": [{ "@type": "Person", "name": "Stephen Cohen" }, { "@type": "Person", "name": "Kenneth Hargreaves" }],
+      "author": [
+        { "@type": "Person", "name": "Stephen Cohen" },
+        { "@type": "Person", "name": "Kenneth Hargreaves" }
+      ],
       "publisher": { "@type": "Organization", "name": "Elsevier" }
     },
     {
-      "@type": "CreativeWork",
+      "@type": "Book",
       "name": "Principles and Practice of Endodontics",
       "author": [{ "@type": "Person", "name": "Mahmoud Torabinejad" }],
       "publisher": { "@type": "Organization", "name": "Elsevier" }
     },
     {
-      "@type": "CreativeWork",
+      "@type": "Book",
       "name": "Contemporary Fixed Prosthodontics",
       "author": [{ "@type": "Person", "name": "Stephen F. Rosenstiel" }],
       "publisher": { "@type": "Organization", "name": "Elsevier" }
@@ -232,6 +210,9 @@
   "audience": {
     "@type": "Audience",
     "audienceType": "Patients seeking restorative or root canal care",
-    "geographicArea": { "@type": "AdministrativeArea", "name": "Hyderabad, India" }
+    "geographicArea": {
+      "@type": "AdministrativeArea",
+      "name": "Nallagandla, Hyderabad, India"
+    }
   }
 }
