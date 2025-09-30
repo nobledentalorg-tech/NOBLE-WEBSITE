@@ -1,24 +1,8 @@
 {
   "@context": "https://schema.org",
   "@type": "BreadcrumbList",
-  "@id": "https://nobledentalnallagandla.in/#breadcrumbs",
-  "url": "https://nobledentalnallagandla.in/#breadcrumbs",
-  "name": "Noble Dental Care – Site Breadcrumb Navigation",
-  "description": "AI-ready breadcrumb schema connecting Noble Dental Care’s homepage, about, services, and speciality pages. Enables rich navigation trails, SGE entity linking, and voice assistant hierarchy recognition.",
-  "inLanguage": "en-IN",
-  "isPartOf": { "@id": "https://nobledentalnallagandla.in/#organization" },
-  "publisher": { "@id": "https://nobledentalnallagandla.in/#organization" },
-  "lastReviewed": "2025-09-30",
-  "version": "2025.4",
-  "keywords": [
-    "Breadcrumb Schema",
-    "Structured Navigation",
-    "Dental SEO",
-    "AI Knowledge Graph",
-    "SGE Pathways",
-    "Noble Dental Care Nallagandla",
-    "Rich Result Navigation"
-  ],
+  "name": "Website Navigation Path",
+  "description": "Breadcrumb trail showing user navigation path across major sections of Noble Dental Care, Nallagandla.",
   "itemListElement": [
     {
       "@type": "ListItem",
@@ -29,55 +13,19 @@
     {
       "@type": "ListItem",
       "position": 2,
+      "name": "Treatments",
+      "item": "https://nobledentalnallagandla.in/services.html"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
       "name": "About Us",
       "item": "https://nobledentalnallagandla.in/about.html"
     },
     {
       "@type": "ListItem",
-      "position": 3,
-      "name": "Our Services",
-      "item": "https://nobledentalnallagandla.in/services.html"
-    },
-    {
-      "@type": "ListItem",
       "position": 4,
-      "name": "Specialities",
-      "item": "https://nobledentalnallagandla.in/specialities/"
-    },
-    {
-      "@type": "ListItem",
-      "position": 5,
-      "name": "Preventive Dentistry",
-      "item": "https://nobledentalnallagandla.in/specialities/preventive-dentistry.html"
-    },
-    {
-      "@type": "ListItem",
-      "position": 6,
-      "name": "Restorative Dentistry",
-      "item": "https://nobledentalnallagandla.in/specialities/restorative-dentistry.html"
-    },
-    {
-      "@type": "ListItem",
-      "position": 7,
-      "name": "Aesthetic & Cosmetic Dentistry",
-      "item": "https://nobledentalnallagandla.in/specialities/aesthetic-dentistry.html"
-    },
-    {
-      "@type": "ListItem",
-      "position": 8,
-      "name": "Implants & Surgical Dentistry",
-      "item": "https://nobledentalnallagandla.in/specialities/implant-dentistry.html"
-    },
-    {
-      "@type": "ListItem",
-      "position": 9,
-      "name": "Pediatric Dentistry",
-      "item": "https://nobledentalnallagandla.in/specialities/pediatric-dentistry.html"
-    },
-    {
-      "@type": "ListItem",
-      "position": 10,
-      "name": "Contact & Booking",
+      "name": "Contact",
       "item": "https://nobledentalnallagandla.in/contact.html"
     }
   ]
