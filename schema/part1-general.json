@@ -283,22 +283,27 @@
         "name": "FDI World Dental Federation"
       },
       "sameAs": "https://www.fdiworlddental.org/"
-    },
-    {
-      "@type": "CreativeWork",
-      "name": "Academic authors frequently cited in cariology and erosion research (examples)",
-      "author": [
-        { "@type": "Person", "name": "J. D. B. Featherstone" },
-        { "@type": "Person", "name": "K. Donnelly" },
-        { "@type": "Person", "name": "N. X. West" },
-        { "@type": "Person", "name": "D. Bartlett" }
-      ],
-      "description": "Representative researchers in cariology and tooth wear; include as general scholarly context without implying a specific paper."
     }
   ],
   "audience": {
     "@type": "Audience",
     "audienceType": "General Public",
     "geographicArea": { "@type": "AdministrativeArea", "name": "Nallagandla, Hyderabad, India" }
-  }
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://nobledentalnallagandla.in/specialities/general-oral-health.html"
+  },
+  "relatedLink": [
+    {
+      "@type": "WebPage",
+      "name": "Preventive Dentistry",
+      "url": "https://nobledentalnallagandla.in/specialities/preventive-dentistry.html"
+    },
+    {
+      "@type": "WebPage",
+      "name": "Restorative Dentistry",
+      "url": "https://nobledentalnallagandla.in/specialities/restorative-dentistry.html"
+    }
+  ]
 }
