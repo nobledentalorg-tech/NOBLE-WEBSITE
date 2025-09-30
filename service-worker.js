@@ -1,4 +1,4 @@
-const CACHE_NAME = "nobledental-pwa-v1";
+const CACHE_NAME = "nobledental-pwa-v2";
 const urlsToCache = [
   "/",
   "/index.html",
@@ -8,30 +8,22 @@ const urlsToCache = [
   "/offline.html",
   "/styles.css",
   "/main.js",
-  "/images/logo-footer.webp"
+  "/images/dentalcare.nallagandla.png" // ✅ Updated
 ];
 
-// Install
+// Install + Safe Cache
 self.addEventListener("install", (event) => {
   event.waitUntil(
-    caches.open(CACHE_NAME).then((cache) => cache.addAll(urlsToCache))
-  );
-});
-
-// Activate
-self.addEventListener("activate", (event) => {
-  event.waitUntil(
-    caches.keys().then((keys) =>
-      Promise.all(keys.map((key) => key !== CACHE_NAME && caches.delete(key)))
-    )
-  );
-});
-
-// Fetch with Offline Fallback
-self.addEventListener("fetch", (event) => {
-  event.respondWith(
-    fetch(event.request).catch(() => caches.match(event.request).then(
-      (response) => response || caches.match("/offline.html")
-    ))
+    caches.open(CACHE_NAME).then(async (cache) => {
+      for (const url of urlsToCache) {
+        try {
+          const response = await fetch(url, { cache: "no-cache" });
+          if (response.ok) await cache.put(url, response);
+          else console.warn("⚠️ Skipped:", url);
+        } catch (e) {
+          console.warn("❌ Failed to cache:", url, e.message);
+        }
+      }
+    })
   );
 });
