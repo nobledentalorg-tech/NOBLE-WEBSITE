@@ -10,17 +10,23 @@
     "Dental Clinic near Tellapur"
   ],
   "url": "https://nobledentalnallagandla.in/",
-  "logo": "https://nobledentalnallagandla.in/images/logo-footer.webp",
-  "description": "Noble Dental Care is a multi-specialty ISO-certified dental center in Nallagandla, Hyderabad, specializing in microscopic root canals, implants, smile design, pediatric dentistry, and emergency care.",
+  "logo": {
+    "@type": "ImageObject",
+    "url": "https://nobledentalnallagandla.in/images/logo-footer.webp"
+  },
+  "description": "Noble Dental Care is an ISO-certified multi-specialty dental center in Nallagandla, Hyderabad, offering microscopic root canal therapy, dental implants, smile design, pediatric care, and 24×7 emergency dentistry.",
   "foundingDate": "2015-01-01",
+
   "founder": {
     "@type": "Person",
+    "@id": "https://nobledentalnallagandla.in/#dr-dhivakaran",
     "name": "Dr. Dhivakaran",
     "alumniOf": {
       "@type": "CollegeOrUniversity",
       "name": "Tamil Nadu Dr. M.G.R. Medical University"
     }
   },
+
   "employee": [
     { "@id": "https://nobledentalnallagandla.in/#dr-dhivakaran" },
     { "@id": "https://nobledentalnallagandla.in/#dr-roger" },
@@ -28,6 +34,7 @@
     { "@id": "https://nobledentalnallagandla.in/#dr-deepak" },
     { "@id": "https://nobledentalnallagandla.in/#dr-thikvijay" }
   ],
+
   "department": [
     { "@id": "https://nobledentalnallagandla.in/#endodontics" },
     { "@id": "https://nobledentalnallagandla.in/#orthodontics" },
@@ -35,6 +42,7 @@
     { "@id": "https://nobledentalnallagandla.in/#pediatric-dentistry" },
     { "@id": "https://nobledentalnallagandla.in/#aesthetic-dentistry" }
   ],
+
   "medicalSpecialty": [
     "Endodontics",
     "Orthodontics",
@@ -43,10 +51,12 @@
     "Aesthetic Dentistry",
     "Prosthodontics"
   ],
+
   "areaServed": {
     "@type": "AdministrativeArea",
     "name": "Hyderabad, Telangana, India"
   },
+
   "address": {
     "@type": "PostalAddress",
     "streetAddress": "Nallagandla Main Road",
@@ -55,19 +65,22 @@
     "postalCode": "500019",
     "addressCountry": "IN"
   },
+
   "geo": {
     "@type": "GeoCoordinates",
     "latitude": 17.473963,
     "longitude": 78.305995
   },
+
   "contactPoint": [
     {
       "@type": "ContactPoint",
       "telephone": "+91-86104-25342",
       "contactType": "Customer Support",
-      "availableLanguage": ["English","Telugu","Hindi","Tamil"]
+      "availableLanguage": ["English", "Telugu", "Hindi", "Tamil"]
     }
   ],
+
   "sameAs": [
     "https://maps.app.goo.gl/hy8B9WiQHtnaUqdPA",
     "https://www.instagram.com/nobledentalnallagandla",
@@ -75,19 +88,23 @@
     "https://www.linkedin.com/company/nobledentalcare",
     "https://www.practo.com/hyderabad/clinic/noble-dental-nallagandla"
   ],
+
   "memberOf": {
     "@type": "Organization",
     "name": "Indian Dental Association (IDA)"
   },
+
   "hasCredential": [
     "ISO 9001:2015 Certified",
-    "Sterilization Protocol Compliant",
-    "CDC-Grade Infection Control"
+    "CDC-Grade Infection Control",
+    "Sterilization Protocol Compliant"
   ],
+
   "award": [
     "Top Rated Dental Clinic Hyderabad 2025",
     "Best Microscopic Endodontic Clinic – Telangana"
   ],
+
   "knowsAbout": [
     "Microscopic Endodontics",
     "Dental Implants",
@@ -96,6 +113,7 @@
     "Pediatric Sedation Dentistry",
     "AI Diagnostics and 3D Planning"
   ],
+
   "hasOfferCatalog": {
     "@type": "OfferCatalog",
     "name": "Dental Treatment Packages",
@@ -129,35 +147,46 @@
     "worstRating": "1"
   },
 
-  "foundingLocation": { "@id": "https://nobledentalnallagandla.in/#geo-location" },
   "mainEntityOfPage": "https://nobledentalnallagandla.in/about.html",
+
   "subjectOf": [
     { "@id": "https://nobledentalnallagandla.in/#review-aggregate" },
     { "@id": "https://nobledentalnallagandla.in/#eeat-signals" }
   ],
 
+  "foundingLocation": {
+    "@type": "Place",
+    "@id": "https://nobledentalnallagandla.in/#geo-location",
+    "geo": {
+      "@type": "GeoCoordinates",
+      "latitude": 17.473963,
+      "longitude": 78.305995
+    }
+  },
+
   "employeeBenefits": [
-    "Continuous Education Programs",
+    "Continuing Education Programs",
     "Clinical Research Collaboration",
     "Academic Publishing Opportunities"
   ],
 
   "sponsor": {
     "@type": "Organization",
-    "name": "NDC-D Research and Innovation Cell"
+    "name": "NDC-D Research & Innovation Cell"
   },
 
   "citation": [
     {
-      "@type": "CreativeWork",
+      "@type": "Book",
       "name": "Triumph’s Complete Review of Dentistry (Vol. 1 & 2)",
       "author": { "@id": "https://nobledentalnallagandla.in/#dr-dhivakaran" },
       "publisher": { "@type": "Organization", "name": "Wolters Kluwer" }
     },
     {
-      "@type": "CreativeWork",
-      "name": "Contemporary Fixed Prosthodontics (Elsevier)",
-      "author": [{ "@type": "Person", "name": "Stephen Rosenstiel" }]
+      "@type": "Book",
+      "name": "Contemporary Fixed Prosthodontics",
+      "author": [{ "@type": "Person", "name": "Stephen F. Rosenstiel" }],
+      "publisher": { "@type": "Organization", "name": "Elsevier" }
     }
   ],
 
@@ -170,10 +199,9 @@
 
   "ethicsPolicy": "https://nobledentalnallagandla.in/privacy.html",
   "diversityPolicy": "https://nobledentalnallagandla.in/#ethics",
-  "accessibilitySummary": "Ground floor entry, ramp assistance, wheelchair friendly operatories",
+  "accessibilitySummary": "Ground floor access, wheelchair-friendly operatory, ramp assistance available.",
   "currenciesAccepted": "INR",
-  "paymentAccepted": ["Cash","Credit Card","UPI","Insurance"],
-
+  "paymentAccepted": ["Cash", "Credit Card", "UPI", "Insurance"],
   "publishingPrinciples": "https://nobledentalnallagandla.in/#eeat",
   "copyrightNotice": "© 2025 Noble Dental Care – All rights reserved",
   "copyrightYear": "2025"
