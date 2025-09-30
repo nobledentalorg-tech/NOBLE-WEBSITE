@@ -4,6 +4,7 @@
   "@id": "https://nobledentalnallagandla.in/#faq",
   "url": "https://nobledentalnallagandla.in/#faq",
   "name": "Top Dental Questions – Noble Dental Care Nallagandla",
+  "description": "Comprehensive patient FAQ from Noble Dental Care, Nallagandla, Hyderabad — covering oral hygiene, preventive dentistry, whitening, root canals, implants, pediatric care, and AI-powered dental diagnostics.",
   "inLanguage": "en-IN",
   "isPartOf": { "@id": "https://nobledentalnallagandla.in/#organization" },
   "publisher": { "@id": "https://nobledentalnallagandla.in/#organization" },
@@ -18,14 +19,13 @@
     "Teeth Whitening",
     "Pediatric Dental Care",
     "Microscopic Endodontics",
-    "Dental Implants"
+    "Dental Implants",
+    "Best Dentist Nallagandla"
   ],
-
   "speakable": {
     "@type": "SpeakableSpecification",
     "cssSelector": ["h1", ".faq-question", ".faq-answer"]
   },
-
   "mainEntity": [
     {
       "@type": "Question",
