@@ -1,0 +1,161 @@
+{
+  "@context": "https://schema.org",
+  "@type": "MedicalBusiness",
+  "@id": "https://nobledentalnallagandla.in/#organization",
+  "name": "Noble Dental Care Nallagandla",
+  "alternateName": [
+    "Noble Dental Clinic",
+    "NDC Nallagandla",
+    "Noble Dental Care Hyderabad"
+  ],
+  "legalName": "Noble Dental Care – Nallagandla",
+  "description": "Noble Dental Care is a trusted multi-speciality dental clinic in Nallagandla, Hyderabad offering advanced, restorative, aesthetic, preventive, pediatric, and emergency dental services under one roof.",
+  "url": "https://nobledentalnallagandla.in/",
+  "mainEntityOfPage": "https://nobledentalnallagandla.in/",
+  "inLanguage": "en-IN",
+  "foundingDate": "2015",
+  "founder": {
+    "@type": "Person",
+    "name": "Dr. Dhivakaran R",
+    "jobTitle": "Chief Dental Surgeon",
+    "sameAs": [
+      "https://nobledentalnallagandla.in/about.html",
+      "https://www.linkedin.com/in/dr-dhivakaran"
+    ]
+  },
+
+  "logo": {
+    "@type": "ImageObject",
+    "url": "https://nobledentalnallagandla.in/images/logo-footer.webp",
+    "contentUrl": "https://nobledentalnallagandla.in/images/logo-footer.webp",
+    "width": "300",
+    "height": "100"
+  },
+
+  "image": {
+    "@type": "ImageObject",
+    "url": "https://nobledentalnallagandla.in/images/clinic-front.webp",
+    "caption": "Front view of Noble Dental Care – Nallagandla"
+  },
+
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "Shop No. 4, Ground Floor, Aparna CyberLife, Nallagandla",
+    "addressLocality": "Hyderabad",
+    "addressRegion": "Telangana",
+    "postalCode": "500019",
+    "addressCountry": "IN"
+  },
+
+  "geo": {
+    "@type": "GeoCoordinates",
+    "latitude": 17.4481,
+    "longitude": 78.3214
+  },
+
+  "areaServed": {
+    "@type": "AdministrativeArea",
+    "name": "Nallagandla, Hyderabad"
+  },
+
+  "contactPoint": [
+    {
+      "@type": "ContactPoint",
+      "contactType": "Customer Service",
+      "telephone": "+91-9123456789",
+      "email": "info@nobledentalnallagandla.in",
+      "availableLanguage": ["English", "Hindi", "Telugu"],
+      "areaServed": "IN"
+    }
+  ],
+
+  "openingHoursSpecification": [
+    {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
+      "opens": "09:30",
+      "closes": "21:00"
+    },
+    {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": "Sunday",
+      "opens": "10:00",
+      "closes": "13:00"
+    }
+  ],
+
+  "sameAs": [
+    "https://maps.app.goo.gl/xyz123", 
+    "https://www.facebook.com/nobledentalnallagandla",
+    "https://www.instagram.com/nobledentalnallagandla/",
+    "https://www.linkedin.com/company/nobledentalnallagandla"
+  ],
+
+  "department": [
+    { "@id": "https://nobledentalnallagandla.in/#preventive-dentistry" },
+    { "@id": "https://nobledentalnallagandla.in/#restorative-dentistry" },
+    { "@id": "https://nobledentalnallagandla.in/#aesthetic-dentistry" },
+    { "@id": "https://nobledentalnallagandla.in/#advanced-dentistry" },
+    { "@id": "https://nobledentalnallagandla.in/#pediatric-dentistry" },
+    { "@id": "https://nobledentalnallagandla.in/#emergency-dentistry" }
+  ],
+
+  "memberOf": {
+    "@type": "Organization",
+    "name": "Indian Dental Association (IDA)"
+  },
+
+  "hasOfferCatalog": {
+    "@type": "OfferCatalog",
+    "name": "Comprehensive Dental Treatments",
+    "itemListElement": [
+      { "@id": "https://nobledentalnallagandla.in/#dental-implant" },
+      { "@id": "https://nobledentalnallagandla.in/#root-canal-treatment" },
+      { "@id": "https://nobledentalnallagandla.in/#braces-treatment" },
+      { "@id": "https://nobledentalnallagandla.in/#smile-design" }
+    ]
+  },
+
+  "knowsAbout": [
+    "Dental implants",
+    "Root canal therapy",
+    "Smile design",
+    "Orthodontic braces",
+    "Pediatric dentistry",
+    "Emergency dental care",
+    "Laser dentistry",
+    "Sedation dentistry"
+  ],
+
+  "review": {
+    "@type": "Review",
+    "reviewRating": {
+      "@type": "Rating",
+      "ratingValue": "4.9",
+      "bestRating": "5"
+    },
+    "author": {
+      "@type": "Person",
+      "name": "Verified Patient Reviews"
+    }
+  },
+
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "4.9",
+    "reviewCount": "250",
+    "bestRating": "5"
+  },
+
+  "hasMap": "https://goo.gl/maps/xyz123",
+  "priceRange": "₹₹",
+  "medicalSpecialty": [
+    "Dentistry",
+    "CosmeticDentistry",
+    "Implantology",
+    "Orthodontics",
+    "PediatricDentistry"
+  ],
+  "lastReviewed": "2025-10-01",
+  "version": "2025.10"
+}
