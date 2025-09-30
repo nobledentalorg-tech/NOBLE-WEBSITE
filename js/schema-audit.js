@@ -1,10 +1,14 @@
 <script>
 /* ===========================================================
-   NDC-D Schema Auto-Audit Console Tool (v2025.5 Pro)
+   NDC-D Schema Auto-Audit Console Tool — v2025.6 (Stable)
    Author: Dr. Dhivakaran
-   Purpose: Validate and audit JSON-LD schema across pages,
-   compare with /schema/schema-maintenance-log.json and
-   /schema/validation-report.json for SEO & AI readiness.
+   Purpose: Validates on-page JSON-LD, fetches AI/SEO reports,
+   and outputs a compact console dashboard for developers.
+   ------------------------------------------------------------
+   ✅ Robust Fetch (graceful fallback)
+   ✅ Cross-linking + ID checks
+   ✅ AI readiness + Rich Results scoring
+   ✅ On-screen badge (non-intrusive)
 =========================================================== */
 
 (async () => {
@@ -17,16 +21,15 @@
     entitiesDetected: 0,
     errors: [],
     missingIds: [],
-    orphanEntities: [],
     crossLinkingScore: 0,
     aiReadiness: 0,
-    validatorScore: 0
+    validatorScore: 0,
   };
 
   // --- Helper: Safe JSON Parse ---
   const safeParse = (txt) => {
-    try { return JSON.parse(txt); } 
-    catch { summary.errors.push("Invalid JSON-LD detected"); return null; }
+    try { return JSON.parse(txt); }
+    catch { summary.errors.push("⚠️ Invalid JSON-LD detected"); return null; }
   };
 
   // --- Step 1: Parse On-page Schemas ---
@@ -35,28 +38,29 @@
     if (schema["@graph"]) {
       summary.entitiesDetected += schema["@graph"].length;
       schema["@graph"].forEach(ent => {
-        if (!ent["@id"]) summary.missingIds.push(ent["@type"]);
+        if (!ent["@id"]) summary.missingIds.push(ent["@type"] || "UnknownType");
       });
-    } else summary.entitiesDetected++;
+    } else {
+      summary.entitiesDetected++;
+      if (!schema["@id"]) summary.missingIds.push(schema["@type"] || "UnknownType");
+    }
   });
 
-  // --- Step 2: Fetch Reference Files ---
-  let log, report;
+  // --- Step 2: Safe Fetch for Reference Files ---
+  let log = {}, report = {};
   try {
-    log = await fetch(logURL).then(r => r.json());
-    report = await fetch(reportURL).then(r => r.json());
+    const [logRes, reportRes] = await Promise.all([fetch(logURL), fetch(reportURL)]);
+    log = logRes.ok ? await logRes.json() : {};
+    report = reportRes.ok ? await reportRes.json() : {};
   } catch (err) {
-    console.warn("Schema references not found:", err);
+    console.warn("⚠️ Could not load schema references:", err.message);
   }
 
-  // --- Step 3: Compute AI Readiness ---
-  const aiRef = report?.richResultsReport?.aiAlignment;
-  if (aiRef) {
-    summary.aiReadiness = aiRef.nlpCoverageScore;
-    summary.validatorScore = report.richResultsReport.eligibilitySummary.score;
-  }
+  // --- Step 3: Compute AI & Validator Scores ---
+  summary.aiReadiness = report?.richResultsReport?.aiAlignment?.nlpCoverageScore || 0;
+  summary.validatorScore = report?.richResultsReport?.eligibilitySummary?.score || 0;
 
-  // --- Step 4: Cross-link Audit ---
+  // --- Step 4: Cross-Linking Audit ---
   let linkedCount = 0;
   parsedSchemas.forEach(s => {
     if (s["@graph"]) {
@@ -65,41 +69,45 @@
       });
     }
   });
-  summary.crossLinkingScore = ((linkedCount / summary.entitiesDetected) * 100).toFixed(1);
+  summary.crossLinkingScore = summary.entitiesDetected > 0
+    ? ((linkedCount / summary.entitiesDetected) * 100).toFixed(1)
+    : 0;
 
   // --- Step 5: Generate Insights ---
   const insights = [];
-  if (summary.missingIds.length > 0) {
+  if (summary.missingIds.length > 0)
     insights.push(`⚠️ Missing @id in ${summary.missingIds.length} entities.`);
-  }
-  if (summary.crossLinkingScore < 90) {
+  if (summary.crossLinkingScore < 90)
     insights.push(`🔗 Cross-linking could improve (Current: ${summary.crossLinkingScore}%).`);
-  }
-  if (summary.aiReadiness < 9.5) {
-    insights.push(`🤖 AI Readiness below target (${summary.aiReadiness}/10). Review synonyms and condition-treatment mapping.`);
-  }
-  if (!insights.length) insights.push("✅ All checks passed. Schema ecosystem is fully healthy.");
+  if (summary.aiReadiness < 9.5)
+    insights.push(`🤖 AI Readiness below target (${summary.aiReadiness}/10). Review synonyms & condition mapping.`);
+  if (!insights.length)
+    insights.push("✅ All checks passed. Schema ecosystem is fully healthy!");
 
-  // --- Step 6: Output Dashboard ---
-  console.groupCollapsed("🧠 NDC-D Schema Auto Audit — v2025.5");
-  console.log("📄 Total Schema Blocks:", summary.totalSchemas);
-  console.log("🧩 Entities Detected:", summary.entitiesDetected);
-  console.log("🔗 Cross-Linking Integrity:", `${summary.crossLinkingScore}%`);
-  console.log("🤖 AI Readiness Score:", summary.aiReadiness);
-  console.log("🧱 Validator Score:", summary.validatorScore);
-  console.log("📜 Maintenance Log Version:", log?.schemaMaintenanceLog?.schemaVersion || "N/A");
-  console.log("📅 Last Validated:", log?.schemaMaintenanceLog?.lastValidated || "N/A");
+  // --- Step 6: Console Dashboard ---
+  console.groupCollapsed("🧠 NDC-D Schema Auto-Audit — v2025.6 (Stable)");
+  console.table({
+    "📄 Total Schemas": summary.totalSchemas,
+    "🧩 Entities": summary.entitiesDetected,
+    "🔗 Cross-Linking": summary.crossLinkingScore + "%",
+    "🤖 AI Readiness": summary.aiReadiness,
+    "✅ Validator Score": summary.validatorScore,
+    "📜 Version": log?.schemaMaintenanceLog?.schemaVersion || "N/A",
+    "📅 Last Validated": log?.schemaMaintenanceLog?.lastValidated || "N/A"
+  });
   console.groupCollapsed("📢 Insights");
   insights.forEach(i => console.log(i));
   console.groupEnd();
-  console.groupCollapsed("🪵 Errors / Warnings");
-  summary.errors.forEach(e => console.warn(e));
-  console.groupEnd();
+  if (summary.errors.length) {
+    console.groupCollapsed("🪵 Errors / Warnings");
+    summary.errors.forEach(e => console.warn(e));
+    console.groupEnd();
+  }
   console.groupEnd();
 
-  // --- Step 7: Optional Badge Output (DOM Insert) ---
+  // --- Step 7: On-screen Badge ---
   const badge = document.createElement("div");
-  badge.textContent = `🧠 Schema Verified (${summary.validatorScore}/10 | ${summary.aiReadiness}/10 AI)`;
+  badge.textContent = `🧠 Schema Verified (${summary.validatorScore}/10 | AI ${summary.aiReadiness}/10)`;
   Object.assign(badge.style, {
     position: "fixed",
     bottom: "12px",
