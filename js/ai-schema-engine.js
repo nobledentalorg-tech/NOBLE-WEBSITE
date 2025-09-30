@@ -1,5 +1,6 @@
 /* ============================================================
-   Noble Dental Care — AI Schema Engine (Self-Healing v2.4)
+   Noble Dental Care — AI Schema Engine (Self-Healing v2.5)
+   Unified with Auto-Audit & Badge System
    Optimized for GitHub Pages / Netlify / Sub-folders
    Author: Dr. Dhivakaran | AI Schema Lab 2025
 ============================================================ */
@@ -138,6 +139,52 @@
 
     if (aiSchema.healed.length > 0) {
       console.info("🩹 Healed Blocks:", aiSchema.healed);
+    }
+
+    // --- 🔍 Auto-Audit Summary ---
+    const totalSchemas = aiSchema.summary.total || 0;
+    const errors = aiSchema.summary.errors || 0;
+    const healed = aiSchema.summary.healed || 0;
+
+    console.groupCollapsed("🧠 AI Schema Auto-Audit (Summary)");
+    console.table({
+      "📄 Total Schemas": totalSchemas,
+      "✅ Loaded": aiSchema.summary.loaded,
+      "🩹 Healed": healed,
+      "🚨 Errors": errors,
+      "🕒 Timestamp": aiSchema.summary.timestamp
+    });
+    if (errors > 0) console.warn(`⚠️ ${errors} issue(s) detected`);
+    if (healed > 0) console.info(`🩹 ${healed} auto-healed`);
+    console.groupEnd();
+
+    // --- 🧠 Unified On-screen Badge ---
+    if (!document.getElementById("schema-badge")) {
+      const badge = document.createElement("div");
+      badge.id = "schema-badge";
+
+      const statusText =
+        errors > 0
+          ? `⚠️ ${errors} Issue${errors > 1 ? "s" : ""}`
+          : healed > 0
+          ? `🩹 Healed ${healed}`
+          : "✅ Schema OK";
+
+      badge.textContent = `🤖 AI Schema ${statusText}`;
+      Object.assign(badge.style, {
+        position: "fixed",
+        bottom: "12px",
+        right: "12px",
+        background: errors > 0 ? "#E63946" : healed > 0 ? "#F4A261" : "#12B2A0",
+        color: "#fff",
+        padding: "6px 10px",
+        fontSize: "12px",
+        borderRadius: "8px",
+        fontFamily: "monospace",
+        zIndex: 9999,
+        boxShadow: "0 2px 8px rgba(0,0,0,0.25)"
+      });
+      document.body.appendChild(badge);
     }
 
     console.groupEnd();
