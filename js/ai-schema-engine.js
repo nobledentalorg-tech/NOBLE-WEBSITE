@@ -1,5 +1,5 @@
 /* ============================================================
-   Noble Dental Care — AI Schema Engine (Self-Healing v2.3)
+   Noble Dental Care — AI Schema Engine (Self-Healing v2.4)
    Optimized for GitHub Pages / Netlify / Sub-folders
    Author: Dr. Dhivakaran | AI Schema Lab 2025
 ============================================================ */
@@ -8,7 +8,9 @@
   "use strict";
 
   // ✅ Auto-detect base path (works in subfolders)
-  const BASE = window.location.origin + window.location.pathname.replace(/\/[^/]*$/, "/");
+  const BASE =
+    window.location.origin +
+    window.location.pathname.replace(/\/[^/]*$/, "/");
   const SCHEMA_PATH = BASE + "schema/";
 
   const EXPECTED_PARTS = [
@@ -39,15 +41,18 @@
       const res = await fetch(url, { cache: "no-store" });
       const text = await res.text();
 
-      // 🚫 If starts with "<", it's HTML (404 or redirect)
+      // 🚫 Detect HTML responses (404 / redirects)
       if (text.trim().startsWith("<")) {
-        throw new Error("HTML response (Not JSON)");
+        throw new Error("HTML response (not JSON)");
       }
 
       return JSON.parse(text);
     } catch (err) {
       console.warn(`⚠️ Fetch failed for ${url}: ${err.message}`);
-      aiSchema.errors.push({ file: url.split("/").pop(), issue: err.message });
+      aiSchema.errors.push({
+        file: url.split("/").pop(),
+        issue: err.message
+      });
       return null;
     }
   }
@@ -71,13 +76,19 @@
   /* ---------- 3️⃣ Validate JSON ---------- */
   function validateSchema(data, filename) {
     if (!data || typeof data !== "object") {
-      aiSchema.errors.push({ file: filename, issue: "Invalid or empty JSON" });
+      aiSchema.errors.push({
+        file: filename,
+        issue: "Invalid or empty JSON"
+      });
       return healSchema(filename);
     }
 
     for (const key of REQUIRED_KEYS) {
       if (!(key in data)) {
-        aiSchema.errors.push({ file: filename, issue: `Missing key: ${key}` });
+        aiSchema.errors.push({
+          file: filename,
+          issue: `Missing key: ${key}`
+        });
         data[key] =
           key === "@context"
             ? "https://schema.org"
@@ -111,19 +122,30 @@
   /* ---------- 5️⃣ Init & Expose ---------- */
   async function initAIEngine() {
     console.groupCollapsed("🤖 Noble AI Schema Engine");
-
     await mergeSchemas();
 
+    // Expose globally for DevTools access
     window.__AI_SCHEMA = aiSchema;
     window.__AI_INDEX = aiSchema.merged;
 
     console.table(aiSchema.summary);
-    if (aiSchema.errors.length) console.warn("🚨 Schema Issues:", aiSchema.errors);
-    if (aiSchema.healed.length) console.info("🩹 Healed Blocks:", aiSchema.healed);
+
+    if (aiSchema.errors.length > 0) {
+      console.warn("🚨 Schema Issues:", aiSchema.errors);
+    } else {
+      console.info("✅ No schema issues detected");
+    }
+
+    if (aiSchema.healed.length > 0) {
+      console.info("🩹 Healed Blocks:", aiSchema.healed);
+    }
 
     console.groupEnd();
 
-    document.dispatchEvent(new CustomEvent("ai-schema-ready", { detail: aiSchema }));
+    // Fire event for other scripts
+    document.dispatchEvent(
+      new CustomEvent("ai-schema-ready", { detail: aiSchema })
+    );
   }
 
   /* ---------- 6️⃣ Init on DOM Ready ---------- */
@@ -135,7 +157,7 @@
 
   /* ---------- 7️⃣ Extra Error Capture ---------- */
   window.addEventListener("error", (e) => {
-    if (e.message.includes("Unexpected token '<'")) {
+    if (e.message && e.message.includes("Unexpected token '<'")) {
       console.error("💥 Likely HTML response instead of JSON:", e.filename);
     }
   });
