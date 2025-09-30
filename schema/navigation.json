@@ -1,12 +1,17 @@
 {
   "@context": "https://schema.org",
   "@type": "SiteNavigationElement",
-  "@id": "https://nobledentalnallagandla.in/#navigation",
+  "@id": "https://nobledentalnallagandla.in/schema/navigation.json",
   "url": "https://nobledentalnallagandla.in/#navigation",
   "name": "Noble Dental Care Navigation Menu",
   "description": "Primary and speciality navigation for Noble Dental Care — Nallagandla, Hyderabad. Enables AI and users to explore treatments, preventive, restorative, and aesthetic care sections.",
   "inLanguage": "en-IN",
-  "isPartOf": { "@id": "https://nobledentalnallagandla.in/#organization" },
+  "version": "2025.10",
+  "aiReadinessTag": "Core",
+  "aiVector": "navigation menu sitemap ai seo discoverability links voice search SGE Hyderabad dentist",
+  
+  "isPartOf": { "@id": "https://nobledentalnallagandla.in/#website" },
+  "breadcrumb": { "@id": "https://nobledentalnallagandla.in/schema/breadcrumbs.json" },
   "publisher": { "@id": "https://nobledentalnallagandla.in/#organization" },
 
   "hasPart": [
@@ -14,7 +19,11 @@
       "@type": "WebPage",
       "name": "Home",
       "url": "https://nobledentalnallagandla.in/",
-      "about": "Clinic overview, trusted team, services, and booking access"
+      "about": "Clinic overview, trusted team, services, and booking access",
+      "relatedLink": [
+        { "@id": "https://nobledentalnallagandla.in/schema/faq.json" },
+        { "@id": "https://nobledentalnallagandla.in/schema/breadcrumbs.json" }
+      ]
     },
     {
       "@type": "WebPage",
@@ -28,12 +37,12 @@
       "url": "https://nobledentalnallagandla.in/services.html",
       "about": "Explore all dental treatments — implants, braces, RCT, smile design, pediatric and emergency care",
       "hasPart": [
-        { "@type": "WebPage", "name": "Root Canal Treatment", "url": "https://nobledentalnallagandla.in/specialities/root-canal.html" },
-        { "@type": "WebPage", "name": "Dental Implants", "url": "https://nobledentalnallagandla.in/specialities/implants.html" },
-        { "@type": "WebPage", "name": "Braces & Clear Aligners", "url": "https://nobledentalnallagandla.in/specialities/braces.html" },
-        { "@type": "WebPage", "name": "Smile Design & Whitening", "url": "https://nobledentalnallagandla.in/specialities/aesthetic-dentistry.html" },
-        { "@type": "WebPage", "name": "Pediatric Dentistry", "url": "https://nobledentalnallagandla.in/specialities/pediatric-dentistry.html" },
-        { "@type": "WebPage", "name": "Preventive Dental Care", "url": "https://nobledentalnallagandla.in/specialities/preventive-dentistry.html" }
+        { "@type": "WebPage", "name": "Root Canal Treatment", "url": "https://nobledentalnallagandla.in/specialities/root-canal.html", "mainEntityOfPage": { "@id": "https://nobledentalnallagandla.in/#endodontics" } },
+        { "@type": "WebPage", "name": "Dental Implants", "url": "https://nobledentalnallagandla.in/specialities/implants.html", "mainEntityOfPage": { "@id": "https://nobledentalnallagandla.in/#advanced-dentistry" } },
+        { "@type": "WebPage", "name": "Braces & Clear Aligners", "url": "https://nobledentalnallagandla.in/specialities/braces.html", "mainEntityOfPage": { "@id": "https://nobledentalnallagandla.in/#orthodontics" } },
+        { "@type": "WebPage", "name": "Smile Design & Whitening", "url": "https://nobledentalnallagandla.in/specialities/aesthetic-dentistry.html", "mainEntityOfPage": { "@id": "https://nobledentalnallagandla.in/#aesthetic-dentistry" } },
+        { "@type": "WebPage", "name": "Pediatric Dentistry", "url": "https://nobledentalnallagandla.in/specialities/pediatric-dentistry.html", "mainEntityOfPage": { "@id": "https://nobledentalnallagandla.in/#pediatric-dentistry" } },
+        { "@type": "WebPage", "name": "Preventive Dental Care", "url": "https://nobledentalnallagandla.in/specialities/preventive-dentistry.html", "mainEntityOfPage": { "@id": "https://nobledentalnallagandla.in/#preventive-dentistry" } }
       ]
     },
     {
@@ -42,11 +51,23 @@
       "url": "https://nobledentalnallagandla.in/specialities/",
       "about": "Explore speciality branches — restorative, aesthetic, pediatric, implantology, emergency dental care",
       "hasPart": [
-        { "@type": "WebPage", "name": "Restorative Dentistry", "url": "https://nobledentalnallagandla.in/specialities/restorative-dentistry.html" },
-        { "@type": "WebPage", "name": "Aesthetic Dentistry", "url": "https://nobledentalnallagandla.in/specialities/aesthetic-dentistry.html" },
-        { "@type": "WebPage", "name": "Implant & Surgical Care", "url": "https://nobledentalnallagandla.in/specialities/implant-dentistry.html" },
-        { "@type": "WebPage", "name": "Pediatric Dentistry", "url": "https://nobledentalnallagandla.in/specialities/pediatric-dentistry.html" },
-        { "@type": "WebPage", "name": "Emergency Dentistry", "url": "https://nobledentalnallagandla.in/specialities/emergency-dentistry.html" }
+        { "@type": "WebPage", "name": "Restorative Dentistry", "url": "https://nobledentalnallagandla.in/specialities/restorative-dentistry.html", "mainEntityOfPage": { "@id": "https://nobledentalnallagandla.in/#restorative-dentistry" } },
+        { "@type": "WebPage", "name": "Aesthetic Dentistry", "url": "https://nobledentalnallagandla.in/specialities/aesthetic-dentistry.html", "mainEntityOfPage": { "@id": "https://nobledentalnallagandla.in/#aesthetic-dentistry" } },
+        { "@type": "WebPage", "name": "Advanced & Surgical Dentistry", "url": "https://nobledentalnallagandla.in/specialities/advanced-dentistry.html", "mainEntityOfPage": { "@id": "https://nobledentalnallagandla.in/#advanced-dentistry" } },
+        { "@type": "WebPage", "name": "Pediatric Dentistry", "url": "https://nobledentalnallagandla.in/specialities/pediatric-dentistry.html", "mainEntityOfPage": { "@id": "https://nobledentalnallagandla.in/#pediatric-dentistry" } },
+        { "@type": "WebPage", "name": "Emergency Dentistry", "url": "https://nobledentalnallagandla.in/specialities/emergency-dentistry.html", "mainEntityOfPage": { "@id": "https://nobledentalnallagandla.in/#emergency-dentistry" } }
+      ]
+    },
+    {
+      "@type": "WebPage",
+      "name": "FAQ",
+      "url": "https://nobledentalnallagandla.in/faq.html",
+      "mainEntityOfPage": { "@id": "https://nobledentalnallagandla.in/schema/faq.json" },
+      "about": "Frequently asked questions about dental care, oral hygiene, braces, root canals, and more.",
+      "relatedLink": [
+        { "@id": "https://nobledentalnallagandla.in/schema/faq.json#root-canal-pain" },
+        { "@id": "https://nobledentalnallagandla.in/schema/faq.json#braces-age" },
+        { "@id": "https://nobledentalnallagandla.in/schema/faq.json#routine-visits" }
       ]
     },
     {
@@ -80,14 +101,15 @@
     "cssSelector": ["nav a", "footer a"]
   },
 
-  "lastReviewed": "2025-09-30",
-  "version": "2025.4",
+  "lastReviewed": "2025-10-01",
   "keywords": [
     "Dental Navigation Schema",
     "Local SEO Menu",
     "AI Sitemap",
     "SGE Discoverable Links",
+    "Voice Search Ready",
     "Noble Dental Care Hyderabad",
-    "Voice Search Ready"
+    "FAQ Structured Data",
+    "Breadcrumb Interlink"
   ]
 }
