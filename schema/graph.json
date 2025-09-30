@@ -1,0 +1,99 @@
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@id": "https://nobledentalnallagandla.in/#website",
+      "@type": "WebSite",
+      "name": "Noble Dental Care Nallagandla",
+      "url": "https://nobledentalnallagandla.in/",
+      "inLanguage": "en-IN",
+      "publisher": { "@id": "https://nobledentalnallagandla.in/#organization" },
+      "hasPart": [
+        { "@id": "https://nobledentalnallagandla.in/schema/navigation.json" },
+        { "@id": "https://nobledentalnallagandla.in/schema/breadcrumbs.json" },
+        { "@id": "https://nobledentalnallagandla.in/schema/faq.json" },
+        { "@id": "https://nobledentalnallagandla.in/#advanced-dentistry" },
+        { "@id": "https://nobledentalnallagandla.in/#restorative-dentistry" },
+        { "@id": "https://nobledentalnallagandla.in/#preventive-dentistry" },
+        { "@id": "https://nobledentalnallagandla.in/#aesthetic-dentistry" },
+        { "@id": "https://nobledentalnallagandla.in/#orthodontics" },
+        { "@id": "https://nobledentalnallagandla.in/#endodontics" },
+        { "@id": "https://nobledentalnallagandla.in/#pediatric-dentistry" },
+        { "@id": "https://nobledentalnallagandla.in/#emergency-dentistry" }
+      ]
+    },
+
+    {
+      "@id": "https://nobledentalnallagandla.in/schema/navigation.json",
+      "@type": "SiteNavigationElement",
+      "isPartOf": { "@id": "https://nobledentalnallagandla.in/#website" },
+      "breadcrumb": { "@id": "https://nobledentalnallagandla.in/schema/breadcrumbs.json" },
+      "hasPart": [
+        { "@id": "https://nobledentalnallagandla.in/#advanced-dentistry" },
+        { "@id": "https://nobledentalnallagandla.in/#preventive-dentistry" },
+        { "@id": "https://nobledentalnallagandla.in/schema/faq.json" }
+      ]
+    },
+
+    {
+      "@id": "https://nobledentalnallagandla.in/schema/breadcrumbs.json",
+      "@type": "BreadcrumbList",
+      "isPartOf": { "@id": "https://nobledentalnallagandla.in/#website" },
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://nobledentalnallagandla.in/" },
+        { "@type": "ListItem", "position": 2, "name": "Treatments", "item": "https://nobledentalnallagandla.in/services.html" },
+        { "@type": "ListItem", "position": 3, "name": "Advanced Dentistry", "item": "https://nobledentalnallagandla.in/specialities/advanced-dentistry.html" },
+        { "@type": "ListItem", "position": 4, "name": "FAQ", "item": "https://nobledentalnallagandla.in/faq.html" }
+      ]
+    },
+
+    {
+      "@id": "https://nobledentalnallagandla.in/schema/faq.json",
+      "@type": "FAQPage",
+      "isPartOf": { "@id": "https://nobledentalnallagandla.in/#website" },
+      "breadcrumb": { "@id": "https://nobledentalnallagandla.in/schema/breadcrumbs.json#faq" },
+      "relatedLink": [
+        { "@id": "https://nobledentalnallagandla.in/#advanced-dentistry" },
+        { "@id": "https://nobledentalnallagandla.in/#orthodontics" },
+        { "@id": "https://nobledentalnallagandla.in/#endodontics" },
+        { "@id": "https://nobledentalnallagandla.in/#preventive-dentistry" }
+      ],
+      "mainEntity": [
+        {
+          "@id": "https://nobledentalnallagandla.in/schema/faq.json#braces-age",
+          "@type": "Question",
+          "mainEntityOfPage": { "@id": "https://nobledentalnallagandla.in/#orthodontics" },
+          "about": { "@id": "https://nobledentalnallagandla.in/#braces-treatment" }
+        },
+        {
+          "@id": "https://nobledentalnallagandla.in/schema/faq.json#routine-visits",
+          "@type": "Question",
+          "mainEntityOfPage": { "@id": "https://nobledentalnallagandla.in/#preventive-dentistry" },
+          "about": { "@id": "https://nobledentalnallagandla.in/#oral-checkup" }
+        },
+        {
+          "@id": "https://nobledentalnallagandla.in/schema/faq.json#root-canal-pain",
+          "@type": "Question",
+          "mainEntityOfPage": { "@id": "https://nobledentalnallagandla.in/#endodontics" },
+          "subjectOf": { "@id": "https://nobledentalnallagandla.in/#advanced-dentistry" }
+        }
+      ]
+    },
+
+    {
+      "@id": "https://nobledentalnallagandla.in/#advanced-dentistry",
+      "@type": "MedicalWebPage",
+      "isPartOf": { "@id": "https://nobledentalnallagandla.in/#website" },
+      "subjectOf": [
+        { "@id": "https://nobledentalnallagandla.in/schema/faq.json#root-canal-pain" },
+        { "@id": "https://nobledentalnallagandla.in/#infection-control" },
+        { "@id": "https://nobledentalnallagandla.in/#postoperative-care" }
+      ],
+      "relatedLink": [
+        { "@id": "https://nobledentalnallagandla.in/#restorative-dentistry" },
+        { "@id": "https://nobledentalnallagandla.in/#preventive-dentistry" },
+        { "@id": "https://nobledentalnallagandla.in/#aesthetic-dentistry" }
+      ]
+    }
+  ]
+}
