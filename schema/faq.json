@@ -1,140 +1,32 @@
 {
   "@context": "https://schema.org",
   "@type": "FAQPage",
-  "@id": "https://nobledentalnallagandla.in/#faq",
-  "url": "https://nobledentalnallagandla.in/#faq",
-  "name": "Top Dental Questions – Noble Dental Care Nallagandla",
-  "description": "Comprehensive patient FAQ from Noble Dental Care, Nallagandla, Hyderabad — covering oral hygiene, preventive dentistry, whitening, root canals, implants, pediatric care, and AI-powered dental diagnostics.",
-  "inLanguage": "en-IN",
-  "isPartOf": { "@id": "https://nobledentalnallagandla.in/#organization" },
-  "publisher": { "@id": "https://nobledentalnallagandla.in/#organization" },
-  "lastReviewed": "2025-09-30",
-  "version": "2025.4",
-  "keywords": [
-    "Dental FAQ",
-    "Oral Health Questions",
-    "Preventive Dentistry",
-    "Root Canal Safety",
-    "AI Dentistry",
-    "Teeth Whitening",
-    "Pediatric Dental Care",
-    "Microscopic Endodontics",
-    "Dental Implants",
-    "Best Dentist Nallagandla"
-  ],
-  "speakable": {
-    "@type": "SpeakableSpecification",
-    "cssSelector": ["h1", ".faq-question", ".faq-answer"]
-  },
+  "name": "Dental FAQ | Noble Dental Care Nallagandla",
+  "description": "Common dental questions and answers to help patients understand oral health, treatments, hygiene tips, and procedures at Noble Dental Care, Nallagandla, Hyderabad.",
   "mainEntity": [
     {
       "@type": "Question",
-      "name": "How often should I visit the dentist for a regular check-up?",
+      "name": "What is the best age to get braces?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Most patients should visit every six months for professional cleaning and oral examination. Patients with gum disease, diabetes, or braces may need more frequent visits. Regular check-ups detect cavities, gum inflammation, and oral cancer early."
-      },
-      "about": "Preventive dentistry",
-      "inLanguage": "en-IN"
+        "text": "Orthodontic evaluation is recommended around age 7. However, braces or aligners can be effective for both teens and adults depending on the condition."
+      }
     },
     {
       "@type": "Question",
-      "name": "Is professional teeth cleaning necessary if I brush daily?",
+      "name": "How often should I visit the dentist?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Yes. Plaque hardens into tartar that brushing cannot remove. Professional cleaning prevents gum disease and bad breath. The ADA and IDA recommend scaling every six months."
-      },
-      "about": "Oral prophylaxis"
+        "text": "It is recommended to visit your dentist every 6 months for a routine check-up and cleaning to maintain good oral health."
+      }
     },
     {
       "@type": "Question",
-      "name": "What is the safest way to whiten teeth?",
+      "name": "Is root canal treatment painful?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Dentist-supervised whitening with peroxide gels and light activation is safest. Over-the-counter kits may cause gum irritation. Noble Dental Care offers customized whitening for even, lasting results."
-      },
-      "about": "Aesthetic dentistry"
-    },
-    {
-      "@type": "Question",
-      "name": "When should a child have their first dental visit?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Schedule a child’s first visit by their first birthday or within six months of the first tooth. Early visits build comfort, track growth, and prevent early childhood caries."
-      },
-      "about": "Pediatric dentistry"
-    },
-    {
-      "@type": "Question",
-      "name": "How can I prevent gum disease?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Brush twice daily, floss daily, and schedule routine cleanings. Avoid tobacco, manage diabetes, and treat bleeding gums early to prevent periodontal disease."
-      },
-      "about": "Periodontal health"
-    },
-    {
-      "@type": "Question",
-      "name": "What should I do if I have bad breath even after brushing?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Persistent bad breath may stem from gum disease, dry mouth, or digestive issues. A dental evaluation and tongue cleaning often resolve it."
-      },
-      "about": "Halitosis"
-    },
-    {
-      "@type": "Question",
-      "name": "Are dental X-rays safe?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Digital X-rays emit minimal radiation—less than a short flight. We use protective aprons and thyroid shields for safety."
-      },
-      "about": "Radiographic safety"
-    },
-    {
-      "@type": "Question",
-      "name": "Can dental problems affect overall health?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Yes. Gum infections can worsen diabetes, heart disease, and pregnancy outcomes. Oral hygiene supports systemic wellness."
-      },
-      "about": "Oral-systemic link"
-    },
-    {
-      "@type": "Question",
-      "name": "What is a root canal, and is it painful?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "A root canal removes infected pulp to save the tooth. With modern anesthesia and microscopy, it’s virtually painless and highly successful."
-      },
-      "about": "Endodontics"
-    },
-    {
-      "@type": "Question",
-      "name": "What are clear aligners, and how do they work?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Clear aligners are removable trays that gradually move teeth. Each set is worn for about two weeks. AI-assisted planning ensures precise alignment."
-      },
-      "about": "Orthodontics"
-    },
-    {
-      "@type": "Question",
-      "name": "Do dental implants last a lifetime?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "With good hygiene and bone support, implants can last decades. Clinical studies show over 95% long-term survival."
-      },
-      "about": "Implantology"
-    },
-    {
-      "@type": "Question",
-      "name": "Why choose Noble Dental Care in Nallagandla?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Noble Dental Care blends microscopic endodontics, AI diagnostics, ISO sterilization, and ethical, research-driven practice — ensuring comfort, precision, and trust."
-      },
-      "about": "Clinic overview"
+        "text": "No. Modern root canal treatments are painless with local anesthesia. You may experience mild soreness for a day or two after the procedure."
+      }
     }
   ]
 }
