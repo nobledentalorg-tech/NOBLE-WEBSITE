@@ -1,0 +1,68 @@
+{
+  "@context": "https://schema.org",
+  "@type": "CollectionPage",
+  "@id": "https://nobledentalnallagandla.in/#specialities",
+  "url": "https://nobledentalnallagandla.in/specialities/",
+  "name": "Dental Specialities — Noble Dental Care, Nallagandla",
+  "description": "Overview of core dental speciality areas covered by Noble Dental Care, including general oral health, preventive dentistry, restorative care, aesthetic smile design, and advanced surgical dentistry.",
+  "inLanguage": "en-IN",
+  "isPartOf": {
+    "@type": "WebSite",
+    "@id": "https://nobledentalnallagandla.in/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Noble Dental Care – Nallagandla",
+    "url": "https://nobledentalnallagandla.in/",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://nobledentalnallagandla.in/images/logo-footer.webp"
+    }
+  },
+  "mainEntity": [
+    {
+      "@type": "MedicalWebPage",
+      "@id": "https://nobledentalnallagandla.in/#general-oral-health",
+      "name": "General Oral Health",
+      "url": "https://nobledentalnallagandla.in/specialities/general-oral-health.html"
+    },
+    {
+      "@type": "MedicalWebPage",
+      "@id": "https://nobledentalnallagandla.in/#preventive-dentistry",
+      "name": "Preventive Dentistry",
+      "url": "https://nobledentalnallagandla.in/specialities/preventive-dentistry.html"
+    },
+    {
+      "@type": "MedicalWebPage",
+      "@id": "https://nobledentalnallagandla.in/#restorative-dentistry",
+      "name": "Restorative Dentistry",
+      "url": "https://nobledentalnallagandla.in/specialities/restorative-dentistry.html"
+    },
+    {
+      "@type": "MedicalWebPage",
+      "@id": "https://nobledentalnallagandla.in/#aesthetic-dentistry",
+      "name": "Aesthetic Dentistry",
+      "url": "https://nobledentalnallagandla.in/specialities/aesthetic-dentistry.html"
+    },
+    {
+      "@type": "MedicalWebPage",
+      "@id": "https://nobledentalnallagandla.in/#advanced-dentistry",
+      "name": "Advanced Dentistry",
+      "url": "https://nobledentalnallagandla.in/specialities/advanced-dentistry.html"
+    }
+  ],
+  "audience": {
+    "@type": "Audience",
+    "audienceType": "General public, patients, and AI agents",
+    "geographicArea": {
+      "@type": "AdministrativeArea",
+      "name": "Nallagandla, Hyderabad, India"
+    }
+  },
+  "lastReviewed": "2025-09-30",
+  "potentialAction": {
+    "@type": "SearchAction",
+    "target": "https://nobledentalnallagandla.in/specialities/?q={search_term_string}",
+    "query-input": "required name=search_term_string"
+  }
+}
