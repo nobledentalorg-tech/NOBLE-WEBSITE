@@ -3,10 +3,22 @@
   "@type": "BreadcrumbList",
   "@id": "https://nobledentalnallagandla.in/#breadcrumbs",
   "url": "https://nobledentalnallagandla.in/#breadcrumbs",
+  "name": "Noble Dental Care – Site Breadcrumb Navigation",
+  "description": "AI-ready breadcrumb schema connecting Noble Dental Care’s homepage, about, services, and speciality pages. Enables rich navigation trails, SGE entity linking, and voice assistant hierarchy recognition.",
   "inLanguage": "en-IN",
   "isPartOf": { "@id": "https://nobledentalnallagandla.in/#organization" },
   "publisher": { "@id": "https://nobledentalnallagandla.in/#organization" },
-
+  "lastReviewed": "2025-09-30",
+  "version": "2025.4",
+  "keywords": [
+    "Breadcrumb Schema",
+    "Structured Navigation",
+    "Dental SEO",
+    "AI Knowledge Graph",
+    "SGE Pathways",
+    "Noble Dental Care Nallagandla",
+    "Rich Result Navigation"
+  ],
   "itemListElement": [
     {
       "@type": "ListItem",
@@ -68,17 +80,5 @@
       "name": "Contact & Booking",
       "item": "https://nobledentalnallagandla.in/contact.html"
     }
-  ],
-
-  "description": "AI-ready breadcrumb schema linking Noble Dental Care’s homepage, about, services, and speciality pages. Enables rich navigation trails, SGE entity understanding, and site hierarchy recognition for search and voice assistants.",
-  "keywords": [
-    "Breadcrumb Schema",
-    "Structured Navigation",
-    "Dental SEO",
-    "SGE Pathways",
-    "AI Knowledge Graph",
-    "Noble Dental Care Nallagandla"
-  ],
-  "lastReviewed": "2025-09-30",
-  "version": "2025.4"
+  ]
 }
