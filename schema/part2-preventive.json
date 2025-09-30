@@ -11,16 +11,35 @@
   ],
   "description": "Practical, guideline-aligned prevention for caries and gingival disease including fluoride use, brushing, interdental cleaning, sealants, diet counseling, tobacco cessation, professional prophylaxis, recall intervals, and care for children, pregnancy, diabetes, and xerostomia.",
   "inLanguage": "en-IN",
+
   "isPartOf": {
     "@type": "WebSite",
     "@id": "https://nobledentalnallagandla.in/"
   },
+
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://nobledentalnallagandla.in/specialities/preventive-dentistry.html"
+  },
+
+  "about": [
+    "Caries prevention",
+    "Gingival disease prevention",
+    "Fluoride exposure",
+    "Interdental cleaning",
+    "Dietary sugars",
+    "Tobacco cessation",
+    "Professional prophylaxis"
+  ],
+
+  "keywords": "preventive dentistry, fluoride toothpaste, fluoride varnish, dental sealants, interdental cleaning, floss, interdental brushes, diet counseling, tobacco cessation, prophylaxis, recall interval, caries prevention, gingivitis prevention",
+
   "medicalSpecialty": [
     "Dentistry",
     "OralMedicine",
     "Pediatric"
   ],
-  "keywords": "preventive dentistry, fluoride toothpaste, fluoride varnish, dental sealants, interdental cleaning, floss, interdental brushes, diet counseling, tobacco cessation, prophylaxis, recall interval, caries prevention, gingivitis prevention",
+
   "lastReviewed": "2025-09-28",
   "datePublished": "2025-09-15",
 
@@ -38,9 +57,7 @@
     "@type": "Dentist",
     "name": "Clinical Team, Noble Dental Care",
     "medicalSpecialty": "Dentistry",
-    "worksFor": {
-      "@id": "https://nobledentalnallagandla.in/"
-    }
+    "worksFor": { "@id": "https://nobledentalnallagandla.in/" }
   },
 
   "speakable": {
@@ -59,16 +76,6 @@
       { "@type": "ListItem", "position": 2, "name": "Preventive Dentistry", "item": "https://nobledentalnallagandla.in/specialities/preventive-dentistry.html" }
     ]
   },
-
-  "about": [
-    "Caries prevention",
-    "Gingival disease prevention",
-    "Fluoride exposure",
-    "Interdental cleaning",
-    "Dietary sugars",
-    "Tobacco cessation",
-    "Professional prophylaxis"
-  ],
 
   "mentions": [
     { "@type": "MedicalTherapy", "name": "Fluoride toothpaste" },
@@ -149,22 +156,20 @@
     }
   ],
 
-  "subjectOf": [
-    {
-      "@type": "MedicalRiskEstimator",
-      "@id": "https://nobledentalnallagandla.in/#caries-risk-estimator",
-      "name": "Basic Caries Risk Estimator (Qualitative)",
-      "estimatesRiskOf": {
-        "@type": "MedicalCondition",
-        "name": "Dental caries"
-      },
-      "riskFactor": [
-        { "@type": "MedicalRiskFactor", "name": "High sugar intake" },
-        { "@type": "MedicalRiskFactor", "name": "Visible plaque or gingival bleeding" },
-        { "@type": "MedicalRiskFactor", "name": "Low fluoride exposure" }
-      ]
-    }
-  ],
+  "subjectOf": {
+    "@type": "MedicalRiskEstimator",
+    "@id": "https://nobledentalnallagandla.in/#caries-risk-estimator",
+    "name": "Basic Caries Risk Estimator (Qualitative)",
+    "estimatesRiskOf": {
+      "@type": "MedicalCondition",
+      "name": "Dental caries"
+    },
+    "riskFactor": [
+      { "@type": "MedicalRiskFactor", "name": "High sugar intake" },
+      { "@type": "MedicalRiskFactor", "name": "Visible plaque or gingival bleeding" },
+      { "@type": "MedicalRiskFactor", "name": "Low fluoride exposure" }
+    ]
+  },
 
   "citation": [
     {
@@ -200,5 +205,18 @@
       "@type": "AdministrativeArea",
       "name": "Nallagandla, Hyderabad, India"
     }
-  }
+  },
+
+  "relatedLink": [
+    {
+      "@type": "WebPage",
+      "name": "General Oral Health",
+      "url": "https://nobledentalnallagandla.in/specialities/general-oral-health.html"
+    },
+    {
+      "@type": "WebPage",
+      "name": "Restorative Dentistry",
+      "url": "https://nobledentalnallagandla.in/specialities/restorative-dentistry.html"
+    }
+  ]
 }
