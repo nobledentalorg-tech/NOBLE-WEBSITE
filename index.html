@@ -583,9 +583,10 @@
       "preparation": "Digital X-ray & vitality test before the procedure.",
       "followup": "Avoid hard food for 24 hours, maintain oral hygiene.",
       "estimatedCost": {
-        "@type": "MonetaryAmount",
-        "currency": "INR",
-        "value": "4000-6000"
+        "@type": "PriceSpecification",
+        "priceCurrency": "INR",
+        "minPrice": 4000,
+        "maxPrice": 6000
       },
       "procedureType": "TherapeuticProcedure",
       "bodyLocation": "Tooth pulp chamber and root canals",
@@ -636,7 +637,12 @@
       "offers": {
         "@type": "Offer",
         "priceCurrency": "INR",
-        "price": "4000-6000",
+        "priceSpecification": {
+          "@type": "PriceSpecification",
+          "priceCurrency": "INR",
+          "minPrice": 4000,
+          "maxPrice": 6000
+        },
         "priceValidUntil": "2026-12-31",
         "url": "https://nobledentalnallagandla.in/services/root-canal.html",
         "availability": "https://schema.org/InStock",
@@ -661,7 +667,12 @@
       "offers": {
         "@type": "Offer",
         "priceCurrency": "INR",
-        "price": "18000-35000",
+        "priceSpecification": {
+          "@type": "PriceSpecification",
+          "priceCurrency": "INR",
+          "minPrice": 18000,
+          "maxPrice": 35000
+        },
         "priceValidUntil": "2026-12-31",
         "url": "https://nobledentalnallagandla.in/services/implants.html",
         "availability": "https://schema.org/InStock",
@@ -680,7 +691,12 @@
       "offers": {
         "@type": "Offer",
         "priceCurrency": "INR",
-        "price": "30000-85000",
+        "priceSpecification": {
+          "@type": "PriceSpecification",
+          "priceCurrency": "INR",
+          "minPrice": 30000,
+          "maxPrice": 85000
+        },
         "priceValidUntil": "2026-12-31",
         "url": "https://nobledentalnallagandla.in/services/braces.html",
         "availability": "https://schema.org/InStock",
@@ -699,7 +715,12 @@
       "offers": {
         "@type": "Offer",
         "priceCurrency": "INR",
-        "price": "1500-3500",
+        "priceSpecification": {
+          "@type": "PriceSpecification",
+          "priceCurrency": "INR",
+          "minPrice": 1500,
+          "maxPrice": 3500
+        },
         "url": "https://nobledentalnallagandla.in/services/kids.html",
         "priceValidUntil": "2026-12-31",
         "availability": "https://schema.org/InStock"
@@ -716,7 +737,8 @@
       "offers": {
         "@type": "Offer",
         "priceCurrency": "INR",
-        "price": "Consultation 500 onwards",
+        "price": 500,
+        "description": "Consultation fees start at ₹500 onwards.",
         "availabilityStarts": "2025-09-01T00:00:00+05:30",
         "url": "https://nobledentalnallagandla.in/services/emergency.html",
         "availability": "https://schema.org/InStock"
