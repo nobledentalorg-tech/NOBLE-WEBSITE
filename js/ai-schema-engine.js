@@ -1,5 +1,5 @@
 /* ============================================================
-   Noble Dental Care — AI Schema Engine (Self-Healing v2.2)
+   Noble Dental Care — AI Schema Engine (Self-Healing v2.3)
    Optimized for GitHub Pages / Netlify / Sub-folders
    Author: Dr. Dhivakaran | AI Schema Lab 2025
 ============================================================ */
@@ -7,7 +7,7 @@
 (function () {
   "use strict";
 
-  // ✅ Auto-detect base path for any host/subfolder
+  // ✅ Auto-detect base path (works in subfolders)
   const BASE = window.location.origin + window.location.pathname.replace(/\/[^/]*$/, "/");
   const SCHEMA_PATH = BASE + "schema/";
 
@@ -33,14 +33,21 @@
     summary: {}
   };
 
-  /* ---------- 1️⃣ Safe Fetch Utility ---------- */
+  /* ---------- 1️⃣ Safe Fetch Utility (HTML detection added) ---------- */
   async function safeFetch(url) {
     try {
       const res = await fetch(url, { cache: "no-store" });
-      if (!res.ok) throw new Error(res.status);
-      return await res.json();
+      const text = await res.text();
+
+      // 🚫 If starts with "<", it's HTML (404 or redirect)
+      if (text.trim().startsWith("<")) {
+        throw new Error("HTML response (Not JSON)");
+      }
+
+      return JSON.parse(text);
     } catch (err) {
-      console.warn("⚠️ Schema fetch failed:", url, err.message);
+      console.warn(`⚠️ Fetch failed for ${url}: ${err.message}`);
+      aiSchema.errors.push({ file: url.split("/").pop(), issue: err.message });
       return null;
     }
   }
@@ -71,7 +78,10 @@
     for (const key of REQUIRED_KEYS) {
       if (!(key in data)) {
         aiSchema.errors.push({ file: filename, issue: `Missing key: ${key}` });
-        data[key] = key === "@context" ? "https://schema.org" : `Auto-fixed ${key}`;
+        data[key] =
+          key === "@context"
+            ? "https://schema.org"
+            : `Auto-fixed ${key}`;
       }
     }
     return data;
@@ -79,12 +89,14 @@
 
   /* ---------- 4️⃣ Merge All Schemas ---------- */
   async function mergeSchemas() {
-    const results = await Promise.all(EXPECTED_PARTS.map(async (file) => {
-      const json = await safeFetch(SCHEMA_PATH + file);
-      const valid = validateSchema(json, file);
-      aiSchema.loaded[file] = valid;
-      return valid;
-    }));
+    const results = await Promise.all(
+      EXPECTED_PARTS.map(async (file) => {
+        const json = await safeFetch(SCHEMA_PATH + file);
+        const valid = validateSchema(json, file);
+        aiSchema.loaded[file] = valid;
+        return valid;
+      })
+    );
 
     aiSchema.merged = results.filter(Boolean);
     aiSchema.summary = {
@@ -96,17 +108,19 @@
     };
   }
 
-  /* ---------- 5️⃣ Expose to Window ---------- */
+  /* ---------- 5️⃣ Init & Expose ---------- */
   async function initAIEngine() {
     console.groupCollapsed("🤖 Noble AI Schema Engine");
+
     await mergeSchemas();
 
     window.__AI_SCHEMA = aiSchema;
     window.__AI_INDEX = aiSchema.merged;
 
     console.table(aiSchema.summary);
-    if (aiSchema.errors.length) console.warn("Schema Issues:", aiSchema.errors);
-    if (aiSchema.healed.length) console.info("Healed Blocks:", aiSchema.healed);
+    if (aiSchema.errors.length) console.warn("🚨 Schema Issues:", aiSchema.errors);
+    if (aiSchema.healed.length) console.info("🩹 Healed Blocks:", aiSchema.healed);
+
     console.groupEnd();
 
     document.dispatchEvent(new CustomEvent("ai-schema-ready", { detail: aiSchema }));
@@ -118,4 +132,11 @@
   } else {
     initAIEngine();
   }
+
+  /* ---------- 7️⃣ Extra Error Capture ---------- */
+  window.addEventListener("error", (e) => {
+    if (e.message.includes("Unexpected token '<'")) {
+      console.error("💥 Likely HTML response instead of JSON:", e.filename);
+    }
+  });
 })();
