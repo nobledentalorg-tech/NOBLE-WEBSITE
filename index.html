@@ -4527,56 +4527,92 @@
 <body>
 <!-- ================= HEADER ================= -->
 <header class="site-header" role="banner">
+
   <!-- Brand -->
   <a href="/" class="brand" aria-label="Noble Dental Care Home">
-    <img src="/images/dentalcare.nallagandla.png" alt="Noble Dental Care Logo"
-         width="70" height="55" decoding="async" fetchpriority="high">
+    <img src="/images/dentalcare.nallagandla.png" 
+         alt="Noble Dental Care Logo"
+         width="70" height="55" 
+         decoding="async" fetchpriority="high">
     <p class="brand-title"><span>Noble</span> Dental Care</p>
   </a>
 
-  <!-- Navigation -->
+  <!-- Primary Navigation -->
   <nav class="main-nav" aria-label="Primary">
     <button class="menu-toggle" id="menuToggle"
-            aria-label="Open menu" aria-expanded="false" aria-controls="primaryNav">
+            aria-label="Open menu"
+            aria-expanded="false"
+            aria-controls="primaryNav">
       ☰
     </button>
 
     <ul class="nav-pill" id="primaryNav" role="menubar" hidden>
-      <li role="none"><a role="menuitem" class="nav-link" href="/">Home</a></li>
 
-      <!-- Submenu -->
+      <!-- Home -->
+      <li role="none">
+        <a role="menuitem" class="nav-link" href="/">Home</a>
+      </li>
+
+      <!-- Care -->
+      <li role="none">
+        <a role="menuitem" class="nav-link" href="#ndc-care-voka">Care</a>
+      </li>
+
+      <!-- Team -->
+      <li role="none">
+        <a role="menuitem" class="nav-link" href="#ndc-doctors-app">Our Team</a>
+      </li>
+
+      <!-- Testimonials -->
+      <li role="none">
+        <a role="menuitem" class="nav-link" href="#testimonials">Testimonials</a>
+      </li>
+
+      <!-- Blog -->
+      <li role="none">
+        <a role="menuitem" class="nav-link" href="#blog">Blog</a>
+      </li>
+
+      <!-- Self Check -->
+      <li role="none">
+        <a role="menuitem" class="nav-link" href="/self-check#paths">Self-Check</a>
+      </li>
+
+      <!-- Credentials -->
+      <li role="none">
+        <a role="menuitem" class="nav-link" href="/credentials.html">Credentials</a>
+      </li>
+
+      <!-- Submenu: Specialities -->
       <li class="has-submenu" role="none">
         <button class="nav-link submenu-toggle"
                 aria-controls="specialitiesMenu"
                 aria-expanded="false">
           Specialities ▼
         </button>
-        <ul class="submenu" id="specialitiesMenu" aria-hidden="true">
-          <li><a href="/specialities/braces.html">Braces & Orthodontics</a></li>
-          <li><a href="/specialities/invisalign.html">Invisalign Clear Aligners</a></li>
-          <li><a href="/specialities/extraction.html">Tooth Extraction</a></li>
-          <li><a href="/specialities/root-canal.html">Root Canal Treatment</a></li>
-          <li><a href="/specialities/fillings.html">Tooth Fillings</a></li>
-          <li><a href="/specialities/crowns-bridges.html">Crowns & Bridges</a></li>
-          <li><a href="/specialities/implants.html">Dental Implants</a></li>
-          <li><a href="/specialities/dentures.html">Dentures</a></li>
-          <li><a href="/specialities/scaling-whitening.html">Scaling & Whitening</a></li>
-          <li><a href="/specialities/smile-design.html">Smile Designing</a></li>
-          <li><a href="/specialities/gum-surgeries.html">Gum Surgeries</a></li>
-          <li><a href="/specialities/kids-dentistry.html">Kids Dentistry</a></li>
-          <li><a href="/specialities/pregnancy-dental-care.html">Pregnancy Dental Care</a></li>
+
+        <ul class="submenu" id="specialitiesMenu" aria-hidden="true" role="menu">
+          <li role="none"><a role="menuitem" href="/specialities/braces.html">Braces & Orthodontics</a></li>
+          <li role="none"><a role="menuitem" href="/specialities/invisalign.html">Invisalign Clear Aligners</a></li>
+          <li role="none"><a role="menuitem" href="/specialities/extraction.html">Tooth Extraction</a></li>
+          <li role="none"><a role="menuitem" href="/specialities/root-canal.html">Root Canal Treatment</a></li>
+          <li role="none"><a role="menuitem" href="/specialities/fillings.html">Tooth Fillings</a></li>
+          <li role="none"><a role="menuitem" href="/specialities/crowns-bridges.html">Crowns & Bridges</a></li>
+          <li role="none"><a role="menuitem" href="/specialities/implants.html">Dental Implants</a></li>
+          <li role="none"><a role="menuitem" href="/specialities/dentures.html">Dentures</a></li>
+          <li role="none"><a role="menuitem" href="/specialities/scaling-whitening.html">Scaling & Whitening</a></li>
+          <li role="none"><a role="menuitem" href="/specialities/smile-design.html">Smile Designing</a></li>
+          <li role="none"><a role="menuitem" href="/specialities/gum-surgeries.html">Gum Surgeries</a></li>
+          <li role="none"><a role="menuitem" href="/specialities/kids-dentistry.html">Kids Dentistry</a></li>
+          <li role="none"><a role="menuitem" href="/specialities/pregnancy-dental-care.html">Pregnancy Dental Care</a></li>
         </ul>
       </li>
 
-<nav aria-label="Main Navigation">
-  <ul role="list" class="nav-menu">
-    <li><a class="nav-link" href="#ndc-care-voka">Care</a></li>
-      <li><a class="nav-link" href="#ndc-doctors-app">Our Team</a></li>
-      <li><a class="nav-link" href="#testimonials">Testimonials</a></li>
-      <li><a class="nav-link" href="#blog">Blog</a></li>
-      <li><a class="nav-link" href="/self-check#paths">Self-Check</a></li>
-      <li><a class="nav-link" href="/credentials.html">Credentials</a></li>
-      <li><a class="nav-link btn btn--primary" href="#get-in-touch">Book</a></li>
+      <!-- Book Button -->
+      <li role="none">
+        <a role="menuitem" class="nav-link btn btn--primary" href="#get-in-touch">Book</a>
+      </li>
+
     </ul>
   </nav>
 </header>
