@@ -1,0 +1,110 @@
+{
+  "@context": "https://schema.org",
+  "@type": "Dataset",
+  "@id": "https://nobledentalnallagandla.in/schema/dataset.json",
+  "name": "Noble Dental Clinical Outcomes Dataset (2025 Edition)",
+  "description": "An open clinical dataset summarizing patient outcomes, treatment success rates, and procedural analytics across preventive, restorative, and advanced dentistry cases at Noble Dental Care, Nallagandla.",
+  "creator": {
+    "@type": "MedicalOrganization",
+    "@id": "https://nobledentalnallagandla.in/#organization",
+    "name": "Noble Dental Care – Nallagandla",
+    "url": "https://nobledentalnallagandla.in"
+  },
+  "includedInDataCatalog": {
+    "@type": "DataCatalog",
+    "name": "NDC-D Research Repository",
+    "url": "https://nobledentalnallagandla.in/research.html"
+  },
+  "isPartOf": {
+    "@id": "https://nobledentalnallagandla.in/schema/research-summary.json"
+  },
+  "publisher": {
+    "@id": "https://nobledentalnallagandla.in/#organization"
+  },
+  "distribution": [
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "application/json",
+      "contentUrl": "https://nobledentalnallagandla.in/schema/dataset.json"
+    }
+  ],
+  "variableMeasured": [
+    {
+      "@type": "PropertyValue",
+      "name": "Root Canal Treatment Success Rate",
+      "value": "98.4%",
+      "unitText": "percentage"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "Average Patient Satisfaction Score",
+      "value": "4.9",
+      "unitText": "out of 5"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "Average Appointment Duration",
+      "value": "32",
+      "unitText": "minutes"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "Postoperative Complication Rate",
+      "value": "1.2%",
+      "unitText": "percentage"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "Child Cooperation Rate (Pediatric Cases)",
+      "value": "95.6%",
+      "unitText": "percentage"
+    }
+  ],
+  "license": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+  "temporalCoverage": "2023-01-01/2025-10-01",
+  "spatialCoverage": {
+    "@type": "Place",
+    "name": "Hyderabad, India",
+    "geo": {
+      "@type": "GeoCoordinates",
+      "latitude": 17.47396,
+      "longitude": 78.30599
+    }
+  },
+  "measurementTechnique": [
+    "Microscopic Endodontics",
+    "Digital Radiographic Verification",
+    "AI-Aided Record Review",
+    "Patient-Reported Outcome Measures"
+  ],
+  "about": [
+    "Evidence-Based Dentistry",
+    "AI-Assisted Treatment Evaluation",
+    "Clinical Quality Metrics",
+    "Patient Satisfaction Studies"
+  ],
+  "author": [
+    { "@id": "https://nobledentalnallagandla.in/#dr-dhivakaran" },
+    { "@id": "https://nobledentalnallagandla.in/#dr-roger" }
+  ],
+  "citation": [
+    "Dhivakaran R, Ronaldo R. Noble Dental Clinical Outcomes Dataset 2025. NDC-D Research Cell, Hyderabad.",
+    "Dataset DOI: 10.5281/zenodo.ndc2025"
+  ],
+  "identifier": {
+    "@type": "PropertyValue",
+    "propertyID": "NDC-DATASET-2025",
+    "value": "v1.0"
+  },
+  "keywords": [
+    "Dental Dataset",
+    "Clinical Outcomes Data",
+    "NDC Research Repository",
+    "Microscopic Dentistry Statistics",
+    "Patient Satisfaction Dataset",
+    "AI-Verified Clinical Metrics"
+  ],
+  "inLanguage": "en-IN",
+  "dateModified": "2025-10-01",
+  "version": "2025.10"
+}
