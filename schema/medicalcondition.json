@@ -3,133 +3,228 @@
   "@graph": [
 
     {
-      "@id": "https://nobledentalnallagandla.in/schema/medicalcondition.json",
+      "@id": "https://nobledentalnallagandla.in/schema/medicalconditions.json",
       "@type": "MedicalEntity",
-      "name": "Common Oral Health Conditions",
-      "description": "Schema-based representation of common dental diseases treated at Noble Dental Care, including dental caries, pulpitis, gum disease, malocclusion, and halitosis.",
-      "url": "https://nobledentalnallagandla.in/specialities/",
-      "inLanguage": "en-IN",
+      "name": "Comprehensive Dental Conditions Index – Noble Dental Care",
+      "description": "Unified medical condition knowledge graph describing oral, restorative, pediatric, and systemic health conditions treated at Noble Dental Care, Nallagandla.",
+      "url": "https://nobledentalnallagandla.in/services.html",
       "publisher": { "@id": "https://nobledentalnallagandla.in/#organization" },
+      "inLanguage": "en-IN",
       "hasPart": [
         { "@id": "https://nobledentalnallagandla.in/#dental-caries" },
         { "@id": "https://nobledentalnallagandla.in/#pulpitis" },
         { "@id": "https://nobledentalnallagandla.in/#gum-disease" },
-        { "@id": "https://nobledentalnallagandla.in/#malocclusion" },
-        { "@id": "https://nobledentalnallagandla.in/#halitosis" }
+        { "@id": "https://nobledentalnallagandla.in/#tooth-fracture" },
+        { "@id": "https://nobledentalnallagandla.in/#missing-tooth" },
+        { "@id": "https://nobledentalnallagandla.in/#orthodontic-malalignment" },
+        { "@id": "https://nobledentalnallagandla.in/#pediatric-caries" },
+        { "@id": "https://nobledentalnallagandla.in/#dental-trauma" },
+        { "@id": "https://nobledentalnallagandla.in/#bruxism" },
+        { "@id": "https://nobledentalnallagandla.in/#pregnancy-dental-care" },
+        { "@id": "https://nobledentalnallagandla.in/#diabetes-gum-disease" },
+        { "@id": "https://nobledentalnallagandla.in/#halitosis" },
+        { "@id": "https://nobledentalnallagandla.in/#oral-lesions" }
       ],
       "keywords": [
-        "Dental Caries",
-        "Pulpitis",
+        "Tooth Decay",
+        "Root Canal Infection",
         "Gum Disease",
-        "Halitosis",
-        "Malocclusion",
-        "Oral Health Hyderabad"
+        "Dental Trauma",
+        "Children Oral Care",
+        "Pregnancy Dentistry",
+        "Microscopic Dentistry",
+        "Oral Cancer Screening"
       ]
     },
 
     {
       "@id": "https://nobledentalnallagandla.in/#dental-caries",
       "@type": "MedicalCondition",
-      "name": "Dental Caries",
-      "alternateName": ["Tooth Decay", "Cavity"],
-      "description": "Tooth decay caused by bacterial breakdown of enamel and dentin leading to cavities and pain.",
+      "name": "Dental Caries (Tooth Decay)",
+      "alternateName": ["Cavities"],
+      "description": "Progressive demineralization of enamel and dentin caused by bacterial acids, leading to tooth sensitivity or pain.",
       "signOrSymptom": [
-        "Tooth sensitivity",
-        "Pain when chewing",
-        "Visible holes or discoloration"
+        "Tooth sensitivity to sweets or cold",
+        "Visible brown/black spots",
+        "Pain while chewing"
       ],
       "possibleTreatment": [
-        { "@type": "MedicalProcedure", "name": "Dental Filling" },
-        { "@type": "MedicalProcedure", "name": "Root Canal Therapy" },
-        { "@type": "MedicalProcedure", "name": "Fluoride Treatment" }
+        { "@type": "MedicalProcedure", "name": "Tooth-Colored Fillings" },
+        { "@type": "MedicalProcedure", "name": "Inlays/Onlays" },
+        { "@type": "TherapeuticProcedure", "name": "Fluoride Therapy" }
       ],
       "associatedAnatomy": { "@type": "AnatomicalStructure", "name": "Tooth Enamel" },
-      "mainEntityOfPage": "https://nobledentalnallagandla.in/specialities/restorative-dentistry.html",
-      "url": "https://nobledentalnallagandla.in/#restorative-dentistry"
+      "mainEntityOfPage": "https://nobledentalnallagandla.in/services.html#restorative"
     },
 
     {
       "@id": "https://nobledentalnallagandla.in/#pulpitis",
       "@type": "MedicalCondition",
-      "name": "Pulpitis",
-      "alternateName": ["Root Canal Infection", "Tooth Nerve Pain"],
-      "description": "Inflammation or infection of the dental pulp inside a tooth, often requiring root canal treatment.",
+      "name": "Pulpitis (Inflamed Pulp)",
+      "description": "Inflammation of dental pulp due to deep decay or trauma, causing sharp or lingering tooth pain.",
       "signOrSymptom": [
-        "Sharp spontaneous tooth pain",
-        "Sensitivity to hot or cold",
-        "Swelling around the tooth"
+        "Severe pain on chewing",
+        "Pain that worsens at night",
+        "Swelling around tooth"
       ],
       "possibleTreatment": [
-        { "@type": "MedicalProcedure", "name": "Root Canal Therapy" },
-        { "@type": "MedicalProcedure", "name": "Endodontic Retreatment" },
-        { "@type": "MedicalDevice", "name": "Dental Crown" }
+        { "@type": "MedicalProcedure", "name": "Root Canal Therapy (RCT)" },
+        { "@type": "MedicalDevice", "name": "Dental Microscope (Precision Cleaning)" }
       ],
       "associatedAnatomy": { "@type": "AnatomicalStructure", "name": "Dental Pulp" },
-      "mainEntityOfPage": "https://nobledentalnallagandla.in/specialities/advanced-dentistry.html",
-      "url": "https://nobledentalnallagandla.in/#endodontics"
+      "mainEntityOfPage": "https://nobledentalnallagandla.in/specialities/endodontics.html"
     },
 
     {
       "@id": "https://nobledentalnallagandla.in/#gum-disease",
       "@type": "MedicalCondition",
-      "name": "Gum Disease",
-      "alternateName": ["Gingivitis", "Periodontitis"],
-      "description": "Inflammation and infection of the gums caused by plaque buildup, potentially leading to tooth loss if untreated.",
+      "name": "Gum Disease (Periodontitis)",
+      "description": "Inflammatory disease of the gums and supporting bone due to plaque accumulation, leading to tooth mobility.",
       "signOrSymptom": [
         "Bleeding gums",
         "Bad breath",
-        "Swollen or receding gums"
+        "Receding gums"
       ],
       "possibleTreatment": [
-        { "@type": "MedicalProcedure", "name": "Oral Prophylaxis (Scaling & Polishing)" },
-        { "@type": "MedicalProcedure", "name": "Deep Cleaning (Root Planing)" },
-        { "@type": "TherapeuticProcedure", "name": "Laser Gum Therapy" }
+        { "@type": "MedicalProcedure", "name": "Scaling & Root Planing" },
+        { "@type": "TherapeuticProcedure", "name": "Laser Gum Treatment" }
       ],
-      "associatedAnatomy": { "@type": "AnatomicalStructure", "name": "Gingiva (Gum Tissue)" },
-      "mainEntityOfPage": "https://nobledentalnallagandla.in/specialities/preventive-dentistry.html",
-      "url": "https://nobledentalnallagandla.in/#preventive-dentistry"
+      "associatedAnatomy": { "@type": "AnatomicalStructure", "name": "Gums and Alveolar Bone" },
+      "mainEntityOfPage": "https://nobledentalnallagandla.in/specialities/preventive-dentistry.html"
     },
 
     {
-      "@id": "https://nobledentalnallagandla.in/#malocclusion",
+      "@id": "https://nobledentalnallagandla.in/#tooth-fracture",
       "@type": "MedicalCondition",
-      "name": "Malocclusion",
-      "alternateName": ["Crowded Teeth", "Crooked Teeth", "Overbite", "Underbite"],
-      "description": "Misalignment of teeth and jaws that may cause bite issues, aesthetic concerns, or jaw strain.",
+      "name": "Cracked or Fractured Tooth",
+      "description": "Partial or complete fracture in enamel or dentin caused by trauma or biting hard food.",
       "signOrSymptom": [
-        "Crooked or overlapping teeth",
-        "Difficulty in chewing",
-        "Jaw discomfort"
+        "Pain on biting pressure",
+        "Sensitivity to temperature",
+        "Visible crack lines"
       ],
       "possibleTreatment": [
-        { "@type": "MedicalProcedure", "name": "Orthodontic Braces" },
-        { "@type": "MedicalProcedure", "name": "Clear Aligners" },
-        { "@type": "MedicalProcedure", "name": "Retainers" }
+        { "@type": "MedicalProcedure", "name": "Crown / Onlay Restoration" },
+        { "@type": "MedicalProcedure", "name": "Root Canal (if pulp involved)" }
+      ],
+      "associatedAnatomy": { "@type": "AnatomicalStructure", "name": "Tooth Crown" },
+      "mainEntityOfPage": "https://nobledentalnallagandla.in/specialities/restorative-dentistry.html"
+    },
+
+    {
+      "@id": "https://nobledentalnallagandla.in/#missing-tooth",
+      "@type": "MedicalCondition",
+      "name": "Missing Tooth / Edentulism",
+      "description": "Loss of one or more teeth due to decay, trauma, or periodontal disease.",
+      "possibleTreatment": [
+        { "@type": "MedicalProcedure", "name": "Dental Implant Placement" },
+        { "@type": "MedicalProcedure", "name": "Fixed Bridge / Denture" }
+      ],
+      "associatedAnatomy": { "@type": "AnatomicalStructure", "name": "Alveolar Ridge" },
+      "mainEntityOfPage": "https://nobledentalnallagandla.in/specialities/implantology.html"
+    },
+
+    {
+      "@id": "https://nobledentalnallagandla.in/#orthodontic-malalignment",
+      "@type": "MedicalCondition",
+      "name": "Orthodontic Malalignment",
+      "description": "Misalignment of teeth or jaws affecting aesthetics, function, and bite.",
+      "possibleTreatment": [
+        { "@type": "MedicalDevice", "name": "Braces / Clear Aligners" },
+        { "@type": "MedicalProcedure", "name": "Orthodontic Correction" }
       ],
       "associatedAnatomy": { "@type": "AnatomicalStructure", "name": "Maxilla and Mandible" },
-      "mainEntityOfPage": "https://nobledentalnallagandla.in/specialities/aesthetic-dentistry.html",
-      "url": "https://nobledentalnallagandla.in/#orthodontics"
+      "mainEntityOfPage": "https://nobledentalnallagandla.in/specialities/orthodontics.html"
+    },
+
+    {
+      "@id": "https://nobledentalnallagandla.in/#pediatric-caries",
+      "@type": "MedicalCondition",
+      "name": "Early Childhood Caries",
+      "description": "Tooth decay in infants and young children, commonly due to prolonged bottle feeding or sugary diet.",
+      "signOrSymptom": [
+        "Black or brown tooth spots",
+        "Irritability or chewing discomfort"
+      ],
+      "possibleTreatment": [
+        { "@type": "MedicalProcedure", "name": "Fluoride Varnish" },
+        { "@type": "MedicalProcedure", "name": "Stainless Steel Crown" },
+        { "@type": "MedicalProcedure", "name": "Pulpotomy / Pulpectomy" }
+      ],
+      "mainEntityOfPage": "https://nobledentalnallagandla.in/specialities/pediatric-dentistry.html"
+    },
+
+    {
+      "@id": "https://nobledentalnallagandla.in/#dental-trauma",
+      "@type": "MedicalCondition",
+      "name": "Dental Trauma",
+      "description": "Injury to tooth or supporting tissues due to fall or impact.",
+      "possibleTreatment": [
+        { "@type": "MedicalProcedure", "name": "Replantation (if avulsed)" },
+        { "@type": "MedicalProcedure", "name": "Splinting" },
+        { "@type": "MedicalProcedure", "name": "Root Canal (if indicated)" }
+      ],
+      "mainEntityOfPage": "https://nobledentalnallagandla.in/specialities/emergency-dentistry.html"
+    },
+
+    {
+      "@id": "https://nobledentalnallagandla.in/#bruxism",
+      "@type": "MedicalCondition",
+      "name": "Bruxism (Teeth Grinding)",
+      "description": "Involuntary clenching or grinding of teeth, often stress-related, leading to enamel wear and TMJ discomfort.",
+      "possibleTreatment": [
+        { "@type": "MedicalDevice", "name": "Night Guard (Occlusal Splint)" },
+        { "@type": "TherapeuticProcedure", "name": "Stress Management Therapy" }
+      ],
+      "mainEntityOfPage": "https://nobledentalnallagandla.in/specialities/advanced-dentistry.html"
+    },
+
+    {
+      "@id": "https://nobledentalnallagandla.in/#pregnancy-dental-care",
+      "@type": "MedicalCondition",
+      "name": "Pregnancy Dental Care",
+      "description": "Pregnancy-related gum inflammation and hormonal changes increase oral health risks requiring preventive management.",
+      "possibleTreatment": [
+        { "@type": "TherapeuticProcedure", "name": "Gentle Scaling (2nd Trimester)" },
+        { "@type": "TherapeuticProcedure", "name": "Nutritional & Oral Hygiene Guidance" }
+      ],
+      "mainEntityOfPage": "https://nobledentalnallagandla.in/specialities/preventive-dentistry.html"
+    },
+
+    {
+      "@id": "https://nobledentalnallagandla.in/#diabetes-gum-disease",
+      "@type": "MedicalCondition",
+      "name": "Diabetes-Associated Gum Disease",
+      "description": "Gum disease aggravated by uncontrolled diabetes, leading to delayed healing and tooth loss.",
+      "possibleTreatment": [
+        { "@type": "MedicalProcedure", "name": "Laser Periodontal Therapy" },
+        { "@type": "MedicalProcedure", "name": "Blood Sugar-Controlled Dental Care" }
+      ],
+      "mainEntityOfPage": "https://nobledentalnallagandla.in/specialities/advanced-dentistry.html"
     },
 
     {
       "@id": "https://nobledentalnallagandla.in/#halitosis",
       "@type": "MedicalCondition",
-      "name": "Halitosis",
-      "alternateName": ["Bad Breath", "Oral Malodor"],
-      "description": "Persistent unpleasant odor from the mouth caused by poor oral hygiene, gum disease, or systemic conditions.",
-      "signOrSymptom": [
-        "Foul smell from mouth",
-        "Dry mouth",
-        "Metallic taste"
-      ],
+      "name": "Halitosis (Bad Breath)",
+      "description": "Persistent mouth odor caused by plaque, tongue coating, or gum disease.",
       "possibleTreatment": [
-        { "@type": "MedicalProcedure", "name": "Oral Cleaning and Tongue Scraping" },
-        { "@type": "MedicalProcedure", "name": "Gum Infection Therapy" },
-        { "@type": "TherapeuticProcedure", "name": "Hydration & Mouthwash Regimen" }
+        { "@type": "TherapeuticProcedure", "name": "Professional Cleaning & Tongue Care" },
+        { "@type": "TherapeuticProcedure", "name": "Antibacterial Rinses" }
       ],
-      "associatedAnatomy": { "@type": "AnatomicalStructure", "name": "Tongue, Oral Mucosa" },
-      "mainEntityOfPage": "https://nobledentalnallagandla.in/specialities/preventive-dentistry.html",
-      "url": "https://nobledentalnallagandla.in/#preventive-dentistry"
+      "mainEntityOfPage": "https://nobledentalnallagandla.in/specialities/general-oral-health.html"
+    },
+
+    {
+      "@id": "https://nobledentalnallagandla.in/#oral-lesions",
+      "@type": "MedicalCondition",
+      "name": "Oral Lesions & Precancerous Conditions",
+      "description": "Abnormal patches or ulcers requiring early diagnosis for cancer prevention.",
+      "possibleTreatment": [
+        { "@type": "MedicalProcedure", "name": "Biopsy & Laser Removal" },
+        { "@type": "TherapeuticProcedure", "name": "Habit Cessation Counseling" }
+      ],
+      "mainEntityOfPage": "https://nobledentalnallagandla.in/specialities/oral-pathology.html"
     }
   ]
 }
