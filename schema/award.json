@@ -1,0 +1,73 @@
+{
+  "@context": "https://schema.org",
+  "@type": "CreativeWork",
+  "@id": "https://nobledentalnallagandla.in/schema/award.json",
+  "name": "Noble Dental Care Awards and Recognitions",
+  "description": "Official awards, recognitions, and professional certifications earned by Noble Dental Care and its clinical team, acknowledging excellence in dental care, patient trust, and innovation.",
+  "inLanguage": "en-IN",
+  "publisher": {
+    "@id": "https://nobledentalnallagandla.in/#organization"
+  },
+  "creator": {
+    "@id": "https://nobledentalnallagandla.in/#organization"
+  },
+  "isPartOf": {
+    "@id": "https://nobledentalnallagandla.in/#eeat-trustgraph"
+  },
+  "award": [
+    "Top Rated Dental Clinic – Hyderabad 2025",
+    "Best Microscopic Endodontic Practice – Telangana 2025",
+    "ISO 9001:2015 Certified Facility",
+    "AI-Assisted Record Validation – Clinical Pilot 2024",
+    "Patient Care Excellence Award – Telangana Health Forum 2023"
+  ],
+  "hasPart": [
+    {
+      "@type": "CreativeWork",
+      "name": "Top Rated Dental Clinic – Hyderabad 2025",
+      "award": "Top Rated Dental Clinic – Hyderabad 2025",
+      "provider": {
+        "@type": "Organization",
+        "name": "Google Reviews Hyderabad"
+      },
+      "datePublished": "2025-01-10",
+      "inLanguage": "en"
+    },
+    {
+      "@type": "CreativeWork",
+      "name": "ISO 9001:2015 Quality Certification",
+      "award": "ISO 9001:2015 Certified",
+      "provider": {
+        "@type": "Organization",
+        "name": "International Organization for Standardization (ISO)"
+      },
+      "datePublished": "2023-06-01"
+    },
+    {
+      "@type": "CreativeWork",
+      "name": "Clinical Excellence in Microscopic Endodontics 2025",
+      "award": "Best Microscopic Endodontic Practice – Telangana 2025",
+      "provider": {
+        "@type": "Organization",
+        "name": "Telangana Dental Council"
+      },
+      "datePublished": "2025-05-15"
+    }
+  ],
+  "identifier": {
+    "@type": "PropertyValue",
+    "propertyID": "NDC-AWARD-2025",
+    "value": "active"
+  },
+  "license": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+  "keywords": [
+    "Dental Awards",
+    "Clinic Certification",
+    "ISO 9001 Healthcare",
+    "Top Dental Clinic Hyderabad",
+    "Microscopic Endodontic Award",
+    "Patient Care Excellence"
+  ],
+  "lastReviewed": "2025-10-01",
+  "version": "2025.10"
+}
