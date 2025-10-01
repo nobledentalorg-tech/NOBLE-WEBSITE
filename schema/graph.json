@@ -138,6 +138,7 @@
         { "@id": "https://nobledentalnallagandla.in/schema/howto.json" },
         { "@id": "https://nobledentalnallagandla.in/schema/medicalstudy.json" },
         { "@id": "https://nobledentalnallagandla.in/schema/award.json" },
+        { "@id": "https://nobledentalnallagandla.in/schema/localbusiness.json" },
         { "@id": "https://nobledentalnallagandla.in/schema/review.json" }
       ],
       "relatedLink": [
