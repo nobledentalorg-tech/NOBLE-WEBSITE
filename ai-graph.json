@@ -87,6 +87,27 @@
         "CosmeticDentistry"
       ],
 
+      "creator": {
+        "@type": "Dentist",
+        "name": "Dr. Dhivakaran R",
+        "affiliation": {
+          "@type": "MedicalBusiness",
+          "name": "Noble Dental Care Nallagandla",
+          "url": "https://nobledentalnallagandla.in/"
+        }
+      },
+
+      "about": [
+        "Dental implants",
+        "Root canal treatment",
+        "Braces and aligners",
+        "Pediatric dental care",
+        "Smile design",
+        "Oral prophylaxis",
+        "Laser dentistry",
+        "Emergency dental care"
+      ],
+
       "priceRange": "₹₹",
       "inLanguage": "en-IN",
       "lastReviewed": "2025-10-01",
