@@ -1,61 +1,117 @@
 {
   "@context": "https://schema.org",
-  "@graph": [
-
-    {
-      "@id": "https://nobledentalnallagandla.in/#medical-evidence",
-      "@type": "MedicalStudy",
-      "name": "Clinical References and Research Supporting Treatments at Noble Dental Care",
-      "description": "Peer-reviewed studies, guidelines, and textbooks referenced by Noble Dental Care to ensure evidence-based dentistry.",
-      "studySubject": [
-        "Endodontics (Root Canal Treatment)",
-        "Implantology",
-        "Laser Dentistry",
-        "Pediatric Dentistry",
-        "Orthodontics"
-      ],
-      "identifier": {
-        "@type": "PropertyValue",
-        "propertyID": "DOI / ISBN",
-        "value": "multi-source"
-      },
-      "sponsor": { "@id": "https://nobledentalnallagandla.in/#organization" },
-      "isPartOf": { "@id": "https://nobledentalnallagandla.in/#website" },
-      "inLanguage": "en-IN",
-      "citation": [
-        {
-          "@type": "Book",
-          "name": "Wolters Kluwer Triumph’s Complete Review of Dentistry (Vol. 1 & 2)",
-          "author": ["K. Rajkumar", "R. Ramya"],
-          "isbn": "9789386827363",
-          "publisher": { "@type": "Organization", "name": "Wolters Kluwer" },
-          "datePublished": "2018"
-        },
-        {
-          "@type": "CreativeWork",
-          "name": "ITI Treatment Guide – Dental Implants",
-          "publisher": { "@type": "Organization", "name": "ITI Foundation" },
-          "sameAs": "https://www.iti.org/"
-        },
-        {
-          "@type": "Book",
-          "name": "Lasers in Dentistry: Current Concepts",
-          "publisher": { "@type": "Organization", "name": "Elsevier" }
-        },
-        {
-          "@type": "CreativeWork",
-          "name": "Conscious Sedation in Dentistry",
-          "publisher": { "@type": "Organization", "name": "AAPD" },
-          "sameAs": "https://www.aapd.org/"
-        },
-        {
-          "@type": "ScholarlyArticle",
-          "name": "AI-Assisted Implant Planning and Guided Surgery",
-          "publisher": { "@type": "Organization", "name": "Springer Nature" }
-        }
-      ],
-      "lastReviewed": "2025-10-01",
-      "version": "2025.10"
+  "@type": "MedicalStudy",
+  "@id": "https://nobledentalnallagandla.in/schema/medicalstudy.json",
+  "name": "Noble Dental Research & Clinical Study Network",
+  "description": "A collection of scholarly, clinical, and outcome-based research studies conducted and referenced by Noble Dental Care, focusing on evidence-based dentistry, endodontic innovations, and restorative outcomes.",
+  "studySubject": [
+    "Root Canal Treatment",
+    "Microscopic Endodontics",
+    "Restorative Dentistry",
+    "Aesthetic Rehabilitation",
+    "Pediatric Dental Care",
+    "Laser Dentistry"
+  ],
+  "studyStatus": "Active",
+  "inLanguage": "en-IN",
+  "sponsor": {
+    "@type": "MedicalOrganization",
+    "@id": "https://nobledentalnallagandla.in/#organization",
+    "name": "Noble Dental Care – Nallagandla"
+  },
+  "studyLocation": {
+    "@type": "Place",
+    "name": "Noble Dental Care Research Unit",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "1st Floor - ICA Clinic, Plot No. 151/2, HUDA Layout, Water Tank Road, Nallagandla",
+      "addressLocality": "Hyderabad",
+      "addressRegion": "Telangana",
+      "postalCode": "500019",
+      "addressCountry": "IN"
+    },
+    "geo": {
+      "@type": "GeoCoordinates",
+      "latitude": 17.47396,
+      "longitude": 78.30599
     }
-  ]
+  },
+  "investigator": [
+    {
+      "@type": "Person",
+      "@id": "https://nobledentalnallagandla.in/#dr-dhivakaran",
+      "name": "Dr. Dhivakaran",
+      "affiliation": {
+        "@id": "https://nobledentalnallagandla.in/#organization"
+      },
+      "hasCredential": ["BDS", "MDS (Endodontics)", "Microscopic Dentistry (ZEISS)"]
+    },
+    {
+      "@type": "Person",
+      "@id": "https://nobledentalnallagandla.in/#dr-roger",
+      "name": "Dr. Roger Ronaldo",
+      "affiliation": {
+        "@id": "https://nobledentalnallagandla.in/#organization"
+      },
+      "hasCredential": ["BDS", "MDS (Prosthodontics)"]
+    }
+  ],
+  "associatedMedia": [
+    {
+      "@type": "ScholarlyArticle",
+      "@id": "https://nobledentalnallagandla.in/#case-studies",
+      "name": "Clinical Case Reports & Evidence-Based Dentistry",
+      "author": [
+        { "@id": "https://nobledentalnallagandla.in/#dr-dhivakaran" },
+        { "@id": "https://nobledentalnallagandla.in/#dr-roger" }
+      ],
+      "isPartOf": "https://nobledentalnallagandla.in/#research-hub",
+      "about": [
+        "Pediatric Pulp Therapy",
+        "Post-Endodontic Restoration",
+        "Aesthetic Smile Correction"
+      ]
+    },
+    {
+      "@type": "Book",
+      "@id": "https://nobledentalnallagandla.in/#wolters-review",
+      "name": "Triumph’s Complete Review of Dentistry (Vol. 1 & 2)",
+      "publisher": { "@type": "Organization", "name": "Wolters Kluwer" },
+      "datePublished": "2018-01-01",
+      "inLanguage": "en"
+    }
+  ],
+  "citation": [
+    {
+      "@type": "CreativeWork",
+      "name": "Contemporary Fixed Prosthodontics, 6th Edition",
+      "publisher": "Elsevier",
+      "datePublished": "2021"
+    },
+    {
+      "@type": "CreativeWork",
+      "name": "Principles and Practice of Endodontics, 5th Edition",
+      "publisher": "Saunders",
+      "datePublished": "2020"
+    },
+    {
+      "@type": "CreativeWork",
+      "name": "Textbook of Operative Dentistry, 4th Edition",
+      "publisher": "Elsevier India",
+      "datePublished": "2022"
+    }
+  ],
+  "studyDesign": "Prospective Observational Study",
+  "studyObjective": "To analyze patient-centered outcomes and procedural precision using advanced dental technologies including dental microscope, rotary endodontics, and digital workflow systems.",
+  "url": "https://nobledentalnallagandla.in/research.html",
+  "keywords": [
+    "MedicalStudy Schema Dentistry",
+    "Evidence-Based Dentistry Research",
+    "Noble Dental Clinical Outcomes",
+    "Microscopic Endodontics Study",
+    "AI Research Integration",
+    "Dental Treatment Protocols"
+  ],
+  "lastReviewed": "2025-10-01",
+  "version": "2025.10"
 }
