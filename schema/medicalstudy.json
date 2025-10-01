@@ -1,0 +1,61 @@
+{
+  "@context": "https://schema.org",
+  "@graph": [
+
+    {
+      "@id": "https://nobledentalnallagandla.in/#medical-evidence",
+      "@type": "MedicalStudy",
+      "name": "Clinical References and Research Supporting Treatments at Noble Dental Care",
+      "description": "Peer-reviewed studies, guidelines, and textbooks referenced by Noble Dental Care to ensure evidence-based dentistry.",
+      "studySubject": [
+        "Endodontics (Root Canal Treatment)",
+        "Implantology",
+        "Laser Dentistry",
+        "Pediatric Dentistry",
+        "Orthodontics"
+      ],
+      "identifier": {
+        "@type": "PropertyValue",
+        "propertyID": "DOI / ISBN",
+        "value": "multi-source"
+      },
+      "sponsor": { "@id": "https://nobledentalnallagandla.in/#organization" },
+      "isPartOf": { "@id": "https://nobledentalnallagandla.in/#website" },
+      "inLanguage": "en-IN",
+      "citation": [
+        {
+          "@type": "Book",
+          "name": "Wolters Kluwer Triumph’s Complete Review of Dentistry (Vol. 1 & 2)",
+          "author": ["K. Rajkumar", "R. Ramya"],
+          "isbn": "9789386827363",
+          "publisher": { "@type": "Organization", "name": "Wolters Kluwer" },
+          "datePublished": "2018"
+        },
+        {
+          "@type": "CreativeWork",
+          "name": "ITI Treatment Guide – Dental Implants",
+          "publisher": { "@type": "Organization", "name": "ITI Foundation" },
+          "sameAs": "https://www.iti.org/"
+        },
+        {
+          "@type": "Book",
+          "name": "Lasers in Dentistry: Current Concepts",
+          "publisher": { "@type": "Organization", "name": "Elsevier" }
+        },
+        {
+          "@type": "CreativeWork",
+          "name": "Conscious Sedation in Dentistry",
+          "publisher": { "@type": "Organization", "name": "AAPD" },
+          "sameAs": "https://www.aapd.org/"
+        },
+        {
+          "@type": "ScholarlyArticle",
+          "name": "AI-Assisted Implant Planning and Guided Surgery",
+          "publisher": { "@type": "Organization", "name": "Springer Nature" }
+        }
+      ],
+      "lastReviewed": "2025-10-01",
+      "version": "2025.10"
+    }
+  ]
+}
