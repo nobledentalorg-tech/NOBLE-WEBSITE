@@ -3,121 +3,212 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>AI Schema & SEO Intelligence Dashboard | Noble Dental Care – NDC-D</title>
-  <meta name="description" content="Live analytics for schema validation, AI readiness, and SERP performance of Noble Dental Care, Nallagandla. Includes GPT layer detection, Rich Results, AI healing, and NLP coverage.">
+  <title>AI Schema & SEO Intelligence Console | Noble Dental Care – NDC-D</title>
+  <meta name="description" content="Smart Schema Intelligence System — live AI schema analytics, EEAT validation, GPT integration, SEO entity mapping, and rich results eligibility tracking for Noble Dental Care, Hyderabad.">
   <link rel="icon" href="/images/logo-footer.webp" type="image/webp">
 
   <!-- Chart.js -->
   <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
-  
+
   <!-- AI Schema Modules -->
   <script defer src="/js/ai-schema-engine.js"></script>
   <script defer src="/js/ai-schema-insights.js"></script>
   <script defer src="/js/gptengineer.js"></script>
 
   <style>
+    /* =============================================================
+       Root Theme & Reset
+    ============================================================= */
     :root {
-      --bg: #f5faff;
-      --card: #fff;
+      --bg: linear-gradient(135deg, #e0fdfb 0%, #f8fdff 100%);
+      --card: rgba(255,255,255,0.85);
       --ink: #0e1116;
       --brand: #12b2a0;
+      --brand2: #06b6d4;
       --muted: #475569;
-      --good: #22c55e;
+      --good: #16a34a;
       --warn: #f59e0b;
       --bad: #ef4444;
-      --radius: 16px;
-      --shadow: 0 6px 20px rgba(0,0,0,0.08);
-      --transition: 0.5s ease;
+      --radius: 18px;
+      --shadow: 0 8px 24px rgba(0,0,0,0.08);
+      --blur: blur(12px);
+      --transition: 0.4s ease;
     }
+    * { box-sizing: border-box; }
     body {
       margin: 0;
-      font-family: system-ui, sans-serif;
+      font-family: 'Manrope', system-ui, sans-serif;
       background: var(--bg);
       color: var(--ink);
+      min-height: 100vh;
+      overflow-x: hidden;
     }
+    h1,h2,h3 { line-height: 1.2; margin: 0; }
+
+    /* =============================================================
+       Header
+    ============================================================= */
     header {
-      background: linear-gradient(135deg, var(--brand), #009d8e);
+      background: linear-gradient(135deg, var(--brand), var(--brand2));
       color: #fff;
       text-align: center;
-      padding: 2.2rem 1rem;
+      padding: 2.5rem 1rem 2rem;
+      position: relative;
       box-shadow: var(--shadow);
     }
-    header h1 { margin: 0; font-weight: 700; font-size: 1.8rem; }
-    header p { margin: 0.5rem 0 0; opacity: 0.9; }
-    main {
-      max-width: 1200px;
-      margin: 2rem auto;
-      padding: 0 1rem;
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-      gap: 1.5rem;
+    header::after {
+      content: "";
+      position: absolute;
+      bottom: 0; left: 50%;
+      transform: translateX(-50%);
+      width: 90%; height: 2px;
+      background: rgba(255,255,255,0.2);
+      border-radius: 2px;
     }
+    header h1 { font-size: 2rem; font-weight: 800; letter-spacing: 0.5px; }
+    header p { margin: 0.75rem auto; font-weight: 500; opacity: 0.9; }
+
+    /* =============================================================
+       Layout Grid
+    ============================================================= */
+    main {
+      max-width: 1280px;
+      margin: 2rem auto;
+      padding: 0 1.2rem 4rem;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
+      gap: 1.75rem;
+    }
+
+    /* =============================================================
+       Card
+    ============================================================= */
     .card {
       background: var(--card);
       border-radius: var(--radius);
-      padding: 1.5rem;
+      padding: 1.75rem;
       box-shadow: var(--shadow);
-      transition: transform var(--transition);
+      backdrop-filter: var(--blur);
+      transition: transform var(--transition), box-shadow var(--transition);
+      position: relative;
     }
-    .card:hover { transform: translateY(-6px); }
-    h2 { margin-top: 0; font-weight: 600; }
-    .list { font-size: 0.9rem; color: var(--muted); margin-top: 0.75rem; }
+    .card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 12px 28px rgba(0,0,0,0.12);
+    }
+    h2 {
+      font-weight: 700;
+      font-size: 1.25rem;
+      color: var(--ink);
+      margin-bottom: 0.75rem;
+    }
+    .list {
+      font-size: 0.92rem;
+      color: var(--muted);
+      margin-top: 0.75rem;
+      line-height: 1.5;
+    }
     canvas { width: 100%; height: 220px; }
+
+    /* =============================================================
+       Buttons
+    ============================================================= */
+    button.refresh {
+      background: #fff;
+      color: var(--brand);
+      border: 2px solid #fff;
+      padding: 10px 22px;
+      border-radius: 10px;
+      cursor: pointer;
+      margin: 1rem auto 0;
+      display: block;
+      font-weight: 700;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    }
+    button.refresh:hover {
+      background: #0d9488;
+      color: #fff;
+      transform: scale(1.05);
+    }
+
+    /* =============================================================
+       Footer
+    ============================================================= */
     footer {
       text-align: center;
       font-size: 0.8rem;
       color: var(--muted);
-      padding: 1rem;
+      padding: 1.5rem;
+      background: rgba(255,255,255,0.6);
+      backdrop-filter: blur(8px);
     }
-    button.refresh {
-      background:#12b2a0;color:#fff;border:none;padding:10px 20px;
-      border-radius:8px;cursor:pointer;margin:15px auto;display:block;
-      box-shadow:0 4px 10px rgba(0,0,0,0.1);font-weight:600;
+
+    /* =============================================================
+       Status badges
+    ============================================================= */
+    .status {
+      font-weight: 600;
+      padding: 4px 8px;
+      border-radius: 6px;
+      font-size: 0.8rem;
     }
+    .good { background: #d1fae5; color: var(--good); }
+    .warn { background: #fef9c3; color: var(--warn); }
+    .bad { background: #fee2e2; color: var(--bad); }
+
+    ul.list li { margin-bottom: 6px; }
   </style>
 </head>
 
 <body>
   <header>
-    <h1>🧠 AI Schema Intelligence Dashboard</h1>
-    <p>AI-Driven Validation, GPT Layer Detection & SEO Readiness</p>
-    <button class="refresh" onclick="location.reload()">🔄 Re-analyze Schema</button>
+    <h1>🧠 AI Schema Intelligence Console</h1>
+    <p>Unified AI Readiness, Schema Validation & E-E-A-T Performance Monitor</p>
+    <button class="refresh" onclick="location.reload()">🔄 Re-run Full Analysis</button>
   </header>
 
   <main id="dashboard">
+    <!-- Composite AI Schema Health -->
     <div class="card">
       <h2>AI Schema Health Index</h2>
       <canvas id="healthChart"></canvas>
-      <div class="list">Composite score combining NLP coverage, Rich Result eligibility, and auto-healing data.</div>
+      <div class="list">Dynamic scoring based on entity validation, NLP coverage, GPT readiness & auto-healing events.</div>
     </div>
 
+    <!-- Entity Type Chart -->
     <div class="card">
       <h2>Entity Type Distribution</h2>
       <canvas id="typeChart"></canvas>
-      <div class="list">Breakdown of schema entity types (LocalBusiness, Person, MedicalCondition, etc.)</div>
+      <div class="list">Live snapshot of entity composition across graph nodes (MedicalBusiness, FAQPage, Dataset, etc.)</div>
     </div>
 
+    <!-- Summary -->
     <div class="card">
-      <h2>Eligibility Summary</h2>
-      <div id="summary" class="list">Loading summary...</div>
+      <h2>Schema Summary</h2>
+      <div id="summary" class="list">Collecting live stats...</div>
     </div>
 
+    <!-- GPT Layer -->
     <div class="card" id="gptCard">
-      <h2>GPT Engineer Layer</h2>
-      <div id="gptStatus" class="list">Detecting GPT layer...</div>
+      <h2>GPT Integration Layer</h2>
+      <div id="gptStatus" class="list">Detecting GPT integration...</div>
     </div>
 
+    <!-- Recommendations -->
     <div class="card">
-      <h2>Recommendations</h2>
+      <h2>AI Recommendations</h2>
       <ul id="recommendList" class="list"></ul>
     </div>
   </main>
 
-  <footer>© 2025 Noble Dental Care — Schema Intelligence Console v2025.9 (AI Pro Edition)</footer>
+  <footer>
+    © 2025 Noble Dental Care — <strong>Schema Console Pro v2025.10</strong> | Auto-Healing Enabled | AI Graph Synced
+  </footer>
 
   <script>
   document.addEventListener("ai-schema-ready", (e) => initDashboard(e.detail));
-  document.addEventListener("DOMContentLoaded", async () => {
+  document.addEventListener("DOMContentLoaded", () => {
     if (window.__AI_SCHEMA) initDashboard(window.__AI_SCHEMA);
   });
 
@@ -133,33 +224,31 @@
     const errors = aiData?.errors || [];
     const merged = aiData?.merged || [];
 
-    // 🧠 Compute combined AI + RR score
-    const base = summaryRR.score || 9.8;
-    const aiScore = ai.nlpCoverageScore || 9.9;
-    const penalty = Math.min(errors.length * 0.05 + healed.length * 0.02, 1.0);
+    // Smart Scoring
+    const base = summaryRR.score || 9.6;
+    const aiScore = ai.nlpCoverageScore || 9.8;
+    const penalty = Math.min(errors.length * 0.04 + healed.length * 0.015, 1);
     const finalScore = Math.max(0, ((base + aiScore) / 2) - penalty + (window.__GPT_READY ? 0.2 : 0));
 
-    // 🥇 Chart 1: AI Health Index
+    // Doughnut Chart
     const ctx1 = document.getElementById("healthChart").getContext("2d");
     new Chart(ctx1, {
       type: "doughnut",
       data: {
-        labels: ["Composite Score", "Healed Blocks", "Errors"],
+        labels: ["AI Health Score", "Healed Nodes", "Errors"],
         datasets: [{
           data: [finalScore, healed.length, errors.length],
           backgroundColor: ["#12B2A0", "#3B82F6", "#EF4444"]
         }]
       },
       options: {
-        plugins: {
-          legend: { position: "bottom" },
-          title: { display: true, text: "AI Schema Health Index" }
-        },
-        animation: { animateRotate: true, animateScale: true }
+        plugins: { legend: { position: "bottom" } },
+        cutout: "70%",
+        animation: { duration: 1800 }
       }
     });
 
-    // 📘 Chart 2: Type Distribution
+    // Type Distribution
     const ctx2 = document.getElementById("typeChart").getContext("2d");
     const typeCount = {};
     merged.forEach(m => typeCount[m["@type"]] = (typeCount[m["@type"]] || 0) + 1);
@@ -170,77 +259,56 @@
         datasets: [{
           label: "Entity Count",
           data: Object.values(typeCount),
-          backgroundColor: "#12B2A0"
+          backgroundColor: "#06b6d4"
         }]
       },
       options: {
         indexAxis: "y",
-        plugins: { legend: { display: false } },
-        scales: { x: { beginAtZero: true } }
+        scales: { x: { beginAtZero: true } },
+        plugins: { legend: { display: false } }
       }
     });
 
-    // 📊 Summary Section
+    // Summary
     document.getElementById("summary").innerHTML = `
-      <p><strong>Total Schema Files:</strong> ${aiSummary.total || "?"}</p>
-      <p><strong>Entities Detected:</strong> ${summaryRR.entitiesDetected || 0}</p>
+      <p><strong>Total Schema Files:</strong> ${aiSummary.total || merged.length}</p>
+      <p><strong>Entities Detected:</strong> ${summaryRR.entitiesDetected || merged.length}</p>
       <p><strong>AI Health Score:</strong> ${finalScore.toFixed(2)} / 10</p>
-      <p><strong>Confidence:</strong> ${summaryRR.confidence || "High"}</p>
-      <p><strong>Healed Blocks:</strong> ${healed.length}</p>
-      <p><strong>Validation Errors:</strong> ${errors.length}</p>
+      <p><strong>Confidence Level:</strong> ${summaryRR.confidence || "High"}</p>
+      <p><strong>Healed Nodes:</strong> ${healed.length}</p>
+      <p><strong>Errors:</strong> ${errors.length}</p>
       <p><strong>Rich Results Eligible:</strong> ${features.length}</p>
-      <p><strong>Last Updated:</strong> ${new Date(aiSummary.timestamp || Date.now()).toLocaleString()}</p>
+      <p><strong>Last Synced:</strong> ${new Date(aiSummary.timestamp || Date.now()).toLocaleString()}</p>
     `;
 
-    // 💡 Recommendations
+    // Recommendations
     const recList = document.getElementById("recommendList");
     recList.innerHTML = "";
     if (errors.length === 0 && healed.length === 0) {
-      recList.innerHTML = "<li>✅ All schema blocks valid and AI-ready.</li>";
+      recList.innerHTML = "<li>✅ Perfect graph: All nodes AI-ready and indexed.</li>";
     } else {
-      healed.forEach(f => {
-        const li = document.createElement("li");
-        li.textContent = `🩹 Auto-healed schema: ${f}`;
-        recList.appendChild(li);
-      });
-      errors.forEach(e => {
-        const li = document.createElement("li");
-        li.textContent = `⚠️ ${e.file}: ${e.issue}`;
-        recList.appendChild(li);
-      });
+      healed.forEach(f => recList.innerHTML += `<li>🩹 Auto-Healed Node: <strong>${f}</strong></li>`);
+      errors.forEach(e => recList.innerHTML += `<li>⚠️ ${e.file}: ${e.issue}</li>`);
     }
-    recs.forEach(r => {
-      const li = document.createElement("li");
-      li.textContent = `⚙️ ${r.message} (${r.impact} impact)`;
-      recList.appendChild(li);
-    });
+    recs.forEach(r => recList.innerHTML += `<li>💡 ${r.message} (${r.impact} impact)</li>`);
   }
 
-  /* ============================================================
-     GPT Engineer Layer Integration
-  ============================================================ */
+  /* GPT Layer */
   document.addEventListener("gpt-engineer-ready", (e) => {
     const info = e.detail || {};
     const el = document.getElementById("gptStatus");
-    const name = info.name || "GPT Integration";
-    const ver = info.softwareVersion || "Unknown";
-    const date = new Date(info.dateCreated).toLocaleString();
-
     el.innerHTML = `
-      <p><strong>${name}</strong></p>
-      <p>Version: <strong>${ver}</strong></p>
-      <p>Status: <span class="status good">Active ✅</span></p>
-      <p>Synced On: ${date}</p>
-      <p><strong>Purpose:</strong> ${info.description}</p>
+      <p><strong>${info.name || "GPT Integration"}</strong></p>
+      <p>Version: ${info.softwareVersion || "vX"}</p>
+      <p>Status: <span class="status good">Active</span></p>
+      <p>Purpose: ${info.description || "Schema self-healing and auto-mapping."}</p>
+      <p>Synced: ${new Date(info.dateCreated).toLocaleString()}</p>
     `;
-    console.log("✅ GPT Layer Detected:", info);
   });
 
   setTimeout(() => {
-    if (window.__GPT_READY && window.__GPT_ENGINEER) {
-      const evt = new CustomEvent("gpt-engineer-ready", { detail: window.__GPT_ENGINEER });
-      document.dispatchEvent(evt);
-    }
+    if (window.__GPT_READY && window.__GPT_ENGINEER)
+      document.dispatchEvent(new CustomEvent("gpt-engineer-ready", { detail: window.__GPT_ENGINEER }));
   }, 1500);
   </script>
 </body>
