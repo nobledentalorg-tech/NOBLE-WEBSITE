@@ -38,7 +38,8 @@
         { "@id": "https://nobledentalnallagandla.in/schema/howto.json" },
         { "@id": "https://nobledentalnallagandla.in/schema/medicalstudy.json" },
         { "@id": "https://nobledentalnallagandla.in/schema/research-summary.json" },
-        { "@id": "https://nobledentalnallagandla.in/schema/eeat-trustgraph.json" }
+        { "@id": "https://nobledentalnallagandla.in/schema/eeat-trustgraph.json" },
+        { "@id": "https://nobledentalnallagandla.in/schema/award.json" }
       ],
       "inLanguage": "en-IN"
     },
@@ -57,6 +58,7 @@
         { "@id": "https://nobledentalnallagandla.in/schema/medicalstudy.json" },
         { "@id": "https://nobledentalnallagandla.in/schema/research-summary.json" },
         { "@id": "https://nobledentalnallagandla.in/schema/eeat-trustgraph.json" },
+        { "@id": "https://nobledentalnallagandla.in/schema/award.json" },
         { "@id": "https://nobledentalnallagandla.in/#advanced-dentistry" },
         { "@id": "https://nobledentalnallagandla.in/#restorative-dentistry" },
         { "@id": "https://nobledentalnallagandla.in/#preventive-dentistry" },
@@ -78,7 +80,7 @@
         { "@id": "https://nobledentalnallagandla.in/#preventive-dentistry" },
         { "@id": "https://nobledentalnallagandla.in/schema/faq.json" },
         { "@id": "https://nobledentalnallagandla.in/schema/howto.json" },
-        { "@id": "https://nobledentalnallagandla.in/schema/research-summary.json" }
+        { "@id": "https://nobledentalnallagandla.in/schema/award.json" }
       ]
     },
 
@@ -90,8 +92,7 @@
         { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://nobledentalnallagandla.in/" },
         { "@type": "ListItem", "position": 2, "name": "Treatments", "item": "https://nobledentalnallagandla.in/services.html" },
         { "@type": "ListItem", "position": 3, "name": "Advanced Dentistry", "item": "https://nobledentalnallagandla.in/specialities/advanced-dentistry.html" },
-        { "@type": "ListItem", "position": 4, "name": "Research Summary", "item": "https://nobledentalnallagandla.in/research.html" },
-        { "@type": "ListItem", "position": 5, "name": "FAQ", "item": "https://nobledentalnallagandla.in/faq.html" }
+        { "@type": "ListItem", "position": 4, "name": "FAQ", "item": "https://nobledentalnallagandla.in/faq.html" }
       ]
     },
 
@@ -104,8 +105,7 @@
         { "@id": "https://nobledentalnallagandla.in/#advanced-dentistry" },
         { "@id": "https://nobledentalnallagandla.in/#orthodontics" },
         { "@id": "https://nobledentalnallagandla.in/#endodontics" },
-        { "@id": "https://nobledentalnallagandla.in/#preventive-dentistry" },
-        { "@id": "https://nobledentalnallagandla.in/schema/research-summary.json" }
+        { "@id": "https://nobledentalnallagandla.in/#preventive-dentistry" }
       ],
       "mainEntity": [
         {
@@ -137,7 +137,7 @@
         { "@id": "https://nobledentalnallagandla.in/schema/faq.json#root-canal-pain" },
         { "@id": "https://nobledentalnallagandla.in/schema/howto.json" },
         { "@id": "https://nobledentalnallagandla.in/schema/medicalstudy.json" },
-        { "@id": "https://nobledentalnallagandla.in/schema/research-summary.json" }
+        { "@id": "https://nobledentalnallagandla.in/schema/award.json" }
       ],
       "relatedLink": [
         { "@id": "https://nobledentalnallagandla.in/#restorative-dentistry" },
