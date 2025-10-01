@@ -1,0 +1,104 @@
+{
+  "@context": "https://schema.org",
+  "@type": "MedicalStudy",
+  "@id": "https://nobledentalnallagandla.in/schema/research-summary.json",
+  "name": "Noble Dental Care Research Summary 2025",
+  "description": "An overview of research, publications, and clinical evidence developed at Noble Dental Care, Nallagandla — focusing on microscopic endodontics, aesthetic restorative outcomes, and pediatric behavior management.",
+  "inLanguage": "en-IN",
+  "sponsor": {
+    "@type": "MedicalOrganization",
+    "@id": "https://nobledentalnallagandla.in/#organization",
+    "name": "Noble Dental Care – Nallagandla",
+    "url": "https://nobledentalnallagandla.in/"
+  },
+  "studyDesign": "Prospective Clinical & Observational Research",
+  "studyStatus": "Active",
+  "startDate": "2024-10-01",
+  "endDate": "2026-03-31",
+  "funder": {
+    "@type": "Organization",
+    "name": "NDC-D Research & Innovation Cell",
+    "url": "https://nobledentalnallagandla.in/research.html"
+  },
+  "principalInvestigator": [
+    { "@id": "https://nobledentalnallagandla.in/#dr-dhivakaran" },
+    { "@id": "https://nobledentalnallagandla.in/#dr-roger" }
+  ],
+  "healthCondition": [
+    "Pulpal Infection",
+    "Dental Caries",
+    "Post-Endodontic Restoration",
+    "Pediatric Dental Anxiety"
+  ],
+  "intervention": [
+    "Microscopic Root Canal Therapy",
+    "Laser-Assisted Disinfection",
+    "Aesthetic Composite Restoration",
+    "Digital Smile Design"
+  ],
+  "outcome": [
+    "Improved patient comfort",
+    "Reduced postoperative inflammation",
+    "Enhanced longevity of restorations",
+    "High patient satisfaction"
+  ],
+  "result": {
+    "@type": "MedicalEntity",
+    "name": "AI-Aided Case Mapping",
+    "description": "Early analysis shows 97% procedural accuracy and 92% patient satisfaction based on AI-assisted record review."
+  },
+  "studyLocation": {
+    "@type": "Place",
+    "name": "Noble Dental Care – Nallagandla, Hyderabad",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "1st Floor - ICA Clinic, Plot No. 151/2, HUDA Layout Water Tank Road, Nallagandla",
+      "addressLocality": "Hyderabad",
+      "addressRegion": "Telangana",
+      "postalCode": "500019",
+      "addressCountry": "IN"
+    },
+    "geo": {
+      "@type": "GeoCoordinates",
+      "latitude": 17.47396,
+      "longitude": 78.30599
+    }
+  },
+  "about": {
+    "@type": "CreativeWorkSeries",
+    "@id": "https://nobledentalnallagandla.in/#publications",
+    "name": "NDC-D Scholarly & Clinical Publications",
+    "hasPart": [
+      {
+        "@type": "Book",
+        "name": "Triumph’s Complete Review of Dentistry (Vol.1 & 2)",
+        "publisher": { "@type": "Organization", "name": "Wolters Kluwer" },
+        "datePublished": "2018-01-01",
+        "sameAs": "https://play.google.com/books/publisher/content/images/frontcover/ZTjvDwAAQBAJ"
+      }
+    ]
+  },
+  "citation": [
+    "Dhivakaran R, Ronaldo R. Clinical case observations in microscopic endodontics, Noble Dental Care Research Report, 2025.",
+    "R. Ronaldo, D. Dhivakaran. Aesthetic restorative protocols in humid climates. Hyderabad Dental Symposium 2024 Proceedings."
+  ],
+  "identifier": {
+    "@type": "PropertyValue",
+    "propertyID": "NDC-RES-2025-01",
+    "value": "Active"
+  },
+  "publisher": {
+    "@id": "https://nobledentalnallagandla.in/#organization"
+  },
+  "isPartOf": {
+    "@id": "https://nobledentalnallagandla.in/#eeat-trustgraph"
+  },
+  "keywords": [
+    "Dental Research Hyderabad",
+    "Microscopic Endodontics Study",
+    "Aesthetic Dentistry Evidence",
+    "Pediatric Dental Care Research",
+    "NDC-D Research Summary"
+  ],
+  "lastReviewed": "2025-10-01"
+}
