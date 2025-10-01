@@ -5,7 +5,13 @@
   "name": "Noble Dental Care – Verified Patient Reviews",
   "description": "A verified collection of real patient reviews and feedback for Noble Dental Care Nallagandla, highlighting patient satisfaction, trust, and treatment outcomes.",
   "inLanguage": "en-IN",
+  "isPartOf": {
+    "@id": "https://nobledentalnallagandla.in/#website"
+  },
   "publisher": {
+    "@id": "https://nobledentalnallagandla.in/#organization"
+  },
+  "about": {
     "@id": "https://nobledentalnallagandla.in/#organization"
   },
   "mainEntity": [
@@ -38,6 +44,9 @@
       "datePublished": "2025-08-14",
       "itemReviewed": {
         "@id": "https://nobledentalnallagandla.in/#endodontics"
+      },
+      "publisher": {
+        "@id": "https://nobledentalnallagandla.in/#organization"
       }
     },
     {
@@ -56,6 +65,9 @@
       "datePublished": "2025-07-28",
       "itemReviewed": {
         "@id": "https://nobledentalnallagandla.in/#pediatric-dentistry"
+      },
+      "publisher": {
+        "@id": "https://nobledentalnallagandla.in/#organization"
       }
     },
     {
@@ -74,15 +86,20 @@
       "datePublished": "2025-06-09",
       "itemReviewed": {
         "@id": "https://nobledentalnallagandla.in/#aesthetic-dentistry"
+      },
+      "publisher": {
+        "@id": "https://nobledentalnallagandla.in/#organization"
       }
     }
   ],
-  "isPartOf": {
-    "@id": "https://nobledentalnallagandla.in/#website"
-  },
-  "about": {
-    "@id": "https://nobledentalnallagandla.in/#organization"
-  },
+  "relatedLink": [
+    { "@id": "https://nobledentalnallagandla.in/schema/award.json" },
+    { "@id": "https://nobledentalnallagandla.in/schema/localbusiness.json" }
+  ],
+  "citation": [
+    "Google Business Profile Reviews (2025)",
+    "Verified Noble Dental Care Testimonials"
+  ],
   "keywords": [
     "Noble Dental Reviews",
     "Best Dentist Nallagandla Feedback",
@@ -90,6 +107,11 @@
     "Top Rated Dental Clinic Hyderabad",
     "Dental Review Schema JSON-LD"
   ],
+  "identifier": {
+    "@type": "PropertyValue",
+    "propertyID": "NDC-REVIEWS-2025",
+    "value": "v1.0"
+  },
   "lastReviewed": "2025-10-01",
   "version": "2025.10"
 }
