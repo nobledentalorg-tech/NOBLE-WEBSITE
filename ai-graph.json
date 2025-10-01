@@ -1,219 +1,195 @@
 {
   "@context": "https://schema.org",
-  "@type": "Dataset",
-  "@id": "https://nobledentalnallagandla.in/ai-graph.json",
-  "name": "AI Knowledge Graph – Noble Dental Care Nallagandla",
-  "alternateName": [
-    "NDC-D AI Graph",
-    "Noble Dental AI Schema Graph"
-  ],
-  "description": "Comprehensive AI Knowledge Graph connecting Dr. Dhivakaran, Noble Dental Care Nallagandla, treatments, and digital datasets. Enables AI Overview, Knowledge Panel linking, and assistant card generation.",
-  "url": "https://nobledentalnallagandla.in/ai-graph.html",
-  "inLanguage": "en-IN",
-  "dateModified": "2025-09-30T21:45:00+05:30",
+  "@graph": [
 
-  "creator": {
-    "@type": "Person",
-    "name": "Dr. Dhivakaran",
-    "jobTitle": "Dental Surgeon",
-    "url": "https://nobledentalnallagandla.in/about.html",
-    "affiliation": {
-      "@type": "MedicalOrganization",
-      "name": "Noble Dental Care – Nallagandla",
-      "url": "https://nobledentalnallagandla.in/"
-    },
-    "sameAs": [
-      "https://www.google.com/search?q=Noble+Dental+Care+Nallagandla",
-      "https://www.facebook.com/nobledentalnallagandla",
-      "https://www.instagram.com/nobledentalnallagandla"
-    ]
-  },
+    {
+      "@id": "https://nobledentalnallagandla.in/#organization",
+      "@type": "MedicalBusiness",
+      "name": "Noble Dental Care Nallagandla",
+      "alternateName": [
+        "Noble Dental Clinic",
+        "NDC Nallagandla",
+        "Noble Dental Care Hyderabad"
+      ],
+      "legalName": "Noble Dental Care – Nallagandla",
+      "description": "Noble Dental Care is a trusted multi-speciality dental clinic in Nallagandla, Hyderabad offering advanced, restorative, aesthetic, preventive, pediatric, and emergency dental services under one roof.",
+      "url": "https://nobledentalnallagandla.in/",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://nobledentalnallagandla.in/images/logo-footer.webp"
+      },
+      "founder": {
+        "@type": "Person",
+        "name": "Dr. Dhivakaran R",
+        "jobTitle": "Chief Dental Surgeon",
+        "sameAs": "https://nobledentalnallagandla.in/about.html"
+      },
 
-  "publisher": {
-    "@type": "MedicalBusiness",
-    "@id": "https://nobledentalnallagandla.in/#organization",
-    "name": "Noble Dental Care Nallagandla",
-    "url": "https://nobledentalnallagandla.in/",
-    "logo": {
-      "@type": "ImageObject",
-      "url": "https://nobledentalnallagandla.in/images/logo-footer.webp"
-    },
-    "geo": {
-      "@type": "GeoCoordinates",
-      "latitude": "17.473963",
-      "longitude": "78.305995"
-    },
-    "address": {
-      "@type": "PostalAddress",
-      "streetAddress": "Nallagandla Main Road",
-      "addressLocality": "Hyderabad",
-      "addressRegion": "Telangana",
-      "postalCode": "500019",
-      "addressCountry": "IN"
-    },
-    "sameAs": [
-      "https://maps.google.com/?cid=YOUR_CID",
-      "https://g.page/r/CID_LINK"
-    ]
-  },
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "1st Floor - ICA Clinic, Plot No. 151/2, HUDA Layout Water Tank Road, above Travancore Ayuvedha, Nallagandla",
+        "addressLocality": "Hyderabad",
+        "addressRegion": "Telangana",
+        "postalCode": "500019",
+        "addressCountry": "IN"
+      },
 
-  "keywords": [
-    "dentist in Nallagandla",
-    "root canal Hyderabad",
-    "dental implants Hyderabad",
-    "clear aligners",
-    "kids dentist Hyderabad",
-    "laser dentistry",
-    "AI dental tools",
-    "Dr Dhivakaran dentist"
-  ],
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": 17.47396,
+        "longitude": 78.30599
+      },
 
-  "about": {
-    "@type": "MedicalClinic",
-    "@id": "https://nobledentalnallagandla.in/#clinic",
-    "name": "Noble Dental Care Nallagandla",
-    "url": "https://nobledentalnallagandla.in/",
-    "medicalSpecialty": [
-      "Endodontics",
-      "Implantology",
-      "Orthodontics",
-      "Pediatric Dentistry",
-      "Cosmetic Dentistry"
-    ]
-  },
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "contactType": "Customer Service",
+        "telephone": "+91-86104-25342",
+        "email": "nobledentalorg@gmail.com",
+        "availableLanguage": ["English", "Hindi", "Telugu"]
+      },
 
-  "hasPart": [
-    {
-      "@type": "MedicalProcedure",
-      "name": "Root Canal Treatment",
-      "url": "https://nobledentalnallagandla.in/specialities/root-canal.html",
-      "sameAs": "https://nobledentalnallagandla.in/specialities/root-canal.html"
-    },
-    {
-      "@type": "MedicalProcedure",
-      "name": "Dental Implants",
-      "url": "https://nobledentalnallagandla.in/specialities/implants.html"
-    },
-    {
-      "@type": "MedicalProcedure",
-      "name": "Braces & Clear Aligners",
-      "url": "https://nobledentalnallagandla.in/specialities/braces.html"
-    },
-    {
-      "@type": "MedicalProcedure",
-      "name": "Teeth Whitening",
-      "url": "https://nobledentalnallagandla.in/specialities/whitening.html"
-    },
-    {
-      "@type": "MedicalProcedure",
-      "name": "Smile Designing & Veneers",
-      "url": "https://nobledentalnallagandla.in/specialities/aesthetic.html"
-    },
-    {
-      "@type": "MedicalProcedure",
-      "name": "Laser Gum Therapy",
-      "url": "https://nobledentalnallagandla.in/specialities/laser.html"
-    },
-    {
-      "@type": "MedicalProcedure",
-      "name": "Pediatric Dental Care",
-      "url": "https://nobledentalnallagandla.in/specialities/pediatric.html"
-    },
-    {
-      "@type": "MedicalProcedure",
-      "name": "Emergency Dentistry",
-      "url": "https://nobledentalnallagandla.in/specialities/emergency.html"
-    },
-    {
-      "@type": "SoftwareApplication",
-      "name": "AI Dental Self-Check Tool",
-      "applicationCategory": "Health & Wellness App",
-      "url": "https://nobledentalnallagandla.in/ai-self-check/"
-    }
-  ],
+      "sameAs": [
+        "https://maps.google.com/?cid=ChIJew1fcG2TyzsRrvHrnBzKGj8",
+        "https://g.page/r/Ca7x65wcyho_EAE/review",
+        "https://www.facebook.com/nobledentalnallagandla",
+        "https://www.instagram.com/nobledentalnallagandla/",
+        "https://www.linkedin.com/company/nobledentalnallagandla"
+      ],
 
-  "isPartOf": {
-    "@type": "WebSite",
-    "@id": "https://nobledentalnallagandla.in/#website",
-    "name": "Noble Dental Care Official Website",
-    "url": "https://nobledentalnallagandla.in/",
-    "potentialAction": {
-      "@type": "SearchAction",
-      "target": "https://nobledentalnallagandla.in/search?q={search_term_string}",
-      "query-input": "required name=search_term_string"
-    }
-  },
+      "hasMap": "https://maps.google.com/?cid=ChIJew1fcG2TyzsRrvHrnBzKGj8",
+      "identifier": {
+        "@type": "PropertyValue",
+        "propertyID": "place_id",
+        "value": "ChIJew1fcG2TyzsRrvHrnBzKGj8"
+      },
 
-  "mentions": [
-    {
-      "@type": "WebPage",
-      "name": "AI Schema Dashboard",
-      "url": "https://nobledentalnallagandla.in/schema-dashboard.html"
+      "aggregateRating": {
+        "@type": "AggregateRating",
+        "ratingValue": "4.9",
+        "reviewCount": "250",
+        "url": "https://g.page/r/Ca7x65wcyho_EAE/review"
+      },
+
+      "department": [
+        { "@id": "https://nobledentalnallagandla.in/#preventive-dentistry" },
+        { "@id": "https://nobledentalnallagandla.in/#restorative-dentistry" },
+        { "@id": "https://nobledentalnallagandla.in/#aesthetic-dentistry" },
+        { "@id": "https://nobledentalnallagandla.in/#advanced-dentistry" },
+        { "@id": "https://nobledentalnallagandla.in/#pediatric-dentistry" },
+        { "@id": "https://nobledentalnallagandla.in/#emergency-dentistry" }
+      ],
+
+      "medicalSpecialty": [
+        "Dentistry",
+        "Implantology",
+        "Orthodontics",
+        "PediatricDentistry",
+        "CosmeticDentistry"
+      ],
+
+      "priceRange": "₹₹",
+      "inLanguage": "en-IN",
+      "lastReviewed": "2025-10-01",
+      "version": "2025.10"
     },
+
     {
-      "@type": "Dataset",
-      "name": "AI Summary Dataset",
-      "url": "https://nobledentalnallagandla.in/ai-summary.json"
+      "@id": "https://nobledentalnallagandla.in/#website",
+      "@type": "WebSite",
+      "name": "Noble Dental Care Nallagandla",
+      "url": "https://nobledentalnallagandla.in/",
+      "inLanguage": "en-IN",
+      "publisher": { "@id": "https://nobledentalnallagandla.in/#organization" },
+      "hasPart": [
+        { "@id": "https://nobledentalnallagandla.in/schema/navigation.json" },
+        { "@id": "https://nobledentalnallagandla.in/schema/breadcrumbs.json" },
+        { "@id": "https://nobledentalnallagandla.in/schema/faq.json" },
+        { "@id": "https://nobledentalnallagandla.in/#advanced-dentistry" },
+        { "@id": "https://nobledentalnallagandla.in/#restorative-dentistry" },
+        { "@id": "https://nobledentalnallagandla.in/#preventive-dentistry" },
+        { "@id": "https://nobledentalnallagandla.in/#aesthetic-dentistry" },
+        { "@id": "https://nobledentalnallagandla.in/#orthodontics" },
+        { "@id": "https://nobledentalnallagandla.in/#endodontics" },
+        { "@id": "https://nobledentalnallagandla.in/#pediatric-dentistry" },
+        { "@id": "https://nobledentalnallagandla.in/#emergency-dentistry" }
+      ]
     },
+
     {
-      "@type": "Dataset",
-      "name": "AI Context Graph",
-      "url": "https://nobledentalnallagandla.in/ai-context.json"
-    },
-    {
+      "@id": "https://nobledentalnallagandla.in/schema/navigation.json",
       "@type": "SiteNavigationElement",
-      "name": "Treatments Sitemap",
-      "url": "https://nobledentalnallagandla.in/sitemap-treatments.xml"
+      "isPartOf": { "@id": "https://nobledentalnallagandla.in/#website" },
+      "publisher": { "@id": "https://nobledentalnallagandla.in/#organization" },
+      "breadcrumb": { "@id": "https://nobledentalnallagandla.in/schema/breadcrumbs.json" },
+      "hasPart": [
+        { "@id": "https://nobledentalnallagandla.in/#advanced-dentistry" },
+        { "@id": "https://nobledentalnallagandla.in/#preventive-dentistry" },
+        { "@id": "https://nobledentalnallagandla.in/schema/faq.json" }
+      ]
     },
-    {
-      "@type": "Dataset",
-      "name": "Geo Location KML",
-      "url": "https://nobledentalnallagandla.in/clinic-location.kml"
-    },
-    {
-      "@type": "TechArticle",
-      "name": "Schema Maintenance Log",
-      "url": "https://nobledentalnallagandla.in/schema/schema-maintenance-log.json"
-    },
-    {
-      "@type": "Dataset",
-      "name": "Validation Report",
-      "url": "https://nobledentalnallagandla.in/schema/validation-report.json"
-    }
-  ],
 
-  "potentialAction": [
     {
-      "@type": "ReserveAction",
-      "name": "Book Appointment",
-      "target": "https://nobledentalnallagandla.in/contact.html"
+      "@id": "https://nobledentalnallagandla.in/schema/breadcrumbs.json",
+      "@type": "BreadcrumbList",
+      "isPartOf": { "@id": "https://nobledentalnallagandla.in/#website" },
+      "publisher": { "@id": "https://nobledentalnallagandla.in/#organization" },
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://nobledentalnallagandla.in/" },
+        { "@type": "ListItem", "position": 2, "name": "Treatments", "item": "https://nobledentalnallagandla.in/services.html" },
+        { "@type": "ListItem", "position": 3, "name": "Advanced Dentistry", "item": "https://nobledentalnallagandla.in/specialities/advanced-dentistry.html" },
+        { "@type": "ListItem", "position": 4, "name": "FAQ", "item": "https://nobledentalnallagandla.in/faq.html" }
+      ]
     },
-    {
-      "@type": "AskAction",
-      "name": "AI Dental Self-Check",
-      "target": "https://nobledentalnallagandla.in/ai-self-check/"
-    }
-  ],
 
-  "distribution": [
     {
-      "@type": "DataDownload",
-      "encodingFormat": "application/json",
-      "contentUrl": "https://nobledentalnallagandla.in/ai-summary.json"
+      "@id": "https://nobledentalnallagandla.in/schema/faq.json",
+      "@type": "FAQPage",
+      "isPartOf": { "@id": "https://nobledentalnallagandla.in/#website" },
+      "publisher": { "@id": "https://nobledentalnallagandla.in/#organization" },
+      "breadcrumb": { "@id": "https://nobledentalnallagandla.in/schema/breadcrumbs.json#faq" },
+      "relatedLink": [
+        { "@id": "https://nobledentalnallagandla.in/#advanced-dentistry" },
+        { "@id": "https://nobledentalnallagandla.in/#orthodontics" },
+        { "@id": "https://nobledentalnallagandla.in/#endodontics" },
+        { "@id": "https://nobledentalnallagandla.in/#preventive-dentistry" }
+      ],
+      "mainEntity": [
+        {
+          "@id": "https://nobledentalnallagandla.in/schema/faq.json#braces-age",
+          "@type": "Question",
+          "mainEntityOfPage": { "@id": "https://nobledentalnallagandla.in/#orthodontics" },
+          "about": { "@id": "https://nobledentalnallagandla.in/#braces-treatment" }
+        },
+        {
+          "@id": "https://nobledentalnallagandla.in/schema/faq.json#routine-visits",
+          "@type": "Question",
+          "mainEntityOfPage": { "@id": "https://nobledentalnallagandla.in/#preventive-dentistry" },
+          "about": { "@id": "https://nobledentalnallagandla.in/#oral-checkup" }
+        },
+        {
+          "@id": "https://nobledentalnallagandla.in/schema/faq.json#root-canal-pain",
+          "@type": "Question",
+          "mainEntityOfPage": { "@id": "https://nobledentalnallagandla.in/#endodontics" },
+          "subjectOf": { "@id": "https://nobledentalnallagandla.in/#advanced-dentistry" }
+        }
+      ]
     },
-    {
-      "@type": "DataDownload",
-      "encodingFormat": "application/json",
-      "contentUrl": "https://nobledentalnallagandla.in/ai-context.json"
-    },
-    {
-      "@type": "DataDownload",
-      "encodingFormat": "application/xml",
-      "contentUrl": "https://nobledentalnallagandla.in/sitemap-treatments.xml"
-    }
-  ],
 
-  "license": "https://creativecommons.org/licenses/by/4.0/",
-  "measurementTechnique": "AI Schema Intelligence Graph Fusion v2025.9",
-  "version": "2025.5"
+    {
+      "@id": "https://nobledentalnallagandla.in/#advanced-dentistry",
+      "@type": "MedicalWebPage",
+      "isPartOf": { "@id": "https://nobledentalnallagandla.in/#website" },
+      "publisher": { "@id": "https://nobledentalnallagandla.in/#organization" },
+      "subjectOf": [
+        { "@id": "https://nobledentalnallagandla.in/schema/faq.json#root-canal-pain" },
+        { "@id": "https://nobledentalnallagandla.in/#infection-control" },
+        { "@id": "https://nobledentalnallagandla.in/#postoperative-care" }
+      ],
+      "relatedLink": [
+        { "@id": "https://nobledentalnallagandla.in/#restorative-dentistry" },
+        { "@id": "https://nobledentalnallagandla.in/#preventive-dentistry" },
+        { "@id": "https://nobledentalnallagandla.in/#aesthetic-dentistry" }
+      ]
+    }
+  ]
 }
