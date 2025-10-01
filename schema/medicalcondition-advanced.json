@@ -1,0 +1,135 @@
+{
+  "@context": "https://schema.org",
+  "@graph": [
+
+    {
+      "@id": "https://nobledentalnallagandla.in/schema/medicalcondition-advanced.json",
+      "@type": "MedicalEntity",
+      "name": "Advanced Dental & Functional Conditions",
+      "description": "Detailed schema of complex dental conditions managed at Noble Dental Care including bruxism, dentin hypersensitivity, jaw disorders, impacted tooth, and tooth discoloration.",
+      "url": "https://nobledentalnallagandla.in/specialities/advanced-dentistry.html",
+      "publisher": { "@id": "https://nobledentalnallagandla.in/#organization" },
+      "inLanguage": "en-IN",
+      "hasPart": [
+        { "@id": "https://nobledentalnallagandla.in/#bruxism" },
+        { "@id": "https://nobledentalnallagandla.in/#sensitivity" },
+        { "@id": "https://nobledentalnallagandla.in/#tmj-disorder" },
+        { "@id": "https://nobledentalnallagandla.in/#impacted-tooth" },
+        { "@id": "https://nobledentalnallagandla.in/#stained-teeth" }
+      ],
+      "keywords": [
+        "Bruxism",
+        "Teeth Grinding",
+        "TMJ Disorder",
+        "Impacted Tooth",
+        "Tooth Sensitivity",
+        "Tooth Discoloration"
+      ]
+    },
+
+    {
+      "@id": "https://nobledentalnallagandla.in/#bruxism",
+      "@type": "MedicalCondition",
+      "name": "Bruxism",
+      "alternateName": ["Teeth Grinding", "Jaw Clenching"],
+      "description": "Involuntary grinding or clenching of teeth, often during sleep, leading to enamel wear, muscle pain, and jaw tension.",
+      "signOrSymptom": [
+        "Worn or flattened teeth",
+        "Jaw pain upon waking",
+        "Headaches or facial muscle tension"
+      ],
+      "possibleTreatment": [
+        { "@type": "MedicalDevice", "name": "Night Guard (Occlusal Splint)" },
+        { "@type": "TherapeuticProcedure", "name": "Stress Reduction & Sleep Therapy" },
+        { "@type": "MedicalProcedure", "name": "Bite Adjustment (Equilibration)" }
+      ],
+      "associatedAnatomy": { "@type": "AnatomicalStructure", "name": "Masseter Muscle, Temporomandibular Joint" },
+      "mainEntityOfPage": "https://nobledentalnallagandla.in/specialities/advanced-dentistry.html",
+      "url": "https://nobledentalnallagandla.in/#advanced-dentistry"
+    },
+
+    {
+      "@id": "https://nobledentalnallagandla.in/#sensitivity",
+      "@type": "MedicalCondition",
+      "name": "Dentin Hypersensitivity",
+      "alternateName": ["Tooth Sensitivity", "Cold Sensitivity"],
+      "description": "Sharp, transient pain in teeth triggered by cold, heat, or sweet stimuli due to exposed dentin or gum recession.",
+      "signOrSymptom": [
+        "Sudden sharp pain",
+        "Sensitivity to cold air",
+        "Pain while brushing"
+      ],
+      "possibleTreatment": [
+        { "@type": "MedicalProcedure", "name": "Fluoride Varnish Application" },
+        { "@type": "TherapeuticProcedure", "name": "Desensitizing Toothpaste Use" },
+        { "@type": "MedicalProcedure", "name": "Gum Grafting (if recession present)" }
+      ],
+      "associatedAnatomy": { "@type": "AnatomicalStructure", "name": "Dentin, Enamel, Gingiva" },
+      "mainEntityOfPage": "https://nobledentalnallagandla.in/specialities/preventive-dentistry.html",
+      "url": "https://nobledentalnallagandla.in/#preventive-dentistry"
+    },
+
+    {
+      "@id": "https://nobledentalnallagandla.in/#tmj-disorder",
+      "@type": "MedicalCondition",
+      "name": "Temporomandibular Joint Disorder (TMD)",
+      "alternateName": ["TMJ Pain", "Jaw Joint Disorder"],
+      "description": "Discomfort or dysfunction in the jaw joint and muscles, often linked to stress, bruxism, or misaligned bite.",
+      "signOrSymptom": [
+        "Clicking or popping sound while opening mouth",
+        "Jaw locking",
+        "Ear pain or headache"
+      ],
+      "possibleTreatment": [
+        { "@type": "TherapeuticProcedure", "name": "Jaw Exercises and Physiotherapy" },
+        { "@type": "MedicalDevice", "name": "TMJ Stabilization Splint" },
+        { "@type": "TherapeuticProcedure", "name": "Pain Management & Anti-Inflammatory Regimen" }
+      ],
+      "associatedAnatomy": { "@type": "AnatomicalStructure", "name": "Temporomandibular Joint (TMJ)" },
+      "mainEntityOfPage": "https://nobledentalnallagandla.in/specialities/advanced-dentistry.html",
+      "url": "https://nobledentalnallagandla.in/#advanced-dentistry"
+    },
+
+    {
+      "@id": "https://nobledentalnallagandla.in/#impacted-tooth",
+      "@type": "MedicalCondition",
+      "name": "Impacted Tooth",
+      "alternateName": ["Wisdom Tooth Impaction", "Partial Eruption"],
+      "description": "A tooth that fails to erupt properly through the gum line, commonly affecting third molars or canines.",
+      "signOrSymptom": [
+        "Swelling or pain at the back of the mouth",
+        "Difficulty opening mouth fully",
+        "Recurrent infection around wisdom tooth"
+      ],
+      "possibleTreatment": [
+        { "@type": "MedicalProcedure", "name": "Surgical Extraction" },
+        { "@type": "TherapeuticProcedure", "name": "Pain & Antibiotic Therapy" },
+        { "@type": "MedicalProcedure", "name": "Radiographic Evaluation & Monitoring" }
+      ],
+      "associatedAnatomy": { "@type": "AnatomicalStructure", "name": "Third Molar, Gingiva" },
+      "mainEntityOfPage": "https://nobledentalnallagandla.in/specialities/emergency-dentistry.html",
+      "url": "https://nobledentalnallagandla.in/#emergency-dentistry"
+    },
+
+    {
+      "@id": "https://nobledentalnallagandla.in/#stained-teeth",
+      "@type": "MedicalCondition",
+      "name": "Tooth Discoloration",
+      "alternateName": ["Stained Teeth", "Yellow Teeth"],
+      "description": "Darkening or staining of teeth due to external pigments, aging, or internal discoloration.",
+      "signOrSymptom": [
+        "Yellow or brown tooth surface",
+        "Uneven color on teeth",
+        "Reduced confidence while smiling"
+      ],
+      "possibleTreatment": [
+        { "@type": "MedicalProcedure", "name": "Teeth Whitening (Bleaching)" },
+        { "@type": "MedicalProcedure", "name": "Dental Veneers" },
+        { "@type": "TherapeuticProcedure", "name": "Polishing and Stain Removal" }
+      ],
+      "associatedAnatomy": { "@type": "AnatomicalStructure", "name": "Tooth Enamel" },
+      "mainEntityOfPage": "https://nobledentalnallagandla.in/specialities/aesthetic-dentistry.html",
+      "url": "https://nobledentalnallagandla.in/#aesthetic-dentistry"
+    }
+  ]
+}
