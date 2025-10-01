@@ -1,0 +1,89 @@
+{
+  "@context": "https://schema.org",
+  "@type": "Dentist",
+  "@id": "https://nobledentalnallagandla.in/schema/localbusiness.json",
+  "name": "Noble Dental Care Nallagandla",
+  "image": "https://nobledentalnallagandla.in/images/clinic-front.webp",
+  "description": "Top-rated multispeciality dental clinic in Nallagandla, Hyderabad providing microscopic root canal, dental implants, smile design, braces, pediatric dentistry, and laser treatment.",
+  "url": "https://nobledentalnallagandla.in/",
+  "priceRange": "₹₹",
+  "telephone": "+91-86104-25342",
+  "email": "nobledentalorg@gmail.com",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "1st Floor - ICA Clinic, Plot No. 151/2, HUDA Layout, Water Tank Road, Nallagandla",
+    "addressLocality": "Hyderabad",
+    "addressRegion": "Telangana",
+    "postalCode": "500019",
+    "addressCountry": "IN"
+  },
+  "geo": {
+    "@type": "GeoCoordinates",
+    "latitude": 17.47396,
+    "longitude": 78.30599
+  },
+  "identifier": {
+    "@type": "PropertyValue",
+    "propertyID": "place_id",
+    "value": "ChIJew1fcG2TyzsRrvHrnBzKGj8"
+  },
+  "openingHoursSpecification": [
+    {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": [
+        "Monday",
+        "Tuesday",
+        "Wednesday",
+        "Thursday",
+        "Friday",
+        "Saturday"
+      ],
+      "opens": "09:30",
+      "closes": "21:00"
+    },
+    {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": "Sunday",
+      "opens": "10:00",
+      "closes": "13:30"
+    }
+  ],
+  "sameAs": [
+    "https://maps.google.com/?cid=ChIJew1fcG2TyzsRrvHrnBzKGj8",
+    "https://g.page/r/Ca7x65wcyho_EAE/review",
+    "https://www.facebook.com/nobledentalnallagandla",
+    "https://www.instagram.com/nobledentalnallagandla/",
+    "https://www.linkedin.com/company/nobledentalnallagandla"
+  ],
+  "hasMap": "https://maps.google.com/?cid=ChIJew1fcG2TyzsRrvHrnBzKGj8",
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "4.9",
+    "reviewCount": "427"
+  },
+  "department": [
+    { "@id": "https://nobledentalnallagandla.in/#preventive-dentistry" },
+    { "@id": "https://nobledentalnallagandla.in/#restorative-dentistry" },
+    { "@id": "https://nobledentalnallagandla.in/#aesthetic-dentistry" },
+    { "@id": "https://nobledentalnallagandla.in/#advanced-dentistry" },
+    { "@id": "https://nobledentalnallagandla.in/#pediatric-dentistry" },
+    { "@id": "https://nobledentalnallagandla.in/#emergency-dentistry" }
+  ],
+  "containedInPlace": {
+    "@type": "Place",
+    "name": "ICA Clinic Building",
+    "address": "HUDA Layout, Nallagandla, Hyderabad"
+  },
+  "isPartOf": {
+    "@id": "https://nobledentalnallagandla.in/#website"
+  },
+  "keywords": [
+    "Dentist Nallagandla",
+    "Dental Clinic Hyderabad",
+    "Microscopic Root Canal Hyderabad",
+    "Pediatric Dentist Hyderabad",
+    "Emergency Dentist Nallagandla"
+  ],
+  "lastReviewed": "2025-10-01",
+  "version": "2025.10"
+}
