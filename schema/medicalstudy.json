@@ -12,13 +12,17 @@
     "Pediatric Dental Care",
     "Laser Dentistry"
   ],
+  "studyDesign": "Prospective Observational Study",
+  "studyObjective": "To analyze patient-centered outcomes and procedural precision using advanced dental technologies including dental microscope, rotary endodontics, and digital workflow systems.",
   "studyStatus": "Active",
   "inLanguage": "en-IN",
+
   "sponsor": {
     "@type": "MedicalOrganization",
     "@id": "https://nobledentalnallagandla.in/#organization",
     "name": "Noble Dental Care – Nallagandla"
   },
+
   "studyLocation": {
     "@type": "Place",
     "name": "Noble Dental Care Research Unit",
@@ -36,26 +40,38 @@
       "longitude": 78.30599
     }
   },
+
   "investigator": [
     {
       "@type": "Person",
       "@id": "https://nobledentalnallagandla.in/#dr-dhivakaran",
       "name": "Dr. Dhivakaran",
-      "affiliation": {
-        "@id": "https://nobledentalnallagandla.in/#organization"
-      },
-      "hasCredential": ["BDS", "MDS (Endodontics)", "Microscopic Dentistry (ZEISS)"]
+      "affiliation": { "@id": "https://nobledentalnallagandla.in/#organization" },
+      "hasCredential": [
+        "BDS",
+        "MDS (Endodontics)",
+        "Microscopic Dentistry (ZEISS Academy)"
+      ],
+      "knowsAbout": [
+        "Endodontic Research",
+        "AI-assisted Diagnosis",
+        "Laser Dentistry"
+      ]
     },
     {
       "@type": "Person",
       "@id": "https://nobledentalnallagandla.in/#dr-roger",
       "name": "Dr. Roger Ronaldo",
-      "affiliation": {
-        "@id": "https://nobledentalnallagandla.in/#organization"
-      },
-      "hasCredential": ["BDS", "MDS (Prosthodontics)"]
+      "affiliation": { "@id": "https://nobledentalnallagandla.in/#organization" },
+      "hasCredential": ["BDS", "MDS (Prosthodontics)"],
+      "knowsAbout": [
+        "Digital Smile Design",
+        "Aesthetic Rehabilitation",
+        "Prosthodontic Innovations"
+      ]
     }
   ],
+
   "associatedMedia": [
     {
       "@type": "ScholarlyArticle",
@@ -78,9 +94,11 @@
       "name": "Triumph’s Complete Review of Dentistry (Vol. 1 & 2)",
       "publisher": { "@type": "Organization", "name": "Wolters Kluwer" },
       "datePublished": "2018-01-01",
-      "inLanguage": "en"
+      "inLanguage": "en",
+      "sameAs": "https://play.google.com/books/publisher/content/images/frontcover/ZTjvDwAAQBAJ"
     }
   ],
+
   "citation": [
     {
       "@type": "CreativeWork",
@@ -99,10 +117,23 @@
       "name": "Textbook of Operative Dentistry, 4th Edition",
       "publisher": "Elsevier India",
       "datePublished": "2022"
+    },
+    {
+      "@type": "WebPage",
+      "name": "AAE Clinical Guidelines",
+      "url": "https://www.aae.org/specialty/clinical-resources/"
+    },
+    {
+      "@type": "WebPage",
+      "name": "CDC Dental Infection Control",
+      "url": "https://www.cdc.gov/oralhealth/infectioncontrol/"
     }
   ],
-  "studyDesign": "Prospective Observational Study",
-  "studyObjective": "To analyze patient-centered outcomes and procedural precision using advanced dental technologies including dental microscope, rotary endodontics, and digital workflow systems.",
+
+  "isPartOf": {
+    "@id": "https://nobledentalnallagandla.in/#eeat-trustgraph"
+  },
+
   "url": "https://nobledentalnallagandla.in/research.html",
   "keywords": [
     "MedicalStudy Schema Dentistry",
