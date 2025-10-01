@@ -55,6 +55,7 @@
         { "@id": "https://nobledentalnallagandla.in/schema/howto.json" },
         { "@id": "https://nobledentalnallagandla.in/schema/medicalstudy.json" },
         { "@id": "https://nobledentalnallagandla.in/schema/eeat-trustgraph.json" },
+        { "@id": "https://nobledentalnallagandla.in/schema/research-summary.json" },
         { "@id": "https://nobledentalnallagandla.in/#advanced-dentistry" },
         { "@id": "https://nobledentalnallagandla.in/#restorative-dentistry" },
         { "@id": "https://nobledentalnallagandla.in/#preventive-dentistry" },
@@ -131,7 +132,8 @@
       "subjectOf": [
         { "@id": "https://nobledentalnallagandla.in/schema/faq.json#root-canal-pain" },
         { "@id": "https://nobledentalnallagandla.in/schema/howto.json" },
-        { "@id": "https://nobledentalnallagandla.in/schema/medicalstudy.json" }
+        { "@id": "https://nobledentalnallagandla.in/schema/medicalstudy.json" },
+        { "@id": "https://nobledentalnallagandla.in/schema/eeat-trustgraph.json" }
       ],
       "relatedLink": [
         { "@id": "https://nobledentalnallagandla.in/#restorative-dentistry" },
