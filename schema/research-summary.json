@@ -78,6 +78,9 @@
       }
     ]
   },
+  "associatedMedia": {
+    "@id": "https://nobledentalnallagandla.in/schema/medicalstudy.json"
+  },
   "citation": [
     "Dhivakaran R, Ronaldo R. Clinical case observations in microscopic endodontics, Noble Dental Care Research Report, 2025.",
     "R. Ronaldo, D. Dhivakaran. Aesthetic restorative protocols in humid climates. Hyderabad Dental Symposium 2024 Proceedings."
@@ -90,9 +93,10 @@
   "publisher": {
     "@id": "https://nobledentalnallagandla.in/#organization"
   },
-  "isPartOf": {
-    "@id": "https://nobledentalnallagandla.in/#eeat-trustgraph"
-  },
+  "isPartOf": [
+    { "@id": "https://nobledentalnallagandla.in/#eeat-trustgraph" },
+    { "@id": "https://nobledentalnallagandla.in/schema/graph.json" }
+  ],
   "keywords": [
     "Dental Research Hyderabad",
     "Microscopic Endodontics Study",
@@ -100,5 +104,6 @@
     "Pediatric Dental Care Research",
     "NDC-D Research Summary"
   ],
-  "lastReviewed": "2025-10-01"
+  "lastReviewed": "2025-10-01",
+  "dateModified": "2025-10-01"
 }
