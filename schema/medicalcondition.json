@@ -1,0 +1,135 @@
+{
+  "@context": "https://schema.org",
+  "@graph": [
+
+    {
+      "@id": "https://nobledentalnallagandla.in/schema/medicalcondition.json",
+      "@type": "MedicalEntity",
+      "name": "Common Oral Health Conditions",
+      "description": "Schema-based representation of common dental diseases treated at Noble Dental Care, including dental caries, pulpitis, gum disease, malocclusion, and halitosis.",
+      "url": "https://nobledentalnallagandla.in/specialities/",
+      "inLanguage": "en-IN",
+      "publisher": { "@id": "https://nobledentalnallagandla.in/#organization" },
+      "hasPart": [
+        { "@id": "https://nobledentalnallagandla.in/#dental-caries" },
+        { "@id": "https://nobledentalnallagandla.in/#pulpitis" },
+        { "@id": "https://nobledentalnallagandla.in/#gum-disease" },
+        { "@id": "https://nobledentalnallagandla.in/#malocclusion" },
+        { "@id": "https://nobledentalnallagandla.in/#halitosis" }
+      ],
+      "keywords": [
+        "Dental Caries",
+        "Pulpitis",
+        "Gum Disease",
+        "Halitosis",
+        "Malocclusion",
+        "Oral Health Hyderabad"
+      ]
+    },
+
+    {
+      "@id": "https://nobledentalnallagandla.in/#dental-caries",
+      "@type": "MedicalCondition",
+      "name": "Dental Caries",
+      "alternateName": ["Tooth Decay", "Cavity"],
+      "description": "Tooth decay caused by bacterial breakdown of enamel and dentin leading to cavities and pain.",
+      "signOrSymptom": [
+        "Tooth sensitivity",
+        "Pain when chewing",
+        "Visible holes or discoloration"
+      ],
+      "possibleTreatment": [
+        { "@type": "MedicalProcedure", "name": "Dental Filling" },
+        { "@type": "MedicalProcedure", "name": "Root Canal Therapy" },
+        { "@type": "MedicalProcedure", "name": "Fluoride Treatment" }
+      ],
+      "associatedAnatomy": { "@type": "AnatomicalStructure", "name": "Tooth Enamel" },
+      "mainEntityOfPage": "https://nobledentalnallagandla.in/specialities/restorative-dentistry.html",
+      "url": "https://nobledentalnallagandla.in/#restorative-dentistry"
+    },
+
+    {
+      "@id": "https://nobledentalnallagandla.in/#pulpitis",
+      "@type": "MedicalCondition",
+      "name": "Pulpitis",
+      "alternateName": ["Root Canal Infection", "Tooth Nerve Pain"],
+      "description": "Inflammation or infection of the dental pulp inside a tooth, often requiring root canal treatment.",
+      "signOrSymptom": [
+        "Sharp spontaneous tooth pain",
+        "Sensitivity to hot or cold",
+        "Swelling around the tooth"
+      ],
+      "possibleTreatment": [
+        { "@type": "MedicalProcedure", "name": "Root Canal Therapy" },
+        { "@type": "MedicalProcedure", "name": "Endodontic Retreatment" },
+        { "@type": "MedicalDevice", "name": "Dental Crown" }
+      ],
+      "associatedAnatomy": { "@type": "AnatomicalStructure", "name": "Dental Pulp" },
+      "mainEntityOfPage": "https://nobledentalnallagandla.in/specialities/advanced-dentistry.html",
+      "url": "https://nobledentalnallagandla.in/#endodontics"
+    },
+
+    {
+      "@id": "https://nobledentalnallagandla.in/#gum-disease",
+      "@type": "MedicalCondition",
+      "name": "Gum Disease",
+      "alternateName": ["Gingivitis", "Periodontitis"],
+      "description": "Inflammation and infection of the gums caused by plaque buildup, potentially leading to tooth loss if untreated.",
+      "signOrSymptom": [
+        "Bleeding gums",
+        "Bad breath",
+        "Swollen or receding gums"
+      ],
+      "possibleTreatment": [
+        { "@type": "MedicalProcedure", "name": "Oral Prophylaxis (Scaling & Polishing)" },
+        { "@type": "MedicalProcedure", "name": "Deep Cleaning (Root Planing)" },
+        { "@type": "TherapeuticProcedure", "name": "Laser Gum Therapy" }
+      ],
+      "associatedAnatomy": { "@type": "AnatomicalStructure", "name": "Gingiva (Gum Tissue)" },
+      "mainEntityOfPage": "https://nobledentalnallagandla.in/specialities/preventive-dentistry.html",
+      "url": "https://nobledentalnallagandla.in/#preventive-dentistry"
+    },
+
+    {
+      "@id": "https://nobledentalnallagandla.in/#malocclusion",
+      "@type": "MedicalCondition",
+      "name": "Malocclusion",
+      "alternateName": ["Crowded Teeth", "Crooked Teeth", "Overbite", "Underbite"],
+      "description": "Misalignment of teeth and jaws that may cause bite issues, aesthetic concerns, or jaw strain.",
+      "signOrSymptom": [
+        "Crooked or overlapping teeth",
+        "Difficulty in chewing",
+        "Jaw discomfort"
+      ],
+      "possibleTreatment": [
+        { "@type": "MedicalProcedure", "name": "Orthodontic Braces" },
+        { "@type": "MedicalProcedure", "name": "Clear Aligners" },
+        { "@type": "MedicalProcedure", "name": "Retainers" }
+      ],
+      "associatedAnatomy": { "@type": "AnatomicalStructure", "name": "Maxilla and Mandible" },
+      "mainEntityOfPage": "https://nobledentalnallagandla.in/specialities/aesthetic-dentistry.html",
+      "url": "https://nobledentalnallagandla.in/#orthodontics"
+    },
+
+    {
+      "@id": "https://nobledentalnallagandla.in/#halitosis",
+      "@type": "MedicalCondition",
+      "name": "Halitosis",
+      "alternateName": ["Bad Breath", "Oral Malodor"],
+      "description": "Persistent unpleasant odor from the mouth caused by poor oral hygiene, gum disease, or systemic conditions.",
+      "signOrSymptom": [
+        "Foul smell from mouth",
+        "Dry mouth",
+        "Metallic taste"
+      ],
+      "possibleTreatment": [
+        { "@type": "MedicalProcedure", "name": "Oral Cleaning and Tongue Scraping" },
+        { "@type": "MedicalProcedure", "name": "Gum Infection Therapy" },
+        { "@type": "TherapeuticProcedure", "name": "Hydration & Mouthwash Regimen" }
+      ],
+      "associatedAnatomy": { "@type": "AnatomicalStructure", "name": "Tongue, Oral Mucosa" },
+      "mainEntityOfPage": "https://nobledentalnallagandla.in/specialities/preventive-dentistry.html",
+      "url": "https://nobledentalnallagandla.in/#preventive-dentistry"
+    }
+  ]
+}
