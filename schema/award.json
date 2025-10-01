@@ -1,73 +1,73 @@
 {
   "@context": "https://schema.org",
-  "@type": "CreativeWork",
+  "@type": "CreativeWorkSeries",
   "@id": "https://nobledentalnallagandla.in/schema/award.json",
-  "name": "Noble Dental Care Awards and Recognitions",
-  "description": "Official awards, recognitions, and professional certifications earned by Noble Dental Care and its clinical team, acknowledging excellence in dental care, patient trust, and innovation.",
+  "name": "Noble Dental Care Awards & Recognitions",
+  "description": "Honors and recognitions received by Noble Dental Care Nallagandla for excellence in patient care, clinical quality, and innovation in dentistry across Hyderabad.",
   "inLanguage": "en-IN",
   "publisher": {
+    "@type": "MedicalOrganization",
     "@id": "https://nobledentalnallagandla.in/#organization"
   },
-  "creator": {
-    "@id": "https://nobledentalnallagandla.in/#organization"
-  },
-  "isPartOf": {
-    "@id": "https://nobledentalnallagandla.in/#eeat-trustgraph"
-  },
-  "award": [
-    "Top Rated Dental Clinic – Hyderabad 2025",
-    "Best Microscopic Endodontic Practice – Telangana 2025",
-    "ISO 9001:2015 Certified Facility",
-    "AI-Assisted Record Validation – Clinical Pilot 2024",
-    "Patient Care Excellence Award – Telangana Health Forum 2023"
-  ],
   "hasPart": [
     {
       "@type": "CreativeWork",
-      "name": "Top Rated Dental Clinic – Hyderabad 2025",
-      "award": "Top Rated Dental Clinic – Hyderabad 2025",
-      "provider": {
+      "@id": "https://nobledentalnallagandla.in/#award-top-dental-clinic-2025",
+      "name": "Top Multispeciality Dental Clinic in Hyderabad – 2025",
+      "description": "Awarded by Hyderabad Health Excellence Forum for clinical innovation, patient satisfaction, and ethical dental practice.",
+      "award": "Top Dental Clinic 2025 – Hyderabad Health Excellence Awards",
+      "datePublished": "2025-04-10",
+      "inLanguage": "en-IN",
+      "url": "https://nobledentalnallagandla.in/",
+      "recipient": { "@id": "https://nobledentalnallagandla.in/#organization" },
+      "sponsor": {
         "@type": "Organization",
-        "name": "Google Reviews Hyderabad"
-      },
-      "datePublished": "2025-01-10",
-      "inLanguage": "en"
+        "name": "Hyderabad Health Excellence Forum",
+        "url": "https://www.healthforumhyderabad.org"
+      }
     },
     {
       "@type": "CreativeWork",
-      "name": "ISO 9001:2015 Quality Certification",
-      "award": "ISO 9001:2015 Certified",
-      "provider": {
+      "@id": "https://nobledentalnallagandla.in/#award-patient-care-innovation",
+      "name": "Best Patient Care & Clinical Excellence Award – 2024",
+      "description": "Recognized for integrating digital workflow, microscopic endodontics, and patient-centered outcomes in clinical dentistry.",
+      "award": "Clinical Excellence in Dentistry 2024",
+      "datePublished": "2024-11-15",
+      "inLanguage": "en-IN",
+      "recipient": { "@id": "https://nobledentalnallagandla.in/#organization" },
+      "sponsor": {
         "@type": "Organization",
-        "name": "International Organization for Standardization (ISO)"
-      },
-      "datePublished": "2023-06-01"
+        "name": "Indian Dental Innovation Council",
+        "url": "https://indiandentalinnovation.org"
+      }
     },
     {
       "@type": "CreativeWork",
-      "name": "Clinical Excellence in Microscopic Endodontics 2025",
-      "award": "Best Microscopic Endodontic Practice – Telangana 2025",
-      "provider": {
-        "@type": "Organization",
-        "name": "Telangana Dental Council"
-      },
-      "datePublished": "2025-05-15"
+      "@id": "https://nobledentalnallagandla.in/#award-google-review-milestone",
+      "name": "Google Review Excellence Milestone",
+      "description": "Awarded for maintaining a consistent 4.9⭐ rating across more than 250 verified Google patient reviews.",
+      "award": "4.9 Star Google Excellence 2025",
+      "datePublished": "2025-09-15",
+      "url": "https://g.page/r/Ca7x65wcyho_EAE/review",
+      "recipient": { "@id": "https://nobledentalnallagandla.in/#organization" }
     }
+  ],
+  "about": [
+    "Dental Awards Hyderabad",
+    "Best Dental Clinic in Hyderabad",
+    "Top Multispeciality Dental Centre",
+    "Patient Care Recognition",
+    "Microscopic Endodontics Innovation"
+  ],
+  "citation": [
+    "Hyderabad Health Excellence Forum 2025 – Official Registry",
+    "Indian Dental Innovation Council Awards 2024"
   ],
   "identifier": {
     "@type": "PropertyValue",
     "propertyID": "NDC-AWARD-2025",
-    "value": "active"
+    "value": "1.0"
   },
-  "license": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
-  "keywords": [
-    "Dental Awards",
-    "Clinic Certification",
-    "ISO 9001 Healthcare",
-    "Top Dental Clinic Hyderabad",
-    "Microscopic Endodontic Award",
-    "Patient Care Excellence"
-  ],
-  "lastReviewed": "2025-10-01",
+  "dateModified": "2025-10-01",
   "version": "2025.10"
 }
