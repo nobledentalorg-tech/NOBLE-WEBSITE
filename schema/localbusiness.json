@@ -3,8 +3,13 @@
   "@type": "Dentist",
   "@id": "https://nobledentalnallagandla.in/schema/localbusiness.json",
   "name": "Noble Dental Care Nallagandla",
+  "alternateName": [
+    "NDC Dental Clinic Hyderabad",
+    "Noble Dental Clinic Nallagandla",
+    "Noble Dental Care Hyderabad"
+  ],
+  "description": "Top-rated multispeciality dental clinic in Nallagandla, Hyderabad providing microscopic root canal, dental implants, smile design, braces, pediatric dentistry, and laser treatments with expert care and modern technology.",
   "image": "https://nobledentalnallagandla.in/images/clinic-front.webp",
-  "description": "Top-rated multispeciality dental clinic in Nallagandla, Hyderabad providing microscopic root canal, dental implants, smile design, braces, pediatric dentistry, and laser treatment.",
   "url": "https://nobledentalnallagandla.in/",
   "priceRange": "₹₹",
   "telephone": "+91-86104-25342",
@@ -59,7 +64,11 @@
   "aggregateRating": {
     "@type": "AggregateRating",
     "ratingValue": "4.9",
-    "reviewCount": "427"
+    "reviewCount": "427",
+    "url": "https://g.page/r/Ca7x65wcyho_EAE/review"
+  },
+  "review": {
+    "@id": "https://nobledentalnallagandla.in/schema/review.json"
   },
   "department": [
     { "@id": "https://nobledentalnallagandla.in/#preventive-dentistry" },
@@ -74,16 +83,41 @@
     "name": "ICA Clinic Building",
     "address": "HUDA Layout, Nallagandla, Hyderabad"
   },
+  "award": {
+    "@id": "https://nobledentalnallagandla.in/schema/award.json"
+  },
   "isPartOf": {
     "@id": "https://nobledentalnallagandla.in/#website"
+  },
+  "founder": {
+    "@id": "https://nobledentalnallagandla.in/#dr-dhivakaran"
+  },
+  "memberOf": {
+    "@id": "https://nobledentalnallagandla.in/#eeat-trustgraph"
   },
   "keywords": [
     "Dentist Nallagandla",
     "Dental Clinic Hyderabad",
     "Microscopic Root Canal Hyderabad",
     "Pediatric Dentist Hyderabad",
-    "Emergency Dentist Nallagandla"
+    "Emergency Dentist Nallagandla",
+    "Laser Dentistry Hyderabad",
+    "Top Rated Dental Clinic Hyderabad"
   ],
+  "hasCredential": [
+    "ISO 9001:2015 Certified Clinic",
+    "CDC Compliant Sterilization Protocol",
+    "Microscopic Dentistry Certified"
+  ],
+  "audience": {
+    "@type": "Audience",
+    "audienceType": [
+      "Local Residents",
+      "Families with Children",
+      "Working Professionals",
+      "Elderly Patients"
+    ]
+  },
   "lastReviewed": "2025-10-01",
   "version": "2025.10"
 }
