@@ -34,6 +34,11 @@
         { "@id": "https://nobledentalnallagandla.in/#pediatric-dentistry" },
         { "@id": "https://nobledentalnallagandla.in/#emergency-dentistry" }
       ],
+      "hasPart": [
+        { "@id": "https://nobledentalnallagandla.in/schema/howto.json" },
+        { "@id": "https://nobledentalnallagandla.in/schema/medicalstudy.json" },
+        { "@id": "https://nobledentalnallagandla.in/schema/eeat-trustgraph.json" }
+      ],
       "inLanguage": "en-IN"
     },
 
@@ -69,7 +74,8 @@
       "hasPart": [
         { "@id": "https://nobledentalnallagandla.in/#advanced-dentistry" },
         { "@id": "https://nobledentalnallagandla.in/#preventive-dentistry" },
-        { "@id": "https://nobledentalnallagandla.in/schema/faq.json" }
+        { "@id": "https://nobledentalnallagandla.in/schema/faq.json" },
+        { "@id": "https://nobledentalnallagandla.in/schema/howto.json" }
       ]
     },
 
@@ -124,8 +130,8 @@
       "isPartOf": { "@id": "https://nobledentalnallagandla.in/#website" },
       "subjectOf": [
         { "@id": "https://nobledentalnallagandla.in/schema/faq.json#root-canal-pain" },
-        { "@id": "https://nobledentalnallagandla.in/#infection-control" },
-        { "@id": "https://nobledentalnallagandla.in/#postoperative-care" }
+        { "@id": "https://nobledentalnallagandla.in/schema/howto.json" },
+        { "@id": "https://nobledentalnallagandla.in/schema/medicalstudy.json" }
       ],
       "relatedLink": [
         { "@id": "https://nobledentalnallagandla.in/#restorative-dentistry" },
