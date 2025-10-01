@@ -1,0 +1,131 @@
+{
+  "@context": "https://schema.org",
+  "@graph": [
+
+    {
+      "@id": "https://nobledentalnallagandla.in/schema/medicalcondition-pediatric.json",
+      "@type": "MedicalEntity",
+      "name": "Pediatric and Lifestyle Oral Conditions",
+      "description": "Comprehensive list of pediatric and lifestyle-related dental conditions treated at Noble Dental Care, including early childhood caries, thumb-sucking, dental fluorosis, trauma, and mouth ulcers.",
+      "url": "https://nobledentalnallagandla.in/specialities/pediatric-dentistry.html",
+      "publisher": { "@id": "https://nobledentalnallagandla.in/#organization" },
+      "inLanguage": "en-IN",
+      "hasPart": [
+        { "@id": "https://nobledentalnallagandla.in/#early-childhood-caries" },
+        { "@id": "https://nobledentalnallagandla.in/#thumb-sucking" },
+        { "@id": "https://nobledentalnallagandla.in/#fluorosis" },
+        { "@id": "https://nobledentalnallagandla.in/#dental-trauma" },
+        { "@id": "https://nobledentalnallagandla.in/#mouth-ulcers" }
+      ],
+      "keywords": [
+        "Pediatric Dentistry",
+        "Child Dental Problems",
+        "Thumb Sucking Habit",
+        "Dental Fluorosis",
+        "Mouth Ulcer",
+        "Tooth Injury"
+      ]
+    },
+
+    {
+      "@id": "https://nobledentalnallagandla.in/#early-childhood-caries",
+      "@type": "MedicalCondition",
+      "name": "Early Childhood Caries",
+      "alternateName": ["Baby Bottle Tooth Decay", "Infant Tooth Decay"],
+      "description": "Tooth decay in infants and toddlers caused by frequent milk or sugary drink exposure, affecting front teeth first.",
+      "signOrSymptom": [
+        "White or brown spots on baby teeth",
+        "Tooth pain or irritability during feeding",
+        "Difficulty chewing or sleeping"
+      ],
+      "possibleTreatment": [
+        { "@type": "MedicalProcedure", "name": "Fluoride Varnish" },
+        { "@type": "MedicalProcedure", "name": "Restoration or Stainless Steel Crown" },
+        { "@type": "TherapeuticProcedure", "name": "Feeding Habit Counseling" }
+      ],
+      "associatedAnatomy": { "@type": "AnatomicalStructure", "name": "Primary Teeth" },
+      "mainEntityOfPage": "https://nobledentalnallagandla.in/specialities/pediatric-dentistry.html",
+      "url": "https://nobledentalnallagandla.in/#pediatric-dentistry"
+    },
+
+    {
+      "@id": "https://nobledentalnallagandla.in/#thumb-sucking",
+      "@type": "MedicalCondition",
+      "name": "Thumb Sucking Habit",
+      "alternateName": ["Digit Sucking", "Oral Habit Disorder"],
+      "description": "A repetitive oral habit where a child sucks the thumb or fingers, potentially causing bite issues or speech delay if persistent.",
+      "signOrSymptom": [
+        "Open bite or protruding front teeth",
+        "Speech difficulty",
+        "Chapped lips or thumb callus"
+      ],
+      "possibleTreatment": [
+        { "@type": "TherapeuticProcedure", "name": "Habit Counseling" },
+        { "@type": "MedicalDevice", "name": "Habit Breaking Appliance" },
+        { "@type": "TherapeuticProcedure", "name": "Positive Reinforcement Therapy" }
+      ],
+      "associatedAnatomy": { "@type": "AnatomicalStructure", "name": "Maxillary and Mandibular Incisors" },
+      "mainEntityOfPage": "https://nobledentalnallagandla.in/specialities/pediatric-dentistry.html"
+    },
+
+    {
+      "@id": "https://nobledentalnallagandla.in/#fluorosis",
+      "@type": "MedicalCondition",
+      "name": "Dental Fluorosis",
+      "alternateName": ["Fluoride Stains", "White Spot Enamel Defect"],
+      "description": "Developmental enamel condition caused by excess fluoride intake during tooth formation, leading to white or brown stains.",
+      "signOrSymptom": [
+        "White or chalky patches on teeth",
+        "Brown or pitted enamel in severe cases"
+      ],
+      "possibleTreatment": [
+        { "@type": "MedicalProcedure", "name": "Enamel Microabrasion" },
+        { "@type": "MedicalProcedure", "name": "Teeth Whitening or Veneers" },
+        { "@type": "TherapeuticProcedure", "name": "Fluoride Intake Counseling" }
+      ],
+      "associatedAnatomy": { "@type": "AnatomicalStructure", "name": "Tooth Enamel" },
+      "mainEntityOfPage": "https://nobledentalnallagandla.in/specialities/aesthetic-dentistry.html"
+    },
+
+    {
+      "@id": "https://nobledentalnallagandla.in/#dental-trauma",
+      "@type": "MedicalCondition",
+      "name": "Dental Trauma",
+      "alternateName": ["Tooth Injury", "Fractured Tooth"],
+      "description": "Accidental injury to teeth or supporting structures, commonly seen in children during play or sports.",
+      "signOrSymptom": [
+        "Broken or displaced tooth",
+        "Bleeding from gums",
+        "Swollen lips or soft tissue cuts"
+      ],
+      "possibleTreatment": [
+        { "@type": "MedicalProcedure", "name": "Reimplantation of Avulsed Tooth" },
+        { "@type": "MedicalProcedure", "name": "Splinting or Restoration" },
+        { "@type": "TherapeuticProcedure", "name": "Soft Tissue Care and Antibiotics" }
+      ],
+      "associatedAnatomy": { "@type": "AnatomicalStructure", "name": "Tooth, Gingiva, Lip" },
+      "mainEntityOfPage": "https://nobledentalnallagandla.in/specialities/emergency-dentistry.html"
+    },
+
+    {
+      "@id": "https://nobledentalnallagandla.in/#mouth-ulcers",
+      "@type": "MedicalCondition",
+      "name": "Aphthous Mouth Ulcers",
+      "alternateName": ["Canker Sores", "Oral Ulcers"],
+      "description": "Painful small lesions on the inner lips, tongue, or cheeks, often triggered by stress, trauma, or nutritional deficiency.",
+      "signOrSymptom": [
+        "Painful round sores with red border",
+        "Burning sensation while eating",
+        "Recurrent episodes"
+      ],
+      "possibleTreatment": [
+        { "@type": "TherapeuticProcedure", "name": "Topical Anesthetic Gel" },
+        { "@type": "TherapeuticProcedure", "name": "Vitamin Supplementation" },
+        { "@type": "TherapeuticProcedure", "name": "Laser Ulcer Therapy" }
+      ],
+      "associatedAnatomy": { "@type": "AnatomicalStructure", "name": "Buccal Mucosa, Tongue, Lips" },
+      "mainEntityOfPage": "https://nobledentalnallagandla.in/specialities/general-oral-health.html",
+      "url": "https://nobledentalnallagandla.in/#general-oral-health"
+    }
+  ]
+}
