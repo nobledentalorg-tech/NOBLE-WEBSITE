@@ -137,7 +137,8 @@
         { "@id": "https://nobledentalnallagandla.in/schema/faq.json#root-canal-pain" },
         { "@id": "https://nobledentalnallagandla.in/schema/howto.json" },
         { "@id": "https://nobledentalnallagandla.in/schema/medicalstudy.json" },
-        { "@id": "https://nobledentalnallagandla.in/schema/award.json" }
+        { "@id": "https://nobledentalnallagandla.in/schema/award.json" },
+        { "@id": "https://nobledentalnallagandla.in/schema/review.json" }
       ],
       "relatedLink": [
         { "@id": "https://nobledentalnallagandla.in/#restorative-dentistry" },
