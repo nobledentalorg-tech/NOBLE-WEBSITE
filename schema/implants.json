@@ -1,0 +1,226 @@
+{
+  "@context": "https://schema.org",
+  "@graph": [
+
+    {
+      "@type": "MedicalWebPage",
+      "@id": "https://nobledentalnallagandla.in/specialities/implants.html",
+      "name": "Dental Implants in Nallagandla | Complete Patient Guide",
+      "description": "Patient-first guide to dental implants at Noble Dental Care — eligibility self-check, PRF, bone grafting, sinus lift, FAQs, pricing and booking.",
+      "about": {
+        "@type": "MedicalProcedure",
+        "name": "Dental Implant Placement",
+        "procedureType": "Surgical",
+        "bodyLocation": "Jawbone, Oral Cavity",
+        "howPerformed": "Titanium post placed under local anaesthesia using CBCT-guided protocol."
+      },
+      "specialty": [
+        { "@type": "MedicalSpecialty", "name": "Prosthodontics" },
+        { "@type": "MedicalSpecialty", "name": "Oral Implantology" }
+      ],
+      "publisher": {
+        "@type": "MedicalOrganization",
+        "name": "Noble Dental Care Nallagandla",
+        "url": "https://nobledentalnallagandla.in",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://nobledentalnallagandla.in/images/logo-footer.webp"
+        },
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "Nallagandla, Serilingampally",
+          "addressLocality": "Hyderabad",
+          "addressRegion": "Telangana",
+          "postalCode": "500019",
+          "addressCountry": "IN"
+        },
+        "telephone": "+91-XXXXXXXXXX"
+      },
+      "audience": { "@type": "Patient" },
+      "isAccessibleForFree": true,
+      "inLanguage": "en-IN",
+      "lastReviewed": "2025-09-30",
+      "dateModified": "2025-09-30",
+      "mainEntityOfPage": "https://nobledentalnallagandla.in/specialities/implants.html"
+    },
+
+    {
+      "@type": "FAQPage",
+      "@id": "https://nobledentalnallagandla.in/#faq",
+      "name": "Dental Implants FAQ | Noble Dental Care Nallagandla",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Are dental implants painful?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No. Performed under local anaesthesia or sedation; mild soreness fades in 2–3 days."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How long do dental implants last?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "With proper hygiene and reviews, over 95 % last beyond 15 years."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can diabetics get implants?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes — if HbA1c ≤ 7.5 and physician clearance obtained before surgery."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Is CBCT scan mandatory?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. 3D CBCT enables safe, precise, nerve-avoiding implant planning."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Do implants need special cleaning?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Brush twice daily, floss gently, and get professional cleanings every 6–12 months."
+          }
+        }
+      ]
+    },
+
+    {
+      "@type": "MedicalCondition",
+      "@id": "https://nobledentalnallagandla.in/#edentulism",
+      "name": "Missing Teeth (Edentulism)",
+      "alternateName": ["Tooth Loss","Lost Tooth"],
+      "description": "Loss of one or more teeth affecting chewing and jawbone health.",
+      "possibleTreatment": { "@type": "MedicalProcedure","name": "Dental Implant Placement" },
+      "signOrSymptom": ["Chewing difficulty","Bone loss","Shifting teeth"]
+    },
+
+    {
+      "@type": "HowTo",
+      "@id": "https://nobledentalnallagandla.in/#implant-booking",
+      "name": "How to Book a Dental Implant Consultation",
+      "description": "Step-wise guide to scheduling your implant consultation with Noble Dental Care.",
+      "totalTime": "PT15M",
+      "supply": [
+        { "@type": "HowToSupply","name": "Recent X-ray / CBCT" },
+        { "@type": "HowToSupply","name": "Medical reports (diabetes/BP)" }
+      ],
+      "step": [
+        { "@type": "HowToStep","position":1,"name":"Visit Booking Page","url":"https://nobledentalnallagandla.in/index.html#booking","text":"Open our booking form and select ‘Implant Consultation’."},
+        { "@type": "HowToStep","position":2,"name":"Fill Details","text":"Enter contact & medical info for evaluation."},
+        { "@type": "HowToStep","position":3,"name":"Pick Slot","text":"Choose preferred date/time — confirmed via call or WhatsApp."},
+        { "@type": "HowToStep","position":4,"name":"Receive Estimate","text":"We share 3D plan & transparent INR estimate."}
+      ],
+      "tool":[
+        { "@type":"HowToTool","name":"Online Booking Form"},
+        { "@type":"HowToTool","name":"WhatsApp / Call"}
+      ]
+    },
+
+    {
+      "@type": "OfferCatalog",
+      "@id": "https://nobledentalnallagandla.in/#implant-pricing",
+      "name": "Dental Implant Cost in INR",
+      "itemListElement": [
+        {
+          "@type": "Offer",
+          "itemOffered": { "@type": "MedicalProcedure","name": "Single-Tooth Implant"},
+          "priceCurrency": "INR",
+          "priceSpecification": { "@type": "PriceSpecification","price": "28000-65000","priceCurrency":"INR" },
+          "description": "Includes titanium implant, abutment & zirconia crown."
+        },
+        {
+          "@type": "Offer",
+          "itemOffered": { "@type": "MedicalProcedure","name": "Full-Arch All-on-4/6"},
+          "priceCurrency": "INR",
+          "priceSpecification": { "@type": "PriceSpecification","price": "160000-550000","priceCurrency":"INR" },
+          "description": "Complete jaw restoration with 4–6 implants & hybrid bridge."
+        },
+        {
+          "@type": "Offer",
+          "itemOffered": { "@type": "MedicalProcedure","name": "Zygomatic Implant"},
+          "priceCurrency": "INR",
+          "priceSpecification": { "@type": "PriceSpecification","price": "85000-140000","priceCurrency":"INR" },
+          "description": "Anchored in cheekbone for severe bone loss."
+        },
+        {
+          "@type": "Offer",
+          "itemOffered": { "@type": "MedicalProcedure","name": "Bone Graft / Sinus Lift"},
+          "priceCurrency": "INR",
+          "priceSpecification": { "@type": "PriceSpecification","price": "12000-45000","priceCurrency":"INR" },
+          "description": "Includes PRF membrane and graft materials."
+        }
+      ]
+    },
+
+    {
+      "@type": "Service",
+      "@id": "https://nobledentalnallagandla.in/#implant-service",
+      "serviceType": "Dental Implant Consultation",
+      "provider": { "@type": "MedicalBusiness","name": "Noble Dental Care Nallagandla","url": "https://nobledentalnallagandla.in" },
+      "areaServed": { "@type": "AdministrativeArea","name": "Hyderabad, Telangana" },
+      "availableLanguage": ["en","hi","te"],
+      "availableChannel": [
+        {
+          "@type": "ServiceChannel",
+          "serviceUrl": "https://nobledentalnallagandla.in/index.html#booking",
+          "servicePhone": "+91-XXXXXXXXXX"
+        }
+      ]
+    },
+
+    {
+      "@type": "Review",
+      "@id": "https://nobledentalnallagandla.in/#implant-reviews",
+      "reviewRating": { "@type": "Rating","ratingValue": "4.9","bestRating": "5" },
+      "author": { "@type": "Person","name": "Verified Google Reviewers" },
+      "reviewBody": "Highly professional implant team — guided, painless and evidence-based care."
+    },
+
+    {
+      "@type": "FAQPage",
+      "@id": "https://nobledentalnallagandla.in/#booking-faq",
+      "name": "Booking & Cost FAQ",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "How can I estimate my implant cost?",
+          "acceptedAnswer": { "@type": "Answer","text": "Use the Get Estimate form; cost depends on bone condition, brand and count." }
+        },
+        {
+          "@type": "Question",
+          "name": "Is EMI available?",
+          "acceptedAnswer": { "@type": "Answer","text": "Yes. 0 % EMI via partners post assessment." }
+        },
+        {
+          "@type": "Question",
+          "name": "Do I need a scan before visiting?",
+          "acceptedAnswer": { "@type": "Answer","text": "Bring CBCT if available; else taken during consultation." }
+        },
+        {
+          "@type": "Question",
+          "name": "Can I book online without payment?",
+          "acceptedAnswer": { "@type": "Answer","text": "Yes. Our coordinator confirms and guides token payment if required." }
+        }
+      ]
+    },
+
+    {
+      "@type": "SpeakableSpecification",
+      "@id": "https://nobledentalnallagandla.in/#speakable",
+      "cssSelector": [
+        "h1.page-title",
+        "h2.section-title",
+        ".faq-list summary:nth-of-type(1)",
+        ".faq-list summary:nth-of-type(2)"
+      ]
+    }
+  ]
+}
