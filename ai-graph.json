@@ -4,7 +4,7 @@
 
     {
       "@id": "https://nobledentalnallagandla.in/#organization",
-      "@type": "MedicalBusiness",
+      "@type": ["MedicalBusiness", "Dentist", "LocalBusiness"],
       "name": "Noble Dental Care Nallagandla",
       "alternateName": [
         "Noble Dental Clinic",
@@ -24,7 +24,24 @@
         "jobTitle": "Chief Dental Surgeon",
         "sameAs": "https://nobledentalnallagandla.in/about.html"
       },
-
+      "knowsAbout": [
+        "Guided Dental Implants",
+        "PRF Healing",
+        "Bone Grafting",
+        "Tooth Extraction",
+        "Braces and Aligners",
+        "Root Canal",
+        "Smile Design",
+        "Full Mouth Rehabilitation",
+        "All-on-4 Implants"
+      ],
+      "keywords": [
+        "Dental Implants Nallagandla",
+        "PRF Healing Hyderabad",
+        "CBCT Guided Surgery",
+        "All-on-4 Implants",
+        "Dental Implant Cost Hyderabad"
+      ],
       "address": {
         "@type": "PostalAddress",
         "streetAddress": "1st Floor - ICA Clinic, Plot No. 151/2, HUDA Layout Water Tank Road, above Travancore Ayuvedha, Nallagandla",
@@ -33,13 +50,15 @@
         "postalCode": "500019",
         "addressCountry": "IN"
       },
-
       "geo": {
         "@type": "GeoCoordinates",
         "latitude": 17.47396,
         "longitude": 78.30599
       },
-
+      "areaServed": {
+        "@type": "AdministrativeArea",
+        "name": "Nallagandla Hyderabad Telangana India"
+      },
       "contactPoint": {
         "@type": "ContactPoint",
         "contactType": "Customer Service",
@@ -47,7 +66,6 @@
         "email": "nobledentalorg@gmail.com",
         "availableLanguage": ["English", "Hindi", "Telugu"]
       },
-
       "sameAs": [
         "https://maps.google.com/?cid=ChIJew1fcG2TyzsRrvHrnBzKGj8",
         "https://g.page/r/Ca7x65wcyho_EAE/review",
@@ -55,21 +73,18 @@
         "https://www.instagram.com/nobledentalnallagandla/",
         "https://www.linkedin.com/company/nobledentalnallagandla"
       ],
-
       "hasMap": "https://maps.google.com/?cid=ChIJew1fcG2TyzsRrvHrnBzKGj8",
       "identifier": {
         "@type": "PropertyValue",
         "propertyID": "place_id",
         "value": "ChIJew1fcG2TyzsRrvHrnBzKGj8"
       },
-
       "aggregateRating": {
         "@type": "AggregateRating",
         "ratingValue": "4.9",
         "reviewCount": "250",
         "url": "https://g.page/r/Ca7x65wcyho_EAE/review"
       },
-
       "department": [
         { "@id": "https://nobledentalnallagandla.in/#preventive-dentistry" },
         { "@id": "https://nobledentalnallagandla.in/#restorative-dentistry" },
@@ -78,7 +93,6 @@
         { "@id": "https://nobledentalnallagandla.in/#pediatric-dentistry" },
         { "@id": "https://nobledentalnallagandla.in/#emergency-dentistry" }
       ],
-
       "medicalSpecialty": [
         "Dentistry",
         "Implantology",
@@ -86,7 +100,6 @@
         "PediatricDentistry",
         "CosmeticDentistry"
       ],
-
       "creator": {
         "@type": "Dentist",
         "name": "Dr. Dhivakaran R",
@@ -94,9 +107,15 @@
           "@type": "MedicalBusiness",
           "name": "Noble Dental Care Nallagandla",
           "url": "https://nobledentalnallagandla.in/"
-        }
+        },
+        "knowsAbout": [
+          "CBCT-guided dental implant surgery",
+          "Platelet-Rich Fibrin therapy",
+          "Bone grafting techniques",
+          "Full-arch rehabilitation",
+          "Digital smile design"
+        ]
       },
-
       "about": [
         "Dental implants",
         "Root canal treatment",
@@ -107,16 +126,34 @@
         "Laser dentistry",
         "Emergency dental care"
       ],
-
+      "citation": [
+        "https://www.ada.org/",
+        "https://www.iti.org/",
+        "https://www.mayoclinic.org/",
+        "https://www.ncbi.nlm.nih.gov/"
+      ],
+      "mentions": [
+        "https://nobledentalnallagandla.in/specialities/implants.html",
+        "https://nobledentalnallagandla.in/services.html"
+      ],
       "priceRange": "₹₹",
       "inLanguage": "en-IN",
-      "lastReviewed": "2025-10-01",
-      "version": "2025.10"
+      "lastReviewed": "2025-10-06",
+      "version": "2025.10",
+      "aiSchema": {
+        "aiGeoAuthority": "Hyderabad Telangana India",
+        "aiLocalIntent": "Dental Implants Near Me Nallagandla Hyderabad",
+        "aiSearchRankBoost": true,
+        "aiTrustLevel": "verifiedLocalClinic",
+        "aiSGEContext": "Guided dental implants, PRF biologic healing, bone grafting",
+        "aiGraphLink": "/ai-graph.json",
+        "aiDataset": "/schema/dataset.json"
+      }
     },
 
     {
       "@id": "https://nobledentalnallagandla.in/#website",
-      "@type": "WebSite",
+      "@type": ["WebSite", "MedicalWebPageCollection"],
       "name": "Noble Dental Care Nallagandla",
       "url": "https://nobledentalnallagandla.in/",
       "inLanguage": "en-IN",
@@ -133,6 +170,10 @@
         { "@id": "https://nobledentalnallagandla.in/#endodontics" },
         { "@id": "https://nobledentalnallagandla.in/#pediatric-dentistry" },
         { "@id": "https://nobledentalnallagandla.in/#emergency-dentistry" }
+      ],
+      "mentions": [
+        "https://nobledentalnallagandla.in/ai-graph.json",
+        "https://nobledentalnallagandla.in/schema/eeat-trustgraph.json"
       ]
     },
 
