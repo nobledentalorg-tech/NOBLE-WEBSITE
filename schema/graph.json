@@ -90,10 +90,6 @@
         "@type": "AdministrativeArea",
         "name": "Nallagandla, Hyderabad, Telangana, India"
       },
-      "inLanguage": "en-IN",
-      "priceRange": "₹₹",
-      "lastReviewed": "2025-10-06",
-      "version": "2025.10",
       "aiSchema": {
         "aiGeoAuthority": "Hyderabad Telangana India",
         "aiLocalIntent": "Dental Implants Near Me Nallagandla Hyderabad",
@@ -101,8 +97,13 @@
         "aiSGEContext": "Dental implants, PRF healing, bone graft, guided surgery, painless implants",
         "aiGraphLink": "/ai-graph.json",
         "aiDataset": "/schema/dataset.json",
-        "aiSearchRankBoost": true
-      }
+        "aiSearchRankBoost": true,
+        "aiAuthorityNode": "/schema/eeat-trustgraph.json"
+      },
+      "inLanguage": "en-IN",
+      "priceRange": "₹₹",
+      "lastReviewed": "2025-10-06",
+      "version": "2025.10"
     },
 
     {
@@ -139,6 +140,11 @@
         "https://nobledentalnallagandla.in/ai-graph.json",
         "https://nobledentalnallagandla.in/schema/eeat-trustgraph.json"
       ],
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": "https://nobledentalnallagandla.in/search?q={search_term_string}",
+        "query-input": "required name=search_term_string"
+      },
       "inLanguage": "en-IN"
     },
 
@@ -212,7 +218,8 @@
         { "@id": "https://nobledentalnallagandla.in/schema/medicalstudy.json" },
         { "@id": "https://nobledentalnallagandla.in/schema/award.json" },
         { "@id": "https://nobledentalnallagandla.in/schema/localbusiness.json" },
-        { "@id": "https://nobledentalnallagandla.in/schema/review.json" }
+        { "@id": "https://nobledentalnallagandla.in/schema/review.json" },
+        { "@id": "https://nobledentalnallagandla.in/schema/eeat-trustgraph.json" }
       ],
       "relatedLink": [
         { "@id": "https://nobledentalnallagandla.in/#restorative-dentistry" },
@@ -223,7 +230,8 @@
         "@type": "SearchAction",
         "target": "https://nobledentalnallagandla.in/search?q={search_term_string}",
         "query-input": "required name=search_term_string"
-      }
+      },
+      "inLanguage": "en-IN"
     }
   ]
 }
