@@ -1,285 +1,622 @@
 /* =========================================================
-   Noble Dental Care — Implants Page JS
-   Optimized 2025: parallax, scrollspy, smooth scroll,
-   eligibility scoring, media lazy, schema injection
-   ========================================================= */
+   Noble Dental Care — main.js (Smart Insight Engine v2.1)
+   Unified Features:
+   - Header shrink on scroll
+   - Mobile nav
+   - Hero fade
+   - AI Self-Check Gauge + Smart Insight Cards
+   - Voice Narrator (Female)
+   - Scroll Reveal
+========================================================= */
 
-// ---------------------- tiny helpers ----------------------
-const $$ = (s, r = document) => Array.from(r.querySelectorAll(s));
-const $  = (s, r = document) => r.querySelector(s);
-const on = (el, ev, fn, opt) => el && el.addEventListener(ev, fn, opt);
+document.addEventListener("DOMContentLoaded", () => {
+  /* ---------- Helpers ---------- */
+  const $  = (s, r = document) => r.querySelector(s);
+  const $$ = (s, r = document) => Array.from(r.querySelectorAll(s));
+  const on = (el, ev, fn, opts = false) => el && el.addEventListener(ev, fn, opts);
 
-const throttle = (fn, wait = 100) => {
-  let t = 0, lastArgs, frame;
-  return (...args) => {
-    const now = Date.now();
-    lastArgs = args;
-    if (now - t >= wait) {
-      t = now;
-      fn(...lastArgs);
-    } else if (!frame) {
-      frame = requestAnimationFrame(() => {
-        frame = null;
-        t = Date.now();
-        fn(...lastArgs);
-      });
-    }
-  };
-};
+  /* =========================================================
+     1. Header Shrink on Scroll
+  ========================================================= */
+  const header = $(".site-header");
+  const shrinkHeader = () =>
+    header?.classList.toggle("shrink", window.scrollY > 10);
+  shrinkHeader();
+  on(window, "scroll", shrinkHeader, { passive: true });
 
-const prefersReduce = matchMedia('(prefers-reduced-motion: reduce)');
+  /* =========================================================
+     2. Mobile Navigation + Submenu
+  ========================================================= */
+  const menuToggle = $("#menuToggle");
+  const primaryNav = $("#primaryNav");
+  const submenuToggle = $(".submenu-toggle");
+  const submenu = $("#specialitiesMenu");
 
-// ---------------------- parallax (subtle) ----------------------
-function initParallax() {
-  if (prefersReduce.matches) return;
-  const layers = $$('[data-parallax]');
-  if (!layers.length) return;
-
-  const update = throttle(() => {
-    const y = window.scrollY || 0;
-    layers.forEach((el) => {
-      const sp = parseFloat(el.dataset.parallax || '0');
-      el.style.transform = translate3d(0, ${y * sp}px, 0);
-    });
-  }, 16);
-
-  on(window, 'scroll', update, { passive: true });
-  update();
-}
-
-// ---------------------- smooth anchor scroll ----------------------
-function initSmoothAnchors() {
-  const siteHeader = $('.site-header');
-  const headerH = () => (siteHeader ? siteHeader.getBoundingClientRect().height : 0);
-
-  on(document, 'click', (e) => {
-    const a = e.target.closest('a[href^="#"]');
-    if (!a) return;
-    const id = a.getAttribute('href').slice(1);
-    if (!id) return;
-    const target = document.getElementById(id);
-    if (!target) return;
-
-    e.preventDefault();
-    target.style.scrollMarginTop = headerH() + 12 + 'px';
-    target.scrollIntoView({
-      behavior: prefersReduce.matches ? 'auto' : 'smooth',
-      block: 'start'
-    });
-    // keep hash in URL for shareability
-    try { history.replaceState(null, '', '#' + id); } catch {}
+  on(menuToggle, "click", () => {
+    const expanded = menuToggle.getAttribute("aria-expanded") === "true";
+    menuToggle.setAttribute("aria-expanded", String(!expanded));
+    primaryNav.hidden = expanded;
+    primaryNav.classList.toggle("is-open", !expanded);
   });
-}
 
-// ---------------------- ScrollSpy + progress ----------------------
-function initScrollSpy() {
-  const tocLinks = $$('.toc a[href^="#"]').filter((a) =>
-    document.getElementById(a.getAttribute('href').slice(1))
-  );
-  if (!tocLinks.length) return;
+  on(submenuToggle, "click", () => {
+    const expanded = submenuToggle.getAttribute("aria-expanded") === "true";
+    submenuToggle.setAttribute("aria-expanded", String(!expanded));
+    submenu.setAttribute("aria-hidden", String(expanded));
+  });
 
-  const targets = tocLinks.map((a) => document.getElementById(a.getAttribute('href').slice(1)));
-  const siteHeader = $('.site-header');
-  const headerH = () => (siteHeader ? siteHeader.getBoundingClientRect().height : 0);
+  on(document, "keydown", e => {
+    if (e.key === "Escape") {
+      if (menuToggle?.getAttribute("aria-expanded") === "true") menuToggle.click();
+      if (submenuToggle?.getAttribute("aria-expanded") === "true") submenuToggle.click();
+    }
+  });
 
-  let active = null;
+  on(document, "click", e => {
+    if (
+      primaryNav?.classList.contains("is-open") &&
+      !primaryNav.contains(e.target) &&
+      !menuToggle.contains(e.target)
+    ) menuToggle.click();
+  });
 
-  if (!('IntersectionObserver' in window)) return;
+  /* =========================================================
+     3. Hero Video Fade-In
+  ========================================================= */
+  const videoCard = $(".hero-video-card");
+  if (videoCard) {
+    const obs = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) videoCard.classList.add("visible");
+      });
+    }, { threshold: 0.3 });
+    obs.observe(videoCard);
+  }
 
-  const io = new IntersectionObserver(
-    (entries) => {
-      entries.forEach((ent) => {
-        const id = ent.target.id;
-        const link = tocLinks.find((a) => a.getAttribute('href') === '#' + id);
-        if (!link) return;
+  /* =========================================================
+     4. AI Self-Check Gauge (Smart Insight Engine)
+  ========================================================= */
+  const root = $("#self-check");
+  if (root) {
+    const tabs = $$(".tabbar .tab", root);
+    const panels = $$(".panel", root);
+    const checks = $$('input[type="checkbox"]', root);
+    const gauge = $(".g-fg", root);
+    const gText = $(".g-text", root);
+    const ok = $(".status.ok", root);
+    const warn = $(".status.warn", root);
+    const bad = $(".status.bad", root);
+    const insights = $(".insights", root);
+    const reset = $("#reset-elig", root);
 
-        // progress within section (for underline animation)
-        const rect = ent.target.getBoundingClientRect();
-        const prog = Math.min(Math.max((headerH() - rect.top) / (rect.height + headerH()), 0), 1);
-        link.style.setProperty('--progress', String(prog));
+    const CIRC = 2 * Math.PI * 50;
+    gauge.setAttribute("stroke-dasharray", CIRC);
+    gauge.style.strokeDashoffset = CIRC;
+
+    const setPercent = (p) => {
+      const v = Math.max(0, Math.min(100, Math.round(p)));
+      const dash = CIRC - (CIRC * v / 100);
+      gauge.style.strokeDashoffset = dash;
+      gText.textContent = v + "%";
+    };
+
+    const update = () => {
+      let hi = 0, mo = 0;
+      let cards = [];
+
+      checks.forEach(cb => {
+        if (cb.checked) {
+          const risk = cb.dataset.risk;
+          const reason = cb.dataset.reason || "No reason specified";
+          const label = cb.parentNode.textContent.trim();
+          if (risk === "high") hi++;
+          else if (risk === "moderate") mo++;
+
+          cards.push({ label, reason, risk });
+        }
       });
 
-      // pick most visible as "active"
-      const best = entries
-        .filter((e) => e.isIntersecting)
-        .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
+      const percent = Math.max(0, 100 - (hi * 40 + mo * 15));
+      setPercent(percent);
 
-      if (best) {
-        const hash = '#' + best.target.id;
-        if (hash !== active) {
-          active = hash;
-          tocLinks.forEach((a) => a.classList.toggle('is-active', a.getAttribute('href') === hash));
-          try { history.replaceState(null, '', hash); } catch {}
-        }
+      ok.style.display = warn.style.display = bad.style.display = "none";
+      insights.innerHTML = "";
+
+      // === Risk Level Summary ===
+      if (hi > 0 || percent < 50) {
+        gauge.style.stroke = "#dc2626";
+        bad.style.display = "block";
+        insights.innerHTML += `<li><strong>🔴 High risk</strong> — ${hi} contraindication(s) detected. <em>Medical clearance mandatory.</em></li>`;
+      } else if (mo > 0 || percent < 80) {
+        gauge.style.stroke = "#f59e0b";
+        warn.style.display = "block";
+        insights.innerHTML += `<li><strong>🟠 Moderate risk</strong> — ${mo} manageable condition(s). <em>Review before proceeding.</em></li>`;
+      } else {
+        gauge.style.stroke = "#12B2A0";
+        ok.style.display = "block";
+        insights.innerHTML += `<li><strong>🟢 Low risk</strong> — ideal candidate for guided implant.</li>`;
       }
-    },
-    { rootMargin: -${headerH()}px 0px -45% 0px, threshold: [0, .1, .2, .3, .4, .5, .6, .7, .8, .9, 1] }
-  );
 
-  targets.forEach((t) => t && io.observe(t));
-}
+      // === AI Micro Insight Cards ===
+      if (cards.length > 0) {
+        cards.slice(0, 8).forEach(c => {
+          const tone = c.risk === "high"
+            ? "#ef4444"
+            : c.risk === "moderate"
+              ? "#fbbf24"
+              : "#12b2a0";
+          insights.innerHTML += `
+            <li style="border-left:4px solid ${tone}">
+              <strong>${c.label}</strong><br>
+              <small>${c.reason}</small>
+            </li>`;
+        });
+      }
 
-// ---------------------- eligibility scoring ----------------------
-function initEligibility() {
-  const form = $('#elig-form');
-  const out = $('#elig-result');
-  if (!form || !out) return;
+      insights.innerHTML += `<li class="muted">*These findings are informational — confirm via CBCT, physician clearance, and implantologist consultation.</li>`;
+    };
 
-  const isChecked = (name) => !!form.querySelector(input[name="${name}"])?.checked;
+    // Tab switching
+    tabs.forEach(tab => {
+      on(tab, "click", () => {
+        tabs.forEach(t => t.classList.remove("is-active"));
+        panels.forEach(p => p.classList.remove("is-active"));
+        tab.classList.add("is-active");
+        $("#" + tab.dataset.target, root)?.classList.add("is-active");
+      });
+    });
 
-  const redNames = [
-    'recent_mi', 'recent_stroke', 'unstable_angina', 'severe_htn', 'prosthetic_valve',
-    'hba1c_high', 'adrenal', 'malnutrition',
-    'iv_bisphos', 'denosumab_high', 'headneck_rt', 'ongoing_chemo',
-    'bleeding_disorder', 'cirrhosis', 'renal_failure',
-    'active_site_infection', 'immunosuppressed_high', 'poor_hygiene_active',
-    'heavy_smoke', 'alcohol', 'severe_bruxism', 'under_18', 'pregnant_1', 'unrealistic'
-  ];
-  const cautionNames = [
-    'oral_bisphos', 'antiplatelet', 'warfarin_doac', 'controlled_thyroid',
-    'osteoporosis', 'bruxism', 'autoimmune', 'pregnant_2_3'
-  ];
-  const goodNames = ['good_hba1c', 'good_bp', 'nonsmoker', 'good_hygiene'];
+    // Event handlers
+    checks.forEach(cb => on(cb, "change", update));
+    on(reset, "click", () => {
+      checks.forEach(cb => (cb.checked = false));
+      update();
+    });
 
-  function score() {
-    const reds = redNames.filter(isChecked).length;
-    const cauts = cautionNames.filter(isChecked).length;
-    const goods = goodNames.filter(isChecked).length;
+    update();
 
-    let msg = '', tone = 'ok';
+    /* === Voice Narrator (Female) === */
+    if ("speechSynthesis" in window) {
+      const btn = document.createElement("button");
+      btn.id = "aiNarrator";
+      btn.className = "btn narrator-btn";
+      btn.innerHTML = `<i class="ri-speak-line"></i> Narrate Insights`;
+      root.querySelector(".elig-right")?.appendChild(btn);
 
-    if (reds >= 1) {
-      tone = 'bad';
-      msg = 'Not ready yet — we will stabilise medical/oral factors and coordinate with your physician before planning implants.';
-    } else if (cauts >= 2 || goods <= 1) {
-      tone = 'warn';
-      msg = 'Likely eligible with precautions: personalised surgical plan, haemostasis strategy, risk-based antibiotics, and physician clearance as needed.';
-    } else {
-      tone = 'ok';
-      msg = 'Likely eligible for implants. Next step: CBCT & digital planning for precise, safe placement.';
-    }
-
-    out.textContent = msg;
-    // color the surrounding CTA strip if present
-    const strip = out.closest('.cta-strip');
-    if (strip) {
-      strip.classList.remove('ok', 'warn', 'bad');
-      strip.classList.add(tone);
+      on(btn, "click", () => {
+        const msg = insights.innerText.trim();
+        if (!msg) return;
+        const utter = new SpeechSynthesisUtterance(msg);
+        utter.lang = "en-IN";
+        utter.pitch = 1.1;
+        utter.rate = 0.95;
+        utter.voice = speechSynthesis.getVoices().find(v => v.name.toLowerCase().includes("female")) || null;
+        speechSynthesis.cancel();
+        speechSynthesis.speak(utter);
+      });
     }
   }
 
-  on(form, 'change', score);
-  score();
+  /* =========================================================
+     5. Scroll Reveal Animations
+  ========================================================= */
+  const revealObs = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) e.target.classList.add("visible");
+    });
+  }, { threshold: 0.25 });
+
+  $$("#self-check, .hero-video-card").forEach(el => revealObs.observe(el));
+});
+
+
+// ==== Snow Canvas ====
+const snowCanvas = document.createElement('canvas');
+snowCanvas.id = 'snow-canvas';
+document.querySelector('#implant-journey').prepend(snowCanvas);
+
+const ctx = snowCanvas.getContext('2d');
+let w, h, flakes = [];
+
+function resize() {
+  w = snowCanvas.width = window.innerWidth;
+  h = snowCanvas.height = document.querySelector('#implant-journey').offsetHeight;
 }
+window.addEventListener('resize', resize);
+resize();
 
-// ---------------------- media tweaks (lazy, posters) ----------------------
-function initMedia() {
-  // ensure images are lazy
-  $$('img').forEach((img) => { if (!img.loading) img.loading = 'lazy'; });
+function createFlakes(count = 80) {
+  flakes = Array.from({length: count}).map(() => ({
+    x: Math.random() * w,
+    y: Math.random() * h,
+    r: Math.random() * 2 + 1,
+    d: Math.random() + 1
+  }));
+}
+createFlakes();
 
-  // videos: metadata preload, and generate poster if missing
-  $$('video').forEach((v) => {
-    v.preload = 'metadata';
-    if (!v.getAttribute('poster')) {
-      const makePoster = () => {
-        try {
-          const c = document.createElement('canvas');
-          c.width = Math.max(1, Math.floor(v.videoWidth / 2));
-          c.height = Math.max(1, Math.floor(v.videoHeight / 2));
-          const ctx = c.getContext('2d', { willReadFrequently: false });
-          ctx.drawImage(v, 0, 0, c.width, c.height);
-          v.setAttribute('poster', c.toDataURL('image/jpeg', 0.6));
-        } catch {}
-      };
-      const onMeta = () => { makePoster(); v.removeEventListener('loadeddata', onMeta); };
-      v.addEventListener('loadeddata', onMeta, { once: true });
-      // nudge load to get a frame
-      try { v.currentTime = 0.2; } catch {}
+function drawSnow() {
+  ctx.clearRect(0, 0, w, h);
+  ctx.fillStyle = 'rgba(255,255,255,0.85)';
+  ctx.beginPath();
+  flakes.forEach(f => {
+    ctx.moveTo(f.x, f.y);
+    ctx.arc(f.x, f.y, f.r, 0, Math.PI*2, true);
+  });
+  ctx.fill();
+  moveSnow();
+  requestAnimationFrame(drawSnow);
+}
+let angle = 0;
+function moveSnow() {
+  angle += 0.01;
+  flakes.forEach(f => {
+    f.y += Math.pow(f.d, 2) + 0.3;
+    f.x += Math.sin(angle) * 0.4;
+    if (f.y > h) {
+      f.x = Math.random() * w;
+      f.y = -10;
     }
   });
+}
+drawSnow();
 
-  // harden external links
-  $$('a[target="_blank"]').forEach((a) => {
-    const rel = (a.getAttribute('rel') || '').toLowerCase();
-    if (!/noopener/.test(rel)) a.setAttribute('rel', (rel ? rel + ' ' : '') + 'noopener');
+// ==== Scrollspy ====
+const sections = document.querySelectorAll('.journey-step');
+const navLinks = document.querySelectorAll('.journey-nav a');
+window.addEventListener('scroll', () => {
+  let current = '';
+  sections.forEach(sec => {
+    const top = window.scrollY;
+    const offset = sec.offsetTop - 200;
+    const height = sec.offsetHeight;
+    if (top >= offset && top < offset + height) {
+      current = sec.getAttribute('id');
+    }
+  });
+  navLinks.forEach(a => {
+    a.classList.remove('active');
+    if (a.getAttribute('href').includes(current)) a.classList.add('active');
+  });
+});
+
+// ==== Narrator Start / Stop ====
+let isSpeaking = false;
+const narrBtn = document.querySelector('.narrator-btn');
+if ('speechSynthesis' in window && narrBtn) {
+  narrBtn.addEventListener('click', () => {
+    if (isSpeaking) {
+      speechSynthesis.cancel();
+      narrBtn.innerHTML = `<i class="ri-speak-line"></i> Listen to My Journey`;
+      isSpeaking = false;
+    } else {
+      const steps = Array.from(document.querySelectorAll('.journey-step')).map(s => s.querySelector('h3').innerText + ". " + s.querySelector('p').innerText);
+      const msg = steps.join(' ');
+      const utter = new SpeechSynthesisUtterance(msg);
+      utter.lang = "en-IN";
+      utter.pitch = 1.1;
+      utter.rate = 1.0;
+      utter.voice = speechSynthesis.getVoices().find(v => v.name.toLowerCase().includes("female")) || null;
+      speechSynthesis.speak(utter);
+      narrBtn.innerHTML = `<i class="ri-stop-circle-line"></i> Stop Narration`;
+      isSpeaking = true;
+      utter.onend = () => {
+        narrBtn.innerHTML = `<i class="ri-speak-line"></i> Listen to My Journey`;
+        isSpeaking = false;
+      };
+    }
   });
 }
 
-// ---------------------- schema injection (idempotent) ----------------------
-function injectVideoFaqSchema() {
-  // If author already included the script block, do nothing
-  if ($('#faq-videos-schema')) return;
+/* =========================================================
+   Implant Journey JS
+   Features: Snow Canvas, Scrollspy, Narrator
+========================================================= */
 
-  // Build the compact FAQ schema used under the video section
-  const json = {
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
-    "@id": "https://www.nobledentalcare.in/specialities/implants.html#faq-videos",
-    "mainEntity": [
-      {
-        "@type": "Question",
-        "name": "Why use a surgical guide?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Guides transfer the digital plan to your mouth, improving precision and reducing surgery time."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "Is a guide always required?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Not always; recommended for complex angulations, immediate implants, or proximity to nerves/sinus."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "Does PRF improve healing?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "PRF concentrates your platelets, releasing growth factors that may support faster soft-tissue healing and graft stability."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "Is PRF safe?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Yes. It is autologous (from your blood), so the risk of reaction is minimal."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "Why is a sinus lift needed?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "When upper back jaw bone is too short after tooth loss, lifting the sinus floor adds height for stable implants."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "How long is healing after sinus lift?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Typically 4–6 months before final loading; varies with graft volume and bone quality."
-        }
-      }
-    ]
+document.addEventListener("DOMContentLoaded", () => {
+  /* ❄️ Snow Effect */
+  const canvas = document.getElementById("snow-canvas");
+  const ctx = canvas.getContext("2d");
+  let snowflakes = [];
+
+  const resize = () => {
+    canvas.width = window.innerWidth;
+    canvas.height = document.querySelector("#implant-journey").offsetHeight;
   };
+  resize();
+  window.addEventListener("resize", resize);
 
-  const s = document.createElement('script');
-  s.type = 'application/ld+json';
-  s.id = 'faq-videos-schema';
-  s.textContent = JSON.stringify(json);
-  document.head.appendChild(s);
-}
+  function createSnow() {
+    snowflakes = [];
+    for (let i = 0; i < 80; i++) {
+      snowflakes.push({
+        x: Math.random() * canvas.width,
+        y: Math.random() * canvas.height,
+        r: Math.random() * 2 + 1,
+        d: Math.random() + 0.5
+      });
+    }
+  }
+  createSnow();
 
-// ---------------------- init on DOM ready ----------------------
-on(document, 'DOMContentLoaded', () => {
-  initParallax();
-  initSmoothAnchors();
-  initScrollSpy();
-  initEligibility();
-  initMedia();
-  injectVideoFaqSchema();
+  function drawSnow() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    ctx.fillStyle = "rgba(255,255,255,0.8)";
+    ctx.beginPath();
+    snowflakes.forEach(flake => {
+      ctx.moveTo(flake.x, flake.y);
+      ctx.arc(flake.x, flake.y, flake.r, 0, Math.PI * 2);
+    });
+    ctx.fill();
+    updateSnow();
+  }
+
+  function updateSnow() {
+    snowflakes.forEach(flake => {
+      flake.y += Math.pow(flake.d, 2) + 1;
+      flake.x += Math.sin(flake.y * 0.01) * 0.5;
+      if (flake.y > canvas.height) {
+        flake.y = 0;
+        flake.x = Math.random() * canvas.width;
+      }
+    });
+  }
+
+  (function animateSnow() {
+    drawSnow();
+    requestAnimationFrame(animateSnow);
+  })();
+
+  /* 🧭 Scrollspy Highlight */
+  const steps = document.querySelectorAll(".journey-step");
+  const navLinks = document.querySelectorAll(".journey-nav a");
+
+  const spyObserver = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const id = entry.target.id;
+        navLinks.forEach(link => {
+          link.classList.toggle("active", link.getAttribute("href") === `#${id}`);
+        });
+      }
+    });
+  }, { threshold: 0.5 });
+
+  steps.forEach(step => spyObserver.observe(step));
+
+  /* 🎧 Narrator */
+  const narrateBtn = document.getElementById("narrate-btn");
+  const stopBtn = document.getElementById("stop-btn");
+  let speech;
+
+  if ("speechSynthesis" in window) {
+    narrateBtn.addEventListener("click", () => {
+      const text = Array.from(steps)
+        .map(s => `${s.querySelector("h3").innerText}: ${s.querySelector("p").innerText}`)
+        .join(". ");
+      speechSynthesis.cancel();
+      speech = new SpeechSynthesisUtterance(text);
+      speech.lang = "en-IN";
+      speech.pitch = 1.1;
+      speech.rate = 1.0;
+      const female = speechSynthesis.getVoices().find(v => v.name.toLowerCase().includes("female"));
+      if (female) speech.voice = female;
+      speechSynthesis.speak(speech);
+    });
+
+    stopBtn.addEventListener("click", () => {
+      speechSynthesis.cancel();
+    });
+  }
+});
+
+
+// Auto fade-in cards on scroll
+document.addEventListener("DOMContentLoaded",()=>{
+  const cards = document.querySelectorAll(".type-card");
+  const observer = new IntersectionObserver(entries=>{
+    entries.forEach(e=>{
+      if(e.isIntersecting){
+        e.target.classList.add("visible");
+        observer.unobserve(e.target);
+      }
+    });
+  },{threshold:0.2});
+  cards.forEach(c=>observer.observe(c));
+});
+
+document.addEventListener("DOMContentLoaded",()=>{
+  // Reveal animation
+  const steps=document.querySelectorAll(".step-card");
+  const obs=new IntersectionObserver(entries=>{
+    entries.forEach(e=>{
+      if(e.isIntersecting){
+        e.target.classList.add("visible");
+        obs.unobserve(e.target);
+      }
+    });
+  },{threshold:0.2});
+  steps.forEach(s=>obs.observe(s));
+
+  // Voice narration (toggle)
+  const narrator=document.createElement("button");
+  narrator.className="narrator-btn";
+  narrator.innerHTML='<i class="ri-speak-line"></i> Narrate Steps';
+  document.querySelector("#implant-steps .section-header")?.appendChild(narrator);
+
+  let speaking=false;
+  let utter;
+  if("speechSynthesis" in window){
+    narrator.addEventListener("click",()=>{
+      if(speaking){ speechSynthesis.cancel(); speaking=false; narrator.innerHTML='<i class="ri-speak-line"></i> Narrate Steps'; return; }
+      const text=Array.from(document.querySelectorAll("#implant-steps .step-card h3, #implant-steps .step-card p")).map(el=>el.innerText).join(". ");
+      utter=new SpeechSynthesisUtterance(text);
+      utter.lang="en-IN";
+      utter.pitch=1.05; utter.rate=1;
+      utter.voice=speechSynthesis.getVoices().find(v=>v.name.toLowerCase().includes("female"))||null;
+      utter.onend=()=>{speaking=false; narrator.innerHTML='<i class="ri-speak-line"></i> Narrate Steps';};
+      speechSynthesis.speak(utter);
+      narrator.innerHTML='<i class="ri-stop-circle-line"></i> Stop Narration';
+      speaking=true;
+    });
+  }
+});
+
+
+document.addEventListener("DOMContentLoaded", () => {
+  const cards = document.querySelectorAll("#prf-bone .heal-card");
+  const obs = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add("visible");
+        obs.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.25 });
+  cards.forEach(c => obs.observe(c));
+
+  // Voice Narration Toggle
+  const narrator = document.createElement("button");
+  narrator.className = "btn narrator-btn";
+  narrator.innerHTML = '<i class="ri-speak-line"></i> Narrate Healing Science';
+  document.querySelector("#prf-bone .section-header")?.appendChild(narrator);
+
+  let speaking = false;
+  let utter;
+  if ("speechSynthesis" in window) {
+    narrator.addEventListener("click", () => {
+      if (speaking) {
+        speechSynthesis.cancel();
+        narrator.innerHTML = '<i class="ri-speak-line"></i> Narrate Healing Science';
+        speaking = false;
+        return;
+      }
+      const text = Array.from(document.querySelectorAll("#prf-bone .heal-card h3, #prf-bone .heal-card p"))
+        .map(el => el.innerText)
+        .join(". ");
+      utter = new SpeechSynthesisUtterance(text);
+      utter.lang = "en-IN";
+      utter.pitch = 1.1;
+      utter.rate = 1.0;
+      utter.voice = speechSynthesis.getVoices().find(v => v.name.toLowerCase().includes("female")) || null;
+      utter.onend = () => {
+        speaking = false;
+        narrator.innerHTML = '<i class="ri-speak-line"></i> Narrate Healing Science';
+      };
+      speechSynthesis.speak(utter);
+      narrator.innerHTML = '<i class="ri-stop-circle-line"></i> Stop Narration';
+      speaking = true;
+    });
+  }
+});
+
+document.addEventListener("DOMContentLoaded", () => {
+  // === Floating bubbles animation ===
+  const canvas = document.getElementById("care-bubbles");
+  if (canvas) {
+    const ctx = canvas.getContext("2d");
+    let w, h;
+    const bubbles = Array.from({ length: 25 }, () => ({
+      x: Math.random() * innerWidth,
+      y: Math.random() * innerHeight,
+      r: Math.random() * 3 + 1,
+      s: Math.random() * 0.8 + 0.2,
+    }));
+
+    const resize = () => {
+      canvas.width = w = innerWidth;
+      canvas.height = h = innerHeight;
+    };
+    window.addEventListener("resize", resize);
+    resize();
+
+    const animate = () => {
+      ctx.clearRect(0, 0, w, h);
+      ctx.fillStyle = "rgba(59,169,224,0.25)";
+      bubbles.forEach(b => {
+        ctx.beginPath();
+        ctx.arc(b.x, b.y, b.r, 0, Math.PI * 2);
+        ctx.fill();
+        b.y -= b.s;
+        if (b.y < -10) b.y = h + 10;
+      });
+      requestAnimationFrame(animate);
+    };
+    animate();
+  }
+
+  // === scroll reveal ===
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) e.target.classList.add("visible");
+    });
+  }, { threshold: 0.2 });
+
+  document.querySelectorAll(".care-card").forEach(el => observer.observe(el));
+});
+
+document.addEventListener("DOMContentLoaded", () => {
+  const canvas = document.getElementById("monitor-bg");
+  if (!canvas) return;
+  const ctx = canvas.getContext("2d");
+  let w, h;
+
+  function resize() {
+    w = canvas.width = window.innerWidth;
+    h = canvas.height = 600;
+  }
+  resize();
+  window.addEventListener("resize", resize);
+
+  const points = Array.from({ length: 30 }, () => ({
+    x: Math.random() * w,
+    y: Math.random() * h,
+    r: Math.random() * 1.5 + 0.5,
+    a: Math.random() * 360
+  }));
+
+  function animate() {
+    ctx.clearRect(0, 0, w, h);
+    points.forEach(p => {
+      p.a += 0.005;
+      const dx = Math.cos(p.a) * 0.3;
+      const dy = Math.sin(p.a) * 0.3;
+      p.x += dx;
+      p.y += dy;
+      if (p.x < 0) p.x = w;
+      if (p.y < 0) p.y = h;
+      if (p.x > w) p.x = 0;
+      if (p.y > h) p.y = 0;
+      ctx.beginPath();
+      ctx.arc(p.x, p.y, p.r, 0, 2 * Math.PI);
+      ctx.fillStyle = "rgba(100,160,255,0.15)";
+      ctx.fill();
+    });
+    requestAnimationFrame(animate);
+  }
+  animate();
+});
+
+document.addEventListener("DOMContentLoaded", () => {
+
+  // --- FAQ auto-close others ---
+  const faqs = document.querySelectorAll(".faq-list details");
+  faqs.forEach((faq) => {
+    faq.addEventListener("toggle", () => {
+      if (faq.open) {
+        faqs.forEach((el) => el !== faq && (el.open = false));
+      }
+    });
+  });
+
+  // --- Smooth scroll for footer links ---
+  document.querySelectorAll('a[href^="#"]').forEach((link) => {
+    link.addEventListener("click", (e) => {
+      const target = document.querySelector(link.getAttribute("href"));
+      if (target) {
+        e.preventDefault();
+        target.scrollIntoView({ behavior: "smooth", block: "start" });
+      }
+    });
+  });
 });
