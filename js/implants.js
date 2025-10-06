@@ -1,142 +1,32 @@
-* Noble Dental Care — implants.js
- * Optimised interaction & accessibility helpers for the Implant speciality page.
- * Features covered:
- *  - Header shrink & mobile navigation accessibility
- *  - Hero media reveal
- *  - Implant eligibility self-check gauge & insights
- *  - Scroll-triggered reveals & animated canvases with reduced-motion fallbacks
- *  - Journey scrollspy, narration utilities and FAQ UX improvements
- */
-   document.addEventListener("DOMContentLoaded", () => {
-  const $ = (selector, scope = document) => scope.querySelector(selector);
-  const $$ = (selector, scope = document) => Array.from(scope.querySelectorAll(selector));
-  const on = (element, event, handler, options) => element?.addEventListener(event, handler, options);
-  const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+/* =========================================================
+   Noble Dental Care — main.js (Smart Insight Engine v2.1)
+   Unified Features:
+   - Header shrink on scroll
+   - Mobile nav
+   - Hero fade
+   - AI Self-Check Gauge + Smart Insight Cards
+   - Voice Narrator (Female)
+   - Scroll Reveal
+========================================================= */
 
-  const revealElements = (elements, className = "visible", options = { threshold: 0.25 }) => {
-    const nodes = Array.isArray(elements)
-      ? elements.flatMap((sel) => (typeof sel === "string" ? $$(sel) : Array.from(sel)))
-      : typeof elements === "string"
-        ? $$(elements)
-        : Array.from(elements ?? []);
+document.addEventListener("DOMContentLoaded", () => {
+  /* ---------- Helpers ---------- */
+  const $  = (s, r = document) => r.querySelector(s);
+  const $$ = (s, r = document) => Array.from(r.querySelectorAll(s));
+  const on = (el, ev, fn, opts = false) => el && el.addEventListener(ev, fn, opts);
 
-    if (!nodes.length) return;
-
-    const show = (node) => node.classList.add(className);
-
-    if (prefersReducedMotion || typeof IntersectionObserver === "undefined") {
-      nodes.forEach(show);
-      return;
-    }
-
-    const observer = new IntersectionObserver((entries, obs) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          show(entry.target);
-          obs.unobserve(entry.target);
-        }
-      });
-    }, options);
-
-    nodes.forEach((node) => observer.observe(node));
-  };
-
-  /** Speech synthesis helper ------------------------------------------------ */
-  const narrator = (() => {
-    const supported = "speechSynthesis" in window;
-    if (!supported) return { supported: false, addButton: () => null, stop: () => {} };
-
-    let cachedVoice = null;
-    const selectVoice = () => {
-      const voices = window.speechSynthesis.getVoices();
-      if (!voices.length) return cachedVoice;
-      cachedVoice =
-        voices.find((voice) => voice.name.toLowerCase().includes("female")) ||
-        voices.find((voice) => voice.lang?.toLowerCase().startsWith("en")) ||
-        voices[0];
-      return cachedVoice;
-    };
-
-    window.speechSynthesis.addEventListener("voiceschanged", selectVoice);
-    selectVoice();
-
-    const stop = () => {
-      window.speechSynthesis.cancel();
-    };
-
-    const speak = (text, { pitch = 1.1, rate = 1.0 } = {}) => {
-      if (!text) return null;
-      stop();
-      const utter = new SpeechSynthesisUtterance(text);
-      utter.lang = "en-IN";
-      utter.pitch = pitch;
-      utter.rate = rate;
-      utter.voice = selectVoice();
-      window.speechSynthesis.speak(utter);
-      return utter;
-    };
-
-    const addButton = (container, {
-      className = "btn narrator-btn",
-      startIcon = "<i class=\"ri-speak-line\"></i>",
-      stopIcon = "<i class=\"ri-stop-circle-line\"></i>",
-      startLabel = "Narrate",
-      stopLabel = "Stop Narration",
-      pitch,
-      rate,
-      getText,
-    }) => {
-      if (!container || typeof getText !== "function") return null;
-
-      const button = document.createElement("button");
-      button.type = "button";
-      button.className = className;
-      button.innerHTML = `${startIcon} ${startLabel}`;
-
-      let currentUtterance = null;
-      let playing = false;
-
-      const reset = () => {
-        playing = false;
-        button.innerHTML = `${startIcon} ${startLabel}`;
-      };
-
-      on(button, "click", () => {
-        if (playing) {
-          stop();
-          reset();
-          return;
-        }
-
-        const text = getText()?.trim();
-        if (!text) return;
-
-        currentUtterance = speak(text, { pitch, rate });
-        if (!currentUtterance) return;
-
-        playing = true;
-        button.innerHTML = `${stopIcon} ${stopLabel}`;
-
-        currentUtterance.onend = currentUtterance.onerror = reset;
-      });
-
-      container.appendChild(button);
-      return button;
-    };
-
-    return { supported: true, addButton, stop, speak };
-  })();
-
+  /* =========================================================
+     1. Header Shrink on Scroll
+  ========================================================= */
   const header = $(".site-header");
-  if (header) {
-    const shrinkHeader = () => {
-      header.classList.toggle("shrink", window.scrollY > 10);
-    };
+  const shrinkHeader = () =>
+    header?.classList.toggle("shrink", window.scrollY > 10);
+  shrinkHeader();
+  on(window, "scroll", shrinkHeader, { passive: true });
 
-    shrinkHeader();
-    on(window, "scroll", shrinkHeader, { passive: true });
-  }
-
+  /* =========================================================
+     2. Mobile Navigation + Submenu
+  ========================================================= */
   const menuToggle = $("#menuToggle");
   const primaryNav = $("#primaryNav");
   const submenuToggle = $(".submenu-toggle");
@@ -152,413 +42,581 @@
   on(submenuToggle, "click", () => {
     const expanded = submenuToggle.getAttribute("aria-expanded") === "true";
     submenuToggle.setAttribute("aria-expanded", String(!expanded));
-    submenu?.setAttribute("aria-hidden", String(expanded));
+    submenu.setAttribute("aria-hidden", String(expanded));
   });
 
-  on(document, "click", (event) => {
+  on(document, "keydown", e => {
+    if (e.key === "Escape") {
+      if (menuToggle?.getAttribute("aria-expanded") === "true") menuToggle.click();
+      if (submenuToggle?.getAttribute("aria-expanded") === "true") submenuToggle.click();
+    }
+  });
+
+  on(document, "click", e => {
     if (
       primaryNav?.classList.contains("is-open") &&
-      !primaryNav.contains(event.target) &&
-      !menuToggle.contains(event.target)
-    ) {
-      menuToggle.click();
-    }
+      !primaryNav.contains(e.target) &&
+      !menuToggle.contains(e.target)
+    ) menuToggle.click();
   });
 
-  on(document, "keydown", (event) => {
-    if (event.key !== "Escape") return;
-    if (menuToggle?.getAttribute("aria-expanded") === "true") menuToggle.click();
-    if (submenuToggle?.getAttribute("aria-expanded") === "true") submenuToggle.click();
-  });
-
-    /** Hero media reveal ------------------------------------------------------ */
-  const heroVideo = $(".hero-video-wrap");
-  if (heroVideo) {
-    revealElements([heroVideo], "visible", { threshold: 0.3 });
+  /* =========================================================
+     3. Hero Video Fade-In
+  ========================================================= */
+  const videoCard = $(".hero-video-card");
+  if (videoCard) {
+    const obs = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) videoCard.classList.add("visible");
+      });
+    }, { threshold: 0.3 });
+    obs.observe(videoCard);
   }
 
-  /** Implant eligibility self-check ---------------------------------------- */
-  const selfCheck = $("#self-check");
-  if (selfCheck) {
-    const tabs = $$(".tabbar .tab", selfCheck);
-    const panels = $$(".panel", selfCheck);
-    const checks = $$('input[type="checkbox"]', selfCheck);
-    const gauge = $(".g-fg", selfCheck);
-    const gaugeText = $(".g-text", selfCheck);
-    const ok = $(".status.ok", selfCheck);
-    const warn = $(".status.warn", selfCheck);
-    const bad = $(".status.bad", selfCheck);
-    const insights = $(".insights", selfCheck);
-    const reset = $("#reset-elig", selfCheck);
-     
+  /* =========================================================
+     4. AI Self-Check Gauge (Smart Insight Engine)
+  ========================================================= */
+  const root = $("#self-check");
+  if (root) {
+    const tabs = $$(".tabbar .tab", root);
+    const panels = $$(".panel", root);
+    const checks = $$('input[type="checkbox"]', root);
+    const gauge = $(".g-fg", root);
+    const gText = $(".g-text", root);
+    const ok = $(".status.ok", root);
+    const warn = $(".status.warn", root);
+    const bad = $(".status.bad", root);
+    const insights = $(".insights", root);
+    const reset = $("#reset-elig", root);
+
     const CIRC = 2 * Math.PI * 50;
-    if (gauge) gauge.setAttribute("stroke-dasharray", String(CIRC));
+    gauge.setAttribute("stroke-dasharray", CIRC);
+    gauge.style.strokeDashoffset = CIRC;
 
-    const setPercent = (value) => {
-      const safeValue = Math.max(0, Math.min(100, Math.round(value)));
-      const dashOffset = CIRC - (CIRC * safeValue) / 100;
-      if (gauge) gauge.style.strokeDashoffset = dashOffset;
-      if (gaugeText) gaugeText.textContent = `${safeValue}%`;
-      return safeValue;
+    const setPercent = (p) => {
+      const v = Math.max(0, Math.min(100, Math.round(p)));
+      const dash = CIRC - (CIRC * v / 100);
+      gauge.style.strokeDashoffset = dash;
+      gText.textContent = v + "%";
     };
 
-    const updateInsights = () => {
-      let high = 0;
-      let moderate = 0;
-      const selected = [];
+    const update = () => {
+      let hi = 0, mo = 0;
+      let cards = [];
 
-      checks.forEach((checkbox) => {
-        if (!checkbox.checked) return;
-        const { risk = "low", reason = "No reason specified" } = checkbox.dataset;
-        const label = checkbox.parentElement?.textContent?.trim() ?? "";
-        if (risk === "high") high += 1;
-        else if (risk === "moderate") moderate += 1;
-        selected.push({ label, reason, risk });
+      checks.forEach(cb => {
+        if (cb.checked) {
+          const risk = cb.dataset.risk;
+          const reason = cb.dataset.reason || "No reason specified";
+          const label = cb.parentNode.textContent.trim();
+          if (risk === "high") hi++;
+          else if (risk === "moderate") mo++;
+
+          cards.push({ label, reason, risk });
+        }
       });
 
-      const percent = setPercent(100 - (high * 40 + moderate * 15));
-      [ok, warn, bad].forEach((state) => state && (state.style.display = "none"));
-      if (insights) insights.innerHTML = "";
+      const percent = Math.max(0, 100 - (hi * 40 + mo * 15));
+      setPercent(percent);
 
-      const appendInsight = (html) => {
-        if (insights) insights.insertAdjacentHTML("beforeend", html);
-      };
+      ok.style.display = warn.style.display = bad.style.display = "none";
+      insights.innerHTML = "";
 
-      if (high > 0 || percent < 50) {
-        if (gauge) gauge.style.stroke = "#dc2626";
-        if (bad) bad.style.display = "block";
-        appendInsight(`<li><strong>🔴 High risk</strong> — ${high} contraindication(s) detected. <em>Medical clearance mandatory.</em></li>`);
+      // === Risk Level Summary ===
+      if (hi > 0 || percent < 50) {
+        gauge.style.stroke = "#dc2626";
+        bad.style.display = "block";
+        insights.innerHTML += `<li><strong>🔴 High risk</strong> — ${hi} contraindication(s) detected. <em>Medical clearance mandatory.</em></li>`;
+      } else if (mo > 0 || percent < 80) {
+        gauge.style.stroke = "#f59e0b";
+        warn.style.display = "block";
+        insights.innerHTML += `<li><strong>🟠 Moderate risk</strong> — ${mo} manageable condition(s). <em>Review before proceeding.</em></li>`;
       } else {
-        if (gauge) gauge.style.stroke = "#12B2A0";
-        if (ok) ok.style.display = "block";
-        appendInsight(`<li><strong>🟢 Low risk</strong> — ideal candidate for guided implant.</li>`);
+        gauge.style.stroke = "#12B2A0";
+        ok.style.display = "block";
+        insights.innerHTML += `<li><strong>🟢 Low risk</strong> — ideal candidate for guided implant.</li>`;
       }
 
-      selected.slice(0, 8).forEach(({ label, reason, risk }) => {
-        const tone = risk === "high" ? "#ef4444" : risk === "moderate" ? "#fbbf24" : "#12b2a0";
-        appendInsight(`
-          <li style="border-left:4px solid ${tone}">
-            <strong>${label}</strong><br>
-            <small>${reason}</small>
-          </li>
-        `);
-      });
+      // === AI Micro Insight Cards ===
+      if (cards.length > 0) {
+        cards.slice(0, 8).forEach(c => {
+          const tone = c.risk === "high"
+            ? "#ef4444"
+            : c.risk === "moderate"
+              ? "#fbbf24"
+              : "#12b2a0";
+          insights.innerHTML += `
+            <li style="border-left:4px solid ${tone}">
+              <strong>${c.label}</strong><br>
+              <small>${c.reason}</small>
+            </li>`;
+        });
+      }
 
-      appendInsight('<li class="muted">*These findings are informational — confirm via CBCT, physician clearance, and implantologist consultation.</li>');
+      insights.innerHTML += `<li class="muted">*These findings are informational — confirm via CBCT, physician clearance, and implantologist consultation.</li>`;
     };
 
-    tabs.forEach((tab) => {
+    // Tab switching
+    tabs.forEach(tab => {
       on(tab, "click", () => {
-        tabs.forEach((item) => item.classList.remove("is-active"));
-        panels.forEach((panel) => panel.classList.remove("is-active"));
+        tabs.forEach(t => t.classList.remove("is-active"));
+        panels.forEach(p => p.classList.remove("is-active"));
         tab.classList.add("is-active");
-        $("#" + tab.dataset.target, selfCheck)?.classList.add("is-active");
+        $("#" + tab.dataset.target, root)?.classList.add("is-active");
       });
     });
-     
+
     // Event handlers
-    checks.forEach((checkbox) => on(checkbox, "change", updateInsights));
+    checks.forEach(cb => on(cb, "change", update));
     on(reset, "click", () => {
-    checks.forEach((checkbox) => (checkbox.checked = false));
-      updateInsights();
-    });   
+      checks.forEach(cb => (cb.checked = false));
+      update();
+    });
 
-    updateInsights();
+    update();
 
-    if (narrator.supported) {
-      const container = $(".elig-right", selfCheck);
-      const exists = $("#aiNarrator", container);
-      if (!exists && container) {
-        const btn = narrator.addButton(container, {
-          className: "btn narrator-btn",
-          startLabel: "Narrate Insights",
-          stopLabel: "Stop Narration",
-          getText: () => $(".insights", selfCheck)?.innerText ?? "",
-          pitch: 1.1,
-          rate: 0.95,
-        });
-        if (btn) btn.id = "aiNarrator";
-      }
+    /* === Voice Narrator (Female) === */
+    if ("speechSynthesis" in window) {
+      const btn = document.createElement("button");
+      btn.id = "aiNarrator";
+      btn.className = "btn narrator-btn";
+      btn.innerHTML = `<i class="ri-speak-line"></i> Narrate Insights`;
+      root.querySelector(".elig-right")?.appendChild(btn);
+
+      on(btn, "click", () => {
+        const msg = insights.innerText.trim();
+        if (!msg) return;
+        const utter = new SpeechSynthesisUtterance(msg);
+        utter.lang = "en-IN";
+        utter.pitch = 1.1;
+        utter.rate = 0.95;
+        utter.voice = speechSynthesis.getVoices().find(v => v.name.toLowerCase().includes("female")) || null;
+        speechSynthesis.cancel();
+        speechSynthesis.speak(utter);
+      });
     }
   }
 
-        /** Scroll reveals --------------------------------------------------------- */
-  revealElements(["#self-check", ".type-card", ".step-card", "#prf-bone .heal-card", ".care-card"]);
+  /* =========================================================
+     5. Scroll Reveal Animations
+  ========================================================= */
+  const revealObs = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) e.target.classList.add("visible");
+    });
+  }, { threshold: 0.25 });
 
-  /** Implant journey: snow canvas, scrollspy, narration --------------------- */
-  const implantJourney = $("#implant-journey");
-  if (implantJourney) {
-    const canvas = $("#snow-canvas", implantJourney) ?? (() => {
-      const created = document.createElement("canvas");
-      created.id = "snow-canvas";
-      implantJourney.prepend(created);
-      return created;
-    })();
-
-    if (canvas && canvas.getContext && !prefersReducedMotion) {
-      const ctx = canvas.getContext("2d");
-      let width = 0;
-      let height = 0;
-      let flakes = [];
-      let angle = 0;
-
-      const setSize = () => {
-        width = canvas.width = implantJourney.clientWidth;
-        height = canvas.height = implantJourney.offsetHeight;
-      };
-
-      const createFlakes = (count = 80) => {
-        flakes = Array.from({ length: count }, () => ({
-          x: Math.random() * width,
-          y: Math.random() * height,
-          radius: Math.random() * 2 + 1,
-          density: Math.random() + 1,
-        }));
-      };
-       
+  $$("#self-check, .hero-video-card").forEach(el => revealObs.observe(el));
+});
 
 
-      const draw = () => {
-        ctx.clearRect(0, 0, width, height);
-        ctx.fillStyle = "rgba(255,255,255,0.85)";
-        ctx.beginPath();
-        flakes.forEach((flake) => {
-          ctx.moveTo(flake.x, flake.y);
-          ctx.arc(flake.x, flake.y, flake.radius, 0, Math.PI * 2);
-        });
-        ctx.fill();
-        move();
-        requestAnimationFrame(draw);
-      };
+// ==== Snow Canvas ====
+const snowCanvas = document.createElement('canvas');
+snowCanvas.id = 'snow-canvas';
+document.querySelector('#implant-journey').prepend(snowCanvas);
 
-      const move = () => {
-        angle += 0.01;
-        flakes.forEach((flake) => {
-          flake.y += Math.pow(flake.density, 2) + 0.3;
-          flake.x += Math.sin(angle) * 0.4;
-          if (flake.y > height) {
-            flake.y = -10;
-            flake.x = Math.random() * width;
-          }
-        });
-      };
+const ctx = snowCanvas.getContext('2d');
+let w, h, flakes = [];
 
-      const handleResize = () => {
-        setSize();
-        createFlakes();
-      };
+function resize() {
+  w = snowCanvas.width = window.innerWidth;
+  h = snowCanvas.height = document.querySelector('#implant-journey').offsetHeight;
+}
+window.addEventListener('resize', resize);
+resize();
 
-      handleResize();
-      on(window, "resize", handleResize);
-      draw();
+function createFlakes(count = 80) {
+  flakes = Array.from({length: count}).map(() => ({
+    x: Math.random() * w,
+    y: Math.random() * h,
+    r: Math.random() * 2 + 1,
+    d: Math.random() + 1
+  }));
+}
+createFlakes();
+
+function drawSnow() {
+  ctx.clearRect(0, 0, w, h);
+  ctx.fillStyle = 'rgba(255,255,255,0.85)';
+  ctx.beginPath();
+  flakes.forEach(f => {
+    ctx.moveTo(f.x, f.y);
+    ctx.arc(f.x, f.y, f.r, 0, Math.PI*2, true);
+  });
+  ctx.fill();
+  moveSnow();
+  requestAnimationFrame(drawSnow);
+}
+let angle = 0;
+function moveSnow() {
+  angle += 0.01;
+  flakes.forEach(f => {
+    f.y += Math.pow(f.d, 2) + 0.3;
+    f.x += Math.sin(angle) * 0.4;
+    if (f.y > h) {
+      f.x = Math.random() * w;
+      f.y = -10;
     }
-    const steps = $$(".journey-step", implantJourney);
-    const navLinks = $$(".journey-nav a", implantJourney);
-    if (steps.length && navLinks.length) {
-      if (typeof IntersectionObserver === "undefined" || prefersReducedMotion) {
-        navLinks.forEach((link, index) => link.classList.toggle("active", index === 0));
-      } else {
-        const spy = new IntersectionObserver((entries) => {
-          entries.forEach((entry) => {
-            if (!entry.isIntersecting) return;
-            const { id } = entry.target;
-            navLinks.forEach((link) => {
-              link.classList.toggle("active", link.getAttribute("href") === `#${id}`);
-            });
-          });
-        }, { threshold: 0.5 });
-        steps.forEach((step) => spy.observe(step));
+  });
+}
+drawSnow();
+
+// ==== Scrollspy ====
+const sections = document.querySelectorAll('.journey-step');
+const navLinks = document.querySelectorAll('.journey-nav a');
+window.addEventListener('scroll', () => {
+  let current = '';
+  sections.forEach(sec => {
+    const top = window.scrollY;
+    const offset = sec.offsetTop - 200;
+    const height = sec.offsetHeight;
+    if (top >= offset && top < offset + height) {
+      current = sec.getAttribute('id');
+    }
+  });
+  navLinks.forEach(a => {
+    a.classList.remove('active');
+    if (a.getAttribute('href').includes(current)) a.classList.add('active');
+  });
+});
+
+// ==== Narrator Start / Stop ====
+let isSpeaking = false;
+const narrBtn = document.querySelector('.narrator-btn');
+if ('speechSynthesis' in window && narrBtn) {
+  narrBtn.addEventListener('click', () => {
+    if (isSpeaking) {
+      speechSynthesis.cancel();
+      narrBtn.innerHTML = `<i class="ri-speak-line"></i> Listen to My Journey`;
+      isSpeaking = false;
+    } else {
+      const steps = Array.from(document.querySelectorAll('.journey-step')).map(s => s.querySelector('h3').innerText + ". " + s.querySelector('p').innerText);
+      const msg = steps.join(' ');
+      const utter = new SpeechSynthesisUtterance(msg);
+      utter.lang = "en-IN";
+      utter.pitch = 1.1;
+      utter.rate = 1.0;
+      utter.voice = speechSynthesis.getVoices().find(v => v.name.toLowerCase().includes("female")) || null;
+      speechSynthesis.speak(utter);
+      narrBtn.innerHTML = `<i class="ri-stop-circle-line"></i> Stop Narration`;
+      isSpeaking = true;
+      utter.onend = () => {
+        narrBtn.innerHTML = `<i class="ri-speak-line"></i> Listen to My Journey`;
+        isSpeaking = false;
+      };
+    }
+  });
+}
+
+/* =========================================================
+   Implant Journey JS
+   Features: Snow Canvas, Scrollspy, Narrator
+========================================================= */
+
+document.addEventListener("DOMContentLoaded", () => {
+  /* ❄️ Snow Effect */
+  const canvas = document.getElementById("snow-canvas");
+  const ctx = canvas.getContext("2d");
+  let snowflakes = [];
+
+  const resize = () => {
+    canvas.width = window.innerWidth;
+    canvas.height = document.querySelector("#implant-journey").offsetHeight;
+  };
+  resize();
+  window.addEventListener("resize", resize);
+
+  function createSnow() {
+    snowflakes = [];
+    for (let i = 0; i < 80; i++) {
+      snowflakes.push({
+        x: Math.random() * canvas.width,
+        y: Math.random() * canvas.height,
+        r: Math.random() * 2 + 1,
+        d: Math.random() + 0.5
+      });
+    }
+  }
+  createSnow();
+
+  function drawSnow() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    ctx.fillStyle = "rgba(255,255,255,0.8)";
+    ctx.beginPath();
+    snowflakes.forEach(flake => {
+      ctx.moveTo(flake.x, flake.y);
+      ctx.arc(flake.x, flake.y, flake.r, 0, Math.PI * 2);
+    });
+    ctx.fill();
+    updateSnow();
+  }
+
+  function updateSnow() {
+    snowflakes.forEach(flake => {
+      flake.y += Math.pow(flake.d, 2) + 1;
+      flake.x += Math.sin(flake.y * 0.01) * 0.5;
+      if (flake.y > canvas.height) {
+        flake.y = 0;
+        flake.x = Math.random() * canvas.width;
       }
-    }
-
-    if (narrator.supported) {
-      const controls = $(".journey-controls", implantJourney);
-      const startBtn = $("#narrate-btn", implantJourney);
-      const stopBtn = $("#stop-btn", implantJourney);
-
-      const textSource = () => steps
-        .map((step) => {
-          const title = $("h3", step)?.innerText ?? "";
-          const copy = $("p", step)?.innerText ?? "";
-          return `${title}. ${copy}`.trim();
-        })
-        .join(" ");
-
-      if (startBtn && stopBtn) {
-        let currentUtterance = null;
-
-        const resetButtons = () => {
-          startBtn.disabled = false;
-          startBtn.setAttribute("aria-disabled", "false");
-          stopBtn.disabled = true;
-          stopBtn.setAttribute("aria-disabled", "true");
-        };
-
-        resetButtons();
-
-        on(startBtn, "click", () => {
-          const text = textSource();
-          if (!text) return;
-          currentUtterance = narrator.speak(text, { pitch: 1.1, rate: 1.0 });
-          if (!currentUtterance) return;
-          startBtn.disabled = true;
-          startBtn.setAttribute("aria-disabled", "true");
-          stopBtn.disabled = false;
-          stopBtn.setAttribute("aria-disabled", "false");
-          currentUtterance.onend = currentUtterance.onerror = resetButtons;
-        });
-        on(stopBtn, "click", () => {
-          narrator.stop();
-          resetButtons();
-        });
-      } else if (controls && !controls.querySelector(".narrator-btn.dynamic")) {
-        narrator.addButton(controls, {
-          className: "narrator-btn dynamic",
-          startLabel: "Listen to My Journey",
-          stopLabel: "Stop Narration",
-          getText: textSource,
-          pitch: 1.1,
-          rate: 1.0,
     });
   }
-  }
 
-  /** Implant steps narrator ------------------------------------------------- */
-  const stepsSection = $("#implant-steps");
-  if (stepsSection && narrator.supported) {
-    const header = $(".section-header", stepsSection);
-    if (header && !header.querySelector(".narrator-btn")) {
-      narrator.addButton(header, {
-        className: "narrator-btn",
-        startLabel: "Narrate Steps",
-        stopLabel: "Stop Narration",
-        getText: () => $$(".step-card", stepsSection)
-          .map((card) => {
-            const title = $("h3", card)?.innerText ?? "";
-            const copy = $("p", card)?.innerText ?? "";
-            return `${title}. ${copy}`.trim();
-          })
-          .join(" "),
-      });
-    }
-  }
+  (function animateSnow() {
+    drawSnow();
+    requestAnimationFrame(animateSnow);
+  })();
 
-  /** PRF healing narration -------------------------------------------------- */
-  const healingSection = $("#prf-bone");
-  if (healingSection && narrator.supported) {
-    const header = $(".section-header", healingSection);
-    if (header && !header.querySelector(".narrator-btn")) {
-      narrator.addButton(header, {
-        className: "btn narrator-btn",
-        startLabel: "Narrate Healing Science",
-        stopLabel: "Stop Narration",
-        getText: () => $$(".heal-card", healingSection)
-          .map((card) => {
-            const title = $("h3", card)?.innerText ?? "";
-            const copy = $("p", card)?.innerText ?? "";
-            return `${title}. ${copy}`.trim();
-          })
-          .join(" "),
-      });
-    }     
-  }
+  /* 🧭 Scrollspy Highlight */
+  const steps = document.querySelectorAll(".journey-step");
+  const navLinks = document.querySelectorAll(".journey-nav a");
 
-  /** Floating bubbles background ------------------------------------------- */
-  const careCanvas = $("#care-bubbles");
-  if (careCanvas && careCanvas.getContext && !prefersReducedMotion) {
-    const ctx = careCanvas.getContext("2d");
-    let width = 0;
-    let height = 0;
+  const spyObserver = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const id = entry.target.id;
+        navLinks.forEach(link => {
+          link.classList.toggle("active", link.getAttribute("href") === `#${id}`);
+        });
+      }
+    });
+  }, { threshold: 0.5 });
+
+  steps.forEach(step => spyObserver.observe(step));
+
+  /* 🎧 Narrator */
+  const narrateBtn = document.getElementById("narrate-btn");
+  const stopBtn = document.getElementById("stop-btn");
+  let speech;
+
+  if ("speechSynthesis" in window) {
+    narrateBtn.addEventListener("click", () => {
+      const text = Array.from(steps)
+        .map(s => `${s.querySelector("h3").innerText}: ${s.querySelector("p").innerText}`)
+        .join(". ");
+      speechSynthesis.cancel();
+      speech = new SpeechSynthesisUtterance(text);
+      speech.lang = "en-IN";
+      speech.pitch = 1.1;
+      speech.rate = 1.0;
+      const female = speechSynthesis.getVoices().find(v => v.name.toLowerCase().includes("female"));
+      if (female) speech.voice = female;
+      speechSynthesis.speak(speech);
+    });
+
+    stopBtn.addEventListener("click", () => {
+      speechSynthesis.cancel();
+    });
+  }
+});
+
+
+// Auto fade-in cards on scroll
+document.addEventListener("DOMContentLoaded",()=>{
+  const cards = document.querySelectorAll(".type-card");
+  const observer = new IntersectionObserver(entries=>{
+    entries.forEach(e=>{
+      if(e.isIntersecting){
+        e.target.classList.add("visible");
+        observer.unobserve(e.target);
+      }
+    });
+  },{threshold:0.2});
+  cards.forEach(c=>observer.observe(c));
+});
+
+document.addEventListener("DOMContentLoaded",()=>{
+  // Reveal animation
+  const steps=document.querySelectorAll(".step-card");
+  const obs=new IntersectionObserver(entries=>{
+    entries.forEach(e=>{
+      if(e.isIntersecting){
+        e.target.classList.add("visible");
+        obs.unobserve(e.target);
+      }
+    });
+  },{threshold:0.2});
+  steps.forEach(s=>obs.observe(s));
+
+  // Voice narration (toggle)
+  const narrator=document.createElement("button");
+  narrator.className="narrator-btn";
+  narrator.innerHTML='<i class="ri-speak-line"></i> Narrate Steps';
+  document.querySelector("#implant-steps .section-header")?.appendChild(narrator);
+
+  let speaking=false;
+  let utter;
+  if("speechSynthesis" in window){
+    narrator.addEventListener("click",()=>{
+      if(speaking){ speechSynthesis.cancel(); speaking=false; narrator.innerHTML='<i class="ri-speak-line"></i> Narrate Steps'; return; }
+      const text=Array.from(document.querySelectorAll("#implant-steps .step-card h3, #implant-steps .step-card p")).map(el=>el.innerText).join(". ");
+      utter=new SpeechSynthesisUtterance(text);
+      utter.lang="en-IN";
+      utter.pitch=1.05; utter.rate=1;
+      utter.voice=speechSynthesis.getVoices().find(v=>v.name.toLowerCase().includes("female"))||null;
+      utter.onend=()=>{speaking=false; narrator.innerHTML='<i class="ri-speak-line"></i> Narrate Steps';};
+      speechSynthesis.speak(utter);
+      narrator.innerHTML='<i class="ri-stop-circle-line"></i> Stop Narration';
+      speaking=true;
+    });
+  }
+});
+
+
+document.addEventListener("DOMContentLoaded", () => {
+  const cards = document.querySelectorAll("#prf-bone .heal-card");
+  const obs = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add("visible");
+        obs.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.25 });
+  cards.forEach(c => obs.observe(c));
+
+  // Voice Narration Toggle
+  const narrator = document.createElement("button");
+  narrator.className = "btn narrator-btn";
+  narrator.innerHTML = '<i class="ri-speak-line"></i> Narrate Healing Science';
+  document.querySelector("#prf-bone .section-header")?.appendChild(narrator);
+
+  let speaking = false;
+  let utter;
+  if ("speechSynthesis" in window) {
+    narrator.addEventListener("click", () => {
+      if (speaking) {
+        speechSynthesis.cancel();
+        narrator.innerHTML = '<i class="ri-speak-line"></i> Narrate Healing Science';
+        speaking = false;
+        return;
+      }
+      const text = Array.from(document.querySelectorAll("#prf-bone .heal-card h3, #prf-bone .heal-card p"))
+        .map(el => el.innerText)
+        .join(". ");
+      utter = new SpeechSynthesisUtterance(text);
+      utter.lang = "en-IN";
+      utter.pitch = 1.1;
+      utter.rate = 1.0;
+      utter.voice = speechSynthesis.getVoices().find(v => v.name.toLowerCase().includes("female")) || null;
+      utter.onend = () => {
+        speaking = false;
+        narrator.innerHTML = '<i class="ri-speak-line"></i> Narrate Healing Science';
+      };
+      speechSynthesis.speak(utter);
+      narrator.innerHTML = '<i class="ri-stop-circle-line"></i> Stop Narration';
+      speaking = true;
+    });
+  }
+});
+
+document.addEventListener("DOMContentLoaded", () => {
+  // === Floating bubbles animation ===
+  const canvas = document.getElementById("care-bubbles");
+  if (canvas) {
+    const ctx = canvas.getContext("2d");
+    let w, h;
     const bubbles = Array.from({ length: 25 }, () => ({
-      x: Math.random() * window.innerWidth,
-      y: Math.random() * window.innerHeight,
-      radius: Math.random() * 3 + 1,
-      speed: Math.random() * 0.8 + 0.2,
+      x: Math.random() * innerWidth,
+      y: Math.random() * innerHeight,
+      r: Math.random() * 3 + 1,
+      s: Math.random() * 0.8 + 0.2,
     }));
 
-     
-    const setSize = () => {
-      width = careCanvas.width = window.innerWidth;
-      height = careCanvas.height = window.innerHeight;
+    const resize = () => {
+      canvas.width = w = innerWidth;
+      canvas.height = h = innerHeight;
     };
+    window.addEventListener("resize", resize);
+    resize();
 
     const animate = () => {
-      ctx.clearRect(0, 0, width, height);
+      ctx.clearRect(0, 0, w, h);
       ctx.fillStyle = "rgba(59,169,224,0.25)";
-      bubbles.forEach((bubble) => {
+      bubbles.forEach(b => {
         ctx.beginPath();
-        ctx.arc(bubble.x, bubble.y, bubble.radius, 0, Math.PI * 2);
+        ctx.arc(b.x, b.y, b.r, 0, Math.PI * 2);
         ctx.fill();
-        bubble.y -= bubble.speed;
-        if (bubble.y < -10) bubble.y = height + 10;
+        b.y -= b.s;
+        if (b.y < -10) b.y = h + 10;
       });
       requestAnimationFrame(animate);
     };
-     
-    setSize();
-    on(window, "resize", setSize);     
     animate();
   }
 
-  /** CBCT monitoring canvas ------------------------------------------------- */
-  const monitorCanvas = $("#monitor-bg");
-  if (monitorCanvas && monitorCanvas.getContext && !prefersReducedMotion) {
-    const ctx = monitorCanvas.getContext("2d");
-    let width = 0;
-    let height = 600;
-    const points = Array.from({ length: 30 }, () => ({
-      x: Math.random() * window.innerWidth,
-      y: Math.random() * height,
-      radius: Math.random() * 1.5 + 0.5,
-      angle: Math.random() * 360,
-    }));
-     
-    const setSize = () => {
-      width = monitorCanvas.width = window.innerWidth;
-      height = monitorCanvas.height = 600;
-    };
+  // === scroll reveal ===
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) e.target.classList.add("visible");
+    });
+  }, { threshold: 0.2 });
 
-    const animate = () => {
-      ctx.clearRect(0, 0, width, height);
-      points.forEach((point) => {
-        point.angle += 0.005;
-        point.x += Math.cos(point.angle) * 0.3;
-        point.y += Math.sin(point.angle) * 0.3;
-        if (point.x < 0) point.x = width;
-        if (point.y < 0) point.y = height;
-        if (point.x > width) point.x = 0;
-        if (point.y > height) point.y = 0;
-        ctx.beginPath();
-        ctx.arc(point.x, point.y, point.radius, 0, Math.PI * 2);
-        ctx.fillStyle = "rgba(100,160,255,0.15)";
-        ctx.fill();
-      });
-      requestAnimationFrame(animate);
-    };
+  document.querySelectorAll(".care-card").forEach(el => observer.observe(el));
+});
 
-    setSize();
-    on(window, "resize", setSize);
-    animate();
+document.addEventListener("DOMContentLoaded", () => {
+  const canvas = document.getElementById("monitor-bg");
+  if (!canvas) return;
+  const ctx = canvas.getContext("2d");
+  let w, h;
+
+  function resize() {
+    w = canvas.width = window.innerWidth;
+    h = canvas.height = 600;
   }
+  resize();
+  window.addEventListener("resize", resize);
 
-  /** FAQ accordions --------------------------------------------------------- */
-  const faqLists = $$(".faq-list details");
-  faqLists.forEach((faq) => {
-    on(faq, "toggle", () => {
-      if (!faq.open) return;
-      faqLists.forEach((item) => {
-        if (item !== faq) item.open = false;
-      });
+  const points = Array.from({ length: 30 }, () => ({
+    x: Math.random() * w,
+    y: Math.random() * h,
+    r: Math.random() * 1.5 + 0.5,
+    a: Math.random() * 360
+  }));
+
+  function animate() {
+    ctx.clearRect(0, 0, w, h);
+    points.forEach(p => {
+      p.a += 0.005;
+      const dx = Math.cos(p.a) * 0.3;
+      const dy = Math.sin(p.a) * 0.3;
+      p.x += dx;
+      p.y += dy;
+      if (p.x < 0) p.x = w;
+      if (p.y < 0) p.y = h;
+      if (p.x > w) p.x = 0;
+      if (p.y > h) p.y = 0;
+      ctx.beginPath();
+      ctx.arc(p.x, p.y, p.r, 0, 2 * Math.PI);
+      ctx.fillStyle = "rgba(100,160,255,0.15)";
+      ctx.fill();
+    });
+    requestAnimationFrame(animate);
+  }
+  animate();
+});
+
+document.addEventListener("DOMContentLoaded", () => {
+
+  // --- FAQ auto-close others ---
+  const faqs = document.querySelectorAll(".faq-list details");
+  faqs.forEach((faq) => {
+    faq.addEventListener("toggle", () => {
+      if (faq.open) {
+        faqs.forEach((el) => el !== faq && (el.open = false));
+      }
     });
   });
 
-  /** Smooth scrolling for on-page anchors ---------------------------------- */
-  $$('a[href^="#"]').forEach((link) => {
-    on(link, "click", (event) => {
-      const target = $(link.getAttribute("href"));
-      if (!target) return;
-      event.preventDefault();
-      target.scrollIntoView({ behavior: prefersReducedMotion ? "auto" : "smooth", block: "start" });
+  // --- Smooth scroll for footer links ---
+  document.querySelectorAll('a[href^="#"]').forEach((link) => {
+    link.addEventListener("click", (e) => {
+      const target = document.querySelector(link.getAttribute("href"));
+      if (target) {
+        e.preventDefault();
+        target.scrollIntoView({ behavior: "smooth", block: "start" });
+      }
     });
   });
 });
