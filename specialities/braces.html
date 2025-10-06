@@ -146,6 +146,40 @@
           <h2 id="howTitle">How do braces actually move teeth?</h2>
           <p>Braces deliver light, continuous forces through brackets and shape-memory wires. They stimulate the ligament around each tooth, creating space on one side while bone fills in on the other. The result is a slow, safe remodelling of bone rather than "pushing" teeth.</p>
         </div>
+                <figure class="mechanics-visual" data-animate>
+          <svg viewBox="0 0 360 260" role="img" aria-labelledby="mechanicsSvgTitle mechanicsSvgDesc">
+            <title id="mechanicsSvgTitle">Bone remodelling response during braces</title>
+            <desc id="mechanicsSvgDesc">Bracket forces and bone changes shown around a stylised tooth with an archwire.</desc>
+            <defs>
+              <linearGradient id="gumGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+                <stop offset="0%" stop-color="#fbcfe8" stop-opacity="0.85"/>
+                <stop offset="100%" stop-color="#f9a8d4" stop-opacity="0.55"/>
+              </linearGradient>
+              <linearGradient id="toothGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stop-color="#f8fafc"/>
+                <stop offset="100%" stop-color="#e2e8f0"/>
+              </linearGradient>
+              <linearGradient id="forceGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+                <stop offset="0%" stop-color="#7aa3ff"/>
+                <stop offset="100%" stop-color="#57c0b9"/>
+              </linearGradient>
+            </defs>
+            <path class="gum" d="M24 210 C58 114 302 114 336 210 L336 240 L24 240 Z"/>
+            <path class="force-line" d="M64 150 Q132 88 196 136 T296 150"/>
+            <path class="tooth" d="M124 52 C150 36 210 36 236 52 C268 86 268 190 236 220 C206 248 154 248 124 220 C92 190 92 86 124 52 Z"/>
+            <path class="ligament" d="M142 112 C152 174 214 174 222 112"/>
+            <g class="brackets">
+              <rect class="bracket" x="134" y="118" width="24" height="20"/>
+              <rect class="bracket" x="168" y="112" width="24" height="20"/>
+              <rect class="bracket" x="202" y="112" width="24" height="20"/>
+              <rect class="bracket" x="236" y="118" width="24" height="20"/>
+            </g>
+            <circle class="force-dot" cx="118" cy="108" r="7"/>
+            <circle class="force-dot" cx="248" cy="112" r="6"/>
+            <path class="arrow" d="M120 190 C152 162 200 164 232 146"/>
+            <polygon class="arrow-head" points="232,146 222,150 226,158"/>
+          </svg>
+        </figure>
         <div class="chip-grid" data-animate>
           <article class="chip-card">
             <h3>1. Smart bonding</h3>
@@ -185,6 +219,21 @@
           </article>
         </div>
         <div class="split" data-animate>
+          <div class="split__visual" aria-hidden="true">
+            <svg viewBox="0 0 320 220" aria-hidden="true" focusable="false">
+              <defs>
+                <linearGradient id="alignerGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+                  <stop offset="0%" stop-color="#7aa3ff"/>
+                  <stop offset="100%" stop-color="#57c0b9"/>
+                </linearGradient>
+              </defs>
+              <path class="teeth" d="M44 156 C60 112 260 112 276 156 C258 186 220 204 160 204 C100 204 62 186 44 156 Z"/>
+              <path class="tray" d="M24 132 C62 60 258 60 296 132 C276 168 244 190 204 200 C164 210 116 210 80 196 C48 184 32 162 24 132"/>
+              <circle class="spark" cx="76" cy="82" r="6"/>
+              <circle class="spark" cx="244" cy="78" r="5"/>
+              <circle class="spark" cx="162" cy="58" r="4"/>
+            </svg>
+          </div>
           <div>
             <h3>Why choose braces instead of clear aligners?</h3>
             <ul class="bullet">
