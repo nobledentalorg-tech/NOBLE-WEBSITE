@@ -35,6 +35,14 @@
     <changefreq>weekly</changefreq>
   </url>
 
+  <!-- Nallagandla Local Guide -->
+  <url>
+    <loc>https://nobledentalnallagandla.in/dentist-in-nallagandla-hyderabad.html</loc>
+    <lastmod>2025-10-06</lastmod>
+    <priority>0.85</priority>
+    <changefreq>monthly</changefreq>
+  </url>
+  
   <!-- Self-Check Tool -->
   <url>
     <loc>https://nobledentalnallagandla.in/self-check/</loc>
