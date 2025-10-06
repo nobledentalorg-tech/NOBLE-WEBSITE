@@ -198,6 +198,18 @@ button, input, select, textarea {
   transition: background .2s ease, color .2s ease;
 }
 
+.submenu__all a {
+  background: color-mix(in srgb, var(--brand) 14%, transparent);
+  color: var(--brand-dark, var(--ink));
+  border: 1px solid color-mix(in srgb, var(--brand) 18%, transparent);
+}
+
+.submenu__all a:hover,
+.submenu__all a:focus-visible {
+  background: color-mix(in srgb, var(--brand) 25%, white 15%);
+  color: #fff;
+}
+
 .submenu a:hover,
 .submenu a:focus-visible {
   background: color-mix(in srgb, var(--brand) 16%, transparent);
@@ -1719,5 +1731,6 @@ button, input, select, textarea {
   clip: rect(0 0 0 0) !important;
   white-space: nowrap !important;
 }
+
 
 
