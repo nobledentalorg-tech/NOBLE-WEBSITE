@@ -1,30 +1,29 @@
 /* =========================================================
-   Noble Dental Care — Specialities Interactions v1.0
+   Noble Dental Care — specialities.js
    Features:
    - Header shrink on scroll
-   - Mobile menu & submenu toggle
-   - Auto year in footer
+   - Mobile navigation + submenu accessibility
+   - Speciality filter + keyword search + empty state
+   - Expand/collapse detail snippets
+   - Footer year auto update
 ========================================================= */
 
-const ready = (fn) => {
-  if (document.readyState === "loading") {
-    document.addEventListener("DOMContentLoaded", fn, { once: true });
-  } else {
-    fn();
-  }
-};
+document.addEventListener("DOMContentLoaded", () => {
+  const $ = (selector, scope = document) => scope.querySelector(selector);
+  const $$ = (selector, scope = document) => Array.from(scope.querySelectorAll(selector));
+  const on = (el, event, handler, options) => el && el.addEventListener(event, handler, options);
 
-ready(() => {
-  const $ = (sel, root = document) => root.querySelector(sel);
-  const on = (el, ev, cb, opts) => el && el.addEventListener(ev, cb, opts);
-
-  /* ---------- Header shrink ---------- */
+  /* =========================================================
+     Header behaviour
+  ========================================================= */
   const header = $(".site-header");
-  const updateHeader = () => header?.classList.toggle("shrink", window.scrollY > 12);
-  updateHeader();
-  on(window, "scroll", updateHeader, { passive: true });
+  const shrinkHeader = () => header?.classList.toggle("shrink", window.scrollY > 10);
+  shrinkHeader();
+  on(window, "scroll", shrinkHeader, { passive: true });
 
-  /* ---------- Mobile menu ---------- */
+  /* =========================================================
+     Navigation toggles
+  ========================================================= */
   const menuToggle = $("#menuToggle");
   const primaryNav = $("#primaryNav");
   const submenuToggle = $(".submenu-toggle");
@@ -60,7 +59,69 @@ ready(() => {
     }
   });
 
-  /* ---------- Footer year ---------- */
-  const year = $("#year");
+  /* =========================================================
+     Filters + keyword search
+  ========================================================= */
+  const cards = $$(".speciality-card");
+  const filters = $$(".filter");
+  const searchInput = $("#specialitySearch");
+  const emptyState = $("#emptyState");
+
+  let activeFilter = "all";
+
+  const applyFilters = () => {
+    const term = searchInput?.value.trim().toLowerCase() || "";
+    let visibleCount = 0;
+
+    cards.forEach((card) => {
+      const categories = card.dataset.category || "";
+      const tags = card.dataset.tags || "";
+      const matchesFilter = activeFilter === "all" || categories.split(/\s+/).includes(activeFilter);
+      const matchesSearch = !term || (card.innerText + " " + tags).toLowerCase().includes(term);
+      const shouldShow = matchesFilter && matchesSearch;
+
+      card.classList.toggle("is-hidden", !shouldShow);
+      if (shouldShow) visibleCount += 1;
+    });
+
+    if (emptyState) {
+      emptyState.hidden = visibleCount !== 0;
+    }
+  };
+
+  filters.forEach((filterBtn) => {
+    on(filterBtn, "click", () => {
+      filters.forEach((btn) => btn.classList.remove("is-active"));
+      filterBtn.classList.add("is-active");
+      activeFilter = filterBtn.dataset.filter || "all";
+      applyFilters();
+    });
+  });
+
+  on(searchInput, "input", () => {
+    window.requestAnimationFrame(applyFilters);
+  });
+
+  applyFilters();
+
+  /* =========================================================
+     Expand/collapse detail notes
+  ========================================================= */
+  $$(".card-toggle").forEach((toggle) => {
+    const card = toggle.closest(".speciality-card");
+    const more = card?.querySelector(".card-more");
+    if (!more) return;
+
+    on(toggle, "click", () => {
+      const expanded = toggle.getAttribute("aria-expanded") === "true";
+      toggle.setAttribute("aria-expanded", String(!expanded));
+      more.hidden = expanded;
+    });
+  });
+
+  /* =========================================================
+     Footer year helper
+  ========================================================= */
+  const year = $("#currentYear");
   if (year) year.textContent = new Date().getFullYear();
 });
