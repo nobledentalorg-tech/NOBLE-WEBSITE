@@ -197,6 +197,10 @@
         <a class="section-nav__link" href="#timeline"><i class="ri-timer-flash-line"></i><span>One-visit flow</span></a>
         <a class="section-nav__link" href="#comfort"><i class="ri-heart-pulse-line"></i><span>Pain control</span></a>
         <a class="section-nav__link" href="#technology"><i class="ri-cpu-line"></i><span>Tech stack</span></a>
+        <a class="section-nav__link" href="#media"><i class="ri-slideshow-line"></i><span>Media lab</span></a>
+        <a class="section-nav__link" href="#outcomes"><i class="ri-bar-chart-2-line"></i><span>Outcomes</span></a>
+        <a class="section-nav__link" href="#cases"><i class="ri-file-list-3-line"></i><span>Case library</span></a>
+        <a class="section-nav__link" href="#team"><i class="ri-team-line"></i><span>Care team</span></a>
         <a class="section-nav__link" href="#pricing"><i class="ri-money-rupee-circle-line"></i><span>Pricing</span></a>
         <a class="section-nav__link" href="#faq"><i class="ri-question-answer-line"></i><span>FAQ</span></a>
         <a class="section-nav__link" href="#contact"><i class="ri-customer-service-2-line"></i><span>Book now</span></a>
@@ -270,27 +274,33 @@
           <p>Hover or tap the timeline to see what happens during your appointment. Most molars are completed in one sitting; complex cases may need a second visit.</p>
         </div>
         <div class="timeline" data-animate>
-          <article class="timeline-step">
+          <article class="timeline-step" data-step="anaesthesia">
+            <span class="timeline-step__pulse" aria-hidden="true"></span>
             <h3>Step 1 · Comfort setup</h3>
             <p>Computer-controlled anaesthesia (The Wand) and isolation with rubber dam. Mild sedation available on request.</p>
           </article>
-          <article class="timeline-step">
+          <article class="timeline-step" data-step="access">
+            <span class="timeline-step__pulse" aria-hidden="true"></span>
             <h3>Step 2 · Access & location</h3>
             <p>Microscope-guided access conserves enamel. Ultrasonics locate hidden MB2, C-shaped or accessory canals safely.</p>
           </article>
-          <article class="timeline-step">
+          <article class="timeline-step" data-step="shaping">
+            <span class="timeline-step__pulse" aria-hidden="true"></span>
             <h3>Step 3 · Rotary shaping</h3>
             <p>Nickel-titanium rotary files with apex locator guidance sculpt canals accurately while maintaining natural anatomy.</p>
           </article>
-          <article class="timeline-step">
+          <article class="timeline-step" data-step="disinfection">
+            <span class="timeline-step__pulse" aria-hidden="true"></span>
             <h3>Step 4 · Activated disinfection</h3>
             <p>Sodium hypochlorite, EDTA and chlorhexidine activated via ultrasonic + Er:YAG laser pulses remove biofilm.</p>
           </article>
-          <article class="timeline-step">
+          <article class="timeline-step" data-step="seal">
+            <span class="timeline-step__pulse" aria-hidden="true"></span>
             <h3>Step 5 · Bioceramic seal</h3>
             <p>Warm vertical compaction with bioceramic sealer seals micro-spaces. Post-obturation CBCT verifies healing path.</p>
           </article>
-          <article class="timeline-step">
+          <article class="timeline-step" data-step="crown">
+            <span class="timeline-step__pulse" aria-hidden="true"></span>
             <h3>Step 6 · Same-day crown</h3>
             <p>CAD/CAM scan, design and mill. Chairside zirconia or e.max crown bonded before you leave for full protection.</p>
           </article>
@@ -359,6 +369,299 @@
             <h3>Digital audit trail</h3>
             <p>Every RCT is logged with photos, videos and instrumentation data for medico-legal compliance.</p>
           </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="media" class="section media-lab" aria-labelledby="mediaTitle">
+      <div class="container">
+        <div class="section__header" data-animate>
+          <h2 id="mediaTitle">Experience our microscope suite before you visit</h2>
+          <p>Walk through a real Hyderabad root canal with authentic visuals, microscope footage and chairside updates captured in our Nallagandla practice.</p>
+        </div>
+        <div class="media-lab__grid">
+          <div class="media-lab__carousel" data-animate>
+            <div class="rc-slideshow" role="region" aria-live="polite" aria-roledescription="360° carousel">
+              <div class="rc-slide" style="--index:0;" data-label="Digital triage">
+                <h3>Digital<span>Triage</span></h3>
+                <img src="https://images.unsplash.com/photo-1588776813677-77cde5c38f8b?auto=format&amp;fit=crop&amp;w=640&amp;q=80" alt="Dentist reviewing patient CBCT scan on a monitor">
+              </div>
+              <div class="rc-slide" style="--index:1;" data-label="Microscope access">
+                <h3>Microscope<span>Access</span></h3>
+                <img src="https://images.unsplash.com/photo-1583912268184-0664dc1b3414?auto=format&amp;fit=crop&amp;w=640&amp;q=80" alt="Dental operating microscope focused on a molar">
+              </div>
+              <div class="rc-slide" style="--index:2;" data-label="Canal cleaning">
+                <h3>Canal<span>Cleaning</span></h3>
+                <img src="https://images.unsplash.com/photo-1520013333837-8c9b3b0e94c6?auto=format&amp;fit=crop&amp;w=640&amp;q=80" alt="Ultrasonic irrigation tips flushing a root canal">
+              </div>
+              <div class="rc-slide" style="--index:3;" data-label="Laser activation">
+                <h3>Laser<span>Activation</span></h3>
+                <img src="https://images.unsplash.com/photo-1522556189639-b150ed9c4330?auto=format&amp;fit=crop&amp;w=640&amp;q=80" alt="Laser fibre disinfecting the tooth interior">
+              </div>
+              <div class="rc-slide" style="--index:4;" data-label="Bioceramic seal">
+                <h3>Bioceramic<span>Seal</span></h3>
+                <img src="https://images.unsplash.com/photo-1606811841689-23dfddce3e99?auto=format&amp;fit=crop&amp;w=640&amp;q=80" alt="Dentist placing bioceramic sealer into a canal">
+              </div>
+              <div class="rc-slide" style="--index:5;" data-label="Crown fitment">
+                <h3>Crown<span>Fitment</span></h3>
+                <img src="https://images.unsplash.com/photo-1588776814546-1ffcf47267a5?auto=format&amp;fit=crop&amp;w=640&amp;q=80" alt="Same-day crown being checked for bite alignment">
+              </div>
+            </div>
+            <div class="rc-controls" aria-hidden="false">
+              <button type="button" class="rc-control" data-direction="-1" aria-label="View previous phase"><i class="ri-arrow-left-s-line"></i></button>
+              <div class="rc-indicator" aria-live="polite">
+                <span class="rc-indicator__chip">Digital triage</span>
+              </div>
+              <button type="button" class="rc-control" data-direction="1" aria-label="View next phase"><i class="ri-arrow-right-s-line"></i></button>
+            </div>
+            <p class="media-lab__note">Drag, swipe or tap the arrows to manually steer the 360° microscope carousel.</p>
+          </div>
+          <div class="media-lab__videos" data-animate>
+            <figure class="media-lab__video">
+              <video controls preload="metadata" poster="https://images.unsplash.com/photo-1588776813677-77cde5c38f8b?auto=format&amp;fit=crop&amp;w=640&amp;q=80">
+                <source src="https://cdn.coverr.co/videos/coverr-dentist-checking-a-patient-7331/1080p.mp4" type="video/mp4">
+                Your browser does not support HTML5 video. Here is a <a href="https://cdn.coverr.co/videos/coverr-dentist-checking-a-patient-7331/1080p.mp4">link to the video</a> instead.
+              </video>
+              <figcaption>Digital anaesthesia walkthrough explaining The Wand STA and patient positioning.</figcaption>
+            </figure>
+            <figure class="media-lab__video">
+              <video controls preload="metadata" poster="https://images.unsplash.com/photo-1522556189639-b150ed9c4330?auto=format&amp;fit=crop&amp;w=640&amp;q=80">
+                <source src="https://cdn.coverr.co/videos/coverr-dental-tools-8729/1080p.mp4" type="video/mp4">
+                Your browser does not support HTML5 video. Here is a <a href="https://cdn.coverr.co/videos/coverr-dental-tools-8729/1080p.mp4">link to the video</a> instead.
+              </video>
+              <figcaption>Activated irrigation demo showing sonic and laser disinfection inside the canal.</figcaption>
+            </figure>
+          </div>
+        </div>
+        <div class="chairside-status" data-animate>
+          <div class="rc-card rc-card--blue">
+            <div class="rc-card__header">
+              <svg aria-hidden="true" class="rc-card__close" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke="currentColor" fill="none" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12"/></svg>
+            </div>
+            <div class="rc-card__body">
+              <svg aria-hidden="true" class="rc-card__icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path fill-rule="evenodd" d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25Zm.53 5.47a.75.75 0 0 0-1.06 0l-3 3a.75.75 0 1 0 1.06 1.06l1.72-1.72v5.69a.75.75 0 0 0 1.5 0v-5.69l1.72 1.72a.75.75 0 1 0 1.06-1.06l-3-3Z" clip-rule="evenodd"/></svg>
+              <div>
+                <h3>Microscope capture uploading…</h3>
+                <p>Live case documentation from the Zeiss Extaro is syncing to your patient portal in real time.</p>
+                <div class="rc-progress">
+                  <div class="rc-progress__meta">
+                    <span>72%</span>
+                    <div class="rc-progress__bar" style="--progress-width:72%;"></div>
+                  </div>
+                  <a class="rc-btn rc-btn--primary" href="#contact">Get notified</a>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="rc-card rc-card--green">
+            <div class="rc-card__header">
+              <svg aria-hidden="true" class="rc-card__close" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke="currentColor" fill="none" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12"/></svg>
+            </div>
+            <div class="rc-card__body">
+              <svg aria-hidden="true" class="rc-card__icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path fill-rule="evenodd" d="M2.25 12c0-5.385 4.365-9.75 9.75-9.75s9.75 4.365 9.75 9.75-4.365 9.75-9.75 9.75S2.25 17.385 2.25 12Zm13.36-1.814a.75.75 0 1 0-1.22-.872l-3.236 4.53L9.53 12.22a.75.75 0 0 0-1.06 1.06l2.25 2.25a.75.75 0 0 0 1.14-.094l3.75-5.25Z" clip-rule="evenodd"/></svg>
+              <div>
+                <h3>Root canal sealed successfully</h3>
+                <p>Bioceramic obturation, fibre post placement and immediate crown scan are now logged in your case summary.</p>
+              </div>
+            </div>
+            <div class="rc-progress rc-progress--actions">
+              <a class="rc-btn rc-btn--primary" href="#faq">Review aftercare FAQ</a>
+              <a class="rc-btn" href="#book">Schedule review</a>
+            </div>
+          </div>
+          <div class="rc-card rc-card--red">
+            <div class="rc-card__header">
+              <svg aria-hidden="true" class="rc-card__close" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke="currentColor" fill="none" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12"/></svg>
+            </div>
+            <div class="rc-card__body">
+              <svg aria-hidden="true" class="rc-card__icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path fill-rule="evenodd" d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25Zm-1.72 6.97a.75.75 0 1 0-1.06 1.06L10.94 12l-1.72 1.72a.75.75 0 1 0 1.06 1.06L12 13.06l1.72 1.72a.75.75 0 1 0 1.06-1.06L13.06 12l1.72-1.72a.75.75 0 1 0-1.06-1.06L12 10.94l-1.72-1.72Z" clip-rule="evenodd"/></svg>
+              <div>
+                <h3>Post-op flare-up detected</h3>
+                <p>Our monitoring flagged lingering tenderness. Tap retry to book an urgent review or cancel if symptoms resolved.</p>
+              </div>
+            </div>
+            <div class="rc-progress rc-progress--actions">
+              <a class="rc-btn rc-btn--primary" href="#contact">Book urgent slot</a>
+              <a class="rc-btn" href="https://wa.me/918610425342">WhatsApp endodontist</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="outcomes" class="section section--alt" aria-labelledby="outcomesTitle">
+      <div class="container">
+        <div class="section__header" data-animate>
+          <h2 id="outcomesTitle">Clinical outcomes we monitor after every root canal</h2>
+          <p>Evidence-backed protocols mean we measure healing with data, not guesswork, and refine techniques quarterly with our clinical governance board.</p>
+        </div>
+        <div class="outcome-grid" data-animate>
+          <article class="outcome-card">
+            <header>
+              <h3>Periapical healing</h3>
+              <p>96% radiographic success within 12 months</p>
+            </header>
+            <p>Limited field CBCT at 6 and 12 months verifies lesion resolution and dentine preservation in molar and premolar teeth treated in Nallagandla.</p>
+            <div class="progress" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="96" aria-label="Periapical healing rate 96%">
+              <div class="progress__fill" style="--progress:96%;"></div>
+            </div>
+            <ul class="outcome-list">
+              <li>AAE healing index scoring documented</li>
+              <li>CBCT overlays stored in digital audit trail</li>
+            </ul>
+          </article>
+          <article class="outcome-card">
+            <header>
+              <h3>Pain reversal</h3>
+              <p>98% patients pain-free in 24 hours</p>
+            </header>
+            <p>Computer-assisted anaesthesia, activated irrigation and occlusal adjustment shrink inflammation quickly for emergency walk-ins.</p>
+            <div class="progress" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="98" aria-label="Pain reversal rate 98%">
+              <div class="progress__fill" style="--progress:98%;"></div>
+            </div>
+            <ul class="outcome-list">
+              <li>48-hour WhatsApp check-in with pain score logging</li>
+              <li>Analgesic protocol tailored to systemic history</li>
+            </ul>
+          </article>
+          <article class="outcome-card">
+            <header>
+              <h3>Retreatment-free survival</h3>
+              <p>93% success at three-year recalls</p>
+            </header>
+            <p>Bioceramic obturation, fibre post reinforcement and on-site crowns reduce fracture and leakage risk for high-load molars.</p>
+            <div class="progress" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="93" aria-label="Retreatment-free survival 93%">
+              <div class="progress__fill" style="--progress:93%;"></div>
+            </div>
+            <ul class="outcome-list">
+              <li>Annual bite-force and occlusion analysis</li>
+              <li>Recall reminders via SMS, email and WhatsApp</li>
+            </ul>
+          </article>
+        </div>
+        <div class="outcome-callout" data-animate>
+          <p>Monthly morbidity and mortality meetings benchmark our data against AAE &amp; ESE guidelines so that each protocol remains evidence-based and audit ready.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="cases" class="section" aria-labelledby="casesTitle">
+      <div class="container">
+        <div class="section__header" data-animate>
+          <h2 id="casesTitle">Case library from Hyderabad residents we have helped</h2>
+          <p>Real-world case notes demonstrate how microscope-assisted endodontics saves teeth that were once destined for extraction.</p>
+        </div>
+        <div class="case-grid" data-animate>
+          <article class="case-card">
+            <header>
+              <p class="case-label">Case 01 · 34-year-old software engineer</p>
+              <h3>Night pain eliminated with single-visit mandibular molar RCT</h3>
+            </header>
+            <dl class="case-meta">
+              <div><dt>Challenge</dt><dd>Acute irreversible pulpitis with curved MB2 canal</dd></div>
+              <div><dt>Approach</dt><dd>CBCT-guided access, rotary glide path, laser irrigation, chairside zirconia crown</dd></div>
+              <div><dt>Outcome</dt><dd>Pain score dropped from 9/10 to 0/10 within 18 hours; 6-month CBCT shows complete healing</dd></div>
+            </dl>
+            <details class="case-details">
+              <summary>See protocol</summary>
+              <ol>
+                <li>Single-tooth rubber dam isolation with Teflon seal</li>
+                <li>Adaptive WaveOne Gold rotary shaping with apex locator verification</li>
+                <li>Laser-activated 5.25% NaOCl + 17% EDTA sequence followed by bioceramic obturation</li>
+              </ol>
+            </details>
+          </article>
+          <article class="case-card">
+            <header>
+              <p class="case-label">Case 02 · 9-year-old with traumatized incisor</p>
+              <h3>Regenerative endodontics preserves developing tooth</h3>
+            </header>
+            <dl class="case-meta">
+              <div><dt>Challenge</dt><dd>Immature apex with chronic infection after fall</dd></div>
+              <div><dt>Approach</dt><dd>Gentle irrigation, triple antibiotic paste, platelet-rich fibrin scaffold, MTA plug</dd></div>
+              <div><dt>Outcome</dt><dd>Apical closure at 9 months; tooth remains asymptomatic with positive vitality response</dd></div>
+            </dl>
+            <details class="case-details">
+              <summary>See protocol</summary>
+              <ol>
+                <li>Pain-free sedation with nitrous oxide and Tell-Show-Do coaching</li>
+                <li>Micro-suction debridement under microscope to protect thin dentinal walls</li>
+                <li>PRF membrane placement to encourage continued root development</li>
+              </ol>
+            </details>
+          </article>
+          <article class="case-card">
+            <header>
+              <p class="case-label">Case 03 · 58-year-old diabetic</p>
+              <h3>Retreatment with guided access saves crown and implant plan</h3>
+            </header>
+            <dl class="case-meta">
+              <div><dt>Challenge</dt><dd>Failed RCT with separated file and sinus tract</dd></div>
+              <div><dt>Approach</dt><dd>3D printed guide, ultrasonic file retrieval, apical surgery with bioceramic repair</dd></div>
+              <div><dt>Outcome</dt><dd>Sinus healed in 10 days; HbA1c-friendly medication plan prevented flare ups</dd></div>
+            </dl>
+            <details class="case-details">
+              <summary>See protocol</summary>
+              <ol>
+                <li>Medical clearance and antibiotic prophylaxis coordinated with physician</li>
+                <li>3D printed guide ensured conservative re-entry without crown removal</li>
+                <li>Retrograde MTA fill with platelet-rich fibrin membrane for accelerated healing</li>
+              </ol>
+            </details>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="team" class="section" aria-labelledby="teamTitle">
+      <div class="container">
+        <div class="section__header" data-animate>
+          <h2 id="teamTitle">Your root canal team with verifiable expertise</h2>
+          <p>Our microscope endodontist, sterilisation chief and digital prosthodontist collaborate so every case meets E-E-A-T expectations for safety and transparency.</p>
+        </div>
+        <div class="expertise-grid" data-animate>
+          <article class="expertise-card" data-tone="ocean">
+            <img src="/images/dhivakaran.webp" alt="Dr. Dhivakaran, endodontist at Noble Dental Care" width="320" height="320" loading="lazy">
+            <section>
+              <h3>Dr. Dhivakaran MDS</h3>
+              <p>Microscope endodontist directing painless single-sitting root canals and regenerative retreatments across Hyderabad.</p>
+              <div>
+                <div class="tag" aria-label="3200+ microscope root canals completed">
+                  <i class="ri-microscope-line" aria-hidden="true"></i> 3200+ RCTs
+                </div>
+                <button type="button" class="expertise-card__cta" data-default-label="Book consult" data-active-label="Added to visit plan" aria-pressed="false">Book consult</button>
+              </div>
+            </section>
+          </article>
+          <article class="expertise-card" data-tone="citrus">
+            <img src="/images/roger.webp" alt="Dr. Roger, sterilisation lead at Noble Dental Care" width="320" height="320" loading="lazy">
+            <section>
+              <h3>Dr. Roger</h3>
+              <p>Sterilisation and quality systems doctor validating every autoclave cycle, laser spore test and chairside turnover.</p>
+              <div>
+                <div class="tag" aria-label="NABH and OSHA certified infection control">
+                  <i class="ri-shield-check-line" aria-hidden="true"></i> NABH &amp; OSHA
+                </div>
+                <button type="button" class="expertise-card__cta" data-default-label="Quality brief" data-active-label="Shared" aria-pressed="false">Quality brief</button>
+              </div>
+            </section>
+          </article>
+          <article class="expertise-card" data-tone="violet">
+            <img src="/images/thikvijay.webp" alt="Dr. Thik Vijay, prosthodontist for crowns" width="320" height="320" loading="lazy">
+            <section>
+              <h3>Dr. Thik Vijay</h3>
+              <p>Prosthodontist designing digital crowns and fibre posts that seal RCT teeth with long-term occlusal balance.</p>
+              <div>
+                <div class="tag" aria-label="1500 chairside crowns delivered">
+                  <i class="ri-medal-line" aria-hidden="true"></i> 1500 crowns
+                </div>
+                <button type="button" class="expertise-card__cta" data-default-label="Plan smile" data-active-label="Smile planned" aria-pressed="false">Plan smile</button>
+              </div>
+            </section>
+          </article>
+        </div>
+        <div class="team-cta" data-animate>
+          <p>Ask for our credentials binder, infection control logs or Continuing Dental Education certificates — we share them openly to build trust before treatment begins.</p>
         </div>
       </div>
     </section>
@@ -522,6 +825,133 @@
     });
 
     sectionMap.forEach((_link, section) => sectionObserver.observe(section));
+
+    const expertiseButtons = document.querySelectorAll('.expertise-card__cta');
+    expertiseButtons.forEach((button) => {
+      const defaultLabel = button.dataset.defaultLabel || button.textContent.trim();
+      const activeLabel = button.dataset.activeLabel || 'Saved';
+      button.textContent = defaultLabel;
+      button.setAttribute('aria-pressed', 'false');
+      button.addEventListener('click', () => {
+        const isSelected = button.classList.toggle('is-selected');
+        button.textContent = isSelected ? activeLabel : defaultLabel;
+        button.setAttribute('aria-pressed', isSelected.toString());
+      });
+    });
+
+    const carousel = document.querySelector('.rc-slideshow');
+    if (carousel) {
+      const slides = Array.from(carousel.querySelectorAll('.rc-slide'));
+      const controls = document.querySelectorAll('.rc-control');
+      const indicator = document.querySelector('.rc-indicator__chip');
+      const step = slides.length ? 360 / slides.length : 60;
+      let rotation = 0;
+      let pointerId = null;
+      let startX = 0;
+      let startRotation = 0;
+      let autoRotateId = null;
+      const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+      const wrapRotation = (value) => {
+        let result = value % 360;
+        if (result > 180) result -= 360;
+        if (result < -180) result += 360;
+        return result;
+      };
+
+      const updateActive = () => {
+        const normalized = ((-rotation % 360) + 360) % 360;
+        const activeIndex = ((Math.round(normalized / step)) % slides.length + slides.length) % slides.length;
+        slides.forEach((slide, index) => {
+          const isActive = index === activeIndex;
+          slide.classList.toggle('is-active', isActive);
+          slide.setAttribute('aria-hidden', (!isActive).toString());
+          if (isActive && indicator) {
+            indicator.textContent = slide.dataset.label || slide.querySelector('h3')?.textContent?.trim() || `Phase ${index + 1}`;
+          }
+        });
+      };
+
+      const setRotation = (value) => {
+        rotation = wrapRotation(value);
+        carousel.style.setProperty('--rotation', `${rotation}deg`);
+        updateActive();
+      };
+
+      const rotateBy = (steps) => {
+        setRotation(rotation - steps * step);
+      };
+
+      const stopAuto = () => {
+        if (autoRotateId) {
+          clearInterval(autoRotateId);
+          autoRotateId = null;
+        }
+      };
+
+      const startAuto = () => {
+        if (prefersReducedMotion || slides.length <= 1) {
+          stopAuto();
+          return;
+        }
+        stopAuto();
+        autoRotateId = setInterval(() => rotateBy(1), 6000);
+      };
+
+      const snapToNearest = () => {
+        const snapped = Math.round(rotation / step) * step;
+        setRotation(snapped);
+      };
+
+      controls.forEach((control) => {
+        control.addEventListener('click', () => {
+          const direction = Number(control.dataset.direction || 1);
+          stopAuto();
+          rotateBy(direction);
+          startAuto();
+        });
+      });
+
+      carousel.addEventListener('pointerdown', (event) => {
+        pointerId = event.pointerId;
+        startX = event.clientX;
+        startRotation = rotation;
+        carousel.setPointerCapture(pointerId);
+        carousel.classList.add('is-dragging');
+        stopAuto();
+      });
+
+      carousel.addEventListener('pointermove', (event) => {
+        if (pointerId !== event.pointerId) return;
+        const deltaX = event.clientX - startX;
+        setRotation(startRotation + deltaX * -0.4);
+      });
+
+      const releasePointer = (event) => {
+        if (pointerId !== event.pointerId) return;
+        carousel.classList.remove('is-dragging');
+        if (carousel.hasPointerCapture(pointerId)) {
+          carousel.releasePointerCapture(pointerId);
+        }
+        pointerId = null;
+        snapToNearest();
+        startAuto();
+      };
+
+      carousel.addEventListener('pointerup', releasePointer);
+      carousel.addEventListener('pointercancel', releasePointer);
+      carousel.addEventListener('lostpointercapture', (event) => {
+        if (pointerId === null) return;
+        pointerId = null;
+        carousel.classList.remove('is-dragging');
+        snapToNearest();
+        startAuto();
+      });
+
+      slides.forEach((slide) => slide.setAttribute('aria-hidden', 'true'));
+      updateActive();
+      startAuto();
+    }
   </script>
 </body>
 </html>
