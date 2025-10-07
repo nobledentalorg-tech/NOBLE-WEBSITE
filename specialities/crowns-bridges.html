@@ -694,15 +694,13 @@
       </label>
     </div>
     <div class="compare-visual" aria-label="Selected crowns visualiser" aria-live="polite">
-      <div class="compare-slideshow" id="compareSlideshow">
-        <div class="compare-slide" data-slot="A" style="--i:0;">
-          <h3 class="compare-slide__title">Type <span>A crown</span></h3>
-          <p class="compare-slide__name" data-slot="AName">Ultra Plus layered zirconia</p>
+      <div class="slideshow" id="compareSlideshow">
+        <div class="slide" data-slot="A" style="--i:0;">
+          <h2 data-slot="ATitle">Ultra<span data-slot="ATitleSpan">Plus layered zirconia</span></h2>
           <img src="https://dentcare-website-s3-bucket-01.s3.eu-north-1.amazonaws.com/storage/assets/uploads/pTlIDentcareZirconiaUltraPlus.jpg" alt="Ultra Plus layered zirconia crown with translucent incisal halo">
         </div>
-        <div class="compare-slide" data-slot="B" style="--i:1;">
-          <h3 class="compare-slide__title">Type <span>B crown</span></h3>
-          <p class="compare-slide__name" data-slot="BName">Platinum/Premium multi-layer zirconia</p>
+        <div class="slide" data-slot="B" style="--i:1;">
+          <h2 data-slot="BTitle">Platinum/Premium<span data-slot="BTitleSpan">multi-layer zirconia</span></h2>
           <img src="https://dentcare-website-s3-bucket-01.s3.eu-north-1.amazonaws.com/storage/assets/uploads/JCK1DentcareZirconiaClassic-1.png" alt="Platinum multi-layer zirconia bridge with five transition zones">
         </div>
       </div>
@@ -1078,19 +1076,46 @@ document.addEventListener('DOMContentLoaded', () => {
   const selects = Array.from(document.querySelectorAll('.compare-select'));
   const compareAName = document.getElementById('compareAName');
   const compareBName = document.getElementById('compareBName');
-  const compareSlideNames = {
-    A: document.querySelector('[data-slot="AName"]'),
-    B: document.querySelector('[data-slot="BName"]')
+  const compareSlideTitles = {
+    A: document.querySelector('.slideshow .slide[data-slot="A"] h2'),
+    B: document.querySelector('.slideshow .slide[data-slot="B"] h2')
+  };
+  const compareSlideTitleSpans = {
+    A: compareSlideTitles.A ? compareSlideTitles.A.querySelector('span') : null,
+    B: compareSlideTitles.B ? compareSlideTitles.B.querySelector('span') : null
   };
   const compareSlideImages = {
-    A: document.querySelector('.compare-slide[data-slot="A"] img'),
-    B: document.querySelector('.compare-slide[data-slot="B"] img')
+    A: document.querySelector('.slideshow .slide[data-slot="A"] img'),
+    B: document.querySelector('.slideshow .slide[data-slot="B"] img')
+  };
+
+  const splitTitle = name => {
+    if (!name) return { primary: 'Select', secondary: 'crown' };
+    const parts = name.trim().split(/\s+/);
+    if (parts.length === 1) {
+      return { primary: parts[0], secondary: parts[0] };
+    }
+    const primary = parts.shift();
+    return { primary, secondary: parts.join(' ') };
   };
 
   const updateSlide = (slot, data) => {
-    const nameEl = compareSlideNames[slot];
     const imageEl = compareSlideImages[slot];
-    if (nameEl) nameEl.textContent = data?.name ?? 'Select a crown';
+    const titleEl = compareSlideTitles[slot];
+    const spanEl = compareSlideTitleSpans[slot];
+    const { primary, secondary } = splitTitle(data?.name);
+
+    if (titleEl) {
+      const textNode = titleEl.childNodes[0];
+      if (textNode && textNode.nodeType === Node.TEXT_NODE) {
+        textNode.textContent = primary;
+      } else {
+        titleEl.insertBefore(document.createTextNode(primary), titleEl.firstChild);
+      }
+    }
+    if (spanEl) {
+      spanEl.textContent = secondary || primary || 'crown';
+    }
     if (imageEl) {
       if (data?.image?.src) {
         imageEl.src = data.image.src;
@@ -1127,12 +1152,12 @@ document.addEventListener('DOMContentLoaded', () => {
     compareAName.textContent = aData.name;
     compareBName.textContent = bData.name;
 
-    document.querySelectorAll('[data-slot="A"]').forEach(cell => {
+    document.querySelectorAll('[data-slot="A"][data-field]').forEach(cell => {
       const field = cell.getAttribute('data-field');
       cell.textContent = aData[field];
     });
 
-    document.querySelectorAll('[data-slot="B"]').forEach(cell => {
+    document.querySelectorAll('[data-slot="B"][data-field]').forEach(cell => {
       const field = cell.getAttribute('data-field');
       cell.textContent = bData[field];
     });
