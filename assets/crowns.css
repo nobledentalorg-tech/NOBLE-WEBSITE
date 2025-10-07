@@ -546,24 +546,32 @@
   /* overflow: hidden; */
 }
 
+
 .compare-visual .slideshow .slide {
   position: absolute;
   inset: 0;
   display: flex;
   align-items: flex-start;
   justify-content: flex-start;
-  transform: rotateY(270deg);
+  transform: rotateY(90deg);
   transform-style: preserve-3d;
-  animation: compareAnimate 40s linear infinite;
-  animation-delay: calc(var(--i) * 4s);
+  animation: compareAnimate 12s linear infinite;
+  animation-delay: calc(var(--i) * 6s);
+  animation-fill-mode: both;
+  will-change: transform;
 }
 
 @keyframes compareAnimate {
-  0% {
+  0%,
+  40% {
+    transform: rotateY(90deg);
+  }
+
+  50% {
     transform: rotateY(270deg);
   }
 
-  10%,
+  60%,
   100% {
     transform: rotateY(90deg);
   }
@@ -586,13 +594,17 @@
 .compare-visual .slideshow .slide h2 {
   position: relative;
   z-index: 1000;
-  color: #000000;
   font-size: 2em;
   transform: rotateY(180deg) translateY(100px) translateZ(50px);
   transform-style: preserve-3d;
   backface-visibility: hidden;
   font-weight: 900;
   font-family: "Poppins", sans-serif;
+  background: linear-gradient(120deg, #ff7a18, #af002d 45%, #319197);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  filter: drop-shadow(0 4px 10px rgba(15, 26, 47, 0.25));
 }
 
 .compare-visual .slideshow .slide h2 span {
@@ -603,6 +615,10 @@
   font-weight: 300;
   transform: translateZ(50px);
   backface-visibility: hidden;
+  background: linear-gradient(135deg, #42a5f5, #7e57c2 55%, #ffb74d);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
 }
 
 .compare-table {
