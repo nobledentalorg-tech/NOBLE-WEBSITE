@@ -1089,6 +1089,15 @@ document.addEventListener('DOMContentLoaded', () => {
     B: document.querySelector('.slideshow .slide[data-slot="B"] img')
   };
 
+  const ensureSpan = slot => {
+    if (!compareSlideTitleSpans[slot] && compareSlideTitles[slot]) {
+      const newSpan = document.createElement('span');
+      compareSlideTitles[slot].appendChild(newSpan);
+      compareSlideTitleSpans[slot] = newSpan;
+    }
+    return compareSlideTitleSpans[slot];
+  };
+
   const splitTitle = name => {
     if (!name) return { primary: 'Select', secondary: 'crown' };
     const parts = name.trim().split(/\s+/);
@@ -1102,7 +1111,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const updateSlide = (slot, data) => {
     const imageEl = compareSlideImages[slot];
     const titleEl = compareSlideTitles[slot];
-    const spanEl = compareSlideTitleSpans[slot];
+    const spanEl = ensureSpan(slot);
     const { primary, secondary } = splitTitle(data?.name);
 
     if (titleEl) {
