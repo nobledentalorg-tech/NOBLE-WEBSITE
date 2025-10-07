@@ -543,9 +543,7 @@
   height: 400px;
   transform-style: preserve-3d;
   perspective: 1000px;
-  /* overflow: hidden; */
 }
-
 
 .compare-visual .slideshow .slide {
   position: absolute;
@@ -553,27 +551,45 @@
   display: flex;
   align-items: flex-start;
   justify-content: flex-start;
-  transform: rotateY(90deg);
+  transform: rotateY(270deg);
   transform-style: preserve-3d;
-  animation: compareAnimate 12s linear infinite;
-  animation-delay: calc(var(--i) * 6s);
+  animation: compareAnimate 40s linear infinite;
+  animation-delay: calc(var(--i) * 4s);
   animation-fill-mode: both;
   will-change: transform;
+  transition: transform 0.6s ease, opacity 0.6s ease;
 }
 
 @keyframes compareAnimate {
-  0%,
-  40% {
-    transform: rotateY(90deg);
-  }
-
-  50% {
+  0% {
     transform: rotateY(270deg);
   }
 
-  60%,
+  10%,
   100% {
     transform: rotateY(90deg);
+  }
+}
+
+.compare-visual .slideshow:hover .slide {
+  animation-play-state: paused;
+}
+
+.compare-visual .slideshow:hover .slide[data-slot="A"] {
+  transform: rotateY(90deg) translateX(-160px) translateZ(0) scale(0.97);
+}
+
+.compare-visual .slideshow:hover .slide[data-slot="B"] {
+  transform: rotateY(90deg) translateX(160px) translateZ(0) scale(0.97);
+}
+
+@media (max-width: 640px) {
+  .compare-visual .slideshow:hover .slide[data-slot="A"] {
+    transform: rotateY(90deg) translateX(-110px) scale(0.95);
+  }
+
+  .compare-visual .slideshow:hover .slide[data-slot="B"] {
+    transform: rotateY(90deg) translateX(110px) scale(0.95);
   }
 }
 
@@ -600,10 +616,11 @@
   backface-visibility: hidden;
   font-weight: 900;
   font-family: "Poppins", sans-serif;
-  background: linear-gradient(120deg, #ff7a18, #af002d 45%, #319197);
+  background: linear-gradient(135deg, #ff6ec4 0%, #7873f5 35%, #4ade80 70%, #ffd166 100%);
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
+  -webkit-text-fill-color: transparent;
   filter: drop-shadow(0 4px 10px rgba(15, 26, 47, 0.25));
 }
 
@@ -615,10 +632,11 @@
   font-weight: 300;
   transform: translateZ(50px);
   backface-visibility: hidden;
-  background: linear-gradient(135deg, #42a5f5, #7e57c2 55%, #ffb74d);
+  background: linear-gradient(135deg, #42a5f5 0%, #7e57c2 40%, #ffb74d 80%, #ff6ec4 100%);
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
+  -webkit-text-fill-color: transparent;
 }
 
 .compare-table {
