@@ -1,0 +1,54 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 600" role="img" aria-labelledby="title desc">
+  <title id="title">Biomimetic composite filling illustration</title>
+  <desc id="desc">Bright gradient artwork showing stepwise tooth reconstruction before and after filling.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#ff8bb3"/>
+      <stop offset="50%" stop-color="#7ed2ff"/>
+      <stop offset="100%" stop-color="#816bff"/>
+    </linearGradient>
+    <linearGradient id="tooth" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#fdfcff"/>
+      <stop offset="100%" stop-color="#d6ecff"/>
+    </linearGradient>
+    <linearGradient id="dentin" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#ffd7a5"/>
+      <stop offset="100%" stop-color="#ff9f6d"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#ffffff" stop-opacity="0.8"/>
+      <stop offset="100%" stop-color="#ffffff" stop-opacity="0"/>
+    </radialGradient>
+    <filter id="shadow" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="16" stdDeviation="24" flood-color="#143e79" flood-opacity="0.2"/>
+    </filter>
+  </defs>
+  <rect width="960" height="600" fill="url(#bg)"/>
+  <g filter="url(#shadow)">
+    <rect x="100" y="100" width="760" height="400" rx="52" fill="rgba(255,255,255,0.85)"/>
+  </g>
+  <g transform="translate(160 160)">
+    <rect width="240" height="280" rx="32" fill="rgba(255,255,255,0.9)" stroke="rgba(255,255,255,0.6)" stroke-width="2"/>
+    <text x="120" y="44" text-anchor="middle" font-family="'Manrope', 'Segoe UI', sans-serif" font-weight="700" font-size="26" fill="#12345a">Before</text>
+    <path d="M60 90 C120 40 160 40 220 90 L220 210 C160 260 120 260 60 210 Z" fill="url(#tooth)" stroke="#94c7ff" stroke-width="6"/>
+    <path d="M85 140 C140 110 170 110 210 150" fill="none" stroke="#ff94c2" stroke-width="10" stroke-linecap="round" stroke-dasharray="8 16"/>
+    <path d="M70 190 C130 220 170 220 210 190" fill="#ffd1af" opacity="0.55"/>
+    <circle cx="140" cy="150" r="54" fill="rgba(255,118,150,0.3)"/>
+  </g>
+  <g transform="translate(440 160)">
+    <rect width="360" height="280" rx="32" fill="rgba(255,255,255,0.95)" stroke="rgba(126,208,255,0.6)" stroke-width="3"/>
+    <text x="180" y="44" text-anchor="middle" font-family="'Manrope', 'Segoe UI', sans-serif" font-weight="700" font-size="26" fill="#12345a">After biomimetic layering</text>
+    <path d="M90 90 C150 40 210 40 270 90 L270 210 C210 260 150 260 90 210 Z" fill="url(#tooth)" stroke="#78c6ff" stroke-width="6"/>
+    <path d="M110 150 C150 210 220 210 250 150" fill="url(#dentin)" opacity="0.9"/>
+    <path d="M105 135 C150 115 210 115 255 140" fill="none" stroke="#f0b6ff" stroke-width="8" stroke-linecap="round"/>
+    <path d="M96 182 C150 232 210 232 264 182" fill="url(#dentin)" opacity="0.6"/>
+    <g fill="#ffffff">
+      <circle cx="160" cy="120" r="12"/>
+      <circle cx="210" cy="110" r="8"/>
+      <circle cx="190" cy="160" r="6"/>
+    </g>
+    <ellipse cx="180" cy="210" rx="120" ry="28" fill="rgba(255,255,255,0.55)"/>
+  </g>
+  <text x="480" y="540" text-anchor="middle" font-family="'Manrope', 'Segoe UI', sans-serif" font-size="26" font-weight="600" fill="#132d55">Rebuilt cusps • Fluoride-rich base • High gloss polish</text>
+  <circle cx="480" cy="300" r="220" fill="url(#glow)" opacity="0.55"/>
+</svg>
