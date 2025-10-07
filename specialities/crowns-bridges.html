@@ -693,6 +693,21 @@
         <select id="compareB" class="compare-select"></select>
       </label>
     </div>
+    <div class="compare-visual" aria-label="Selected crowns visualiser" aria-live="polite">
+      <div class="compare-slideshow" id="compareSlideshow">
+        <div class="compare-slide" data-slot="A" style="--i:0;">
+          <h3 class="compare-slide__title">Type <span>A crown</span></h3>
+          <p class="compare-slide__name" data-slot="AName">Ultra Plus layered zirconia</p>
+          <img src="https://dentcare-website-s3-bucket-01.s3.eu-north-1.amazonaws.com/storage/assets/uploads/pTlIDentcareZirconiaUltraPlus.jpg" alt="Ultra Plus layered zirconia crown with translucent incisal halo">
+        </div>
+        <div class="compare-slide" data-slot="B" style="--i:1;">
+          <h3 class="compare-slide__title">Type <span>B crown</span></h3>
+          <p class="compare-slide__name" data-slot="BName">Platinum/Premium multi-layer zirconia</p>
+          <img src="https://dentcare-website-s3-bucket-01.s3.eu-north-1.amazonaws.com/storage/assets/uploads/JCK1DentcareZirconiaClassic-1.png" alt="Platinum multi-layer zirconia bridge with five transition zones">
+        </div>
+      </div>
+      <p class="compare-visual__note">Crowns rotate automatically — change the dropdowns to update the visuals.</p>
+    </div>
     <div class="table-scroll">
       <table class="compare-table">
         <thead>
@@ -800,7 +815,11 @@ document.addEventListener('DOMContentLoaded', () => {
       price: '13,500 – 15,500',
       anterior: '★★★★☆ — superb once veneered facially',
       posterior: '★★★★★ — reliable for premolars and molars',
-      bridge: 'Up to 6-unit bridges and implant-supported spans'
+      bridge: 'Up to 6-unit bridges and implant-supported spans',
+      image: {
+        src: 'https://dentcare-website-s3-bucket-01.s3.eu-north-1.amazonaws.com/storage/assets/uploads/pTlIDentcareZirconiaUltraPlus.jpg',
+        alt: 'Ultra Plus layered zirconia crown with translucent incisal halo'
+      }
     },
     platinumPlus: {
       name: 'Platinum/Premium multi-layer zirconia',
@@ -814,7 +833,11 @@ document.addEventListener('DOMContentLoaded', () => {
       price: '15,500 – 19,500',
       anterior: '★★★★★ — elite esthetics for centrals and canines',
       posterior: '★★★★☆ — dependable on premolars when forces controlled',
-      bridge: 'Ideal for 8–14 unit cosmetic rehabilitations'
+      bridge: 'Ideal for 8–14 unit cosmetic rehabilitations',
+      image: {
+        src: 'https://dentcare-website-s3-bucket-01.s3.eu-north-1.amazonaws.com/storage/assets/uploads/JCK1DentcareZirconiaClassic-1.png',
+        alt: 'Platinum multi-layer zirconia bridge with five transition zones'
+      }
     },
     premiumPlus: {
       name: 'Premium Plus full-arch zirconia',
@@ -828,7 +851,11 @@ document.addEventListener('DOMContentLoaded', () => {
       price: '16,500 – 19,500',
       anterior: '★★★★★ — seamless gradient for smile line',
       posterior: '★★★★★ — reinforced connectors resist flexure',
-      bridge: 'Engineered for 10–16 unit spans with digital verification'
+      bridge: 'Engineered for 10–16 unit spans with digital verification',
+      image: {
+        src: 'https://dentcare-website-s3-bucket-01.s3.eu-north-1.amazonaws.com/storage/assets/uploads/nCxdDentcareZirconiaPremium(3unit).png',
+        alt: 'Premium Plus full arch zirconia with layered characterization'
+      }
     },
     solidPlus: {
       name: 'Solid Plus posterior zirconia',
@@ -842,7 +869,11 @@ document.addEventListener('DOMContentLoaded', () => {
       price: '11,500 – 13,500',
       anterior: '★☆☆☆☆ — keep out of smile zone',
       posterior: '★★★★★ — built for molar punishment',
-      bridge: 'Supports 3-unit posterior bridges with 12 mm² connectors'
+      bridge: 'Supports 3-unit posterior bridges with 12 mm² connectors',
+      image: {
+        src: 'https://dentcare-website-s3-bucket-01.s3.eu-north-1.amazonaws.com/storage/assets/uploads/9CVtDentcareZirconiaPremiumPlus-1.jpg',
+        alt: 'Solid Plus posterior zirconia crowns on model'
+      }
     },
     classicZirconia: {
       name: 'Classic layered zirconia',
@@ -856,7 +887,11 @@ document.addEventListener('DOMContentLoaded', () => {
       price: '14,500 – 17,500',
       anterior: '★★★★★ — controllable layering for centrals',
       posterior: '★★★★☆ — strong when connector design respected',
-      bridge: 'Handles up to 16-unit PFZ bridges with proper support'
+      bridge: 'Handles up to 16-unit PFZ bridges with proper support',
+      image: {
+        src: 'https://dentcare-website-s3-bucket-01.s3.eu-north-1.amazonaws.com/storage/assets/uploads/ZShCDentcareZirconiaClassic.png',
+        alt: 'Classic zirconia crowns with layered porcelain'
+      }
     },
     ipsEmax: {
       name: 'IPS e.max press & CAD',
@@ -870,7 +905,11 @@ document.addEventListener('DOMContentLoaded', () => {
       price: '12,500 – 16,500',
       anterior: '★★★★★ — benchmark translucency for smile makeovers',
       posterior: '★★★☆☆ — rely on short spans with proper clearance',
-      bridge: 'Best restricted to 3-unit anterior or cantilever lateral cases'
+      bridge: 'Best restricted to 3-unit anterior or cantilever lateral cases',
+      image: {
+        src: 'https://dentcare-website-s3-bucket-01.s3.eu-north-1.amazonaws.com/storage/assets/uploads/ngE2IPSEMAX1x.jpg',
+        alt: 'Lithium disilicate crowns with incisal translucency'
+      }
     },
     lavaUltimate: {
       name: 'Lava Ultimate nano-ceramic',
@@ -884,7 +923,11 @@ document.addEventListener('DOMContentLoaded', () => {
       price: '10,000 – 12,500',
       anterior: '★★★★☆ — bright fluorescence for lateral incisors',
       posterior: '★★★☆☆ — ideal for bonded overlays, not full molar crowns',
-      bridge: 'Use for short cantilevers or implant provisionals only'
+      bridge: 'Use for short cantilevers or implant provisionals only',
+      image: {
+        src: 'https://dentcare-website-s3-bucket-01.s3.eu-north-1.amazonaws.com/storage/assets/uploads/kqVO3MLavaEssential,TranslucentandPremium11x.png',
+        alt: 'Nano-ceramic blocks milled for Lava Ultimate restorations'
+      }
     },
     bruxCare: {
       name: 'BruxCare ultra-dense zirconia',
@@ -898,7 +941,11 @@ document.addEventListener('DOMContentLoaded', () => {
       price: '12,500 – 14,500',
       anterior: '★☆☆☆☆ — reserve for non-aesthetic areas',
       posterior: '★★★★★ — unmatched endurance for grinders',
-      bridge: 'Excellent for posterior cantilevers and implant frameworks'
+      bridge: 'Excellent for posterior cantilevers and implant frameworks',
+      image: {
+        src: 'https://dentcare-website-s3-bucket-01.s3.eu-north-1.amazonaws.com/storage/assets/uploads/RVCLjB1obbs02.jpg',
+        alt: 'High strength zirconia crown built for bruxism'
+      }
     },
     peekHybrid: {
       name: 'Hybrid PEEK framework',
@@ -912,7 +959,11 @@ document.addEventListener('DOMContentLoaded', () => {
       price: '20,000 – 28,000 (unit equivalent)',
       anterior: '★★★☆☆ — custom staining mimics soft tissue',
       posterior: '★★★★☆ — light weight on implants with shock absorption',
-      bridge: 'Purpose-built for hybrid bars and wraparound frameworks'
+      bridge: 'Purpose-built for hybrid bars and wraparound frameworks',
+      image: {
+        src: 'https://dentcare-website-s3-bucket-01.s3.eu-north-1.amazonaws.com/storage/assets/uploads/k6VjDentCarePEEK2.jpg',
+        alt: 'PEEK framework wrapped with composite layering'
+      }
     },
     dmlsPfm: {
       name: 'DMLS porcelain-fused metal',
@@ -926,7 +977,11 @@ document.addEventListener('DOMContentLoaded', () => {
       price: '9,500 – 12,500',
       anterior: '★★★☆☆ — good with porcelain butt margin',
       posterior: '★★★★☆ — dependable for complex bridges',
-      bridge: 'Excels in multi-unit spans and precision attachment work'
+      bridge: 'Excels in multi-unit spans and precision attachment work',
+      image: {
+        src: 'https://dentcare-website-s3-bucket-01.s3.eu-north-1.amazonaws.com/storage/assets/uploads/5GOcDentCareDMLSpfm(2).jpg',
+        alt: 'Laser-sintered PFM framework ready for porcelain layering'
+      }
     },
     novaPfm: {
       name: 'Nova cast PFM',
@@ -940,7 +995,11 @@ document.addEventListener('DOMContentLoaded', () => {
       price: '9,500 – 12,000',
       anterior: '★★★☆☆ — hides well with porcelain shoulder',
       posterior: '★★★★☆ — stable for posteriors and survey crowns',
-      bridge: 'Ideal for mixed metal-ceramic rehabilitations'
+      bridge: 'Ideal for mixed metal-ceramic rehabilitations',
+      image: {
+        src: 'https://dentcare-website-s3-bucket-01.s3.eu-north-1.amazonaws.com/storage/assets/uploads/mletDentCareNOVAPFM(2).jpg',
+        alt: 'Nova PFM crowns with porcelain overlay'
+      }
     },
     preciousAlloy: {
       name: 'High noble alloy crown',
@@ -954,7 +1013,11 @@ document.addEventListener('DOMContentLoaded', () => {
       price: '18,000 – 26,000',
       anterior: '★☆☆☆☆ — use lingually only',
       posterior: '★★★★★ — benchmark longevity',
-      bridge: 'Excellent for posterior anchors and precision attachment copings'
+      bridge: 'Excellent for posterior anchors and precision attachment copings',
+      image: {
+        src: 'https://dentcare-website-s3-bucket-01.s3.eu-north-1.amazonaws.com/storage/assets/uploads/1rV7Go03.jpg',
+        alt: 'Yellow high noble alloy crowns with mirror polish'
+      }
     },
     npgAlloy: {
       name: 'Premium NPG alloy',
@@ -968,7 +1031,11 @@ document.addEventListener('DOMContentLoaded', () => {
       price: '8,500 – 10,500',
       anterior: '★★☆☆☆ — use selectively where metal display minimal',
       posterior: '★★★★☆ — strong and economical',
-      bridge: 'Supports cost-sensitive multi-unit frameworks'
+      bridge: 'Supports cost-sensitive multi-unit frameworks',
+      image: {
+        src: 'https://dentcare-website-s3-bucket-01.s3.eu-north-1.amazonaws.com/storage/assets/uploads/91ElNPG02.webp',
+        alt: 'Non-precious alloy frameworks ready for porcelain build-up'
+      }
     },
     permaHybrid: {
       name: 'Permaprint hybrid resin',
@@ -982,7 +1049,11 @@ document.addEventListener('DOMContentLoaded', () => {
       price: '7,500 – 9,000',
       anterior: '★★★★☆ — quick aesthetic upgrade with minimal prep',
       posterior: '★★★☆☆ — best for short-span or interim restorations',
-      bridge: 'Suitable for short-span printed bridges and verification jigs'
+      bridge: 'Suitable for short-span printed bridges and verification jigs',
+      image: {
+        src: 'https://dentcare-website-s3-bucket-01.s3.eu-north-1.amazonaws.com/storage/assets/uploads/SBWqPermaprintw.webp',
+        alt: '3D printed hybrid resin crowns from Permaprint'
+      }
     },
     lightCure: {
       name: 'Indirect light-cure composite',
@@ -996,13 +1067,42 @@ document.addEventListener('DOMContentLoaded', () => {
       price: '8,000 – 10,500',
       anterior: '★★★★☆ — polishes beautifully for lateral and canine veneers',
       posterior: '★★★☆☆ — comfortable cushioning for premolars',
-      bridge: 'Short 2–3 unit bonded provisionals or occlusal overlays only'
+      bridge: 'Short 2–3 unit bonded provisionals or occlusal overlays only',
+      image: {
+        src: 'https://dentcare-website-s3-bucket-01.s3.eu-north-1.amazonaws.com/storage/assets/uploads/qAQADCLightCureComposite0211x.jpg',
+        alt: 'Indirect light-cured composite inlays on model'
+      }
     }
   };
 
   const selects = Array.from(document.querySelectorAll('.compare-select'));
   const compareAName = document.getElementById('compareAName');
   const compareBName = document.getElementById('compareBName');
+  const compareSlideNames = {
+    A: document.querySelector('[data-slot="AName"]'),
+    B: document.querySelector('[data-slot="BName"]')
+  };
+  const compareSlideImages = {
+    A: document.querySelector('.compare-slide[data-slot="A"] img'),
+    B: document.querySelector('.compare-slide[data-slot="B"] img')
+  };
+
+  const updateSlide = (slot, data) => {
+    const nameEl = compareSlideNames[slot];
+    const imageEl = compareSlideImages[slot];
+    if (nameEl) nameEl.textContent = data?.name ?? 'Select a crown';
+    if (imageEl) {
+      if (data?.image?.src) {
+        imageEl.src = data.image.src;
+        imageEl.alt = data.image.alt ?? data.name ?? '';
+        imageEl.hidden = false;
+      } else {
+        imageEl.hidden = true;
+        imageEl.removeAttribute('src');
+        imageEl.alt = '';
+      }
+    }
+  };
 
   const populateOptions = () => {
     selects.forEach(select => {
@@ -1036,6 +1136,9 @@ document.addEventListener('DOMContentLoaded', () => {
       const field = cell.getAttribute('data-field');
       cell.textContent = bData[field];
     });
+
+    updateSlide('A', aData);
+    updateSlide('B', bData);
   };
 
   populateOptions();
