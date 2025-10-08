@@ -149,45 +149,55 @@ document.addEventListener("DOMContentLoaded", () => {
   /* =========================================================
      3. Doctor cards → popup sheet
   ========================================================= */
-  const docGrid = $("#docGrid");
-  const docSheet = $("#docSheet");
-  const sheetTitle = $("#sheetTitle");
-  const sheetRole = $("#sheetRole");
-  const sheetBio = $("#sheetBio");
-  const sheetHero = $("#sheetHero");
-  const sheetExpertise = $("#sheetExpertise");
-  const sheetBooks = $("#sheetBooks");
-  const sheetBook = $("#sheetBook");
-  const sheetClose = $(".sheet-close");
-
-  if (docGrid && docSheet) {
-    $$(".ndc-card", docGrid).forEach((card) => {
-      const openBtn = card.querySelector(".open, .block");
-      on(openBtn, "click", (e) => {
-        e.preventDefault();
-        const name = card.querySelector(".name")?.textContent || "";
-        const role = card.querySelector(".role")?.textContent || "";
-        const img = card.querySelector("img")?.src || "";
-
-        sheetTitle.textContent = name;
-        sheetRole.textContent = role;
-        sheetHero.src = img;
-        sheetHero.alt = name;
-
-        // Reset extras
-        sheetBio.textContent = "";
-        sheetExpertise.innerHTML = "";
-        sheetBooks.innerHTML = "";
-
-        // Set booking link
-        sheetBook.dataset.doc = name;
-
-        docSheet.showModal();
-      });
-    });
-
-    on(sheetClose, "click", () => docSheet.close());
+ const doctorData = {
+  dhivakaran: {
+    name: "Dr Dhivakaran",
+    img: "images/dhivakaran.webp",
+    bio: "Chief Medical Director · Director, Healthflo (557 Hospitals). Contributor to Triumph’s Complete Review of Dentistry.",
+    expertise: ["Painless RCT", "Implants", "Microscopic Dentistry"]
+  },
+  roger: {
+    name: "Dr Roger Ronaldo",
+    img: "images/roger.webp",
+    bio: "Oral & Maxillofacial Surgeon specializing in Implants, Reconstruction and Trauma.",
+    expertise: ["Implantology", "Reconstruction", "Surgical Aesthetics"]
+  },
+  deepak: {
+    name: "Dr Deepak",
+    img: "images/deepak.webp",
+    bio: "Orthodontist · Smile Design · Clear Aligners.",
+    expertise: ["Smile Design", "Aligners", "Digital Orthodontics"]
+  },
+  idhaya: {
+    name: "Dr Idhaya",
+    img: "images/idhaya.webp",
+    bio: "Pediatric Dentist · Preventive & Restorative Care.",
+    expertise: ["Preventive Dentistry", "Restorative Dentistry", "Child Oral Health"]
   }
+};
+
+const modal = document.getElementById("doctorModal");
+const modalImg = document.getElementById("modalImg");
+const modalName = document.getElementById("modalName");
+const modalBio = document.getElementById("modalBio");
+const modalExpertise = document.getElementById("modalExpertise");
+
+document.querySelectorAll(".view-btn").forEach(btn => {
+  btn.addEventListener("click", e => {
+    const id = e.target.closest(".card").dataset.id;
+    const doc = doctorData[id];
+    if (!doc) return;
+    modalImg.src = doc.img;
+    modalName.textContent = doc.name;
+    modalBio.textContent = doc.bio;
+    modalExpertise.innerHTML = doc.expertise.map(e => `<li>${e}</li>`).join("");
+    modal.showModal();
+  });
+});
+
+modal.querySelector(".close").addEventListener("click", () => modal.close());
+modal.addEventListener("click", e => { if (e.target === modal) modal.close(); });
+window.addEventListener("keydown", e => { if (e.key === "Escape" && modal.open) modal.close(); });
 
   /* =========================================================
      4. Booking form: dynamic select + WA handoff
