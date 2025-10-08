@@ -410,8 +410,11 @@ button, input, select, textarea {
 @import url('https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Montserrat:wght@500;700&display=swap');
 @import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css');
 
+/* ===============================
+   SECTION BASE
+=============================== */
 .doctor-team {
-  padding: 4rem 2rem;
+  padding: 5rem 2rem;
   background: linear-gradient(#eee, #ddd);
   display: flex;
   flex-direction: column;
@@ -424,196 +427,244 @@ button, input, select, textarea {
   background: linear-gradient(90deg, #0D6EFD, #12B2A0);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-  margin-bottom: 2rem;
+  margin-bottom: 3rem;
   text-align: center;
 }
 
-/* Grid Layout */
+/* ===============================
+   GRID LAYOUT
+=============================== */
 .card-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-  gap: 2rem;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 2.4rem;
   justify-items: center;
   width: 100%;
-  max-width: 1100px;
+  max-width: 1200px;
 }
 
-/* === Paul Atreides Card === */
+/* ===============================
+   CARD DESIGN (FINAL)
+=============================== */
 .card {
   --bg: #fff;
-  --title-color: #fff;
-  --title-hover: #000;
-  --text-color: #666;
-  --btn: #eee;
-  --btn-hover: #ddd;
+  --title-color: #000;
+  --text-color: #333;
+  --btn: #f5f5f5;
+  --btn-hover: #eaeaea;
   background: var(--bg);
-  border-radius: 2rem;
-  padding: .5rem;
-  width: 20rem;
-  height: 30rem;
+  border-radius: 1.8rem;
+  padding: 0.6rem;
+  width: 18rem;
+  height: 27rem;
   overflow: hidden;
   position: relative;
-  font-family: Lato, Montserrat, sans-serif;
-  box-shadow: 0 10px 25px rgba(0,0,0,.08);
+  font-family: Lato, Montserrat, Helvetica, Arial, sans-serif;
+  border: 2px solid rgba(0,0,0,0.08);
+  box-shadow: 0 10px 25px rgba(0,0,0,0.06);
+  transition: all .35s ease;
 }
 
 .card.dark {
-  --bg: #222;
+  --bg: #121212;
   --title-color: #fff;
-  --title-hover: #fff;
   --text-color: #ccc;
-  --btn: #555;
+  --btn: #333;
   --btn-hover: #444;
+  border-color: rgba(255,255,255,0.15);
+  box-shadow: 0 10px 25px rgba(0,0,0,0.5);
 }
 
+/* --- subtle inner blur band at bottom --- */
 .card::before {
   content: "";
   position: absolute;
   width: calc(100% - 1rem);
   height: 30%;
-  bottom: .5rem;
-  left: .5rem;
+  bottom: 0.5rem;
+  left: 0.5rem;
   mask: linear-gradient(#0000, #000f 80%);
-  backdrop-filter: blur(1rem);
+  backdrop-filter: blur(0.8rem);
   border-radius: 0 0 1.5rem 1.5rem;
-  transition: translate .25s;
+  translate: 0 0;
+  transition: translate 0.25s ease;
 }
 
-.card img {
+/* ===============================
+   IMAGE AREA
+=============================== */
+.card > img {
   width: 100%;
-  aspect-ratio: 2/3;
+  height: 58%;
   object-fit: cover;
-  object-position: 50% 5%;
-  border-radius: 1.5rem;
-  transition: aspect-ratio .25s, object-position .5s;
+  object-position: center 10%;
+  border-radius: 1.3rem;
+  border: 1.5px solid rgba(0,0,0,0.1);
+  transition: transform 0.3s ease, object-position 0.3s ease;
+}
+.card.dark > img {
+  border-color: rgba(255,255,255,0.15);
 }
 
+.card:hover > img {
+  transform: scale(1.03);
+  object-position: center 6%;
+}
+
+/* ===============================
+   CARD CONTENT
+=============================== */
 .card section {
-  margin: 1rem;
-  height: calc(33% - 1rem);
+  padding: 0.8rem 1.1rem 0.9rem;
   display: flex;
   flex-direction: column;
+  justify-content: flex-start;
+  height: 42%;
+  box-sizing: border-box;
 }
 
 .card h2 {
-  margin: 0 0 1rem;
-  font-size: 1.4rem;
+  margin: 0 0 0.4rem;
+  font-size: 1.1rem;
+  font-weight: 700;
   color: var(--title-color);
   opacity: 0;
-  transform: translateY(-200%);
-  transition: color .5s, opacity 1s, transform .25s;
+  transform: translateY(-80%);
+  transition: opacity .45s ease, transform .4s ease;
 }
 
 .card p {
-  font-size: .95rem;
+  font-size: .9rem;
+  line-height: 1.35;
   color: var(--text-color);
   opacity: 0;
   transform: translateY(100%);
-  transition: opacity 1s .2s, transform .25s .2s;
+  transition: opacity .45s ease .1s, transform .4s ease .1s;
 }
 
+/* Inline Badge (Book / In-house aligner / Director) */
+.book-inline {
+  display: flex;
+  align-items: center;
+  gap: .45rem;
+  font-size: .85rem;
+  font-weight: 600;
+  color: #0D6EFD;
+  margin: .6rem 0;
+  background: rgba(13,110,253,0.05);
+  padding: .4rem .7rem;
+  border-radius: .7rem;
+  opacity: 0;
+  transform: translateY(100%);
+  transition: opacity .4s ease .15s, transform .4s ease .15s;
+}
+.card.dark .book-inline {
+  color: #a8caff;
+  background: rgba(255,255,255,0.08);
+}
+
+/* Footer Buttons */
 .card > section > div {
   display: flex;
   justify-content: space-between;
   align-items: flex-end;
   opacity: 0;
   transform: translateY(100%);
-  transition: transform .25s .2s, opacity 1s;
+  transition: opacity .45s ease .2s, transform .4s ease .2s;
 }
 
 .card .tag {
-  align-self: center;
-  color: var(--title-hover);
+  color: var(--title-color);
   font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: .3rem;
 }
 
 .card button {
   border: none;
-  border-radius: 1.25rem 1.25rem 1.5rem 1.25rem;
-  font-size: .9rem;
-  padding: 1rem 1.5rem 1rem 2.75rem;
-  transform: translateX(1rem);
+  border-radius: 1.1rem;
+  font-size: .85rem;
+  padding: .75rem 1.1rem;
   background: var(--btn);
-  color: var(--title-hover);
-  position: relative;
+  color: var(--title-color);
   cursor: pointer;
-  transition: background .33s;
+  transition: background .3s ease, transform .3s ease;
+}
+.card button:hover {
+  background: var(--btn-hover);
+  transform: translateY(-2px);
 }
 
-.card button::before,
-.card button::after {
-  content: "";
-  width: .85rem;
-  height: .1rem;
-  background: currentColor;
-  position: absolute;
-  top: 50%;
-  left: 1.33rem;
-  border-radius: 1rem;
-}
-
-.card button::after {
-  transform: rotate(90deg);
-  transition: transform .15s;
+/* ===============================
+   HOVER REVEAL (stays inside card)
+=============================== */
+.card:hover h2,
+.card:hover p,
+.card:hover .book-inline,
+.card:hover > section > div {
+  opacity: 1;
+  transform: translateY(0);
 }
 
 .card:hover::before {
-  transform: translateY(100%);
+  translate: 0 100%;
 }
 
-.card:hover img {
-  aspect-ratio: 1/1;
-  object-position: 50% 10%;
+.card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 18px 40px rgba(0,0,0,.12);
 }
 
-.card:hover h2,
-.card:hover p,
-.card:hover > section > div {
-  transform: translateY(0);
-  opacity: 1;
-}
-
-.card button:hover {
-  background: var(--btn-hover);
-}
-
-/* === Popup Modal === */
+/* ===============================
+   POPUP MODAL DESIGN
+=============================== */
 .popup-card {
   border: none;
-  border-radius: 1rem;
-  background: #fff;
-  box-shadow: 0 20px 60px rgba(0,0,0,.25);
-  width: min(700px, 90vw);
-  max-height: 85vh;
-  padding: 1rem;
+  border-radius: 1.2rem;
+  background: rgba(255,255,255,0.95);
+  backdrop-filter: blur(20px);
+  box-shadow: 0 25px 70px rgba(0,0,0,.35);
+  width: min(700px, 92vw);
+  max-height: 90vh;
+  padding: 0;
+  overflow: hidden;
+  position: fixed;
+  inset: 0;
+  margin: auto;
+  transform: translateY(0);
 }
 
 .popup-card::backdrop {
-  background: rgba(0,0,0,0.6);
+  background: rgba(0,0,0,0.55);
   backdrop-filter: blur(6px);
 }
 
 .popup-content {
-  position: relative;
+  padding: 1.4rem 1.6rem 2rem;
   overflow-y: auto;
-  max-height: 80vh;
-  padding: 1rem;
+  max-height: 90vh;
+  color: #111;
+  font-family: Lato, sans-serif;
 }
 
 .popup-content img {
   width: 100%;
   border-radius: 1rem;
   margin-bottom: 1rem;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.1);
 }
 
 .popup-content h2 {
   font-size: 1.5rem;
   margin-bottom: .5rem;
+  color: #000;
 }
 
 .popup-content p {
-  color: #555;
+  color: #444;
   margin-bottom: 1rem;
+  line-height: 1.5;
 }
 
 .popup-content ul {
@@ -621,39 +672,95 @@ button, input, select, textarea {
   padding: 0;
   display: flex;
   flex-wrap: wrap;
-  gap: .5rem;
+  gap: .6rem;
+  margin-bottom: 1rem;
 }
 
 .popup-content ul li {
   background: #eef3ff;
-  padding: .4rem .8rem;
+  padding: .45rem .85rem;
   border-radius: 1rem;
   font-weight: 600;
   color: #0D6EFD;
 }
 
+.book-section h3 {
+  font-size: 1.2rem;
+  color: #0D6EFD;
+  margin-bottom: .6rem;
+}
+
+.book-card {
+  display: flex;
+  gap: .75rem;
+  align-items: center;
+  border: 1px solid #e5e7eb;
+  border-radius: .8rem;
+  padding: .7rem .8rem;
+  background: #fafafa;
+}
+
+.book-card img {
+  width: 70px;
+  height: 90px;
+  object-fit: cover;
+  border-radius: .5rem;
+  border: 1px solid #e5e7eb;
+}
+
+.book-card h4 { margin: 0 0 .3rem; }
+
+.book-card p {
+  margin: 0;
+  font-size: .9rem;
+  color: #666;
+}
+
 .book-btn {
   display: inline-block;
-  margin-top: 1rem;
+  margin-top: 1.3rem;
   background: linear-gradient(135deg, #12B2A0, #0D6EFD);
   color: #fff;
   text-decoration: none;
-  padding: .8rem 1.4rem;
+  padding: .9rem 1.5rem;
   border-radius: .8rem;
   font-weight: 700;
   text-align: center;
+  box-shadow: 0 6px 20px rgba(13,110,253,0.25);
+  transition: transform .25s ease, box-shadow .25s ease;
+}
+
+.book-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(13,110,253,0.3);
 }
 
 .close {
   position: absolute;
-  top: .3rem;
-  right: .7rem;
+  top: .4rem;
+  right: .8rem;
   font-size: 2rem;
   background: none;
   border: none;
   color: #333;
   cursor: pointer;
+  transition: color .2s;
 }
+.close:hover { color: #0D6EFD; }
+
+/* ===============================
+   RESPONSIVE TWEAK
+=============================== */
+@media (max-width: 768px) {
+  .card {
+    width: min(90vw, 17rem);
+    height: auto;
+  }
+  .card-grid {
+    gap: 2rem;
+  }
+}
+
 
 
 
@@ -1667,6 +1774,7 @@ button, input, select, textarea {
   clip: rect(0 0 0 0) !important;
   white-space: nowrap !important;
 }
+
 
 
 
