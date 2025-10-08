@@ -6623,192 +6623,76 @@
 </section>
 
 <!-- ================= TEAM (Our Specialists) ================= -->
-<section class="ndc-team-android" id="ndc-doctors-app" aria-labelledby="teamTitle">
-  <div class="ndc-screen container">
-    <!-- Appbar -->
-    <header class="ndc-appbar" role="toolbar" aria-label="Doctor directory">
-      <div class="left">
-        <i class="bx bx-heart" aria-hidden="true"></i>
-        <div class="titles">
-          <span class="eyebrow">Noble Dental Care · Nallagandla</span>
-          <h2 id="teamTitle" class="title">Care Team</h2>
+<section id="team" class="doctor-team">
+  <h2 class="team-title">Meet Our Specialists</h2>
+
+  <div class="card-grid">
+    <!-- Dhivakaran -->
+    <div class="card" data-id="dhivakaran">
+      <img src="images/dhivakaran.webp" alt="Dr Dhivakaran">
+      <section>
+        <h2>Dr Dhivakaran</h2>
+        <p>Chief Medical Director · Director, Healthflo (557 Hospitals)</p>
+        <div>
+          <div class="tag"><i class="fa-solid fa-tooth"></i> Implants</div>
+          <button class="view-btn">View Profile</button>
         </div>
-      </div>
+      </section>
+    </div>
 
-      <!-- Filter chips -->
-      <div class="right" role="group" aria-label="Filter by specialty" id="docFilters">
-        <button class="chip--ghost" type="button" data-filter="all" aria-pressed="true">All</button>
-        <button class="chip--ghost" type="button" data-filter="surgery">Surgery</button>
-        <button class="chip--ghost" type="button" data-filter="ortho">Ortho</button>
-        <button class="chip--ghost" type="button" data-filter="aesthetic">Aesthetic</button>
-        <button class="chip--ghost" type="button" data-filter="preventive">Preventive</button>
-      </div>
-    </header>
+    <!-- Roger -->
+    <div class="card dark" data-id="roger">
+      <img src="images/roger.webp" alt="Dr Roger Ronaldo">
+      <section>
+        <h2>Dr Roger Ronaldo</h2>
+        <p>Oral & Maxillofacial Surgeon · Reconstruction & Implants</p>
+        <div>
+          <div class="tag"><i class="fa-solid fa-user-md"></i> Surgery</div>
+          <button class="view-btn">View Profile</button>
+        </div>
+      </section>
+    </div>
 
-    <!-- Search -->
-    <form class="ndc-search" role="search" onsubmit="return false">
-      <i class="bx bx-search" aria-hidden="true"></i>
-      <input id="docSearch" type="search"
-             placeholder="Search doctor, specialty, language…"
-             autocomplete="off" aria-label="Search doctors">
-      <button type="reset" class="clear" aria-label="Clear search">
-        <i class="bx bx-x" aria-hidden="true"></i>
-      </button>
-    </form>
+    <!-- Deepak -->
+    <div class="card" data-id="deepak">
+      <img src="images/deepak.webp" alt="Dr Deepak">
+      <section>
+        <h2>Dr Deepak</h2>
+        <p>Orthodontist · Smile Design · Clear Aligners</p>
+        <div>
+          <div class="tag"><i class="fa-solid fa-tooth"></i> Aligners</div>
+          <button class="view-btn">View Profile</button>
+        </div>
+      </section>
+    </div>
 
-    <!-- Doctor Cards Grid -->
-    <div id="docGrid" class="ndc-cards">
-      <!-- Dhivakaran -->
-      <article class="ndc-card" data-id="dhivakaran"
-               data-tags="surgery implants rct english hindi telugu tamil chief"
-               itemscope itemtype="https://schema.org/Person">
-        <a class="block" href="#dhivakaran" aria-label="Open profile: Dr Dhivakaran">
-          <img src="/images/dhivakaran.webp" width="320" height="420"
-               alt="Dr Dhivakaran — Chief Medical Director" itemprop="image"
-               loading="lazy" decoding="async">
-          <div class="info">
-            <h3 class="name" itemprop="name">Dr Dhivakaran</h3>
-            <p class="role" itemprop="jobTitle">Chief Medical Director</p>
-            <ul class="meta" aria-label="At a glance">
-              <li><i class="bx bx-time-five"></i> 10+ yrs</li>
-              <li><i class="bx bx-star"></i> 4.8</li>
-              <li><i class="bx bx-chat"></i> EN • HI • TE • TA</li>
-            </ul>
-          </div>
-        </a>
-        <button class="open" type="button" aria-label="Open profile">
-          <i class="bx bx-chevron-right"></i>
-        </button>
-        <meta itemprop="affiliation" content="Noble Dental Care - Nallagandla">
-      </article>
-
-      <!-- Roger -->
-      <article class="ndc-card" data-id="roger"
-               data-tags="surgery implants maxillofacial trauma english"
-               itemscope itemtype="https://schema.org/Person">
-        <a class="block" href="#roger" aria-label="Open profile: Dr Roger Ronaldo">
-          <img src="/images/roger.webp" width="320" height="420"
-               alt="Dr Roger Ronaldo — Oral & Maxillofacial Surgeon" itemprop="image"
-               loading="lazy" decoding="async">
-          <div class="info">
-            <h3 class="name" itemprop="name">Dr Roger Ronaldo</h3>
-            <p class="role" itemprop="jobTitle">Oral &amp; Maxillofacial Surgeon</p>
-            <ul class="meta">
-              <li><i class="bx bx-time-five"></i> 13+ yrs</li>
-              <li><i class="bx bx-star"></i> 4.9</li>
-              <li><i class="bx bx-chat"></i> EN</li>
-            </ul>
-          </div>
-        </a>
-        <button class="open" type="button" aria-label="Open profile">
-          <i class="bx bx-chevron-right"></i>
-        </button>
-        <meta itemprop="affiliation" content="Noble Dental Care - Nallagandla">
-      </article>
-
-      <!-- Thikvijay -->
-      <article class="ndc-card" data-id="thikvijay"
-               data-tags="aesthetic cosmetology trichology english"
-               itemscope itemtype="https://schema.org/Person">
-        <a class="block" href="#thikvijay" aria-label="Open profile: Dr Thikvijay">
-          <img src="/images/thikvijay.webp" width="320" height="420"
-               alt="Dr Thikvijay — Aesthetic & Medical Cosmetologist" itemprop="image"
-               loading="lazy" decoding="async">
-          <div class="info">
-            <h3 class="name" itemprop="name">Dr Thikvijay</h3>
-            <p class="role" itemprop="jobTitle">Aesthetic & Medical Cosmetologist</p>
-            <ul class="meta">
-              <li><i class="bx bx-time-five"></i> 10+ yrs</li>
-              <li><i class="bx bx-star"></i> 4.8</li>
-              <li><i class="bx bx-chat"></i> EN</li>
-            </ul>
-          </div>
-        </a>
-        <button class="open" type="button" aria-label="Open profile">
-          <i class="bx bx-chevron-right"></i>
-        </button>
-        <meta itemprop="affiliation" content="Noble Dental Care - Nallagandla">
-      </article>
-
-      <!-- Deepak -->
-      <article class="ndc-card" data-id="deepak"
-               data-tags="ortho braces aligners smile english hindi telugu"
-               itemscope itemtype="https://schema.org/Person">
-        <a class="block" href="#deepak" aria-label="Open profile: Dr Deepak">
-          <img src="/images/deepak.webp" width="320" height="420"
-               alt="Dr Deepak — Orthodontist" itemprop="image"
-               loading="lazy" decoding="async">
-          <div class="info">
-            <h3 class="name" itemprop="name">Dr Deepak</h3>
-            <p class="role" itemprop="jobTitle">Orthodontist</p>
-            <ul class="meta">
-              <li><i class="bx bx-time-five"></i> 10+ yrs</li>
-              <li><i class="bx bx-star"></i> 4.8</li>
-              <li><i class="bx bx-chat"></i> EN • HI • TE</li>
-            </ul>
-          </div>
-        </a>
-        <button class="open" type="button" aria-label="Open profile">
-          <i class="bx bx-chevron-right"></i>
-        </button>
-        <meta itemprop="affiliation" content="Noble Dental Care - Nallagandla">
-      </article>
-
-      <!-- Idhaya -->
-      <article class="ndc-card" data-id="idhaya"
-               data-tags="preventive kids tourism english hindi tamil"
-               itemscope itemtype="https://schema.org/Person">
-        <a class="block" href="#idhaya" aria-label="Open profile: Dr Idhaya">
-          <img src="/images/idhaya.webp" width="320" height="420"
-               alt="Dr Idhaya — Preventive & Tourism Dentistry" itemprop="image"
-               loading="lazy" decoding="async">
-          <div class="info">
-            <h3 class="name" itemprop="name">Dr Idhaya</h3>
-            <p class="role" itemprop="jobTitle">Preventive &amp; Tourism Dentistry</p>
-            <ul class="meta">
-              <li><i class="bx bx-time-five"></i> 8+ yrs</li>
-              <li><i class="bx bx-star"></i> 4.9</li>
-              <li><i class="bx bx-chat"></i> EN • HI • TA</li>
-            </ul>
-          </div>
-        </a>
-        <button class="open" type="button" aria-label="Open profile">
-          <i class="bx bx-chevron-right"></i>
-        </button>
-        <meta itemprop="affiliation" content="Noble Dental Care - Nallagandla">
-      </article>
+    <!-- Idhaya -->
+    <div class="card" data-id="idhaya">
+      <img src="images/idhaya.webp" alt="Dr Idhaya">
+      <section>
+        <h2>Dr Idhaya</h2>
+        <p>Pediatric Dentist · Preventive & Restorative Care</p>
+        <div>
+          <div class="tag"><i class="fa-solid fa-child"></i> Pediatric</div>
+          <button class="view-btn">View Profile</button>
+        </div>
+      </section>
     </div>
   </div>
+
+  <!-- Popup Modal -->
+  <dialog id="doctorModal" class="popup-card">
+    <div class="popup-content">
+      <button class="close">&times;</button>
+      <img id="modalImg" alt="">
+      <h2 id="modalName"></h2>
+      <p id="modalBio"></p>
+      <ul id="modalExpertise"></ul>
+      <a href="#get-in-touch" class="book-btn">Book Appointment</a>
+    </div>
+  </dialog>
 </section>
 
-<!-- Bottom sheet dialog -->
-<dialog id="docSheet" class="ndc-sheet" aria-labelledby="sheetTitle">
-  <button class="sheet-close" type="button" aria-label="Close">
-    <i class="bx bx-x"></i>
-  </button>
-  <div class="sheet-hero">
-    <img id="sheetHero" src="" alt="" width="900" height="280" decoding="async">
-  </div>
-  <div class="sheet-body">
-    <h3 id="sheetTitle"></h3>
-    <p id="sheetRole" class="muted"></p>
-    <p id="sheetBio"></p>
-    <div id="sheetExpertise" class="chips" aria-label="Expertise"></div>
-    <div id="sheetBooks" class="books" aria-label="Publications"></div>
-    <div class="sheet-actions">
-      <a id="sheetBook" class="btn primary" href="#get-in-touch" data-doc="">
-        <i class="bx bx-calendar"></i> Book with this doctor
-      </a>
-      <a id="sheetCall" href="tel:+918610425342" class="btn outline">
-        <i class="bx bxs-phone"></i> Call Clinic
-      </a>
-    </div>
-    <div class="sheet-footnote">
-      <i class="bx bx-shield-alt-2"></i>
-      Evidence-based care aligned with IDA/ADA/WHO & ICMR recommendations.
-    </div>
-  </div>
-</dialog>
 
   
   
