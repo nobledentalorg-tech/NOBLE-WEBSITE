@@ -38,6 +38,38 @@ html, body {
   -webkit-font-smoothing: antialiased;
 }
 
+body {
+  animation: pageFadeIn 0.45s ease both;
+  will-change: opacity, transform;
+}
+
+body.page-exit {
+  animation: none;
+  opacity: 0;
+  transform: translateY(12px);
+  transition: opacity 0.25s ease, transform 0.25s ease;
+  pointer-events: none;
+}
+
+@keyframes pageFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  body {
+    animation: none !important;
+    transition: none !important;
+    transform: none !important;
+  }
+}
+
 a, a:visited, a:focus, a:hover {
   text-decoration: none !important;
 }
@@ -182,6 +214,14 @@ button, input, select, textarea {
 }
 
 .submenu[aria-hidden="false"] {
+  display: grid;
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
+.has-submenu:hover > .submenu,
+.has-submenu:focus-within > .submenu {
   display: grid;
   opacity: 1;
   transform: translateY(0);
@@ -1731,6 +1771,5 @@ button, input, select, textarea {
   clip: rect(0 0 0 0) !important;
   white-space: nowrap !important;
 }
-
 
 
