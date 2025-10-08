@@ -36,7 +36,8 @@ document.addEventListener("DOMContentLoaded", () => {
   const primaryNav = $("#primaryNav");
   const submenuToggle = $(".submenu-toggle");
   const submenu = $("#specialitiesMenu");
-
+  const submenuWrapper = submenu?.closest(".has-submenu");
+  
   if (menuToggle && primaryNav) {
     on(menuToggle, "click", () => {
       const expanded = menuToggle.getAttribute("aria-expanded") === "true";
@@ -47,18 +48,65 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   if (submenuToggle && submenu) {
-    on(submenuToggle, "click", () => {
+     let hoverTimer;
+
+    const setSubmenuState = (isOpen) => {
+      submenuToggle.setAttribute("aria-expanded", String(isOpen));
+      submenu.setAttribute("aria-hidden", String(!isOpen));
+      submenuWrapper?.classList.toggle("is-open", isOpen);
+    };
+
+    const openSubmenu = () => {
+      clearTimeout(hoverTimer);
+      setSubmenuState(true);
+    };
+
+    const closeSubmenu = (immediate = false) => {
+      const handler = () => setSubmenuState(false);
+      clearTimeout(hoverTimer);
+      if (immediate) handler();
+      else {
+        hoverTimer = window.setTimeout(() => {
+          if (!submenuWrapper || !submenuWrapper.matches(":hover")) handler();
+        }, 140);
+      }
+    };
+
+    on(submenuToggle, "click", (event) => {
+      event.stopPropagation();
       const expanded = submenuToggle.getAttribute("aria-expanded") === "true";
-      submenuToggle.setAttribute("aria-expanded", String(!expanded));
-      submenu.setAttribute("aria-hidden", String(expanded));
+      setSubmenuState(!expanded);
+    });
+
+    on(submenuToggle, "focus", openSubmenu);
+    on(submenuToggle, "blur", (event) => {
+      if (!submenuWrapper?.contains(event.relatedTarget)) closeSubmenu(true);
+    });
+
+    on(submenu, "focusin", openSubmenu);
+    on(submenu, "focusout", (event) => {
+      if (!submenu.contains(event.relatedTarget)) closeSubmenu(true);
+    });
+
+    if (submenuWrapper) {
+      on(submenuWrapper, "mouseenter", openSubmenu);
+      on(submenuWrapper, "mouseleave", () => closeSubmenu());
+    }
+
+    on(document, "click", (event) => {
+      if (!submenuWrapper?.contains(event.target)) closeSubmenu(true);
     });
   }
+
 
   // Close on Escape
   on(document, "keydown", (e) => {
     if (e.key === "Escape") {
       if (menuToggle?.getAttribute("aria-expanded") === "true") menuToggle.click();
-      if (submenuToggle?.getAttribute("aria-expanded") === "true") submenuToggle.click();
+      if (submenuToggle?.getAttribute("aria-expanded") === "true") {
+        submenuToggle.focus();
+        submenuToggle.click();
+      }
     }
   });
 
@@ -71,6 +119,31 @@ document.addEventListener("DOMContentLoaded", () => {
     ) {
       menuToggle.click();
     }
+  });
+
+    /* =========================================================
+     2b. Page transition fade
+  ========================================================= */
+  const transitionLinks = $$("a[href]");
+  transitionLinks.forEach((link) => {
+    const href = link.getAttribute("href");
+    if (!href || href.startsWith("#")) return;
+    if (/^(mailto:|tel:|javascript:)/i.test(href)) return;
+    if (link.hasAttribute("target") || link.hasAttribute("download")) return;
+
+    on(link, "click", (event) => {
+      if (event.defaultPrevented || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
+      if (event.button !== 0) return;
+
+      const url = new URL(href, window.location.href);
+      if (url.origin !== window.location.origin) return;
+
+      event.preventDefault();
+      document.body.classList.add("page-exit");
+      window.setTimeout(() => {
+        window.location.href = url.href;
+      }, 260);
+    });
   });
 
   /* =========================================================
