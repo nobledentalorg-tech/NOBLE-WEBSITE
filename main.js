@@ -149,56 +149,19 @@ document.addEventListener("DOMContentLoaded", () => {
   /* =========================================================
      3. Doctor cards → popup sheet
   ========================================================= */
- const doctorData = {
-  dhivakaran: {
-    name: "Dr Dhivakaran",
-    img: "images/dhivakaran.webp",
-    bio: "Chief Medical Director · Director, Healthflo (557 Hospitals). Contributor to Triumph’s Complete Review of Dentistry.",
-    expertise: ["Painless RCT", "Implants", "Microscopic Dentistry"]
-  },
-  roger: {
-    name: "Dr Roger Ronaldo",
-    img: "images/roger.webp",
-    bio: "Oral & Maxillofacial Surgeon specializing in Implants, Reconstruction and Trauma.",
-    expertise: ["Implantology", "Reconstruction", "Surgical Aesthetics"]
-  },
-  deepak: {
-    name: "Dr Deepak",
-    img: "images/deepak.webp",
-    bio: "Orthodontist · Smile Design · Clear Aligners.",
-    expertise: ["Smile Design", "Aligners", "Digital Orthodontics"]
-  },
-  idhaya: {
-    name: "Dr Idhaya",
-    img: "images/idhaya.webp",
-    bio: "Pediatric Dentist · Preventive & Restorative Care.",
-    expertise: ["Preventive Dentistry", "Restorative Dentistry", "Child Oral Health"]
-  }
-};
-
-const modal = document.getElementById("doctorModal");
-const modalImg = document.getElementById("modalImg");
-const modalName = document.getElementById("modalName");
-const modalBio = document.getElementById("modalBio");
-const modalExpertise = document.getElementById("modalExpertise");
-
-document.querySelectorAll(".view-btn").forEach(btn => {
-  btn.addEventListener("click", e => {
-    const id = e.target.closest(".card").dataset.id;
-    const doc = doctorData[id];
-    if (!doc) return;
-    modalImg.src = doc.img;
-    modalName.textContent = doc.name;
-    modalBio.textContent = doc.bio;
-    modalExpertise.innerHTML = doc.expertise.map(e => `<li>${e}</li>`).join("");
-    modal.showModal();
-  });
+const buttons = [...document.querySelectorAll("button")];
+buttons.forEach(button => {
+  button.addEventListener("click", function() {
+    button.classList.toggle("following");
+    button.textContent = button.classList.contains("following") ? "Unfollow" : "Follow";
+  })
 });
 
-modal.querySelector(".close").addEventListener("click", () => modal.close());
-modal.addEventListener("click", e => { if (e.target === modal) modal.close(); });
-window.addEventListener("keydown", e => { if (e.key === "Escape" && modal.open) modal.close(); });
-
+// for demo only
+setTimeout(function() {
+  document.querySelector("button").focus();
+}, 500);
+   
   /* =========================================================
      4. Booking form: dynamic select + WA handoff
   ========================================================= */
