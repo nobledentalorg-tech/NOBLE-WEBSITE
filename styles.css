@@ -405,24 +405,17 @@ button, input, select, textarea {
 }
 
 
-@import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
-
-/* ================================
-   1. GLOBAL & BODY STYLES
-   ================================ */
-
-body {
-    min-height: 100vh;
-    margin: 0;
-    /* Adjusted background for a softer look */
-    background: linear-gradient(135deg, #f0f0f5, #e0e0e8); 
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 2rem;
-    flex-wrap: wrap;
-    font-family: Lato, Montserrat, Helvetica, Arial, sans-serif;
-    padding: 2rem 0; /* Add padding for elements near the edges */
+.team-section {
+  min-height: 100vh;
+  margin: 0 auto;
+  background: linear-gradient(135deg, #f0f0f5, #e0e0e8); 
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+  flex-wrap: wrap;
+  font-family: Lato, Montserrat, Helvetica, Arial, sans-serif;
+  padding: 2rem 0;
 }
 
 /* ================================
@@ -2001,6 +1994,7 @@ body {
   clip: rect(0 0 0 0) !important;
   white-space: nowrap !important;
 }
+
 
 
 
