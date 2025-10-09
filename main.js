@@ -149,18 +149,206 @@ document.addEventListener("DOMContentLoaded", () => {
   /* =========================================================
      3. Doctor cards → popup sheet
   ========================================================= */
-const buttons = [...document.querySelectorAll("button")];
-buttons.forEach(button => {
-  button.addEventListener("click", function() {
-    button.classList.toggle("following");
-    button.textContent = button.classList.contains("following") ? "Unfollow" : "Follow";
-  })
+// Data structure for the modal content (Used for the pop-up details)
+const doctorData = {
+    'dhivakaran': {
+        name: 'Dr Dhivakaran',
+        img: 'https://i.etsystatic.com/40317824/r/il/339134/4827441773/il_fullxfull.4827441773_887m.jpg',
+        exp: '18+ Years',
+        cases: '25,000+',
+        success: '98%',
+        aligners: false,
+        books: [
+            { title: 'Triumph’s Dentistry', link: '#', img: 'https://play.google.com/books/publisher/content/images/frontcover/ZTjvDwAAQBAJ?fife=w200-h280' }
+        ]
+    },
+    'roger': {
+        name: 'Dr Roger Ronaldo',
+        img: 'https://i.etsystatic.com/40317824/r/il/339134/4827441773/il_fullxfull.4827441773_887m.jpg',
+        exp: '12 Years',
+        cases: '15,000+',
+        success: '95%',
+        aligners: false,
+        books: [
+            { title: 'Oral Maxillofacial', link: '#', img: 'https://via.placeholder.com/100x150/ff7f50/000000?text=Book+1' }
+        ]
+    },
+    'deepak': {
+        name: 'Dr Deepak',
+        img: 'https://via.placeholder.com/600x900/90ee90/000000?text=Doctor+3',
+        exp: '10 Years',
+        cases: '5,000+',
+        success: '99%',
+        aligners: true, // Has in-house aligners
+        books: []
+    },
+    'thikvijay': {
+        name: 'Dr Thikvijay',
+        img: 'https://i.etsystatic.com/40317824/r/il/339134/4827441773/il_fullxfull.4827441773_887m.jpg',
+        exp: '10+ Years',
+        cases: '2,000+',
+        success: '90%',
+        aligners: false,
+        books: []
+    },
+    'idhaya': {
+        name: 'Dr Idhaya',
+        img: 'https://i.etsystatic.com/40317824/r/il/339134/4827441773/il_fullxfull.4827441773_887m.jpg',
+        exp: '5 Years',
+        cases: '3,000+',
+        success: '97%',
+        aligners: false,
+        books: []
+    }
+};
+
+// =========================================================
+// 1. DOM ELEMENT SELECTION
+// =========================================================
+const modal = document.getElementById("doctorModal");
+const closeBtn = document.querySelector(".close-btn");
+const profileInfoBtns = document.querySelectorAll(".profile-info-btn");
+const bookAppointmentBtn = document.getElementById('bookAppointmentBtn'); 
+const doctorSelect = document.getElementById('doctorSelect'); // Target the doctor dropdown in the appointment form
+
+// =========================================================
+// 2. FOLLOW/UNFOLLOW TOGGLE LOGIC (For non-profile buttons)
+// =========================================================
+const followButtons = [...document.querySelectorAll(".card button:not(.profile-info-btn)")];
+
+followButtons.forEach(button => {
+    button.addEventListener("click", function() {
+        button.classList.toggle("following");
+        button.textContent = button.classList.contains("following") ? "Unfollow" : "Follow";
+    });
 });
 
-// for demo only
+// for demo only: Focuses the first FOLLOW button
 setTimeout(function() {
-  document.querySelector("button").focus();
+    const firstFollowButton = document.querySelector(".card button:not(.profile-info-btn)");
+    if (firstFollowButton) {
+        firstFollowButton.focus();
+    }
 }, 500);
+
+// =========================================================
+// 3. MODAL DISPLAY & POPULATION LOGIC
+// =========================================================
+
+/**
+ * Closes the doctor profile modal and re-enables body scrolling.
+ */
+const closeModal = () => {
+    modal.style.display = "none";
+    document.body.style.overflow = ''; // Re-enable scrolling
+}
+
+/**
+ * Populates the modal with the specified doctor's data and shows it.
+ * @param {string} doctorId - The key for the doctor in the doctorData object.
+ */
+const showDoctorModal = (doctorId) => {
+    const data = doctorData[doctorId];
+    if (!data) return;
+
+    // Set Header/Image
+    document.getElementById('modal-name').textContent = data.name;
+    document.getElementById('modal-image').src = data.img;
+    document.getElementById('modal-image').alt = `${data.name} profile`;
+
+    // Set Stats
+    document.getElementById('modal-experience').textContent = data.exp;
+    document.getElementById('modal-cases').textContent = data.cases;
+    document.getElementById('modal-success-rate').textContent = data.success;
+
+    // Set Aligners Info visibility
+    const alignerInfo = document.getElementById('modal-aligners-info');
+    alignerInfo.style.display = data.aligners ? 'block' : 'none';
+
+    // Set Books
+    const booksContainer = document.getElementById('modal-books');
+    booksContainer.innerHTML = ''; 
+    const booksTitle = modal.querySelector('h4');
+    
+    if (data.books.length > 0) {
+        booksTitle.style.display = 'block';
+        data.books.forEach(book => {
+            const bookHTML = `
+                <a href="${book.link}" target="_blank" class="book-item">
+                    <img src="${book.img}" alt="${book.title} cover">
+                    <span>${book.title}</span>
+                </a>
+            `;
+            booksContainer.insertAdjacentHTML('beforeend', bookHTML);
+        });
+    } else {
+        booksTitle.style.display = 'none'; // Hide "Books Published" if empty
+        booksContainer.innerHTML = '';
+    }
+    
+    // Store the doctor's name on the book button for the next action
+    bookAppointmentBtn.setAttribute('data-doctor-name', data.name); 
+
+    modal.style.display = "block";
+    document.body.style.overflow = 'hidden'; // Prevent scrolling while modal is open
+}
+
+// Event listeners to open modal (Profile buttons)
+profileInfoBtns.forEach(button => {
+    button.addEventListener('click', () => {
+        const doctorId = button.getAttribute('data-doctor-id');
+        showDoctorModal(doctorId);
+    });
+});
+
+// Event listener to close modal on 'x' click
+closeBtn.onclick = function() {
+    closeModal();
+}
+
+// Event listener to close modal on outside click
+window.onclick = function(event) {
+    if (event.target == modal) {
+        closeModal();
+    }
+}
+
+
+// =========================================================
+// 4. BOOK APPOINTMENT NAVIGATION LOGIC
+// =========================================================
+
+bookAppointmentBtn.addEventListener('click', () => {
+    // 1. Get the target doctor's name
+    const doctorName = bookAppointmentBtn.getAttribute('data-doctor-name');
+
+    // 2. Close the modal
+    closeModal();
+
+    // 3. Navigate/scroll to the appointment section
+    const appointmentSection = document.getElementById('get-in-touch');
+    if (appointmentSection) {
+        // Smoothly scroll to the section
+        appointmentSection.scrollIntoView({
+            behavior: 'smooth',
+            block: 'start'
+        });
+        
+        // 4. Pre-select the doctor in the form dropdown
+        if (doctorSelect && doctorName) {
+            // Find the option whose text content exactly matches the doctor's name
+            const doctorOption = Array.from(doctorSelect.options).find(
+                option => option.text.trim() === doctorName.trim()
+            );
+
+            if (doctorOption) {
+                doctorSelect.value = doctorOption.value;
+                // Trigger a 'change' event to notify any dependent form scripts
+                doctorSelect.dispatchEvent(new Event('change', { bubbles: true }));
+            }
+        }
+    }
+});
    
   /* =========================================================
      4. Booking form: dynamic select + WA handoff
