@@ -239,6 +239,7 @@ setTimeout(function() {
  * Closes the doctor profile modal and re-enables body scrolling.
  */
 const closeModal = () => {
+    if (!modal) return;
     modal.style.display = "none";
     document.body.style.overflow = ''; // Re-enable scrolling
 }
@@ -248,6 +249,7 @@ const closeModal = () => {
  * @param {string} doctorId - The key for the doctor in the doctorData object.
  */
 const showDoctorModal = (doctorId) => {
+    if (!modal) return;
     const data = doctorData[doctorId];
     if (!data) return;
 
@@ -267,27 +269,33 @@ const showDoctorModal = (doctorId) => {
 
     // Set Books
     const booksContainer = document.getElementById('modal-books');
-    booksContainer.innerHTML = ''; 
+    if (booksContainer) {
+        booksContainer.innerHTML = '';
+    }
     const booksTitle = modal.querySelector('h4');
     
-    if (data.books.length > 0) {
-        booksTitle.style.display = 'block';
-        data.books.forEach(book => {
-            const bookHTML = `
-                <a href="${book.link}" target="_blank" class="book-item">
-                    <img src="${book.img}" alt="${book.title} cover">
-                    <span>${book.title}</span>
-                </a>
-            `;
-            booksContainer.insertAdjacentHTML('beforeend', bookHTML);
-        });
-    } else {
-        booksTitle.style.display = 'none'; // Hide "Books Published" if empty
-        booksContainer.innerHTML = '';
+    if (booksContainer && booksTitle) {
+        if (data.books.length > 0) {
+            booksTitle.style.display = 'block';
+            data.books.forEach(book => {
+                const bookHTML = `
+                    <a href="${book.link}" target="_blank" class="book-item">
+                        <img src="${book.img}" alt="${book.title} cover">
+                        <span>${book.title}</span>
+                    </a>
+                `;
+                booksContainer.insertAdjacentHTML('beforeend', bookHTML);
+            });
+        } else {
+            booksTitle.style.display = 'none'; // Hide "Books Published" if empty
+            booksContainer.innerHTML = '';
+        }
     }
     
     // Store the doctor's name on the book button for the next action
-    bookAppointmentBtn.setAttribute('data-doctor-name', data.name); 
+    if (bookAppointmentBtn) {
+        bookAppointmentBtn.setAttribute('data-doctor-name', data.name);
+    }
 
     modal.style.display = "block";
     document.body.style.overflow = 'hidden'; // Prevent scrolling while modal is open
@@ -295,60 +303,63 @@ const showDoctorModal = (doctorId) => {
 
 // Event listeners to open modal (Profile buttons)
 profileInfoBtns.forEach(button => {
-    button.addEventListener('click', () => {
+    button.addEventListener('click', (event) => {
+        event.preventDefault();
         const doctorId = button.getAttribute('data-doctor-id');
         showDoctorModal(doctorId);
     });
 });
 
 // Event listener to close modal on 'x' click
-closeBtn.onclick = function() {
-    closeModal();
+if (closeBtn) {
+    closeBtn.addEventListener('click', closeModal);
 }
 
 // Event listener to close modal on outside click
-window.onclick = function(event) {
-    if (event.target == modal) {
+window.addEventListener('click', (event) => {
+    if (event.target === modal) {
         closeModal();
     }
-}
+  });
 
 
 // =========================================================
 // 4. BOOK APPOINTMENT NAVIGATION LOGIC
 // =========================================================
 
-bookAppointmentBtn.addEventListener('click', () => {
-    // 1. Get the target doctor's name
-    const doctorName = bookAppointmentBtn.getAttribute('data-doctor-name');
+if (bookAppointmentBtn) {
+    bookAppointmentBtn.addEventListener('click', () => {
+        // 1. Get the target doctor's name
+        const doctorName = bookAppointmentBtn.getAttribute('data-doctor-name');
 
-    // 2. Close the modal
-    closeModal();
+        // 2. Close the modal
+        closeModal();
 
-    // 3. Navigate/scroll to the appointment section
-    const appointmentSection = document.getElementById('get-in-touch');
-    if (appointmentSection) {
-        // Smoothly scroll to the section
-        appointmentSection.scrollIntoView({
-            behavior: 'smooth',
-            block: 'start'
-        });
-        
-        // 4. Pre-select the doctor in the form dropdown
-        if (doctorSelect && doctorName) {
-            // Find the option whose text content exactly matches the doctor's name
-            const doctorOption = Array.from(doctorSelect.options).find(
-                option => option.text.trim() === doctorName.trim()
-            );
+        // 3. Navigate/scroll to the appointment section
+        const appointmentSection = document.getElementById('get-in-touch');
+        if (appointmentSection) {
+            // Smoothly scroll to the section
+            appointmentSection.scrollIntoView({
+                behavior: 'smooth',
+                block: 'start'
+            });
 
-            if (doctorOption) {
-                doctorSelect.value = doctorOption.value;
-                // Trigger a 'change' event to notify any dependent form scripts
-                doctorSelect.dispatchEvent(new Event('change', { bubbles: true }));
+            // 4. Pre-select the doctor in the form dropdown
+            if (doctorSelect && doctorName) {
+                // Find the option whose text content exactly matches the doctor's name
+                const doctorOption = Array.from(doctorSelect.options).find(
+                    option => option.text.trim() === doctorName.trim()
+                );
+
+                if (doctorOption) {
+                    doctorSelect.value = doctorOption.value;
+                    // Trigger a 'change' event to notify any dependent form scripts
+                    doctorSelect.dispatchEvent(new Event('change', { bubbles: true }));
+                }
             }
         }
-    }
-});
+          });
+}
    
   /* =========================================================
      4. Booking form: dynamic select + WA handoff
@@ -595,32 +606,4 @@ document.addEventListener("DOMContentLoaded", () => {
   renderCards();
   restartAutoRotate();
   updateClearButton();
-});
-
-document.addEventListener("DOMContentLoaded", () => {
-  const modal = document.querySelector(".modal");
-  const closeBtn = document.querySelector(".close-btn");
-
-  // Open modal on "Profile" button click
-  document.querySelectorAll(".profile-info-btn").forEach(btn => {
-    btn.addEventListener("click", (e) => {
-      e.preventDefault();
-      modal.style.display = "block";
-      document.body.style.overflow = "hidden"; // prevent scroll behind modal
-    });
-  });
-
-  // Close modal
-  closeBtn.addEventListener("click", () => {
-    modal.style.display = "none";
-    document.body.style.overflow = "auto";
-  });
-
-  // Close on outside click
-  window.addEventListener("click", (e) => {
-    if (e.target === modal) {
-      modal.style.display = "none";
-      document.body.style.overflow = "auto";
-    }
-  });
 });
