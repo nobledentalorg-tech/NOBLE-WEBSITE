@@ -6623,71 +6623,124 @@
 </section>
 
 <!-- ================= TEAM (Our Specialists) ================= -->
-<div class="card">
-  <img src="images/dhivakaran.webp" alt="Dr Dhivakaran" />
-  <section>
-    <h2>Dr Dhivakaran</h2>
-    <p>Chief Medical Director. Director at Healthflo (557 Hospitals). Implants & Microscope RCT.</p>
-    <div>
-      <div class="tag" aria-label="Work publication">
-        <i class="fa-solid fa-book"></i> Triumph’s Review
+  <div class="card">
+    <img src="images/dhivakaran.webp" alt="Dr Dhivakaran" />
+    <section>
+      <h2>Dr Dhivakaran</h2>
+      <p>Chief Medical Director.</p>
+      <div>
+        <div class="tag publication-info" aria-label="Work publication">
+          <img src="https://play.google.com/books/publisher/content/images/frontcover/ZTjvDwAAQBAJ?fife=w200-h280" alt="Book cover">
+          <span>Contributor · Triumph’s Dentistry</span>
+        </div>
+        <button data-doctor-id="dhivakaran" class="profile-info-btn">
+            <i class="fa-solid fa-info-circle"></i> Profile
+        </button>
       </div>
-      <button>Follow</button>
-    </div>
-  </section>
-</div>
+    </section>
+  </div>
 
-<div class="card dark">
-  <img src="images/roger.webp" alt="Dr Roger Ronaldo" />
-  <section>
-    <h2>Dr Roger Ronaldo</h2>
-    <p>Oral & Maxillofacial Surgeon. Implants, Orthognathic & Reconstruction.</p>
-    <div>
-      <div class="tag" aria-label="Surgeon">
-        <i class="fa-solid fa-user-md"></i> Surgery
+  <div class="card dark">
+    <img src="images/roger.webp" alt="Dr Roger Ronaldo" />
+    <section>
+      <h2>Dr Roger Ronaldo</h2>
+      <p>Chief Medical Director.</p>
+      <div>
+        <div class="tag publication-info" aria-label="Work publication">
+          <img src="https://play.google.com/books/publisher/content/images/frontcover/ZTjvDwAAQBAJ?fife=w200-h280" alt="Book cover">
+          <span>Contributor · Triumph’s Dentistry</span>
+        </div>
+        <button data-doctor-id="roger" class="profile-info-btn">
+            <i class="fa-solid fa-info-circle"></i> Profile
+        </button>
       </div>
-      <button>Follow</button>
-    </div>
-  </section>
-</div>
+    </section>
+  </div>
 
-<div class="card">
-  <img src="images/deepak.webp" alt="Dr Deepak" />
-  <section>
-    <h2>Dr Deepak</h2>
-    <p>Orthodontist. Smile Design • Clear Aligners • In-house Aligner Systems.</p>
-    <div>
-      <div class="tag" aria-label="Aligners">
-        <i class="fa-solid fa-tooth"></i> Aligners
+  <div class="card">
+    <img src="images/deepak.webp" alt="Dr Deepak" />
+    <section>
+      <h2>Dr Deepak</h2>
+      <p>Orthodontist. Smile Design • Clear Aligners.</p>
+      <div>
+        <div class="tag" aria-label="Aligners">
+          <i class="fa-solid fa-tooth"></i> In-house Aligner Manufacturer
+        </div>
+        <button data-doctor-id="deepak" class="profile-info-btn">
+            <i class="fa-solid fa-info-circle"></i> Profile
+        </button>
       </div>
-      <button>Follow</button>
-    </div>
-  </section>
-</div>
+    </section>
+  </div>
 
-<div class="card">
-  <img src="images/thikvijay.webp" alt="Dr Thikvijay" />
-  <section>
-    <h2>Dr Thikvijay</h2>
-    <p>Aesthetic & Medical Cosmetologist. Trichology • Hair & Scalp Restoration.</p>
-    <div>
-      <div class="tag" aria-label="Experience"><i class="fa-solid fa-user"></i> 10+ yrs</div>
-      <button>Follow</button>
-    </div>
-  </section>
-</div>
+  <div class="card">
+    <img src="images/thikvijay.webp" alt="Dr Thikvijay" />
+    <section>
+      <h2>Dr Thikvijay</h2>
+      <p>Aesthetic & Medical Cosmetologist. Trichology • Hair & Scalp Restoration.</p>
+      <div>
+        <div class="tag" aria-label="Experience"><i class="fa-solid fa-user"></i> 10+ yrs</div>
+        <button data-doctor-id="thikvijay" class="profile-info-btn">
+            <i class="fa-solid fa-info-circle"></i> Profile
+        </button>
+      </div>
+    </section>
+  </div>
 
-<div class="card">
-  <img src="images/idhaya.webp" alt="Dr Idhaya" />
-  <section>
-    <h2>Dr Idhaya</h2>
-    <p>Preventive & Tourism Dentistry. Kids programs • Insurance advisory.</p>
-    <div>
-      <div class="tag" aria-label="Preventive"><i class="fa-solid fa-user-shield"></i> Preventive</div>
-      <button>Follow</button>
+  <div class="card">
+    <img src="images/idhaya.webp" alt="Dr Idhaya" />
+    <section>
+      <h2>Dr Idhaya</h2>
+      <p>Preventive & Tourism Dentistry. Kids programs • Insurance advisory.</p>
+      <div>
+        <div class="tag" aria-label="CEO Role">
+          <i class="fa-solid fa-user-tie"></i> <i class="fa-solid fa-hospital"></i> CEO of Healthlo
+        </div>
+        <button data-doctor-id="idhaya" class="profile-info-btn">
+            <i class="fa-solid fa-info-circle"></i> Profile
+        </button>
+      </div>
+    </section>
+  </div>
+
+  <div id="doctorModal" class="modal">
+    <div class="modal-content">
+      <span class="close-btn">&times;</span>
+      
+      <div id="modal-header">
+        <img id="modal-image" src="" alt="Doctor Image">
+        <h3 id="modal-name"></h3>
+      </div>
+      
+      <div class="modal-body">
+        
+        <div class="stats-grid">
+          <div class="stat-item">
+            <i class="fa-solid fa-user-clock"></i>
+            <span id="modal-experience"></span>
+          </div>
+          <div class="stat-item">
+            <i class="fa-solid fa-notes-medical"></i>
+            <span id="modal-cases"></span>
+          </div>
+          <div class="stat-item">
+            <i class="fa-solid fa-percent"></i>
+            <span id="modal-success-rate"></span>
+          </div>
+        </div>
+        
+        <p id="modal-aligners-info" class="aligner-section" style="display:none;">
+          <i class="fa-solid fa-tooth"></i> In-House Aligner Manufacturer
+        </p>
+
+        <h4>Books Published</h4>
+        <div id="modal-books" class="books-container">
+          </div>
+
+        <button id="bookAppointmentBtn" class="book-btn">Book Appointment</button>
+      </div>
     </div>
-  </section>
-</div>
+  </div>
   
 <!-- ================= SELF-CHECK BANNER ================= -->
 <section class="ndc-selfcheck-hero" id="self-check" aria-labelledby="sc-title">
