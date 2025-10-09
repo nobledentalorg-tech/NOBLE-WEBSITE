@@ -409,13 +409,55 @@ button, input, select, textarea {
   min-height: 100vh;
   margin: 0 auto;
   background: linear-gradient(135deg, #f0f0f5, #e0e0e8);
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 2rem;
-  justify-items: center;
-  align-items: start;
   font-family: Lato, Montserrat, Helvetica, Arial, sans-serif;
   padding: 4rem 2rem;
+}
+
+.team-section .container {
+  display: flex;
+  flex-direction: column;
+  gap: 2.5rem;
+}
+
+.team-header {
+  text-align: center;
+  max-width: 720px;
+  margin: 0 auto;
+  color: #1e1e1e;
+}
+
+.team-header h2 {
+  font-size: clamp(1.8rem, 2.6vw, 2.75rem);
+  font-weight: 800;
+  margin-bottom: 0.5rem;
+}
+
+.team-header p {
+  color: #4a4a55;
+  font-size: 1rem;
+  line-height: 1.6;
+}
+
+.team-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 2rem;
+  justify-items: center;
+  align-items: stretch;
+}
+
+.team-grid .card {
+  width: min(100%, 20rem);
+}
+
+@media (max-width: 768px) {
+  .team-section {
+    padding: 3rem 1.5rem;
+  }
+
+  .team-header p {
+    font-size: 0.95rem;
+  }
 }
 
 /* ================================
@@ -1994,7 +2036,6 @@ button, input, select, textarea {
   clip: rect(0 0 0 0) !important;
   white-space: nowrap !important;
 }
-
 
 
 
