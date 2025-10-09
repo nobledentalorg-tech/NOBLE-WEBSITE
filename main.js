@@ -596,3 +596,31 @@ document.addEventListener("DOMContentLoaded", () => {
   restartAutoRotate();
   updateClearButton();
 });
+
+document.addEventListener("DOMContentLoaded", () => {
+  const modal = document.querySelector(".modal");
+  const closeBtn = document.querySelector(".close-btn");
+
+  // Open modal on "Profile" button click
+  document.querySelectorAll(".profile-info-btn").forEach(btn => {
+    btn.addEventListener("click", (e) => {
+      e.preventDefault();
+      modal.style.display = "block";
+      document.body.style.overflow = "hidden"; // prevent scroll behind modal
+    });
+  });
+
+  // Close modal
+  closeBtn.addEventListener("click", () => {
+    modal.style.display = "none";
+    document.body.style.overflow = "auto";
+  });
+
+  // Close on outside click
+  window.addEventListener("click", (e) => {
+    if (e.target === modal) {
+      modal.style.display = "none";
+      document.body.style.overflow = "auto";
+    }
+  });
+});
