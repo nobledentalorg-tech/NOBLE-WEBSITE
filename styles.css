@@ -854,42 +854,6 @@ body {
     }
 }
 
-/* ================================
-   6. TEAM GRID & SECTION LAYOUT
-   ================================ */
-
-.team-section {
-  padding: 4rem 2rem;
-  text-align: center;
-}
-
-.team-header h2 {
-  font-family: Montserrat, sans-serif;
-  font-size: 2.5rem;
-  font-weight: 800;
-  margin-bottom: 0.5rem;
-  color: #1e1e1e;
-}
-
-.team-header p {
-  font-size: 1.1rem;
-  color: #555;
-  max-width: 600px;
-  margin: 0 auto 3rem;
-}
-
-.team-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 2rem;
-  justify-items: center;
-  align-items: start;
-  width: 100%;
-  max-width: 1400px;
-  margin: 0 auto;
-}
-
-
 
 /* ================= SELF-CHECK BANNER ================= */
 :root {
@@ -2037,6 +2001,7 @@ body {
   clip: rect(0 0 0 0) !important;
   white-space: nowrap !important;
 }
+
 
 
 
