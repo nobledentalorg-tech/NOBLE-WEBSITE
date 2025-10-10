@@ -165,25 +165,30 @@
     if (document.getElementById("schema-badge")) return;
 
     const badge = document.createElement("div");
-    badge.id = "schema-badge";
+    badge.setAttribute("role", "status");
+    badge.setAttribute("aria-live", "polite");
     badge.innerHTML = `
       <span>🤖 AI Schema Health</span>
       <strong>${score}/10</strong>
     `;
+
+    const bgColor = errors > 0 ? "#7f1d1d" : healed > 0 ? "#92400e" : "#0b4f47";
+    const pulseColor = errors > 0 ? "rgba(127,29,29,0.35)" : healed > 0 ? "rgba(146,64,14,0.35)" : "rgba(11,79,71,0.35)";
+
     Object.assign(badge.style, {
       position: "fixed",
       bottom: "14px",
       right: "14px",
-      background:
-        errors > 0 ? "#EF4444" : healed > 0 ? "#F59E0B" : "#12B2A0",
-      color: "#fff",
-      padding: "8px 14px",
-      borderRadius: "10px",
-      fontFamily: "Manrope, monospace",
+      background: bgColor,
+      color: "#ffffff",
+      padding: "10px 16px",
+      borderRadius: "12px",
+      fontFamily: "'Manrope', 'Segoe UI', sans-serif",
       fontWeight: 600,
-      fontSize: "13px",
+      fontSize: "0.9rem",
+      lineHeight: "1.25",
       zIndex: 9999,
-      boxShadow: "0 3px 12px rgba(0,0,0,0.25)",
+      boxShadow: "0 4px 14px rgba(0,0,0,0.28)",
       cursor: "pointer",
       transition: "all 0.3s ease"
     });
@@ -197,7 +202,7 @@
       position: "absolute",
       inset: 0,
       borderRadius: "inherit",
-      boxShadow: `0 0 12px 4px rgba(18,178,160,0.3)`,
+      boxShadow: `0 0 12px 4px ${pulseColor}`,
       animation: "pulse 2s infinite ease-in-out",
       pointerEvents: "none"
     });
