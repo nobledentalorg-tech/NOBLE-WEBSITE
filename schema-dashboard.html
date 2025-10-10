@@ -293,6 +293,67 @@
     recs.forEach(r => recList.innerHTML += `<li>💡 ${r.message} (${r.impact} impact)</li>`);
   }
 
+    <!-- Lighthouse Desktop Snapshot -->
+    <div class="card">
+      <h2>Desktop Lighthouse Snapshot — Oct 10, 2025</h2>
+      <p class="list">Discover what our emulated desktop audit (Lighthouse 12.8.2) recorded for the latest deploy.</p>
+      <div class="metric-grid">
+        <div class="metric-tile ok">
+          <span class="metric-label">Performance</span>
+          <span class="metric-score">89</span>
+          <span class="metric-note">FCP ▲10 • LCP ▲19 • TBT ▲30 • CLS ▲25 • SI ▲5</span>
+        </div>
+        <div class="metric-tile ok">
+          <span class="metric-label">Accessibility</span>
+          <span class="metric-score">86</span>
+          <span class="metric-note">Focus on ARIA menus &amp; form labels</span>
+        </div>
+        <div class="metric-tile good">
+          <span class="metric-label">Best Practices</span>
+          <span class="metric-score">96</span>
+          <span class="metric-note">Resolve missing assets + enable CSP</span>
+        </div>
+        <div class="metric-tile good">
+          <span class="metric-label">SEO</span>
+          <span class="metric-score">92</span>
+          <span class="metric-note">Strong fundamentals • keep structured data fresh</span>
+        </div>
+      </div>
+      <div class="metric-detail">
+        <div>
+          <strong>FCP</strong>
+          0.7&nbsp;s • Needs server TTFB improvement (1030&nbsp;ms)
+        </div>
+        <div>
+          <strong>LCP</strong>
+          1.6&nbsp;s • Heavy hero and blog imagery inflate payloads
+        </div>
+        <div>
+          <strong>TBT</strong>
+          0&nbsp;ms • 1 long task (314&nbsp;ms) — monitor scripts
+        </div>
+        <div>
+          <strong>CLS</strong>
+          0 • Layout stable in desktop audit
+        </div>
+        <div>
+          <strong>Speed Index</strong>
+          2.2&nbsp;s • Benefit from lighter above-the-fold assets
+        </div>
+        <div>
+          <strong>Field Data</strong>
+          No data yet — continue collecting real-user telemetry
+        </div>
+      </div>
+      <ul class="opportunity-list">
+        <li><strong>Document request latency:</strong> eliminate redirects, enable compression, and target &lt;100&nbsp;ms TTFB.</li>
+        <li><strong>Image payload:</strong> compress hero/testimonial assets (est. 2.4&nbsp;MB savings) and ship responsive sources.</li>
+        <li><strong>Render blocking:</strong> inline critical CSS, defer Boxicons, and add <code>font-display: swap</code>.</li>
+        <li><strong>Security headers:</strong> roll out CSP, HSTS (<code>includeSubDomains</code>, <code>preload</code>), COOP, and frame protections.</li>
+      </ul>
+      <p class="metric-footnote">Captured via HeadlessChromium 137 (custom throttling). Next: automate weekly desktop audits and sync results with Insights API.</p>
+    </div>
+
   /* GPT Layer */
   document.addEventListener("gpt-engineer-ready", (e) => {
     const info = e.detail || {};
