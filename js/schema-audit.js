@@ -26,18 +26,47 @@
   };
 
   // --- Helper: Safe JSON Parse ---
-  const safeParse = (txt) => {
+  const safeParse = (txt, source = "inline") => {
     try {
       return JSON.parse(txt);
     } catch {
-      summary.errors.push("⚠️ Invalid JSON-LD detected");
+      summary.errors.push(`⚠️ Invalid JSON-LD detected (${source})`);
       return null;
     }
   };
 
   // --- Step 1: Parse On-page Schemas ---
-  const parsedSchemas = schemas.map(s => safeParse(s.textContent)).filter(Boolean);
-  parsedSchemas.forEach(schema => {
+  const parsedSchemas = (
+    await Promise.all(
+      schemas.map(async (script, index) => {
+        const inlineContent = script.textContent.trim();
+        if (inlineContent) {
+          return safeParse(inlineContent, `inline #${index + 1}`);
+        }
+
+        const src = script.getAttribute("src");
+        if (src) {
+          try {
+            const response = await fetch(src);
+            if (!response.ok) throw new Error(`${response.status}`);
+            const remoteContent = (await response.text()).trim();
+            if (!remoteContent) {
+              summary.errors.push(`⚠️ Empty JSON-LD payload (${src})`);
+              return null;
+            }
+            return safeParse(remoteContent, src);
+          } catch (err) {
+            summary.errors.push(`⚠️ Unable to load JSON-LD (${src}): ${err.message}`);
+            return null;
+          }
+        }
+
+        summary.errors.push("⚠️ Empty JSON-LD script tag detected");
+        return null;
+      })
+    )
+  ).filter(Boolean);
+   parsedSchemas.forEach(schema => {
     if (schema["@graph"]) {
       summary.entitiesDetected += schema["@graph"].length;
       schema["@graph"].forEach(ent => {
