@@ -409,6 +409,95 @@ button, input, select, textarea {
 .hero-button.call { background: linear-gradient(135deg, #0ea5e9, #0369a1); }
 .hero-button.location { background: linear-gradient(135deg, #d946ef, #9333ea); }
 
+.location-silo {
+  padding: clamp(48px, 8vw, 96px) 0;
+  background: linear-gradient(180deg, rgba(18,178,160,0.08), rgba(122,163,255,0.05));
+}
+
+.location-silo .ndc-eyebrow {
+  font-weight: 600;
+  color: var(--teal);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-bottom: 0.75rem;
+}
+
+.location-silo h2 {
+  font-size: clamp(2rem, 4vw, 2.6rem);
+  margin-bottom: 1rem;
+  color: var(--ink);
+}
+
+.location-silo .lead {
+  font-size: clamp(1.05rem, 2.6vw, 1.2rem);
+  color: var(--muted);
+  max-width: 960px;
+  margin-bottom: clamp(24px, 4vw, 40px);
+}
+
+.location-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: clamp(20px, 4vw, 32px);
+  margin-bottom: clamp(32px, 5vw, 48px);
+}
+
+.location-card {
+  background: var(--paper);
+  border-radius: var(--radius);
+  padding: clamp(20px, 4vw, 28px);
+  box-shadow: 0 18px 40px rgba(15, 23, 42, 0.08);
+  border: 1px solid rgba(15, 23, 42, 0.05);
+}
+
+.location-card h3 {
+  font-size: 1.1rem;
+  margin-bottom: 0.85rem;
+  color: var(--text);
+}
+
+.location-card ul {
+  list-style: disc;
+  padding-left: 1.25rem;
+  color: var(--muted);
+  display: grid;
+  gap: 0.5rem;
+}
+
+.location-card dl {
+  display: grid;
+  gap: 0.75rem;
+  color: var(--muted);
+}
+
+.location-card dt {
+  font-weight: 700;
+  color: var(--text);
+}
+
+.location-card dd {
+  margin: 0;
+}
+
+.location-cta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.location-cta .hero-button {
+  padding-inline: clamp(20px, 6vw, 36px);
+}
+
+@media (max-width: 640px) {
+  .hero-container { text-align: center; }
+  .hero-info-title { justify-content: center; }
+  .hero-buttons { flex-direction: column; align-items: stretch; }
+  .hero-button { justify-content: center; width: 100%; }
+  .location-cta { flex-direction: column; }
+}
+
+
 @media (max-width: 640px) {
   .hero-container { text-align: center; }
   .hero-info-title { justify-content: center; }
@@ -2063,6 +2152,7 @@ button, input, select, textarea {
   clip: rect(0 0 0 0) !important;
   white-space: nowrap !important;
 }
+
 
 
 
