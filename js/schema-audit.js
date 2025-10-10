@@ -143,19 +143,22 @@
   if (!document.getElementById("schema-badge")) {
     const badge = document.createElement("div");
     badge.id = "schema-badge";
+    badge.setAttribute("role", "status");
+    badge.setAttribute("aria-live", "polite");
     badge.textContent = `🧠 Schema Verified (${summary.validatorScore}/10 | AI ${summary.aiReadiness}/10)`;
     Object.assign(badge.style, {
       position: "fixed",
       bottom: "12px",
       right: "12px",
-      background: "#12B2A0",
-      color: "#fff",
-      padding: "6px 10px",
-      fontSize: "12px",
-      borderRadius: "8px",
-      fontFamily: "monospace",
+      background: "#0b4f47",
+      color: "#ffffff",
+      padding: "8px 12px",
+      fontSize: "0.875rem",
+      lineHeight: "1.2",
+      borderRadius: "10px",
+      fontFamily: "'Manrope', 'Segoe UI', sans-serif",
       zIndex: 9999,
-      boxShadow: "0 2px 8px rgba(0,0,0,0.25)"
+      boxShadow: "0 4px 12px rgba(0,0,0,0.25)"
     });
     document.body.appendChild(badge);
   }
