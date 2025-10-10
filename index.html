@@ -16,10 +16,8 @@
   <!-- Performance hints -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="preconnect" href="https://unpkg.com" crossorigin>
   <link rel="dns-prefetch" href="https://fonts.googleapis.com">
   <link rel="dns-prefetch" href="https://fonts.gstatic.com">
-  <link rel="dns-prefetch" href="https://unpkg.com">
   <link rel="preload"
         href="/images/hero-selfcheck.webp"
         as="image"
@@ -184,14 +182,7 @@
   <meta name="twitter:image" content="https://nobledentalnallagandla.in/images/logo-footer.webp">
 
   <!-- Fonts & Icons -->
-  <link rel="preload"
-        href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css"
-        as="style"
-        crossorigin
-        onload="this.onload=null;this.rel='stylesheet'">
-  <noscript>
-    <link rel="stylesheet" href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" crossorigin>
-  </noscript>
+
   
   <!-- Critical Styles & Scripts -->
   <link rel="preload" href="/styles.css" as="style">
@@ -4376,13 +4367,13 @@
     </button>
 
     <!-- Main menu -->
-    <ul class="nav-pill" id="primaryNav" role="menubar" hidden>
-      <li role="none">
-        <a role="menuitem" class="nav-link" href="/">Home</a>
+    <ul class="nav-pill" id="primaryNav" hidden>
+      <li>
+        <a class="nav-link" href="/">Home</a>
       </li>
-
+      
       <!-- Submenu -->
-      <li class="has-submenu" role="none">
+      <li class="has-submenu">
         <button
           class="nav-link submenu-toggle"
           id="submenuToggle"
@@ -4396,38 +4387,36 @@
         <ul
           class="submenu"
           id="specialitiesMenu"
-          role="menu"
-          aria-label="Specialities"
+          aria-labelledby="submenuToggle"
           aria-hidden="true"
         >
-          <li role="none" class="submenu__all">
-            <a role="menuitem" href="/specialities/">Explore All Specialities</a>
+          <li class="submenu__all">
+            <a href="/specialities/">Explore All Specialities</a>
           </li>
-          <li role="none"><a role="menuitem" href="/specialities/braces.html">Braces & Orthodontics</a></li>
-          <li role="none"><a role="menuitem" href="/specialities/invisalign.html">Invisalign Clear Aligners</a></li>
-          <li role="none"><a role="menuitem" href="/specialities/extraction.html">Tooth Extraction</a></li>
-          <li role="none"><a role="menuitem" href="/specialities/root-canal.html">Root Canal Treatment</a></li>
-          <li role="none"><a role="menuitem" href="/specialities/fillings.html">Tooth Fillings</a></li>
-          <li role="none"><a role="menuitem" href="/specialities/crowns-bridges.html">Crowns & Bridges</a></li>
-          <li role="none"><a role="menuitem" href="/specialities/implants.html">Dental Implants</a></li>
-          <li role="none"><a role="menuitem" href="/specialities/dentures.html">Dentures</a></li>
-          <li role="none"><a role="menuitem" href="/specialities/scaling-whitening.html">Scaling & Whitening</a></li>
-          <li role="none"><a role="menuitem" href="/specialities/smile-design.html">Smile Designing</a></li>
-          <li role="none"><a role="menuitem" href="/specialities/gum-surgeries.html">Gum Surgeries</a></li>
-          <li role="none"><a role="menuitem" href="/specialities/kids-dentistry.html">Kids Dentistry</a></li>
-          <li role="none"><a role="menuitem" href="/specialities/pregnancy-dental-care.html">Pregnancy Dental Care</a></li>
+          <li><a href="/specialities/braces.html">Braces & Orthodontics</a></li>
+          <li><a href="/specialities/invisalign.html">Invisalign Clear Aligners</a></li>
+          <li><a href="/specialities/extraction.html">Tooth Extraction</a></li>
+          <li><a href="/specialities/root-canal.html">Root Canal Treatment</a></li>
+          <li><a href="/specialities/fillings.html">Tooth Fillings</a></li>
+          <li><a href="/specialities/crowns-bridges.html">Crowns & Bridges</a></li>
+          <li><a href="/specialities/implants.html">Dental Implants</a></li>
+          <li><a href="/specialities/dentures.html">Dentures</a></li>
+          <li><a href="/specialities/scaling-whitening.html">Scaling & Whitening</a></li>
+          <li><a href="/specialities/smile-design.html">Smile Designing</a></li>
+          <li><a href="/specialities/gum-surgeries.html">Gum Surgeries</a></li>
+          <li><a href="/specialities/kids-dentistry.html">Kids Dentistry</a></li>
+          <li><a href="/specialities/pregnancy-dental-care.html">Pregnancy Dental Care</a></li>
         </ul>
       </li>
 
       <!-- Other navigation items -->
-      <li role="none"><a role="menuitem" class="nav-link" href="#ndc-care-voka">Products</a></li>
-      <li role="none"><a role="menuitem" class="nav-link" href="#ndc-doctors-app">Our Team</a></li>
-
-      <li role="none"><a role="menuitem" class="nav-link" href="#blog">Blog</a></li>
-      <li role="none"><a role="menuitem" class="nav-link" href="/self-check#paths">Self-Check</a></li>
-      <li role="none"><a role="menuitem" class="nav-link" href="/credentials.html">Credentials</a></li>
-      <li role="none">
-        <a role="menuitem" class="nav-link btn btn--primary" href="#get-in-touch">Appointment</a>
+      <li><a class="nav-link" href="#ndc-care-voka">Products</a></li>
+      <li><a class="nav-link" href="#ndc-doctors-app">Our Team</a></li>
+      <li><a class="nav-link" href="#blog">Blog</a></li>
+      <li><a class="nav-link" href="/self-check#paths">Self-Check</a></li>
+      <li><a class="nav-link" href="/credentials.html">Credentials</a></li>
+      <li>
+        <a class="nav-link btn btn--primary" href="#get-in-touch">Appointment</a>
       </li>
     </ul>
   </nav>
@@ -6837,7 +6826,8 @@
         <!-- Quick actions -->
         <div class="git-actions">
           <a class="cta-pill call" href="tel:+918610425342">
-            <i class="bx bxs-phone"></i> Call now
+            <span class="icon" aria-hidden="true">📞</span>
+            <span>Call now</span>
           </a>
           <a class="cta-pill whats" id="waQuick" 
              href="https://wa.me/918610425342" target="_blank" rel="noopener">
