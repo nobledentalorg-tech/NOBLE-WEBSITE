@@ -27,6 +27,23 @@
     "latitude": 17.47396,
     "longitude": 78.30599
   },
+    "areaServed": [
+    { "@type": "Place", "name": "Nallagandla, Hyderabad" },
+    { "@type": "Place", "name": "Tellapur, Hyderabad" },
+    { "@type": "Place", "name": "Gachibowli, Hyderabad" },
+    { "@type": "Place", "name": "Lingampally, Hyderabad" },
+    { "@type": "Place", "name": "Financial District, Hyderabad" },
+    { "@type": "Place", "name": "Chanda Nagar, Hyderabad" }
+  ],
+  "serviceArea": {
+    "@type": "GeoCircle",
+    "geoMidpoint": {
+      "@type": "GeoCoordinates",
+      "latitude": 17.47396,
+      "longitude": 78.30599
+    },
+    "geoRadius": 7000
+  },
   "identifier": {
     "@type": "PropertyValue",
     "propertyID": "place_id",
@@ -97,12 +114,22 @@
   },
   "keywords": [
     "Dentist Nallagandla",
+    "Dentist in Nallagandla",
     "Dental Clinic Hyderabad",
-    "Microscopic Root Canal Hyderabad",
-    "Pediatric Dentist Hyderabad",
-    "Emergency Dentist Nallagandla",
+    "Best dentist near me",
+    "Dentist near me",
+    "Dentist in Nallagandla",
+    "Tooth pain",
     "Laser Dentistry Hyderabad",
     "Top Rated Dental Clinic Hyderabad"
+  ],
+    "knowsAbout": [
+    "dental implants in hyderabad",
+    "best dentist in nallagandla",
+    "emergency dental clinic near gachibowli",
+    "microscope root canal specialist telangana",
+    "clear aligners treatment tellapur",
+    "pediatric dentist lingampally"
   ],
   "hasCredential": [
     "ISO 9001:2015 Certified Clinic",
