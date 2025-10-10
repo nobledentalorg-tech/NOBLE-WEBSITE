@@ -157,7 +157,88 @@
     .warn { background: #fef9c3; color: var(--warn); }
     .bad { background: #fee2e2; color: var(--bad); }
 
-    ul.list li { margin-bottom: 6px; }
+     ul.list li { margin-bottom: 6px; }
+
+    /* =============================================================
+       Lighthouse Metrics Deck
+    ============================================================= */
+    .metric-grid {
+      margin-top: 1.2rem;
+      display: grid;
+      gap: 0.9rem;
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    }
+    .metric-tile {
+      border-radius: 14px;
+      padding: 1rem 1.1rem;
+      border: 1px solid rgba(14, 17, 22, 0.08);
+      background: rgba(255, 255, 255, 0.7);
+      backdrop-filter: blur(6px);
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.6);
+      display: flex;
+      flex-direction: column;
+      gap: 0.35rem;
+    }
+    .metric-tile.good {
+      background: #ecfdf5;
+      border-color: #bbf7d0;
+    }
+    .metric-tile.ok {
+      background: #fefce8;
+      border-color: #fde68a;
+    }
+    .metric-tile.warn {
+      background: #fff7ed;
+      border-color: #fdba74;
+    }
+    .metric-label {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--muted);
+      font-weight: 600;
+    }
+    .metric-score {
+      font-size: 2rem;
+      font-weight: 800;
+      color: var(--ink);
+    }
+    .metric-note {
+      font-size: 0.78rem;
+      color: var(--muted);
+    }
+    .metric-footnote {
+      margin-top: 1rem;
+      font-size: 0.8rem;
+      color: var(--muted);
+      line-height: 1.4;
+    }
+    .opportunity-list {
+      margin-top: 1rem;
+      padding-left: 1.1rem;
+      color: var(--muted);
+      font-size: 0.85rem;
+      line-height: 1.5;
+    }
+    .opportunity-list li { margin-bottom: 0.4rem; }
+    .metric-detail {
+      margin-top: 1.2rem;
+      display: grid;
+      gap: 0.5rem;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    }
+    .metric-detail div {
+      background: rgba(14, 17, 22, 0.04);
+      padding: 0.75rem 0.9rem;
+      border-radius: 10px;
+      font-size: 0.85rem;
+      color: var(--muted);
+    }
+    .metric-detail div strong {
+      display: block;
+      color: var(--ink);
+      margin-bottom: 0.25rem;
+    }
   </style>
 </head>
 
@@ -187,6 +268,67 @@
     <div class="card">
       <h2>Schema Summary</h2>
       <div id="summary" class="list">Collecting live stats...</div>
+    </div>
+
+    <!-- Lighthouse Desktop Snapshot -->
+    <div class="card">
+      <h2>Desktop Lighthouse Snapshot — Oct 10, 2025</h2>
+      <p class="list">Discover what our emulated desktop audit (Lighthouse 12.8.2) recorded for the latest deploy.</p>
+      <div class="metric-grid">
+        <div class="metric-tile ok">
+          <span class="metric-label">Performance</span>
+          <span class="metric-score">89</span>
+          <span class="metric-note">FCP ▲10 • LCP ▲19 • TBT ▲30 • CLS ▲25 • SI ▲5</span>
+        </div>
+        <div class="metric-tile ok">
+          <span class="metric-label">Accessibility</span>
+          <span class="metric-score">86</span>
+          <span class="metric-note">Focus on ARIA menus &amp; form labels</span>
+        </div>
+        <div class="metric-tile good">
+          <span class="metric-label">Best Practices</span>
+          <span class="metric-score">96</span>
+          <span class="metric-note">Resolve missing assets + enable CSP</span>
+        </div>
+        <div class="metric-tile good">
+          <span class="metric-label">SEO</span>
+          <span class="metric-score">92</span>
+          <span class="metric-note">Strong fundamentals • keep structured data fresh</span>
+        </div>
+      </div>
+      <div class="metric-detail">
+        <div>
+          <strong>FCP</strong>
+          0.7&nbsp;s • Needs server TTFB improvement (1030&nbsp;ms)
+        </div>
+        <div>
+          <strong>LCP</strong>
+          1.6&nbsp;s • Heavy hero and blog imagery inflate payloads
+        </div>
+        <div>
+          <strong>TBT</strong>
+          0&nbsp;ms • 1 long task (314&nbsp;ms) — monitor scripts
+        </div>
+        <div>
+          <strong>CLS</strong>
+          0 • Layout stable in desktop audit
+        </div>
+        <div>
+          <strong>Speed Index</strong>
+          2.2&nbsp;s • Benefit from lighter above-the-fold assets
+        </div>
+        <div>
+          <strong>Field Data</strong>
+          No data yet — continue collecting real-user telemetry
+        </div>
+      </div>
+      <ul class="opportunity-list">
+        <li><strong>Document request latency:</strong> eliminate redirects, enable compression, and target &lt;100&nbsp;ms TTFB.</li>
+        <li><strong>Image payload:</strong> compress hero/testimonial assets (est. 2.4&nbsp;MB savings) and ship responsive sources.</li>
+        <li><strong>Render blocking:</strong> inline critical CSS, defer Boxicons, and add <code>font-display: swap</code>.</li>
+        <li><strong>Security headers:</strong> roll out CSP, HSTS (<code>includeSubDomains</code>, <code>preload</code>), COOP, and frame protections.</li>
+      </ul>
+      <p class="metric-footnote">Captured via HeadlessChromium 137 (custom throttling). Next: automate weekly desktop audits and sync results with Insights API.</p>
     </div>
 
     <!-- GPT Layer -->
@@ -231,46 +373,65 @@
     const finalScore = Math.max(0, ((base + aiScore) / 2) - penalty + (window.__GPT_READY ? 0.2 : 0));
 
     // Doughnut Chart
-    const ctx1 = document.getElementById("healthChart").getContext("2d");
-    new Chart(ctx1, {
-      type: "doughnut",
-      data: {
-        labels: ["AI Health Score", "Healed Nodes", "Errors"],
-        datasets: [{
-          data: [finalScore, healed.length, errors.length],
-          backgroundColor: ["#12B2A0", "#3B82F6", "#EF4444"]
-        }]
-      },
-      options: {
-        plugins: { legend: { position: "bottom" } },
-        cutout: "70%",
-        animation: { duration: 1800 }
-      }
-    });
+    const healthCanvas = document.getElementById("healthChart");
+    if (window.Chart && healthCanvas?.getContext) {
+      const ctx1 = healthCanvas.getContext("2d");
+      new Chart(ctx1, {
+        type: "doughnut",
+        data: {
+          labels: ["AI Health Score", "Healed Nodes", "Errors"],
+          datasets: [{
+            data: [finalScore, healed.length, errors.length],
+            backgroundColor: ["#12B2A0", "#3B82F6", "#EF4444"]
+          }]
+        },
+        options: {
+          plugins: { legend: { position: "bottom" } },
+          cutout: "70%",
+          animation: { duration: 1800 }
+        }
+      });
+    } else if (healthCanvas) {
+      const fallback = document.createElement("p");
+      fallback.className = "list";
+      fallback.textContent = "Chart rendering unavailable. Please check your network connection to the Chart.js CDN.";
+      healthCanvas.replaceWith(fallback);
+    }
+
 
     // Type Distribution
-    const ctx2 = document.getElementById("typeChart").getContext("2d");
+    const typeCanvas = document.getElementById("typeChart");
     const typeCount = {};
     merged.forEach(m => typeCount[m["@type"]] = (typeCount[m["@type"]] || 0) + 1);
-    new Chart(ctx2, {
-      type: "bar",
-      data: {
-        labels: Object.keys(typeCount),
-        datasets: [{
-          label: "Entity Count",
-          data: Object.values(typeCount),
-          backgroundColor: "#06b6d4"
-        }]
-      },
-      options: {
-        indexAxis: "y",
-        scales: { x: { beginAtZero: true } },
-        plugins: { legend: { display: false } }
-      }
-    });
+    if (window.Chart && typeCanvas?.getContext) {
+      const ctx2 = typeCanvas.getContext("2d");
+      new Chart(ctx2, {
+        type: "bar",
+        data: {
+          labels: Object.keys(typeCount),
+          datasets: [{
+            label: "Entity Count",
+            data: Object.values(typeCount),
+            backgroundColor: "#06b6d4"
+          }]
+        },
+        options: {
+          indexAxis: "y",
+          scales: { x: { beginAtZero: true } },
+          plugins: { legend: { display: false } }
+        }
+      });
+    } else if (typeCanvas) {
+      const fallback = document.createElement("p");
+      fallback.className = "list";
+      fallback.textContent = "Unable to load entity chart. Refresh once Chart.js is reachable.";
+      typeCanvas.replaceWith(fallback);
+    }
 
     // Summary
-    document.getElementById("summary").innerHTML = `
+     const summaryEl = document.getElementById("summary");
+    if (summaryEl) {
+      summaryEl.innerHTML = `
       <p><strong>Total Schema Files:</strong> ${aiSummary.total || merged.length}</p>
       <p><strong>Entities Detected:</strong> ${summaryRR.entitiesDetected || merged.length}</p>
       <p><strong>AI Health Score:</strong> ${finalScore.toFixed(2)} / 10</p>
@@ -279,20 +440,22 @@
       <p><strong>Errors:</strong> ${errors.length}</p>
       <p><strong>Rich Results Eligible:</strong> ${features.length}</p>
       <p><strong>Last Synced:</strong> ${new Date(aiSummary.timestamp || Date.now()).toLocaleString()}</p>
-    `;
+       `;
+    }
 
     // Recommendations
     const recList = document.getElementById("recommendList");
-    recList.innerHTML = "";
-    if (errors.length === 0 && healed.length === 0) {
-      recList.innerHTML = "<li>✅ Perfect graph: All nodes AI-ready and indexed.</li>";
-    } else {
-      healed.forEach(f => recList.innerHTML += `<li>🩹 Auto-Healed Node: <strong>${f}</strong></li>`);
-      errors.forEach(e => recList.innerHTML += `<li>⚠️ ${e.file}: ${e.issue}</li>`);
+    if (recList) {
+      recList.innerHTML = "";
+      if (errors.length === 0 && healed.length === 0 && recs.length === 0) {
+        recList.innerHTML = "<li>✅ Perfect graph: All nodes AI-ready and indexed.</li>";
+      } else {
+        healed.forEach(f => recList.innerHTML += `<li>🩹 Auto-Healed Node: <strong>${f}</strong></li>`);
+        errors.forEach(e => recList.innerHTML += `<li>⚠️ ${e.file}: ${e.issue}</li>`);
+        recs.forEach(r => recList.innerHTML += `<li>💡 ${r.message} (${r.impact} impact)</li>`);
+      }
     }
-    recs.forEach(r => recList.innerHTML += `<li>💡 ${r.message} (${r.impact} impact)</li>`);
   }
-
     <!-- Lighthouse Desktop Snapshot -->
     <div class="card">
       <h2>Desktop Lighthouse Snapshot — Oct 10, 2025</h2>
