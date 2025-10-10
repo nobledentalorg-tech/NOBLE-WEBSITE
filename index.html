@@ -184,10 +184,15 @@
   <meta name="twitter:image" content="https://nobledentalnallagandla.in/images/logo-footer.webp">
 
   <!-- Fonts & Icons -->
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;700;800&display=swap" rel="stylesheet">
-  <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
-
+  <link rel="preload"
+        href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css"
+        as="style"
+        crossorigin
+        onload="this.onload=null;this.rel='stylesheet'">
+  <noscript>
+    <link rel="stylesheet" href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" crossorigin>
+  </noscript>
+  
   <!-- Critical Styles & Scripts -->
   <link rel="preload" href="/styles.css" as="style">
   <link rel="stylesheet" href="/styles.css">
@@ -4524,8 +4529,10 @@
 
  <!-- Filter -->
 <div class="filter-bar">
-  <input type="text" id="treatmentSearch" placeholder="Search treatments or symptoms (e.g. pain, crooked teeth, kids, pregnancy)...">
-<select id="categoryFilter">
+  <label class="visually-hidden" for="treatmentSearch">Search treatments or symptoms</label>
+  <input type="search" id="treatmentSearch" placeholder="Search treatments or symptoms (e.g. pain, crooked teeth, kids, pregnancy)...">
+  <label class="visually-hidden" for="categoryFilter">Filter treatments by speciality</label>
+  <select id="categoryFilter">
   <option value="">Filter by treatment</option>
 
   <!-- Core Treatments -->
@@ -6802,7 +6809,7 @@
       <img src="/images/hero-selfcheck.webp"
            alt="Preview of the Self-Check tool with tooth map and results"
            width="720" height="560"
-           loading="lazy" decoding="async"
+           loading="eager" decoding="async" fetchpriority="high"
            class="ndc-hero-art">
     </div>
   </div>
