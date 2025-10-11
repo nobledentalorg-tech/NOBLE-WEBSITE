@@ -422,15 +422,102 @@ if (bookAppointmentBtn) {
     });
   }
 
-  /* =========================================================
-     5. Testimonials auto-scroll
-  ========================================================= */
-  const testimonialsLoop = $(".testimonials-loop");
-  if (testimonialsLoop) {
-    let isPaused = false;
-    on(testimonialsLoop.parentElement, "mouseenter", () => { isPaused = true; testimonialsLoop.style.animationPlayState = "paused"; });
-    on(testimonialsLoop.parentElement, "mouseleave", () => { isPaused = false; testimonialsLoop.style.animationPlayState = "running"; });
+/* ============================================================
+🌿 Noble Dental – Motion Engine (v3.0)
+Optimized for performance + SEO
+============================================================ */
+
+// === Reveal-on-scroll (fade + slide) ===
+document.addEventListener("DOMContentLoaded", () => {
+  const revealEls = document.querySelectorAll(
+    ".testimonial-card, .blog-card, .faq-item, .knowledge-aside"
+  );
+
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("visible");
+          observer.unobserve(entry.target);
+        }
+      });
+    },
+    { threshold: 0.2 }
+  );
+
+  revealEls.forEach((el, index) => {
+    el.style.transitionDelay = `${index * 0.07}s`;
+    observer.observe(el);
+  });
+});
+
+// === Carousel Auto-Scroll + Pause on Hover ===
+document.addEventListener("DOMContentLoaded", () => {
+  const track = document.querySelector(".carousel-track");
+  if (!track) return;
+
+  let scrollSpeed = 0.6;
+  let isPaused = false;
+
+  function autoScroll() {
+    if (!isPaused) {
+      track.scrollLeft += scrollSpeed;
+      if (track.scrollLeft >= track.scrollWidth - track.clientWidth) {
+        track.scrollLeft = 0;
+      }
+    }
+    requestAnimationFrame(autoScroll);
   }
+
+  track.addEventListener("mouseenter", () => (isPaused = true));
+  track.addEventListener("mouseleave", () => (isPaused = false));
+
+  requestAnimationFrame(autoScroll);
+});
+
+// === Swipe for Carousel (Mobile) ===
+(function enableSwipe() {
+  const track = document.querySelector(".carousel-track");
+  if (!track) return;
+
+  let startX = 0;
+  let scrollLeft = 0;
+  let isDown = false;
+
+  track.addEventListener("mousedown", (e) => {
+    isDown = true;
+    startX = e.pageX - track.offsetLeft;
+    scrollLeft = track.scrollLeft;
+    track.classList.add("grabbing");
+  });
+
+  track.addEventListener("mouseleave", () => (isDown = false));
+  track.addEventListener("mouseup", () => {
+    isDown = false;
+    track.classList.remove("grabbing");
+  });
+
+  track.addEventListener("mousemove", (e) => {
+    if (!isDown) return;
+    e.preventDefault();
+    const x = e.pageX - track.offsetLeft;
+    const walk = (x - startX) * 1.5;
+    track.scrollLeft = scrollLeft - walk;
+  });
+
+  // Touch support
+  track.addEventListener("touchstart", (e) => {
+    startX = e.touches[0].pageX;
+    scrollLeft = track.scrollLeft;
+  });
+
+  track.addEventListener("touchmove", (e) => {
+    const x = e.touches[0].pageX;
+    const walk = (x - startX) * 1.5;
+    track.scrollLeft = scrollLeft - walk;
+  });
+})();
+
 
   /* =========================================================
      6. Certificates ticker controls
