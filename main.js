@@ -422,101 +422,61 @@ if (bookAppointmentBtn) {
     });
   }
 
-/* ============================================================
-🌿 Noble Dental – Motion Engine (v3.0)
-Optimized for performance + SEO
-============================================================ */
-
-// === Reveal-on-scroll (fade + slide) ===
+/* ==========================================================
+   Noble Dental – Responsive Motion Engine v3.1
+   - Continuous auto-scroll testimonials
+   - Reveal on scroll
+   - Touch swipe support (mobile)
+========================================================== */
 document.addEventListener("DOMContentLoaded", () => {
-  const revealEls = document.querySelectorAll(
-    ".testimonial-card, .blog-card, .faq-item, .knowledge-aside"
-  );
-
+  // Reveal on scroll
+  const revealEls = document.querySelectorAll(".reveal");
   const observer = new IntersectionObserver(
-    (entries) => {
-      entries.forEach((entry) => {
+    entries => {
+      entries.forEach(entry => {
         if (entry.isIntersecting) {
           entry.target.classList.add("visible");
           observer.unobserve(entry.target);
         }
       });
     },
-    { threshold: 0.2 }
+    { threshold: 0.15 }
   );
+  revealEls.forEach(el => observer.observe(el));
 
-  revealEls.forEach((el, index) => {
-    el.style.transitionDelay = `${index * 0.07}s`;
-    observer.observe(el);
-  });
-});
+  // Smooth continuous scroll
+  const track = document.querySelector(".testimonial-track");
+  let paused = false;
+  let offset = 0;
 
-// === Carousel Auto-Scroll + Pause on Hover ===
-document.addEventListener("DOMContentLoaded", () => {
-  const track = document.querySelector(".carousel-track");
-  if (!track) return;
+  track.addEventListener("mouseenter", () => (paused = true));
+  track.addEventListener("mouseleave", () => (paused = false));
 
-  let scrollSpeed = 0.6;
-  let isPaused = false;
-
-  function autoScroll() {
-    if (!isPaused) {
-      track.scrollLeft += scrollSpeed;
-      if (track.scrollLeft >= track.scrollWidth - track.clientWidth) {
-        track.scrollLeft = 0;
+  function animate() {
+    if (!paused) {
+      offset -= 0.4; // scroll speed
+      track.style.transform = `translateX(${offset}px)`;
+      if (Math.abs(offset) >= track.scrollWidth / 2) {
+        offset = 0;
       }
     }
-    requestAnimationFrame(autoScroll);
+    requestAnimationFrame(animate);
   }
+  animate();
 
-  track.addEventListener("mouseenter", () => (isPaused = true));
-  track.addEventListener("mouseleave", () => (isPaused = false));
-
-  requestAnimationFrame(autoScroll);
+  // Touch swipe (mobile)
+  let startX = 0;
+  let scrollX = 0;
+  track.addEventListener("touchstart", e => {
+    startX = e.touches[0].pageX;
+    scrollX = offset;
+  });
+  track.addEventListener("touchmove", e => {
+    const dx = e.touches[0].pageX - startX;
+    offset = scrollX + dx;
+  });
 });
 
-// === Swipe for Carousel (Mobile) ===
-(function enableSwipe() {
-  const track = document.querySelector(".carousel-track");
-  if (!track) return;
-
-  let startX = 0;
-  let scrollLeft = 0;
-  let isDown = false;
-
-  track.addEventListener("mousedown", (e) => {
-    isDown = true;
-    startX = e.pageX - track.offsetLeft;
-    scrollLeft = track.scrollLeft;
-    track.classList.add("grabbing");
-  });
-
-  track.addEventListener("mouseleave", () => (isDown = false));
-  track.addEventListener("mouseup", () => {
-    isDown = false;
-    track.classList.remove("grabbing");
-  });
-
-  track.addEventListener("mousemove", (e) => {
-    if (!isDown) return;
-    e.preventDefault();
-    const x = e.pageX - track.offsetLeft;
-    const walk = (x - startX) * 1.5;
-    track.scrollLeft = scrollLeft - walk;
-  });
-
-  // Touch support
-  track.addEventListener("touchstart", (e) => {
-    startX = e.touches[0].pageX;
-    scrollLeft = track.scrollLeft;
-  });
-
-  track.addEventListener("touchmove", (e) => {
-    const x = e.touches[0].pageX;
-    const walk = (x - startX) * 1.5;
-    track.scrollLeft = scrollLeft - walk;
-  });
-})();
 
 
   /* =========================================================
