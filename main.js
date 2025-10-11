@@ -18,6 +18,11 @@ document.addEventListener("DOMContentLoaded", () => {
   const $$ = (s, r = document) => Array.from(r.querySelectorAll(s));
   const on = (el, ev, fn, opts = false) => el && el.addEventListener(ev, fn, opts);
 
+  // Reset transition class when returning via browser history
+  window.addEventListener("pageshow", () => {
+    document.body.classList.remove("page-exit");
+  });
+
   /* =========================================================
      1. Header: shrink on scroll
   ========================================================= */
@@ -146,6 +151,61 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 
+  /* =========================================================
+     2c. Lightweight on-device analytics
+  ========================================================= */
+  function recordLocalTelemetry() {
+    if (typeof window === "undefined" || !("localStorage" in window)) return;
+
+    const STORAGE_KEY = "ndc-visit-telemetry-v1";
+    const path = window.location.pathname || "/";
+    const referrer = document.referrer || "";
+    const now = new Date();
+    const dayKey = now.toISOString().slice(0, 10);
+
+    try {
+      const raw = window.localStorage.getItem(STORAGE_KEY);
+      const payload = raw ? JSON.parse(raw) : {};
+
+      if (typeof payload !== "object" || Array.isArray(payload)) {
+        window.localStorage.removeItem(STORAGE_KEY);
+        recordLocalTelemetry();
+        return;
+      }
+
+      payload.total = (payload.total || 0) + 1;
+      payload.pages = payload.pages || {};
+      payload.pages[path] = (payload.pages[path] || 0) + 1;
+
+      payload.timeline = payload.timeline || {};
+      const timelineEntry = payload.timeline[dayKey] || { count: 0, pages: {} };
+      timelineEntry.count += 1;
+      timelineEntry.pages[path] = (timelineEntry.pages[path] || 0) + 1;
+      payload.timeline[dayKey] = timelineEntry;
+
+      if (referrer) {
+        payload.referrers = payload.referrers || {};
+        let refKey = referrer;
+        try {
+          refKey = new URL(referrer).host || referrer;
+        } catch (err) {
+          refKey = referrer;
+        }
+        payload.referrers[refKey] = (payload.referrers[refKey] || 0) + 1;
+      }
+
+      payload.lastVisit = now.toISOString();
+      payload.lastPath = path;
+
+      window.localStorage.setItem(STORAGE_KEY, JSON.stringify(payload));
+    } catch (error) {
+      console.warn("Telemetry storage failed", error);
+    }
+  }
+
+  recordLocalTelemetry();
+
+   
   /* =========================================================
      3. Doctor cards → popup sheet
   ========================================================= */
