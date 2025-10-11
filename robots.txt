@@ -1,8 +1,3 @@
-# ================================
-# Noble Dental Care - Robots.txt
-# SEO + AI Optimized (2025 Pro Edition)
-# ================================
-
 User-agent: *
 Allow: /
 Disallow: /admin/
@@ -68,9 +63,6 @@ Allow: /schema/schema-maintenance-log.json
 Allow: /schema/richresults-eligibility.json
 Allow: /schema/schema-intelligence-dashboard.json
 
-# ================================
-# Sitemap Indexes
-# ================================
 Sitemap: https://nobledentalnallagandla.in/sitemap-index.xml
 Sitemap: https://nobledentalnallagandla.in/sitemap.xml
 Sitemap: https://nobledentalnallagandla.in/sitemap-services.xml
@@ -82,17 +74,5 @@ Sitemap: https://nobledentalnallagandla.in/clinic-location.json
 Sitemap: https://nobledentalnallagandla.in/ai-summary.json
 Sitemap: https://nobledentalnallagandla.in/ai-graph.json
 Sitemap: https://nobledentalnallagandla.in/ai-context.json
-Sitemap: https://nobledentalnallagandla.in/ai-graph.json
 
-
-# ================================
-# Crawl Rate & Optimization
-# ================================
-Crawl-delay: 2
-
-# ================================
-# AI Visibility Notes:
-# - Enables AI engines to parse Noble Dental schema & JSON-LD.
-# - Ensures inclusion in AI Overview (SGE), ChatGPT Browse, and BingAI Cards.
-# - Supports Knowledge Graph panels and voice search discovery.
-# ================================
+# Crawl-delay removed to align with Google guidance.
