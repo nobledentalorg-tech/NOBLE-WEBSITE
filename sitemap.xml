@@ -1,108 +1,79 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<urlset 
-  xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
-  xmlns:xhtml="http://www.w3.org/1999/xhtml">
-
-  <!-- Homepage -->
-  <url>
-    <loc>https://nobledentalnallagandla.in/</loc>
-    <lastmod>2025-09-29</lastmod>
-    <priority>1.0</priority>
-    <changefreq>daily</changefreq>
-  </url>
-
-  <!-- About -->
-  <url>
-    <loc>https://nobledentalnallagandla.in/about.html</loc>
-    <lastmod>2025-09-29</lastmod>
-    <priority>0.9</priority>
-    <changefreq>monthly</changefreq>
-  </url>
-
-  <!-- Contact -->
-  <url>
-    <loc>https://nobledentalnallagandla.in/contact.html</loc>
-    <lastmod>2025-09-29</lastmod>
-    <priority>0.9</priority>
-    <changefreq>weekly</changefreq>
-  </url>
-
-  <!-- Services -->
-  <url>
-    <loc>https://nobledentalnallagandla.in/services.html</loc>
-    <lastmod>2025-09-29</lastmod>
-    <priority>0.9</priority>
-    <changefreq>weekly</changefreq>
-  </url>
-
-  <!-- Nallagandla Local Guide -->
-  <url>
-    <loc>https://nobledentalnallagandla.in/dentist-in-nallagandla-hyderabad.html</loc>
-    <lastmod>2025-10-06</lastmod>
-    <priority>0.85</priority>
-    <changefreq>monthly</changefreq>
-  </url>
-  
-  <!-- Self-Check Tool -->
-  <url>
-    <loc>https://nobledentalnallagandla.in/self-check/</loc>
-    <lastmod>2025-09-29</lastmod>
-    <priority>0.8</priority>
-    <changefreq>weekly</changefreq>
-  </url>
-
-  <!-- Blog -->
-  <url>
-    <loc>https://nobledentalnallagandla.in/blog/</loc>
-    <lastmod>2025-09-29</lastmod>
-    <priority>0.8</priority>
-    <changefreq>weekly</changefreq>
-  </url>
-
-  <!-- AI Schema Dashboard -->
-  <url>
-    <loc>https://nobledentalnallagandla.in/schema-dashboard.html</loc>
-    <lastmod>2025-09-29</lastmod>
-    <priority>0.8</priority>
-    <changefreq>weekly</changefreq>
-  </url>
-
-  <!-- JSON Schema Files -->
-  <url>
-    <loc>https://nobledentalnallagandla.in/schema/validation-report.json</loc>
-    <lastmod>2025-09-29</lastmod>
-  </url>
-
-  <url>
-    <loc>https://nobledentalnallagandla.in/schema/schema-maintenance-log.json</loc>
-    <lastmod>2025-09-29</lastmod>
-  </url>
-
-  <url>
-    <loc>https://nobledentalnallagandla.in/schema/richresults-eligibility.json</loc>
-    <lastmod>2025-09-29</lastmod>
-  </url>
-
-  <url>
-    <loc>https://nobledentalnallagandla.in/schema/schema-intelligence-dashboard.json</loc>
-    <lastmod>2025-09-29</lastmod>
-  </url>
-
-  <url>
-    <loc>https://nobledentalnallagandla.in/schema/ai-prompt-preference.json</loc>
-    <lastmod>2025-09-29</lastmod>
-  </url>
-
-  <!-- AI Schema Engine -->
-  <url>
-    <loc>https://nobledentalnallagandla.in/js/ai-schema-engine.js</loc>
-    <lastmod>2025-09-29</lastmod>
-  </url>
-
-  <!-- AI Insights Dashboard -->
-  <url>
-    <loc>https://nobledentalnallagandla.in/js/ai-schema-insights.js</loc>
-    <lastmod>2025-09-29</lastmod>
-  </url>
-
-</urlset>
+<?xml version="1.0" ?>
+<ns0:urlset xmlns:ns0="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <ns0:url>
+    <ns0:loc>https://nobledentalnallagandla.in/</ns0:loc>
+    <ns0:lastmod>2024-05-04</ns0:lastmod>
+    <ns0:priority>1.0</ns0:priority>
+    <ns0:changefreq>weekly</ns0:changefreq>
+  </ns0:url>
+  <ns0:url>
+    <ns0:loc>https://nobledentalnallagandla.in/about.html</ns0:loc>
+    <ns0:lastmod>2024-03-20</ns0:lastmod>
+    <ns0:priority>0.9</ns0:priority>
+    <ns0:changefreq>monthly</ns0:changefreq>
+  </ns0:url>
+  <ns0:url>
+    <ns0:loc>https://nobledentalnallagandla.in/contact.html</ns0:loc>
+    <ns0:lastmod>2024-02-18</ns0:lastmod>
+    <ns0:priority>0.9</ns0:priority>
+    <ns0:changefreq>monthly</ns0:changefreq>
+  </ns0:url>
+  <ns0:url>
+    <ns0:loc>https://nobledentalnallagandla.in/services.html</ns0:loc>
+    <ns0:lastmod>2024-05-04</ns0:lastmod>
+    <ns0:priority>0.9</ns0:priority>
+    <ns0:changefreq>monthly</ns0:changefreq>
+  </ns0:url>
+  <ns0:url>
+    <ns0:loc>https://nobledentalnallagandla.in/dentist-in-nallagandla-hyderabad.html</ns0:loc>
+    <ns0:lastmod>2024-03-10</ns0:lastmod>
+    <ns0:priority>0.85</ns0:priority>
+    <ns0:changefreq>quarterly</ns0:changefreq>
+  </ns0:url>
+  <ns0:url>
+    <ns0:loc>https://nobledentalnallagandla.in/self-check/</ns0:loc>
+    <ns0:lastmod>2024-04-22</ns0:lastmod>
+    <ns0:priority>0.8</ns0:priority>
+    <ns0:changefreq>monthly</ns0:changefreq>
+  </ns0:url>
+  <ns0:url>
+    <ns0:loc>https://nobledentalnallagandla.in/blog/</ns0:loc>
+    <ns0:lastmod>2024-04-30</ns0:lastmod>
+    <ns0:priority>0.8</ns0:priority>
+    <ns0:changefreq>monthly</ns0:changefreq>
+  </ns0:url>
+  <ns0:url>
+    <ns0:loc>https://nobledentalnallagandla.in/schema-dashboard.html</ns0:loc>
+    <ns0:lastmod>2024-04-18</ns0:lastmod>
+    <ns0:priority>0.8</ns0:priority>
+    <ns0:changefreq>monthly</ns0:changefreq>
+  </ns0:url>
+  <ns0:url>
+    <ns0:loc>https://nobledentalnallagandla.in/schema/validation-report.json</ns0:loc>
+    <ns0:lastmod>2024-04-18</ns0:lastmod>
+  </ns0:url>
+  <ns0:url>
+    <ns0:loc>https://nobledentalnallagandla.in/schema/schema-maintenance-log.json</ns0:loc>
+    <ns0:lastmod>2024-04-18</ns0:lastmod>
+  </ns0:url>
+  <ns0:url>
+    <ns0:loc>https://nobledentalnallagandla.in/schema/richresults-eligibility.json</ns0:loc>
+    <ns0:lastmod>2024-04-18</ns0:lastmod>
+  </ns0:url>
+  <ns0:url>
+    <ns0:loc>https://nobledentalnallagandla.in/schema/schema-intelligence-dashboard.json</ns0:loc>
+    <ns0:lastmod>2024-04-18</ns0:lastmod>
+  </ns0:url>
+  <ns0:url>
+    <ns0:loc>https://nobledentalnallagandla.in/schema/ai-prompt-preference.json</ns0:loc>
+    <ns0:lastmod>2024-04-18</ns0:lastmod>
+  </ns0:url>
+  <ns0:url>
+    <ns0:loc>https://nobledentalnallagandla.in/js/ai-schema-engine.js</ns0:loc>
+    <ns0:lastmod>2024-02-05</ns0:lastmod>
+  </ns0:url>
+  <ns0:url>
+    <ns0:loc>https://nobledentalnallagandla.in/js/ai-schema-insights.js</ns0:loc>
+    <ns0:lastmod>2024-02-05</ns0:lastmod>
+  </ns0:url>
+</ns0:urlset>
