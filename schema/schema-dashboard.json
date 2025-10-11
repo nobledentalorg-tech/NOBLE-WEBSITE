@@ -50,7 +50,10 @@
     { "@id": "https://nobledentalnallagandla.in/schema/schema-health.json" },
     { "@id": "https://nobledentalnallagandla.in/schema/eeat-trustgraph.json" },
     { "@id": "https://nobledentalnallagandla.in/schema/research-summary.json" },
-    { "@id": "https://nobledentalnallagandla.in/schema/dataset.json" }
+    { "@id": "https://nobledentalnallagandla.in/schema/dataset.json" },
+    { "@id": "https://nobledentalnallagandla.in/schema/clinical-authors.json" },
+    { "@id": "https://nobledentalnallagandla.in/schema/procedure-outcomes.json" },
+    { "@id": "https://nobledentalnallagandla.in/schema/care-pathways.json" }
   ],
 
   "schemaVersion": "v3.1 Intelligent",
@@ -67,7 +70,7 @@
     {
       "@type": "PropertyValue",
       "name": "Total Schema Files",
-      "value": "28",
+      "value": "31",
       "unitText": "files"
     },
     {
@@ -104,6 +107,24 @@
       "name": "LLM Coverage Index (GPT/Gemini/Claude)",
       "value": "97.8",
       "unitText": "percent"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "Clinical Author Dossiers Linked",
+      "value": "3",
+      "unitText": "persons"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "Outcome Datasets Benchmarked",
+      "value": "3",
+      "unitText": "programs"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "Automated Care Pathways",
+      "value": "3",
+      "unitText": "journeys"
     }
   ],
 
