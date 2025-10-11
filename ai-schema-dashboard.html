@@ -158,6 +158,28 @@
     </section>
 
     <section class="section">
+      <h2>📚 Clinical Knowledge Extensions</h2>
+      <div class="grid">
+        <div class="dataset-card">
+          <h3>👩‍⚕️ Clinical Authors Dossier</h3>
+          <p>Credentials, publications & podium talks for in-house specialists.</p>
+          <p><a href="/schema/clinical-authors.json" target="_blank">Open clinical-authors.json</a></p>
+        </div>
+        <div class="dataset-card">
+          <h3>📊 Procedure Outcomes</h3>
+          <p>Success, adherence & satisfaction metrics for flagship treatments.</p>
+          <p><a href="/schema/procedure-outcomes.json" target="_blank">Open procedure-outcomes.json</a></p>
+        </div>
+        <div class="dataset-card">
+          <h3>🧭 Care Pathways</h3>
+          <p>AI-friendly playbooks to automate RCT, implant & pediatric journeys.</p>
+          <p><a href="/schema/care-pathways.json" target="_blank">Open care-pathways.json</a></p>
+        </div>
+      </div>
+      <p class="note">🎯 Deep-linked schema boosts E-E-A-T, data provenance, and assistant-readiness.</p>
+    </section>
+
+    <section class="section">
       <h2>🧠 Entity Relationships (AI Knowledge Graph)</h2>
       <div class="grid">
         <div class="dataset-card">
@@ -209,10 +231,57 @@
       </ul>
       <p class="note">✅ Once JSON-LD is indexed, AI tools will summarize your clinic, doctor, and treatments directly.</p>
     </section>
+
+    <section class="section">
+      <h2>📈 Local Growth Snapshot</h2>
+      <p id="telemetryOverview">Local telemetry builds as you browse — open site pages to populate these numbers.</p>
+      <ul id="telemetryPages">
+        <li>Awaiting local visit data…</li>
+      </ul>
+    </section>
   </main>
 
   <footer>
     <p>© 2025 Noble Dental Care Nallagandla | AI Schema Dashboard | Built for LLM & SEO Visibility</p>
   </footer>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const STORAGE_KEY = "ndc-visit-telemetry-v1";
+      const overview = document.getElementById("telemetryOverview");
+      const pagesList = document.getElementById("telemetryPages");
+
+      if (!overview || !pagesList) return;
+
+      let payload = {};
+      try {
+        const raw = window.localStorage.getItem(STORAGE_KEY);
+        payload = raw ? JSON.parse(raw) : {};
+      } catch (error) {
+        console.warn("Telemetry read failed", error);
+        payload = {};
+      }
+
+      const total = payload.total || 0;
+      const lastVisit = payload.lastVisit ? new Date(payload.lastVisit).toLocaleString() : "—";
+
+      overview.innerHTML = `
+        Local device recorded <strong>${total}</strong> page views.
+        Last activity: <strong>${lastVisit}</strong>.
+      `;
+
+      const entries = Object.entries(payload.pages || {})
+        .sort((a, b) => b[1] - a[1])
+        .slice(0, 6);
+
+      if (entries.length === 0) {
+        pagesList.innerHTML = "<li>No local activity logged yet.</li>";
+      } else {
+        pagesList.innerHTML = entries
+          .map(([path, count]) => `<li>${path} — ${count} views</li>`)
+          .join("\n");
+      }
+    });
+  </script>
 </body>
 </html>
