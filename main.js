@@ -1,89 +1,10 @@
-/* =========================================================
-   Noble Dental Care — main.js
-   Features:
-   - Header shrink on scroll
-   - Mobile navigation (with submenu)
-   - Doctor cards → popup sheet
-   - Booking form (day/time auto-fill + WA handoff)
-   - Testimonials auto-scroll
-   - Certificates ticker controls
-   - Footer year auto-update
-   - Back-to-top button
-========================================================= */
-
 document.addEventListener("DOMContentLoaded", () => {
 
-  /* ---------- Helpers ---------- */
   const $  = (s, r = document) => r.querySelector(s);
   const $$ = (s, r = document) => Array.from(r.querySelectorAll(s));
   const on = (el, ev, fn, opts = false) => el && el.addEventListener(ev, fn, opts);
 
-
-  /* =========================================================
-     0. Content protection + basic hardening
-  ========================================================= */
-  const INTERACTIVE_SELECTORS = "a, button, input, textarea, select, summary, label, [role='button'], [data-allow-left-click]";
-  const EDITABLE_SELECTORS = "input, textarea, select, [contenteditable='true'], [data-allow-clipboard]";
-
-  const isEditable = (target) => !!target.closest(EDITABLE_SELECTORS);
-  const isInteractive = (target) => !!target.closest(INTERACTIVE_SELECTORS);
-
-  const enableContentGuards = () => {
-    document.body.dataset.guard = "copy-protect";
-
-    const blockedShortcuts = new Set(["c", "x", "u", "s", "p", "a"]);
-
-    on(document, "contextmenu", (event) => {
-      if (event.target.closest("[data-allow-context-menu]")) return;
-      event.preventDefault();
-    });
-
-    const suppressClipboardEvent = (event) => {
-      if (isEditable(event.target)) return;
-      event.preventDefault();
-      if (event.type === "copy" || event.type === "cut") {
-        event.clipboardData?.setData("text/plain", "Copying is disabled on this site.");
-      }
-    };
-
-    ["copy", "cut", "paste"].forEach((type) => {
-      on(document, type, suppressClipboardEvent);
-    });
-
-    on(document, "dragstart", (event) => {
-      if (isInteractive(event.target)) return;
-      event.preventDefault();
-    });
-
-    on(document, "keydown", (event) => {
-      if (!(event.ctrlKey || event.metaKey)) return;
-      if (isEditable(event.target)) return;
-
-      const key = event.key.toLowerCase();
-      if (key === "control" || key === "meta") {
-        event.preventDefault();
-        event.stopPropagation();
-        return;
-      }
-
-      if (!blockedShortcuts.has(key)) {
-        event.preventDefault();
-        event.stopPropagation();
-        return;
-      }
-
-      event.preventDefault();
-    });
-
-    on(document, "mousedown", (event) => {
-      if (event.button !== 0) return;
-      if (isInteractive(event.target)) return;
-      event.preventDefault();
-      event.stopPropagation();
-    }, true);
-  };
-
-  enableContentGuards();
+  document.body.dataset.guard = 'share-friendly';
 
   // Reset transition class when returning via browser history
   window.addEventListener("pageshow", () => {
