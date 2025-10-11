@@ -19,6 +19,9 @@ document.addEventListener("DOMContentLoaded", () => {
   const on = (el, ev, fn, opts = false) => el && el.addEventListener(ev, fn, opts);
 
 
+  /* =========================================================
+     0. Content protection + basic hardening
+  ========================================================= */
   const INTERACTIVE_SELECTORS = "a, button, input, textarea, select, summary, label, [role='button'], [data-allow-left-click]";
   const EDITABLE_SELECTORS = "input, textarea, select, [contenteditable='true'], [data-allow-clipboard]";
 
@@ -54,9 +57,21 @@ document.addEventListener("DOMContentLoaded", () => {
 
     on(document, "keydown", (event) => {
       if (!(event.ctrlKey || event.metaKey)) return;
-      const key = event.key.toLowerCase();
-      if (!blockedShortcuts.has(key)) return;
       if (isEditable(event.target)) return;
+
+      const key = event.key.toLowerCase();
+      if (key === "control" || key === "meta") {
+        event.preventDefault();
+        event.stopPropagation();
+        return;
+      }
+
+      if (!blockedShortcuts.has(key)) {
+        event.preventDefault();
+        event.stopPropagation();
+        return;
+      }
+
       event.preventDefault();
     });
 
@@ -68,7 +83,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }, true);
   };
 
-  enableContentGuards(); 
+  enableContentGuards();
 
   // Reset transition class when returning via browser history
   window.addEventListener("pageshow", () => {
