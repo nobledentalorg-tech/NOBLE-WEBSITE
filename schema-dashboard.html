@@ -140,6 +140,14 @@
       transform: scale(1.05);
     }
 
+    .notice {
+      max-width: 720px;
+      margin: 0.85rem auto 0;
+      font-size: 0.95rem;
+      line-height: 1.5;
+      color: rgba(255,255,255,0.92);
+    }
+    
     /* =============================================================
        Footer
     ============================================================= */
@@ -254,6 +262,7 @@
   <header>
     <h1>🧠 AI Schema Intelligence Console</h1>
     <p>Unified AI Readiness, Schema Validation & E-E-A-T Performance Monitor</p>
+    <p class="notice">This dashboard is rendered entirely in your browser. It reads the live JSON schema files from <code>/schema/</code>, builds charts with Chart.js, and surfaces GPT integration status when available. If you are previewing the site locally or the schema files are unreachable, the widgets below will stay in a loading state.</p>
     <button class="refresh" onclick="location.reload()">🔄 Re-run Full Analysis</button>
   </header>
 
@@ -365,12 +374,14 @@
   </footer>
 
   <script>
+  let dashboardInitialized = false;
   document.addEventListener("ai-schema-ready", (e) => initDashboard(e.detail));
   document.addEventListener("DOMContentLoaded", () => {
     if (window.__AI_SCHEMA) initDashboard(window.__AI_SCHEMA);
   });
 
   async function initDashboard(aiData) {
+    dashboardInitialized = true;
     const rr = await fetch("/schema/validation-report.json").then(r=>r.json()).catch(()=>null);
     const summaryRR = rr?.richResultsReport?.eligibilitySummary || {};
     const ai = rr?.richResultsReport?.aiAlignment || {};
@@ -474,6 +485,33 @@
 
     renderVisitInsights();
   }
+
+  function showDashboardFallback() {
+    const fallbackMessage = "We could not load the live schema metrics. Confirm that the JSON files under /schema/ are published and that your browser can reach the Chart.js CDN.";
+
+    const summaryEl = document.getElementById("summary");
+    if (summaryEl && summaryEl.textContent.includes("Collecting")) {
+      summaryEl.innerHTML = `<p>${fallbackMessage}</p>`;
+    }
+
+    const visitStats = document.getElementById("visitStats");
+    if (visitStats && visitStats.textContent.includes("Loading")) {
+      visitStats.innerHTML = `<p>${fallbackMessage}</p>`;
+    }
+
+    const gptStatus = document.getElementById("gptStatus");
+    if (gptStatus && gptStatus.textContent.includes("Detecting")) {
+      gptStatus.innerHTML = `<p>${fallbackMessage}</p>`;
+    }
+  }
+
+  setTimeout(() => {
+    if (!dashboardInitialized) {
+      console.warn("AI schema dashboard data did not load. Displaying fallback guidance.");
+      showDashboardFallback();
+    }
+  }, 4000);
+    
     <!-- Lighthouse Desktop Snapshot -->
     <div class="card">
       <h2>Desktop Lighthouse Snapshot — Oct 10, 2025</h2>
