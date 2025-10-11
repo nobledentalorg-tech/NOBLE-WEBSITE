@@ -278,6 +278,14 @@
       <div id="summary" class="list">Collecting live stats...</div>
     </div>
 
+    <!-- Visitor Telemetry -->
+    <div class="card">
+      <h2>Visitor Telemetry (Local Device)</h2>
+      <canvas id="visitorChart"></canvas>
+      <div id="visitStats" class="list">Loading visitor insights from this browser...</div>
+      <ul id="topPages" class="list"></ul>
+    </div>
+    
     <!-- Lighthouse Desktop Snapshot -->
     <div class="card">
       <h2>Desktop Lighthouse Snapshot — Oct 10, 2025</h2>
@@ -463,6 +471,8 @@
         recs.forEach(r => recList.innerHTML += `<li>💡 ${r.message} (${r.impact} impact)</li>`);
       }
     }
+
+    renderVisitInsights();
   }
     <!-- Lighthouse Desktop Snapshot -->
     <div class="card">
@@ -542,6 +552,84 @@
     if (window.__GPT_READY && window.__GPT_ENGINEER)
       document.dispatchEvent(new CustomEvent("gpt-engineer-ready", { detail: window.__GPT_ENGINEER }));
   }, 1500);
+
+  function renderVisitInsights() {
+    const STORAGE_KEY = "ndc-visit-telemetry-v1";
+    const statsEl = document.getElementById("visitStats");
+    const listEl = document.getElementById("topPages");
+    const canvas = document.getElementById("visitorChart");
+
+    if (!statsEl || !listEl) return;
+
+    let payload = {};
+    try {
+      const raw = window.localStorage.getItem(STORAGE_KEY);
+      payload = raw ? JSON.parse(raw) : {};
+    } catch (error) {
+      console.warn("Telemetry read failed", error);
+      payload = {};
+    }
+
+    const total = payload.total || 0;
+    const pages = payload.pages || {};
+    const lastVisit = payload.lastVisit ? new Date(payload.lastVisit).toLocaleString() : "—";
+    const uniquePages = Object.keys(pages).length;
+
+    statsEl.innerHTML = `
+      <p><strong>Total views (this browser):</strong> ${total}</p>
+      <p><strong>Unique pages opened:</strong> ${uniquePages}</p>
+      <p><strong>Last activity:</strong> ${lastVisit}</p>
+    `;
+
+    const topEntries = Object.entries(pages)
+      .sort((a, b) => b[1] - a[1])
+      .slice(0, 6);
+
+    if (topEntries.length === 0) {
+      listEl.innerHTML = "<li>Browse the site to generate on-device growth data.</li>";
+    } else {
+      listEl.innerHTML = topEntries
+        .map(([path, count]) => `<li><strong>${path}</strong> — ${count} views</li>`)
+        .join("\n");
+    }
+
+    const timelineEntries = Object.entries(payload.timeline || {}).sort((a, b) => a[0].localeCompare(b[0]));
+
+    if (canvas && window.Chart && timelineEntries.length) {
+      const ctx = canvas.getContext("2d");
+      const labels = timelineEntries.map(([date]) => date);
+      const counts = timelineEntries.map(([, value]) => value.count || 0);
+
+      new Chart(ctx, {
+        type: "line",
+        data: {
+          labels,
+          datasets: [{
+            label: "Views per day",
+            data: counts,
+            borderColor: "#12B2A0",
+            backgroundColor: "rgba(18,178,160,0.15)",
+            tension: 0.35,
+            fill: true,
+            pointRadius: 4
+          }]
+        },
+        options: {
+          plugins: { legend: { display: false } },
+          scales: {
+            y: { beginAtZero: true, ticks: { precision: 0 } }
+          }
+        }
+      });
+    } else if (canvas && (!window.Chart || !timelineEntries.length)) {
+      const message = document.createElement("p");
+      message.className = "list";
+      message.textContent = timelineEntries.length === 0
+        ? "Interact with the site to start plotting growth metrics."
+        : "Chart.js unavailable – check your connection.";
+      canvas.replaceWith(message);
+    }
+  }
   </script>
 </body>
 </html>
