@@ -1,104 +1,179 @@
 {
-  "version": "2024-10-15",
-  "locale": "en-IN",
-  "primaryServiceArea": "Nallagandla, Hyderabad",
-  "notes": "Maps conversational and transactional intents to the most relevant Noble Dental Care resources for AI assistants and search engines.",
-  "intents": [
+  "context": "Topic map of Noble Dental Care Nallagandla digital ecosystem",
+  "updated": "2024-06-05",
+  "nodes": [
     {
-      "intentId": "find_local_dentist",
-      "userSignals": [
-        "dentist near me nallagandla",
-        "best dental clinic in nallagandla",
-        "top rated dentist near tellapur"
+      "id": "home",
+      "title": "Noble Dental Care Nallagandla",
+      "url": "https://nobledentalnallagandla.in/",
+      "type": "LandingPage",
+      "focusAreas": [
+        "local dentist",
+        "family dentistry",
+        "emergency slots"
       ],
-      "contentTarget": "https://nobledentalnallagandla.in/",
-      "schemaTarget": "https://nobledentalnallagandla.in/schema/localbusiness.json",
-      "supportingSchema": [
-        "https://nobledentalnallagandla.in/schema/key-entities.json",
-        "https://nobledentalnallagandla.in/schema/ai-summary-visibility.json"
-      ],
-      "conversionAction": "CallClinic",
-      "confidence": 0.94
+      "pillar": "Local Authority",
+      "keywords": [
+        "dentist in nallagandla",
+        "best dental clinic hyderabad",
+        "late evening dentist"
+      ]
     },
     {
-      "intentId": "book_root_canal",
-      "userSignals": [
-        "painless root canal hyderabad",
-        "single visit rct nallagandla",
-        "root canal specialist near gachibowli"
+      "id": "services",
+      "title": "Comprehensive Dental Services",
+      "url": "https://nobledentalnallagandla.in/services.html",
+      "type": "ServiceHub",
+      "focusAreas": [
+        "preventive",
+        "restorative",
+        "cosmetic",
+        "pediatric",
+        "advanced"
       ],
-      "contentTarget": "https://nobledentalnallagandla.in/specialities/root-canal.html",
-      "schemaTarget": "https://nobledentalnallagandla.in/schema/part2-preventive.json",
-      "supportingSchema": [
-        "https://nobledentalnallagandla.in/schema/key-entities.json",
-        "https://nobledentalnallagandla.in/schema/medicalcondition-systemic.json"
-      ],
-      "conversionAction": "BookAppointment",
-      "confidence": 0.92
+      "pillar": "Treatment Navigator",
+      "keywords": [
+        "root canal",
+        "dental implants",
+        "braces",
+        "teeth whitening",
+        "gum treatment"
+      ]
     },
     {
-      "intentId": "explore_dental_implants",
-      "userSignals": [
-        "dental implants nallagandla",
-        "full mouth implants hyderabad",
-        "zirconia implant cost tellapur"
+      "id": "pediatric",
+      "title": "Pediatric Dentistry",
+      "url": "https://nobledentalnallagandla.in/specialities/pediatric-dentistry.html",
+      "type": "Speciality",
+      "focusAreas": [
+        "kids dentistry",
+        "sealants",
+        "habit breaking"
       ],
-      "contentTarget": "https://nobledentalnallagandla.in/specialities/implants.html",
-      "schemaTarget": "https://nobledentalnallagandla.in/schema/part5-advanced.json",
-      "supportingSchema": [
-        "https://nobledentalnallagandla.in/schema/implants.json",
-        "https://nobledentalnallagandla.in/schema/medicalstudy.json"
-      ],
-      "conversionAction": "RequestConsultation",
-      "confidence": 0.91
+      "pillar": "Family Care",
+      "keywords": [
+        "pediatric dentist nallagandla",
+        "kids cavity prevention",
+        "space maintainers"
+      ]
     },
     {
-      "intentId": "aligners_and_braces",
-      "userSignals": [
-        "invisalign doctor nallagandla",
-        "clear aligners near gachibowli",
-        "adult braces specialist lingampally"
+      "id": "implants",
+      "title": "Dental Implants",
+      "url": "https://nobledentalnallagandla.in/specialities/dental-implants.html",
+      "type": "Speciality",
+      "focusAreas": [
+        "single tooth implant",
+        "full mouth rehab",
+        "bone grafting"
       ],
-      "contentTarget": "https://nobledentalnallagandla.in/specialities/invisalign.html",
-      "schemaTarget": "https://nobledentalnallagandla.in/schema/part3-restorative.json",
-      "supportingSchema": [
-        "https://nobledentalnallagandla.in/schema/topic-map.json",
-        "https://nobledentalnallagandla.in/schema/howto.json"
-      ],
-      "conversionAction": "StartVirtualAssessment",
-      "confidence": 0.89
+      "pillar": "Restorative Excellence",
+      "keywords": [
+        "dental implant nallagandla",
+        "all-on-4 hyderabad",
+        "immediate loading implant"
+      ]
     },
     {
-      "intentId": "kids_dentistry_support",
-      "userSignals": [
-        "kids dentist near nallagandla",
-        "pediatric dentist hyderabad",
-        "dental sealants for kids lingampally"
+      "id": "emergency",
+      "title": "Emergency Dental Care",
+      "url": "https://nobledentalnallagandla.in/services.html#emergency",
+      "type": "ServiceSection",
+      "focusAreas": [
+        "same day treatment",
+        "after work appointments",
+        "pain relief"
       ],
-      "contentTarget": "https://nobledentalnallagandla.in/specialities/kids-dentistry.html",
-      "schemaTarget": "https://nobledentalnallagandla.in/schema/medicalcondition-pediatric.json",
-      "supportingSchema": [
-        "https://nobledentalnallagandla.in/schema/faq.json",
-        "https://nobledentalnallagandla.in/schema/ai-summary-training.json"
-      ],
-      "conversionAction": "ScheduleKidsVisit",
-      "confidence": 0.9
+      "pillar": "Urgent Relief",
+      "keywords": [
+        "emergency dentist nallagandla",
+        "24x7 dental support hyderabad",
+        "tooth pain relief"
+      ]
     },
     {
-      "intentId": "dental_emergency_support",
-      "userSignals": [
-        "emergency dentist near nallagandla",
-        "dental pain relief tonight",
-        "urgent dentist gachibowli"
+      "id": "about",
+      "title": "About Dr. Dhivakaran",
+      "url": "https://nobledentalnallagandla.in/research.html",
+      "type": "Authority",
+      "focusAreas": [
+        "experience",
+        "technology",
+        "clinical research"
       ],
-      "contentTarget": "https://nobledentalnallagandla.in/maintenance.html",
-      "schemaTarget": "https://nobledentalnallagandla.in/schema/part1-general.json",
-      "supportingSchema": [
-        "https://nobledentalnallagandla.in/schema/key-entities.json",
-        "https://nobledentalnallagandla.in/schema/ai-vectors.json"
+      "pillar": "Trust Builders",
+      "keywords": [
+        "experienced dentist hyderabad",
+        "laser dentistry",
+        "dental technology"
+      ]
+    },
+    {
+      "id": "contact",
+      "title": "Contact Noble Dental",
+      "url": "https://nobledentalnallagandla.in/contact.html",
+      "type": "Conversion",
+      "focusAreas": [
+        "appointments",
+        "directions",
+        "phone"
       ],
-      "conversionAction": "CallEmergencyLine",
-      "confidence": 0.9
+      "pillar": "Conversion",
+      "keywords": [
+        "book dental appointment",
+        "call dentist",
+        "contact noble dental"
+      ]
+    }
+  ],
+  "edges": [
+    {
+      "from": "home",
+      "to": "services",
+      "relationship": "linksTo",
+      "anchor": "View all dental services"
+    },
+    {
+      "from": "services",
+      "to": "pediatric",
+      "relationship": "linksTo",
+      "anchor": "Pediatric Dentistry"
+    },
+    {
+      "from": "services",
+      "to": "implants",
+      "relationship": "linksTo",
+      "anchor": "Dental Implants"
+    },
+    {
+      "from": "services",
+      "to": "emergency",
+      "relationship": "linksTo",
+      "anchor": "Emergency Dentistry"
+    },
+    {
+      "from": "home",
+      "to": "about",
+      "relationship": "linksTo",
+      "anchor": "Meet Dr. Dhivakaran"
+    },
+    {
+      "from": "pediatric",
+      "to": "contact",
+      "relationship": "cta",
+      "anchor": "Book kids dental visit"
+    },
+    {
+      "from": "implants",
+      "to": "contact",
+      "relationship": "cta",
+      "anchor": "Schedule implant consult"
+    },
+    {
+      "from": "emergency",
+      "to": "contact",
+      "relationship": "cta",
+      "anchor": "Call now for relief"
     }
   ]
 }
