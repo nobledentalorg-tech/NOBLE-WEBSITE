@@ -23,7 +23,10 @@
     "faq.json",
     "breadcrumbs.json",
     "navigation.json",
-    "validation-report.json"
+    "validation-report.json",
+    "clinical-authors.json",
+    "procedure-outcomes.json",
+    "care-pathways.json"
   ];
 
   const REQUIRED_KEYS = ["@context", "@type", "name", "description"];
