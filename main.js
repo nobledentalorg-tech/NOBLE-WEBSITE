@@ -18,14 +18,63 @@ document.addEventListener("DOMContentLoaded", () => {
   const $$ = (s, r = document) => Array.from(r.querySelectorAll(s));
   const on = (el, ev, fn, opts = false) => el && el.addEventListener(ev, fn, opts);
 
+
+  const INTERACTIVE_SELECTORS = "a, button, input, textarea, select, summary, label, [role='button'], [data-allow-left-click]";
+  const EDITABLE_SELECTORS = "input, textarea, select, [contenteditable='true'], [data-allow-clipboard]";
+
+  const isEditable = (target) => !!target.closest(EDITABLE_SELECTORS);
+  const isInteractive = (target) => !!target.closest(INTERACTIVE_SELECTORS);
+
+  const enableContentGuards = () => {
+    document.body.dataset.guard = "copy-protect";
+
+    const blockedShortcuts = new Set(["c", "x", "u", "s", "p", "a"]);
+
+    on(document, "contextmenu", (event) => {
+      if (event.target.closest("[data-allow-context-menu]")) return;
+      event.preventDefault();
+    });
+
+    const suppressClipboardEvent = (event) => {
+      if (isEditable(event.target)) return;
+      event.preventDefault();
+      if (event.type === "copy" || event.type === "cut") {
+        event.clipboardData?.setData("text/plain", "Copying is disabled on this site.");
+      }
+    };
+
+    ["copy", "cut", "paste"].forEach((type) => {
+      on(document, type, suppressClipboardEvent);
+    });
+
+    on(document, "dragstart", (event) => {
+      if (isInteractive(event.target)) return;
+      event.preventDefault();
+    });
+
+    on(document, "keydown", (event) => {
+      if (!(event.ctrlKey || event.metaKey)) return;
+      const key = event.key.toLowerCase();
+      if (!blockedShortcuts.has(key)) return;
+      if (isEditable(event.target)) return;
+      event.preventDefault();
+    });
+
+    on(document, "mousedown", (event) => {
+      if (event.button !== 0) return;
+      if (isInteractive(event.target)) return;
+      event.preventDefault();
+      event.stopPropagation();
+    }, true);
+  };
+
+  enableContentGuards(); 
+
   // Reset transition class when returning via browser history
   window.addEventListener("pageshow", () => {
     document.body.classList.remove("page-exit");
   });
 
-  /* =========================================================
-     1. Header: shrink on scroll
-  ========================================================= */
   const header = $(".site-header");
   const shrinkHeader = () => {
     if (window.scrollY > 10) header.classList.add("shrink");
