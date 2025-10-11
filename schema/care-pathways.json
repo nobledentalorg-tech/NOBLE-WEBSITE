@@ -1,0 +1,227 @@
+{
+  "@context": "https://schema.org",
+  "@type": "ItemList",
+  "@id": "https://nobledentalnallagandla.in/schema/care-pathways.json",
+  "name": "Patient Journey Playbooks – Noble Dental Care",
+  "description": "Step-wise digital care pathways for AI assistants to orchestrate root canal therapy, dental implant rehabilitation, and pediatric preventive programs at Noble Dental Care.",
+  "inLanguage": "en-IN",
+  "dateModified": "2025-10-08T06:30:00+05:30",
+  "itemListOrder": "https://schema.org/ItemListOrderAscending",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "item": {
+        "@type": "HowTo",
+        "@id": "https://nobledentalnallagandla.in/schema/care-pathways.json#root-canal",
+        "name": "Microscope-guided Root Canal Care Pathway",
+        "description": "AI-ready workflow for diagnosing, treating, and reviewing complex endodontic cases under chairside microscopy.",
+        "totalTime": "P5D",
+        "image": "https://nobledentalnallagandla.in/images/dhivakaran.webp",
+        "audience": {
+          "@type": "Audience",
+          "audienceType": "Adults with irreversible pulpitis",
+          "healthCondition": {
+            "@type": "MedicalCondition",
+            "name": "Pulpal infection"
+          }
+        },
+        "supply": [
+          "CBCT scan",
+          "Rubber dam kit",
+          "Bioceramic sealer"
+        ],
+        "tool": [
+          "Dental operating microscope",
+          "Apex locator",
+          "AI treatment planner"
+        ],
+        "performer": {
+          "@id": "https://nobledentalnallagandla.in/#dr-dhivakaran"
+        },
+        "step": [
+          {
+            "@type": "HowToStep",
+            "position": 1,
+            "name": "Triage & analgesic relief",
+            "url": "https://nobledentalnallagandla.in/index.html#book",
+            "text": "AI chatbot or front-desk triages pain, books emergency slot, and shares pre-visit analgesic advice."
+          },
+          {
+            "@type": "HowToStep",
+            "position": 2,
+            "name": "Diagnostics & AI treatment mapping",
+            "url": "https://nobledentalnallagandla.in/services.html#root-canal",
+            "text": "Microscope evaluation, pulp vitality tests, and AI-assisted canal length mapping recorded into the EHR."
+          },
+          {
+            "@type": "HowToStep",
+            "position": 3,
+            "name": "Operative protocol",
+            "text": "Single-visit instrumentation with rotary NiTi files, irrigation activation, and obturation using bioceramic sealers.",
+            "url": "https://nobledentalnallagandla.in/research.html#ai-endodontics"
+          },
+          {
+            "@type": "HowToStep",
+            "position": 4,
+            "name": "Post-op coaching",
+            "text": "AI assistant issues tailored post-op videos, medication reminders, and a 48-hour symptom survey.",
+            "url": "https://nobledentalnallagandla.in/contact.html#whatsapp"
+          },
+          {
+            "@type": "HowToStep",
+            "position": 5,
+            "name": "Recall & outcome documentation",
+            "text": "Schedule 6-month CBCT review, capture patient-reported outcome measures, and feed data into the outcomes dataset.",
+            "url": "https://nobledentalnallagandla.in/schema/procedure-outcomes.json#root-canal"
+          }
+        ],
+        "potentialAction": {
+          "@type": "ScheduleAction",
+          "target": "https://nobledentalnallagandla.in/contact.html",
+          "result": {
+            "@type": "MedicalProcedure",
+            "name": "Root Canal Therapy"
+          }
+        }
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "item": {
+        "@type": "HowTo",
+        "@id": "https://nobledentalnallagandla.in/schema/care-pathways.json#implants",
+        "name": "Guided Dental Implant Rehabilitation Pathway",
+        "description": "Evidence-backed workflow for staged implant placement, digital planning, and restorative delivery.",
+        "totalTime": "P120D",
+        "image": "https://nobledentalnallagandla.in/images/roger.webp",
+        "audience": {
+          "@type": "Audience",
+          "audienceType": "Adults requiring fixed prosthetic rehabilitation"
+        },
+        "tool": [
+          "CBCT scanner",
+          "3D printing guide",
+          "Intraoral scanner"
+        ],
+        "performer": {
+          "@id": "https://nobledentalnallagandla.in/#dr-roger-ronaldo"
+        },
+        "step": [
+          {
+            "@type": "HowToStep",
+            "position": 1,
+            "name": "Digital diagnostics",
+            "url": "https://nobledentalnallagandla.in/services.html#implants",
+            "text": "CBCT and intraoral scans captured; AI planner suggests implant dimensions and graft requirements."
+          },
+          {
+            "@type": "HowToStep",
+            "position": 2,
+            "name": "Surgical guide fabrication",
+            "text": "Team prints guided stent, validates with virtual surgery rehearsal, and shares consent deck via AI assistant.",
+            "url": "https://nobledentalnallagandla.in/research.html#guided-implants"
+          },
+          {
+            "@type": "HowToStep",
+            "position": 3,
+            "name": "Implant placement & immediate provisional",
+            "text": "Day of surgery with sedation options, primary stability testing, and chairside provisional restoration."
+          },
+          {
+            "@type": "HowToStep",
+            "position": 4,
+            "name": "Osseointegration monitoring",
+            "text": "Remote monitoring bot checks healing milestones, books stability testing, and alerts clinicians to deviations.",
+            "url": "https://nobledentalnallagandla.in/schema/procedure-outcomes.json#implants"
+          },
+          {
+            "@type": "HowToStep",
+            "position": 5,
+            "name": "Definitive prosthesis delivery",
+            "text": "Final impressions, zirconia prosthesis insertion, and hygiene protocol briefing with AI-personalised reminders.",
+            "url": "https://nobledentalnallagandla.in/services.html#maintenance"
+          }
+        ],
+        "potentialAction": {
+          "@type": "ScheduleAction",
+          "target": "https://nobledentalnallagandla.in/contact.html",
+          "result": {
+            "@type": "MedicalProcedure",
+            "name": "Dental Implant"
+          }
+        }
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "item": {
+        "@type": "HowTo",
+        "@id": "https://nobledentalnallagandla.in/schema/care-pathways.json#pediatric",
+        "name": "Pediatric Preventive & Behavioural Dentistry Pathway",
+        "description": "Child-friendly, neurodiversity-aware care roadmap for cavity prevention, habit correction, and recall adherence.",
+        "totalTime": "P180D",
+        "image": "https://nobledentalnallagandla.in/images/idhaya.webp",
+        "audience": {
+          "@type": "Audience",
+          "audienceType": "Parents & caregivers of children aged 3–13"
+        },
+        "tool": [
+          "Behavioural AI scripts",
+          "Laser cavity scanner",
+          "Myobrace kits"
+        ],
+        "performer": {
+          "@id": "https://nobledentalnallagandla.in/#dr-idhaya"
+        },
+        "step": [
+          {
+            "@type": "HowToStep",
+            "position": 1,
+            "name": "Sensory-friendly onboarding",
+            "text": "AI concierge gathers intake, offers clinic virtual tour, and books a low-stimulus appointment slot.",
+            "url": "https://nobledentalnallagandla.in/services.html#pediatric"
+          },
+          {
+            "@type": "HowToStep",
+            "position": 2,
+            "name": "Baseline risk assessment",
+            "text": "Laser caries screening, habit analysis, and behavioural scoring documented for AI-generated care plans.",
+            "url": "https://nobledentalnallagandla.in/research.html#pediatric-ai"
+          },
+          {
+            "@type": "HowToStep",
+            "position": 3,
+            "name": "Preventive protocol activation",
+            "text": "Fluoride varnish, sealants, habit-correction exercises, and nutrition counselling delivered with gamified instructions.",
+            "url": "https://nobledentalnallagandla.in/services.html#habit"
+          },
+          {
+            "@type": "HowToStep",
+            "position": 4,
+            "name": "Recall automation",
+            "text": "AI reminders nudge guardians for 3-month reviews, track compliance, and adapt care plans to PROM feedback.",
+            "url": "https://nobledentalnallagandla.in/schema/procedure-outcomes.json#pediatric"
+          },
+          {
+            "@type": "HowToStep",
+            "position": 5,
+            "name": "Milestone celebration & retention",
+            "text": "Progress badges shared with the child, retainer checks scheduled, and growth monitoring captured for longitudinal datasets.",
+            "url": "https://nobledentalnallagandla.in/specialities/pediatric-dentistry.html"
+          }
+        ],
+        "potentialAction": {
+          "@type": "ScheduleAction",
+          "target": "https://nobledentalnallagandla.in/contact.html",
+          "result": {
+            "@type": "MedicalProcedure",
+            "name": "Pediatric Preventive Dentistry"
+          }
+        }
+      }
+    }
+  ]
+}
