@@ -1,0 +1,104 @@
+{
+  "version": "2024-10-15",
+  "language": "en-IN",
+  "embeddingModel": "custom-clinic-local-seo-mini",
+  "notes": "Semantic intent clusters tuned for Noble Dental Care Nallagandla to prioritize hyperlocal and treatment-specific discovery across SGE, voice search, and AI assistants.",
+  "intents": [
+    {
+      "cluster": "dentist_nallagandla_local_search",
+      "description": "Queries from residents searching for the best dentist or dental clinic in Nallagandla and adjacent communities.",
+      "keywords": [
+        "dentist in nallagandla",
+        "dental clinic near tellapur",
+        "best dentist gachibowli",
+        "family dentist lingampally"
+      ],
+      "vector": [0.62, 0.11, 0.94, 0.35, 0.27, 0.51, 0.83, 0.44, 0.09, 0.68, 0.72, 0.33],
+      "preferredContent": "https://nobledentalnallagandla.in/",
+      "schema": "https://nobledentalnallagandla.in/schema/localbusiness.json",
+      "supportingEntities": [
+        "https://nobledentalnallagandla.in/#noble-dental-care",
+        "https://nobledentalnallagandla.in/#nallagandla-campus"
+      ]
+    },
+    {
+      "cluster": "root_canal_pain_relief",
+      "description": "Searches seeking painless or single sitting root canal specialists within the Nallagandla - Tellapur belt.",
+      "keywords": [
+        "painless root canal nallagandla",
+        "single sitting rct hyderabad",
+        "microscope root canal near me"
+      ],
+      "vector": [0.15, 0.72, 0.88, 0.64, 0.21, 0.17, 0.49, 0.93, 0.58, 0.41, 0.32, 0.70],
+      "preferredContent": "https://nobledentalnallagandla.in/specialities/root-canal.html",
+      "schema": "https://nobledentalnallagandla.in/schema/part2-preventive.json",
+      "supportingEntities": [
+        "https://nobledentalnallagandla.in/#service-root-canal",
+        "https://nobledentalnallagandla.in/#dr-dhivakaran"
+      ]
+    },
+    {
+      "cluster": "dental_implants_full_mouth",
+      "description": "High-intent treatment queries for dental implants, full mouth rehab, and smile restoration near Nallagandla.",
+      "keywords": [
+        "dental implants nallagandla",
+        "full mouth rehab hyderabad",
+        "zirconia crowns tellapur"
+      ],
+      "vector": [0.71, 0.54, 0.22, 0.66, 0.45, 0.99, 0.38, 0.12, 0.57, 0.83, 0.64, 0.28],
+      "preferredContent": "https://nobledentalnallagandla.in/specialities/implants.html",
+      "schema": "https://nobledentalnallagandla.in/schema/part5-advanced.json",
+      "supportingEntities": [
+        "https://nobledentalnallagandla.in/#service-dental-implants",
+        "https://nobledentalnallagandla.in/#noble-dental-care"
+      ]
+    },
+    {
+      "cluster": "orthodontics_aligners",
+      "description": "Teen and adult orthodontic intent covering braces, Invisalign, and clear aligners for IT professionals in Western Hyderabad.",
+      "keywords": [
+        "invisalign nallagandla",
+        "clear aligners gachibowli",
+        "adult braces hyderabad"
+      ],
+      "vector": [0.29, 0.47, 0.63, 0.26, 0.88, 0.35, 0.14, 0.76, 0.55, 0.48, 0.67, 0.19],
+      "preferredContent": "https://nobledentalnallagandla.in/specialities/invisalign.html",
+      "schema": "https://nobledentalnallagandla.in/schema/part3-restorative.json",
+      "supportingEntities": [
+        "https://nobledentalnallagandla.in/#service-orthodontics"
+      ]
+    },
+    {
+      "cluster": "kids_dentist_preventive",
+      "description": "Parents looking for child friendly dentists, preventive sealants, and emergency tooth care for kids near Nallagandla Lake.",
+      "keywords": [
+        "kids dentist nallagandla",
+        "child dental specialist hyderabad",
+        "dental sealants lingampally"
+      ],
+      "vector": [0.53, 0.18, 0.37, 0.81, 0.60, 0.24, 0.77, 0.46, 0.31, 0.25, 0.82, 0.57],
+      "preferredContent": "https://nobledentalnallagandla.in/specialities/kids-dentistry.html",
+      "schema": "https://nobledentalnallagandla.in/schema/medicalcondition-pediatric.json",
+      "supportingEntities": [
+        "https://nobledentalnallagandla.in/#service-kids-dentistry",
+        "https://nobledentalnallagandla.in/#nallagandla-campus"
+      ]
+    },
+    {
+      "cluster": "emergency_dentist_24x7",
+      "description": "After-hours and urgent dental pain relief intents seeking immediate help in Nallagandla and Gachibowli.",
+      "keywords": [
+        "emergency dentist nallagandla",
+        "24x7 dental clinic hyderabad",
+        "urgent tooth pain relief"
+      ],
+      "vector": [0.84, 0.66, 0.45, 0.10, 0.39, 0.58, 0.21, 0.32, 0.74, 0.91, 0.52, 0.47],
+      "preferredContent": "https://nobledentalnallagandla.in/maintenance.html",
+      "schema": "https://nobledentalnallagandla.in/schema/part1-general.json",
+      "supportingEntities": [
+        "https://nobledentalnallagandla.in/#noble-dental-care",
+        "https://nobledentalnallagandla.in/#service-root-canal"
+      ]
+    }
+  ]
+}
