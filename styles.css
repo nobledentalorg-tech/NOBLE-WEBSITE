@@ -43,20 +43,11 @@ body {
   will-change: opacity, transform;
 }
 
-body[data-guard="copy-protect"] {
-  -webkit-user-select: none;
-  user-select: none;
-}
-
-body[data-guard="copy-protect"] .allow-selection,
-body[data-guard="copy-protect"] [data-allow-selection],
-body[data-guard="copy-protect"] input,
-body[data-guard="copy-protect"] textarea,
-body[data-guard="copy-protect"] select,
-body[data-guard="copy-protect"] [contenteditable="true"] {
+body[data-guard="share-friendly"] {
   -webkit-user-select: text;
   user-select: text;
 }
+
 
 body.page-exit {
   animation: none;
@@ -1053,6 +1044,112 @@ button, input, select, textarea {
 
 
 
+/* ================= SERVICES LOCALITY PROOF ================= */
+.location-silo,
+.ndc-local-proof {
+  padding: clamp(48px, 6vw, 84px) 0;
+}
+
+.location-silo {
+  background: linear-gradient(180deg, rgba(18,178,160,0.08) 0%, rgba(122,163,255,0.08) 100%);
+  color: var(--ink);
+}
+
+.location-grid {
+  display: grid;
+  gap: 24px;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  margin-top: clamp(24px, 4vw, 40px);
+}
+
+.location-card {
+  background: var(--paper);
+  border: 1px solid rgba(15, 23, 42, 0.08);
+  border-radius: 18px;
+  padding: clamp(20px, 3vw, 28px);
+  box-shadow: 0 18px 40px rgba(15, 23, 42, 0.08);
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.location-card h3 {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: var(--ink);
+}
+
+.location-card p,
+.location-card li {
+  color: var(--muted);
+  font-size: 0.98rem;
+  line-height: 1.6;
+}
+
+.location-card ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  gap: 10px;
+}
+
+.ndc-local-proof {
+  background: #fff;
+}
+
+.ndc-local-proof .proof-author {
+  margin-top: auto;
+  font-weight: 600;
+  color: var(--brand);
+}
+
+.local-faqs {
+  margin-top: clamp(32px, 5vw, 52px);
+  display: grid;
+  gap: 16px;
+}
+
+.local-faqs details {
+  background: rgba(18, 178, 160, 0.08);
+  border: 1px solid rgba(18, 178, 160, 0.18);
+  border-radius: 16px;
+  padding: 18px 22px;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.local-faqs details[open] {
+  border-color: rgba(122, 163, 255, 0.4);
+  box-shadow: 0 14px 30px rgba(18, 178, 160, 0.12);
+}
+
+.local-faqs summary {
+  cursor: pointer;
+  font-weight: 700;
+  color: var(--ink);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.local-faqs p {
+  margin-top: 12px;
+  color: var(--muted);
+  font-size: 0.98rem;
+}
+
+.local-faqs a {
+  color: var(--brand2);
+  font-weight: 600;
+}
+
+@media (max-width: 680px) {
+  .location-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
 /* ================= CONTACT (Booking) ================= */
 .contact-band {
   background: linear-gradient(
@@ -2028,6 +2125,7 @@ body {
 /* Zoom contents */
 .service-card:hover .text-section,
 .service-card:hover h3,
+.service-card:hover .service-title,
 .service-card:hover p,
 .service-card:hover ul,
 .service-card:hover .read-more {
@@ -2048,7 +2146,8 @@ body {
   transition: all 0.4s ease;
 }
 
-.service-card h3 {
+.service-card h3,
+.service-card .service-title {
   font-size: 1.3rem;
   margin: 0 0 10px;
   color: #13191c;
@@ -2111,7 +2210,8 @@ body {
 }
 
 #slides.single-view .text-section { padding: 30px; }
-#slides.single-view h3 { font-size: 1.8rem; }
+#slides.single-view h3,
+#slides.single-view .service-title { font-size: 1.8rem; }
 #slides.single-view p { font-size: 1.1rem; }
 #slides.single-view ul.tips { font-size: 1rem; }
 #slides.single-view img { width: 45%; height: 100%; }
@@ -2242,12 +2342,6 @@ body {
   clip: rect(0 0 0 0) !important;
   white-space: nowrap !important;
 }
-
-
-
-
-
-
 
 
 
