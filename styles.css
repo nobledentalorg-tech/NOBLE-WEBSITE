@@ -43,6 +43,21 @@ body {
   will-change: opacity, transform;
 }
 
+body[data-guard="copy-protect"] {
+  -webkit-user-select: none;
+  user-select: none;
+}
+
+body[data-guard="copy-protect"] .allow-selection,
+body[data-guard="copy-protect"] [data-allow-selection],
+body[data-guard="copy-protect"] input,
+body[data-guard="copy-protect"] textarea,
+body[data-guard="copy-protect"] select,
+body[data-guard="copy-protect"] [contenteditable="true"] {
+  -webkit-user-select: text;
+  user-select: text;
+}
+
 body.page-exit {
   animation: none;
   opacity: 0;
@@ -2227,6 +2242,7 @@ body {
   clip: rect(0 0 0 0) !important;
   white-space: nowrap !important;
 }
+
 
 
 
