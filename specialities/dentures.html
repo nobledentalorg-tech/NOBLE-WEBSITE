@@ -51,13 +51,12 @@
   <script type="application/ld+json" src="/schema/howto.json"></script>
 
   <!-- Fonts & Icons -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin="anonymous">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&display=swap" rel="stylesheet">
   <link href="https://cdn.jsdelivr.net/npm/remixicon@4.3.0/fonts/remixicon.css" rel="stylesheet">
 
-  <!-- Styles -->
-  <link rel="stylesheet" href="../assets/dentures.css">
+  <link rel="stylesheet" href="../assets/crowns.css">
   <link rel="stylesheet" href="../styles.css">
 </head>
 <body>
@@ -65,14 +64,17 @@
 <header class="site-header" role="banner">
   <!-- Brand -->
   <a href="/" class="brand" aria-label="Noble Dental Care Home">
-    <img
-      src="/images/dentalcare.nallagandla.png"
-      alt="Noble Dental Care Logo"
-      width="70"
-      height="55"
-      decoding="async"
-      fetchpriority="high"
-    >
+    <picture class="brand-logo">
+      <source srcset="/images/dentalcare.nallagandla-inline.webp" type="image/webp">
+      <img
+        src="/images/dentalcare.nallagandla.png"
+        alt="Noble Dental Care Logo"
+        width="70"
+        height="55"
+        decoding="async"
+        fetchpriority="high"
+      >
+    </picture>
     <p class="brand-title"><span>Noble</span> Dental Care</p>
   </a>
 
