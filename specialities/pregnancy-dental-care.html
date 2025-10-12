@@ -42,7 +42,7 @@
   <script type="application/ld+json" src="/schema/breadcrumbs.json"></script>
   <script type="application/ld+json" src="/schema/faq.json"></script>
 
-  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin="anonymous">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&display=swap" rel="stylesheet">
   <link href="https://cdn.jsdelivr.net/npm/remixicon@4.3.0/fonts/remixicon.css" rel="stylesheet">
@@ -53,7 +53,17 @@
 <body>
 <header class="site-header" role="banner">
   <a href="/" class="brand" aria-label="Noble Dental Care Home">
-    <img src="/images/dentalcare.nallagandla.png" alt="Noble Dental Care Logo" width="70" height="55" decoding="async" fetchpriority="high">
+    <picture class="brand-logo">
+      <source srcset="/images/dentalcare.nallagandla-inline.webp" type="image/webp">
+      <img
+        src="/images/dentalcare.nallagandla.png"
+        alt="Noble Dental Care Logo"
+        width="70"
+        height="55"
+        decoding="async"
+        fetchpriority="high"
+      >
+    </picture>
     <p class="brand-title"><span>Noble</span> Dental Care</p>
   </a>
   <nav class="main-nav" aria-label="Primary Navigation">
