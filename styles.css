@@ -147,6 +147,15 @@ button, input, select, textarea {
   gap: 10px;
 }
 
+.brand-logo {
+  display: inline-flex;
+  align-items: center;
+}
+
+.brand-logo img {
+  display: block;
+}
+
 .brand-title {
   font-weight: 500;
   font-size: 1.1rem;
