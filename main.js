@@ -491,38 +491,55 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // Smooth continuous scroll
   const track = document.querySelector(".testimonial-track");
-  let paused = false;
-  let offset = 0;
+   if (track) {
+    let paused = false;
+    let offset = 0;
+    let resetThreshold = track.scrollWidth / 2;
 
-  track.addEventListener("mouseenter", () => (paused = true));
-  track.addEventListener("mouseleave", () => (paused = false));
+    const recalcThreshold = () => {
+      // Read once per recalculation to avoid forced reflow in the animation loop
+      resetThreshold = track.scrollWidth / 2;
+    };
 
-  function animate() {
-    if (!paused) {
-      offset -= 0.4; // scroll speed
-      track.style.transform = `translateX(${offset}px)`;
-      if (Math.abs(offset) >= track.scrollWidth / 2) {
-        offset = 0;
+    track.addEventListener("mouseenter", () => (paused = true));
+    track.addEventListener("mouseleave", () => (paused = false));
+
+    let resizeRaf = 0;
+    window.addEventListener("resize", () => {
+      // Batch the recalculation in the next frame so layout changes settle first
+      if (resizeRaf) cancelAnimationFrame(resizeRaf);
+      resizeRaf = requestAnimationFrame(() => {
+        recalcThreshold();
+        resizeRaf = 0;
+      });
+    });
+    requestAnimationFrame(recalcThreshold);
+
+    function animate() {
+      if (!paused) {
+        offset -= 0.4; // scroll speed
+        if (Math.abs(offset) >= resetThreshold) {
+          offset = 0;
+        }
+        track.style.transform = `translateX(${offset}px)`;
       }
+      requestAnimationFrame(animate);
     }
-    requestAnimationFrame(animate);
+    animate();
+
+    // Touch swipe (mobile)
+    let startX = 0;
+    let scrollX = 0;
+    track.addEventListener("touchstart", e => {
+      startX = e.touches[0].pageX;
+      scrollX = offset;
+    });
+    track.addEventListener("touchmove", e => {
+      const dx = e.touches[0].pageX - startX;
+      offset = scrollX + dx;
+    });
   }
-  animate();
-
-  // Touch swipe (mobile)
-  let startX = 0;
-  let scrollX = 0;
-  track.addEventListener("touchstart", e => {
-    startX = e.touches[0].pageX;
-    scrollX = offset;
-  });
-  track.addEventListener("touchmove", e => {
-    const dx = e.touches[0].pageX - startX;
-    offset = scrollX + dx;
-  });
 });
-
-
 
   /* =========================================================
      6. Certificates ticker controls
