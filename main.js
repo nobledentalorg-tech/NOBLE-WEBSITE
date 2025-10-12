@@ -4,8 +4,13 @@ document.addEventListener("DOMContentLoaded", () => {
   const $$ = (s, r = document) => Array.from(r.querySelectorAll(s));
   const on = (el, ev, fn, opts = false) => el && el.addEventListener(ev, fn, opts);
 
-  document.body.dataset.guard = 'share-friendly';
+  const TELEMETRY_STORAGE_KEY = "ndc-visit-telemetry-v1";
+  const CONSENT_STORAGE_KEY = "ndc-telemetry-consent-v1";
+  const CONSULT_STORAGE_KEY = "ndc-quick-consult-v1";
+  let telemetryAllowed = false;
 
+  document.body.dataset.guard = 'share-friendly';
+  
   // Reset transition class when returning via browser history
   window.addEventListener("pageshow", () => {
     document.body.classList.remove("page-exit");
@@ -140,20 +145,20 @@ document.addEventListener("DOMContentLoaded", () => {
      2c. Lightweight on-device analytics
   ========================================================= */
   function recordLocalTelemetry() {
+    if (!telemetryAllowed) return;
     if (typeof window === "undefined" || !("localStorage" in window)) return;
 
-    const STORAGE_KEY = "ndc-visit-telemetry-v1";
     const path = window.location.pathname || "/";
     const referrer = document.referrer || "";
     const now = new Date();
     const dayKey = now.toISOString().slice(0, 10);
 
     try {
-      const raw = window.localStorage.getItem(STORAGE_KEY);
+      const raw = window.localStorage.getItem(TELEMETRY_STORAGE_KEY);
       const payload = raw ? JSON.parse(raw) : {};
 
       if (typeof payload !== "object" || Array.isArray(payload)) {
-        window.localStorage.removeItem(STORAGE_KEY);
+        window.localStorage.removeItem(TELEMETRY_STORAGE_KEY);
         recordLocalTelemetry();
         return;
       }
@@ -182,15 +187,183 @@ document.addEventListener("DOMContentLoaded", () => {
       payload.lastVisit = now.toISOString();
       payload.lastPath = path;
 
-      window.localStorage.setItem(STORAGE_KEY, JSON.stringify(payload));
+      window.localStorage.setItem(TELEMETRY_STORAGE_KEY, JSON.stringify(payload));
     } catch (error) {
       console.warn("Telemetry storage failed", error);
     }
   }
 
-  recordLocalTelemetry();
+    /* =========================================================
+     2d. Consent management for telemetry
+  ========================================================= */
+  const consentBanner = document.querySelector("[data-consent-banner]");
+  const consentAccept = document.querySelector("[data-consent-accept]");
+  const consentDecline = document.querySelector("[data-consent-decline]");
+  const consentToggles = $$('[data-consent-open]');
 
-   
+  const getStoredConsent = () => {
+    try {
+      const raw = window.localStorage?.getItem(CONSENT_STORAGE_KEY);
+      return raw ? JSON.parse(raw) : null;
+    } catch (error) {
+      console.warn("Unable to read consent state", error);
+      return null;
+    }
+  };
+
+  const persistConsent = (granted) => {
+    try {
+      window.localStorage?.setItem(
+        CONSENT_STORAGE_KEY,
+        JSON.stringify({ granted, timestamp: new Date().toISOString() })
+      );
+    } catch (error) {
+      console.warn("Unable to persist consent", error);
+    }
+  };
+
+  const setBannerVisibility = (isVisible) => {
+    if (!consentBanner) return;
+    consentBanner.hidden = !isVisible;
+    consentBanner.setAttribute("aria-hidden", String(!isVisible));
+    if (isVisible) {
+      const focusTarget = consentBanner.querySelector("[data-consent-accept]") || consentBanner;
+      window.requestAnimationFrame(() => focusTarget?.focus?.());
+    }
+  };
+
+  const applyConsent = (granted) => {
+    telemetryAllowed = Boolean(granted);
+    persistConsent(Boolean(granted));
+    if (granted) recordLocalTelemetry();
+    setBannerVisibility(false);
+  };
+
+  const storedConsent = getStoredConsent();
+  if (storedConsent?.granted === true) {
+    telemetryAllowed = true;
+    recordLocalTelemetry();
+  } else if (storedConsent?.granted === false) {
+    telemetryAllowed = false;
+    setBannerVisibility(false);
+  } else {
+    setBannerVisibility(true);
+  }
+
+  on(consentAccept, "click", () => applyConsent(true));
+  on(consentDecline, "click", () => applyConsent(false));
+  consentToggles.forEach((toggle) => {
+    on(toggle, "click", () => {
+      telemetryAllowed = Boolean(getStoredConsent()?.granted);
+      setBannerVisibility(true);
+    });
+  });
+  on(document, "keydown", (event) => {
+    if (event.key === "Escape" && consentBanner && !consentBanner.hidden) {
+      setBannerVisibility(false);
+    }
+  });
+
+  /* =========================================================
+     2e. Quick consult → WhatsApp automation
+  ========================================================= */
+  const quickForm = $("#quickConsultForm");
+  const quickStatus = $("#quickConsultStatus");
+
+  const getDraft = () => {
+    try {
+      const raw = window.localStorage?.getItem(CONSULT_STORAGE_KEY);
+      return raw ? JSON.parse(raw) : {};
+    } catch (error) {
+      console.warn("Unable to read consult draft", error);
+      return {};
+    }
+  };
+
+  const saveDraft = (draft) => {
+    try {
+      window.localStorage?.setItem(CONSULT_STORAGE_KEY, JSON.stringify(draft));
+    } catch (error) {
+      console.warn("Unable to store consult draft", error);
+    }
+  };
+
+  const setStatus = (message, tone = "success") => {
+    if (!quickStatus) return;
+    quickStatus.textContent = message;
+    quickStatus.dataset.tone = tone;
+    if (message) {
+      window.clearTimeout(quickStatus._timer);
+      quickStatus._timer = window.setTimeout(() => {
+        quickStatus.textContent = "";
+        quickStatus.removeAttribute("data-tone");
+      }, 6000);
+    }
+  };
+
+  if (quickForm) {
+    const fields = $$('input[name], select[name]', quickForm);
+    const draft = getDraft();
+    fields.forEach((field) => {
+      const name = field.getAttribute("name");
+      if (name && draft[name]) field.value = draft[name];
+    });
+
+    const persistCurrentDraft = () => {
+      const currentDraft = {};
+      fields.forEach((field) => {
+        const name = field.getAttribute("name");
+        if (!name) return;
+        if (field.value) currentDraft[name] = field.value;
+      });
+      saveDraft(currentDraft);
+    };
+
+    fields.forEach((field) => {
+      on(field, "input", persistCurrentDraft);
+      on(field, "change", persistCurrentDraft);
+    });
+
+    on(quickForm, "submit", (event) => {
+      event.preventDefault();
+      if (quickForm.reportValidity && !quickForm.reportValidity()) {
+        setStatus("Please fill in all required fields.", "error");
+        return;
+      }
+
+      const formData = new FormData(quickForm);
+      const name = (formData.get("name") || "").toString().trim();
+      const phone = (formData.get("phone") || "").toString().trim();
+      const concern = (formData.get("concern") || "").toString().trim();
+      const slotValue = (formData.get("slot") || "").toString();
+      const slotOption = quickForm.querySelector('select[name="slot"] option:checked');
+      const slotLabel = slotOption ? slotOption.textContent.trim() : slotValue;
+
+      if (!name || !phone || !concern || !slotValue) {
+        setStatus("Please fill in all required fields.", "error");
+        return;
+      }
+
+      const message = [
+        "Quick consult request", "Name: " + name,
+        "Phone/WhatsApp: " + phone,
+        "Concern: " + concern,
+        "Preferred slot: " + slotLabel
+      ].join("\n");
+
+      const encoded = encodeURIComponent(message);
+      const whatsappUrl = `https://wa.me/918610425342?text=${encoded}`;
+
+      saveDraft({ name, phone, concern, slot: slotValue, lastSubmitted: new Date().toISOString() });
+      setStatus("✅ Opening WhatsApp with your request…", "success");
+
+      const popup = window.open(whatsappUrl, "_blank", "noopener");
+      if (!popup) {
+        setStatus("Please allow pop-ups to send your WhatsApp request.", "error");
+      }
+    });
+  }
+  
   /* =========================================================
      3. Doctor cards → popup sheet
   ========================================================= */
