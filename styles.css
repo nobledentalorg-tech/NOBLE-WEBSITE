@@ -1,4 +1,11 @@
 /* =================== TOKENS & RESET =================== */
+@font-face {
+  font-family: 'Manrope';
+  src: url('/assets/fonts/Manrope-Variable-latin.woff2') format('woff2');
+  font-display: swap;
+  font-style: normal;
+  font-weight: 200 800;
+}
 :root {
   --font: 'Manrope', ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
   --max: 1280px;
@@ -78,6 +85,23 @@ body.page-exit {
 
 a, a:visited, a:focus, a:hover {
   text-decoration: none !important;
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 12px 20px;
+  border-radius: 12px;
+  font-weight: 600;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  cursor: pointer;
+  border: none;
+}
+.btn.primary {
+  background: linear-gradient(135deg, var(--brand), var(--brand2));
+  color: #fff;
 }
 
 button, input, select, textarea {
@@ -1262,18 +1286,188 @@ button, input, select, textarea {
   flex-wrap: wrap;
 }
 
-.btn.primary {
-  background: linear-gradient(135deg, var(--brand), var(--brand2));
-  color: #fff;
-  border: none;
-  border-radius: 12px;
-  padding: 12px 20px;
-  font-weight: 600;
-  cursor: pointer;
-}
 .btn.primary:disabled {
   background: #cbd5e1;
   cursor: not-allowed;
+}
+.btn.outline {
+  background: transparent;
+  border: 1.5px solid var(--brand);
+  color: var(--brand);
+}
+.btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(18,178,160,0.16);
+}
+.btn.outline:hover {
+  background: rgba(18,178,160,0.08);
+}
+
+.link {
+  background: none;
+  border: none;
+  color: var(--brand);
+  font: inherit;
+  padding: 0;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.footer-actions {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+}
+
+.consent-banner {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 2000;
+  width: min(420px, calc(100% - 32px));
+  background: #ffffff;
+  border-radius: 16px;
+  padding: 18px;
+  box-shadow: 0 16px 40px rgba(15, 17, 26, 0.15);
+  border: 1px solid rgba(15, 17, 26, 0.08);
+}
+.consent-inner {
+  display: grid;
+  gap: 12px;
+}
+.consent-title {
+  font-weight: 700;
+  font-size: 1.05rem;
+}
+.consent-copy {
+  color: var(--muted);
+  font-size: 0.95rem;
+}
+.consent-actions {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+.consent-footnote {
+  font-size: 0.85rem;
+  color: var(--muted);
+}
+@media (max-width: 640px) {
+  .consent-banner {
+    right: 16px;
+    left: 16px;
+    width: auto;
+  }
+}
+
+.conversion-hub {
+  background: var(--color-bg);
+  padding: clamp(48px, 8vw, 88px) 0;
+}
+.conversion-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.35fr);
+  gap: clamp(32px, 6vw, 60px);
+  align-items: start;
+}
+.conversion-copy .eyebrow {
+  color: var(--brand);
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+.conversion-copy h2 {
+  font-size: clamp(1.8rem, 3vw, 2.6rem);
+  margin-bottom: 12px;
+}
+.conversion-copy p {
+  font-size: 1rem;
+  color: var(--muted);
+  margin-bottom: 16px;
+}
+.conversion-points {
+  list-style: none;
+  display: grid;
+  gap: 10px;
+  padding: 0;
+  margin: 0;
+}
+.conversion-points li::before {
+  content: "✔";
+  color: var(--brand);
+  margin-right: 8px;
+}
+.conversion-actions {
+  display: grid;
+  gap: clamp(16px, 3vw, 24px);
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+}
+.conversion-card {
+  background: var(--paper);
+  border-radius: 20px;
+  padding: 22px;
+  border: 1px solid rgba(15, 17, 26, 0.08);
+  box-shadow: var(--shadow-sm);
+  display: grid;
+  gap: 12px;
+}
+.conversion-card h3 {
+  font-size: 1.25rem;
+}
+.conversion-card p {
+  color: var(--muted);
+  font-size: 0.95rem;
+}
+.conversion-card .btn {
+  justify-self: flex-start;
+}
+.conversion-note {
+  font-size: 0.85rem;
+  color: var(--muted);
+}
+.conversion-note.list {
+  list-style: none;
+  display: grid;
+  gap: 6px;
+  padding-left: 0;
+}
+.conversion-note.list li::before {
+  content: "•";
+  color: var(--brand);
+  font-weight: bold;
+  margin-right: 6px;
+}
+.conversion-form-grid {
+  display: grid;
+  gap: 12px;
+}
+.conversion-form-grid .f span {
+  font-weight: 600;
+}
+.conversion-form-grid input,
+.conversion-form-grid select {
+  width: 100%;
+  padding: 10px 12px;
+  border-radius: 12px;
+  border: 1px solid rgba(15,17,26,0.12);
+  background: #f8fafc;
+}
+.conversion-status {
+  min-height: 1.2em;
+  font-size: 0.9rem;
+  color: var(--brand);
+}
+.conversion-status[data-tone="error"] {
+  color: #ef4444;
+}
+.whatsapp-card {
+  background: linear-gradient(135deg, rgba(37,211,102,0.12), rgba(87,192,185,0.12));
+  border-color: rgba(37,211,102,0.3);
+}
+@media (max-width: 1024px) {
+  .conversion-grid {
+    grid-template-columns: 1fr;
+  }
 }
 
 .t-btn {
@@ -2385,6 +2579,7 @@ body {
   clip: rect(0 0 0 0) !important;
   white-space: nowrap !important;
 }
+
 
 
 
