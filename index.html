@@ -399,6 +399,21 @@
   </script>
 </head>
 <body>
+ <div class="consent-banner" role="dialog" aria-live="polite" aria-modal="false" data-consent-banner hidden tabindex="-1">
+  <div class="consent-inner" role="document">
+    <p class="consent-title">Privacy controls</p>
+    <p class="consent-copy">
+      We use privacy-friendly, local-only analytics to understand which treatments people view most. No data leaves your device unless you allow it.
+    </p>
+    <div class="consent-actions">
+      <button type="button" class="btn primary" data-consent-accept>Allow analytics</button>
+      <button type="button" class="btn outline" data-consent-decline>Decline</button>
+    </div>
+    <p class="consent-footnote">
+      You can change your choice anytime from the <button type="button" class="link" data-consent-open>privacy controls</button> link in the footer.
+    </p>
+  </div>
+</div> 
 <!-- ================= HEADER ================= -->
 <header class="site-header" role="banner">
   <!-- Brand -->
