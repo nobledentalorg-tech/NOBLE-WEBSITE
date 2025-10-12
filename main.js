@@ -6,7 +6,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const TELEMETRY_STORAGE_KEY = "ndc-visit-telemetry-v1";
   const CONSENT_STORAGE_KEY = "ndc-telemetry-consent-v1";
-  const CONSULT_STORAGE_KEY = "ndc-quick-consult-v1";
   let telemetryAllowed = false;
 
   document.body.dataset.guard = 'share-friendly';
@@ -193,7 +192,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   }
 
-    /* =========================================================
+  /* =========================================================
      2d. Consent management for telemetry
   ========================================================= */
   const consentBanner = document.querySelector("[data-consent-banner]");
@@ -263,106 +262,6 @@ document.addEventListener("DOMContentLoaded", () => {
       setBannerVisibility(false);
     }
   });
-
-  /* =========================================================
-     2e. Quick consult → WhatsApp automation
-  ========================================================= */
-  const quickForm = $("#quickConsultForm");
-  const quickStatus = $("#quickConsultStatus");
-
-  const getDraft = () => {
-    try {
-      const raw = window.localStorage?.getItem(CONSULT_STORAGE_KEY);
-      return raw ? JSON.parse(raw) : {};
-    } catch (error) {
-      console.warn("Unable to read consult draft", error);
-      return {};
-    }
-  };
-
-  const saveDraft = (draft) => {
-    try {
-      window.localStorage?.setItem(CONSULT_STORAGE_KEY, JSON.stringify(draft));
-    } catch (error) {
-      console.warn("Unable to store consult draft", error);
-    }
-  };
-
-  const setStatus = (message, tone = "success") => {
-    if (!quickStatus) return;
-    quickStatus.textContent = message;
-    quickStatus.dataset.tone = tone;
-    if (message) {
-      window.clearTimeout(quickStatus._timer);
-      quickStatus._timer = window.setTimeout(() => {
-        quickStatus.textContent = "";
-        quickStatus.removeAttribute("data-tone");
-      }, 6000);
-    }
-  };
-
-  if (quickForm) {
-    const fields = $$('input[name], select[name]', quickForm);
-    const draft = getDraft();
-    fields.forEach((field) => {
-      const name = field.getAttribute("name");
-      if (name && draft[name]) field.value = draft[name];
-    });
-
-    const persistCurrentDraft = () => {
-      const currentDraft = {};
-      fields.forEach((field) => {
-        const name = field.getAttribute("name");
-        if (!name) return;
-        if (field.value) currentDraft[name] = field.value;
-      });
-      saveDraft(currentDraft);
-    };
-
-    fields.forEach((field) => {
-      on(field, "input", persistCurrentDraft);
-      on(field, "change", persistCurrentDraft);
-    });
-
-    on(quickForm, "submit", (event) => {
-      event.preventDefault();
-      if (quickForm.reportValidity && !quickForm.reportValidity()) {
-        setStatus("Please fill in all required fields.", "error");
-        return;
-      }
-
-      const formData = new FormData(quickForm);
-      const name = (formData.get("name") || "").toString().trim();
-      const phone = (formData.get("phone") || "").toString().trim();
-      const concern = (formData.get("concern") || "").toString().trim();
-      const slotValue = (formData.get("slot") || "").toString();
-      const slotOption = quickForm.querySelector('select[name="slot"] option:checked');
-      const slotLabel = slotOption ? slotOption.textContent.trim() : slotValue;
-
-      if (!name || !phone || !concern || !slotValue) {
-        setStatus("Please fill in all required fields.", "error");
-        return;
-      }
-
-      const message = [
-        "Quick consult request", "Name: " + name,
-        "Phone/WhatsApp: " + phone,
-        "Concern: " + concern,
-        "Preferred slot: " + slotLabel
-      ].join("\n");
-
-      const encoded = encodeURIComponent(message);
-      const whatsappUrl = `https://wa.me/918610425342?text=${encoded}`;
-
-      saveDraft({ name, phone, concern, slot: slotValue, lastSubmitted: new Date().toISOString() });
-      setStatus("✅ Opening WhatsApp with your request…", "success");
-
-      const popup = window.open(whatsappUrl, "_blank", "noopener");
-      if (!popup) {
-        setStatus("Please allow pop-ups to send your WhatsApp request.", "error");
-      }
-    });
-  }
   
   /* =========================================================
      3. Doctor cards → popup sheet
@@ -588,6 +487,16 @@ if (bookAppointmentBtn) {
   const summaryText = $("#summaryText");
   const bookBtn = $("#bookBtn");
   const apptToast = $("#apptToast");
+  const chatBtn = $("#gitChatBtn");
+  const roadmapLink = $("#gitRoadmapLink");
+  const roadmapLabel = $("#gitRoadmapLabel");
+  const roadmapCopy = $("#gitRoadmapCopy");
+
+  const openWhatsApp = (message) => {
+    if (!message) return;
+    const url = `https://wa.me/918610425342?text=${encodeURIComponent(message)}`;
+    window.open(url, "_blank");
+  };
 
   // Populate next 7 days
   if (daySelect) {
@@ -618,6 +527,82 @@ if (bookAppointmentBtn) {
   }
 
   if (apptForm) {
+    const serviceSelect = apptForm.querySelector('select[name="service"]');
+
+    if (serviceSelect && roadmapLink) {
+      const defaultRoadmap = {
+        href: "/assets/guides/smile-restoration-roadmap.pdf",
+        download: "smile-restoration-roadmap.pdf",
+        label: "Smile Restoration Roadmap",
+        copy: "Step-by-step treatment timelines with budgeting tips for your selected service."
+      };
+
+      const serviceRoadmaps = {
+        "Root Canal": {
+          href: "/assets/guides/root-canal-roadmap.pdf",
+          download: "root-canal-roadmap.pdf"
+        },
+        "Implants": {
+          href: "/assets/guides/dental-implants-roadmap.pdf",
+          download: "dental-implants-roadmap.pdf"
+        },
+        "Braces/Aligners": {
+          href: "/assets/guides/braces-aligners-roadmap.pdf",
+          download: "braces-aligners-roadmap.pdf"
+        },
+        "Whitening": {
+          href: "/assets/guides/teeth-whitening-roadmap.pdf",
+          download: "teeth-whitening-roadmap.pdf"
+        },
+        "Extraction": {
+          href: "/assets/guides/tooth-extraction-roadmap.pdf",
+          download: "tooth-extraction-roadmap.pdf"
+        },
+        "Kids Dentistry": {
+          href: "/assets/guides/kids-dentistry-roadmap.pdf",
+          download: "kids-dentistry-roadmap.pdf"
+        },
+        "Gum Treatment": {
+          href: "/assets/guides/gum-treatment-roadmap.pdf",
+          download: "gum-treatment-roadmap.pdf"
+        },
+        "Checkup & Cleaning": {
+          href: "/assets/guides/checkup-cleaning-roadmap.pdf",
+          download: "checkup-cleaning-roadmap.pdf"
+        }
+      };
+
+      const updateRoadmap = () => {
+        const service = serviceSelect.value || "";
+        const entry = serviceRoadmaps[service] || defaultRoadmap;
+        roadmapLink.href = entry.href;
+        if (entry.download) roadmapLink.setAttribute("download", entry.download);
+        else roadmapLink.removeAttribute("download");
+
+        if (roadmapLabel) {
+          roadmapLabel.textContent = service
+            ? `${service} Roadmap`
+            : defaultRoadmap.label;
+        }
+
+        if (roadmapCopy) {
+          const normalized = service
+            ? service
+                .replace(/&/g, "and")
+                .replace(/\//g, " and ")
+                .replace(/\s+/g, " ")
+                .toLowerCase()
+            : "your selected service";
+          roadmapCopy.textContent = service
+            ? `Step-by-step treatment timelines with budgeting tips for ${normalized}.`
+            : defaultRoadmap.copy;
+        }
+      };
+
+      updateRoadmap();
+      on(serviceSelect, "change", updateRoadmap);
+    }
+
     on(apptForm, "change", () => {
       const day = daySelect.value;
       const time = timeSelect.value;
@@ -635,8 +620,35 @@ if (bookAppointmentBtn) {
       apptToast.hidden = false;
       const data = new FormData(apptForm);
       const msg = `Hello! I want to book an appointment with ${data.get("doctor")} for ${data.get("service")} on ${data.get("day")} at ${data.get("time")}. Name: ${data.get("name")}, Phone: ${data.get("phone")}. Notes: ${data.get("notes") || "-"}`;
-      const url = `https://wa.me/918610425342?text=${encodeURIComponent(msg)}`;
-      window.open(url, "_blank");
+      openWhatsApp(msg);
+    });
+  }
+
+  if (chatBtn) {
+    on(chatBtn, "click", () => {
+      const data = apptForm ? new FormData(apptForm) : null;
+      const parts = [
+        "Hi! I'd like to chat on WhatsApp about my smile treatment options."
+      ];
+
+      if (data) {
+        const name = (data.get("name") || "").trim();
+        const phone = (data.get("phone") || "").trim();
+        const service = data.get("service");
+        const doctor = data.get("doctor");
+        const day = data.get("day");
+        const time = data.get("time");
+        const notes = (data.get("notes") || "").trim();
+
+        if (name) parts.push(`Name: ${name}`);
+        if (phone) parts.push(`Phone: ${phone}`);
+        if (service) parts.push(`Interested in: ${service}`);
+        if (doctor) parts.push(`Preferred doctor: ${doctor}`);
+        if (day && time) parts.push(`Looking at ${day} around ${time}`);
+        if (notes) parts.push(`Notes: ${notes}`);
+      }
+
+      openWhatsApp(parts.join("\n"));
     });
   }
 
