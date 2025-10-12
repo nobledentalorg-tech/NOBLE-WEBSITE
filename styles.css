@@ -121,6 +121,7 @@ button, input, select, textarea {
   border: 0;
 }
 
+
 /* =================== CONTAINERS =================== */
 .container,
 .hero-container,
@@ -1255,6 +1256,13 @@ button, input, select, textarea {
   box-shadow: 0 8px 24px rgba(0,0,0,.25);
 }
 
+.git-form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  flex: 1 1 380px;
+}
+
 .git-form-grid {
   display: grid;
   gap: 12px;
@@ -1279,11 +1287,116 @@ button, input, select, textarea {
   background: #f9f9ff;
   color: var(--muted);
 }
+
 .git-submit {
   display: flex;
   gap: 10px;
   margin-top: 10px;
   flex-wrap: wrap;
+}
+
+.git-extras {
+  border-top: 1px solid rgba(0,0,0,0.08);
+  padding-top: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.git-extras-head h3 {
+  margin: 0 0 6px;
+  font-size: 1.15rem;
+}
+
+.git-extras-head p {
+  margin: 0;
+  color: var(--muted);
+  line-height: 1.45;
+}
+
+.git-extras-grid {
+  display: grid;
+  gap: 16px;
+}
+
+@media (min-width: 720px) {
+  .git-extras-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (min-width: 960px) {
+  .git-form {
+    padding-left: 8px;
+  }
+}
+
+.git-extra-card {
+  display: flex;
+  gap: 12px;
+  border-radius: 14px;
+  padding: 16px;
+  background: linear-gradient(145deg, rgba(18,178,160,0.08), rgba(255,255,255,0.9));
+  border: 1px solid rgba(18,178,160,0.25);
+  box-shadow: 0 6px 18px rgba(18,178,160,0.12);
+}
+
+.git-extra-card--chat {
+  background: linear-gradient(145deg, rgba(37,211,102,0.08), rgba(255,255,255,0.95));
+  border-color: rgba(37,211,102,0.35);
+  box-shadow: 0 6px 18px rgba(37,211,102,0.18);
+}
+
+.git-extra-icon {
+  font-size: 2rem;
+  line-height: 1;
+}
+
+.git-extra-body {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.git-extra-body h4 {
+  margin: 0;
+  font-size: 1.05rem;
+}
+
+.git-extra-body p {
+  margin: 0;
+  color: var(--muted);
+  line-height: 1.45;
+}
+
+.git-extra-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  border: none;
+  border-radius: 999px;
+  padding: 10px 16px;
+  font-weight: 600;
+  font-size: 0.95rem;
+  cursor: pointer;
+  transition: transform .2s, box-shadow .2s;
+  text-decoration: none;
+  color: #fff;
+  background: linear-gradient(135deg, var(--brand), var(--brand2));
+}
+
+.git-extra-card--chat .git-extra-btn {
+  background: #25d366;
+}
+
+.git-extra-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 24px rgba(0,0,0,0.16);
+}
+
+.git-extra-btn .icon {
+  font-size: 1.1rem;
 }
 
 .btn.primary:disabled {
@@ -1360,116 +1473,6 @@ button, input, select, textarea {
   }
 }
 
-.conversion-hub {
-  background: var(--color-bg);
-  padding: clamp(48px, 8vw, 88px) 0;
-}
-.conversion-grid {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(0, 1.35fr);
-  gap: clamp(32px, 6vw, 60px);
-  align-items: start;
-}
-.conversion-copy .eyebrow {
-  color: var(--brand);
-  font-weight: 700;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-}
-.conversion-copy h2 {
-  font-size: clamp(1.8rem, 3vw, 2.6rem);
-  margin-bottom: 12px;
-}
-.conversion-copy p {
-  font-size: 1rem;
-  color: var(--muted);
-  margin-bottom: 16px;
-}
-.conversion-points {
-  list-style: none;
-  display: grid;
-  gap: 10px;
-  padding: 0;
-  margin: 0;
-}
-.conversion-points li::before {
-  content: "✔";
-  color: var(--brand);
-  margin-right: 8px;
-}
-.conversion-actions {
-  display: grid;
-  gap: clamp(16px, 3vw, 24px);
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-}
-.conversion-card {
-  background: var(--paper);
-  border-radius: 20px;
-  padding: 22px;
-  border: 1px solid rgba(15, 17, 26, 0.08);
-  box-shadow: var(--shadow-sm);
-  display: grid;
-  gap: 12px;
-}
-.conversion-card h3 {
-  font-size: 1.25rem;
-}
-.conversion-card p {
-  color: var(--muted);
-  font-size: 0.95rem;
-}
-.conversion-card .btn {
-  justify-self: flex-start;
-}
-.conversion-note {
-  font-size: 0.85rem;
-  color: var(--muted);
-}
-.conversion-note.list {
-  list-style: none;
-  display: grid;
-  gap: 6px;
-  padding-left: 0;
-}
-.conversion-note.list li::before {
-  content: "•";
-  color: var(--brand);
-  font-weight: bold;
-  margin-right: 6px;
-}
-.conversion-form-grid {
-  display: grid;
-  gap: 12px;
-}
-.conversion-form-grid .f span {
-  font-weight: 600;
-}
-.conversion-form-grid input,
-.conversion-form-grid select {
-  width: 100%;
-  padding: 10px 12px;
-  border-radius: 12px;
-  border: 1px solid rgba(15,17,26,0.12);
-  background: #f8fafc;
-}
-.conversion-status {
-  min-height: 1.2em;
-  font-size: 0.9rem;
-  color: var(--brand);
-}
-.conversion-status[data-tone="error"] {
-  color: #ef4444;
-}
-.whatsapp-card {
-  background: linear-gradient(135deg, rgba(37,211,102,0.12), rgba(87,192,185,0.12));
-  border-color: rgba(37,211,102,0.3);
-}
-@media (max-width: 1024px) {
-  .conversion-grid {
-    grid-template-columns: 1fr;
-  }
-}
-
 .t-btn {
   display: inline-flex;
   align-items: center;
@@ -1486,6 +1489,7 @@ button, input, select, textarea {
   font-size: 0.9rem;
   color: var(--brand);
 }
+
 
 
 /* ============================================================
@@ -2579,6 +2583,7 @@ body {
   clip: rect(0 0 0 0) !important;
   white-space: nowrap !important;
 }
+
 
 
 
