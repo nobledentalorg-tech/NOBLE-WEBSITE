@@ -3019,11 +3019,46 @@
             <span>Emergency support available</span>
           </li>
         </ul>
+        </ul>
+
+        <!-- Resources -->
+        <aside class="git-extras" aria-labelledby="gitExtrasTitle">
+          <div class="git-extras-head">
+            <h3 id="gitExtrasTitle">Plan your visit your way</h3>
+            <p>Download the roadmap tailored to your treatment or jump into a WhatsApp chat for quick answers.</p>
+          </div>
+
+          <div class="git-extras-grid">
+            <article class="git-extra-card git-extra-card--roadmap">
+              <div class="git-extra-icon" aria-hidden="true">📘</div>
+              <div class="git-extra-body">
+                <h4 id="gitRoadmapLabel">Smile Restoration Roadmap</h4>
+                <p id="gitRoadmapCopy">Step-by-step treatment timelines with budgeting tips for your selected service.</p>
+                <a class="git-extra-btn" id="gitRoadmapLink" href="/assets/guides/smile-restoration-roadmap.pdf" download>
+                  <span class="icon" aria-hidden="true">⬇️</span>
+                  <span>Download PDF</span>
+                </a>
+              </div>
+            </article>
+
+            <article class="git-extra-card git-extra-card--chat">
+              <div class="git-extra-icon" aria-hidden="true">💬</div>
+              <div class="git-extra-body">
+                <h4>Chat on WhatsApp</h4>
+                <p>Connect with our care coordinator instantly for pre-visit questions.</p>
+                <button type="button" class="git-extra-btn" id="gitChatBtn">
+                  <span class="icon" aria-hidden="true">⚡</span>
+                  <span>Start Chat</span>
+                </button>
+              </div>
+            </article>
+          </div>
+        </aside>
       </aside>
 
       <!-- Right column (form) -->
       <div class="git-card">
-        <form id="apptForm" autocomplete="on" novalidate>
+        <form id="apptForm" class="git-form" autocomplete="on" novalidate>
           <div class="git-form-grid">
             <label class="f">
               <span>Name</span>
@@ -3454,6 +3489,8 @@
     <p>&copy; <span id="year"></span> Noble Dental Care, Nallagandla.
        Reviewed by Dr. Dhivakaran R. | All Rights Reserved.</p>
     <div class="footer-actions">
+      <button type="button" class="link" data-consent-open aria-label="Adjust privacy preferences">Privacy controls</button>
+      <div class="footer-actions">
       <button type="button" class="link" data-consent-open aria-label="Adjust privacy preferences">Privacy controls</button>
       <button id="backToTop" aria-label="Back to top">↑</button>
     </div>
