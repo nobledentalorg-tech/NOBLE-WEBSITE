@@ -20,8 +20,8 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="dns-prefetch" href="https://fonts.googleapis.com">
-  <link rel="dns-prefetch" href="https://fonts.gstatic.com">
+  <link rel="preload" href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&display=swap" as="style">
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&display=swap" rel="stylesheet">
   <!-- Structured Data -->
   <script type="application/ld+json">
     {
@@ -2678,7 +2678,7 @@
           <p>Chief Medical Director.</p>
           <div>
             <div class="tag publication-info" aria-label="Work publication">
-              <img src="https://play.google.com/books/publisher/content/images/frontcover/ZTjvDwAAQBAJ?fife=w200-h280" alt="Book cover">
+              <img src="https://play.google.com/books/publisher/content/images/frontcover/ZTjvDwAAQBAJ?fife=w200-h280" alt="Book cover" loading="lazy" decoding="async">
               <span>Contributor · Triumph’s Dentistry</span>
             </div>
             <button type="button" data-doctor-id="dhivakaran" class="profile-info-btn">
@@ -2696,7 +2696,7 @@
           <p>Chief Medical Director.</p>
           <div>
             <div class="tag publication-info" aria-label="Work publication">
-              <img src="https://play.google.com/books/publisher/content/images/frontcover/ZTjvDwAAQBAJ?fife=w200-h280" alt="Book cover">
+              <img src="https://play.google.com/books/publisher/content/images/frontcover/ZTjvDwAAQBAJ?fife=w200-h280" alt="Book cover" loading="lazy" decoding="async">
               <span>Contributor · Triumph’s Dentistry</span>
             </div>
             <button type="button" data-doctor-id="roger" class="profile-info-btn">
@@ -2989,28 +2989,33 @@
     <div class="ticker-viewport" role="group" aria-roledescription="carousel" aria-label="Certificate highlights">
       <ul class="ticker-track" id="certsTrack" aria-live="off">
         <li>
-          <a href="/credentials.html#ada" aria-label="ADA Membership">
-            <img src="/images/certs/ada.webp" alt="ADA Membership">
+          <a href="/credentials.html#ada" class="cert-card">
+            <span class="cert-card__code" aria-hidden="true">ADA</span>
+            <span class="cert-card__label">American Dental Association member</span>
           </a>
         </li>
         <li>
-          <a href="/credentials.html#iti" aria-label="ITI Implantology">
-            <img src="/images/certs/iti.webp" alt="ITI Implantology Certification">
+          <a href="/credentials.html#iti" class="cert-card">
+            <span class="cert-card__code" aria-hidden="true">ITI</span>
+            <span class="cert-card__label">International Team for Implantology fellow</span>
           </a>
         </li>
         <li>
-          <a href="/credentials.html#iso" aria-label="ISO 9001">
-            <img src="/images/certs/iso.webp" alt="ISO 9001 Quality Certification">
+          <a href="/credentials.html#iso" class="cert-card">
+            <span class="cert-card__code" aria-hidden="true">ISO</span>
+            <span class="cert-card__label">ISO 9001:2015 quality-certified clinic</span>
           </a>
         </li>
         <li>
-          <a href="/credentials.html#dci" aria-label="DCI Registration">
-            <img src="/images/certs/dci.webp" alt="DCI Registration">
+          <a href="/credentials.html#dci" class="cert-card">
+            <span class="cert-card__code" aria-hidden="true">DCI</span>
+            <span class="cert-card__label">Dental Council of India registered</span>
           </a>
         </li>
         <li>
-          <a href="/credentials.html#who" aria-label="WHO Oral Health">
-            <img src="/images/certs/who.webp" alt="WHO Oral Health Certification">
+          <a href="/credentials.html#who" class="cert-card">
+            <span class="cert-card__code" aria-hidden="true">WHO</span>
+            <span class="cert-card__label">WHO oral health compliance partner</span>
           </a>
         </li>
       </ul>
@@ -3165,8 +3170,8 @@
       </div>
 
     <div class="faq-list">
-      <aside id="faq" class="faq-stack" aria-labelledby="faqTitle" itemscope itemtype="https://schema.org/FAQPage">
-        <h2 id="faqTitle">Hyderabad Dental FAQ</h2>
+      <aside id="faqList" class="faq-stack" aria-labelledby="faqListTitle" itemscope itemtype="https://schema.org/FAQPage">
+        <h2 id="faqListTitle">Hyderabad Dental FAQ</h2>
         <p class="faq-sub">Quick answers we share with patients before and after appointments in Nallagandla.</p>
         <div class="faq-list">
 
@@ -3236,7 +3241,7 @@
 
     <!-- Nav -->
     <nav class="footer-nav" aria-label="Footer">
-      <h4>Quick Links</h4>
+      <h3>Quick Links</h3>
       <ul>
         <li><a href="/">Home</a></li>
         <li><a href="/self-check">Self-Check</a></li>
@@ -3248,7 +3253,7 @@
 
     <!-- Contact -->
     <div class="footer-contact">
-      <h4>Find Us</h4>
+      <h3>Find Us</h3>
       <p>Nallagandla Main Road,<br> Hyderabad, Telangana – 500019</p>
       <p><a href="tel:+918610425342">+91 86104 25342</a></p>
       <a href="https://maps.app.goo.gl/hy8B9WiQHtnaUqdPA" target="_blank" rel="noopener">Open in Google Maps</a>
@@ -3264,7 +3269,7 @@
 
 <!-- Social -->
 <div class="footer-social">
-  <h4>Connect</h4>
+  <h3>Connect</h3>
 
   <!-- Facebook -->
   <a href="https://facebook.com" target="_blank" rel="noopener"
@@ -3336,4 +3341,4 @@
 <script src="/js/ai-schema-engine.js" defer></script>
 <script defer src="/js/gptengineer.js"></script>  
 </body>
-  </html>
+</html>
