@@ -1,6 +1,10 @@
 import { ADMIN_PASSWORD } from '../config/admin-config.js';
 import { TEAM_MEMBERS as BASE_TEAM, CERTIFICATES_LIBRARY as BASE_CERTIFICATES, NEWS_BROADCAST as BASE_NEWS } from './certificates-data.js';
 
+function toArray(value) {
+  return Array.isArray(value) ? value : [];
+}
+
 const storageKeys = {
   certificates: 'nobleCertificates',
   news: 'nobleNews',
@@ -18,13 +22,13 @@ const state = {
     staff: 'all',
     search: ''
   },
-  baseTeam: BASE_TEAM,
+  baseTeam: toArray(BASE_TEAM),
   localTeam: [],
   teamMembers: [],
-  baseCertificates: BASE_CERTIFICATES,
+  baseCertificates: toArray(BASE_CERTIFICATES),
   localCertificates: [],
   certificates: [],
-  baseNews: BASE_NEWS,
+  baseNews: toArray(BASE_NEWS),
   localNews: [],
   news: []
 };
@@ -127,13 +131,15 @@ function parseStoredData(key) {
 }
 
 function mergeById(base, additions) {
+  const baseEntries = Array.isArray(base) ? base : [];
+  const additionEntries = Array.isArray(additions) ? additions : [];
   const map = new Map();
-  base.forEach((entry) => {
+  baseEntries.forEach((entry) => {
     if (entry && entry.id) {
       map.set(entry.id, { ...entry });
     }
   });
-  additions.forEach((entry) => {
+  additionEntries.forEach((entry) => {
     if (!entry || !entry.id) {
       return;
     }
@@ -187,9 +193,23 @@ function setPreviewImage(previewElement, file, key) {
     image.removeAttribute('src');
     return;
   }
-  const url = URL.createObjectURL(file);
-  previewState[key] = url;
-  image.src = url;
+function showPreviewFromPath(previewElement, src, altText, key) {
+  if (!previewElement) return;
+  const image = previewElement.querySelector('img');
+  if (!image) return;
+  if (key && previewState[key]) {
+    URL.revokeObjectURL(previewState[key]);
+    previewState[key] = null;
+  }
+  if (!src) {
+    previewElement.hidden = true;
+    image.removeAttribute('src');
+    return;
+  }
+  image.src = src;
+  if (altText) {
+    image.alt = altText;
+  }
   previewElement.hidden = false;
 }
 
@@ -241,6 +261,25 @@ function presetCredentialDefaults() {
   if (typeField && !typeField.value) {
     typeField.value = 'Medical';
   }
+  const idField = getCredentialField('certificateId');
+  if (idField) {
+    idField.value = '';
+  }
+  if (dom.customStaffFields) {
+    dom.customStaffFields.hidden = true;
+  }
+  if (dom.certificateImageFile) {
+    dom.certificateImageFile.value = '';
+  }
+  if (dom.credentialForm) {
+    const submitButton = dom.credentialForm.querySelector('button[type="submit"]');
+    if (submitButton) {
+      if (!submitButton.dataset.defaultText) {
+        submitButton.dataset.defaultText = submitButton.textContent;
+      }
+      submitButton.textContent = submitButton.dataset.defaultText;
+    }
+  }
   updateCredentialImageSuggestion(true);
   if (dom.certificateImagePreview) {
     setPreviewImage(dom.certificateImagePreview, null, 'certificate');
@@ -251,6 +290,22 @@ function presetNewsDefaults() {
   const dateField = getNewsField('publishedOn');
   if (dateField && !dateField.value) {
     dateField.value = new Date().toISOString().split('T')[0];
+  }
+  const idField = getNewsField('newsId');
+  if (idField) {
+    idField.value = '';
+  }
+  if (dom.newsImageFile) {
+    dom.newsImageFile.value = '';
+  }
+  if (dom.newsForm) {
+    const submitButton = dom.newsForm.querySelector('button[type="submit"]');
+    if (submitButton) {
+      if (!submitButton.dataset.defaultText) {
+        submitButton.dataset.defaultText = submitButton.textContent;
+      }
+      submitButton.textContent = submitButton.dataset.defaultText;
+    }
   }
   updateNewsImageSuggestion(true);
   if (dom.newsImagePreview) {
@@ -508,6 +563,7 @@ function formatDate(value) {
 function createCredentialCard(certificate) {
   const card = document.createElement('article');
   card.className = 'credential-card';
+  card.dataset.certificateId = certificate.id;
 
   const figure = document.createElement('figure');
   const image = document.createElement('img');
@@ -590,12 +646,25 @@ function createCredentialCard(certificate) {
   body.appendChild(footer);
   card.appendChild(body);
 
+  if (state.authenticated) {
+    const adminActions = document.createElement('div');
+    adminActions.className = 'card-admin-actions';
+    const editButton = document.createElement('button');
+    editButton.type = 'button';
+    editButton.className = 'card-admin-button';
+    editButton.textContent = 'Edit';
+    editButton.setAttribute('data-edit-certificate', certificate.id);
+    adminActions.appendChild(editButton);
+    card.appendChild(adminActions);
+  }
+
   return card;
 }
 
 function createNewsCard(entry) {
   const card = document.createElement('article');
   card.className = 'news-card';
+  card.dataset.newsId = entry.id;
 
   if (entry.image) {
     const figure = document.createElement('figure');
@@ -657,7 +726,222 @@ function createNewsCard(entry) {
     card.appendChild(docLink);
   }
 
+  if (state.authenticated) {
+    const adminActions = document.createElement('div');
+    adminActions.className = 'card-admin-actions';
+    const editButton = document.createElement('button');
+    editButton.type = 'button';
+    editButton.className = 'card-admin-button';
+    editButton.textContent = 'Edit';
+    editButton.setAttribute('data-edit-news', entry.id);
+    adminActions.appendChild(editButton);
+    card.appendChild(adminActions);
+  }
+
   return card;
+}
+
+function populateCredentialForm(certificate) {
+  if (!dom.credentialForm) return;
+  const submitButton = dom.credentialForm.querySelector('button[type="submit"]');
+  if (submitButton) {
+    if (!submitButton.dataset.defaultText) {
+      submitButton.dataset.defaultText = submitButton.textContent;
+    }
+    submitButton.textContent = 'Update credential';
+  }
+
+  const idField = getCredentialField('certificateId');
+  if (idField) {
+    idField.value = certificate.id;
+  }
+
+  if (dom.certificateImageFile) {
+    dom.certificateImageFile.value = '';
+  }
+
+  const staffMember = getTeamMemberById(certificate.staffId);
+  if (dom.staffSelect) {
+    if (staffMember) {
+      dom.staffSelect.value = staffMember.id;
+      if (dom.customStaffFields) {
+        dom.customStaffFields.hidden = true;
+      }
+    } else {
+      dom.staffSelect.value = '__custom__';
+      if (dom.customStaffFields) {
+        dom.customStaffFields.hidden = false;
+        const nameInput = dom.customStaffFields.querySelector('input[name="staffName"]');
+        const roleInput = dom.customStaffFields.querySelector('input[name="staffRole"]');
+        const imageInput = dom.customStaffFields.querySelector('input[name="profileImage"]');
+        if (nameInput) nameInput.value = certificate.staffName || '';
+        if (roleInput) roleInput.value = certificate.staffRole || '';
+        if (imageInput) imageInput.value = certificate.profileImage || '';
+      }
+    }
+  }
+
+  const titleField = getCredentialField('title');
+  if (titleField) {
+    titleField.value = certificate.title || '';
+  }
+
+  const descriptionField = getCredentialField('description');
+  if (descriptionField) {
+    descriptionField.value = certificate.description || '';
+  }
+
+  const issuerField = getCredentialField('issuer');
+  if (issuerField) {
+    issuerField.value = certificate.issuer || '';
+  }
+
+  const issueDateField = getCredentialField('issueDate');
+  if (issueDateField) {
+    issueDateField.value = certificate.issueDate || '';
+  }
+
+  const credentialTypeField = getCredentialField('credentialType');
+  if (credentialTypeField) {
+    credentialTypeField.value = certificate.credentialType || credentialTypeField.value || 'Medical';
+  }
+
+  const locationField = getCredentialField('location');
+  if (locationField) {
+    locationField.value = certificate.location || '';
+  }
+
+  const codeField = getCredentialField('credentialCode');
+  if (codeField) {
+    codeField.value = certificate.credentialCode || '';
+  }
+
+  const tagsField = getCredentialField('tags');
+  if (tagsField) {
+    tagsField.value = (certificate.tags || []).join(', ');
+  }
+
+  const imagePathField = getCredentialField('image');
+  if (imagePathField) {
+    imagePathField.value = certificate.image || '';
+    imagePathField.dataset.autoValue = certificate.image || '';
+  }
+
+  showPreviewFromPath(dom.certificateImagePreview, certificate.image, `${certificate.title} credential preview`, 'certificate');
+
+  const focusTarget = titleField || dom.credentialForm.querySelector('input, textarea');
+  focusTarget?.focus();
+}
+
+function populateNewsForm(entry) {
+  if (!dom.newsForm) return;
+  const submitButton = dom.newsForm.querySelector('button[type="submit"]');
+  if (submitButton) {
+    if (!submitButton.dataset.defaultText) {
+      submitButton.dataset.defaultText = submitButton.textContent;
+    }
+    submitButton.textContent = 'Update news';
+  }
+
+  const idField = getNewsField('newsId');
+  if (idField) {
+    idField.value = entry.id;
+  }
+
+  if (dom.newsImageFile) {
+    dom.newsImageFile.value = '';
+  }
+
+  const headlineField = getNewsField('headline');
+  if (headlineField) {
+    headlineField.value = entry.headline || '';
+  }
+
+  const summaryField = getNewsField('summary');
+  if (summaryField) {
+    summaryField.value = entry.summary || '';
+  }
+
+  const dateField = getNewsField('publishedOn');
+  if (dateField) {
+    dateField.value = entry.publishedOn || '';
+  }
+
+  const linkField = getNewsField('link');
+  if (linkField) {
+    linkField.value = entry.link || '';
+  }
+
+  const tagsField = getNewsField('tags');
+  if (tagsField) {
+    tagsField.value = (entry.tags || []).join(', ');
+  }
+
+  const imageField = getNewsField('image');
+  if (imageField) {
+    imageField.value = entry.image || '';
+    imageField.dataset.autoValue = entry.image || '';
+  }
+
+  const documentField = getNewsField('documentUrl');
+  if (documentField) {
+    documentField.value = entry.documentUrl || '';
+  }
+
+  showPreviewFromPath(dom.newsImagePreview, entry.image, `${entry.headline} preview image`, 'news');
+
+  const focusTarget = headlineField || dom.newsForm.querySelector('input, textarea');
+  focusTarget?.focus();
+}
+
+function handleCredentialGridClick(event) {
+  const target = event.target;
+  if (!(target instanceof Element)) return;
+  const editButton = target.closest('[data-edit-certificate]');
+  if (!editButton) return;
+  event.preventDefault();
+  event.stopPropagation();
+  const certificateId = editButton.getAttribute('data-edit-certificate');
+  if (!certificateId) {
+    showToast('Unable to identify the certificate to edit.');
+    return;
+  }
+  if (!state.authenticated) {
+    ensureAuthentication('credential');
+    return;
+  }
+  const certificate = state.certificates.find((entry) => entry.id === certificateId);
+  if (!certificate) {
+    showToast('Credential not found. It may have been removed.');
+    return;
+  }
+  openModal('credential');
+  populateCredentialForm(certificate);
+}
+
+function handleNewsGridClick(event) {
+  const target = event.target;
+  if (!(target instanceof Element)) return;
+  const editButton = target.closest('[data-edit-news]');
+  if (!editButton) return;
+  event.preventDefault();
+  event.stopPropagation();
+  const newsId = editButton.getAttribute('data-edit-news');
+  if (!newsId) {
+    showToast('Unable to identify the news entry to edit.');
+    return;
+  }
+  if (!state.authenticated) {
+    ensureAuthentication('news');
+    return;
+  }
+  const entry = state.news.find((item) => item.id === newsId);
+  if (!entry) {
+    showToast('News update not found. It may have been removed.');
+    return;
+  }
+  openModal('news');
+  populateNewsForm(entry);
 }
 
 function renderCertificates() {
@@ -991,6 +1275,9 @@ function handleLogin(event) {
   if (provided === ADMIN_PASSWORD) {
     state.authenticated = true;
     showToast('Admin tools unlocked.');
+    renderCertificates();
+    renderNews();
+    updateJsonOutput();
     closeModal(dom.modals.login);
     event.target.reset();
     if (state.pendingModal) {
@@ -1002,6 +1289,7 @@ function handleLogin(event) {
     event.target.reset();
   }
 }
+
 
 function handleStaffSelect(event) {
   if (!dom.customStaffFields) return;
@@ -1031,7 +1319,12 @@ function collectCustomStaff(formData) {
     profileImage,
     category
   };
-  state.localTeam.push(teamMember);
+  const existingIndex = state.localTeam.findIndex((entry) => entry.id === id);
+  if (existingIndex >= 0) {
+    state.localTeam[existingIndex] = { ...state.localTeam[existingIndex], ...teamMember };
+  } else {
+    state.localTeam.push(teamMember);
+  }
   state.teamMembers = mergeById(state.baseTeam, state.localTeam);
   saveLocalData(storageKeys.team, state.localTeam);
   populateStaffSelect();
@@ -1109,7 +1402,9 @@ function handleCredentialSubmit(event) {
   renderCertificates();
   showToast('Credential saved. Copy the JSON snippet to commit your update.');
   event.target.reset();
-  dom.customStaffFields.hidden = true;
+  if (dom.customStaffFields) {
+    dom.customStaffFields.hidden = true;
+  }
   updateCredentialImageSuggestion(true);
   setPreviewImage(dom.certificateImagePreview, null, 'certificate');
   closeModal(dom.modals.credential);
@@ -1198,6 +1493,8 @@ function wireInteractions() {
   dom.newsForm?.addEventListener('submit', handleNewsSubmit);
   dom.staffSelect?.addEventListener('change', handleStaffSelect);
   dom.searchInput?.addEventListener('input', handleSearch);
+  dom.credentialGrid?.addEventListener('click', handleCredentialGridClick);
+  dom.newsGrid?.addEventListener('click', handleNewsGridClick);
 
   getCredentialField('title')?.addEventListener('input', () => updateCredentialImageSuggestion(false));
   dom.customStaffFields?.querySelector('input[name="staffName"]')?.addEventListener('input', () => updateCredentialImageSuggestion(false));
