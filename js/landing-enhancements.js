@@ -1,123 +1,205 @@
-#credentials-highlight {
-  background: linear-gradient(135deg, rgba(13, 148, 136, 0.12), rgba(255, 255, 255, 0.9));
-  border-radius: 24px;
-  padding: clamp(2rem, 5vw, 3rem);
-  margin: clamp(2rem, 6vw, 4rem) auto;
-  box-shadow: 0 18px 40px rgba(15, 23, 42, 0.12);
-}
+import { CERTIFICATES_LIBRARY as BASE_CERTIFICATES, NEWS_BROADCAST as BASE_NEWS } from './certificates-data.js';
 
-#credentials-highlight h2 {
-  margin-top: 0;
-  font-size: clamp(1.8rem, 3vw, 2.4rem);
-  color: #0b766d;
-}
+const storageKeys = {
+  certificates: 'nobleCertificates',
+  news: 'nobleNews'
+};
 
-#credentials-highlight p.lead {
-  font-size: clamp(1rem, 2vw, 1.2rem);
-  color: #475569;
-  max-width: 680px;
-}
+const siteOrigin = (typeof window !== 'undefined' && window.location && window.location.origin && window.location.origin !== 'null')
+  ? window.location.origin
+  : 'https://nobledentalnallagandla.in';
 
-#credentials-highlight .action-row {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 1rem;
-  margin-top: 1.5rem;
-}
-
-#credentials-highlight .action-row a {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.6rem;
-  padding: 0.75rem 1.6rem;
-  border-radius: 999px;
-  text-decoration: none;
-  font-weight: 700;
-  color: #0f172a;
-  background: rgba(13, 148, 136, 0.15);
-  transition: transform 0.25s ease, box-shadow 0.25s ease;
-}
-
-#credentials-highlight .action-row a.primary {
-  background: linear-gradient(120deg, #0d9488 0%, #0b766d 100%);
-  color: #fff;
-  box-shadow: 0 18px 36px rgba(13, 148, 136, 0.32);
-}
-
-#credentials-highlight .action-row a:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 12px 32px rgba(15, 23, 42, 0.16);
-}
-
-#credentials-highlight ul {
-  list-style: none;
-  padding: 0;
-  margin: 2rem 0 0;
-  display: grid;
-  gap: 1.25rem;
-  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-}
-
-#credentials-highlight li {
-  background: rgba(255, 255, 255, 0.92);
-  border-radius: 18px;
-  padding: 1.25rem;
-  box-shadow: 0 18px 28px rgba(15, 23, 42, 0.08);
-  display: grid;
-  gap: 0.65rem;
-}
-
-#credentials-highlight li h3 {
-  margin: 0;
-  font-size: 1.2rem;
-  color: #0f172a;
-}
-
-#credentials-highlight li span {
-  color: #475569;
-  font-size: 0.95rem;
-}
-
-#credentials-highlight li p {
-  margin: 0;
-  color: #1f2937;
-  font-size: 0.95rem;
-  line-height: 1.45;
-}
-
-#credentials-highlight .tag-chip {
-  display: inline-flex;
-  align-items: center;
-  padding: 0.35rem 0.8rem;
-  border-radius: 999px;
-  background: rgba(13, 148, 136, 0.12);
-  color: #0b766d;
-  font-size: 0.85rem;
-  font-weight: 600;
-}
-
-#credentials-highlight .news-teaser {
-  background: rgba(15, 23, 42, 0.88);
-  color: #e2e8f0;
-  border-radius: 18px;
-  padding: 1.5rem;
-  display: grid;
-  gap: 0.75rem;
-}
-
-#credentials-highlight .news-teaser h3 {
-  margin: 0;
-  color: #f1f5f9;
-}
-
-#credentials-highlight .news-teaser a {
-  color: #facc15;
-  font-weight: 600;
-}
-
-@media (max-width: 768px) {
-  #credentials-highlight {
-    border-radius: 0;
-    margin: 2rem -1rem;
+function readStorage(key) {
+  try {
+    const raw = window.localStorage.getItem(key);
+    const parsed = raw ? JSON.parse(raw) : [];
+    return Array.isArray(parsed) ? parsed : [];
+  } catch (error) {
+    console.warn('Unable to access stored data', error);
+    return [];
   }
 }
+
+function normaliseTags(tags) {
+  if (!tags) return [];
+  if (Array.isArray(tags)) {
+    return tags.map((tag) => tag.trim()).filter(Boolean);
+  }
+  return String(tags)
+    .split(',')
+    .map((tag) => tag.trim())
+    .filter(Boolean);
+}
+
+function mergeById(base, additions) {
+  const map = new Map();
+  base.forEach((entry) => {
+    if (!entry || !entry.id) return;
+    map.set(entry.id, { ...entry });
+  });
+  additions.forEach((entry) => {
+    if (!entry || !entry.id) return;
+    const existing = map.get(entry.id) || {};
+    map.set(entry.id, { ...existing, ...entry });
+  });
+  return Array.from(map.values());
+}
+
+function normaliseCertificate(entry) {
+  if (!entry || typeof entry !== 'object') return null;
+  if (entry.title && entry.staffName) {
+    return {
+      ...entry,
+      tags: normaliseTags(entry.tags)
+    };
+  }
+  const title = entry.title || entry.certificateTitle || 'Credential';
+  const staffName = entry.staffName || entry.issuedTo || 'Noble Dental Care Team';
+  return {
+    id: entry.id || `cert-${title.toLowerCase().replace(/[^a-z0-9]+/g, '-')}`,
+    title,
+    staffName,
+    staffRole: entry.staffRole || entry.focusArea || '',
+    issuer: entry.issuer || entry.issuingAuthority || '',
+    issueDate: entry.issueDate || entry.issue_date || '',
+    credentialType: entry.credentialType || entry.courseLevel || 'Medical',
+    description: entry.description || entry.certificateSummary || '',
+    tags: normaliseTags(entry.tags || entry.focusArea)
+  };
+}
+
+function normaliseNews(entry) {
+  if (!entry || typeof entry !== 'object') return null;
+  if (entry.headline && entry.summary) {
+    return {
+      ...entry,
+      tags: normaliseTags(entry.tags)
+    };
+  }
+  return {
+    id: entry.id || `news-${Math.random().toString(16).slice(2)}`,
+    headline: entry.headline || entry.newsTitle || 'Noble Dental Care Update',
+    summary: entry.summary || entry.newsSummary || '',
+    publishedOn: entry.publishedOn || entry.newsDate || '',
+    link: entry.link || entry.newsLink || '',
+    tags: normaliseTags(entry.tags || entry.newsTags)
+  };
+}
+
+function getCertificates() {
+  const stored = readStorage(storageKeys.certificates)
+    .map((entry) => normaliseCertificate(entry))
+    .filter(Boolean);
+  const base = BASE_CERTIFICATES.map((entry) => ({
+    id: entry.id,
+    title: entry.title,
+    staffName: entry.staffName,
+    staffRole: entry.staffRole,
+    issuer: entry.issuer,
+    issueDate: entry.issueDate,
+    credentialType: entry.credentialType,
+    description: entry.description,
+    tags: entry.tags
+  }));
+  return mergeById(base, stored).sort((a, b) => new Date(b.issueDate || 0) - new Date(a.issueDate || 0));
+}
+
+function getNews() {
+  const stored = readStorage(storageKeys.news)
+    .map((entry) => normaliseNews(entry))
+    .filter(Boolean);
+  const base = BASE_NEWS.map((entry) => ({
+    id: entry.id,
+    headline: entry.headline,
+    summary: entry.summary,
+    publishedOn: entry.publishedOn,
+    link: entry.link,
+    tags: entry.tags
+  }));
+  return mergeById(base, stored).sort((a, b) => new Date(b.publishedOn || 0) - new Date(a.publishedOn || 0));
+}
+
+function formatDate(date) {
+  try {
+    return new Date(date).toLocaleDateString(undefined, { month: 'short', day: 'numeric', year: 'numeric' });
+  } catch (error) {
+    return date;
+  }
+}
+
+function populateLandingCertificates() {
+  const container = document.getElementById('landing-certificate-list');
+  if (!container) return;
+
+  const certificates = getCertificates();
+  container.innerHTML = '';
+
+  certificates.slice(0, 3).forEach((certificate) => {
+    const item = document.createElement('li');
+    const description = certificate.description || certificate.tags?.slice(0, 2).join(', ');
+    item.innerHTML = `
+      <h3>${certificate.title}</h3>
+      <span>${certificate.staffName}${certificate.staffRole ? ` · ${certificate.staffRole}` : ''}${certificate.issueDate ? ` · ${formatDate(certificate.issueDate)}` : ''}</span>
+      ${description ? `<p>${description}</p>` : ''}
+    `;
+    container.appendChild(item);
+  });
+}
+
+function populateLandingNews() {
+  const newsTeaser = document.getElementById('landing-news-teaser');
+  const summary = document.getElementById('landing-news-summary');
+  if (!newsTeaser || !summary) return;
+
+  newsTeaser.querySelectorAll('[data-dynamic-tag]').forEach((node) => node.remove());
+
+  const newsItems = getNews();
+  if (newsItems.length === 0) {
+    return;
+  }
+
+  const [latest] = newsItems;
+  summary.textContent = `${latest.headline} — ${latest.summary}`;
+
+  if (latest.tags && latest.tags.length > 0) {
+    const tagElement = document.createElement('span');
+    tagElement.textContent = latest.tags.slice(0, 3).map((tag) => `#${tag.trim().replace(/\s+/g, '')}`).join(' ');
+    tagElement.className = 'tag-chip';
+    tagElement.dataset.dynamicTag = 'true';
+    newsTeaser.appendChild(tagElement);
+  }
+}
+
+function injectStructuredData() {
+  const certificates = getCertificates().slice(0, 5);
+  if (certificates.length === 0) {
+    return;
+  }
+  const graph = certificates.map((certificate) => ({
+    '@type': 'EducationalOccupationalCredential',
+    'name': certificate.title,
+    'credentialCategory': certificate.credentialType,
+    'description': certificate.description,
+    'dateCreated': certificate.issueDate,
+    'holder': {
+      '@type': 'Person',
+      'name': certificate.staffName,
+      'jobTitle': certificate.staffRole
+    }
+  }));
+
+  const script = document.createElement('script');
+  script.type = 'application/ld+json';
+  script.id = 'landing-credential-schema';
+  script.textContent = JSON.stringify({
+    '@context': 'https://schema.org',
+    '@graph': graph
+  }, null, 2);
+  document.head.appendChild(script);
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+  populateLandingCertificates();
+  populateLandingNews();
+  injectStructuredData();
+});
