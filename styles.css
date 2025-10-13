@@ -2120,7 +2120,12 @@ body {
   min-height:44px;
 }
 
-.footer-social a {
+.footer-social-icons {
+  display:flex;
+  flex-wrap:wrap;
+}
+
+.footer-social-icons a {
   display:inline-flex;
   align-items:center;
   justify-content:center;
@@ -2132,23 +2137,23 @@ body {
   transition:background .3s, transform .3s;
   color:#d7deea;
 }
-.footer-social a:hover {
+.footer-social-icons a:hover {
   background:var(--brand);
   color:#fff;
   border-color:var(--brand2);
   transform:translateY(-2px);
 }
-.footer-social a svg {
+.footer-social-icons a svg {
   width:20px; height:20px;
   fill:currentColor;
   display:block;
 }
 
 /* Tooltip */
-.footer-social a {
+.footer-social-icons a {
   position:relative;
 }
-.footer-social a::after {
+.footer-social-icons a::after {
   content: attr(data-tooltip);
   position:absolute;
   bottom:110%;
@@ -2164,10 +2169,51 @@ body {
   pointer-events:none;
   transition:opacity .25s, transform .25s;
 }
-.footer-social a:hover::after {
+.footer-social-icons a:hover::after {
   opacity:1;
   transform:translateX(-50%) translateY(-4px);
 }
+
+.footer-social-heading {
+  margin:18px 0 8px;
+  color:#fff;
+  font-weight:700;
+}
+
+.footer-social-list {
+  list-style:none;
+  margin:0;
+  padding:0;
+  display:grid;
+  gap:6px;
+}
+
+.footer-social-list a {
+  color:#d7deea;
+  text-decoration:none;
+  position:relative;
+  display:inline-flex;
+  align-items:center;
+  min-height:32px;
+  padding:2px 0;
+}
+
+.footer-social-list a::after {
+  content:"";
+  position:absolute;
+  left:0; bottom:-2px;
+  width:100%; height:2px;
+  background:linear-gradient(90deg,var(--brand),var(--brand2));
+  transform:scaleX(0);
+  transform-origin:right;
+  transition:transform .3s;
+}
+
+.footer-social-list a:hover::after {
+  transform:scaleX(1);
+  transform-origin:left;
+}
+
 
 /* Bottom */
 .footer-bottom {
@@ -2203,9 +2249,9 @@ body {
     grid-template-columns: 1fr;
     text-align:center;
   }
-  .footer-social a {
-    margin:4px;
-  }
+  .footer-social-icons a {
+    margin:4px;␊
+  }␊
 }
 
 /* Floating CTA group */
@@ -2583,6 +2629,7 @@ body {
   clip: rect(0 0 0 0) !important;
   white-space: nowrap !important;
 }
+
 
 
 
