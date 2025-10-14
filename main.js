@@ -8,7 +8,9 @@ document.addEventListener("DOMContentLoaded", () => {
   const CONSENT_STORAGE_KEY = "ndc-telemetry-consent-v1";
   let telemetryAllowed = false;
 
-  document.body.dataset.guard = 'share-friendly';
+    if (!document.body.dataset.guard) {
+    document.body.dataset.guard = 'share-friendly';
+  }
   
   // Reset transition class when returning via browser history
   window.addEventListener("pageshow", () => {
@@ -725,6 +727,259 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 });
+
+  
+  /* =========================================================
+     5d. Credentials library + ticker data pipeline
+  ========================================================= */
+  const CREDENTIALS_DATA_URL = "/assets/data/credentials.json";
+  let credentialCache;
+
+  async function fetchCredentialData() {
+    if (credentialCache) return credentialCache;
+    try {
+      const response = await fetch(CREDENTIALS_DATA_URL, { cache: "no-store" });
+      if (!response.ok) throw new Error(`Failed to load credentials: ${response.status}`);
+      const payload = await response.json();
+      credentialCache = Array.isArray(payload) ? payload : [];
+      return credentialCache;
+    } catch (error) {
+      console.error(error);
+      return [];
+    }
+  }
+
+  const credentialGrid = document.querySelector("[data-credential-grid]");
+  const credentialEmpty = document.querySelector("[data-credential-empty]");
+  const credentialSearch = document.querySelector("[data-credential-search]");
+  const credentialSpotlight = document.querySelector("[data-credential-spotlight]");
+  const filterChips = Array.from(document.querySelectorAll(".filter-chip[data-filter]"));
+  const tickerTrackEl = document.getElementById("certsTrack");
+  const credentialMetrics = Array.from(document.querySelectorAll(".metric-value[data-count-type]"));
+
+  const credentialCards = [];
+  let credentialFilter = "all";
+  let credentialQuery = "";
+
+  const titleCase = (value = "") =>
+    value
+      .split(/\s|-/)
+      .filter(Boolean)
+      .map(word => (word.length <= 3 ? word.toUpperCase() : word.charAt(0).toUpperCase() + word.slice(1)))
+      .join(" ");
+
+  const formatDate = (value) => {
+    if (!value) return "—";
+    const parsed = new Date(value);
+    if (Number.isNaN(parsed.getTime())) return value;
+    return parsed.toLocaleDateString("en-IN", { month: "short", year: "numeric" });
+  };
+
+  const toggleCardActive = (card) => {
+    if (!card) return;
+    const isActive = card.classList.contains("is-active");
+    credentialCards.forEach(item => item.classList.remove("is-active"));
+    if (!isActive) card.classList.add("is-active");
+  };
+
+  const applyCredentialFilters = () => {
+    if (!credentialGrid) return;
+    const query = credentialQuery.trim().toLowerCase();
+    let visibleCount = 0;
+    credentialCards.forEach(card => {
+      const categories = card.dataset.categories || "";
+      const searchBank = card.dataset.search || "";
+      const matchesFilter = credentialFilter === "all" || categories.includes(credentialFilter);
+      const matchesQuery = !query || searchBank.includes(query);
+      const isVisible = matchesFilter && matchesQuery;
+      card.hidden = !isVisible;
+      if (isVisible) visibleCount += 1;
+    });
+    if (credentialEmpty) credentialEmpty.hidden = visibleCount !== 0;
+  };
+
+  const createCredentialCard = (item) => {
+    const card = document.createElement("article");
+    card.className = "certificate-card";
+    card.id = item.id;
+    card.setAttribute("role", "listitem");
+    card.tabIndex = 0;
+    card.setAttribute("draggable", "false");
+    card.dataset.categories = Array.isArray(item.category) ? item.category.join(" ") : "";
+    const searchBank = [item.title, item.description, item.issuedBy, item.doctor, item.keywords]
+      .filter(Boolean)
+      .join(" ")
+      .toLowerCase();
+    card.dataset.search = searchBank;
+
+    const code = document.createElement("span");
+    code.className = "certificate-code";
+    code.textContent = (item.code || item.id || "CERT").toString().toUpperCase();
+
+    const title = document.createElement("h3");
+    title.className = "certificate-title";
+    title.textContent = item.title || "Credential";
+
+    const issued = document.createElement("p");
+    issued.className = "certificate-issued";
+    const issuedOn = formatDate(item.issueDate);
+    issued.textContent = `${item.issuedBy || "Verified Authority"} • ${issuedOn}`;
+
+    const meta = document.createElement("dl");
+    meta.className = "certificate-meta";
+    const metaPairs = [
+      ["Doctor", item.doctor || "Noble Dental Team"],
+      ["Hours", item.hours ? `${item.hours} hrs` : "—"],
+      ["Valid till", formatDate(item.validThrough)]
+    ];
+    metaPairs.forEach(([label, value]) => {
+      const dt = document.createElement("dt");
+      dt.textContent = label;
+      const dd = document.createElement("dd");
+      dd.textContent = value;
+      meta.append(dt, dd);
+    });
+
+    const desc = document.createElement("p");
+    desc.className = "certificate-description";
+    desc.textContent = item.description || "Credential description coming soon.";
+
+    const focus = document.createElement("p");
+    focus.className = "certificate-focus";
+    focus.textContent = `Focus: ${Array.isArray(item.category) && item.category.length ? item.category.map(titleCase).join(", ") : "Clinical Excellence"}`;
+
+    card.append(code, title, issued, meta, desc, focus);
+
+    card.addEventListener("click", () => toggleCardActive(card));
+    card.addEventListener("keydown", (event) => {
+      if (event.key === "Enter" || event.key === " ") {
+        event.preventDefault();
+        toggleCardActive(card);
+      }
+    });
+
+    return card;
+  };
+
+  const populateCredentialGrid = (data) => {
+    if (!credentialGrid) return;
+    credentialGrid.innerHTML = "";
+    credentialCards.length = 0;
+    const fragment = document.createDocumentFragment();
+    data.forEach(item => {
+      const card = createCredentialCard(item);
+      credentialCards.push(card);
+      fragment.append(card);
+    });
+    credentialGrid.append(fragment);
+    if (credentialCards[0]) toggleCardActive(credentialCards[0]);
+    applyCredentialFilters();
+  };
+
+  const populateSpotlight = (data) => {
+    if (!credentialSpotlight || !data.length) return;
+    const recent = [...data].sort((a, b) => new Date(b.issueDate || 0) - new Date(a.issueDate || 0))[0] || data[0];
+    const title = credentialSpotlight.querySelector(".update-title");
+    const meta = credentialSpotlight.querySelector(".update-meta");
+    const desc = credentialSpotlight.querySelector(".update-desc");
+    if (title) title.textContent = recent.title || "Credential update";
+    if (meta) {
+      meta.innerHTML = "";
+      const metaPairs = [
+        ["Issued by", recent.issuedBy || "Accredited Board"],
+        ["Lead Doctor", recent.doctor || "Noble Dental Team"],
+        ["Issued on", formatDate(recent.issueDate)],
+        ["Valid till", formatDate(recent.validThrough)],
+        ["Focus", Array.isArray(recent.category) && recent.category.length ? recent.category.map(titleCase).join(", ") : "Clinical Mastery"]
+      ];
+      metaPairs.forEach(([label, value]) => {
+        const dt = document.createElement("dt");
+        dt.textContent = label;
+        const dd = document.createElement("dd");
+        dd.textContent = value;
+        meta.append(dt, dd);
+      });
+    }
+    if (desc) desc.textContent = recent.description || "Latest credential details coming soon.";
+    credentialSpotlight.dataset.credentialId = recent.id || "credential-spotlight";
+  };
+
+  const populateTicker = (data) => {
+    if (!tickerTrackEl || !data.length) return;
+    tickerTrackEl.innerHTML = "";
+    const highlights = data.filter(item => item.spotlight).slice(0, 12);
+    const source = highlights.length ? highlights : data.slice(0, 12);
+    const fragment = document.createDocumentFragment();
+    source.forEach(item => {
+      const li = document.createElement("li");
+      const link = document.createElement("a");
+      link.href = `/credentials.html#${item.id}`;
+      link.className = "cert-card";
+      link.draggable = false;
+      const code = document.createElement("span");
+      code.className = "cert-card__code";
+      code.setAttribute("aria-hidden", "true");
+      code.textContent = (item.code || item.id || "CERT").toString().toUpperCase();
+      const label = document.createElement("span");
+      label.className = "cert-card__label";
+      label.textContent = item.title || "Accredited credential";
+      link.append(code, label);
+      li.append(link);
+      fragment.append(li);
+    });
+    tickerTrackEl.append(fragment);
+  };
+
+  const updateCredentialMetrics = (data) => {
+    if (!credentialMetrics.length || !data.length) return;
+    const stats = { total: data.length, hours: 0, boards: new Set() };
+    data.forEach(item => {
+      const hours = Number(item.hours);
+      if (!Number.isNaN(hours)) stats.hours += hours;
+      if (item.issuedBy) stats.boards.add(item.issuedBy);
+    });
+    credentialMetrics.forEach(metric => {
+      const type = metric.dataset.countType;
+      if (type === "total") {
+        metric.textContent = `${stats.total}`;
+      } else if (type === "hours") {
+        metric.textContent = `${stats.hours.toLocaleString("en-IN")}+`;
+      } else if (type === "boards") {
+        metric.textContent = `${stats.boards.size}`;
+      }
+    });
+  };
+
+  if (credentialGrid || credentialSpotlight || tickerTrackEl) {
+    fetchCredentialData().then(data => {
+      if (!data.length) return;
+      populateCredentialGrid(data);
+      populateSpotlight(data);
+      populateTicker(data);
+      updateCredentialMetrics(data);
+    });
+  }
+
+  if (credentialSearch) {
+    const handleSearch = (event) => {
+      credentialQuery = event.target.value || "";
+      applyCredentialFilters();
+    };
+    credentialSearch.addEventListener("input", handleSearch);
+    credentialSearch.addEventListener("search", handleSearch);
+  }
+
+  if (filterChips.length) {
+    filterChips.forEach(button => {
+      button.addEventListener("click", () => {
+        const newFilter = button.dataset.filter || "all";
+        if (credentialFilter === newFilter) return;
+        credentialFilter = newFilter;
+        filterChips.forEach(chip => chip.classList.toggle("is-active", chip === button));
+        applyCredentialFilters();
+      });
+    });
+  }
 
   /* =========================================================
      6. Certificates ticker controls
