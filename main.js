@@ -982,742 +982,7 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   /* =========================================================
-     6. Product marketplace enhancements
-  ========================================================= */
-  const currencyFormatter = new Intl.NumberFormat("en-IN", {
-    style: "currency",
-    currency: "INR",
-    minimumFractionDigits: 2
-  });
-
-  const formatCurrency = (value) => {
-    const numeric = typeof value === "number" ? value : Number.parseFloat(value);
-    const safe = Number.isFinite(numeric) ? numeric : 0;
-    return currencyFormatter.format(safe);
-  };
-
-  const parsePrice = (value) => {
-    const numeric = Number.parseFloat(value);
-    return Number.isFinite(numeric) ? numeric : 0;
-  };
-
-  const productSearchInput = $("#catalogSearch");
-  const productSearchClear = $(".search-panel__clear");
-  const productSearchChips = $$("[data-search-chip]");
-  const productCards = $$(".pill-card");
-  const searchEmptyState = document.querySelector("[data-search-empty]");
-  const productDrawer = $("#productDrawer");
-  const drawerTitle = productDrawer?.querySelector("[data-drawer-title]");
-  const drawerTagline = productDrawer?.querySelector("[data-drawer-tagline]");
-  const drawerCategory = productDrawer?.querySelector("[data-drawer-category]");
-  const drawerBody = productDrawer?.querySelector("[data-drawer-body]");
-  const drawerPrice = productDrawer?.querySelector("[data-drawer-price]");
-  const drawerMrp = productDrawer?.querySelector("[data-drawer-mrp]");
-  const drawerQty = productDrawer?.querySelector("[data-drawer-qty]");
-  const qtyDecrease = productDrawer?.querySelector("[data-qty-decrease]");
-  const qtyIncrease = productDrawer?.querySelector("[data-qty-increase]");
-  const addToCartBtn = productDrawer?.querySelector("[data-add-to-cart]");
-  const orderForm = $("#smartOrderForm");
-  const orderStatus = orderForm?.querySelector("[data-order-status]");
-  const submitCartBtn = orderForm?.querySelector("[data-submit-cart]");
-  const patientPreview = orderForm?.querySelector("[data-patient-preview]");
-  const previewName = orderForm?.querySelector("[data-preview-name]");
-  const previewAddress = orderForm?.querySelector("[data-preview-address]");
-  const previewPhone = orderForm?.querySelector("[data-preview-phone]");
-  const previewSlot = orderForm?.querySelector("[data-preview-slot]");
-  const cartList = document.querySelector("[data-cart-list]");
-  const cartEmpty = document.querySelector("[data-cart-empty]");
-  const cartTotals = document.querySelector("[data-cart-totals]");
-  const cartSubtotal = document.querySelector("[data-cart-subtotal]");
-  const cartDiscountValue = document.querySelector("[data-cart-discount]");
-  const cartDeliveryValue = document.querySelector("[data-cart-delivery]");
-  const cartGrand = document.querySelector("[data-cart-grand]");
-  const cartDiscountNote = document.querySelector("[data-cart-discount-note]");
-  const cartSummaryText = document.querySelector("[data-cart-summary]");
-  const cartItemsContainer = document.querySelector("[data-cart-items]");
-  const cartCountBadges = $$("[data-cart-count]");
-  const goToCartLinks = $$("[data-go-to-cart]");
-  const orderTriggers = $$(".order-trigger");
-  const copyUpiBtn = document.querySelector("[data-copy-upi]");
-
-  const CLINIC_EMAIL = "dr.dhivakaran@gmail.com";
-  const CLINIC_WHATSAPP = "918610425342";
-  const CLINIC_UPI = "nobledental@upi";
-
-  const CART_STORAGE_KEY = "ndc-dental-cart-v2";
-  const DELIVERY_FEE = 50;
-  const DISCOUNT_RULES = {
-    dental: 0.25,
-    antibiotic: 0.1,
-    painkiller: 0.1
-  };
-
-  const productCatalog = new Map();
-  productCards.forEach((card) => {
-    const id = card.dataset.productId;
-    if (!id) return;
-    const detail = card.querySelector("[data-product-detail]");
-    const tagline = card.querySelector(".pill-card__tagline");
-    const discountGroup = card.dataset.discountGroup || "";
-    const discountRate = DISCOUNT_RULES[discountGroup] || 0;
-    const searchSource = [
-      card.dataset.productName,
-      card.dataset.productCategory,
-      card.dataset.productTags,
-      detail ? detail.textContent : ""
-    ]
-      .filter(Boolean)
-      .join(" ");
-    card.dataset.searchIndex = searchSource;
-    productCatalog.set(id, {
-      id,
-      name: card.dataset.productName || card.querySelector("h3")?.textContent?.trim() || "",
-      price: parsePrice(card.dataset.productPrice),
-      mrp: parsePrice(card.dataset.productMrp),
-      category: card.dataset.productCategory || "",
-      tags: (card.dataset.productTags || "").split(",").map((tag) => tag.trim()).filter(Boolean),
-      requiresRx: card.dataset.requiresRx === "true",
-      detailHtml: detail ? detail.innerHTML : "",
-      tagline: tagline?.textContent?.trim() || "",
-      discountGroup,
-      discountRate,
-      card
-    });
-  });
-
-  const catalogDataElement = document.getElementById("catalogData");
-  if (catalogDataElement?.textContent) {
-    try {
-      const payload = JSON.parse(catalogDataElement.textContent);
-      if (Array.isArray(payload)) {
-        payload.forEach((entry) => {
-          if (!entry || typeof entry !== "object") return;
-          if (!entry.id || productCatalog.has(entry.id)) return;
-          const discountGroup = entry.discountGroup || "";
-          const discountRate = DISCOUNT_RULES[discountGroup] || Number(entry.discountRate) || 0;
-          productCatalog.set(entry.id, {
-            id: entry.id,
-            name: entry.name || "",
-            price: parsePrice(entry.price),
-            mrp: parsePrice(entry.mrp),
-            category: entry.category || "",
-            tags: Array.isArray(entry.tags) ? entry.tags : [],
-            requiresRx: entry.requiresRx === true,
-            detailHtml: entry.detailHtml || "",
-            tagline: entry.tagline || "",
-            discountGroup,
-            discountRate,
-            card: null
-          });
-        });
-      }
-    } catch (error) {
-      console.warn("Failed to parse catalog data", error);
-    }
-  }
-
-  const createSnapshot = (product) => ({
-    id: product.id,
-    name: product.name,
-    price: product.price,
-    category: product.category,
-    discountGroup: product.discountGroup || "",
-    discountRate: product.discountRate || 0,
-    requiresRx: product.requiresRx || false
-  });
-
-  const loadCartFromStorage = () => {
-    if (typeof window === "undefined" || !("localStorage" in window)) return [];
-    try {
-      const raw = window.localStorage.getItem(CART_STORAGE_KEY);
-      if (!raw) return [];
-      const parsed = JSON.parse(raw);
-      if (!Array.isArray(parsed)) return [];
-      return parsed
-        .map((entry) => {
-          if (!entry || typeof entry !== "object") return null;
-          const quantity = Number.parseInt(entry.quantity, 10);
-          const snapshot = entry.snapshot && typeof entry.snapshot === "object" ? {
-            id: entry.snapshot.id || entry.productId,
-            name: entry.snapshot.name || "",
-            price: Number.parseFloat(entry.snapshot.price) || 0,
-            category: entry.snapshot.category || "",
-            discountGroup: entry.snapshot.discountGroup || "",
-            discountRate: typeof entry.snapshot.discountRate === "number" ? entry.snapshot.discountRate : (DISCOUNT_RULES[entry.snapshot.discountGroup] || 0),
-            requiresRx: entry.snapshot.requiresRx === true
-          } : null;
-          return {
-            productId: entry.productId,
-            quantity: Number.isFinite(quantity) ? Math.max(1, quantity) : 1,
-            snapshot
-          };
-        })
-        .filter((entry) => entry && entry.productId);
-    } catch (error) {
-      console.warn("Unable to restore saved cart", error);
-      return [];
-    }
-  };
-
-  let cart = loadCartFromStorage();
-  const getProductForItem = (item) => {
-    if (!item) return null;
-    const fromCatalog = productCatalog.get(item.productId);
-    if (fromCatalog) return fromCatalog;
-    if (item.snapshot) {
-      return {
-        id: item.snapshot.id || item.productId,
-        name: item.snapshot.name || "",
-        price: Number.parseFloat(item.snapshot.price) || 0,
-        category: item.snapshot.category || "",
-        discountGroup: item.snapshot.discountGroup || "",
-        discountRate: typeof item.snapshot.discountRate === "number" ? item.snapshot.discountRate : (DISCOUNT_RULES[item.snapshot.discountGroup] || 0),
-        requiresRx: item.snapshot.requiresRx === true
-      };
-    }
-    return null;
-  };
-
-  const getCartSummary = () => {
-    const summary = {
-      subtotal: 0,
-      discount: 0,
-      shipping: cart.length ? DELIVERY_FEE : 0,
-      grandTotal: 0,
-      lines: [],
-      breakdown: {}
-    };
-
-    cart.forEach((item) => {
-      const product = getProductForItem(item);
-      if (!product) return;
-      const lineSubtotal = (Number(product.price) || 0) * item.quantity;
-      const rate = typeof product.discountRate === "number" ? product.discountRate : (DISCOUNT_RULES[product.discountGroup] || 0);
-      const lineDiscount = lineSubtotal * rate;
-      summary.subtotal += lineSubtotal;
-      summary.discount += lineDiscount;
-      if (product.discountGroup) {
-        summary.breakdown[product.discountGroup] = (summary.breakdown[product.discountGroup] || 0) + lineDiscount;
-      }
-      summary.lines.push({
-        product,
-        quantity: item.quantity,
-        lineSubtotal,
-        lineDiscount,
-        discountRate: rate
-      });
-    });
-
-    summary.shipping = cart.length ? DELIVERY_FEE : 0;
-    summary.grandTotal = Math.max(0, summary.subtotal - summary.discount + summary.shipping);
-    return summary;
-  };
-
-  const saveCartToStorage = () => {
-    if (typeof window === "undefined" || !("localStorage" in window)) return;
-    try {
-      const payload = cart.map((item) => {
-        const snapshot = item.snapshot || (() => {
-          const product = getProductForItem(item);
-          return product ? createSnapshot(product) : null;
-        })();
-        return {
-          productId: item.productId,
-          quantity: item.quantity,
-          snapshot
-        };
-      });
-      window.localStorage.setItem(CART_STORAGE_KEY, JSON.stringify(payload));
-    } catch (error) {
-      console.warn("Unable to persist cart", error);
-    }
-  };
-
-  const getCartCount = () => cart.reduce((total, item) => total + (Number.isFinite(item.quantity) ? item.quantity : 0), 0);
-
-  const updateCartIndicators = () => {
-    const summary = getCartSummary();
-    const itemCount = getCartCount();
-    cartCountBadges.forEach((badge) => {
-      if (!badge) return;
-      badge.textContent = String(itemCount);
-      badge.hidden = itemCount === 0;
-    });
-    goToCartLinks.forEach((link) => {
-      if (!link) return;
-      if (itemCount === 0) {
-        link.classList.add("is-disabled");
-        link.setAttribute("aria-disabled", "true");
-      } else {
-        link.classList.remove("is-disabled");
-        link.removeAttribute("aria-disabled");
-      }
-    });
-    if (cartSummaryText) {
-      if (itemCount === 0) {
-        cartSummaryText.textContent = "Your cart is empty. Tap a product card to begin.";
-      } else {
-        cartSummaryText.textContent = `${itemCount} ${itemCount === 1 ? "item" : "items"} ready. Est. payable ${formatCurrency(summary.grandTotal)} including delivery.`;
-      }
-    }
-  };
-
-  const syncCartState = () => {
-    saveCartToStorage();
-    updateCartIndicators();
-  };
-
-  syncCartState();
-
-  let activeProductId = null;
-  let lastFocusTrigger = null;
-
-  const updateProductSearch = (query = "") => {
-    if (!productCards.length) return;
-    const normalised = query.trim().toLowerCase();
-    let visibleCount = 0;
-
-    productCards.forEach((card) => {
-      const haystack = (card.dataset.searchIndex || "").toLowerCase();
-      const matches = !normalised || haystack.includes(normalised);
-      card.classList.toggle("is-hidden", !matches);
-      if (matches) visibleCount += 1;
-    });
-
-    if (searchEmptyState) {
-      searchEmptyState.hidden = visibleCount !== 0;
-    }
-  };
-
-  const handleDrawerKeydown = (event) => {
-    if (event.key === "Escape") {
-      event.preventDefault();
-      closeProductDrawer();
-    }
-  };
-
-  const openProductDrawer = (productId) => {
-    if (!productDrawer) return;
-    const product = productCatalog.get(productId);
-    if (!product) return;
-    activeProductId = productId;
-    if (drawerTitle) drawerTitle.textContent = product.name;
-    if (drawerTagline) drawerTagline.textContent = product.tagline;
-    if (drawerCategory) drawerCategory.textContent = product.category;
-    if (drawerBody) drawerBody.innerHTML = product.detailHtml;
-    if (drawerPrice) drawerPrice.textContent = formatCurrency(product.price);
-    if (drawerMrp) {
-      drawerMrp.textContent = product.mrp ? `MRP ${formatCurrency(product.mrp)}` : "";
-      drawerMrp.hidden = !product.mrp;
-    }
-    if (drawerQty) {
-      drawerQty.value = "1";
-      drawerQty.focus({ preventScroll: true });
-    }
-    productDrawer.hidden = false;
-    productDrawer.setAttribute("aria-hidden", "false");
-    document.body.style.overflow = "hidden";
-    document.addEventListener("keydown", handleDrawerKeydown);
-  };
-
-  const closeProductDrawer = () => {
-    if (!productDrawer) return;
-    productDrawer.hidden = true;
-    productDrawer.setAttribute("aria-hidden", "true");
-    document.body.style.overflow = "";
-    document.removeEventListener("keydown", handleDrawerKeydown);
-    activeProductId = null;
-    if (lastFocusTrigger) {
-      lastFocusTrigger.focus({ preventScroll: true });
-      lastFocusTrigger = null;
-    }
-  };
-
-  const renderCart = () => {
-    if (!cartList) {
-      syncCartState();
-      return;
-    }
-
-    const summary = getCartSummary();
-    const fragments = summary.lines
-      .map((line) => {
-        const { product, quantity, lineSubtotal, lineDiscount, discountRate } = line;
-        if (!product) return "";
-        const requiresText = product.requiresRx ? " · Prescription required" : "";
-        const discountBadge = discountRate > 0 ? `<span class="cart-item__badge">${Math.round(discountRate * 100)}% clinic savings</span>` : "";
-        const discountLine = lineDiscount > 0 ? `<p class="cart-item__savings">Savings: -${formatCurrency(lineDiscount)}</p>` : "";
-        return `
-          <li class="cart-item" data-item-id="${product.id}">
-            <div class="cart-item__info">
-              <p class="cart-item__name">${product.name}${discountBadge}</p>
-              <p class="cart-item__meta">${product.category}${requiresText}</p>
-              <p class="cart-item__meta">${formatCurrency(product.price)} each · Line total ${formatCurrency(lineSubtotal)}</p>
-              ${discountLine}
-            </div>
-            <div class="cart-item__controls">
-              <div class="quantity-control">
-                <button type="button" class="quantity-control__btn" data-cart-action="decrease" aria-label="Decrease ${product.name} quantity"><i class="ri-subtract-line" aria-hidden="true"></i></button>
-                <input type="number" min="1" value="${quantity}" data-cart-qty aria-label="${product.name} quantity">
-                <button type="button" class="quantity-control__btn" data-cart-action="increase" aria-label="Increase ${product.name} quantity"><i class="ri-add-line" aria-hidden="true"></i></button>
-              </div>
-              <button type="button" class="cart-item__remove" data-cart-remove><i class="ri-delete-bin-line" aria-hidden="true"></i>Remove</button>
-            </div>
-          </li>`;
-      })
-      .filter(Boolean);
-
-    cartList.innerHTML = fragments.join("");
-
-    const hasItems = summary.lines.length > 0;
-    if (cartEmpty) cartEmpty.hidden = hasItems;
-    if (cartTotals) cartTotals.hidden = !hasItems;
-    if (cartSubtotal) cartSubtotal.textContent = formatCurrency(summary.subtotal);
-    if (cartDiscountValue) cartDiscountValue.textContent = hasItems ? `−${formatCurrency(summary.discount)}` : `−${formatCurrency(0)}`;
-    if (cartDeliveryValue) cartDeliveryValue.textContent = formatCurrency(summary.shipping);
-    if (cartGrand) cartGrand.textContent = formatCurrency(summary.grandTotal);
-    if (cartDiscountNote) {
-      const parts = [];
-      if (summary.breakdown.dental) parts.push(`Dental ${formatCurrency(summary.breakdown.dental)}`);
-      if (summary.breakdown.antibiotic) parts.push(`Antibiotic ${formatCurrency(summary.breakdown.antibiotic)}`);
-      if (summary.breakdown.painkiller) parts.push(`Pain relief ${formatCurrency(summary.breakdown.painkiller)}`);
-      cartDiscountNote.textContent = parts.length ? `Savings applied — ${parts.join(" · ")}` : "Add eligible products to unlock clinic discounts.";
-    }
-
-    const actionButtons = cartList.querySelectorAll("[data-cart-action]");
-    actionButtons.forEach((button) => {
-      on(button, "click", () => {
-        const itemEl = button.closest("[data-item-id]");
-        if (!itemEl) return;
-        const productId = itemEl.dataset.itemId;
-        if (!productId) return;
-        const delta = button.dataset.cartAction === "increase" ? 1 : -1;
-        setCartQuantity(productId, (getItemQuantity(productId) || 1) + delta);
-      });
-    });
-
-    const qtyInputs = cartList.querySelectorAll("[data-cart-qty]");
-    qtyInputs.forEach((input) => {
-      on(input, "change", (event) => {
-        const itemEl = input.closest("[data-item-id]");
-        if (!itemEl) return;
-        const productId = itemEl.dataset.itemId;
-        if (!productId) return;
-        const nextValue = Number.parseInt(event.target.value, 10);
-        setCartQuantity(productId, Number.isFinite(nextValue) ? nextValue : 1);
-      });
-    });
-
-    const removeButtons = cartList.querySelectorAll("[data-cart-remove]");
-    removeButtons.forEach((button) => {
-      on(button, "click", () => {
-        const itemEl = button.closest("[data-item-id]");
-        if (!itemEl) return;
-        const productId = itemEl.dataset.itemId;
-        removeFromCart(productId);
-      });
-    });
-
-    updateSubmitState();
-    updatePatientPreview();
-    syncCartState();
-  };
-
-  const getItemQuantity = (productId) => {
-    const entry = cart.find((item) => item.productId === productId);
-    return entry ? entry.quantity : 0;
-  };
-
-  const setCartQuantity = (productId, quantity) => {
-    const entry = cart.find((item) => item.productId === productId);
-    if (!entry) return;
-    const nextQuantity = Math.max(1, Number.isFinite(quantity) ? quantity : 1);
-    entry.quantity = nextQuantity;
-    renderCart();
-  };
-
-  const removeFromCart = (productId) => {
-    cart = cart.filter((item) => item.productId !== productId);
-    renderCart();
-  };
-
-  const addToCart = (productId, quantity = 1) => {
-    const product = productCatalog.get(productId);
-    if (!product) return;
-    const numericQuantity = Math.max(1, Number.isFinite(quantity) ? quantity : 1);
-    const existing = cart.find((item) => item.productId === productId);
-    if (existing) {
-      existing.quantity += numericQuantity;
-      if (!existing.snapshot) existing.snapshot = createSnapshot(product);
-    } else {
-      cart.push({ productId, quantity: numericQuantity, snapshot: createSnapshot(product) });
-    }
-    renderCart();
-    if (cartItemsContainer) {
-      cartItemsContainer.classList.add("is-updated");
-      window.setTimeout(() => cartItemsContainer.classList.remove("is-updated"), 820);
-    }
-    if (orderStatus) {
-      orderStatus.textContent = `${product.name} added to cart. Open the cart checkout to share delivery details.`;
-    }
-    closeProductDrawer();
-    const assistant = document.getElementById("order-assistant");
-    if (assistant) assistant.scrollIntoView({ behavior: "smooth", block: "center" });
-    else if (cartSummaryText) cartSummaryText.scrollIntoView({ behavior: "smooth", block: "center" });
-  };
-
-  const updatePatientPreview = () => {
-    if (!orderForm || !patientPreview) return;
-    const name = (orderForm.elements.patientName?.value || "").trim();
-    const address = (orderForm.elements.address?.value || "").trim();
-    const phone = (orderForm.elements.phone?.value || "").trim();
-    const slot = orderForm.elements.teleSlot?.value || "";
-
-    if ((name || address || phone) && cart.length > 0) {
-      patientPreview.hidden = false;
-      if (previewName) previewName.textContent = name || "Patient";
-      if (previewAddress) previewAddress.textContent = address || "Nallagandla 500019";
-      if (previewPhone) previewPhone.textContent = phone || "86104 25342";
-      if (previewSlot) previewSlot.textContent = slot || "Call immediately";
-    } else {
-      patientPreview.hidden = true;
-    }
-  };
-
-  const updateSubmitState = () => {
-    if (!submitCartBtn || !orderForm) return;
-    const requiredFields = ["patientName", "phone", "address", "symptoms"];
-    const hasRequired = requiredFields.every((field) => {
-      const value = orderForm.elements[field]?.value;
-      return !!value && value.toString().trim().length > 0;
-    });
-    submitCartBtn.disabled = !(cart.length > 0 && hasRequired);
-  };
-
-  if (productSearchInput) {
-    updateProductSearch(productSearchInput.value || "");
-
-    on(productSearchInput, "input", (event) => {
-      const value = event.target.value || "";
-      updateProductSearch(value);
-      if (productSearchClear) productSearchClear.hidden = value.length === 0;
-    });
-
-    on(productSearchInput, "search", (event) => {
-      const value = event.target.value || "";
-      updateProductSearch(value);
-      if (productSearchClear) productSearchClear.hidden = value.length === 0;
-    });
-  }
-
-  if (productSearchClear) {
-    productSearchClear.hidden = !(productSearchInput?.value);
-    on(productSearchClear, "click", () => {
-      if (!productSearchInput) return;
-      productSearchInput.value = "";
-      updateProductSearch("");
-      productSearchClear.hidden = true;
-      productSearchInput.focus();
-    });
-  }
-
-  if (productSearchChips.length && productSearchInput) {
-    productSearchChips.forEach((chip) => {
-      on(chip, "click", () => {
-        const keyword = chip.dataset.searchChip || "";
-        productSearchInput.value = keyword;
-        updateProductSearch(keyword);
-        if (productSearchClear) productSearchClear.hidden = keyword.length === 0;
-        productSearchInput.focus();
-      });
-    });
-  }
-
-  if (productDrawer) {
-    const closeControls = $$("[data-close-drawer]", productDrawer);
-    closeControls.forEach((element) => {
-      on(element, "click", (event) => {
-        event.preventDefault();
-        closeProductDrawer();
-      });
-    });
-  }
-
-  if (qtyDecrease && drawerQty) {
-    on(qtyDecrease, "click", () => {
-      const current = Number.parseInt(drawerQty.value, 10) || 1;
-      drawerQty.value = String(Math.max(1, current - 1));
-    });
-  }
-
-  if (qtyIncrease && drawerQty) {
-    on(qtyIncrease, "click", () => {
-      const current = Number.parseInt(drawerQty.value, 10) || 1;
-      drawerQty.value = String(current + 1);
-    });
-  }
-
-  if (drawerQty) {
-    on(drawerQty, "change", () => {
-      const current = Number.parseInt(drawerQty.value, 10) || 1;
-      drawerQty.value = String(Math.max(1, current));
-    });
-  }
-
-  if (addToCartBtn) {
-    on(addToCartBtn, "click", () => {
-      if (!activeProductId) return;
-      const qty = drawerQty ? Number.parseInt(drawerQty.value, 10) || 1 : 1;
-      addToCart(activeProductId, qty);
-    });
-  }
-
-  if (productCards.length) {
-    productCards.forEach((card) => {
-      const viewButton = card.querySelector("[data-view-product]");
-      const productId = card.dataset.productId;
-      if (!viewButton || !productId) return;
-      on(viewButton, "click", () => {
-        lastFocusTrigger = viewButton;
-        openProductDrawer(productId);
-      });
-    });
-  }
-
-  if (orderTriggers.length) {
-    orderTriggers.forEach((trigger) => {
-      on(trigger, "click", (event) => {
-        if (trigger.tagName === "A") event.preventDefault();
-        const productId = trigger.dataset.product || "";
-        if (productId && productCatalog.has(productId)) {
-          lastFocusTrigger = trigger;
-          openProductDrawer(productId);
-        } else {
-          const assistant = document.getElementById("order-assistant");
-          if (assistant) assistant.scrollIntoView({ behavior: "smooth", block: "start" });
-        }
-      });
-    });
-  }
-
-  if (copyUpiBtn) {
-    const originalText = copyUpiBtn.textContent;
-    on(copyUpiBtn, "click", async () => {
-      try {
-        if (navigator.clipboard?.writeText) {
-          await navigator.clipboard.writeText(CLINIC_UPI);
-          copyUpiBtn.textContent = "UPI ID copied!";
-        } else {
-          throw new Error("Clipboard not supported");
-        }
-      } catch (error) {
-        copyUpiBtn.textContent = `Copy manually: ${CLINIC_UPI}`;
-      }
-      window.setTimeout(() => {
-        copyUpiBtn.textContent = originalText;
-      }, 2200);
-    });
-  }
-
-  if (orderForm) {
-    const handleFormUpdate = () => {
-      updatePatientPreview();
-      updateSubmitState();
-      if (orderStatus && orderStatus.textContent) {
-        orderStatus.textContent = "";
-      }
-    };
-
-    on(orderForm, "input", handleFormUpdate);
-    on(orderForm, "change", handleFormUpdate);
-
-    on(orderForm, "submit", (event) => {
-      event.preventDefault();
-      if (!cart.length) {
-        if (orderStatus) {
-          orderStatus.textContent = "Add at least one product to your cart before placing the order.";
-        }
-        return;
-      }
-
-      const formData = new FormData(orderForm);
-      const patientName = (formData.get("patientName") || "").toString().trim();
-      const phone = (formData.get("phone") || "").toString().trim();
-      const address = (formData.get("address") || "").toString().trim();
-      const landmark = (formData.get("landmark") || "").toString().trim();
-      const symptoms = (formData.get("symptoms") || "").toString().trim();
-      const teleSlot = (formData.get("teleSlot") || "Call immediately").toString();
-      const fulfilment = (formData.get("fulfilment") || "Doorstep delivery (₹50)").toString();
-      const payment = (formData.get("payment") || "Pay via UPI after confirmation").toString();
-      const urgency = (formData.get("urgency") || "Routine within 24 hrs").toString();
-
-      const orderId = `NDC-${Date.now().toString().slice(-6)}`;
-      const summary = getCartSummary();
-      const cartLines = summary.lines
-        .map((line, index) => {
-          if (!line.product) return null;
-          const rxNote = line.product.requiresRx ? " (Prescription required)" : "";
-          const discountLabel = line.discountRate > 0 ? ` (Clinic discount ${Math.round(line.discountRate * 100)}%)` : "";
-          return `${index + 1}. ${line.product.name} x ${line.quantity} – ${formatCurrency(line.lineSubtotal)}${discountLabel}${rxNote}`;
-        })
-        .filter(Boolean);
-
-      const discountNotes = [];
-      if (summary.breakdown.dental) discountNotes.push(`Dental (25%): -${formatCurrency(summary.breakdown.dental)}`);
-      if (summary.breakdown.antibiotic) discountNotes.push(`Antibiotics (10%): -${formatCurrency(summary.breakdown.antibiotic)}`);
-      if (summary.breakdown.painkiller) discountNotes.push(`Pain relief (10%): -${formatCurrency(summary.breakdown.painkiller)}`);
-
-      const summaryLines = [
-        `Order ID: ${orderId}`,
-        `Patient: ${patientName}`,
-        `Mobile: ${phone}`,
-        `Delivery address: ${address}${landmark ? ` (Landmark: ${landmark})` : ""}`,
-        `Fulfilment: ${fulfilment}`,
-        `Urgency: ${urgency}`,
-        `Tele consultation slot: ${teleSlot}`,
-        `Preferred payment: ${payment}`,
-        "",
-        "Cart items:",
-        ...cartLines,
-        "",
-        `Items total: ${formatCurrency(summary.subtotal)}`,
-        `Clinic discounts: -${formatCurrency(summary.discount)}${discountNotes.length ? ` [${discountNotes.join(" | ")}]` : ""}`,
-        `Delivery: ${formatCurrency(summary.shipping)}`,
-        `Estimated payable after confirmation: ${formatCurrency(summary.grandTotal)}`,
-        `Delivery charges ₹${DELIVERY_FEE} within Nallagandla 500019.`,
-        "",
-        `Symptoms / notes: ${symptoms}`,
-        "",
-        "Please confirm tele consultation and share dosage guidance."
-      ];
-
-      const emailSubject = encodeURIComponent(`Noble Dental product order ${orderId}`);
-      const emailBody = encodeURIComponent(summaryLines.join("\n"));
-      const mailtoUrl = `mailto:${CLINIC_EMAIL}?subject=${emailSubject}&body=${emailBody}`;
-      window.open(mailtoUrl, "_blank", "noopener");
-
-      const whatsappMessage = encodeURIComponent(`Hi Noble Dental Care team,\n\n${summaryLines.join("\n")}\n\nOrder shared from the Noble dental product studio.`);
-      const whatsappUrl = `https://wa.me/${CLINIC_WHATSAPP}?text=${whatsappMessage}`;
-      window.open(whatsappUrl, "_blank", "noopener");
-
-      if (orderStatus) {
-        orderStatus.textContent = "We opened your email client and WhatsApp chat with the cart summary. Review and send to confirm your order.";
-      }
-
-      orderForm.reset();
-      cart = [];
-      renderCart();
-      updatePatientPreview();
-      updateSubmitState();
-    });
-  }
-
-  renderCart();
-  updatePatientPreview();
-  updateSubmitState();
-
-  /* =========================================================
-     7. Certificates ticker controls
+     6. Certificates ticker controls
   ========================================================= */
   const track = $("#certsTrack");
   const btnPrev = $(".ticker-ctrl.prev");
@@ -1737,18 +1002,13 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   /* =========================================================
-     8. Footer year auto-update
+     7. Footer year auto-update
   ========================================================= */
-  const yearTargets = $$("#year, #currentYear");
-  if (yearTargets.length) {
-    const yearValue = new Date().getFullYear();
-    yearTargets.forEach((el) => {
-      if (el) el.textContent = yearValue;
-    });
-  }
+  const yearEl = $("#year");
+  if (yearEl) yearEl.textContent = new Date().getFullYear();
 
   /* =========================================================
-     9. Back-to-top button
+     8. Back-to-top button
   ========================================================= */
   const backToTop = $("#backToTop");
   if (backToTop) {
@@ -1774,3 +1034,125 @@ document.addEventListener("DOMContentLoaded", () => {
   const allCards = Array.from(slides.querySelectorAll(".service-card"));
   const searchInput = document.getElementById("treatmentSearch");
   const filterSelect = document.getElementById("categoryFilter");
+
+  // Add clear button dynamically
+  let clearBtn = document.createElement("button");
+  clearBtn.textContent = "Clear";
+  clearBtn.classList.add("clear-btn");
+  document.querySelector(".filter-bar").appendChild(clearBtn);
+
+  let currentIndex = 0;
+  let filteredCards = [...allCards];
+  const defaultCardsPerPage = 4;
+  const singleCardView = 1;
+  let autoRotateInterval;
+  let searchActive = false;
+
+  function renderCards() {
+    allCards.forEach(card => (card.style.display = "none"));
+    const cardsPerPage = searchActive ? singleCardView : defaultCardsPerPage;
+
+    slides.classList.toggle("single-view", searchActive);
+
+    filteredCards
+      .slice(currentIndex, currentIndex + cardsPerPage)
+      .forEach(card => {
+        card.style.display = "flex";
+        card.style.animation = "fadeIn 0.6s forwards";
+      });
+  }
+
+  function updateClearButton() {
+    if (searchInput.value || filterSelect.value) {
+      clearBtn.classList.add("show");
+    } else {
+      clearBtn.classList.remove("show");
+    }
+  }
+
+  function applyFilter() {
+    const query = searchInput.value.toLowerCase();
+    const category = filterSelect.value;
+    searchActive = !!query || !!category;
+
+    filteredCards = allCards.filter(card => {
+      const keywords = (card.dataset.keywords || "").toLowerCase();
+      const matchesQuery = !query || keywords.includes(query);
+      const matchesCategory = !category || card.id === category;
+      return matchesQuery && matchesCategory;
+    });
+
+    currentIndex = 0;
+    renderCards();
+    restartAutoRotate();
+    updateClearButton();
+  }
+
+  function autoRotate() {
+    if (!searchActive && filteredCards.length > defaultCardsPerPage) {
+      currentIndex += defaultCardsPerPage;
+      if (currentIndex >= filteredCards.length) currentIndex = 0;
+      renderCards();
+    }
+  }
+
+  function restartAutoRotate() {
+    clearInterval(autoRotateInterval);
+    autoRotateInterval = setInterval(autoRotate, 7000);
+  }
+
+  // Prev/Next controls
+  let controls = document.querySelector(".controls");
+  if (!controls) {
+    controls = document.createElement("div");
+    controls.classList.add("controls");
+    controls.innerHTML = `
+      <button id="prev">&#10094;</button>
+      <button id="next">&#10095;</button>
+    `;
+    slides.parentElement.appendChild(controls);
+  }
+
+  document.getElementById("prev").addEventListener("click", () => {
+    const step = searchActive ? singleCardView : defaultCardsPerPage;
+    currentIndex -= step;
+    if (currentIndex < 0) {
+      currentIndex = Math.max(0, filteredCards.length - step);
+    }
+    renderCards();
+    restartAutoRotate();
+  });
+
+  document.getElementById("next").addEventListener("click", () => {
+    const step = searchActive ? singleCardView : defaultCardsPerPage;
+    currentIndex += step;
+    if (currentIndex >= filteredCards.length) currentIndex = 0;
+    renderCards();
+    restartAutoRotate();
+  });
+
+  // Pause auto-rotation on hover
+  slides.addEventListener("mouseenter", () => clearInterval(autoRotateInterval));
+  slides.addEventListener("mouseleave", restartAutoRotate);
+
+  // Clear button resets search + filter
+  clearBtn.addEventListener("click", () => {
+    searchInput.value = "";
+    filterSelect.value = "";
+    searchActive = false;
+    filteredCards = [...allCards];
+    currentIndex = 0;
+    renderCards();
+    restartAutoRotate();
+    updateClearButton();
+  });
+
+  // Listeners
+  if (searchInput) searchInput.addEventListener("input", applyFilter);
+  if (filterSelect) filterSelect.addEventListener("change", applyFilter);
+
+  // Init
+  renderCards();
+  restartAutoRotate();
+  updateClearButton();
+});
