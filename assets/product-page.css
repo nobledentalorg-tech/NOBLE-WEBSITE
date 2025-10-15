@@ -1376,6 +1376,35 @@ body.product-page main {
   overflow: hidden;
 }
 
+.product-hero-media {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, rgba(15, 156, 180, 0.1), rgba(255, 184, 77, 0.12));
+  border-radius: 18px;
+  padding: 1.4rem;
+  border: 1px solid rgba(15, 156, 180, 0.18);
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+}
+
+.product-hero-media::after {
+  content: "";
+  position: absolute;
+  inset: 10%;
+  border-radius: inherit;
+  border: 1px dashed rgba(15, 156, 180, 0.16);
+  pointer-events: none;
+}
+
+.product-hero-media img {
+  width: clamp(120px, 60%, 240px);
+  height: auto;
+  object-fit: contain;
+  filter: drop-shadow(0 12px 24px rgba(15, 156, 180, 0.2));
+}
+
 .price-card::before {
   content: "";
   position: absolute;
