@@ -7,6 +7,7 @@ const PRODUCTS = [
     tagline: "Strengthens enamel and calms sudden zingers",
     price: 495,
     mrp: 525,
+    url: "/products/shy-nm-foaming-toothpaste.html",
     description: "Potassium nitrate and NovaMin combine to seal exposed tubules and rebuild enamel. Ideal for hot-cold sensitivity and post-whitening care.",
     highlights: [
       "Apply twice a day after brushing for 2 minutes",
@@ -19,10 +20,11 @@ const PRODUCTS = [
     id: "enafix",
     name: "Enafix Remineralising Cream",
     category: "dental",
-   badge: "Clinic exclusive",
+     badge: "Clinic exclusive",
     tagline: "Rapid relief for early enamel lesions",
     price: 760,
     mrp: 799,
+    url: "/products/enafix-toothpaste.html",
     description: "ACP-CPP technology reverses white spot lesions, boosts fluoride uptake and supports long-term remineralisation.",
     highlights: [
       "Night-time tray application recommended",
@@ -38,6 +40,7 @@ const PRODUCTS = [
     tagline: "Controls gum bleeding and infection",
     price: 285,
     mrp: 310,
+    url: "/products/orafresh-mouth-rinse.html",
     description: "0.2% chlorhexidine gluconate mouthwash for acute gingivitis, post-surgical hygiene and halitosis control.",
     highlights: [
       "Use 10 ml undiluted twice daily for 7 days",
@@ -54,6 +57,7 @@ const PRODUCTS = [
     tagline: "Controls acute dental infections",
     price: 410,
     mrp: 430,
+    url: "/products/augmentin-625-duo-tablet.html",
     description: "Amoxicillin and clavulanic acid blend used under dentist supervision for spreading dental infections and systemic fevers.",
     highlights: [
       "1 tablet twice daily after meals for 5 days",
@@ -69,6 +73,7 @@ const PRODUCTS = [
     tagline: "Targets anaerobic oral infections",
     price: 120,
     mrp: 135,
+    url: "/products/metrogyl-400-tablet.html",
     description: "Metronidazole support for anaerobic bacterial control during gum infections and post-surgical recovery.",
     highlights: [
       "Take only under dentist supervision",
@@ -84,6 +89,7 @@ const PRODUCTS = [
     tagline: "Trusted for moderate dental pain",
     price: 35,
     mrp: 40,
+    url: "/products/dolo-650-tablet.html",
     description: "Paracetamol based analgesic that lowers fever and reduces dental pain while you arrange definitive treatment.",
     highlights: [
       "1 tablet every 6 hours after food",
@@ -99,6 +105,7 @@ const PRODUCTS = [
     tagline: "For intense short-term dental pain",
     price: 145,
     mrp: 160,
+    url: "/products/ketorol-dt-10mg.html",
     description: "Ketorolac tromethamine provides potent relief for acute toothache and post-extraction discomfort.",
     highlights: [
       "Dissolve one tablet under the tongue",
@@ -114,6 +121,7 @@ const PRODUCTS = [
     tagline: "Combines ibuprofen with paracetamol",
     price: 95,
     mrp: 110,
+    url: "/products/ibugesic-plus-tablet.html",
     description: "Dual-action analgesic for inflammatory dental pain and swelling under dentist supervision.",
     highlights: [
       "Take after meals with water",
@@ -129,6 +137,7 @@ const PRODUCTS = [
     tagline: "Supports oral microbiome balance",
     price: 320,
     mrp: 340,
+    url: "/products/dental-probiotic-sachets.html",
     description: "Lactobacillus reuteri based sachets to reduce bad breath, plaque formation and post-antibiotic imbalance.",
     highlights: [
       "Dissolve in cool water once daily",
@@ -260,15 +269,31 @@ const buildProductCard = (product) => {
   const discountRate = getDiscountRate(product.category);
   const card = document.createElement("article");
   card.className = "product-card";
-  card.dataset.productId = product.id;
   card.innerHTML = `
     <p class="product-card__category">${CATEGORY_LABELS[product.category] ?? "Dental care"}</p>
-    ${product.badge ? `<span class="product-card__badge product-card__badge--highlight">${product.badge}</span>` : ""}
-    <h3 class="product-card__title">${product.name}</h3>
+    ${
+      product.badge
+        ? `<span class="product-card__badge product-card__badge--highlight">${product.badge}</span>`
+        : ""
+    }
+    <h3 class="product-card__title">
+      <a class="product-card__title-link" href="${product.url}" aria-label="Read the ${product.name} guide">
+        ${product.name}
+      </a>
+    </h3>
     <p class="product-card__tagline">${product.tagline}</p>
+    <p class="product-card__excerpt">${product.description}</p>
     <div class="product-card__meta">
       <div class="product-card__price"><strong>${formatCurrency(getSellingPrice(product))}</strong></div>
       ${discountRate > 0 ? `<span class="product-card__badge">${Math.round(discountRate * 100)}% clinic savings</span>` : ""}
+    </div>
+    <div class="product-card__actions">
+      <a class="product-card__details" href="${product.url}" aria-label="View ${product.name} details">
+        View product guide
+      </a>
+      <button type="button" class="product-card__add" data-product-add data-product-id="${product.id}">
+        <i class="ri-shopping-bag-3-line" aria-hidden="true"></i> Add to cart
+      </button>
     </div>
   `;
   return card;
@@ -278,97 +303,6 @@ const applyActiveFilter = (buttons, activeKey) => {
   buttons.forEach((button) => {
     const isActive = button.dataset.filterPill === activeKey;
     button.classList.toggle("is-active", isActive);
-  });
-};
-
-const openDrawer = (product) => {
-  const drawer = document.querySelector("[data-drawer]");
-  if (!drawer) return;
-  const title = drawer.querySelector("[data-drawer-title]");
-  const category = drawer.querySelector("[data-drawer-category]");
-  const tagline = drawer.querySelector("[data-drawer-tagline]");
-  const body = drawer.querySelector("[data-drawer-body]");
-  const tags = drawer.querySelector("[data-drawer-tags]");
-  const price = drawer.querySelector("[data-drawer-price]");
-  const mrp = drawer.querySelector("[data-drawer-mrp]");
-  const note = drawer.querySelector("[data-drawer-note]");
-  const qtyInput = drawer.querySelector("[data-drawer-qty]");
-  const status = drawer.querySelector("[data-drawer-status]");
-
-  if (!title || !category || !tagline || !body || !tags || !price || !mrp || !note || !qtyInput || !status) return;
-
-  title.textContent = product.name;
-  category.textContent = CATEGORY_LABELS[product.category] ?? "Dental care";
-  tagline.textContent = product.tagline;
-  body.innerHTML = `
-    <p>${product.description}</p>
-    <ul>${product.highlights.map((item) => `<li>${item}</li>`).join("")}</ul>
-  `;
-  tags.innerHTML = product.tags?.map((tag) => `<span>#${tag}</span>`).join("") ?? "";
-  price.textContent = formatCurrency(getSellingPrice(product));
-  mrp.textContent = product.mrp && product.mrp !== product.price ? formatCurrency(product.mrp) : formatCurrency(product.price);
-  note.textContent = `${Math.round(getDiscountRate(product.category) * 100)}% clinic discount is applied during billing.`;
-  status.textContent = "Tap add to cart or adjust quantity.";
-  qtyInput.value = 1;
-  drawer.dataset.productId = product.id;
-  drawer.classList.add("is-open");
-  drawer.setAttribute("aria-hidden", "false");
-  document.body.style.overflow = "hidden";
-
-  const existing = cart.find((item) => item.productId === product.id);
-  if (!existing) {
-    addToCart(product, 1, { quiet: true });
-    status.textContent = "Added 1 item to your cart. Adjust quantity below.";
-  } else {
-    qtyInput.value = existing.quantity;
-    status.textContent = "Already in your cart. Adjust quantity below.";
-  }
-};
-
-const closeDrawer = () => {
-  const drawer = document.querySelector("[data-drawer]");
-  if (!drawer) return;
-  drawer.classList.remove("is-open");
-  drawer.setAttribute("aria-hidden", "true");
-  drawer.removeAttribute("data-product-id");
-  document.body.style.overflow = "";
-};
-
-const initDrawer = () => {
-  const drawer = document.querySelector("[data-drawer]");
-  if (!drawer) return;
-  const closeButtons = drawer.querySelectorAll("[data-drawer-close]");
-  const addButton = drawer.querySelector("[data-drawer-add]");
-  const qtyInput = drawer.querySelector("[data-drawer-qty]");
-  const minus = drawer.querySelector("[data-drawer-qty-minus]");
-  const plus = drawer.querySelector("[data-drawer-qty-plus]");
-  const status = drawer.querySelector("[data-drawer-status]");
-
-  closeButtons.forEach((btn) => btn.addEventListener("click", closeDrawer));
-  drawer.addEventListener("click", (event) => {
-    if (event.target.matches("[data-drawer-close]")) closeDrawer();
-  });
-  document.addEventListener("keydown", (event) => {
-    if (event.key === "Escape" && drawer.classList.contains("is-open")) closeDrawer();
-  });
-
-  const clampQty = (value) => Math.max(1, Math.min(99, Number.parseInt(value, 10) || 1));
-
-  minus?.addEventListener("click", () => {
-    qtyInput.value = clampQty(Number(qtyInput.value) - 1);
-  });
-  plus?.addEventListener("click", () => {
-    qtyInput.value = clampQty(Number(qtyInput.value) + 1);
-  });
-
-  addButton?.addEventListener("click", () => {
-    const productId = drawer.dataset.productId;
-    const product = findProduct(productId);
-    if (!product) return;
-    const quantity = clampQty(qtyInput.value);
-    updateCartQuantity(product.id, quantity);
-    status.textContent = `${product.name} updated to ${quantity} ${quantity === 1 ? "unit" : "units"}.`;
-    announce(status.textContent);
   });
 };
 
@@ -452,7 +386,12 @@ const initProductCatalogue = () => {
     grid.innerHTML = "";
     products.forEach((product) => {
       const card = buildProductCard(product);
-      card.addEventListener("click", () => openDrawer(product));
+      const addButton = card.querySelector("[data-product-add]");
+      addButton?.addEventListener("click", (event) => {
+        event.preventDefault();
+        event.stopPropagation();
+        addToCart(product, 1);
+      });
       grid.appendChild(card);
     });
     if (emptyState) {
@@ -493,23 +432,6 @@ const initProductCatalogue = () => {
     sortKey = event.target.value;
     render();
   });
-
-  const shortcutButtons = document.querySelectorAll("[data-open-product]");
-  if (shortcutButtons.length) {
-    shortcutButtons.forEach((button) => {
-      button.addEventListener("click", () => {
-        const productId = button.dataset.openProduct;
-        const product = findProduct(productId);
-        if (!product) return;
-        activeFilter = product.category || "all";
-        query = "";
-        if (searchInput) searchInput.value = "";
-        applyActiveFilter(filterButtons, activeFilter);
-        render();
-        window.requestAnimationFrame(() => openDrawer(product));
-      });
-    });
-  }
 
   render();
 };
@@ -700,7 +622,6 @@ const renderCartPage = () => {
 const init = () => {
   document.addEventListener("DOMContentLoaded", () => {
     updateCartBadges();
-    initDrawer();
     initProductCatalogue();
     renderCartPage();
     if (!document.querySelector("#productLiveRegion")) {
