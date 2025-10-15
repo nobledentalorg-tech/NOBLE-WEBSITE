@@ -70,3 +70,9 @@ D --> C
 C --> E
 E --> F
 B --> A
+
+## 🛠️ Automation scripts
+
+| Script | Purpose |
+| --- | --- |
+| `scripts/generate-grouppharma.mjs` | Fetches the Grouppharma product catalogue, downloads imagery and regenerates `/products/*.html` plus `js/grouppharma-products.js` for the catalogue grid. |
