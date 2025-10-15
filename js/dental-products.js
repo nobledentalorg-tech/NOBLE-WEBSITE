@@ -3,6 +3,7 @@ const PRODUCTS = [
     id: "shy-nm",
     name: "SHY-NM Tooth Sensitivity Foam",
     category: "dental",
+    badge: "Best seller",
     tagline: "Strengthens enamel and calms sudden zingers",
     price: 495,
     mrp: 525,
@@ -18,6 +19,7 @@ const PRODUCTS = [
     id: "enafix",
     name: "Enafix Remineralising Cream",
     category: "dental",
+   badge: "Clinic exclusive",
     tagline: "Rapid relief for early enamel lesions",
     price: 760,
     mrp: 799,
@@ -48,6 +50,7 @@ const PRODUCTS = [
     id: "augmentin",
     name: "Augmentin 625 Duo",
     category: "antibiotic",
+    badge: "Doctor supervised",
     tagline: "Controls acute dental infections",
     price: 410,
     mrp: 430,
@@ -135,6 +138,8 @@ const PRODUCTS = [
     tags: ["probiotic", "fresh breath", "recovery"]
   }
 ];
+
+const PRODUCT_ORDER = new Map(PRODUCTS.map((item, index) => [item.id, index]));
 
 const CATEGORY_LABELS = {
   dental: "Dental care",
@@ -258,6 +263,7 @@ const buildProductCard = (product) => {
   card.dataset.productId = product.id;
   card.innerHTML = `
     <p class="product-card__category">${CATEGORY_LABELS[product.category] ?? "Dental care"}</p>
+    ${product.badge ? `<span class="product-card__badge product-card__badge--highlight">${product.badge}</span>` : ""}
     <h3 class="product-card__title">${product.name}</h3>
     <p class="product-card__tagline">${product.tagline}</p>
     <div class="product-card__meta">
@@ -371,10 +377,25 @@ const initProductCatalogue = () => {
   if (!grid) return;
   const emptyState = document.querySelector("[data-products-empty]");
   const searchInput = document.querySelector("[data-products-search]");
+  const clearButton = document.querySelector("[data-products-clear]");
+  const countLabel = document.querySelector("[data-products-count]");
+  const sortSelect = document.querySelector("[data-products-sort]");
   const filterButtons = Array.from(document.querySelectorAll("[data-filter-pill]"));
   const defaultCategory = document.body.dataset.catalogCategory || "all";
   let activeFilter = defaultCategory;
   let query = "";
+  let sortKey = sortSelect?.value || "recommended";
+
+  const describeFilter = () =>
+    activeFilter === "all" || !activeFilter
+      ? "all categories"
+      : (CATEGORY_LABELS[activeFilter] ?? "All categories").toLowerCase();
+
+  const updateClearVisibility = () => {
+    if (clearButton) {
+      clearButton.hidden = query.length === 0;
+    }
+  };
 
   const matchesFilter = (product) => {
     if (activeFilter === "all" || !activeFilter) return true;
@@ -389,8 +410,45 @@ const initProductCatalogue = () => {
     return haystack.includes(query.toLowerCase());
   };
 
+  const sortProducts = (items) => {
+    const sorted = items.slice();
+    if (sortKey === "price-low") {
+      sorted.sort((a, b) => getSellingPrice(a) - getSellingPrice(b));
+    } else if (sortKey === "price-high") {
+      sorted.sort((a, b) => getSellingPrice(b) - getSellingPrice(a));
+    } else if (sortKey === "name") {
+      sorted.sort((a, b) => a.name.localeCompare(b.name));
+    } else {
+      sorted.sort(
+        (a, b) => (PRODUCT_ORDER.get(a.id) ?? Number.MAX_SAFE_INTEGER) - (PRODUCT_ORDER.get(b.id) ?? Number.MAX_SAFE_INTEGER)
+      );
+    }
+    return sorted;
+  };
+
+  const updateCountMessage = (count) => {
+    if (!countLabel) return;
+    const filterLabel = describeFilter();
+    if (query) {
+      countLabel.textContent = count
+        ? `${count} ${count === 1 ? "match" : "matches"} for “${query}” in ${filterLabel}.`
+        : `No matches for “${query}” in ${filterLabel}.`;
+      return;
+    }
+    if (activeFilter !== "all") {
+      countLabel.textContent = count
+        ? `${count} ${count === 1 ? "product" : "products"} in ${filterLabel}.`
+        : `No products listed in ${filterLabel} yet.`;
+      return;
+    }
+    countLabel.textContent = count
+      ? `Showing ${count} ${count === 1 ? "product card" : "product cards"}.`
+      : "No products available right now.";
+  };
+
   const render = () => {
-    const products = PRODUCTS.filter((item) => matchesFilter(item) && matchesQuery(item));
+    let products = PRODUCTS.filter((item) => matchesFilter(item) && matchesQuery(item));
+    products = sortProducts(products);
     grid.innerHTML = "";
     products.forEach((product) => {
       const card = buildProductCard(product);
@@ -399,7 +457,9 @@ const initProductCatalogue = () => {
     });
     if (emptyState) {
       emptyState.classList.toggle("hidden", products.length > 0);
-    }
+   }
+    updateCountMessage(products.length);
+    updateClearVisibility();
   };
 
   if (filterButtons.length) {
@@ -417,6 +477,37 @@ const initProductCatalogue = () => {
     searchInput.addEventListener("input", (event) => {
       query = event.target.value.trim();
       render();
+    });
+  }
+
+  clearButton?.addEventListener("click", () => {
+    query = "";
+    if (searchInput) {
+      searchInput.value = "";
+      searchInput.focus();
+    }
+    render();
+  });
+
+  sortSelect?.addEventListener("change", (event) => {
+    sortKey = event.target.value;
+    render();
+  });
+
+  const shortcutButtons = document.querySelectorAll("[data-open-product]");
+  if (shortcutButtons.length) {
+    shortcutButtons.forEach((button) => {
+      button.addEventListener("click", () => {
+        const productId = button.dataset.openProduct;
+        const product = findProduct(productId);
+        if (!product) return;
+        activeFilter = product.category || "all";
+        query = "";
+        if (searchInput) searchInput.value = "";
+        applyActiveFilter(filterButtons, activeFilter);
+        render();
+        window.requestAnimationFrame(() => openDrawer(product));
+      });
     });
   }
 
