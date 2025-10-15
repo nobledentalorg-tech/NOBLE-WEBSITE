@@ -1,4 +1,6 @@
-images/grouppharma/when-your-teeth-need-extra-care-instant-relief-and-lasting-comfort.png
+import { GROUPPHARMA_PRODUCTS } from "./grouppharma-products.js";
+
+const BASE_PRODUCTS = [
   {
     id: "shy-nm",
     name: "SHY-NM Tooth Sensitivity Foam",
@@ -20,7 +22,7 @@ images/grouppharma/when-your-teeth-need-extra-care-instant-relief-and-lasting-co
     id: "enafix",
     name: "Enafix Remineralising Cream",
     category: "dental",
-     badge: "Clinic exclusive",
+    badge: "Clinic exclusive",
     tagline: "Rapid relief for early enamel lesions",
     price: 760,
     mrp: 799,
@@ -216,7 +218,7 @@ images/grouppharma/when-your-teeth-need-extra-care-instant-relief-and-lasting-co
   }
 ];
 
-const PRODUCTS = [...BASE_PRODUCTS, ...GROUPPHARMA_PRODUCTS];
+const PRODUCTS = [...BASE_PRODUCTS, ...(GROUPPHARMA_PRODUCTS ?? [])];
 
 const PRODUCT_ORDER = new Map(PRODUCTS.map((item, index) => [item.id, index]));
 
