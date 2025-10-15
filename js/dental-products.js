@@ -216,6 +216,8 @@ images/grouppharma/when-your-teeth-need-extra-care-instant-relief-and-lasting-co
   }
 ];
 
+const PRODUCTS = [...BASE_PRODUCTS, ...GROUPPHARMA_PRODUCTS];
+
 const PRODUCT_ORDER = new Map(PRODUCTS.map((item, index) => [item.id, index]));
 
 const CATEGORY_LABELS = {
