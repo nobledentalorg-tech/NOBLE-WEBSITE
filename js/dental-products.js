@@ -34,6 +34,74 @@ const PRODUCTS = [
     tags: ["enamel", "tray", "white spots", "orthodontic"]
   },
   {
+    id: "aclaim",
+    name: "Aclaim Remineralising Tooth Cream",
+    category: "dental",
+    badge: "New arrival",
+    tagline: "Restores and strengthens braces-weakened enamel",
+    price: 750,
+    mrp: 750,
+    url: "/products/aclaim-tooth-cream.html",
+    description: "CPP-ACP and fluoride synergy rebuilds hydroxyapatite, eases hypersensitivity and fades orthodontic white spots.",
+    highlights: [
+      "Apply nightly after brushing and avoid rinsing",
+      "Targets white spot lesions around brackets",
+      "Includes tele follow-ups for diet and tray guidance"
+    ],
+    tags: ["remineralisation", "cpp-acp", "orthodontic", "white spots"]
+  },
+  {
+    id: "amflor-toothpaste",
+    name: "Amflor Anti-Cavity Toothpaste",
+    category: "dental",
+    badge: "Braces essential",
+    tagline: "Extends care beyond braces with amine fluoride",
+    price: 210,
+    mrp: 210,
+    url: "/products/amflor-toothpaste.html",
+    description: "Amine fluoride toothpaste that resists acid attacks, keeps brackets clean and calms sensitivity during orthodontic therapy.",
+    highlights: [
+      "Brush for 60 seconds and spit without rinsing",
+      "Fresh mint foam is gentle on tissues irritated by wires",
+      "Monthly brushing audits via clinic WhatsApp channel"
+    ],
+    tags: ["orthodontic", "fluoride", "white spots", "toothpaste"]
+  },
+  {
+    id: "enafix-progel",
+    name: "EnaFix PROGEL Remineralising Gel",
+    category: "dental",
+    badge: "The enamel fixer",
+    tagline: "Supports remineralisation with calcium-rich gel",
+    price: 840,
+    mrp: 840,
+    url: "/products/enafix-progel.html",
+    description: "Smooth gel coats teeth to build stronger hydroxyapatite, promote natural enamel repair and relieve sensitivity.",
+    highlights: [
+      "Spread evenly with finger or tongue for 3 minutes",
+      "Safe for all age groups under dentist supervision",
+      "Store below 30°C and keep cap tightly closed"
+    ],
+    tags: ["gel", "remineralisation", "hydroxyapatite", "sensitivity"]
+  },
+  {
+    id: "amflor-oral-rinse",
+    name: "Amflor Oral Rinse",
+    category: "dental",
+    badge: "Orthodontic rinse",
+    tagline: "Extends care beyond braces with fluoride rinse",
+    price: 285,
+    mrp: 285,
+    url: "/products/amflor-oral-rinse.html",
+    description: "Alcohol-free amine fluoride mouthwash that strengthens enamel, freshens breath and keeps brackets plaque-free.",
+    highlights: [
+      "Swish 10 ml undiluted for 60 seconds twice daily",
+      "Do not eat or drink for 30 minutes post-rinse",
+      "Weekly hygiene check-ins monitor white spot progress"
+    ],
+    tags: ["mouthwash", "orthodontic", "fluoride", "fresh breath"]
+  },
+  {
     id: "orafresh",
     name: "OraFresh Chlorhexidine Mouth Rinse",
     category: "dental",
