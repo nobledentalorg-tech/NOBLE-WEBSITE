@@ -76,3 +76,10 @@ B --> A
 | Script | Purpose |
 | --- | --- |
 | `scripts/generate-grouppharma.mjs` | Fetches the Grouppharma product catalogue, downloads imagery and regenerates `/products/*.html` plus `js/grouppharma-products.js` for the catalogue grid. |
+| `scripts/generate-responsive-images.sh` | Creates 640/960/1280px responsive derivatives of supplied images using ImageMagick so `srcset` attributes can be updated without manual editing. |
+| `scripts/analyze-crawl-frequency.py` | Parses origin/CDN access logs, highlights Googlebot crawl volume, and surfaces status code trends to inform sitemap resubmission cadence. |
+
+## 🌐 Deployment runbook
+
+- See [`server-config/README.md`](server-config/README.md) for CDN, caching, compression, and connection hint directives that can be applied at the edge without modifying static assets.
+- Reference [`server-config/nginx.conf`](server-config/nginx.conf) when adjusting origin servers or reverse proxies.
