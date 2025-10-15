@@ -1,4 +1,4 @@
-const PRODUCTS = [
+images/grouppharma/when-your-teeth-need-extra-care-instant-relief-and-lasting-comfort.png
   {
     id: "shy-nm",
     name: "SHY-NM Tooth Sensitivity Foam",
