@@ -446,3 +446,133 @@
         font-size: 2.5rem;
     }
 }
+
+/* ==========================================================================
+   GLOBAL PREMIUM OVERRIDES (APPLE-STYLE)
+   ("The Digital Fortress Upgrade")
+   ========================================================================== */
+
+:root {
+    --apple-font: 'SF Pro Display', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    --apple-shadow-sm: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
+    --apple-shadow-md: 0 10px 15px -3px rgba(0, 0, 0, 0.08), 0 4px 6px -2px rgba(0, 0, 0, 0.04);
+    --apple-shadow-lg: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+    --apple-glow: 0 0 0 1px rgba(0, 0, 0, 0.05);
+    /* Subtle border ring */
+}
+
+/* 1. Global Typography Refinement */
+body {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+h2,
+h3,
+.section-title {
+    font-family: var(--apple-font) !important;
+    letter-spacing: -0.02em !important;
+    /* Tighter tracking for headlines */
+    color: #111827 !important;
+    /* Slate 900 */
+}
+
+/* 2. Service Cards - The "Glass & Lift" Effect */
+.service-card {
+    /* Reset & Upgrade */
+    background: #ffffff !important;
+    border-radius: 24px !important;
+    /* Modern Squircle-ish */
+    border: 1px solid rgba(0, 0, 0, 0.06) !important;
+    /* Crisp hairline border */
+    box-shadow: var(--apple-shadow-md) !important;
+    transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1) !important;
+    overflow: hidden !important;
+    margin-bottom: 24px;
+    /* Breathing room */
+}
+
+.service-card:hover {
+    transform: translateY(-6px) scale(1.01) !important;
+    box-shadow: var(--apple-shadow-lg), 0 0 0 1px rgba(0, 112, 243, 0.1) !important;
+    /* Blue lift ring */
+    border-color: rgba(0, 112, 243, 0.3) !important;
+}
+
+/* Typography inside cards */
+.service-card h3 {
+    font-size: 1.35rem !important;
+    font-weight: 700 !important;
+    margin-bottom: 8px !important;
+}
+
+.service-card p {
+    font-size: 0.95rem !important;
+    color: #4b5563 !important;
+    /* Slate 600 - softer reading text */
+    line-height: 1.6 !important;
+}
+
+/* Tags/Tips inside cards */
+.service-card .tips li {
+    font-size: 0.85rem !important;
+    color: #059669 !important;
+    /* Emerald 600 - clean verified look */
+    background: rgba(16, 185, 129, 0.1) !important;
+    padding: 4px 10px !important;
+    border-radius: 12px !important;
+    display: inline-block !important;
+    margin-right: 6px !important;
+    margin-bottom: 6px !important;
+}
+
+/* "Learn More" Link */
+.read-more {
+    display: inline-flex !important;
+    align-items: center;
+    font-weight: 600 !important;
+    color: #0070f3 !important;
+    text-decoration: none !important;
+    margin-top: 12px !important;
+    font-size: 0.95rem !important;
+    transition: gap 0.2s ease;
+}
+
+.read-more::after {
+    content: '→';
+    margin-left: 6px;
+    font-size: 1.1em;
+    transition: transform 0.2s ease;
+}
+
+.read-more:hover::after {
+    transform: translateX(4px);
+}
+
+/* 3. Team Cards (Generic target to catch either class) */
+.team-card,
+.doctor-card {
+    background: #fff !important;
+    border-radius: 20px !important;
+    box-shadow: var(--apple-shadow-sm) !important;
+    border: 1px solid rgba(0, 0, 0, 0.04) !important;
+    transition: transform 0.3s ease !important;
+}
+
+.team-card:hover,
+.doctor-card:hover {
+    transform: translateY(-4px) !important;
+    box-shadow: var(--apple-shadow-md) !important;
+}
+
+/* 4. Section Headers - Center & Clean */
+section>h2 {
+    text-align: center;
+    font-size: 2.5rem !important;
+    margin-bottom: 1.5rem !important;
+    background: linear-gradient(135deg, #111 0%, #444 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    padding-bottom: 10px;
+    letter-spacing: -0.03em !important;
+}
