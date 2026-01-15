@@ -3487,12 +3487,13 @@ html[data-theme='cosmic'] {
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
   background: color-mix(in srgb, var(--color-surface) 78%, transparent);
-  padding: 36px;
-  border-radius: 32px;
+  padding: 24px;
+  /* Reduced from 36px */
+  border-radius: 24px;
+  /* Slightly tighter radius */
   border: 1px solid var(--color-border);
   box-shadow: var(--shadow-soft);
   transition: background var(--transition), border-color var(--transition);
-  /* Ensure content fills width */
   width: 100%;
 }
 
@@ -3503,12 +3504,12 @@ html[data-theme='cosmic'] {
   color: var(--color-link);
   font-weight: 600;
   border-radius: 999px;
-  padding: 6px 14px;
-  margin-bottom: 24px;
-  font-size: 0.85rem;
+  padding: 4px 12px;
+  margin-bottom: 16px;
+  font-size: 0.75rem;
+  /* Smaller tag */
   letter-spacing: 0.02em;
 }
-
 
 /* Header Logo - More Prominent */
 .logo {
@@ -3523,33 +3524,29 @@ html[data-theme='cosmic'] {
   letter-spacing: -0.02em;
 }
 
-/* Hero Heading - Reduced Boldness, Optimized Size */
+/* Hero Heading - Compact & Modern */
 .hero-heading {
   color: var(--color-text);
-  /* Slightly adjusted size for better fit */
-  font-size: clamp(2.4rem, 4.5vw, 3.8rem);
+  /* Significantly reduced for a tighter look */
+  font-size: clamp(2rem, 3.5vw, 2.8rem);
   font-weight: 700;
-  /* Reduced from 800 */
   line-height: 1.15;
-  margin-bottom: 20px;
+  margin-bottom: 12px;
   text-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
   letter-spacing: -0.02em;
 }
 
 .hero-heading .gradient {
   display: block;
-  /* Put on new line if needed, or keep inline but prominent */
   font-weight: 700;
-  /* Match heading weight */
-  font-size: 0.85em;
-  /* Slightly smaller relative to the main name for hierarchy */
+  font-size: 0.8em;
   background: linear-gradient(135deg, var(--color-primary), #3a94ff);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
   color: transparent;
-  padding-bottom: 6px;
-  margin-top: 6px;
+  padding-bottom: 4px;
+  margin-top: 4px;
 }
 
 html[data-theme='cosmic'] .hero-heading .gradient {
@@ -3557,16 +3554,16 @@ html[data-theme='cosmic'] .hero-heading .gradient {
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
-  text-shadow: 0 0 25px rgba(96, 165, 250, 0.4);
+  text-shadow: 0 0 20px rgba(96, 165, 250, 0.3);
 }
 
 .hero-sub {
   color: var(--color-subtle);
-  font-size: 1.1rem;
-  line-height: 1.65;
-  margin-bottom: 32px;
-  max-width: 90%;
-  /* Prevent line length from getting too long */
+  font-size: 0.95rem;
+  /* Compact body text */
+  line-height: 1.6;
+  margin-bottom: 24px;
+  max-width: 95%;
 }
 
 .hero-sub .text-strong {
@@ -3668,68 +3665,73 @@ html[data-theme='cosmic'] .app-btn:hover {
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
 }
 
-/* Buttons */
+/* Buttons - Compact & Refined */
 .hero-button {
   background: color-mix(in srgb, var(--color-surface) 50%, white);
   border: 1px solid var(--color-border);
   color: var(--color-text);
   backdrop-filter: blur(8px);
-  padding: 14px 28px;
-  border-radius: 16px;
-  /* slightly more squared for modern feel */
-  font-weight: 700;
+  padding: 10px 20px;
+  /* Smaller padding */
+  border-radius: 12px;
+  /* Slightly tighter radius */
+  font-weight: 600;
+  font-size: 0.9rem;
+  /* Smaller font */
   display: inline-flex;
   align-items: center;
-  gap: 10px;
-  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  gap: 8px;
+  transition: all 0.2s cubic-bezier(0.25, 0.8, 0.25, 1);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
 }
 
 .hero-button:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.12);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+}
+
+.hero-button svg {
+  width: 18px;
+  /* Smaller icons */
+  height: 18px;
 }
 
 .hero-button.call {
   background: linear-gradient(135deg, #0ea5e9, #0284c7);
   border: 1px solid rgba(255, 255, 255, 0.1);
   color: white;
-  box-shadow: 0 8px 20px rgba(14, 165, 233, 0.25);
+  box-shadow: 0 4px 12px rgba(14, 165, 233, 0.2);
 }
 
 .hero-button.call:hover {
-  box-shadow: 0 12px 28px rgba(14, 165, 233, 0.4);
+  box-shadow: 0 8px 20px rgba(14, 165, 233, 0.3);
 }
 
 .hero-button.whatsapp {
   background: linear-gradient(135deg, #25d366, #128c7e);
   border: 1px solid rgba(255, 255, 255, 0.1);
   color: white;
-  box-shadow: 0 8px 20px rgba(37, 211, 102, 0.25);
+  box-shadow: 0 4px 12px rgba(37, 211, 102, 0.2);
 }
 
 .hero-button.whatsapp:hover {
-  box-shadow: 0 12px 28px rgba(37, 211, 102, 0.4);
+  box-shadow: 0 8px 20px rgba(37, 211, 102, 0.3);
 }
 
 /* 5. Right Column: Visual Card - Compact */
 .hero-visual {
   position: relative;
-  border-radius: 32px;
-  /* Double border effect using box-shadow */
+  border-radius: 24px;
   box-shadow:
     0 0 0 1px var(--color-border),
-    0 24px 60px -20px var(--color-card-shadow);
+    0 20px 50px -20px var(--color-card-shadow);
   padding: 0;
-  /* Remove padding for immersive look */
   background: var(--color-surface);
   overflow: visible;
-  /* Allow floating elements to pop out if needed */
   animation: floatCard 8s ease-in-out infinite;
-  /* Constraints to keep it "little" */
-  max-width: 420px;
+  max-width: 380px;
+  /* Reduced width */
   justify-self: center;
-  /* Center in its column */
   width: 100%;
 }
 
