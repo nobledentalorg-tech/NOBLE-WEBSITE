@@ -541,16 +541,16 @@ section>h2 {
 }
 
 /* ==========================================================================
-   2B. SERVICE CARDS FIX - SIDE-BY-SIDE & PASTEL TEAL THEME
-   (Restores Layout: Text Left | Image Right)
+   2B. SERVICE CARDS FIX - LOGIC RESTORED & TEAL MIX
+   (Compatible with main.js search/filter/carousel)
    ========================================================================== */
 
 .service-card {
-    display: flex !important;
-    flex-direction: row !important;
-    /* Ensure side-by-side */
-    align-items: center !important;
-    justify-content: space-between !important;
+    /* Layout: allow JS to control 'display' (flex/none) */
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
 
     /* Base Appearance: Glowing Pure White */
     background: #ffffff !important;
@@ -561,17 +561,20 @@ section>h2 {
     box-shadow: 0 10px 40px -10px rgba(0, 0, 0, 0.08), 0 0 20px rgba(255, 255, 255, 0.8) !important;
 
     padding: 0 !important;
-    /* Reset padding to handle image flush or styled */
     overflow: hidden !important;
-    transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1) !important;
+    transition: transform 0.4s cubic-bezier(0.25, 0.8, 0.25, 1), background-color 0.4s ease, box-shadow 0.4s ease !important;
     margin-bottom: 24px !important;
     position: relative !important;
     z-index: 1 !important;
+
+    /* Prevent Bleeding */
+    max-width: 100%;
+    width: 100%;
 }
 
 /* HOVER STATE: Light Pastel Teal & Lift */
 .service-card:hover {
-    transform: translateY(-8px) !important;
+    transform: translateY(-8px);
     /* Pastel Teal Background */
     background: #E0F2F1 !important;
     /* Teal 50 */
@@ -584,12 +587,14 @@ section>h2 {
 
 /* --- LAYOUT: TEXT SECTION (LEFT) --- */
 .service-card .text-section {
-    flex: 1 1 60% !important;
-    /* Take up roughly 60% width */
+    flex: 1;
+    /* Allow flexible growth */
     padding: 32px !important;
     position: relative !important;
     z-index: 2 !important;
     text-align: left !important;
+    min-width: 0;
+    /* Prevent flex text overflow */
 }
 
 /* Restore Heading Colors */
@@ -626,30 +631,30 @@ section>h2 {
 
 /* --- LAYOUT: IMAGE (RIGHT) --- */
 .service-card img {
-    flex: 0 0 35% !important;
-    /* Fixed width portion */
-    height: 100% !important;
-    max-width: 35% !important;
-    aspect-ratio: 4/3 !important;
-    /* Maintain standard aspect */
+    flex: 0 0 35%;
+    /* Fixed 35% width, but overridable */
+    width: 35%;
+    max-width: 35%;
+    height: auto;
+    min-height: 100%;
+    aspect-ratio: 4/3;
     object-fit: cover !important;
     border-radius: 16px !important;
     margin: 16px !important;
-    /* Floating image look */
 
-    /* Image Effects */
-    filter: saturate(0.9) !important;
+    /* THE REQUESTED MIX EFFECT */
+    /* Multiply blends white img areas with card bg (White/Teal) */
+    mix-blend-mode: multiply !important;
+
+    background: transparent !important;
     transition: all 0.5s ease !important;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05) !important;
-    background: #f1f5f9 !important;
-    /* Placeholder bg */
+    box-shadow: none !important;
+    /* Remove shadow to help blending */
 }
 
 .service-card:hover img {
-    transform: scale(1.05) rotate(1deg) !important;
-    /* Dynamic movement */
+    transform: scale(1.05) rotate(1deg);
     filter: saturate(1.1) !important;
-    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12) !important;
 }
 
 /* --- INTERACTIVE ELEMENTS --- */
@@ -695,26 +700,94 @@ section>h2 {
 /* --- MOBILE RESPONSIVE FIX --- */
 @media (max-width: 768px) {
     .service-card {
-        flex-direction: column-reverse !important;
-        /* Image on top usually better, or keep bottom? Keeping layout logical: Text, then Image */
+        flex-direction: column-reverse;
+        /* Allow normal stacking */
+        display: flex;
         text-align: center !important;
-        padding-bottom: 20px !important;
+        padding-bottom: 24px !important;
+        height: auto !important;
     }
 
     .service-card .text-section {
         flex: auto !important;
-        text-align: center !important;
+        width: 100% !important;
         padding: 24px !important;
+        text-align: center !important;
     }
 
     .service-card img {
         flex: auto !important;
-        width: 90% !important;
+        width: 100% !important;
         max-width: 100% !important;
         height: 200px !important;
-        margin: 20px auto 0 !important;
-        /* Top margin only if reverse */
+        margin: 0 !important;
+        border-radius: 24px 24px 0 0 !important;
+        /* Top rounded only */
+        mix-blend-mode: normal !important;
+        /* Don't multiply on mobile if stacking looks weird */
     }
+}
+
+/* --- CAROUSEL NAVIGATOR & FILTERS (Dynamic Elements) --- */
+.controls {
+    display: flex;
+    justify-content: center;
+    gap: 16px;
+    margin-top: 32px;
+    margin-bottom: 24px;
+}
+
+#prev,
+#next {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.8);
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    color: #111;
+    font-size: 1.2rem;
+    cursor: pointer;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    backdrop-filter: blur(8px);
+}
+
+#prev:hover,
+#next:hover {
+    background: #0070f3;
+    /* Apple Blue */
+    color: #fff;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(0, 112, 243, 0.3);
+    border-color: transparent;
+}
+
+/* Clear Button */
+.clear-btn {
+    display: none;
+    background: rgba(239, 68, 68, 0.1);
+    color: #ef4444;
+    border: 1px solid rgba(239, 68, 68, 0.2);
+    padding: 6px 16px;
+    /* Pill size */
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    cursor: pointer;
+    margin-left: 12px;
+    transition: all 0.2s;
+}
+
+.clear-btn.show {
+    display: inline-block;
+}
+
+.clear-btn:hover {
+    background: #ef4444;
+    color: #fff;
 }
 
 /* ==========================================================================
