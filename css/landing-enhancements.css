@@ -576,3 +576,166 @@ section>h2 {
     padding-bottom: 10px;
     letter-spacing: -0.03em !important;
 }
+
+/* ==========================================================================
+   2B. SERVICE CARDS FIX - GLASS REVEAL (Overrides Previous Block)
+   ========================================================================== */
+
+/* 2. Service Cards - Apple "Frosty Glass" Reveal */
+.service-card {
+    /* Base: Image Background */
+    background: #000 !important;
+    /* Fallback */
+    border-radius: 24px !important;
+    border: 1px solid rgba(0, 0, 0, 0.06) !important;
+    box-shadow: var(--apple-shadow-md) !important;
+    transition: all 0.5s cubic-bezier(0.25, 0.8, 0.25, 1) !important;
+    overflow: hidden !important;
+    margin-bottom: 24px;
+    position: relative !important;
+}
+
+.service-card:hover {
+    transform: translateY(-8px) scale(1.02) !important;
+    box-shadow: 0 30px 60px -12px rgba(0, 0, 0, 0.25) !important;
+    border-color: rgba(255, 255, 255, 0.5) !important;
+}
+
+/* The Glass Mask (Replaces default gradient) */
+.service-card::before {
+    content: "" !important;
+    position: absolute !important;
+    inset: 0 !important;
+    /* Cover full card */
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.95) 20%, rgba(0, 0, 0, 0.4) 60%, transparent) !important;
+    opacity: 1 !important;
+    transition: all 0.5s ease !important;
+    z-index: 1 !important;
+    mask: none !important;
+    top: 60% !important;
+    /* Start low to show image */
+    backdrop-filter: blur(0px) !important;
+}
+
+.service-card:hover::before {
+    top: 0% !important;
+    /* Slide up full cover */
+    background: rgba(255, 255, 255, 0.85) !important;
+    /* Frosty White */
+    backdrop-filter: blur(20px) saturate(180%) !important;
+}
+
+/* Text Container */
+.service-card .text-section {
+    position: absolute !important;
+    bottom: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    padding: 24px !important;
+    z-index: 2 !important;
+    transition: all 0.5s ease !important;
+}
+
+.service-card:hover .text-section {
+    transform: translateY(-10px) !important;
+}
+
+/* Headlines */
+.service-card h3 {
+    font-size: 1.5rem !important;
+    font-weight: 800 !important;
+    margin-bottom: 12px !important;
+    color: #fff !important;
+    /* White text on Dark Gradient */
+    transition: color 0.4s ease !important;
+    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.6) !important;
+}
+
+.service-card:hover h3 {
+    color: #111827 !important;
+    /* Dark text on White Glass */
+    text-shadow: none !important;
+}
+
+/* Descriptions */
+.service-card p {
+    font-size: 1rem !important;
+    color: rgba(255, 255, 255, 0.95) !important;
+    line-height: 1.6 !important;
+    margin-bottom: 16px !important;
+    opacity: 0.9 !important;
+    transition: color 0.4s ease !important;
+    display: block !important;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5) !important;
+}
+
+.service-card:hover p {
+    color: #4b5563 !important;
+    /* Slate Text */
+    text-shadow: none !important;
+}
+
+/* Tips/Tags */
+.service-card .tips li {
+    font-size: 0.85rem !important;
+    font-weight: 600 !important;
+    color: #fff !important;
+    background: rgba(255, 255, 255, 0.2) !important;
+    border: 1px solid rgba(255, 255, 255, 0.3) !important;
+    padding: 6px 14px !important;
+    border-radius: 20px !important;
+    transition: all 0.4s ease !important;
+}
+
+.service-card:hover .tips li {
+    color: #059669 !important;
+    background: rgba(16, 185, 129, 0.15) !important;
+    border-color: rgba(16, 185, 129, 0.2) !important;
+}
+
+/* "Learn More" Premium Button */
+.read-more {
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    margin-top: 20px !important;
+    padding: 12px 24px !important;
+    background: rgba(255, 255, 255, 0.25) !important;
+    color: #fff !important;
+    border-radius: 50px !important;
+    font-weight: 700 !important;
+    text-decoration: none !important;
+    backdrop-filter: blur(4px) !important;
+    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1) !important;
+    border: 1px solid rgba(255, 255, 255, 0.6) !important;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15) !important;
+    width: 100% !important;
+    text-transform: uppercase !important;
+    font-size: 0.85rem !important;
+    letter-spacing: 1px !important;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2) !important;
+}
+
+.read-more::after {
+    content: '→' !important;
+    margin-left: 8px !important;
+    transition: transform 0.3s ease !important;
+}
+
+.service-card:hover .read-more {
+    background: linear-gradient(135deg, #0070f3 0%, #00c6ff 100%) !important;
+    color: #fff !important;
+    border-color: transparent !important;
+    box-shadow: 0 8px 20px rgba(0, 112, 243, 0.4) !important;
+    transform: translateY(-2px) !important;
+    text-shadow: none !important;
+}
+
+.service-card:hover .read-more:hover {
+    transform: translateY(-4px) scale(1.02) !important;
+    box-shadow: 0 12px 30px rgba(0, 112, 243, 0.6) !important;
+}
+
+.service-card:hover .read-more::after {
+    transform: translateX(6px) !important;
+}
