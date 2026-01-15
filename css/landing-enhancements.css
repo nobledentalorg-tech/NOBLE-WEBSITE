@@ -88,6 +88,15 @@
     letter-spacing: -0.02em;
 }
 
+/* 
+.hero-heading {
+    font-size: 3.5rem;
+    line-height: 1.1;
+    font-weight: 800;
+    margin-bottom: 24px;
+    letter-spacing: -0.02em;
+}
+
 .hero-heading .gradient {
     background: linear-gradient(90deg, #ffffff, #00d4ff);
     -webkit-background-clip: text;
@@ -96,14 +105,43 @@
 } 
 */
 
-/*
-.hero-sub {
-    font-size: 1.15rem;
-    line-height: 1.6;
-    color: rgba(255, 255, 255, 0.85);
-    margin-bottom: 32px;
+/* Professional Typography Overrides (Left Content) */
+.hero-copy {
+    max-width: 640px;
+    font-family: 'SF Pro Display', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
 }
-*/
+
+.hero-heading {
+    color: #111827;
+    /* Very dark grey/black */
+    font-weight: 800;
+    letter-spacing: -0.03em;
+    /* Tight tracking for modern look */
+    line-height: 1.15;
+}
+
+.hero-heading .gradient {
+    /* Subtle gradient for "Dentist in Nallagandla" */
+    background: linear-gradient(135deg, #0ea5e9 0%, #2563eb 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    display: inline-block;
+}
+
+.hero-sub {
+    font-size: 1.25rem;
+    /* Larger for readability */
+    line-height: 1.6;
+    color: #4b5563;
+    /* Professional Cool Grey */
+    font-weight: 400;
+    margin-bottom: 36px;
+}
+
+.text-strong {
+    color: #111;
+    font-weight: 600;
+}
 
 /*
 .text-strong {
@@ -112,55 +150,79 @@
 }
 */
 
-/* ================= BUTTONS ================= */
+/* ================= BUTTONS (Vibrant & Attractive) ================= */
 .hero-buttons {
     display: flex;
     gap: 16px;
     flex-wrap: wrap;
+    margin-top: 32px;
 }
 
 .hero-button {
     display: inline-flex;
     align-items: center;
-    gap: 8px;
+    gap: 10px;
     padding: 14px 28px;
-    border-radius: 12px;
-    font-weight: 600;
+    border-radius: 50px;
+    /* Pill shape for modern feel */
+    font-weight: 700;
     text-decoration: none;
-    transition: all 0.3s ease;
+    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
     font-size: 1rem;
+    letter-spacing: 0.3px;
+    position: relative;
+    overflow: hidden;
+    border: none;
 }
 
+/* 1. Book Online - Primary (Bright Blue Gradient) */
 .hero-button:not(.whatsapp):not(.call) {
-    background: linear-gradient(135deg, #00d4ff, #005bea);
+    background: linear-gradient(135deg, #0070f3 0%, #00c6ff 100%);
     color: #fff;
-    box-shadow: 0 4px 15px rgba(0, 212, 255, 0.3);
-    border: 1px solid transparent;
+    box-shadow: 0 8px 20px rgba(0, 112, 243, 0.3);
 }
 
 .hero-button:not(.whatsapp):not(.call):hover {
-    transform: translateY(-2px);
-    box-shadow: 0 8px 25px rgba(0, 212, 255, 0.4);
+    transform: translateY(-2px) scale(1.02);
+    box-shadow: 0 12px 30px rgba(0, 112, 243, 0.5);
+    filter: brightness(1.05);
 }
 
+/* 2. WhatsApp - Brand Green (Vibrant) */
 .hero-button.whatsapp {
-    background: rgba(37, 211, 102, 0.15);
-    color: #25D366;
-    border: 1px solid rgba(37, 211, 102, 0.3);
+    background: linear-gradient(135deg, #25D366 0%, #128C7E 100%);
+    /* Solid gradient instead of tint */
+    color: #fff;
+    box-shadow: 0 8px 20px rgba(37, 211, 102, 0.3);
 }
 
 .hero-button.whatsapp:hover {
-    background: rgba(37, 211, 102, 0.25);
+    transform: translateY(-2px) scale(1.02);
+    box-shadow: 0 12px 30px rgba(37, 211, 102, 0.5);
+    filter: brightness(1.05);
 }
 
+/* 3. Call Now - Elegant Outline/Glass or Dark (Professional) */
 .hero-button.call {
-    background: rgba(255, 255, 255, 0.1);
-    color: #fff;
-    border: 1px solid rgba(255, 255, 255, 0.2);
+    background: #fff;
+    color: #333;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
 }
 
 .hero-button.call:hover {
-    background: rgba(255, 255, 255, 0.2);
+    background: #f8f9fa;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+    border-color: rgba(0, 0, 0, 0.2);
+}
+
+/* SVG Icon Styling */
+.hero-button svg {
+    width: 20px;
+    height: 20px;
+    stroke-width: 2.5px;
+    /* Thicker strokes */
 }
 
 /* ================= THEME SWITCHER ================= */
@@ -221,21 +283,35 @@
 }
 
 /* Floating Glass Cards */
+/* Apple-Style Frosty Glass Cards */
 .floating-card {
     position: absolute;
-    background: rgba(255, 255, 255, 0.85);
-    /* Slightly more opaque for readability */
-    backdrop-filter: blur(12px);
-    padding: 12px 20px;
-    border-radius: 16px;
+    /* Frosty White Background */
+    background: rgba(255, 255, 255, 0.72);
+    /* Heavy Blur + Saturation for "Frost" effect */
+    backdrop-filter: blur(20px) saturate(180%);
+    -webkit-backdrop-filter: blur(20px) saturate(180%);
+
+    padding: 14px 24px;
+    border-radius: 20px;
+    /* Softer corners */
     display: flex;
     align-items: center;
-    gap: 12px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-    border: 1px solid rgba(255, 255, 255, 0.4);
+    gap: 14px;
+
+    /* Subtle white border for "cut glass" look */
+    border: 1px solid rgba(255, 255, 255, 0.8);
+
+    /* Soft, diffused shadow */
+    box-shadow:
+        0 4px 6px rgba(0, 0, 0, 0.02),
+        0 12px 24px rgba(0, 0, 0, 0.06);
+
     z-index: 3;
-    color: #1a1a1a;
+    color: #111;
+    /* Sharp dark text */
     animation: float 6s ease-in-out infinite;
+    font-family: var(--font);
 }
 
 .floating-card.top-right {
