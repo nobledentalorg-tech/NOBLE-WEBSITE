@@ -477,43 +477,6 @@ h3,
     /* Slate 900 */
 }
 
-/* 2. Service Cards - The "Glass & Lift" Effect */
-.service-card {
-    /* Reset & Upgrade */
-    background: #ffffff !important;
-    border-radius: 24px !important;
-    /* Modern Squircle-ish */
-    border: 1px solid rgba(0, 0, 0, 0.06) !important;
-    /* Crisp hairline border */
-    box-shadow: var(--apple-shadow-md) !important;
-    transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1) !important;
-    overflow: hidden !important;
-    margin-bottom: 24px;
-    /* Breathing room */
-}
-
-.service-card:hover {
-    transform: translateY(-6px) scale(1.01) !important;
-    box-shadow: var(--apple-shadow-lg), 0 0 0 1px rgba(0, 112, 243, 0.1) !important;
-    /* Blue lift ring */
-    border-color: rgba(0, 112, 243, 0.3) !important;
-}
-
-/* Typography inside cards */
-.service-card h3 {
-    font-size: 1.35rem !important;
-    font-weight: 700 !important;
-    margin-bottom: 8px !important;
-}
-
-.service-card p {
-    font-size: 0.95rem !important;
-    color: #4b5563 !important;
-    /* Slate 600 - softer reading text */
-    line-height: 1.6 !important;
-}
-
-/* Tags/Tips inside cards */
 .service-card .tips li {
     font-size: 0.85rem !important;
     color: #059669 !important;
@@ -578,164 +541,244 @@ section>h2 {
 }
 
 /* ==========================================================================
-   2B. SERVICE CARDS FIX - GLASS REVEAL (Overrides Previous Block)
+   2B. SERVICE CARDS FIX - SIDE-BY-SIDE & PASTEL TEAL THEME
+   (Restores Layout: Text Left | Image Right)
    ========================================================================== */
 
-/* 2. Service Cards - Apple "Frosty Glass" Reveal */
 .service-card {
-    /* Base: Image Background */
-    background: #000 !important;
-    /* Fallback */
+    display: flex !important;
+    flex-direction: row !important;
+    /* Ensure side-by-side */
+    align-items: center !important;
+    justify-content: space-between !important;
+
+    /* Base Appearance: Glowing Pure White */
+    background: #ffffff !important;
     border-radius: 24px !important;
-    border: 1px solid rgba(0, 0, 0, 0.06) !important;
-    box-shadow: var(--apple-shadow-md) !important;
-    transition: all 0.5s cubic-bezier(0.25, 0.8, 0.25, 1) !important;
+    border: 1px solid rgba(0, 0, 0, 0.05) !important;
+
+    /* The "Glowing White" Shadow */
+    box-shadow: 0 10px 40px -10px rgba(0, 0, 0, 0.08), 0 0 20px rgba(255, 255, 255, 0.8) !important;
+
+    padding: 0 !important;
+    /* Reset padding to handle image flush or styled */
     overflow: hidden !important;
-    margin-bottom: 24px;
+    transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1) !important;
+    margin-bottom: 24px !important;
     position: relative !important;
-}
-
-.service-card:hover {
-    transform: translateY(-8px) scale(1.02) !important;
-    box-shadow: 0 30px 60px -12px rgba(0, 0, 0, 0.25) !important;
-    border-color: rgba(255, 255, 255, 0.5) !important;
-}
-
-/* The Glass Mask (Replaces default gradient) */
-.service-card::before {
-    content: "" !important;
-    position: absolute !important;
-    inset: 0 !important;
-    /* Cover full card */
-    background: linear-gradient(to top, rgba(0, 0, 0, 0.95) 20%, rgba(0, 0, 0, 0.4) 60%, transparent) !important;
-    opacity: 1 !important;
-    transition: all 0.5s ease !important;
     z-index: 1 !important;
-    mask: none !important;
-    top: 60% !important;
-    /* Start low to show image */
-    backdrop-filter: blur(0px) !important;
 }
 
-.service-card:hover::before {
-    top: 0% !important;
-    /* Slide up full cover */
-    background: rgba(255, 255, 255, 0.85) !important;
-    /* Frosty White */
-    backdrop-filter: blur(20px) saturate(180%) !important;
+/* HOVER STATE: Light Pastel Teal & Lift */
+.service-card:hover {
+    transform: translateY(-8px) !important;
+    /* Pastel Teal Background */
+    background: #E0F2F1 !important;
+    /* Teal 50 */
+    border-color: #80CBC4 !important;
+    /* Teal 200 */
+
+    /* Vibrant Teal Glow Shadow */
+    box-shadow: 0 20px 40px -5px rgba(20, 184, 166, 0.25) !important;
 }
 
-/* Text Container */
+/* --- LAYOUT: TEXT SECTION (LEFT) --- */
 .service-card .text-section {
-    position: absolute !important;
-    bottom: 0 !important;
-    left: 0 !important;
-    right: 0 !important;
-    padding: 24px !important;
+    flex: 1 1 60% !important;
+    /* Take up roughly 60% width */
+    padding: 32px !important;
+    position: relative !important;
     z-index: 2 !important;
-    transition: all 0.5s ease !important;
+    text-align: left !important;
 }
 
-.service-card:hover .text-section {
-    transform: translateY(-10px) !important;
-}
-
-/* Headlines */
+/* Restore Heading Colors */
 .service-card h3 {
     font-size: 1.5rem !important;
     font-weight: 800 !important;
+    color: #111827 !important;
+    /* Dark Slate default */
     margin-bottom: 12px !important;
-    color: #fff !important;
-    /* White text on Dark Gradient */
-    transition: color 0.4s ease !important;
-    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.6) !important;
+    transition: color 0.3s ease !important;
+    text-shadow: none !important;
 }
 
 .service-card:hover h3 {
-    color: #111827 !important;
-    /* Dark text on White Glass */
-    text-shadow: none !important;
+    color: #0d9488 !important;
+    /* Teal 600 on hover */
 }
 
-/* Descriptions */
+/* Restore Paragraph Colors */
 .service-card p {
     font-size: 1rem !important;
-    color: rgba(255, 255, 255, 0.95) !important;
+    color: #4b5563 !important;
+    /* Slate 600 */
     line-height: 1.6 !important;
     margin-bottom: 16px !important;
-    opacity: 0.9 !important;
-    transition: color 0.4s ease !important;
-    display: block !important;
-    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5) !important;
+    text-shadow: none !important;
+    opacity: 1 !important;
 }
 
 .service-card:hover p {
-    color: #4b5563 !important;
-    /* Slate Text */
-    text-shadow: none !important;
+    color: #374151 !important;
+    /* Darker Slate on Teal bg */
 }
+
+/* --- LAYOUT: IMAGE (RIGHT) --- */
+.service-card img {
+    flex: 0 0 35% !important;
+    /* Fixed width portion */
+    height: 100% !important;
+    max-width: 35% !important;
+    aspect-ratio: 4/3 !important;
+    /* Maintain standard aspect */
+    object-fit: cover !important;
+    border-radius: 16px !important;
+    margin: 16px !important;
+    /* Floating image look */
+
+    /* Image Effects */
+    filter: saturate(0.9) !important;
+    transition: all 0.5s ease !important;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05) !important;
+    background: #f1f5f9 !important;
+    /* Placeholder bg */
+}
+
+.service-card:hover img {
+    transform: scale(1.05) rotate(1deg) !important;
+    /* Dynamic movement */
+    filter: saturate(1.1) !important;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12) !important;
+}
+
+/* --- INTERACTIVE ELEMENTS --- */
 
 /* Tips/Tags */
 .service-card .tips li {
+    background: rgba(0, 0, 0, 0.04) !important;
+    color: #059669 !important;
+    border: 1px solid transparent !important;
     font-size: 0.85rem !important;
-    font-weight: 600 !important;
-    color: #fff !important;
-    background: rgba(255, 255, 255, 0.2) !important;
-    border: 1px solid rgba(255, 255, 255, 0.3) !important;
-    padding: 6px 14px !important;
-    border-radius: 20px !important;
-    transition: all 0.4s ease !important;
+    padding: 6px 12px !important;
+    border-radius: 12px !important;
+    transition: all 0.3s ease !important;
 }
 
 .service-card:hover .tips li {
-    color: #059669 !important;
-    background: rgba(16, 185, 129, 0.15) !important;
-    border-color: rgba(16, 185, 129, 0.2) !important;
+    background: #ffffff !important;
+    /* White pills on teal bg */
+    box-shadow: 0 2px 4px rgba(0, 128, 128, 0.1) !important;
 }
 
-/* "Learn More" Premium Button */
+/* "Learn More" Button */
 .read-more {
+    margin-top: 16px !important;
+    background: transparent !important;
+    color: #0d9488 !important;
+    /* Teal 600 */
+    border: 1px solid #0d9488 !important;
+    box-shadow: none !important;
+    text-shadow: none !important;
+    width: auto !important;
     display: inline-flex !important;
-    align-items: center !important;
-    justify-content: center !important;
-    margin-top: 20px !important;
-    padding: 12px 24px !important;
-    background: rgba(255, 255, 255, 0.25) !important;
-    color: #fff !important;
-    border-radius: 50px !important;
-    font-weight: 700 !important;
-    text-decoration: none !important;
-    backdrop-filter: blur(4px) !important;
-    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1) !important;
-    border: 1px solid rgba(255, 255, 255, 0.6) !important;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15) !important;
-    width: 100% !important;
-    text-transform: uppercase !important;
-    font-size: 0.85rem !important;
-    letter-spacing: 1px !important;
-    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2) !important;
-}
-
-.read-more::after {
-    content: '→' !important;
-    margin-left: 8px !important;
-    transition: transform 0.3s ease !important;
 }
 
 .service-card:hover .read-more {
-    background: linear-gradient(135deg, #0070f3 0%, #00c6ff 100%) !important;
+    background: #0d9488 !important;
     color: #fff !important;
-    border-color: transparent !important;
-    box-shadow: 0 8px 20px rgba(0, 112, 243, 0.4) !important;
+    border-color: #0d9488 !important;
     transform: translateY(-2px) !important;
-    text-shadow: none !important;
+    box-shadow: 0 4px 12px rgba(13, 148, 136, 0.3) !important;
 }
 
-.service-card:hover .read-more:hover {
-    transform: translateY(-4px) scale(1.02) !important;
-    box-shadow: 0 12px 30px rgba(0, 112, 243, 0.6) !important;
+/* --- MOBILE RESPONSIVE FIX --- */
+@media (max-width: 768px) {
+    .service-card {
+        flex-direction: column-reverse !important;
+        /* Image on top usually better, or keep bottom? Keeping layout logical: Text, then Image */
+        text-align: center !important;
+        padding-bottom: 20px !important;
+    }
+
+    .service-card .text-section {
+        flex: auto !important;
+        text-align: center !important;
+        padding: 24px !important;
+    }
+
+    .service-card img {
+        flex: auto !important;
+        width: 90% !important;
+        max-width: 100% !important;
+        height: 200px !important;
+        margin: 20px auto 0 !important;
+        /* Top margin only if reverse */
+    }
 }
 
-.service-card:hover .read-more::after {
-    transform: translateX(6px) !important;
+/* ==========================================================================
+   2C. BRAND TYPOGRAPHY POLISH ("Noble Dental Care")
+   ========================================================================== */
+
+/* The Main Title Wrapper */
+.hero-heading {
+    /* Reset line-height for better spacing */
+    line-height: 1.15 !important;
+    letter-spacing: -0.02em !important;
+}
+
+/* The "Noble Dental Care" Part */
+.brand-name {
+    display: block;
+    /* Make it sit on its own line if needed, or inline-block */
+    /* Remove "Bulky" feel */
+    font-weight: 700 !important;
+    /* Reduced from 800 */
+    font-family: var(--apple-font) !important;
+
+    /* Elegant & Premium Gradient (Deep Royal Blue -> Slate) */
+    background: linear-gradient(135deg, #0f172a 0%, #334155 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+
+    /* Letter Spacing for Airiness */
+    letter-spacing: -0.01em !important;
+
+    /* Margin adjustment */
+    margin-bottom: 8px;
+    font-size: 3.5rem !important;
+    /* Ensure prominent size */
+
+    /* Subtle Shadow for Depth (Optional, kept minimal for clean Apple look) */
+    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.1));
+}
+
+/* The "Dentist in Nallagandla" Part (Existing .gradient class override) */
+.hero-heading .gradient {
+    font-weight: 600 !important;
+    /* Lighter than brand name for hierarchy */
+    font-size: 2rem !important;
+    /* Smaller sub-headline */
+    margin-top: 4px;
+    display: block;
+
+    /* Vibrant Cyan/Blue Gradient */
+    background: linear-gradient(90deg, #0070f3 0%, #00c6ff 100%) !important;
+    -webkit-background-clip: text !important;
+    -webkit-text-fill-color: transparent !important;
+
+    letter-spacing: 0.02em !important;
+    text-transform: uppercase !important;
+}
+
+/* Mobile Adjustments */
+@media (max-width: 768px) {
+    .brand-name {
+        font-size: 2.5rem !important;
+    }
+
+    .hero-heading .gradient {
+        font-size: 1.25rem !important;
+    }
 }
