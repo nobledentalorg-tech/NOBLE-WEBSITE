@@ -1,0 +1,320 @@
+/* =========================================
+   LANDING ENHANCEMENTS & TREATMENT CARDS
+   (Matching Original "Glass/Blur" Design)
+   ========================================= */
+
+/* --- Container & Layout --- */
+#treatments {
+    padding-block: 4rem 6rem;
+    background: linear-gradient(to bottom, #fcfefe 0%, #f1f5f9 100%);
+    overflow: hidden;
+}
+
+#treatments h2 {
+    text-align: center;
+    font-size: clamp(2rem, 3vw, 2.75rem);
+    font-weight: 800;
+    margin-bottom: 1rem;
+    color: var(--ink);
+    letter-spacing: -0.02em;
+}
+
+#treatments>p[itemprop="description"] {
+    text-align: center;
+    max-width: 60ch;
+    margin: 0 auto 3rem auto;
+    color: var(--muted);
+    font-size: 1.1rem;
+    line-height: 1.6;
+}
+
+/* --- Filter Bar --- */
+/* (Kept the nice filter bar from previous step as it wasn't complained about, 
+   but ensuring it fits the theme) */
+.filter-bar {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin-bottom: 3rem;
+    flex-wrap: wrap;
+    padding-inline: var(--pad);
+}
+
+.filter-bar input[type="search"] {
+    padding: 12px 20px;
+    border-radius: 12px;
+    border: 1px solid var(--glass-bd);
+    background: #fff;
+    min-width: 280px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04);
+    font-size: 0.95rem;
+    transition: all 0.2s ease;
+}
+
+.filter-bar input[type="search"]:focus {
+    border-color: var(--brand);
+    outline: 4px solid var(--ring);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.08);
+}
+
+.filter-bar select {
+    padding: 12px 32px 12px 20px;
+    border-radius: 12px;
+    border: 1px solid var(--glass-bd);
+    background: #fff;
+    cursor: pointer;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04);
+    font-size: 0.95rem;
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%23475569' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 12px center;
+    transition: all 0.2s ease;
+}
+
+/* --- Slider & Grid --- */
+.slider {
+    position: relative;
+    padding-inline: var(--pad);
+}
+
+.slides {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 2rem;
+    justify-items: center;
+    /* Center cards in grid */
+}
+
+/* --- Service Card (Glass/Blur Design Replica) --- */
+.service-card {
+    /* Variables matching original .card */
+    --bg: #fff;
+    --title-color: #fff;
+    --title-color-hover: #1e1e1e;
+    --text-color: #475569;
+    --accent-color: #57c0b9;
+    /* Brand Teal */
+
+    background: var(--bg);
+    border-radius: 2rem;
+    padding: 0.5rem;
+    width: 100%;
+    max-width: 22rem;
+    /* Reasonable max width */
+    height: 28rem;
+    /* Fixed height for the effect */
+    overflow: hidden;
+    position: relative;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    transition: box-shadow 0.3s ease;
+    display: block;
+    /* Ensure it's not flex column interfering with absolute positioning */
+}
+
+/* Background Blur/Gradient Mask (Initial State) */
+.service-card::before {
+    content: "";
+    position: absolute;
+    width: calc(100% - 1rem);
+    height: 35%;
+    /* Slightly taller to cover initial text hint if any */
+    bottom: 0.5rem;
+    left: 0.5rem;
+    mask: linear-gradient(to top, #000 20%, transparent);
+    -webkit-mask: linear-gradient(to top, #000 20%, transparent);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-radius: 0 0 1.5rem 1.5rem;
+    transform: translateY(0);
+    transition: transform 0.4s ease-out;
+    z-index: 10;
+    background: rgba(255, 255, 255, 0.1);
+    /* Slight tint */
+}
+
+/* Image Styles */
+.service-card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    border-radius: 1.5rem;
+    display: block;
+    transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+/* Text Content (Slide-In Setup) */
+.service-card .text-section {
+    position: absolute;
+    bottom: 1rem;
+    left: 0.5rem;
+    width: calc(100% - 1rem);
+    padding: 1.5rem;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    z-index: 20;
+    /* Above blur mask */
+    background: rgba(255, 255, 255, 0.95);
+    /* Solid-ish background on hover state */
+    border-radius: 1.5rem;
+
+    /* Initial State: Hidden/Pushed Down */
+    opacity: 0;
+    transform: translateY(20%);
+    transition: all 0.4s ease-out;
+
+    /* Reset height to auto to fit content */
+    height: auto;
+    max-height: 80%;
+    /* Don't cover entire image */
+}
+
+/* Title - Always visible? Or fade in? Original had it visible over image. 
+   Let's make it visible over image initially, then move. 
+   Actually, the original design described in styles.css had title opacity 0 initially? 
+   No, let's look at styles.css: "Title color before hover (over image) ... opacity: 0; translate: 0 100%"
+   So it WAS hidden. */
+
+/* Let's try to make the Title visible initially over the blur, then full content on hover */
+.service-card .service-title,
+.service-card h3 {
+    margin: 0 0 0.5rem 0;
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--ink);
+
+    /* On non-hover, let's try to show just the title at the bottom? 
+     The original styles.css hid everything. 
+     But let's make it "Better": Title visible at bottom, slides up to reveal details. */
+
+    /* Resetting the "Hidden" state from styles.css to be "Peeking" state */
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Adjusting .text-section for "Peeking" state */
+.service-card .text-section {
+    background: transparent;
+    /* Transparent initially */
+    bottom: 0.5rem;
+    opacity: 1;
+    transform: translateY(calc(100% - 4.5rem));
+    /* Show only title area */
+}
+
+
+.service-card p {
+    font-size: 0.95rem;
+    line-height: 1.5;
+    color: var(--text-color);
+    margin-bottom: 1rem;
+
+    /* Hide details initially */
+    opacity: 0;
+    transition: opacity 0.3s ease 0.1s;
+}
+
+.service-card .tips,
+.service-card .read-more {
+    opacity: 0;
+    transition: opacity 0.3s ease 0.2s;
+}
+
+.service-card .tips {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 1rem 0;
+}
+
+.service-card .tips li {
+    font-size: 0.85rem;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    color: var(--text-color);
+}
+
+.service-card .read-more {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-weight: 700;
+    color: var(--brand);
+    text-decoration: none;
+}
+
+/* --- HOVER EFFECTS --- */
+
+/* 1. Blur mask disappears (slides down) */
+.service-card:hover::before {
+    transform: translateY(100%);
+    opacity: 0;
+}
+
+/* 2. Image shrinks slightly and moves up/centered */
+.service-card:hover img {
+    transform: scale(0.95) translateY(-5%);
+    /* Move image up slightly */
+    border-radius: 2rem 2rem 0 0;
+    /* flatten bottom corners looks weird, keep rounded */
+}
+
+/* 3. Text Section slides up and becomes solid */
+.service-card:hover .text-section {
+    transform: translateY(0);
+    background: rgba(255, 255, 255, 0.95);
+    box-shadow: 0 -10px 30px rgba(0, 0, 0, 0.05);
+}
+
+/* 4. Details fade in */
+.service-card:hover p,
+.service-card:hover .tips,
+.service-card:hover .read-more {
+    opacity: 1;
+}
+
+
+/* --- Slider Controls (Fixing "Elongated Arrows") --- */
+.ticker-ctrl {
+    background: #fff;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    /* Circle */
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    transition: all 0.2s ease;
+    color: var(--ink);
+    font-size: 1.2rem;
+    margin: 0 8px;
+    /* Space between buttons */
+}
+
+.ticker-ctrl:hover {
+    background: var(--brand);
+    color: #fff;
+    transform: scale(1.1);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
+}
+
+.ticker-ctrl:active {
+    transform: scale(0.95);
+}
+
+/* Ensure Icons inside aren't weird */
+.ticker-ctrl .icon {
+    line-height: 1;
+    display: block;
+}
+
+/* Center the controls container */
+.slider-controls {
+    text-align: center;
+    margin-top: 2rem;
+}
