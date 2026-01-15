@@ -644,128 +644,123 @@
       and our medical panel.
     </p>
 
-    <!-- SEARCH & FILTER BAR (Compact & Glass) -->
-    <div class="search-filter-container fade-in-up">
-      <div class="search-wrapper">
-        <input type="text" id="treatmentSearch" placeholder="Search treatments..." aria-label="Search treatments">
-        <svg class="search-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-          stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-          <circle cx="11" cy="11" r="8"></circle>
-          <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
-        </svg>
-      </div>
+    <!-- Filter -->
+    <div class="filter-bar">
+      <label class="visually-hidden" for="treatmentSearch">Search treatments or symptoms</label>
+      <input type="search" id="treatmentSearch"
+        placeholder="Search treatments or symptoms (e.g. pain, crooked teeth, kids, pregnancy)...">
+      <label class="visually-hidden" for="categoryFilter">Filter treatments by speciality</label>
+      <select id="categoryFilter">
+        <option value="">Filter by treatment</option>
 
-      <div class="filter-wrapper">
-        <select id="categoryFilter" aria-label="Filter treatments by speciality">
-          <option value="" disabled selected>Filter by treatment</option>
+        <!-- Core Treatments -->
+        <option value="dental-implants">Dental Implants</option>
+        <option value="root-canal">Painless Root Canal Treatment</option>
+        <option value="braces-orthodontics">Braces & Orthodontics</option>
+        <option value="invisalign-aligners">Invisalign Clear Aligners</option>
+        <option value="teeth-whitening">Teeth Whitening</option>
+        <option value="dental-veneers">Dental Veneers</option>
+        <option value="smile-design">Smile Designing</option>
+        <option value="crowns-bridges">Crowns & Bridges</option>
+        <option value="dentures">Dentures</option>
+        <option value="pediatric-dentistry">Pediatric Dentistry</option>
+        <option value="preventive-dentistry">Preventive Dentistry</option>
+        <option value="oral-prophylaxis">Oral Prophylaxis</option>
+        <option value="tooth-extraction">Tooth Extraction</option>
+        <option value="wisdom-tooth-surgery">Wisdom Tooth Surgery</option>
+        <option value="gum-disease">Gum Disease Treatment</option>
+        <option value="scaling-polishing">Scaling & Polishing</option>
+        <option value="dental-fillings">Dental Fillings</option>
+        <option value="cosmetic-bonding">Cosmetic Bonding</option>
+        <option value="full-mouth-rehab">Full Mouth Rehabilitation</option>
+        <option value="dental-bridges">Dental Bridges</option>
+        <option value="cosmetic-dentistry">Cosmetic Dentistry</option>
+        <option value="orthognathic-surgery">Orthognathic Surgery</option>
+        <option value="maxillofacial-surgery">Maxillofacial Surgery</option>
+        <option value="dental-tourism">Dental Tourism</option>
+        <option value="tmj-disorders">TMJ Disorder Treatment</option>
+        <option value="sedation-dentistry">Sedation Dentistry</option>
+        <option value="laser-dentistry">Laser Dentistry</option>
+        <option value="emergency-dentistry">Emergency Dentistry</option>
+        <option value="pregnancy-dental-care">Pregnancy Dental Care</option>
+        <option value="pediatric-pulp">Pediatric Pulp Therapy</option>
+        <option value="fluoride-therapy">Fluoride Therapy</option>
+        <option value="dental-sealants">Dental Sealants</option>
+        <option value="space-maintainers">Space Maintainers</option>
+        <option value="habit-breaking">Habit Breaking Appliances</option>
 
-          <!-- Core Treatments -->
-          <option value="dental-implants">Dental Implants</option>
-          <option value="root-canal">Painless Root Canal Treatment</option>
-          <option value="braces-orthodontics">Braces & Orthodontics</option>
-          <option value="invisalign-aligners">Invisalign Clear Aligners</option>
-          <option value="teeth-whitening">Teeth Whitening</option>
-          <option value="dental-veneers">Dental Veneers</option>
-          <option value="smile-design">Smile Designing</option>
-          <option value="crowns-bridges">Crowns & Bridges</option>
-          <option value="dentures">Dentures</option>
-          <option value="pediatric-dentistry">Pediatric Dentistry</option>
-          <option value="preventive-dentistry">Preventive Dentistry</option>
-          <option value="oral-prophylaxis">Oral Prophylaxis</option>
-          <option value="tooth-extraction">Tooth Extraction</option>
-          <option value="wisdom-tooth-surgery">Wisdom Tooth Surgery</option>
-          <option value="gum-disease">Gum Disease Treatment</option>
-          <option value="scaling-polishing">Scaling & Polishing</option>
-          <option value="dental-fillings">Dental Fillings</option>
-          <option value="cosmetic-bonding">Cosmetic Bonding</option>
-          <option value="full-mouth-rehab">Full Mouth Rehabilitation</option>
-          <option value="dental-bridges">Dental Bridges</option>
-          <option value="cosmetic-dentistry">Cosmetic Dentistry</option>
-          <option value="orthognathic-surgery">Orthognathic Surgery</option>
-          <option value="maxillofacial-surgery">Maxillofacial Surgery</option>
-          <option value="dental-tourism">Dental Tourism</option>
-          <option value="tmj-disorders">TMJ Disorder Treatment</option>
-          <option value="sedation-dentistry">Sedation Dentistry</option>
-          <option value="laser-dentistry">Laser Dentistry</option>
-          <option value="emergency-dentistry">Emergency Dentistry</option>
-          <option value="pregnancy-dental-care">Pregnancy Dental Care</option>
-          <option value="pediatric-pulp">Pediatric Pulp Therapy</option>
-          <option value="fluoride-therapy">Fluoride Therapy</option>
-          <option value="dental-sealants">Dental Sealants</option>
-          <option value="space-maintainers">Space Maintainers</option>
-          <option value="habit-breaking">Habit Breaking Appliances</option>
-
-          <!-- Expanded Treatments -->
-          <option value="mouthguards">Mouthguards for Sports</option>
-          <option value="night-guards">Night Guards</option>
-          <option value="sleep-apnea">Sleep Apnea Dentistry</option>
-          <option value="dental-checkups">Dental Checkups & Exams</option>
-          <option value="digital-dentistry">Digital Dentistry</option>
-          <option value="intraoral-scans">Intraoral Scans</option>
-          <option value="fluoride-treatment">Fluoride Treatment</option>
-          <option value="nutritional-counseling">Nutritional Counseling</option>
-          <option value="preventive-programs">Preventive Dentistry Programs</option>
-          <option value="tobacco-cessation">Tobacco Cessation Counseling</option>
-          <option value="pediatric-preventive">Pediatric Preventive Care</option>
-          <option value="pediatric-pulp-therapy">Pediatric Pulp Therapy (Kids)</option>
-          <option value="interceptive-ortho">Interceptive Orthodontics</option>
-          <option value="myofunctional-therapy">Myofunctional Therapy</option>
-          <option value="early-childhood-caries">Early Childhood Caries Treatment</option>
-          <option value="pediatric-crowns">Pediatric Dental Crowns</option>
-          <option value="pulpotomy">Pulpotomy</option>
-          <option value="pulpectomy">Pulpectomy</option>
-          <option value="pediatric-extractions">Pediatric Extractions</option>
-          <option value="smile-designing">Smile Designing (Digital)</option>
-          <option value="gum-depigmentation">Gum Depigmentation</option>
-          <option value="crown-lengthening">Crown Lengthening</option>
-          <option value="ridge-augmentation">Ridge Augmentation</option>
-          <option value="sinus-lift">Sinus Lift Surgery</option>
-          <option value="bone-grafting">Bone Grafting</option>
-          <option value="apicoectomy">Apicoectomy</option>
-          <option value="cleft-care">Cleft Lip & Palate Care</option>
-          <option value="tmj-therapy">TMJ / TMD Therapy</option>
-          <option value="sports-mouthguards">Sports Mouthguards</option>
-          <option value="oral-biopsy">Oral Biopsy</option>
-          <option value="frenectomy">Frenectomy</option>
-          <option value="retainers">Orthodontic Retainers</option>
-          <option value="dental-jewellery">Dental Jewellery</option>
-          <option value="preventive-sealants">Preventive Sealants</option>
-          <option value="oral-hygiene-instruction">Oral Hygiene Instruction</option>
-          <option value="digital-xrays">Digital Dental X-Rays</option>
-          <option value="dental-cleaning">Dental Cleaning (Scaling & Polishing)</option>
-          <option value="geriatric-dentistry">Geriatric Dentistry</option>
-          <option value="oral-medicine">Oral Medicine & Diagnosis</option>
-          <option value="maxillofacial-prosthetics">Maxillofacial Prosthetics</option>
-          <option value="emergency-trauma">Emergency Dental Trauma Care</option>
-          <option value="pre-ortho">Pre-Orthodontic Guidance</option>
-          <option value="tongue-cleaning">Tongue Cleaning Guidance</option>
-          <option value="smoking-cessation">Smoking Cessation Counseling</option>
-          <option value="pediatric-emergency">Pediatric Emergency Dental Care</option>
-        </select>
-      </div>
+        <!-- Expanded Treatments -->
+        <option value="mouthguards">Mouthguards for Sports</option>
+        <option value="night-guards">Night Guards</option>
+        <option value="sleep-apnea">Sleep Apnea Dentistry</option>
+        <option value="dental-checkups">Dental Checkups & Exams</option>
+        <option value="digital-dentistry">Digital Dentistry</option>
+        <option value="intraoral-scans">Intraoral Scans</option>
+        <option value="fluoride-treatment">Fluoride Treatment</option>
+        <option value="nutritional-counseling">Nutritional Counseling</option>
+        <option value="preventive-programs">Preventive Dentistry Programs</option>
+        <option value="tobacco-cessation">Tobacco Cessation Counseling</option>
+        <option value="pediatric-preventive">Pediatric Preventive Care</option>
+        <option value="pediatric-pulp-therapy">Pediatric Pulp Therapy (Kids)</option>
+        <option value="interceptive-ortho">Interceptive Orthodontics</option>
+        <option value="myofunctional-therapy">Myofunctional Therapy</option>
+        <option value="early-childhood-caries">Early Childhood Caries Treatment</option>
+        <option value="pediatric-crowns">Pediatric Dental Crowns</option>
+        <option value="pulpotomy">Pulpotomy</option>
+        <option value="pulpectomy">Pulpectomy</option>
+        <option value="pediatric-extractions">Pediatric Extractions</option>
+        <option value="smile-designing">Smile Designing (Digital)</option>
+        <option value="gum-depigmentation">Gum Depigmentation</option>
+        <option value="crown-lengthening">Crown Lengthening</option>
+        <option value="ridge-augmentation">Ridge Augmentation</option>
+        <option value="sinus-lift">Sinus Lift Surgery</option>
+        <option value="bone-grafting">Bone Grafting</option>
+        <option value="apicoectomy">Apicoectomy</option>
+        <option value="cleft-care">Cleft Lip & Palate Care</option>
+        <option value="tmj-therapy">TMJ / TMD Therapy</option>
+        <option value="sports-mouthguards">Sports Mouthguards</option>
+        <option value="oral-biopsy">Oral Biopsy</option>
+        <option value="frenectomy">Frenectomy</option>
+        <option value="retainers">Orthodontic Retainers</option>
+        <option value="dental-jewellery">Dental Jewellery</option>
+        <option value="preventive-sealants">Preventive Sealants</option>
+        <option value="oral-hygiene-instruction">Oral Hygiene Instruction</option>
+        <option value="digital-xrays">Digital Dental X-Rays</option>
+        <option value="dental-cleaning">Dental Cleaning (Scaling & Polishing)</option>
+        <option value="geriatric-dentistry">Geriatric Dentistry</option>
+        <option value="oral-medicine">Oral Medicine & Diagnosis</option>
+        <option value="maxillofacial-prosthetics">Maxillofacial Prosthetics</option>
+        <option value="emergency-trauma">Emergency Dental Trauma Care</option>
+        <option value="pre-ortho">Pre-Orthodontic Guidance</option>
+        <option value="tongue-cleaning">Tongue Cleaning Guidance</option>
+        <option value="smoking-cessation">Smoking Cessation Counseling</option>
+        <option value="pediatric-emergency">Pediatric Emergency Dental Care</option>
+      </select>
     </div>
 
 
     <!-- Healthflo Trust Block -->
-    <!-- HEALTHFLO TRUST BLOCK (Animated & Compact) -->
-    <div class="trust-block fade-in-up delay-100">
-      <div class="trust-badge">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+    <div
+      style="margin-bottom: 3rem; background: #f0fdf4; border: 1px solid #bbf7d0; border-radius: 12px; padding: 1.5rem; display: flex; flex-wrap: wrap; gap: 20px; align-items: center; justify-content: center;">
+      <div style="font-weight: 700; color: #15803d; display: flex; align-items: center; gap: 8px;">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
           <path d="M12 2L1 21h22L12 2zm0 3.99L19.53 19H4.47L12 5.99zM11 16h2v2h-2zm0-6h2v4h-2z" />
         </svg>
-        <span>Powered by Healthflo</span>
+        Powered by Healthflo
       </div>
-
-      <div class="trust-features">
-        <div class="feature-tag">📱 <strong>Digital Records</strong></div>
-        <div class="feature-tag">💸 <strong>0% EMI</strong></div>
-        <div class="feature-tag">🛡️ <strong>AI-Verified</strong> Diagnosis</div>
-      </div>
-
-      <!-- New Review Line -->
-      <div class="review-line">
-        <span class="ai-tag">Healthflo-NEO AI</span> · Reviewed By <strong>Dr. Dhivakaran, Dr. Thik Vijay, Dr. Roger
-          Ronaldo</strong>
+      <div style="display: flex; gap: 15px; flex-wrap: wrap; justify-content: center;">
+        <div
+          style="background: white; padding: 8px 16px; border-radius: 20px; font-size: 0.9rem; border: 1px solid #dcfce7;">
+          📱 <strong>Digital Records</strong> (X-Rays on App)
+        </div>
+        <div
+          style="background: white; padding: 8px 16px; border-radius: 20px; font-size: 0.9rem; border: 1px solid #dcfce7;">
+          💸 <strong>0% EMI</strong> Instant Approval
+        </div>
+        <div
+          style="background: white; padding: 8px 16px; border-radius: 20px; font-size: 0.9rem; border: 1px solid #dcfce7;">
+          🛡️ <strong>AI-Verified</strong> Diagnosis
+        </div>
       </div>
     </div>
 
