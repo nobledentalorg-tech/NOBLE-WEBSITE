@@ -12,6 +12,10 @@ export const metadata: Metadata = {
     default: 'Noble Dental Care | Premium Dentistry in Nallagandla & Tellapur',
     template: '%s | Noble Dental Care'
   },
+  metadataBase: new URL('https://nobledentalnallagandla.in'),
+  alternates: {
+    canonical: './',
+  },
   description: 'The Future of Bio-Digital Humanism. Dr. Dhivakaran merges AI-guided precision with regenerative ethics. Experience the 2035 standard of painless, predictive, and honest oral healthcare today.',
   keywords: [
     // 10 Years Ahead (Futuristic)
@@ -43,10 +47,31 @@ export const metadata: Metadata = {
   }
 };
 
+import Script from 'next/script';
+
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en" suppressHydrationWarning className="scroll-smooth">
+      <head>
+        <Script id="google-tag-manager" strategy="afterInteractive">
+          {`
+            (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+            new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+            j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+            'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+            })(window,document,'script','dataLayer','GTM-XXXXXX');
+          `}
+        </Script>
+      </head>
       <body className={`${jakarta.variable} ${inter.variable} font-sans antialiased bg-slate-50 dark:bg-dark-bg text-slate-900 dark:text-white transition-colors duration-300`}>
+        <noscript>
+          <iframe
+            src="https://www.googletagmanager.com/ns.html?id=GTM-XXXXXX"
+            height="0"
+            width="0"
+            style={{ display: 'none', visibility: 'hidden' }}
+          />
+        </noscript>
         <LayoutShell>
           {children}
         </LayoutShell>
