@@ -1,11 +1,6 @@
 [build]
   command = "npm run build"
-  functions = "netlify/functions"
-  publish = ".netlify/output" # required for SSR builds
-
-[build.environment]
-  NODE_VERSION = "18" # or the version you need
-  NEXT_PLUGIN_FORCE_USE = "true"
+  publish = "out"
 
 [[plugins]]
   package = "@netlify/plugin-nextjs"
