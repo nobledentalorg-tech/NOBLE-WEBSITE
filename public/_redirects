@@ -1,0 +1,27 @@
+# --- 301 Redirects (SEO Juice Transfer) ---
+# Format: /old-path  /new-path  301
+
+# Core Pages
+/index.html   /   301
+/contact.html /contact 301
+/about.html   /#about 301
+
+# Treatments (Mapping Old 'Specialities' to New 'Treatments')
+/specialities/invisalign.html        /treatments/invisalign        301
+/specialities/implants.html          /treatments/dental-implants   301
+/specialities/dental-implants.html   /treatments/dental-implants   301
+/specialities/root-canal.html        /treatments/root-canal        301
+/specialities/rct.html               /treatments/root-canal        301
+/specialities/braces.html            /treatments/braces            301
+/specialities/orthodontics.html      /treatments/braces            301
+/specialities/kids.html              /treatments/kids-dentistry    301
+/specialities/pediatric.html         /treatments/kids-dentistry    301
+/specialities/veneers.html           /treatments/veneers           301
+/specialities/smile-design.html      /treatments/veneers           301
+/specialities/crowns.html            /treatments/crowns-bridges    301
+/specialities/bridges.html           /treatments/crowns-bridges    301
+/specialities/gums.html              /treatments/gum-disease       301
+/specialities/whitening.html         /treatments/teeth-whitening   301
+
+# Catch-All for other specialities (Optional Safe Fallback)
+/specialities/*  /treatments  301
