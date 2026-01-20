@@ -8,27 +8,27 @@ const Testimonials = () => {
   const reviews = [
     {
       id: '1',
-      name: 'Sahana Rao',
-      location: 'Tellapur',
+      name: 'Vishal Nirmal',
+      location: 'Patient',
       rating: 5,
-      text: "I was terrified of the dentist. Dr. Dhivakaran sat with me for 20 mins just talking before he even picked up a tool. The root canal was actually painless.",
-      treatment: "Root Canal"
+      text: "Dr. Dhivakaran cares like family. He even attended my calls at 2 AM after surgery to answer doubts. He planned my treatment efficiently where others failed.",
+      treatment: "Emergency Care"
     },
     {
       id: '2',
-      name: 'Arjun K.',
-      location: 'Gachibowli',
+      name: 'Sandhya Rani',
+      location: 'Patient',
       rating: 5,
-      text: "Other clinics said I needed surgery. Noble Dental saved my natural tooth with their microscope. Highly technical and ethical team.",
-      treatment: "Second Opinion" // Highlights trust
+      text: "Previous doctors said they had to cut my bone/do surgery. Dr. Dhivakaran cured the infection WITHOUT surgery. Very happy my problem is gone.",
+      treatment: "Second Opinion"
     },
     {
       id: '3',
-      name: 'Priya M.',
-      location: 'Nallagandla',
+      name: 'Suganya Sweety',
+      location: 'Patient',
       rating: 5,
-      text: "The invisible aligners changed my smile in 6 months. No one even knew I was wearing them. Best investment ever.",
-      treatment: "Invisalign"
+      text: "One of the best dental experiences. So clean, careful, and thoughtful. Dr. Dhivakaran explained every procedure with pros and cons clearly.",
+      treatment: "Comprehensive Care"
     },
   ];
 

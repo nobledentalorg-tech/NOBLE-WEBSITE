@@ -16,11 +16,13 @@ export const metadata: Metadata = {
   alternates: {
     canonical: '/',
   },
-  description: 'The Future of Bio-Digital Humanism. Dr. Dhivakaran merges AI-guided precision with regenerative ethics. Experience the 2035 standard of painless, predictive, and honest oral healthcare today.',
+  description: 'Rated Best Dental Clinic in Nallagandla & Tellapur. Dr. Dhivakaran merges AI-guided precision with regenerative ethics for painless Root Canals, Implants, and Invisalign.',
   keywords: [
+    // Top Ranked Search Terms (GMB Data)
+    'Best Dental Clinic in Nallagandla', 'Dentist Near Me Nallagandla', 'Dental Hospital Nallagandla',
     // 10 Years Ahead (Futuristic)
     'Bio-Digital Dentistry', 'Regenerative Endodontics', 'AI-Guided Implantology', 'Predictive Oral Health', 'Future of Dentistry Hyderabad',
-    // The Ethical Core (Unchanged)
+    // The Ethical Core
     'Ethical Dentist Nallagandla', 'Honest Bio-Mimetic Care', 'Patient Safety First', 'Conservative Dentistry',
     // Clinical Excellence
     'Microscopic Root Canal Specialist', 'Laser Tissue Regeneration', 'Painless Precision Care',
@@ -55,41 +57,13 @@ export const metadata: Metadata = {
   }
 };
 
-import Script from 'next/script';
+import { GoogleTagManager } from '@next/third-parties/google';
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en" suppressHydrationWarning className="scroll-smooth">
-      <head>
-        <Script id="google-tag-manager" strategy="afterInteractive">
-          {`
-            (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-            new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-            j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-            'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-            })(window,document,'script','dataLayer','GTM-N7LJVS7T');
-          `}
-        </Script>
-        {/* GA4 - Google Analytics */}
-        <Script src="https://www.googletagmanager.com/gtag/js?id=G-HVQKTBQDEY" strategy="afterInteractive" />
-        <Script id="google-analytics" strategy="afterInteractive">
-          {`
-            window.dataLayer = window.dataLayer || [];
-            function gtag(){dataLayer.push(arguments);}
-            gtag('js', new Date());
-            gtag('config', 'G-HVQKTBQDEY');
-          `}
-        </Script>
-      </head>
+      <GoogleTagManager gtmId="GTM-N7LJVS7T" />
       <body className={`${jakarta.variable} ${inter.variable} font-sans antialiased bg-slate-50 dark:bg-dark-bg text-slate-900 dark:text-white transition-colors duration-300`}>
-        <noscript>
-          <iframe
-            src="https://www.googletagmanager.com/ns.html?id=GTM-N7LJVS7T"
-            height="0"
-            width="0"
-            className="hidden invisible"
-          />
-        </noscript>
         <LayoutShell>
           {children}
         </LayoutShell>

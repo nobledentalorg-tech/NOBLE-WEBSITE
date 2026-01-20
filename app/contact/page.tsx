@@ -1,11 +1,32 @@
 'use client';
 
-import React from 'react';
+import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { MapPin, Phone, Mail, Clock, CalendarCheck, Send } from 'lucide-react';
 // Navbar and Footer are handled by LayoutShell globally
 
 export default function ContactPage() {
+  const [status, setStatus] = useState('idle');
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setStatus('submitting');
+
+    // Simulate API delay
+    await new Promise(resolve => setTimeout(resolve, 1000));
+
+    // GTM Conversion Event
+    (window as any).dataLayer = (window as any).dataLayer || [];
+    (window as any).dataLayer.push({
+      event: 'generate_lead',
+      method: 'contact_page_form',
+      value: 25
+    });
+
+    setStatus('success');
+    alert("Message Sent! We will contact you shortly.");
+  };
+
   return (
     <div className="min-h-screen bg-white dark:bg-[#0B1019] selection:bg-blue-500/30">
       {/* Header is global */}
@@ -41,7 +62,7 @@ export default function ContactPage() {
                 </div>
                 <h3 className="font-bold text-slate-900 dark:text-white mb-2">Phone</h3>
                 <p className="text-sm text-slate-500 dark:text-slate-400 mb-4">Mon-Sat from 9am to 9pm</p>
-                <a href="tel:+918610425342" className="text-blue-600 dark:text-blue-400 font-bold hover:underline">+91 861-042-5342</a>
+                <a href="tel:+918610425342" onClick={() => { (window as any).dataLayer?.push({ event: 'contact_click', method: 'phone', location: 'contact_page' }) }} className="text-blue-600 dark:text-blue-400 font-bold hover:underline">+91 861-042-5342</a>
               </div>
 
               <div className="p-6 bg-slate-50 dark:bg-white/5 rounded-3xl border border-slate-100 dark:border-white/10">
@@ -50,7 +71,7 @@ export default function ContactPage() {
                 </div>
                 <h3 className="font-bold text-slate-900 dark:text-white mb-2">Email</h3>
                 <p className="text-sm text-slate-500 dark:text-slate-400 mb-4">Online support 24/7</p>
-                <a href="mailto:care@nobledentalnallagandla.in" className="text-green-600 dark:text-green-400 font-bold hover:underline">care@nobledental...</a>
+                <a href="mailto:care@nobledentalnallagandla.in" onClick={() => { (window as any).dataLayer?.push({ event: 'contact_click', method: 'email', location: 'contact_page' }) }} className="text-green-600 dark:text-green-400 font-bold hover:underline">care@nobledental...</a>
               </div>
             </div>
 
@@ -90,7 +111,7 @@ export default function ContactPage() {
               <p className="text-slate-500 text-sm">We typically reply within 2 hours.</p>
             </div>
 
-            <form className="space-y-6">
+            <form className="space-y-6" onSubmit={handleSubmit}>
               <div>
                 <label className="block text-xs font-bold uppercase tracking-wider text-slate-500 mb-2">Your Name</label>
                 <input type="text" className="w-full bg-white dark:bg-[#0B1019] border border-slate-200 dark:border-white/10 rounded-xl px-4 py-3 text-slate-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="John Doe" />
@@ -106,8 +127,8 @@ export default function ContactPage() {
                 <textarea rows={4} className="w-full bg-white dark:bg-[#0B1019] border border-slate-200 dark:border-white/10 rounded-xl px-4 py-3 text-slate-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="I have a toothache..."></textarea>
               </div>
 
-              <button type="submit" className="w-full py-4 bg-blue-600 hover:bg-blue-500 text-white font-bold rounded-xl shadow-lg shadow-blue-600/20 active:scale-[0.98] transition-all flex items-center justify-center gap-2">
-                <Send size={18} /> Send Message
+              <button type="submit" disabled={status === 'submitting' || status === 'success'} className="w-full py-4 bg-blue-600 hover:bg-blue-500 disabled:opacity-50 text-white font-bold rounded-xl shadow-lg shadow-blue-600/20 active:scale-[0.98] transition-all flex items-center justify-center gap-2">
+                <Send size={18} /> {status === 'submitting' ? 'Sending...' : status === 'success' ? 'Message Sent!' : 'Send Message'}
               </button>
 
               <p className="text-xs text-center text-slate-400 mt-4">
