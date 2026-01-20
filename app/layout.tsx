@@ -14,7 +14,7 @@ export const metadata: Metadata = {
   },
   metadataBase: new URL('https://nobledentalnallagandla.in'),
   alternates: {
-    canonical: './',
+    canonical: '/',
   },
   description: 'The Future of Bio-Digital Humanism. Dr. Dhivakaran merges AI-guided precision with regenerative ethics. Experience the 2035 standard of painless, predictive, and honest oral healthcare today.',
   keywords: [
@@ -41,6 +41,14 @@ export const metadata: Metadata = {
       }
     ]
   },
+  twitter: {
+    card: 'summary_large_image',
+    site: '@nobledentalcare',
+    creator: '@drdhivakaran',
+    title: 'Noble Dental Care | Premium Dentistry Hyderabad',
+    description: 'Expert dental care in Nallagandla & Tellapur. Root Canals, Implants, and Invisalign by Dr. Dhivakaran.',
+    images: ['/assets/og-image.jpg'],
+  },
   robots: {
     index: true,
     follow: true
@@ -59,17 +67,27 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
             j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
             'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-            })(window,document,'script','dataLayer','GTM-XXXXXX');
+            })(window,document,'script','dataLayer','GTM-N7LJVS7T');
+          `}
+        </Script>
+        {/* GA4 - Google Analytics */}
+        <Script src="https://www.googletagmanager.com/gtag/js?id=G-HVQKTBQDEY" strategy="afterInteractive" />
+        <Script id="google-analytics" strategy="afterInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'G-HVQKTBQDEY');
           `}
         </Script>
       </head>
       <body className={`${jakarta.variable} ${inter.variable} font-sans antialiased bg-slate-50 dark:bg-dark-bg text-slate-900 dark:text-white transition-colors duration-300`}>
         <noscript>
           <iframe
-            src="https://www.googletagmanager.com/ns.html?id=GTM-XXXXXX"
+            src="https://www.googletagmanager.com/ns.html?id=GTM-N7LJVS7T"
             height="0"
             width="0"
-            style={{ display: 'none', visibility: 'hidden' }}
+            className="hidden invisible"
           />
         </noscript>
         <LayoutShell>

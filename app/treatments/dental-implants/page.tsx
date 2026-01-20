@@ -94,7 +94,24 @@ import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
    title: 'Dental Implants Hyderabad | Swiss Titanium & Zirconia | Noble Dental',
-   description: 'Restore your smile with 99.2% success rate implants. Authorized centre for Straumann (Swiss) and Nobel Biocare (USA). Lifetime Warranty available.'
+   description: 'Restore your smile with 99.2% success rate implants. Authorized centre for Straumann (Swiss) and Nobel Biocare (USA). Lifetime Warranty available.',
+   alternates: {
+      canonical: '/treatments/dental-implants'
+   },
+   openGraph: {
+      title: 'Dental Implants Hyderabad | Swiss Titanium & Zirconia',
+      description: 'Restore your smile with 99.2% success rate implants. Authorized centre for Straumann and Nobel Biocare.',
+      url: 'https://nobledentalnallagandla.in/treatments/dental-implants',
+      siteName: 'Noble Dental Care',
+      images: [{ url: '/assets/og-image.jpg', width: 1200, height: 630 }],
+      type: 'article'
+   },
+   twitter: {
+      card: 'summary_large_image',
+      title: 'Dental Implants Hyderabad | Noble Dental Care',
+      description: 'Leading implantology center in Nallagandla. 99.2% Success Rate.',
+      images: ['/assets/og-image.jpg']
+   }
 };
 
 export default function DentalImplantsPage() {
@@ -252,8 +269,7 @@ export default function DentalImplantsPage() {
                         <Award size={14} /> ISO 9001:2015 • ITI & ADA Certified
                      </div>
                      <h1 className="text-6xl md:text-8xl lg:text-[6.5rem] font-black text-slate-900 dark:text-white leading-[0.9] tracking-tighter">
-                        Precision <br />
-                        <span className="text-transparent bg-clip-text bg-gradient-to-r from-teal-500 via-blue-600 to-indigo-600 dark:from-teal-400 dark:via-blue-400 dark:to-indigo-300 animate-gradient-x">Dental Implants.</span>
+                        Precision Dental Implants.
                      </h1>
                      <p className="text-xl text-slate-600 dark:text-slate-300 font-medium leading-relaxed max-w-lg border-l-4 border-teal-500 pl-6 my-10">
                         Replace missing teeth with Swiss-Grade Titanium. <br />
@@ -762,7 +778,7 @@ export default function DentalImplantsPage() {
                <div className="grid md:grid-cols-3 gap-8">
                   <div className="group text-center">
                      <div className="w-48 h-48 mx-auto rounded-full overflow-hidden mb-6 border-4 border-white dark:border-[#151b2b] shadow-xl">
-                        <img src="/images/dhivakaran.webp" alt="Dr. Dhivakaran" className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" />
+                        <img src="/images/dhivakaran.webp" alt="Dr. Dhivakaran" width="192" height="192" className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" />
                      </div>
                      <h3 className="text-xl font-bold text-slate-900 dark:text-white">Dr. Dhivakaran</h3>
                      <p className="text-sm font-medium text-teal-600 dark:text-teal-400 uppercase tracking-widest mb-4">CMD</p>
@@ -771,7 +787,7 @@ export default function DentalImplantsPage() {
 
                   <div className="group text-center">
                      <div className="w-48 h-48 mx-auto rounded-full overflow-hidden mb-6 border-4 border-white dark:border-[#151b2b] shadow-xl">
-                        <img src="/images/roger.webp" alt="Dr. Roger" className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" />
+                        <img src="/images/roger.webp" alt="Dr. Roger" width="192" height="192" className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" />
                      </div>
                      <h3 className="text-xl font-bold text-slate-900 dark:text-white">Dr. Roger</h3>
                      <p className="text-sm font-medium text-blue-600 dark:text-blue-400 uppercase tracking-widest mb-4">OMFS</p>
@@ -780,7 +796,7 @@ export default function DentalImplantsPage() {
 
                   <div className="group text-center">
                      <div className="w-48 h-48 mx-auto rounded-full overflow-hidden mb-6 border-4 border-white dark:border-[#151b2b] shadow-xl">
-                        <img src="/images/thikvijay.webp" alt="Dr. Thik Vijay" className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" />
+                        <img src="/images/thikvijay.webp" alt="Dr. Thik Vijay" width="192" height="192" className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" />
                      </div>
                      <h3 className="text-xl font-bold text-slate-900 dark:text-white">Dr. Thik Vijay</h3>
                      <p className="text-sm font-medium text-purple-600 dark:text-purple-400 uppercase tracking-widest mb-4">Smile Architect</p>

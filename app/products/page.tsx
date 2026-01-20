@@ -100,7 +100,24 @@ import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
    title: 'Dental Pharmacy & Products | Noble Dental Care',
-   description: 'Official clinical pharmacy. Order prescribed Group Pharma products (Enafix, Shy-NM, Rexidine) directly from our verified stock.'
+   description: 'Official clinical pharmacy. Order prescribed Group Pharma products (Enafix, Shy-NM, Rexidine) directly from our verified stock.',
+   alternates: {
+      canonical: '/products'
+   },
+   openGraph: {
+      title: 'Dental Pharmacy & Products | Noble Dental Care',
+      description: 'Order prescribed dental products directly from Noble Dental.',
+      url: 'https://nobledentalnallagandla.in/products',
+      siteName: 'Noble Dental Care',
+      images: [{ url: '/assets/og-image.jpg', width: 1200, height: 630 }],
+      type: 'website'
+   },
+   twitter: {
+      card: 'summary_large_image',
+      title: 'Dental Pharmacy | Noble Dental Care',
+      description: 'Official clinical pharmacy for Noble Dental Care patients.',
+      images: ['/assets/og-image.jpg']
+   }
 };
 
 export default function ProductsPage() {
@@ -187,10 +204,10 @@ export default function ProductsPage() {
 
                         <div className="product-3d-card cursor-pointer" onClick={() => setSelectedProduct(product)}>
                            <div className="product-3d-wrapper">
-                              <img src={product.bgImage} className="product-3d-cover" alt="bg" />
+                              <img src={product.bgImage} className="product-3d-cover" alt={`${product.name} background`} width="300" height="320" />
                            </div>
-                           <img src={product.titleImage} className="product-3d-title" alt="brand" />
-                           <img src={product.image} className="product-3d-character" alt={product.name} />
+                           <img src={product.titleImage} className="product-3d-title" alt={`${product.name} brand logo`} width="200" height="100" />
+                           <img src={product.image} className="product-3d-character" alt={`${product.name} product shot`} width="250" height="250" />
 
                            <div className="absolute bottom-4 left-4 flex gap-2 z-10">
                               {product.badges.map(b => (
@@ -201,7 +218,7 @@ export default function ProductsPage() {
 
                         <div className="p-8 pt-6 flex flex-col flex-1">
                            <span className="text-[10px] font-black text-blue-600 dark:text-cyan-400 uppercase tracking-widest mb-1">{product.brand}</span>
-                           <h3 className="text-xl font-bold text-slate-900 dark:text-white mb-2 leading-tight">{product.name}</h3>
+                           <h2 className="text-xl font-bold text-slate-900 dark:text-white mb-2 leading-tight">{product.name}</h2>
                            <p className="text-xs text-slate-500 dark:text-slate-400 mb-8 line-clamp-2">{product.subText}</p>
 
                            <div className="mt-auto flex items-center justify-between">

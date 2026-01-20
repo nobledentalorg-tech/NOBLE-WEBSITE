@@ -296,9 +296,9 @@ const TreatmentsPage = () => {
                             </div>
                           )}
                         </div>
-                        <h3 className={`font-bold text-slate-900 dark:text-white group-hover:text-blue-600 transition-colors leading-tight ${viewMode === 'grid' ? 'text-xl' : 'text-2xl'}`}>
+                        <h2 className={`font-bold text-slate-900 dark:text-white group-hover:text-blue-600 transition-colors leading-tight ${viewMode === 'grid' ? 'text-xl' : 'text-2xl'}`}>
                           {item.title}
-                        </h3>
+                        </h2>
                       </div>
 
                       <p className={`text-xs sm:text-sm leading-relaxed text-slate-500 dark:text-slate-400 mb-6 ${viewMode === 'grid' ? 'line-clamp-2' : 'line-clamp-2 lg:line-clamp-none max-w-3xl'}`}>

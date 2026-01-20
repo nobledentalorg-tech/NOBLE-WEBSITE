@@ -70,7 +70,7 @@ export default function TreatmentDetailClient({ treatment }: Props) {
                             <div className="relative w-full h-full rounded-[2.5rem] overflow-hidden">
                                 <Image
                                     src={treatment.heroImage}
-                                    alt={treatment.title}
+                                    alt={`${treatment.title} Treatment Overview`}
                                     fill
                                     className="object-cover opacity-90 hover:scale-110 transition-transform duration-1000"
                                     priority

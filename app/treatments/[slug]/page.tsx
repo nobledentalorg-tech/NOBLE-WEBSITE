@@ -37,9 +37,24 @@ export async function generateMetadata({ params }: { params: { slug: string } })
   return {
     title: `${treatment.title} | Noble Dental Care`,
     description: treatment.subtitle || `Comprehensive ${treatment.title} treatment in Nallagandla & Tellapur by Dr. Dhivakaran.`,
+    alternates: {
+      canonical: `/treatments/${params.slug}`
+    },
     openGraph: {
+      title: `${treatment.title} | Noble Dental Care`,
+      description: treatment.subtitle || `Comprehensive ${treatment.title} treatment in Nallagandla & Tellapur.`,
+      url: `https://nobledentalnallagandla.in/treatments/${params.slug}`,
+      siteName: 'Noble Dental Care',
+      locale: 'en_IN',
+      type: 'article',
       images: [treatment.heroImage],
     },
+    twitter: {
+      card: 'summary_large_image',
+      title: `${treatment.title} | Noble Dental Care`,
+      description: treatment.subtitle || `Best ${treatment.title} in Hyderabad.`,
+      images: [treatment.heroImage],
+    }
   };
 }
 

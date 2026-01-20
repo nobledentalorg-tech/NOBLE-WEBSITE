@@ -8,6 +8,10 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'Neo | AI Dental Architect',
     description: 'The future of dentistry is here. Self-check symptoms and get clinical guidance instantly.',
+    url: 'https://nobledentalnallagandla.in/healthflo-ai',
+    siteName: 'Noble Dental Care',
+    locale: 'en_IN',
+    type: 'website',
     images: ['/assets/neo-ai-meta.jpg'],
   }
 };

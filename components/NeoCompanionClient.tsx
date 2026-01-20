@@ -286,9 +286,9 @@ export default function NeoCompanionClient() {
                                                         <ArrowLeft size={14} className="rotate-180 opacity-0 group-hover:opacity-100 transition-opacity text-slate-400" />
                                                     </div>
 
-                                                    <h4 className="font-gemini font-bold text-lg text-white mb-2 leading-tight group-hover:text-red-400 transition-colors">
+                                                    <h2 className="font-gemini font-bold text-lg text-white mb-2 leading-tight group-hover:text-red-400 transition-colors">
                                                         {p.title}
-                                                    </h4>
+                                                    </h2>
 
                                                     <p className="text-xs text-zinc-400 leading-relaxed mb-4 line-clamp-3">
                                                         {p.description}

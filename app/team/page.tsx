@@ -25,8 +25,7 @@ export default function TeamPage() {
             <RevealOnScroll>
                <header className="relative z-10">
                   <h1 className="text-6xl md:text-[9rem] font-black text-slate-900 dark:text-white leading-[0.85] tracking-tighter mb-10">
-                     The <br />
-                     <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 via-indigo-500 to-purple-500 animate-gradient-x">Visionaries.</span>
+                     The Visionaries.
                   </h1>
                   <div className="flex flex-col md:flex-row gap-8 md:items-end justify-between max-w-5xl">
                      <p className="text-2xl text-slate-500 dark:text-slate-400 max-w-xl font-medium leading-tight">
