@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 320" role="img" aria-labelledby="title desc">
+  <title id="title">Calcium sucrose phosphate release illustration</title>
+  <desc id="desc">Diagram showing ions releasing from Enafix toothpaste interacting with enamel.</desc>
+  <defs>
+    <radialGradient id="ionGradient" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#ffffff" />
+      <stop offset="100%" stop-color="#7be0d6" />
+    </radialGradient>
+  </defs>
+  <rect width="320" height="320" rx="32" fill="#f0f9ff" />
+  <g transform="translate(40 80)">
+    <rect x="0" y="120" width="240" height="40" rx="20" fill="#bae6fd" />
+    <rect x="24" y="60" width="192" height="84" rx="30" fill="#0f172a" opacity="0.08" />
+    <rect x="32" y="68" width="176" height="68" rx="30" fill="#12b2a0" opacity="0.2" />
+    <text x="120" y="100" font-family="'Manrope', 'Helvetica Neue', Arial, sans-serif" font-size="16" text-anchor="middle" fill="#0f172a">Enamel surface</text>
+  </g>
+  <g transform="translate(160 60)">
+    <circle cx="0" cy="0" r="36" fill="url(#ionGradient)" opacity="0.85" />
+    <text x="0" y="6" text-anchor="middle" font-family="'Manrope', 'Helvetica Neue', Arial, sans-serif" font-weight="700" font-size="16" fill="#0f172a">Ca²⁺</text>
+  </g>
+  <g transform="translate(220 120)">
+    <circle cx="0" cy="0" r="28" fill="url(#ionGradient)" opacity="0.75" />
+    <text x="0" y="6" text-anchor="middle" font-family="'Manrope', 'Helvetica Neue', Arial, sans-serif" font-weight="700" font-size="14" fill="#0f172a">PO₄³⁻</text>
+  </g>
+  <g transform="translate(110 120)">
+    <circle cx="0" cy="0" r="26" fill="url(#ionGradient)" opacity="0.7" />
+    <text x="0" y="6" text-anchor="middle" font-family="'Manrope', 'Helvetica Neue', Arial, sans-serif" font-weight="700" font-size="14" fill="#0f172a">Ca²⁺</text>
+  </g>
+  <g transform="translate(160 200)">
+    <path d="M-40 0 C-20 -40, 20 -40, 40 0" fill="none" stroke="#12b2a0" stroke-width="6" stroke-linecap="round" stroke-dasharray="6 10" />
+    <text x="0" y="36" text-anchor="middle" font-family="'Manrope', 'Helvetica Neue', Arial, sans-serif" font-size="14" fill="#0f172a">Rehardens enamel matrix</text>
+  </g>
+</svg>

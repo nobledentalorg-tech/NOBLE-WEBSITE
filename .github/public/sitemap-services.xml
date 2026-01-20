@@ -1,0 +1,132 @@
+<?xml version="1.0" ?>
+<ns0:urlset xmlns:html="http://www.w3.org/1999/xhtml" xmlns:ns0="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:ns2="http://www.google.com/schemas/sitemap-mobile/1.0" xmlns:ns3="http://www.google.com/schemas/sitemap-news/0.9" xmlns:ns4="http://www.google.com/schemas/sitemap-image/1.1" xmlns:ns5="http://www.google.com/schemas/sitemap-video/1.1">
+  <ns0:url>
+    <ns0:loc>https://nobledentalnallagandla.in/services.html</ns0:loc>
+    <ns0:lastmod>2024-05-04</ns0:lastmod>
+    <ns0:priority>0.95</ns0:priority>
+    <ns0:changefreq>monthly</ns0:changefreq>
+    <html:link rel="alternate" hreflang="en-IN" href="https://nobledentalnallagandla.in/services.html"/>
+    <ns2:mobile/>
+    <ns3:news>
+      <ns3:publication>
+        <ns3:name>Noble Dental Care</ns3:name>
+        <ns3:language>en</ns3:language>
+      </ns3:publication>
+      <ns3:publication_date>2024-05-04</ns3:publication_date>
+      <ns3:title>Our Complete Range of Dental Services in Hyderabad</ns3:title>
+    </ns3:news>
+  </ns0:url>
+  <ns0:url>
+    <ns0:loc>https://nobledentalnallagandla.in/services/root-canal.html</ns0:loc>
+    <ns0:lastmod>2024-04-26</ns0:lastmod>
+    <ns0:priority>0.9</ns0:priority>
+    <ns0:changefreq>monthly</ns0:changefreq>
+    <html:link rel="alternate" hreflang="en-IN" href="https://nobledentalnallagandla.in/services/root-canal.html"/>
+    <ns4:image>
+      <ns4:loc>https://nobledentalnallagandla.in/images/services/root-canal.webp</ns4:loc>
+      <ns4:title>Painless Root Canal Treatment in Hyderabad</ns4:title>
+      <ns4:caption>Single sitting rotary root canal performed by Dr. Dhivakaran at Noble Dental Care.</ns4:caption>
+    </ns4:image>
+    <ns3:news>
+      <ns3:publication>
+        <ns3:name>Noble Dental Care</ns3:name>
+        <ns3:language>en</ns3:language>
+      </ns3:publication>
+      <ns3:publication_date>2024-04-26</ns3:publication_date>
+      <ns3:title>Painless Single-Sitting Root Canal by Specialist</ns3:title>
+    </ns3:news>
+  </ns0:url>
+  <ns0:url>
+    <ns0:loc>https://nobledentalnallagandla.in/services/implants.html</ns0:loc>
+    <ns0:lastmod>2024-04-20</ns0:lastmod>
+    <ns0:priority>0.95</ns0:priority>
+    <ns0:changefreq>monthly</ns0:changefreq>
+    <html:link rel="alternate" hreflang="en-IN" href="https://nobledentalnallagandla.in/services/implants.html"/>
+    <ns4:image>
+      <ns4:loc>https://nobledentalnallagandla.in/images/services/implants.webp</ns4:loc>
+      <ns4:title>Dental Implants in Nallagandla Hyderabad</ns4:title>
+      <ns4:caption>Advanced guided implants with titanium and zirconia options at Noble Dental Care.</ns4:caption>
+    </ns4:image>
+    <ns5:video>
+      <ns5:thumbnail_loc>https://nobledentalnallagandla.in/images/services/implants-thumb.webp</ns5:thumbnail_loc>
+      <ns5:title>Dental Implants Procedure in Hyderabad</ns5:title>
+      <ns5:description>Advanced guided implant surgery with PRF and bone grafting for long-lasting results.</ns5:description>
+      <ns5:content_loc>https://nobledentalnallagandla.in/videos/implants.mp4</ns5:content_loc>
+      <ns5:publication_date>2024-04-10</ns5:publication_date>
+      <ns5:duration>120</ns5:duration>
+      <ns5:family_friendly>yes</ns5:family_friendly>
+    </ns5:video>
+  </ns0:url>
+  <ns0:url>
+    <ns0:loc>https://nobledentalnallagandla.in/services/braces.html</ns0:loc>
+    <ns0:lastmod>2024-04-24</ns0:lastmod>
+    <ns0:priority>0.9</ns0:priority>
+    <ns0:changefreq>monthly</ns0:changefreq>
+    <html:link rel="alternate" hreflang="en-IN" href="https://nobledentalnallagandla.in/services/braces.html"/>
+    <ns4:image>
+      <ns4:loc>https://nobledentalnallagandla.in/images/services/braces.webp</ns4:loc>
+      <ns4:title>Braces &amp; Clear Aligners in Hyderabad</ns4:title>
+      <ns4:caption>Self-ligating braces and clear aligners for adults and teens at Noble Dental Care.</ns4:caption>
+    </ns4:image>
+  </ns0:url>
+  <ns0:url>
+    <ns0:loc>https://nobledentalnallagandla.in/services/whitening.html</ns0:loc>
+    <ns0:lastmod>2024-04-18</ns0:lastmod>
+    <ns0:priority>0.9</ns0:priority>
+    <ns0:changefreq>monthly</ns0:changefreq>
+    <html:link rel="alternate" hreflang="en-IN" href="https://nobledentalnallagandla.in/services/whitening.html"/>
+    <ns4:image>
+      <ns4:loc>https://nobledentalnallagandla.in/images/services/whitening.webp</ns4:loc>
+      <ns4:title>Teeth Whitening Dentist in Hyderabad</ns4:title>
+      <ns4:caption>Safe peroxide gel whitening with LED activation, approved by ADA and NHS guidelines.</ns4:caption>
+    </ns4:image>
+  </ns0:url>
+  <ns0:url>
+    <ns0:loc>https://nobledentalnallagandla.in/services/cleaning.html</ns0:loc>
+    <ns0:lastmod>2024-04-12</ns0:lastmod>
+    <ns0:priority>0.85</ns0:priority>
+    <ns0:changefreq>monthly</ns0:changefreq>
+    <html:link rel="alternate" hreflang="en-IN" href="https://nobledentalnallagandla.in/services/cleaning.html"/>
+    <ns4:image>
+      <ns4:loc>https://nobledentalnallagandla.in/images/services/cleaning.webp</ns4:loc>
+      <ns4:title>Dental Cleaning &amp; Scaling in Hyderabad</ns4:title>
+      <ns4:caption>Professional ultrasonic scaling and polishing to remove plaque, stains, and tartar buildup.</ns4:caption>
+    </ns4:image>
+  </ns0:url>
+  <ns0:url>
+    <ns0:loc>https://nobledentalnallagandla.in/services/gum-treatment.html</ns0:loc>
+    <ns0:lastmod>2024-04-16</ns0:lastmod>
+    <ns0:priority>0.85</ns0:priority>
+    <ns0:changefreq>monthly</ns0:changefreq>
+    <html:link rel="alternate" hreflang="en-IN" href="https://nobledentalnallagandla.in/services/gum-treatment.html"/>
+    <ns4:image>
+      <ns4:loc>https://nobledentalnallagandla.in/images/services/gum-treatment.webp</ns4:loc>
+      <ns4:title>Gum Disease Treatment in Hyderabad</ns4:title>
+      <ns4:caption>Deep cleaning, root planing, and flap surgery for periodontitis management.</ns4:caption>
+    </ns4:image>
+  </ns0:url>
+  <ns0:url>
+    <ns0:loc>https://nobledentalnallagandla.in/services/kids.html</ns0:loc>
+    <ns0:lastmod>2024-04-14</ns0:lastmod>
+    <ns0:priority>0.9</ns0:priority>
+    <ns0:changefreq>monthly</ns0:changefreq>
+    <html:link rel="alternate" hreflang="en-IN" href="https://nobledentalnallagandla.in/services/kids.html"/>
+    <ns4:image>
+      <ns4:loc>https://nobledentalnallagandla.in/images/services/kids.webp</ns4:loc>
+      <ns4:title>Kids Dentistry in Hyderabad</ns4:title>
+      <ns4:caption>Fluoride, sealants, pulpectomy, and habit correction by a pediatric specialist.</ns4:caption>
+    </ns4:image>
+  </ns0:url>
+  <ns0:url>
+    <ns0:loc>https://nobledentalnallagandla.in/services/emergency.html</ns0:loc>
+    <ns0:lastmod>2024-04-28</ns0:lastmod>
+    <ns0:priority>1.0</ns0:priority>
+    <ns0:changefreq>weekly</ns0:changefreq>
+    <html:link rel="alternate" hreflang="en-IN" href="https://nobledentalnallagandla.in/services/emergency.html"/>
+    <ns4:image>
+      <ns4:loc>https://nobledentalnallagandla.in/images/services/emergency.webp</ns4:loc>
+      <ns4:title>24x7 Emergency Dentist in Hyderabad</ns4:title>
+      <ns4:caption>Immediate pain relief, trauma care, avulsed tooth reimplantation, and emergency RCT.</ns4:caption>
+    </ns4:image>
+  </ns0:url>
+</ns0:urlset>

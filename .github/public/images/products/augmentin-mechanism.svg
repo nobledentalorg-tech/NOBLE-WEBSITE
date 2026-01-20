@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 320" role="img" aria-labelledby="title desc">
+  <title id="title">Mechanism of Augmentin illustration</title>
+  <desc id="desc">Diagram showing amoxicillin blocking bacterial cell wall synthesis while clavulanic acid inhibits beta-lactamase.</desc>
+  <rect width="320" height="320" rx="32" fill="#f0fdf4" />
+  <g transform="translate(36 60)">
+    <rect x="0" y="0" width="248" height="140" rx="24" fill="#dcfce7" stroke="#16a34a" stroke-width="3" />
+    <text x="124" y="36" text-anchor="middle" font-family="'Manrope', 'Helvetica Neue', Arial, sans-serif" font-size="18" font-weight="700" fill="#166534">Bacterial Cell Wall</text>
+    <g transform="translate(36 60)">
+      <circle cx="0" cy="0" r="22" fill="#22c55e" />
+      <text x="0" y="6" text-anchor="middle" font-family="'Manrope', 'Helvetica Neue', Arial, sans-serif" font-size="12" font-weight="700" fill="#fff">Amoxicillin</text>
+    </g>
+    <g transform="translate(212 60)">
+      <circle cx="0" cy="0" r="22" fill="#f97316" />
+      <text x="0" y="6" text-anchor="middle" font-family="'Manrope', 'Helvetica Neue', Arial, sans-serif" font-size="12" font-weight="700" fill="#fff">β-lactamase</text>
+    </g>
+    <path d="M68 60 H180" stroke="#166534" stroke-width="4" stroke-dasharray="8 6" marker-end="url(#arrowhead)" />
+  </g>
+  <g transform="translate(80 220)">
+    <rect x="0" y="0" width="200" height="60" rx="18" fill="#1d4ed8" opacity="0.12" />
+    <text x="100" y="24" text-anchor="middle" font-family="'Manrope', 'Helvetica Neue', Arial, sans-serif" font-size="14" fill="#0f172a">Clavulanic acid neutralises β-lactamase</text>
+    <text x="100" y="44" text-anchor="middle" font-family="'Manrope', 'Helvetica Neue', Arial, sans-serif" font-size="14" fill="#0f172a">Amoxicillin destroys cell wall</text>
+  </g>
+  <defs>
+    <marker id="arrowhead" markerWidth="10" markerHeight="10" refX="5" refY="5" orient="auto" markerUnits="strokeWidth">
+      <polygon points="0 0, 10 5, 0 10" fill="#166534" />
+    </marker>
+  </defs>
+</svg>

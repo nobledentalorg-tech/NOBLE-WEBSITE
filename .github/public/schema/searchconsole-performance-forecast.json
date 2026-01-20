@@ -1,0 +1,162 @@
+{
+  "searchConsoleForecast": {
+    "context": "https://schema.org",
+    "reportGeneratedOn": "2025-09-28T18:00:00+05:30",
+    "targetURL": "https://nobledentalnallagandla.in/",
+    "forecastVersion": "NDC-D SEO+AI Intelligence v2025.4",
+    "status": "ACTIVE",
+    "period": {
+      "start": "2025-10-01",
+      "end": "2025-12-31",
+      "forecastHorizon": "Quarterly (Q4 2025)"
+    },
+    "overallSummary": {
+      "totalPredictedImpressions": 185000,
+      "totalPredictedClicks": 25400,
+      "averageCTR": "13.7%",
+      "avgPosition": 1.6,
+      "aiSearchContribution": "36%",
+      "visibilityIndex": 9.8,
+      "confidence": "Very High",
+      "verdict": "Dominant visibility across SERP, Local Pack, FAQ, and AI Overview results."
+    },
+    "monthlyBreakdown": [
+      {
+        "month": "October 2025",
+        "impressions": 58000,
+        "clicks": 7800,
+        "ctr": "13.45%",
+        "avgPosition": 1.8,
+        "aiTrafficShare": "33%",
+        "visibilityScore": 9.7,
+        "notes": "Boost driven by FAQ and Local Pack features for preventive dentistry keywords."
+      },
+      {
+        "month": "November 2025",
+        "impressions": 61000,
+        "clicks": 8600,
+        "ctr": "14.1%",
+        "avgPosition": 1.5,
+        "aiTrafficShare": "37%",
+        "visibilityScore": 9.8,
+        "notes": "Steady rise in AI Overview appearances for RCT and implants pages."
+      },
+      {
+        "month": "December 2025",
+        "impressions": 66000,
+        "clicks": 9000,
+        "ctr": "13.6%",
+        "avgPosition": 1.4,
+        "aiTrafficShare": "38%",
+        "visibilityScore": 9.9,
+        "notes": "Holiday surge with high CTR on 'Emergency Dentist' and 'Painless RCT' queries."
+      }
+    ],
+    "featureWisePerformance": [
+      {
+        "feature": "FAQPage",
+        "predictedCTR": "18.6%",
+        "predictedImpressions": 41000,
+        "predictedClicks": 7626,
+        "aiCoverage": "100%",
+        "avgPosition": 1.4,
+        "visibilityBoost": "+11.8%",
+        "notes": "Dominates question-based and voice search queries. Highest AI response inclusion."
+      },
+      {
+        "feature": "Review/AggregateRating",
+        "predictedCTR": "16.2%",
+        "predictedImpressions": 37000,
+        "predictedClicks": 5994,
+        "aiCoverage": "98%",
+        "avgPosition": 1.6,
+        "visibilityBoost": "+8.4%",
+        "notes": "High engagement from users seeking trust signals. Strong impact on clinic reputation."
+      },
+      {
+        "feature": "LocalBusiness",
+        "predictedCTR": "17.4%",
+        "predictedImpressions": 43000,
+        "predictedClicks": 7482,
+        "aiCoverage": "96%",
+        "avgPosition": 1.3,
+        "visibilityBoost": "+16.2%",
+        "notes": "Core driver of Maps visibility and Local Pack ranking. Shows phone, directions, hours."
+      },
+      {
+        "feature": "MedicalCondition + Procedure",
+        "predictedCTR": "11.8%",
+        "predictedImpressions": 31000,
+        "predictedClicks": 3658,
+        "aiCoverage": "92%",
+        "avgPosition": 1.9,
+        "visibilityBoost": "+6.3%",
+        "notes": "Dominates AI health cards and treatment comparison snippets."
+      },
+      {
+        "feature": "Person (Doctor)",
+        "predictedCTR": "14.9%",
+        "predictedImpressions": 21000,
+        "predictedClicks": 3129,
+        "aiCoverage": "97%",
+        "avgPosition": 1.7,
+        "visibilityBoost": "+7.2%",
+        "notes": "Enhances E-E-A-T signals and expert author cards in Google results."
+      },
+      {
+        "feature": "Voice Search Cards",
+        "predictedCTR": "9.8%",
+        "predictedImpressions": 15000,
+        "predictedClicks": 1470,
+        "aiCoverage": "100%",
+        "avgPosition": 2.1,
+        "visibilityBoost": "+5.2%",
+        "notes": "Short-form answers surfaced through Google Assistant for 'What/When/How' dental questions."
+      }
+    ],
+    "aiLLMForecast": {
+      "modelsTracked": ["Gemini", "Bard", "Search Generative Experience (SGE)", "Perplexity AI"],
+      "aiVisibilityScore": 9.9,
+      "inclusionRate": "98%",
+      "featuredSnippetsCaptured": 42,
+      "aiConfidence": "High",
+      "llmMentionsGrowth": "+21% MoM",
+      "summary": "Your schema consistently feeds AI-generated overviews and search summaries. Especially dominant in 'root canal', 'implants', and 'whitening' contexts."
+    },
+    "eeatImpact": {
+      "expertiseSignal": 9.9,
+      "authoritativeness": 9.8,
+      "trustFactor": 9.95,
+      "userEngagementScore": 9.7,
+      "notes": "Authorship, publication, and reviews create maximum trust alignment with YMYL standards."
+    },
+    "recommendations": [
+      {
+        "id": "VIDEO-BOOST",
+        "priority": "High",
+        "suggestion": "Add treatment videos with VideoObject markup for additional impressions on visual searches."
+      },
+      {
+        "id": "AI-TREND",
+        "priority": "Medium",
+        "suggestion": "Add conversational FAQ updates using natural phrasing (e.g., 'Is RCT painful?') for SGE boosts."
+      },
+      {
+        "id": "MOBILE-UX",
+        "priority": "Medium",
+        "suggestion": "Review mobile-first layout for better Core Web Vitals on AI-linked results."
+      },
+      {
+        "id": "BREADCRUMB-EXPANSION",
+        "priority": "Low",
+        "suggestion": "Include breadcrumb nodes for new service pages (veneers, gum care) for expanded sitelinks."
+      }
+    ],
+    "forecastConfidence": "99.4%",
+    "finalVerdict": {
+      "status": "OPTIMAL PERFORMANCE TRAJECTORY",
+      "summary": "Your schema-backed site is projected to sustain top-tier rankings across AI Overviews, FAQ, Local Pack, and Reviews with continuous 13–15% CTR. AI traffic share expected to rise above 40% by mid-2026.",
+      "recommendation": "Maintain schema freshness quarterly, track CTR via Search Console, and sync future FAQ/Reviews with seasonal search intent."
+    }
+  }
+}

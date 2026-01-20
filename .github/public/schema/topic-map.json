@@ -1,0 +1,121 @@
+{
+  "version": "2024-10-15",
+  "name": "Noble Dental Care Topic Connectivity Map",
+  "description": "Semantic relationships between high-value landing pages, treatments, and supporting resources to strengthen topical authority for Noble Dental Care Nallagandla.",
+  "topics": [
+    {
+      "topic": "Comprehensive Dental Clinic in Nallagandla",
+      "url": "https://nobledentalnallagandla.in/",
+      "primarySchema": "https://nobledentalnallagandla.in/schema/localbusiness.json",
+      "supports": [
+        "https://nobledentalnallagandla.in/schema/key-entities.json",
+        "https://nobledentalnallagandla.in/schema/organization.json",
+        "https://nobledentalnallagandla.in/schema/graph.json"
+      ],
+      "linkedTopics": [
+        "Microscope Root Canal Treatment",
+        "Dental Implants and Full Mouth Rehab",
+        "Orthodontics and Invisalign",
+        "Kids Preventive Dentistry"
+      ]
+    },
+    {
+      "topic": "Microscope Root Canal Treatment",
+      "url": "https://nobledentalnallagandla.in/specialities/root-canal.html",
+      "primarySchema": "https://nobledentalnallagandla.in/schema/part2-preventive.json",
+      "supports": [
+        "https://nobledentalnallagandla.in/schema/medicalcondition-systemic.json",
+        "https://nobledentalnallagandla.in/schema/ai-summary-visibility.json"
+      ],
+      "linkedTopics": [
+        "Emergency Dental Care",
+        "Advanced Gum Disease Therapy",
+        "Dental Implants and Full Mouth Rehab"
+      ]
+    },
+    {
+      "topic": "Dental Implants and Full Mouth Rehab",
+      "url": "https://nobledentalnallagandla.in/specialities/implants.html",
+      "primarySchema": "https://nobledentalnallagandla.in/schema/part5-advanced.json",
+      "supports": [
+        "https://nobledentalnallagandla.in/schema/medicalstudy.json",
+        "https://nobledentalnallagandla.in/schema/implants.json"
+      ],
+      "linkedTopics": [
+        "Microscope Root Canal Treatment",
+        "Smile Design and Cosmetic Dentistry",
+        "Comprehensive Dental Clinic in Nallagandla"
+      ]
+    },
+    {
+      "topic": "Orthodontics and Invisalign",
+      "url": "https://nobledentalnallagandla.in/specialities/invisalign.html",
+      "primarySchema": "https://nobledentalnallagandla.in/schema/part3-restorative.json",
+      "supports": [
+        "https://nobledentalnallagandla.in/schema/howto.json",
+        "https://nobledentalnallagandla.in/schema/navigation.json"
+      ],
+      "linkedTopics": [
+        "Kids Preventive Dentistry",
+        "Smile Design and Cosmetic Dentistry",
+        "Comprehensive Dental Clinic in Nallagandla"
+      ]
+    },
+    {
+      "topic": "Kids Preventive Dentistry",
+      "url": "https://nobledentalnallagandla.in/specialities/kids-dentistry.html",
+      "primarySchema": "https://nobledentalnallagandla.in/schema/medicalcondition-pediatric.json",
+      "supports": [
+        "https://nobledentalnallagandla.in/schema/faq.json",
+        "https://nobledentalnallagandla.in/schema/part1-general.json"
+      ],
+      "linkedTopics": [
+        "Orthodontics and Invisalign",
+        "Emergency Dental Care",
+        "Comprehensive Dental Clinic in Nallagandla"
+      ]
+    },
+    {
+      "topic": "Emergency Dental Care",
+      "url": "https://nobledentalnallagandla.in/maintenance.html",
+      "primarySchema": "https://nobledentalnallagandla.in/schema/part1-general.json",
+      "supports": [
+        "https://nobledentalnallagandla.in/schema/review.json",
+        "https://nobledentalnallagandla.in/schema/ai-summary-training.json"
+      ],
+      "linkedTopics": [
+        "Microscope Root Canal Treatment",
+        "Kids Preventive Dentistry",
+        "Advanced Gum Disease Therapy"
+      ]
+    },
+    {
+      "topic": "Smile Design and Cosmetic Dentistry",
+      "url": "https://nobledentalnallagandla.in/specialities/smile-design.html",
+      "primarySchema": "https://nobledentalnallagandla.in/schema/part4-aesthetic.json",
+      "supports": [
+        "https://nobledentalnallagandla.in/schema/medicalcondition-advanced.json",
+        "https://nobledentalnallagandla.in/schema/videoobjects.json"
+      ],
+      "linkedTopics": [
+        "Dental Implants and Full Mouth Rehab",
+        "Orthodontics and Invisalign",
+        "Comprehensive Dental Clinic in Nallagandla"
+      ]
+    },
+    {
+      "topic": "Advanced Gum Disease Therapy",
+      "url": "https://nobledentalnallagandla.in/specialities/scaling-whitening.html",
+      "primarySchema": "https://nobledentalnallagandla.in/schema/medicalcondition-systemic.json",
+      "supports": [
+        "https://nobledentalnallagandla.in/schema/howto.json",
+        "https://nobledentalnallagandla.in/schema/ai-summary-training.json"
+      ],
+      "linkedTopics": [
+        "Microscope Root Canal Treatment",
+        "Emergency Dental Care",
+        "Comprehensive Dental Clinic in Nallagandla"
+      ]
+    }
+  ]
+}
