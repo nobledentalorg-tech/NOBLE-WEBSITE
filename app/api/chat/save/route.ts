@@ -1,5 +1,5 @@
 import { auth } from "@/src/auth"
-import { supabase } from "@/src/lib/supabase"
+import { getSupabaseClient } from "@/src/lib/supabase"
 import { NextResponse } from "next/server"
 
 export async function POST(req: Request) {
@@ -23,6 +23,7 @@ export async function POST(req: Request) {
 
         if (!activeChatId) {
             // Create new chat
+            const supabase = getSupabaseClient()
             const { data: newChat, error: chatError } = await supabase
                 .from('chats')
                 .insert({
@@ -37,6 +38,7 @@ export async function POST(req: Request) {
         }
 
         // 3. Save Message
+        const supabase = getSupabaseClient()
         const { error: msgError } = await supabase
             .from('messages')
             .insert({

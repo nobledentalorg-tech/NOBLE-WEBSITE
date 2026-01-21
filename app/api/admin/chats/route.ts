@@ -1,5 +1,5 @@
 import { auth } from "@/src/auth"
-import { supabase } from "@/src/lib/supabase"
+import { getSupabaseClient } from "@/src/lib/supabase"
 import { NextResponse } from "next/server"
 
 // Check for specific admin emails (hardcoded for now, can be moved to DB role later)
@@ -22,6 +22,7 @@ export async function GET(req: Request) {
     try {
         if (chatId) {
             // Fetch Messages for a Chat
+            const supabase = getSupabaseClient()
             const { data: messages, error } = await supabase
                 .from('messages')
                 .select('*')
@@ -33,6 +34,7 @@ export async function GET(req: Request) {
 
         } else {
             // Fetch All Chats
+            const supabase = getSupabaseClient()
             const { data: chats, error } = await supabase
                 .from('chats')
                 .select(`
