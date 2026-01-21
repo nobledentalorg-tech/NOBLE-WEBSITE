@@ -1,6 +1,6 @@
 [build]
   command = "npm run build"
-  publish = "public" # Use existing 'public' dir to satisfy Netlify builder; Plugin handles SSR.
+  publish = ".next" # Pointing to actual build output to satisfy Plugin validation
 
 [[plugins]]
   package = "@netlify/plugin-nextjs"
