@@ -2,6 +2,7 @@
 
 import React, { useState, useMemo, useEffect, useRef } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { treatmentsData } from '@/data/treatments';
 import {
   ArrowRight, Activity, Clock, Microscope, Search,
@@ -257,7 +258,7 @@ const TreatmentsRefactored = () => {
 
                     {/* Image Section */}
                     <div className={`relative overflow-hidden bg-slate-100 dark:bg-slate-900 ${viewMode === 'grid' ? 'h-52 w-full' : 'w-48 lg:w-64 h-auto shrink-0'}`}>
-                      <img src={item.heroImage} alt={item.title} className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
+                      <Image src={item.heroImage} alt={item.title} fill className="object-cover transition-transform duration-700 group-hover:scale-105" unoptimized />
 
                       {/* Dark Overlay Gradient */}
                       <div className="absolute inset-0 bg-gradient-to-t from-[#0f1420]/80 via-transparent to-transparent opacity-60"></div>

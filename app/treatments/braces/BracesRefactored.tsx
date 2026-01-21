@@ -282,7 +282,7 @@ export default function BracesRefactored() {
                     <RevealOnScroll>
                         <div className="text-center mb-16">
                             <h2 className="text-3xl font-black text-slate-900 dark:text-white mb-4">Who can start braces?</h2>
-                            <p className="text-slate-600 dark:text-slate-400 text-lg">Orthodontics isn't just for teenagers. We customise protocols for all ages.</p>
+                            <p className="text-slate-600 dark:text-slate-400 text-lg">Orthodontics isn&apos;t just for teenagers. We customise protocols for all ages.</p>
                         </div>
 
                         <div className="grid md:grid-cols-3 gap-8">

@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import {
    ArrowLeft, ArrowRight, Shield, Award, Activity,
    Check, ScanLine, Cpu, Droplets, Ruler, User,
@@ -755,8 +756,8 @@ export default function DentalImplantsPage() {
 
                <div className="grid md:grid-cols-3 gap-8">
                   <div className="group text-center">
-                     <div className="w-48 h-48 mx-auto rounded-full overflow-hidden mb-6 border-4 border-white dark:border-[#151b2b] shadow-xl">
-                        <img src="/images/dhivakaran.webp" alt="Dr. Dhivakaran" width="192" height="192" className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" />
+                     <div className="w-48 h-48 mx-auto rounded-full overflow-hidden mb-6 border-4 border-white dark:border-[#151b2b] shadow-xl relative">
+                        <Image src="/images/dhivakaran.webp" alt="Dr. Dhivakaran" fill className="object-cover group-hover:scale-110 transition-transform duration-500" />
                      </div>
                      <h3 className="text-xl font-bold text-slate-900 dark:text-white">Dr. Dhivakaran</h3>
                      <p className="text-sm font-medium text-teal-600 dark:text-teal-400 uppercase tracking-widest mb-4">CMD</p>
@@ -764,8 +765,8 @@ export default function DentalImplantsPage() {
                   </div>
 
                   <div className="group text-center">
-                     <div className="w-48 h-48 mx-auto rounded-full overflow-hidden mb-6 border-4 border-white dark:border-[#151b2b] shadow-xl">
-                        <img src="/images/roger.webp" alt="Dr. Roger" width="192" height="192" className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" />
+                     <div className="w-48 h-48 mx-auto rounded-full overflow-hidden mb-6 border-4 border-white dark:border-[#151b2b] shadow-xl relative">
+                        <Image src="/images/roger.webp" alt="Dr. Roger" fill className="object-cover group-hover:scale-110 transition-transform duration-500" />
                      </div>
                      <h3 className="text-xl font-bold text-slate-900 dark:text-white">Dr. Roger</h3>
                      <p className="text-sm font-medium text-blue-600 dark:text-blue-400 uppercase tracking-widest mb-4">OMFS</p>
@@ -773,8 +774,8 @@ export default function DentalImplantsPage() {
                   </div>
 
                   <div className="group text-center">
-                     <div className="w-48 h-48 mx-auto rounded-full overflow-hidden mb-6 border-4 border-white dark:border-[#151b2b] shadow-xl">
-                        <img src="/images/thikvijay.webp" alt="Dr. Thik Vijay" width="192" height="192" className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" />
+                     <div className="w-48 h-48 mx-auto rounded-full overflow-hidden mb-6 border-4 border-white dark:border-[#151b2b] shadow-xl relative">
+                        <Image src="/images/thikvijay.webp" alt="Dr. Thik Vijay" fill className="object-cover group-hover:scale-110 transition-transform duration-500" />
                      </div>
                      <h3 className="text-xl font-bold text-slate-900 dark:text-white">Dr. Thik Vijay</h3>
                      <p className="text-sm font-medium text-purple-600 dark:text-purple-400 uppercase tracking-widest mb-4">Smile Architect</p>

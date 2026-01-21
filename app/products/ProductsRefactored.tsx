@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useState } from 'react';
+import Image from 'next/image';
 import {
    ShoppingBag, Search, Info, X, CheckCircle2,
    Trash2, Plus, Minus, Lock, Phone, ArrowRight, HelpCircle, ListChecks, ThumbsUp, ThumbsDown
@@ -182,10 +183,10 @@ export default function ProductsRefactored() {
 
                         <div className="product-3d-card cursor-pointer" onClick={() => setSelectedProduct(product)}>
                            <div className="product-3d-wrapper">
-                              <img src={product.bgImage} className="product-3d-cover" alt={`${product.name} background`} width="300" height="320" />
+                              <Image src={product.bgImage} className="product-3d-cover" alt={`${product.name} background`} width={300} height={320} unoptimized />
                            </div>
-                           <img src={product.titleImage} className="product-3d-title" alt={`${product.name} brand logo`} width="200" height="100" />
-                           <img src={product.image} className="product-3d-character" alt={`${product.name} product shot`} width="250" height="250" />
+                           <Image src={product.titleImage} className="product-3d-title" alt={`${product.name} brand logo`} width={200} height={100} unoptimized />
+                           <Image src={product.image} className="product-3d-character" alt={`${product.name} product shot`} width={250} height={250} unoptimized />
 
                            <div className="absolute bottom-4 left-4 flex gap-2 z-10">
                               {product.badges.map(b => (
@@ -229,7 +230,7 @@ export default function ProductsRefactored() {
                   {/* Left Side */}
                   <div className="lg:w-2/5 relative h-64 lg:h-auto bg-slate-50 dark:bg-black/20 flex items-center justify-center p-12 overflow-hidden border-b lg:border-b-0 lg:border-r border-slate-100 dark:border-white/5">
                      <div className="absolute inset-0 opacity-10 bg-[url('https://grainy-gradients.vercel.app/noise.svg')]"></div>
-                     <img src={selectedProduct.image} alt={selectedProduct.name} className="relative z-10 w-full h-full object-contain drop-shadow-[0_40px_60px_rgba(0,0,0,0.2)] hover:scale-110 transition-transform duration-700" />
+                     <Image src={selectedProduct.image} alt={selectedProduct.name} fill className="relative z-10 object-contain drop-shadow-[0_40px_60px_rgba(0,0,0,0.2)] hover:scale-110 transition-transform duration-700" unoptimized />
 
                      <div className="absolute bottom-8 left-8 right-8 flex justify-around items-center bg-white/50 dark:bg-white/5 backdrop-blur-xl border border-white/40 dark:border-white/10 rounded-2xl p-4">
                         <div className="text-center">
@@ -321,7 +322,7 @@ export default function ProductsRefactored() {
                         cart.map(item => (
                            <div key={item.id} className="flex gap-4 p-4 bg-slate-50 dark:bg-white/5 rounded-3xl border border-slate-100 dark:border-white/5 group">
                               <div className="w-20 h-20 bg-white dark:bg-black/20 rounded-2xl p-2 shrink-0">
-                                 <img src={item.image} alt={item.name} className="w-full h-full object-contain" />
+                                 <Image src={item.image} alt={item.name} fill className="object-contain" unoptimized />
                               </div>
                               <div className="flex-1">
                                  <h4 className="font-bold text-slate-900 dark:text-white text-sm line-clamp-1">{item.name}</h4>

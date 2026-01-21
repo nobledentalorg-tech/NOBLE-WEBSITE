@@ -57,7 +57,7 @@ const MissionValues = () => {
                 At Noble Dental Care, our mission is to bridge the gap between advanced clinical technology and compassionate, honest dentistry.
               </p>
               <p>
-                We believe that oral health is the gateway to overall wellness. This drives us to use evidence-based protocols that respect your body's natural healing potential, ensuring results that are as biological as they are beautiful.
+                We believe that oral health is the gateway to overall wellness. This drives us to use evidence-based protocols that respect your body&apos;s natural healing potential, ensuring results that are as biological as they are beautiful.
               </p>
             </div>
           </RevealOnScroll>
