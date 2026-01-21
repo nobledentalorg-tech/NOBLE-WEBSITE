@@ -128,8 +128,36 @@ export class NeoEngine {
 
     private static checkShortcuts(input: string): ClinicalNode | null {
         const lower = input.toLowerCase();
+
+        // 1. Clinical Shortcuts
         if (lower.includes('pain')) return NEO_KNOWLEDGE_GRAPH['pain_type'];
-        if (lower.includes('root canal')) return NEO_KNOWLEDGE_GRAPH['assess_pulpitis']; // Direct jump
+        if (lower.includes('root canal')) return NEO_KNOWLEDGE_GRAPH['assess_pulpitis'];
+
+        // 2. Public Health & Insurance Shortcuts
+        // TODO: Import PUBLIC_HEALTH_DB properly. For now, we perform direct lookups if loaded.
+        if (lower.includes('insurance') || lower.includes('claim') || lower.includes('star health')) {
+            return {
+                id: 'insurance_response',
+                type: 'info',
+                text: {
+                    en: "Regarding Insurance: " + "Most OPD plans (like Star Outpatient Care) inhibit coverage for aesthetic procedures, but Trauma is covered.", // Fallback text until DB import
+                    ta: "இன்சூரன்ஸ் பற்றி: விபத்து சிகிச்சைக்கு காப்பீடு உண்டு."
+                }
+            };
+        }
+
+        // 3. Authority Checks (Whitening etc)
+        if (lower.includes('whitening') && lower.includes('safe')) {
+            return {
+                id: 'authority_whitening',
+                type: 'info',
+                text: {
+                    en: "According to GDC (UK) Standards: Tooth whitening is the practice of dentistry. It is illegal for non-dentists to perform it.",
+                    ta: "பல் வெளுப்பாக்குதல் மருத்துவரால் மட்டுமே செய்யப்பட வேண்டும்."
+                }
+            };
+        }
+
         return null;
     }
 }
