@@ -8,7 +8,7 @@ import {
     FileText, Calendar, ShieldAlert, X, ChevronRight
 } from 'lucide-react';
 // import { sendMessageToAssistant } from '@/services/geminiService'; // Deprecated
-import { NeoLogicEngine } from '@/services/neoLogic';
+import { NeoEngine } from '@/src/neo/NeoEngine';
 import { ChatMessage } from '@/types';
 
 export default function NeoCompanionClient() {
@@ -80,7 +80,6 @@ export default function NeoCompanionClient() {
     };
 
     const [currentNodeId, setCurrentNodeId] = useState('root');
-
     const handleSend = async (customMessage?: string) => {
         const textToSend = customMessage || input;
         if (!textToSend.trim() || isLoading) return;
@@ -95,14 +94,15 @@ export default function NeoCompanionClient() {
 
         // 2. Local Logic Processing (Simulate 'Thinking' time for realism)
         setTimeout(() => {
-            const nextNode = NeoLogicEngine.processInput(textToSend, currentNodeId);
+            const response = NeoEngine.processInput(textToSend, currentNodeId, messages.length);
+            const nextNode = response.node;
             setCurrentNodeId(nextNode.id);
 
             const aiResponse: ChatMessage = {
                 role: 'model',
-                text: nextNode.text,
+                text: nextNode.text.en, // Use English for now
                 timestamp: Date.now(),
-                possibilities: nextNode.possibilities,
+                possibilities: nextNode.possibilities, // Already has scores injected by Engine
                 sources: []
             };
 

@@ -3,7 +3,7 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { Send, X, Bot, MessageSquare, ExternalLink, Mic, MicOff } from 'lucide-react';
 // import { sendMessageToAssistant } from '@/services/geminiService'; // Deprecated
-import { NeoLogicEngine } from '@/services/neoLogic';
+import { NeoEngine } from '@/src/neo/NeoEngine';
 import { ChatMessage } from '@/types'; // Updated import
 
 const ChatWidget = () => {
@@ -88,12 +88,13 @@ const ChatWidget = () => {
 
     // 2. Neo Logic Processing (Offline/Local)
     setTimeout(() => {
-      const nextNode = NeoLogicEngine.processInput(userMsg.text, currentNodeId);
+      const response = NeoEngine.processInput(userMsg.text, currentNodeId, messages.length);
+      const nextNode = response.node;
       setCurrentNodeId(nextNode.id);
 
       const aiResponse: ChatMessage = {
         role: 'model',
-        text: nextNode.text,
+        text: nextNode.text.en,
         timestamp: Date.now(),
         possibilities: nextNode.possibilities,
         sources: []
