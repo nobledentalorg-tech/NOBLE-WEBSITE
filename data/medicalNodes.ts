@@ -1,23 +1,23 @@
-import { ClinicalNode } from "@/services/neoLogic";
+import { ClinicalNode } from "@/types/neoSchema";
 
 export const MEDICAL_KNOWLEDGE: Record<string, ClinicalNode> = {
     // --- EMERGENCY ROOTS ---
     emergency_root: {
         id: 'emergency_root',
-        text: "🚨 EMERGENCY MODE: Please stay calm. What is the emergency?",
+        text: { en: "🚨 EMERGENCY MODE: Please stay calm. What is the emergency?" },
         type: 'question',
         options: [
-            { label: "Person Collapsed / Unconscious", nextId: 'emer_cpr' },
-            { label: "Chest Pain / Heart Attack", nextId: 'emer_mi' },
-            { label: "Face Drooping / Stroke", nextId: 'emer_stroke' },
-            { label: "Severe Bleeding", nextId: 'emer_bleeding' }
+            { label: { en: "Person Collapsed / Unconscious" }, nextId: 'emer_cpr' },
+            { label: { en: "Chest Pain / Heart Attack" }, nextId: 'emer_mi' },
+            { label: { en: "Face Drooping / Stroke" }, nextId: 'emer_stroke' },
+            { label: { en: "Severe Bleeding" }, nextId: 'emer_bleeding' }
         ]
     },
 
     // --- CPR / UNCONSCIOUS ---
     emer_cpr: {
         id: 'emer_cpr',
-        text: "CHECK RESPONSE: Tap shoulders and shout 'Are you okay?'. If no response:",
+        text: { en: "CHECK RESPONSE: Tap shoulders and shout 'Are you okay?'. If no response:" },
         type: 'assessment',
         possibilities: [
             {
@@ -33,7 +33,7 @@ export const MEDICAL_KNOWLEDGE: Record<string, ClinicalNode> = {
     // --- HEART ATTACK (MI) ---
     emer_mi: {
         id: 'emer_mi',
-        text: "Is there crushing chest pain radiating to left arm/jaw?",
+        text: { en: "Is there crushing chest pain radiating to left arm/jaw?" },
         type: 'assessment',
         possibilities: [
             {
@@ -49,7 +49,7 @@ export const MEDICAL_KNOWLEDGE: Record<string, ClinicalNode> = {
     // --- STROKE (BE-FAST) ---
     emer_stroke: {
         id: 'emer_stroke',
-        text: "Think FAST: Face drooping? Arm weakness? Speech slurred? Time to call.",
+        text: { en: "Think FAST: Face drooping? Arm weakness? Speech slurred? Time to call." },
         type: 'assessment',
         possibilities: [
             {
@@ -65,7 +65,7 @@ export const MEDICAL_KNOWLEDGE: Record<string, ClinicalNode> = {
     // --- BLEEDING ---
     emer_bleeding: {
         id: 'emer_bleeding',
-        text: "Apply Direct Pressure.",
+        text: { en: "Apply Direct Pressure." },
         type: 'assessment',
         possibilities: [
             {
@@ -81,7 +81,7 @@ export const MEDICAL_KNOWLEDGE: Record<string, ClinicalNode> = {
     // --- GENERAL MED: FEVER ---
     med_fever: {
         id: 'med_fever',
-        text: "(Mom Mode) Oh dear, a fever is your body fighting an infection. Rest is key.",
+        text: { en: "(Mom Mode) Oh dear, a fever is your body fighting an infection. Rest is key." },
         type: 'assessment',
         possibilities: [
             {
@@ -104,14 +104,14 @@ export const MEDICAL_KNOWLEDGE: Record<string, ClinicalNode> = {
     // --- MEDICATION SAFETY ---
     med_safety_root: {
         id: 'med_safety_root',
-        text: "I can explain how medicines work, but I CANNOT prescribe them.",
+        text: { en: "I can explain how medicines work, but I CANNOT prescribe them." },
         type: 'info'
     },
 
     // --- SYSTEMIC: DENGUE ---
     med_dengue: {
         id: 'med_dengue',
-        text: "Dengue is a viral infection from mosquitoes.",
+        text: { en: "Dengue is a viral infection from mosquitoes." },
         type: 'assessment',
         possibilities: [
             {

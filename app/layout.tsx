@@ -59,14 +59,18 @@ export const metadata: Metadata = {
 
 import { GoogleTagManager } from '@next/third-parties/google';
 
+import { SessionProvider } from 'next-auth/react';
+
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en" suppressHydrationWarning className="scroll-smooth">
       <GoogleTagManager gtmId="GTM-N7LJVS7T" />
       <body className={`${jakarta.variable} ${inter.variable} font-sans antialiased bg-slate-50 dark:bg-dark-bg text-slate-900 dark:text-white transition-colors duration-300`}>
-        <LayoutShell>
-          {children}
-        </LayoutShell>
+        <SessionProvider>
+          <LayoutShell>
+            {children}
+          </LayoutShell>
+        </SessionProvider>
         <JsonLd />
       </body>
     </html>

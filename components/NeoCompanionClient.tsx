@@ -11,8 +11,11 @@ import {
 import { NeoEngine } from '@/src/neo/NeoEngine';
 import { ChatMessage } from '@/types';
 
+import { signIn, signOut, useSession } from 'next-auth/react';
+
 export default function NeoCompanionClient() {
     const router = useRouter();
+    const { data: session } = useSession(); // Access user session
 
     const [messages, setMessages] = useState<ChatMessage[]>([]);
     const [input, setInput] = useState('');
@@ -23,7 +26,37 @@ export default function NeoCompanionClient() {
 
     const messagesEndRef = useRef<HTMLDivElement>(null);
     const recognitionRef = useRef<any>(null);
-    const fullIntroText = "Hello. I am Neo, your dental architect.";
+    // Personalized Greeting if logged in
+    // Personalized Greeting if logged in
+    const fullIntroText = session?.user?.name
+        ? `Hi ${session.user.name.split(' ')[0]}. I am Neo, how can I assist you?`
+        : "Hi. I am Neo, how can i assist you.";
+
+    // -- DB Sync State --
+    const [currentChatId, setCurrentChatId] = useState<string | null>(null);
+
+    // -- DB Sync Logic --
+    const saveMessageToDb = async (role: 'user' | 'model', content: string) => {
+        if (!session?.user) return; // Only save if logged in
+
+        try {
+            const res = await fetch('/api/chat/save', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    chatId: currentChatId,
+                    role,
+                    content
+                })
+            });
+            const data = await res.json();
+            if (data.chatId && !currentChatId) {
+                setCurrentChatId(data.chatId);
+            }
+        } catch (error) {
+            console.error("Failed to save message:", error);
+        }
+    };
 
     // -- Navigation --
     const handleBack = () => {
@@ -91,6 +124,7 @@ export default function NeoCompanionClient() {
         setMessages(prev => [...prev, userMsg]);
         setInput('');
         setIsLoading(true);
+        saveMessageToDb('user', textToSend); // Save User Msg
 
         // 2. Local Logic Processing (Simulate 'Thinking' time for realism)
         setTimeout(() => {
@@ -109,6 +143,7 @@ export default function NeoCompanionClient() {
             // (Removed legacy diagnosis check)
 
             setMessages(prev => [...prev, aiResponse]);
+            saveMessageToDb('model', nextNode.text.en); // Save AI Msg
             setIsLoading(false);
         }, 600); // 600ms artificial delay for "natural" feel
     };
@@ -198,9 +233,23 @@ export default function NeoCompanionClient() {
                     <span className="font-gemini font-bold text-xs tracking-[0.2em] uppercase text-slate-300 group-hover:text-white transition-colors">Exit</span>
                 </div>
 
-                <div className="flex items-center gap-2 px-3 py-1 rounded-full bg-red-950/20 border border-red-500/20 shadow-[0_0_15px_rgba(220,38,38,0.2)]">
-                    <div className="w-1.5 h-1.5 rounded-full bg-red-500 animate-pulse"></div>
-                    <span className="font-gemini text-[10px] font-bold text-red-400 uppercase tracking-widest">System Online</span>
+                <div className="flex items-center gap-4">
+                    {/* Auth Button */}
+                    {session ? (
+                        <div className="flex items-center gap-2 px-3 py-1 rounded-full bg-white/5 border border-white/10">
+                            <img src={session.user?.image || ''} alt="User" className="w-5 h-5 rounded-full" />
+                            <span className="font-gemini text-[10px] uppercase text-zinc-400 cursor-pointer hover:text-red-400" onClick={() => signOut()}>Sign Out</span>
+                        </div>
+                    ) : (
+                        <div onClick={() => signIn('google')} className="flex items-center gap-2 px-3 py-1 rounded-full bg-blue-500/10 border border-blue-500/20 cursor-pointer hover:bg-blue-500/20 transition-all">
+                            <span className="font-gemini text-[10px] font-bold text-blue-400 uppercase tracking-widest">Sign In</span>
+                        </div>
+                    )}
+
+                    <div className="flex items-center gap-2 px-3 py-1 rounded-full bg-red-950/20 border border-red-500/20 shadow-[0_0_15px_rgba(220,38,38,0.2)]">
+                        <div className="w-1.5 h-1.5 rounded-full bg-red-500 animate-pulse"></div>
+                        <span className="font-gemini text-[10px] font-bold text-red-400 uppercase tracking-widest">System Online</span>
+                    </div>
                 </div>
             </nav>
 

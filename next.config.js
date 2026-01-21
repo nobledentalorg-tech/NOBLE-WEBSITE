@@ -1,6 +1,6 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  output: 'export',
+  // output: 'export',
 
   // CHANGE THIS to your actual repo name (e.g. '/my-site')
   // If your repo is 'username.github.io', remove this line entirely.
