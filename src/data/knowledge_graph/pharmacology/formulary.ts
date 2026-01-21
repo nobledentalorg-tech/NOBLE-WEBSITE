@@ -1,5 +1,5 @@
 
-import { DrugProfile } from '../../types/neoSchema';
+import { DrugProfile } from '../../../types/neoSchema';
 
 export const PHARMA_DOLO: DrugProfile = {
     id: 'dolo-650',

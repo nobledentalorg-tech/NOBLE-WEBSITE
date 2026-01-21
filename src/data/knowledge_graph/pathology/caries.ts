@@ -1,5 +1,5 @@
 
-import { MedicalCondition } from '../../types/neoSchema';
+import { MedicalCondition } from '../../../types/neoSchema';
 
 export const PATHOLOGY_CARIES: MedicalCondition = {
     id: 'caries',

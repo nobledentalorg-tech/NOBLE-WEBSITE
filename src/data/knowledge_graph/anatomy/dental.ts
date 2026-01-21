@@ -1,5 +1,5 @@
 
-import { LocalizedText } from '../../types/neoSchema';
+import { LocalizedText } from '../../../types/neoSchema';
 
 export interface AnatomyNode {
     id: string;
