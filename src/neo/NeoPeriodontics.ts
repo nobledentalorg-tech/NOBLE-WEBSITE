@@ -47,10 +47,11 @@ export const PERIO_STAGING: Record<string, PerioStage> = {
     },
     'stage_4': {
         stage: 'Stage IV',
-        description: "Advanced Periodontitis with extensive tooth loss potential.",
+        description: { en: "Advanced Periodontitis with extensive tooth loss potential.", ta: "மிகத் தீவிர ஈறு நோய்" },
+        clinicalAttachmentLoss: "> 5 mm",
         boneLoss: "> 33%",
-        complexity: "Very High - Need for Complex Rehabilitation",
-        recallInterval: "3 months"
+        mobility: true,
+        treatment: { en: "Complex Rehabilitation / Implants", ta: "முழுமையான பல் சீரமைப்பு" }
     }
 };
 

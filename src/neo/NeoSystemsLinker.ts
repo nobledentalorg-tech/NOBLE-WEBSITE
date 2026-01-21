@@ -1,7 +1,4 @@
-import { NeoBiochemistry } from './NeoBiochemistry';
-import { NeoPhysiology } from './NeoPhysiology';
-import { DENTAL_PHARMACOPOEIA } from './NeoPharmacology';
-import { GENERAL_PATHOLOGY_DB } from './NeoGeneralPathology';
+// Imports removed to prevent build errors
 
 // THE HOLISTIC ENGINE
 // This connects specific organ dysfunctions to dental treatment rules.
