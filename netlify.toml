@@ -1,6 +1,6 @@
 [build]
   command = "npm run build"
-  # publish = "out" # Commented out to allow Next.js Hybrid/SSR build via Netlify Plugin
+  publish = ".netlify/output/public" # Explicitly override UI setting 'out'
 
 [[plugins]]
   package = "@netlify/plugin-nextjs"
