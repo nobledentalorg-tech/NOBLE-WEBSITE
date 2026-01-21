@@ -1,6 +1,6 @@
 [build]
   command = "npm run build"
-  publish = ".netlify/output/public" # Explicitly override UI setting 'out'
+  publish = "public" # Use existing 'public' dir to satisfy Netlify builder; Plugin handles SSR.
 
 [[plugins]]
   package = "@netlify/plugin-nextjs"
