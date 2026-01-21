@@ -2,6 +2,7 @@
 
 import React, { useState } from 'react';
 import { Doctor } from '@/types'; // Import from root alias
+import Image from 'next/image';
 import { X, Award, ArrowRight, ShieldCheck, Microscope, Zap, Star, GraduationCap, ExternalLink, BookOpen, Sparkles } from 'lucide-react';
 import { RevealOnScroll } from './RevealOnScroll';
 
@@ -82,10 +83,13 @@ const Doctors: React.FC = () => {
               >
                 {/* Profile Image Section */}
                 <div className="relative aspect-[4/5] rounded-[2.5rem] overflow-hidden mb-6">
-                  <img
+                  <Image
                     src={doc.image}
                     alt={doc.name}
-                    className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110"
+                    fill
+                    className="object-cover transition-transform duration-1000 group-hover:scale-110"
+                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 25vw"
+                    unoptimized={doc.image.startsWith('http')} // Optional: Add unoptimized if external domains aren't configured
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-[#151b2b]/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-all duration-500"></div>
 
@@ -153,7 +157,7 @@ const Doctors: React.FC = () => {
                   <div className="h-full border border-white/10 flex flex-col justify-between">
                     <BookOpen className="text-white/40" size={16} />
                     <div className="text-[8px] font-black text-white leading-tight uppercase tracking-widest">
-                      Triumph's Complete Review
+                      Triumph&apos;s Complete Review
                     </div>
                     <div className="text-[6px] text-white/50 uppercase">Wolters Kluwer</div>
                   </div>
@@ -193,7 +197,14 @@ const Doctors: React.FC = () => {
           <div className="absolute inset-0 bg-slate-950/95 backdrop-blur-2xl" onClick={() => setSelectedDoctor(null)}></div>
           <div className="relative bg-white dark:bg-[#0B1019] w-full max-w-5xl rounded-[3rem] shadow-2xl overflow-hidden animate-in zoom-in duration-500 grid lg:grid-cols-2">
             <div className="h-72 sm:h-96 lg:h-full relative overflow-hidden">
-              <img src={selectedDoctor.image} alt={selectedDoctor.name} className="w-full h-full object-cover" />
+              <Image
+                src={selectedDoctor.image}
+                alt={selectedDoctor.name}
+                fill
+                className="object-cover"
+                sizes="(max-width: 1024px) 100vw, 50vw"
+                unoptimized={selectedDoctor.image.startsWith('http')}
+              />
               <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/20 to-transparent lg:hidden"></div>
               <div className="absolute bottom-6 left-6 lg:hidden">
                 <h3 className="text-3xl font-black text-white">{selectedDoctor.name}</h3>

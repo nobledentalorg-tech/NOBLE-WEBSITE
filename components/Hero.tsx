@@ -2,6 +2,7 @@
 
 import React, { useEffect, useRef } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { Phone, Star, CheckCircle2, Bot } from 'lucide-react';
 
 interface HeroProps {
@@ -120,10 +121,24 @@ const Hero: React.FC<HeroProps> = ({ onBookClick }) => {
             {/* App Store Logos */}
             <div className="store-badges">
               <a href="#" className="store-link">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/7/78/Google_Play_Store_badge_EN.svg" alt="Google Play" className="store-badge" />
+                <Image
+                  src="https://upload.wikimedia.org/wikipedia/commons/7/78/Google_Play_Store_badge_EN.svg"
+                  alt="Google Play"
+                  className="store-badge"
+                  width={135}
+                  height={40}
+                  unoptimized
+                />
               </a>
               <a href="#" className="store-link">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/3/3c/Download_on_the_App_Store_Badge.svg" alt="App Store" className="store-badge" />
+                <Image
+                  src="https://upload.wikimedia.org/wikipedia/commons/3/3c/Download_on_the_App_Store_Badge.svg"
+                  alt="App Store"
+                  className="store-badge"
+                  width={120}
+                  height={40}
+                  unoptimized
+                />
               </a>
             </div>
           </div>
@@ -137,14 +152,23 @@ const Hero: React.FC<HeroProps> = ({ onBookClick }) => {
                   autoPlay loop muted playsInline
                   src="https://videos.pexels.com/video-files/3195394/3195394-hd_1920_1080_25fps.mp4"
                 />
-                <img className="logo" src="/images/dentalcare.nallagandla.png" alt="Logo" />
+                <Image
+                  src="/images/dentalcare.nallagandla.png"
+                  alt="Logo"
+                  width={60}
+                  height={60}
+                  className="logo"
+                />
                 <h2>ITI_SLActive <span className="light">TITANIUM</span></h2>
                 <p className="subtitle">Swiss Grade Implant</p>
 
-                <img
+                <Image
                   className="product-pop"
                   src="https://dentcare-website-s3-bucket-01.s3.eu-north-1.amazonaws.com/storage/assets/uploads/JCK1DentcareZirconiaClassic-1.png"
                   alt="Swiss Implant System"
+                  width={300}
+                  height={300}
+                  unoptimized // External S3 bucket not in allowed patterns list yet? It is, but safer to add just in case of dimension issues
                 />
 
                 <span className="nmd">ITI</span>

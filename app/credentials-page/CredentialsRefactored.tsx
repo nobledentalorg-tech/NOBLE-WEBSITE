@@ -30,7 +30,7 @@ const CredentialsRefactored = () => {
         {
             title: "DCI Registered",
             org: "Dental Council of India",
-            desc: "All our specialists are registered practitioners with valid licenses from the state dental council.",
+            desc: "Let&apos;s build your dream smile together.e registered practitioners with valid licenses from the state dental council.",
             icon: FileText
         }
     ];
@@ -51,7 +51,7 @@ const CredentialsRefactored = () => {
                         <span className="text-blue-600 dark:text-cyan-400 font-bold tracking-widest text-xs uppercase mb-3 block">Trust & Safety</span>
                         <h1 className="text-4xl md:text-5xl font-bold text-slate-900 dark:text-white mb-6">Our Credentials</h1>
                         <p className="text-lg text-slate-600 dark:text-slate-400 max-w-2xl mx-auto leading-relaxed">
-                            Noble Dental Care is committed to global standards of <strong>hygiene</strong> and <strong>clinical excellence</strong>. We don't just claim quality; we are certified for it.
+                            Noble Dental Care is committed to global standards of <strong>hygiene</strong> and <strong>clinical excellence</strong>. We don&apos;t just claim quality; we are certified for it.
                         </p>
                     </div>
                 </RevealOnScroll>

@@ -41,7 +41,7 @@ const Testimonials = () => {
             Stories, Not Just Stats.
           </h3>
           <p className="text-slate-500 mt-4 max-w-lg">
-            We don't chase numbers. We chase the perfect outcome for every single patient.
+            We don&apos;t chase numbers. We chase the perfect outcome for every single patient.
           </p>
         </div>
 
@@ -73,7 +73,7 @@ const Testimonials = () => {
             </div>
 
             <p className="text-slate-600 dark:text-slate-300 text-sm leading-relaxed mb-8 italic relative z-10">
-              "{review.text}"
+              &quot;{review.text}&quot;
             </p>
 
             <div className="flex items-center gap-4">

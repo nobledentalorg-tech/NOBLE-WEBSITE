@@ -304,7 +304,7 @@ export default function BracesRefactored() {
                                 <h3 className="text-xl font-bold text-slate-900 dark:text-white mb-2">Age 12–17</h3>
                                 <p className="text-xs font-bold text-blue-500 uppercase tracking-widest mb-4">Growth Spurt Advantage</p>
                                 <p className="text-slate-600 dark:text-slate-400 text-sm leading-relaxed">
-                                    The pubertal growth spurt is the <strong>golden window</strong> to correct skeletal imbalances with functional appliances, often avoiding future surgery.
+                                    Whether you&apos;re a teenager or an adult, we have the right solution for you.
                                 </p>
                             </div>
 
@@ -337,7 +337,7 @@ export default function BracesRefactored() {
                                 { title: "Crowding", desc: "Teeth jostle for space. We expand arches to align them without extraction.", icon: Layers },
                                 { title: "Spacing", desc: "Gaps between teeth. We close them to improve smile esthetics and gum health.", icon: ArrowRight },
                                 { title: "Deep Bite", desc: "Upper teeth cover lower teeth too much. We open the bite to protect enamel.", icon: ChevronRight },
-                                { title: "Open Bite", desc: "Front teeth don't touch. We correct tongue posture and alignment.", icon: ChevronRight },
+                                { title: "Open Bite", desc: "Front teeth don&apos;t touch. We correct tongue posture and alignment.", icon: ChevronRight },
                                 { title: "Crossbite", desc: "Upper teeth bite inside lower teeth. Early correction prevents uneven jaw growth.", icon: Sliders },
                                 { title: "Protrusion", desc: "Upper teeth stick out. We retract them to reduce injury risk and improve profile.", icon: ArrowLeft },
                             ].map((item, i) => (

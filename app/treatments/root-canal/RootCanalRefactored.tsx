@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect, useRef } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import {
    ArrowLeft, ArrowRight, Activity, Zap, ShieldCheck, Clock,
    Search, CheckCircle2, XCircle, AlertTriangle, ChevronRight,
@@ -97,7 +98,7 @@ export default function RootCanalRefactored() {
                         Root Canal Therapy.
                      </h1>
                      <p className="text-lg md:text-xl text-slate-600 dark:text-slate-300 font-medium leading-relaxed max-w-lg border-l-4 border-purple-500 pl-6 my-10">
-                        Don't remove. <strong className="text-purple-600 dark:text-purple-400">Revitalize.</strong> <br />
+                        Don&apos;t remove. <strong className="text-purple-600 dark:text-purple-400">Revitalize.</strong> <br />
                         We save infected teeth using Rotary Files, Lasers, and 3D precision in Nallagandla.
                      </p>
 
@@ -296,12 +297,13 @@ export default function RootCanalRefactored() {
 
                      <div className="relative h-[800px] sticky top-24 hidden lg:block">
                         <div className="absolute inset-0 bg-slate-900 rounded-[3rem] overflow-hidden shadow-2xl">
-                           <img
+                           <Image
                               src="https://images.unsplash.com/photo-1606813902911-8d11c3330d55?auto=format&fit=crop&w=800&q=80"
                               alt="Root Canal Procedure"
-                              width="800"
-                              height="800"
+                              width={800}
+                              height={800}
                               className="w-full h-full object-cover opacity-60 mix-blend-overlay"
+                              unoptimized
                            />
                            <div className="absolute inset-0 bg-gradient-to-t from-slate-900 via-transparent to-transparent"></div>
 
@@ -394,7 +396,7 @@ export default function RootCanalRefactored() {
                <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
                   <div className="flex gap-6 items-center p-6 bg-white dark:bg-[#151b2b] rounded-[2rem] border border-slate-200 dark:border-white/5 shadow-sm hover:shadow-xl transition-all">
                      <div className="w-24 h-24 rounded-full overflow-hidden shrink-0 border-2 border-purple-500">
-                        <img src="/images/dhivakaran.webp" alt="Endodontist" width="100" height="100" className="w-full h-full object-cover" />
+                        <Image src="/images/dhivakaran.webp" alt="Endodontist" width={100} height={100} className="w-full h-full object-cover" />
                      </div>
                      <div>
                         <h3 className="text-xl font-bold text-slate-900 dark:text-white">Senior Endodontist</h3>
@@ -405,7 +407,7 @@ export default function RootCanalRefactored() {
 
                   <div className="flex gap-6 items-center p-6 bg-white dark:bg-[#151b2b] rounded-[2rem] border border-slate-200 dark:border-white/5 shadow-sm hover:shadow-xl transition-all">
                      <div className="w-24 h-24 rounded-full overflow-hidden shrink-0 border-2 border-blue-500">
-                        <img src="/images/roger.webp" alt="Restorative Dentist" width="100" height="100" className="w-full h-full object-cover" />
+                        <Image src="/images/roger.webp" alt="Restorative Dentist" width={100} height={100} className="w-full h-full object-cover" />
                      </div>
                      <div>
                         <h3 className="text-xl font-bold text-slate-900 dark:text-white">Prosthodontist</h3>
@@ -455,7 +457,7 @@ export default function RootCanalRefactored() {
 
          {/* ================= CTA FOOTER ================= */}
          <div className="max-w-5xl mx-auto px-6 py-20 text-center">
-            <h2 className="text-3xl font-bold text-slate-900 dark:text-white mb-6">Don't wait for the swelling.</h2>
+            <h2 className="text-3xl font-bold text-slate-900 dark:text-white mb-6">Don&apos;t wait for the swelling.</h2>
             <p className="text-slate-600 dark:text-slate-400 mb-10">Infections spread fast. We keep emergency slots open daily.</p>
             <div className="flex flex-col sm:flex-row justify-center gap-4">
                <button className="px-10 py-4 bg-purple-600 hover:bg-purple-500 text-white rounded-full font-black uppercase text-xs tracking-widest hover:scale-105 transition-transform flex items-center gap-2 justify-center shadow-xl">

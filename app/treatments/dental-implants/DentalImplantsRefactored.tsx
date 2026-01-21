@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import {
     ArrowLeft, ArrowRight, Shield, Award, Activity,
     Check, ScanLine, Cpu, Droplets, Ruler, User,
@@ -754,25 +755,25 @@ export default function DentalImplantsRefactored() {
                     <div className="grid md:grid-cols-3 gap-8">
                         <div className="group text-center">
                             <div className="w-48 h-48 mx-auto rounded-full overflow-hidden mb-6 border-4 border-white dark:border-[#151b2b] shadow-xl">
-                                <img src="/images/dhivakaran.webp" alt="Dr. Dhivakaran" width="192" height="192" className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" />
+                                <Image src="/images/dhivakaran.webp" alt="Dr. Dhivakaran" width={192} height={192} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" />
                             </div>
                             <h3 className="text-xl font-bold text-slate-900 dark:text-white">Dr. Dhivakaran</h3>
-                            <p className="text-sm font-medium text-teal-600 dark:text-teal-400 uppercase tracking-widest mb-4">CMD</p>
-                            <p className="text-sm text-slate-500 dark:text-slate-400 px-4">Over 3200+ implants placed.</p>
+                            <p className="text-blue-600 dark:text-cyan-400 text-xs font-bold uppercase tracking-widest mb-4">Chief Implantologist</p>
+                            <p className="text-slate-500 dark:text-slate-400 text-sm">Fellow, ICOI (USA). 18+ Years experience in full mouth rehabilitation.</p>
                         </div>
 
-                        <div className="group text-center">
-                            <div className="w-48 h-48 mx-auto rounded-full overflow-hidden mb-6 border-4 border-white dark:border-[#151b2b] shadow-xl">
-                                <img src="/images/roger.webp" alt="Dr. Roger" width="192" height="192" className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" />
+                        <div className="bg-white dark:bg-[#151b2b] p-8 rounded-3xl border border-slate-100 dark:border-white/5 shadow-lg group hover:-translate-y-2 transition-transform">
+                            <div className="w-24 h-24 rounded-full overflow-hidden mx-auto mb-6 border-4 border-slate-100 dark:border-slate-800">
+                                <Image src="/images/roger.webp" alt="Dr. Roger" width={192} height={192} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" />
                             </div>
-                            <h3 className="text-xl font-bold text-slate-900 dark:text-white">Dr. Roger</h3>
-                            <p className="text-sm font-medium text-blue-600 dark:text-blue-400 uppercase tracking-widest mb-4">OMFS</p>
-                            <p className="text-sm text-slate-500 dark:text-slate-400 px-4">Specialist in Oro-Facial Surgeries, digital smile design and full-mouth rehabilitation.</p>
+                            <h3 className="text-xl font-bold text-slate-900 dark:text-white">Dr. Roger Ronaldo</h3>
+                            <p className="text-blue-600 dark:text-cyan-400 text-xs font-bold uppercase tracking-widest mb-4">Oral Surgeon</p>
+                            <p className="text-slate-500 dark:text-slate-400 text-sm">Expert in Zygomatic implants and complex bone augmentation.</p>
                         </div>
 
-                        <div className="group text-center">
-                            <div className="w-48 h-48 mx-auto rounded-full overflow-hidden mb-6 border-4 border-white dark:border-[#151b2b] shadow-xl">
-                                <img src="/images/thikvijay.webp" alt="Dr. Thik Vijay" width="192" height="192" className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" />
+                        <div className="bg-white dark:bg-[#151b2b] p-8 rounded-3xl border border-slate-100 dark:border-white/5 shadow-lg group hover:-translate-y-2 transition-transform">
+                            <div className="w-24 h-24 rounded-full overflow-hidden mx-auto mb-6 border-4 border-slate-100 dark:border-slate-800">
+                                <Image src="/images/thikvijay.webp" alt="Dr. Thik Vijay" width={192} height={192} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" />
                             </div>
                             <h3 className="text-xl font-bold text-slate-900 dark:text-white">Dr. Thik Vijay</h3>
                             <p className="text-sm font-medium text-purple-600 dark:text-purple-400 uppercase tracking-widest mb-4">Smile Architect</p>
@@ -853,7 +854,7 @@ export default function DentalImplantsRefactored() {
                         { q: "How long do they last?", a: "With proper hygiene (brushing/flossing), dental implants can last a lifetime. The titanium screw is permanent. The crown may need replacement after 15-20 years due to normal wear, similar to natural enamel." },
                         { q: "Can I get implants if I have diabetes?", a: "Yes, provided your diabetes is controlled (HbA1c ≤ 7.5%). We use specialized implant surfaces (like Straumann SLActive) that accelerate healing specifically for diabetic patients. Uncontrolled diabetes poses a higher failure risk." },
                         { q: "How long is the healing period?", a: "Typically 3-4 months for the bone to fuse with the implant. In some cases with excellent bone quality, we can load the crown immediately." },
-                        { q: "What if I don't have enough bone?", a: "We can perform bone grafting or a sinus lift to build up the bone volume before or during implant placement to ensure a stable foundation." }
+                        { q: "What if I don&apos;t have enough bone?", a: "We can perform bone grafting or a sinus lift to build up the bone volume before or during implant placement to ensure a stable foundation." }
                     ].map((faq, i) => (
                         <details key={i} className="group bg-white dark:bg-[#151b2b] rounded-2xl border border-slate-200 dark:border-white/5 overflow-hidden transition-all duration-300 open:shadow-lg open:border-teal-500/50">
                             <summary className="flex items-center justify-between p-6 font-bold text-slate-900 dark:text-white cursor-pointer hover:bg-slate-50 dark:hover:bg-white/5 transition-colors select-none">

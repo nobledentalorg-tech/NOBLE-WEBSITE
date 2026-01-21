@@ -105,7 +105,7 @@ export default function PathologyPage({ params }: { params: { slug: string } }) 
                             <div className="text-6xl mb-4">🤖</div>
                             <h3 className="text-2xl font-bold mb-2">Have these symptoms?</h3>
                             <p className="text-indigo-100 mb-6">
-                                Don't guess. Let Neo (My AI Assistant) analyze your pain level right now.
+                                Don&apos;t guess. Let Neo (My AI Assistant) analyze your pain level right now.
                             </p>
                             <a href="/?neo=true" className="inline-block w-full py-4 bg-white text-indigo-900 font-bold rounded-xl hover:bg-indigo-50 transition transform hover:scale-105 shadow-md">
                                 Chat with Neo

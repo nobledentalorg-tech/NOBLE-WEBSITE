@@ -245,7 +245,7 @@ export default function VeneersRefactored() {
                         <div className="text-center mb-16">
                             <h2 className="text-4xl font-bold text-slate-900 dark:text-white mb-4">Design Your Character</h2>
                             <p className="text-slate-600 dark:text-slate-400 max-w-2xl mx-auto">
-                                Teeth aren't just white squares. The shape of the edges determines the "personality" of your smile.
+                                Teeth aren&apos;t just white squares. The shape of the edges determines the &quot;personality&quot; of your smile.
                             </p>
                         </div>
 
@@ -283,9 +283,9 @@ export default function VeneersRefactored() {
                             <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-amber-600/20 border border-amber-500/30 text-amber-400 font-bold text-[10px] uppercase tracking-[0.3em] mb-6">
                                 <Layers size={12} /> The Protocol
                             </div>
-                            <h2 className="text-4xl font-bold mb-6">The "Mock-Up" Guarantee.</h2>
+                            <h2 className="text-4xl font-bold mb-6">The &quot;Mock-Up&quot; Guarantee.</h2>
                             <p className="text-slate-400 text-lg leading-relaxed mb-8">
-                                Most dentists grind your teeth first. We don't. <br />
+                                Most dentists grind your teeth first. We don&apos;t. <br />
                                 We create a <strong>temporary plastic trial smile</strong> that sits over your teeth. You wear it, test it, and approve it <i>before</i> we touch your natural enamel.
                             </p>
 
@@ -305,7 +305,7 @@ export default function VeneersRefactored() {
                                     </div>
                                     <div>
                                         <h4 className="text-lg font-bold text-white">15 Year Warranty</h4>
-                                        <p className="text-slate-400 text-sm">E.max is 4x stronger than natural enamel. It doesn't stain.</p>
+                                        <p className="text-slate-400 text-sm">E.max is 4x stronger than natural enamel. It doesn&apos;t stain.</p>
                                     </div>
                                 </div>
                             </div>
@@ -318,7 +318,7 @@ export default function VeneersRefactored() {
                                 </div>
                                 <h3 className="text-2xl font-bold mb-2">Selfie Approval</h3>
                                 <p className="text-slate-400 max-w-xs mx-auto">
-                                    We take photos of you with the trial smile. If you don't love the selfie, we redesign it for free.
+                                    We take photos of you with the trial smile. If you don&apos;t love the selfie, we redesign it for free.
                                 </p>
                             </div>
                         </div>
@@ -384,7 +384,7 @@ export default function VeneersRefactored() {
                                 <ChevronRight className="transition-transform group-open:rotate-90" size={16} />
                             </summary>
                             <div className="px-6 pb-6 text-sm text-slate-600 dark:text-slate-400 leading-relaxed">
-                                Minimal shaping (0.3mm to 0.5mm) is usually required to ensure the veneer doesn't look bulky. However, for "No-Prep" veneers, we bond directly to the enamel with zero drilling.
+                                Minimal shaping (0.3mm to 0.5mm) is usually required to ensure the veneer doesn&apos;t look bulky. However, for &quot;No-Prep&quot; veneers, we bond directly to the enamel with zero drilling.
                             </div>
                         </details>
                         <details className="group bg-white dark:bg-[#151b2b] rounded-2xl border border-slate-200 dark:border-white/5 overflow-hidden transition-all duration-300 open:shadow-lg">
@@ -415,7 +415,7 @@ export default function VeneersRefactored() {
                     <h2 className="text-4xl font-black mb-6">Invest in confidence.</h2>
                     <p className="text-slate-400 mb-10 text-lg">
                         Stop hiding your teeth in photos. <br />
-                        Get a "Test Drive" of your new smile for just ₹1,000.
+                        Get a &quot;Test Drive&quot; of your new smile for just ₹1,000.
                     </p>
                     <div className="grid md:grid-cols-3 gap-6">
                         <a href="tel:+918610425342" className="p-6 bg-white/5 rounded-2xl border border-white/10 hover:bg-white/10 transition-colors">

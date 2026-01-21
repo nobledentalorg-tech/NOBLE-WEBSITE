@@ -8,14 +8,14 @@ const MissionValues = () => {
   const values = [
     {
       title: "Bio-Digital Architecture",
-      desc: "We don't just 'fill cavities'. We engineer health. Using AI diagnostics and regenerative biology, we treat the root cause of gum disease and decay before it even starts.",
+      desc: "We don&apos;t just &quot;fill cavities&quot;. We engineer health. Using AI diagnostics and regenerative biology, we treat the root cause of gum disease and decay before it even starts.",
       icon: Heart,
       color: "text-rose-500",
       bg: "bg-rose-50 dark:bg-rose-900/20"
     },
     {
       title: "Micro-Invasive Conservation",
-      desc: "The best tooth is the one you keep. Our '100x Magnification' protocols allow us to remove infection while preserving 99% of your healthy natural structure.",
+      desc: "The best tooth is the one you keep. Our &quot;100x Magnification&quot; protocols allow us to remove infection while preserving 99% of your healthy natural structure.",
       icon: ShieldCheck,
       color: "text-blue-500",
       bg: "bg-blue-50 dark:bg-blue-900/20"
@@ -71,7 +71,7 @@ const MissionValues = () => {
                 <h3 className="text-2xl font-bold text-slate-900 dark:text-white">Our Mission</h3>
               </div>
               <blockquote className="text-2xl md:text-3xl font-bold text-slate-800 dark:text-slate-200 leading-tight tracking-tight italic">
-                "To provide the Nallagandla community with world-class, transparent dental solutions that prioritize longevity, ethics, and patient comfort over commercial gains."
+                &quot;To provide the Nallagandla community with world-class, transparent dental solutions that prioritize longevity, ethics, and patient comfort over commercial gains.&quot;
               </blockquote>
               <div className="mt-8 pt-8 border-t border-slate-200 dark:border-white/10 flex items-center gap-3">
                 <div className="w-10 h-10 rounded-full bg-blue-100 dark:bg-blue-900/30 flex items-center justify-center text-blue-600 dark:text-blue-400">
@@ -115,7 +115,7 @@ const MissionValues = () => {
               <div>
                 <h3 className="text-2xl md:text-3xl font-bold text-slate-900 dark:text-white mb-4">Our Commitment to Integrity</h3>
                 <p className="text-slate-600 dark:text-slate-400 text-lg font-medium max-w-4xl">
-                  We strictly avoid aggressive sales tactics, exaggerated 'results' photos, and clickbait discounts. Our growth is built on patient trust and verified clinical success, not inflated marketing claims.
+                  We strictly avoid aggressive sales tactics, exaggerated &apos;results&apos; photos, and clickbait discounts. Our growth is built on patient trust and verified clinical success, not inflated marketing claims.
                   <strong> Your health is too precious for hype.</strong>
                 </p>
               </div>
