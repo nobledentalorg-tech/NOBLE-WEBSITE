@@ -4,6 +4,7 @@ import React from 'react';
 // Metadata removed for client component
 
 import Link from 'next/link';
+import Image from 'next/image';
 import { ArrowLeft, Play, ScanLine, Microscope } from 'lucide-react';
 import { RevealOnScroll } from '@/components/RevealOnScroll';
 import Gallery from '@/components/Gallery';
@@ -46,7 +47,7 @@ const GalleryRefactored = () => {
           {cases.map((c, i) => (
             <RevealOnScroll key={i} delay={i * 100}>
               <div className="group relative aspect-[4/5] rounded-[3.5rem] overflow-hidden shadow-2xl border border-white/10 cursor-zoom-in">
-                <img src={c.img} alt={c.title} width="800" height="1000" className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110" />
+                <Image src={c.img} alt={c.title} width={800} height={1000} className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110" />
                 <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-transparent to-transparent"></div>
                 <div className="absolute bottom-10 left-10 text-white">
                   <span className="text-[10px] font-black uppercase tracking-[0.3em] text-blue-400 mb-4 block">{c.cat}</span>
@@ -67,7 +68,7 @@ const GalleryRefactored = () => {
 
         {/* --- CINEMATIC SECTION --- */}
         <section className="bg-slate-900 rounded-[5rem] overflow-hidden p-12 md:p-32 text-white relative mb-40 shadow-2xl">
-          <div className="absolute inset-0 opacity-20"><img src="https://images.unsplash.com/photo-1579684385127-1ef15d508118?auto=format&fit=crop&q=80&w=2000" className="w-full h-full object-cover" alt="Surgical Film" width="2000" height="1000" /></div>
+          <div className="absolute inset-0 opacity-20"><Image src="https://images.unsplash.com/photo-1579684385127-1ef15d508118?auto=format&fit=crop&q=80&w=2000" className="w-full h-full object-cover" alt="Surgical Film" width={2000} height={1000} /></div>
           <div className="relative z-10 flex flex-col items-center text-center">
             <div className="w-24 h-24 rounded-full bg-blue-600 flex items-center justify-center shadow-2xl mb-12 animate-pulse"><Play size={32} fill="currentColor" /></div>
             <h2 className="text-5xl md:text-7xl font-black mb-8 tracking-tighter leading-none">The Clinical Workflow Film.</h2>

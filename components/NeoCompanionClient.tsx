@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect, useRef } from 'react';
 import { useRouter } from 'next/navigation';
+import Image from 'next/image';
 import {
     Bot, Send, ArrowLeft, Mic, MicOff, Sparkles,
     ExternalLink, Plus, Flame, Zap,
@@ -237,7 +238,7 @@ export default function NeoCompanionClient() {
                     {/* Auth Button */}
                     {session ? (
                         <div className="flex items-center gap-2 px-3 py-1 rounded-full bg-white/5 border border-white/10">
-                            <img src={session.user?.image || ''} alt="User" className="w-5 h-5 rounded-full" />
+                            <Image src={session.user?.image || ''} alt="User" width={20} height={20} className="w-5 h-5 rounded-full" />
                             <span className="font-gemini text-[10px] uppercase text-zinc-400 cursor-pointer hover:text-red-400" onClick={() => signOut()}>Sign Out</span>
                         </div>
                     ) : (

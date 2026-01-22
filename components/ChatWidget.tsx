@@ -16,6 +16,7 @@ const ChatWidget = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [isListening, setIsListening] = useState(false);
   const messagesEndRef = useRef<HTMLDivElement>(null);
+  const recognitionRef = useRef<any>(null);
 
   // Update initial greeting when language changes
   useEffect(() => {

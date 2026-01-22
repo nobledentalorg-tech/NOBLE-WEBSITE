@@ -4,10 +4,11 @@ import React, { useRef, useState, useEffect, useMemo } from 'react';
 import { useRouter } from 'next/navigation';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { EffectCoverflow, Autoplay, Pagination, Navigation, Keyboard } from 'swiper/modules';
-import { 
-  Activity, Zap, Smile, Users, Search, Filter, Sparkles, 
-  Shield, Microscope, HeartPulse, ScanLine 
+import {
+    Activity, Zap, Smile, Users, Search, Filter, Sparkles,
+    Shield, Microscope, HeartPulse, ScanLine
 } from 'lucide-react';
+import Image from 'next/image';
 import { treatmentsData } from '@/data/treatments'; // <--- IMPORT YOUR DATA
 
 // Import Swiper styles
@@ -218,14 +219,6 @@ const cssStyles = `
     display: flex;
     align-items: center;
     justify-content: center;
-}
-.img-container img {
-    width: 380px;
-    height: 380px;
-    object-fit: cover;
-    border-radius: 50%;
-    border: 8px solid rgba(255,255,255,0.1);
-    box-shadow: 0 0 50px rgba(0,0,0,0.3);
 }
 
 .card-content {
@@ -463,12 +456,12 @@ const cssStyles = `
 
 // Helper: Map Category to Color Theme
 const getTheme = (category: string) => {
-    switch(category) {
+    switch (category) {
         case 'Surgery': return { bg: 'linear-gradient(331deg, #0f172a 0%, #1e3a8a 100%)', accent: '#60A5FA' }; // Blue
         case 'Endodontics': return { bg: 'linear-gradient(331deg, #2e1065 0%, #7e22ce 100%)', accent: '#C084FC' }; // Purple
         case 'Orthodontics': return { bg: 'linear-gradient(331deg, #312e81 0%, #4f46e5 100%)', accent: '#818CF8' }; // Indigo
         case 'Cosmetic': return { bg: 'linear-gradient(331deg, #0891b2 0%, #06b6d4 100%)', accent: '#67E8F9' }; // Cyan
-        case 'Kids': 
+        case 'Kids':
         case 'Pediatrics': return { bg: 'linear-gradient(331deg, #7c2d12 0%, #ea580c 100%)', accent: '#FB923C' }; // Orange
         case 'Restorative': return { bg: 'linear-gradient(331deg, #115e59 0%, #0d9488 100%)', accent: '#2DD4BF' }; // Teal
         case 'Preventive': return { bg: 'linear-gradient(331deg, #064e3b 0%, #10b981 100%)', accent: '#34D399' }; // Green
@@ -479,7 +472,7 @@ const getTheme = (category: string) => {
 
 // Helper: Map Category to Icon
 const getCategoryIcon = (category: string) => {
-    switch(category) {
+    switch (category) {
         case 'Surgery': return Activity;
         case 'Endodontics': return Microscope;
         case 'Orthodontics': return Smile;
@@ -521,13 +514,13 @@ const Services: React.FC<ServicesProps> = ({ onServiceClick }) => {
 
     const [searchQuery, setSearchQuery] = useState('');
     const [activeFilter, setActiveFilter] = useState('All');
-    
+
     // --- 1. DYNAMIC DATA MAPPING ---
     const allServices: ExtendedServiceItem[] = useMemo(() => {
         return Object.values(treatmentsData).map((t) => {
             const theme = getTheme(t.category);
             const Icon = getCategoryIcon(t.category);
-            
+
             return {
                 id: t.id,
                 treatmentId: t.id,
@@ -556,15 +549,15 @@ const Services: React.FC<ServicesProps> = ({ onServiceClick }) => {
     useEffect(() => {
         const query = searchQuery.toLowerCase();
         const filtered = allServices.filter(service => {
-            const matchesSearch = service.title.toLowerCase().includes(query) || 
-                                  service.keywords.some(k => k.toLowerCase().includes(query));
+            const matchesSearch = service.title.toLowerCase().includes(query) ||
+                service.keywords.some(k => k.toLowerCase().includes(query));
             const matchesCategory = activeFilter === 'All' || service.category === activeFilter;
-            
+
             return matchesSearch && matchesCategory;
         });
         setFilteredServices(filtered);
-        
-        if(swiperRef.current && swiperRef.current.swiper) {
+
+        if (swiperRef.current && swiperRef.current.swiper) {
             swiperRef.current.swiper.slideTo(0);
         }
     }, [searchQuery, activeFilter, allServices]);
@@ -582,15 +575,15 @@ const Services: React.FC<ServicesProps> = ({ onServiceClick }) => {
     };
 
     const handleSlideChange = (swiper: any) => {
-         const activeIndex = swiper.realIndex;
-         const currentService = filteredServices.length > 0 
+        const activeIndex = swiper.realIndex;
+        const currentService = filteredServices.length > 0
             ? (filteredServices[activeIndex] || filteredServices[0])
             : allServices[0];
-         
-         if (sectionRef.current && currentService) {
+
+        if (sectionRef.current && currentService) {
             sectionRef.current.style.setProperty("--progress-color", currentService.accent);
             sectionRef.current.style.background = currentService.bg;
-         }
+        }
     };
 
     const handleClick = (id: string) => {
@@ -602,13 +595,13 @@ const Services: React.FC<ServicesProps> = ({ onServiceClick }) => {
     };
 
     return (
-        <section 
-            id="services" 
-            ref={sectionRef} 
+        <section
+            id="services"
+            ref={sectionRef}
             className="services-wrapper relative py-16 lg:py-20 w-full overflow-hidden flex flex-col items-center justify-center transition-all duration-700"
-            style={{ 
+            style={{
                 background: allServices[0]?.bg,
-                "--progress-color": allServices[0]?.accent 
+                "--progress-color": allServices[0]?.accent
             } as React.CSSProperties}
         >
             <style jsx>{cssStyles}</style>
@@ -616,11 +609,11 @@ const Services: React.FC<ServicesProps> = ({ onServiceClick }) => {
             {/* Search & Filter Header (Overlay) */}
             <div className="absolute top-0 pt-6 lg:pt-8 w-full z-20 flex flex-col items-center pointer-events-none px-4">
                 <h3 className="text-white/60 font-bold tracking-widest text-[10px] lg:text-xs uppercase mb-3">Our Expertise</h3>
-                
+
                 <div className="pointer-events-auto relative w-full max-w-sm lg:max-w-md mb-3 lg:mb-4">
-                    <input 
-                        type="text" 
-                        placeholder="Search by symptom..." 
+                    <input
+                        type="text"
+                        placeholder="Search by symptom..."
                         value={searchQuery}
                         onChange={(e) => setSearchQuery(e.target.value)}
                         className="w-full bg-white/10 backdrop-blur-md border border-white/20 rounded-full py-2.5 lg:py-3 pl-10 lg:pl-12 pr-6 text-white placeholder-white/50 text-sm focus:outline-none focus:bg-white/20 focus:border-white/40 transition-all shadow-lg"
@@ -633,11 +626,10 @@ const Services: React.FC<ServicesProps> = ({ onServiceClick }) => {
                         <button
                             key={cat}
                             onClick={() => setActiveFilter(cat)}
-                            className={`px-3 py-1 lg:px-4 lg:py-1.5 rounded-full text-[10px] lg:text-xs font-bold uppercase tracking-wider transition-all border ${
-                                activeFilter === cat 
-                                    ? 'bg-white text-slate-900 border-white scale-105 shadow-md' 
-                                    : 'bg-transparent text-white/70 border-white/20 hover:bg-white/10 hover:border-white/40'
-                            }`}
+                            className={`px-3 py-1 lg:px-4 lg:py-1.5 rounded-full text-[10px] lg:text-xs font-bold uppercase tracking-wider transition-all border ${activeFilter === cat
+                                ? 'bg-white text-slate-900 border-white scale-105 shadow-md'
+                                : 'bg-transparent text-white/70 border-white/20 hover:bg-white/10 hover:border-white/40'
+                                }`}
                         >
                             {cat}
                         </button>
@@ -654,7 +646,7 @@ const Services: React.FC<ServicesProps> = ({ onServiceClick }) => {
                     effect="coverflow"
                     grabCursor={true}
                     centeredSlides={true}
-                    slidesPerView={1} 
+                    slidesPerView={1}
                     speed={1000}
                     coverflowEffect={{
                         rotate: 50,
@@ -680,8 +672,8 @@ const Services: React.FC<ServicesProps> = ({ onServiceClick }) => {
                 >
                     {filteredServices.map((service) => (
                         <SwiperSlide key={service.id} className="slide">
-                            <div 
-                                className="card" 
+                            <div
+                                className="card"
                                 style={{ background: service.bg, "--color": service.accent } as React.CSSProperties}
                             >
                                 <div className="absolute inset-0 overflow-hidden pointer-events-none">
@@ -691,7 +683,17 @@ const Services: React.FC<ServicesProps> = ({ onServiceClick }) => {
                                 <div className="svg-wrapper floating">
                                     <div className="img-container swing">
                                         <div className="absolute inset-0 rounded-full border border-white/20 animate-[spin_10s_linear_infinite]"></div>
-                                        <img src={service.image} alt={service.title} />
+                                        <Image
+                                            src={service.image}
+                                            alt={service.title}
+                                            width={380}
+                                            height={380}
+                                            className="w-[380px] h-[380px] object-cover rounded-full"
+                                            style={{
+                                                border: '8px solid rgba(255,255,255,0.1)',
+                                                boxShadow: '0 0 50px rgba(0,0,0,0.3)'
+                                            }}
+                                        />
                                         <div className="absolute -bottom-4 right-10 bg-white p-3 lg:p-4 rounded-full shadow-lg">
                                             <service.icon size={24} className="lg:w-8 lg:h-8" style={{ color: service.accent }} />
                                         </div>
@@ -705,7 +707,7 @@ const Services: React.FC<ServicesProps> = ({ onServiceClick }) => {
                                         {service.description}
                                     </p>
                                     <div className="card-cta">
-                                        <button 
+                                        <button
                                             className="cta-button"
                                             onClick={() => handleClick(service.treatmentId)}
                                         >
@@ -732,7 +734,7 @@ const Services: React.FC<ServicesProps> = ({ onServiceClick }) => {
                             <g className="slider-svg-circle-wrap">
                                 <circle cx="50" cy="50" r="45"></circle>
                             </g>
-                            <path className="slider-svg-arrow" d="M35 50 L65 30 L65 70 Z"/>
+                            <path className="slider-svg-arrow" d="M35 50 L65 30 L65 70 Z" />
                         </svg>
                     </div>
                     <div className="slider-button slider-button-next">
@@ -740,7 +742,7 @@ const Services: React.FC<ServicesProps> = ({ onServiceClick }) => {
                             <g className="slider-svg-circle-wrap">
                                 <circle cx="50" cy="50" r="45"></circle>
                             </g>
-                            <path className="slider-svg-arrow" d="M35 50 L65 30 L65 70 Z"/>
+                            <path className="slider-svg-arrow" d="M35 50 L65 30 L65 70 Z" />
                         </svg>
                     </div>
                 </Swiper>
@@ -749,7 +751,7 @@ const Services: React.FC<ServicesProps> = ({ onServiceClick }) => {
                     <Filter size={64} className="mb-4 opacity-50" />
                     <h3 className="text-2xl font-bold mb-2">No treatments found</h3>
                     <p className="text-white/60 mb-6">Try adjusting your search or filter.</p>
-                    <button 
+                    <button
                         onClick={() => { setSearchQuery(''); setActiveFilter('All'); }}
                         className="px-6 py-2 bg-white/10 hover:bg-white/20 border border-white/20 rounded-full transition-all text-sm font-bold uppercase tracking-wider"
                     >
