@@ -8,6 +8,7 @@ import { ChatMessage } from '@/types'; // Updated import
 
 const ChatWidget = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const [language, setLanguage] = useState<'en' | 'ta'>('en'); // Language State
   const [messages, setMessages] = useState<ChatMessage[]>([
     { role: 'model', text: "Hello! I am the Noble AI assistant. How can I help you today?", timestamp: Date.now() }
   ]);
@@ -15,7 +16,20 @@ const ChatWidget = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [isListening, setIsListening] = useState(false);
   const messagesEndRef = useRef<HTMLDivElement>(null);
-  const recognitionRef = useRef<any>(null);
+
+  // Update initial greeting when language changes
+  useEffect(() => {
+    setMessages(prev => {
+      const newText = language === 'en'
+        ? "Hello! I am the Noble AI assistant. How can I help you today?"
+        : "வணக்கம்! நான் Noble AI உதவியாளன். உங்களுக்கு எப்படி உதவ முடியும்?";
+      // Only update the very first message if it's the greeting
+      if (prev.length === 1 && prev[0].role === 'model') {
+        return [{ ...prev[0], text: newText }];
+      }
+      return prev;
+    });
+  }, [language]);
 
   const scrollToBottom = () => {
     messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
@@ -94,7 +108,7 @@ const ChatWidget = () => {
 
       const aiResponse: ChatMessage = {
         role: 'model',
-        text: nextNode.text.en,
+        text: (language === 'ta' && nextNode.text.ta) ? nextNode.text.ta : nextNode.text.en,
         timestamp: Date.now(),
         possibilities: nextNode.possibilities,
         sources: []
@@ -128,12 +142,20 @@ const ChatWidget = () => {
                 </div>
               </div>
             </div>
-            <button
-              onClick={() => setIsOpen(false)}
-              className="p-2 text-slate-400 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-white/5 rounded-full transition-all duration-300"
-            >
-              <X size={20} />
-            </button>
+            <div className="flex items-center gap-2">
+              <button
+                onClick={() => setLanguage(prev => prev === 'en' ? 'ta' : 'en')}
+                className="px-2 py-1 text-xs font-bold border border-slate-200 dark:border-white/10 rounded-md hover:bg-slate-100 dark:hover:bg-white/5 transition-colors"
+              >
+                {language === 'en' ? 'தமிழ்' : 'ENG'}
+              </button>
+              <button
+                onClick={() => setIsOpen(false)}
+                className="p-2 text-slate-400 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-white/5 rounded-full transition-all duration-300"
+              >
+                <X size={20} />
+              </button>
+            </div>
           </div>
 
           {/* Messages */}

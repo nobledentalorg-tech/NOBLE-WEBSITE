@@ -1,5 +1,6 @@
 
 import { ClinicalNode } from '../types/neoSchema';
+import { PERIO_STAGING } from './NeoPeriodontics';
 
 export const NEO_KNOWLEDGE_GRAPH: Record<string, ClinicalNode> = {
     // --- ROOT ---
@@ -28,9 +29,21 @@ export const NEO_KNOWLEDGE_GRAPH: Record<string, ClinicalNode> = {
             ta: "வலியை விவரிக்கவும்."
         },
         options: [
-            { label: { en: "Sharp with Cold/Hot", ta: "கூச்சம்" }, nextId: 'pain_sensitivity' },
-            { label: { en: "Dull / Night Pain", ta: "இரவு வலி" }, nextId: 'pain_night' },
-            { label: { en: "Pain when Chewing", ta: "கடிக்கும் போது வலி" }, nextId: 'pain_chewing' }
+            {
+                label: { en: "Sharp with Cold/Hot", ta: "கூச்சம்" },
+                nextId: 'pain_sensitivity',
+                keywords: ['sharp', 'shock', 'sensitivity', 'cold', 'hot', 'ice', 'water']
+            },
+            {
+                label: { en: "Dull / Night Pain", ta: "இரவு வலி" },
+                nextId: 'pain_night',
+                keywords: ['dull', 'ache', 'continuous', 'severe', 'night', 'sleep', 'throbbing', 'heavy', 'all the time', 'constant']
+            },
+            {
+                label: { en: "Pain when Chewing", ta: "கடிக்கும் போது வலி" },
+                nextId: 'pain_chewing',
+                keywords: ['chew', 'bite', 'eating', 'pressure', 'food']
+            }
         ]
     },
     pain_sensitivity: {
@@ -152,26 +165,50 @@ export const NEO_KNOWLEDGE_GRAPH: Record<string, ClinicalNode> = {
         id: 'missing_tooth',
         type: 'question',
         text: {
-            en: "Replacing missing teeth protects your jawbone. How long has the tooth been missing?",
+            en: "How many teeth are you missing?",
+            ta: "எத்தனை பற்கள் இல்லை?"
+        },
+        options: [
+            { label: { en: "One or Two", ta: "ஒன்று / இரண்டு" }, nextId: 'missing_duration_single', keywords: ['one', 'single', 'two', 'gap'] },
+            { label: { en: "Multiple / All", ta: "பல / அனைத்தும்" }, nextId: 'missing_all', keywords: ['all', 'full', 'denture', 'multiple', 'many'] }
+        ]
+    },
+    missing_duration_single: {
+        id: 'missing_duration_single',
+        type: 'question',
+        text: {
+            en: "Replacing missing teeth protects your jawbone. How long has it been?",
             ta: "பல் விழுந்து எவ்வளவு காலம் ஆகிறது?"
         },
         options: [
-            { label: { en: "Less than 6 months", ta: "< 6 மாதங்கள்" }, nextId: 'assess_implant_ideal' },
-            { label: { en: "More than 6 months", ta: "> 6 மாதங்கள்" }, nextId: 'assess_implant_bone' }
+            { label: { en: "Recent (< 6 months)", ta: "< 6 மாதங்கள்" }, nextId: 'assess_implant_ideal', keywords: ['recent', 'new', 'month'] },
+            { label: { en: "Long time (> 6 months)", ta: "> 6 மாதங்கள்" }, nextId: 'assess_implant_bone', keywords: ['long', 'years', 'old'] }
+        ]
+    },
+    missing_all: {
+        id: 'missing_all',
+        type: 'question',
+        text: {
+            en: "Are you currently wearing dentures?",
+            ta: "பல் செட் உள்ளதா?"
+        },
+        options: [
+            { label: { en: "Yes, I hate them", ta: "ஆம்" }, nextId: 'assess_all_on_4', keywords: ['yes', 'denture', 'loose'] },
+            { label: { en: "No, teeth are failing", ta: "இல்லை" }, nextId: 'assess_full_mouth', keywords: ['no', 'failing', 'rotten'] }
         ]
     },
     assess_implant_ideal: {
         id: 'assess_implant_ideal',
         type: 'assessment',
         text: {
-            en: "You are in the optimal timeframe for an implant.",
+            en: "You are in the optimal timeframe for a Dental Implant. We can likely place it directly.",
             ta: "இம்பிளான்ட் செய்ய இது சரியான நேரம்."
         },
         possibilities: [{
-            title: "Ideal Implant Candidate",
-            description: "Conditions are likely favorable for a direct implant placement.",
+            title: "Single Dental Implant",
+            description: "Titanium root replacement. Lifetime solution if placed early.",
             likelihood: 'High',
-            action: "Schedule 3D Scan",
+            action: "Get Implant Quote",
             relatedSlug: "dental-implants"
         }]
     },
@@ -179,14 +216,44 @@ export const NEO_KNOWLEDGE_GRAPH: Record<string, ClinicalNode> = {
         id: 'assess_implant_bone',
         type: 'assessment',
         text: {
-            en: "Bone loss may have occurred. We should check density.",
+            en: "Bone loss occurs when teeth are missing for long. We may need to rebuild foundation.",
             ta: "எலும்பு தேய்மானம் இருக்கலாம்."
         },
         possibilities: [{
-            title: "Delayed Replacement",
-            description: "Bone graft might be needed before placement.",
+            title: "Implant with Bone Graft",
+            description: "Augmentation needed to ensure implant stability.",
             likelihood: 'Moderate',
-            action: "Bone Graft Consult",
+            action: "Bone Scan (CBCT)",
+            relatedSlug: "dental-implants"
+        }]
+    },
+    assess_all_on_4: {
+        id: 'assess_all_on_4',
+        type: 'assessment',
+        text: {
+            en: "We can fix permanent teeth in just 3 days using 'All-on-4' technology.",
+            ta: "3 நாட்களில் முழு பல் செட் பொருத்தலாம்."
+        },
+        possibilities: [{
+            title: "All-on-4 Implants",
+            description: "Fixed full-mouth teeth. No more removing dentures at night.",
+            likelihood: 'High',
+            action: "Full Mouth Consult",
+            relatedSlug: "dental-implants"
+        }]
+    },
+    assess_full_mouth: {
+        id: 'assess_full_mouth',
+        type: 'assessment',
+        text: {
+            en: "For failing teeth, we can extract and place implants in the same visit.",
+            ta: "ஒரே நாளில் பல் அகற்றி இம்பிளான்ட் செய்யலாம்."
+        },
+        possibilities: [{
+            title: "Immediate Load Implants",
+            description: "Walk in with bad teeth, walk out with fixed temporaries.",
+            likelihood: 'High',
+            action: "Full Mouth Rehab",
             relatedSlug: "dental-implants"
         }]
     },
@@ -291,18 +358,42 @@ export const NEO_KNOWLEDGE_GRAPH: Record<string, ClinicalNode> = {
     },
     assess_perio: {
         id: 'assess_perio',
-        type: 'assessment',
+        type: 'question',
         text: {
-            en: "This requires attention to prevent bone loss.",
-            ta: "எலும்பு தேய்மானத்தை தடுக்க சிகிச்சை தேவை."
+            en: "Are any of your teeth loose or shaky?",
+            ta: "உங்கள் பற்கள் ஆடுகிறதா?"
         },
+        options: [
+            { label: { en: "Yes, Loose Teeth", ta: "ஆம்" }, nextId: 'perio_advanced', keywords: ['loose', 'shaky', 'moving', 'mobility'] },
+            { label: { en: "No, Just Bleeding/Pain", ta: "இல்லை" }, nextId: 'perio_early', keywords: ['no', 'stable', 'tight'] }
+        ]
+    },
+    perio_early: {
+        id: 'perio_early',
+        type: 'assessment',
+        text: PERIO_STAGING['stage_2'].description, // Moderate Periodontitis
         possibilities: [{
-            title: "Periodontitis",
-            description: "Advanced gum infection that damages bone.",
-            likelihood: 'Moderate',
-            action: "Laser Gum Therapy",
+            title: "Periodontitis (Stage I/II)",
+            description: "Gum infection has started to affect the bone. Deep cleaning needed.",
+            likelihood: 'High',
+            action: PERIO_STAGING['stage_2'].treatment.en,
             relatedSlug: "gum-disease"
-        }]
+        }],
+        urgencyLevel: 'medium'
+    },
+    perio_advanced: {
+        id: 'perio_advanced',
+        type: 'assessment',
+        text: PERIO_STAGING['stage_3'].description, // Severe
+        possibilities: [{
+            title: "Advanced Periodontitis (Stage III/IV)",
+            description: "Significant bone loss detected. Risk of tooth loss is high.",
+            likelihood: 'High',
+            action: PERIO_STAGING['stage_3'].treatment.en,
+            relatedSlug: "gum-disease"
+        }],
+        urgencyLevel: 'high',
+        redFlags: ['mobility', 'loose teeth']
     },
 
     // --- OTHER SYMPTOMS ---

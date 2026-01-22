@@ -35,12 +35,12 @@ export class NeoEngine {
         } else {
             // ... Graph Traversal
             const currentNode = NEO_KNOWLEDGE_GRAPH[currentStateId] || NEO_KNOWLEDGE_GRAPH['root'];
+
             if (currentNode.options) {
-                for (const opt of currentNode.options) {
-                    if (input.toLowerCase().includes(opt.label.en.toLowerCase())) {
-                        resultNode = NEO_KNOWLEDGE_GRAPH[opt.nextId];
-                        break;
-                    }
+                // Fuzzy Match Logic
+                const bestMatch = this.findBestMatch(input, currentNode.options);
+                if (bestMatch) {
+                    resultNode = NEO_KNOWLEDGE_GRAPH[bestMatch.nextId];
                 }
             }
         }
@@ -58,7 +58,7 @@ export class NeoEngine {
         }
 
         // --- ADVANCED "BRAINS" LOGIC (Confidence & Risk) ---
-        let confidenceScore = 0;
+        let confidenceScore = 100; // Default to 100 (Implicitly confident unless calculated otherwise)
         let urgency: 'low' | 'medium' | 'high' | 'emergency' = 'low';
 
         // 1. Confidence Injection
@@ -130,8 +130,8 @@ export class NeoEngine {
         const lower = input.toLowerCase();
 
         // 1. Clinical Shortcuts
-        if (lower.includes('pain')) return NEO_KNOWLEDGE_GRAPH['pain_type'];
-        if (lower.includes('root canal')) return NEO_KNOWLEDGE_GRAPH['assess_pulpitis'];
+        if (lower.includes('pain') || lower.includes('வலி')) return NEO_KNOWLEDGE_GRAPH['pain_type'];
+        if (lower.includes('root canal') || lower.includes('வேர் சிகிச்சை')) return NEO_KNOWLEDGE_GRAPH['assess_pulpitis'];
 
         // 2. Public Health & Insurance Shortcuts
         // TODO: Import PUBLIC_HEALTH_DB properly. For now, we perform direct lookups if loaded.
@@ -158,6 +158,23 @@ export class NeoEngine {
             };
         }
 
+        return null;
+    }
+    private static findBestMatch(input: string, options: any[]): any | null {
+        const lowerInput = input.toLowerCase();
+
+        for (const opt of options) {
+            // 1. Direct Label Match (High Priority)
+            if (lowerInput.includes(opt.label.en.toLowerCase())) return opt;
+            if (opt.label.ta && lowerInput.includes(opt.label.ta.toLowerCase())) return opt;
+
+            // 2. Keyword Match (Medium Priority)
+            if (opt.keywords) {
+                for (const kw of opt.keywords) {
+                    if (lowerInput.includes(kw.toLowerCase())) return opt;
+                }
+            }
+        }
         return null;
     }
 }
