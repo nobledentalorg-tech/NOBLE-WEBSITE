@@ -599,20 +599,28 @@ export default function BracesRefactored() {
                         <h2 className="text-3xl font-bold text-slate-900 dark:text-white">Alternatives to Braces</h2>
                     </div>
                     <div className="grid md:grid-cols-2 gap-8">
-                        <div className="p-8 bg-slate-50 dark:bg-[#151b2b] rounded-[2rem] border border-slate-200 dark:border-white/5">
+                        <div className="p-8 bg-slate-50 dark:bg-[#151b2b] rounded-[2rem] border border-slate-200 dark:border-white/5 group hover:border-blue-500/50 transition-all">
                             <h3 className="text-2xl font-bold text-slate-900 dark:text-white mb-4">In-House Clear Aligners</h3>
                             <p className="text-slate-600 dark:text-slate-400 mb-6">
                                 Designed and manufactured at Noble Dental Care by Dr. Deepak. Ideal for mild-to-moderate crowding with the same orthodontist supervising.
                             </p>
-                            <a href="#" className="text-blue-600 font-bold flex items-center gap-2">Explore Noble Aligners <ArrowRight size={16} /></a>
+                            <Link href="/treatments/veneers" className="text-blue-600 font-bold flex items-center gap-2">Explore Esthetic Veneers <ArrowRight size={16} /></Link>
                         </div>
-                        <div className="p-8 bg-slate-50 dark:bg-[#151b2b] rounded-[2rem] border border-slate-200 dark:border-white/5">
+                        <div className="p-8 bg-slate-50 dark:bg-[#151b2b] rounded-[2rem] border border-slate-200 dark:border-white/5 group hover:border-indigo-500/50 transition-all">
                             <h3 className="text-2xl font-bold text-slate-900 dark:text-white mb-4">Invisalign®</h3>
                             <p className="text-slate-600 dark:text-slate-400 mb-6">
                                 Premium SmartTrack aligners with remote monitoring. Perfect for globe-trotters who need flexible check-ins.
                             </p>
-                            <a href="/treatments/invisalign" className="text-blue-600 font-bold flex items-center gap-2">See Invisalign Workflow <ArrowRight size={16} /></a>
+                            <Link href="/treatments/dental-implants" className="text-blue-600 font-bold flex items-center gap-2">Implants After Braces <ArrowRight size={16} /></Link>
                         </div>
+                    </div>
+
+                    {/* FAQ Verification Footer (Trust Signal) */}
+                    <div className="mt-12 pt-6 border-t border-slate-100 dark:border-white/5 flex items-center justify-center gap-3 text-slate-400">
+                        <ShieldCheck size={16} className="text-emerald-500" />
+                        <p className="text-[10px] font-bold uppercase tracking-widest text-center">
+                            Orthodontic protocols are verified by Noble Dental&apos;s senior clinical team to ensure alignment with 2026 dental standards.
+                        </p>
                     </div>
                 </div>
             </section>

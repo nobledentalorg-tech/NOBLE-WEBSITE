@@ -2,13 +2,17 @@ import { MetadataRoute } from 'next';
 import { treatmentsData } from '@/data/treatments';
 
 export default function sitemap(): MetadataRoute.Sitemap {
-    const baseUrl = 'https://nobledental.in'; // Ensure this matches production
+    const baseUrl = 'https://nobledentalnallagandla.in'; // Ensure this matches production
 
     // 1. Static Routes
     const staticRoutes = [
         '',
         '/healthflo-ai',
-        // Add other static top-level pages here if they exist, e.g. /about, /contact
+        '/international',
+        '/why-noble',
+        '/credentials-page',
+        '/team',
+        '/contact',
     ].map((route) => ({
         url: `${baseUrl}${route}`,
         lastModified: new Date(),

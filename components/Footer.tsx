@@ -2,16 +2,15 @@
 
 import React from 'react';
 import Link from 'next/link';
-import { Facebook, Instagram, Twitter, MapPin, Phone, Mail, CalendarCheck } from 'lucide-react';
+import { Facebook, Instagram, Twitter, MapPin, Phone, Mail, CalendarCheck, School, Navigation } from 'lucide-react';
 
-// Define the interface for props
 interface FooterProps {
   onBookClick?: () => void;
 }
 
 const Footer: React.FC<FooterProps> = ({ onBookClick }) => {
   return (
-    <footer className="bg-slate-900 text-white pt-20 pb-10 rounded-t-[3rem] mt-auto relative z-10">
+    <footer className="bg-slate-900 text-white pt-20 pb-10 rounded-t-[3rem] mt-auto relative z-10 border-t border-white/5">
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
 
@@ -22,6 +21,7 @@ const Footer: React.FC<FooterProps> = ({ onBookClick }) => {
               <span className="text-[10px] font-black tracking-[0.3em] text-slate-400 uppercase">Care</span>
             </div>
             <p className="text-slate-400 text-sm leading-relaxed">
+              Dr. Dhivakaran&apos;s Owner-Operated Cluster.<br />
               Pioneering biological dentistry with advanced surgical protocols and microscopic precision in Nallagandla.
             </p>
           </div>
@@ -32,14 +32,10 @@ const Footer: React.FC<FooterProps> = ({ onBookClick }) => {
             <ul className="space-y-3 text-sm text-slate-400">
               <li><Link href="/treatments/dental-implants" className="hover:text-blue-400 transition-colors">Dental Implants</Link></li>
               <li><Link href="/treatments/root-canal" className="hover:text-blue-400 transition-colors">Microscopic RCT</Link></li>
-              <li><Link href="/treatments/invisalign" className="hover:text-blue-400 transition-colors">Invisalign</Link></li>
+              <li><Link href="/treatments/invisalign" className="hover:text-blue-400 transition-colors">Invisalign (Clear Aligners)</Link></li>
               <li><Link href="/treatments/kids-dentistry" className="hover:text-blue-400 transition-colors">Kids Dentistry</Link></li>
-              {/* Added Book Button usage */}
-              <li>
-                <button onClick={onBookClick} className="hover:text-blue-400 transition-colors text-left flex items-center gap-2">
-                  <CalendarCheck size={14} /> Book Visit
-                </button>
-              </li>
+              <li><Link href="/neighborhood-guide" className="hover:text-blue-400 transition-colors text-amber-500 font-bold">📍 Neighborhood Guide</Link></li>
+              <li><button onClick={onBookClick} className="hover:text-blue-400 transition-colors text-left flex items-center gap-2"><CalendarCheck size={14} /> Book Visit</button></li>
             </ul>
           </div>
 
@@ -49,7 +45,7 @@ const Footer: React.FC<FooterProps> = ({ onBookClick }) => {
             <ul className="space-y-4 text-sm text-slate-400">
               <li className="flex items-start gap-3">
                 <MapPin size={18} className="text-blue-500 mt-0.5" />
-                <span>Nallagandla Main Road,<br />ICA Clinic Building, Hyderabad 500019</span>
+                <span>Nallagandla Water Tank Rd,<br />Opp. Citizens Hospital,<br />Hyderabad 500019</span>
               </li>
               <li className="flex items-center gap-3">
                 <Phone size={18} className="text-blue-500" />
@@ -57,20 +53,35 @@ const Footer: React.FC<FooterProps> = ({ onBookClick }) => {
               </li>
               <li className="flex items-center gap-3">
                 <Mail size={18} className="text-blue-500" />
-                <a href="mailto:care@nobledentalnallagandla.in" className="hover:text-white">care@nobledentalnallagandla.in</a>
+                <a href="mailto:care@nobledentalnallagandla.in" className="hover:text-white">care@nobledental...</a>
               </li>
             </ul>
           </div>
 
-          {/* Social */}
+          {/* Social & SEO */}
           <div>
             <h4 className="text-lg font-bold mb-6">Connect</h4>
-            <div className="flex gap-4">
+            <div className="flex gap-4 mb-8">
               <a href="https://www.instagram.com/noble.dentalorg/" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center hover:bg-blue-600 transition-all"><Instagram size={18} /></a>
               <a href="https://www.facebook.com/profile.php?id=100087590145815" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center hover:bg-blue-600 transition-all"><Facebook size={18} /></a>
               <a href="https://x.com/NobleDenta67864" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center hover:bg-blue-600 transition-all"><Twitter size={18} /></a>
             </div>
+
+            <div className="pt-6 border-t border-white/10 space-y-3">
+              <h5 className="text-[10px] font-bold uppercase tracking-widest text-slate-500 flex items-center gap-2"><School size={12} /> Student Friendly</h5>
+              <p className="text-[10px] text-slate-500 leading-relaxed">
+                Easy access for <strong>Epistemo Global</strong>, <strong>Manthan International</strong>, and <strong>Sadhana Infinity</strong> students.
+              </p>
+            </div>
           </div>
+        </div>
+
+        {/* SEO Footer Block */}
+        <div className="pt-8 border-t border-white/10 mb-8">
+          <h5 className="text-[10px] font-bold uppercase tracking-widest text-blue-500 mb-3 flex items-center gap-2"><Navigation size={12} /> Serving Nallagandla Neighbors</h5>
+          <p className="text-[10px] text-slate-500 leading-relaxed font-medium">
+            Aparna Sarovar Zenith • Ramky One Galaxia • My Home Sayuk • Rajapushpa Imperia • Aliens Space Station • Vertex Kingston Park • Citizens Hospital • American Oncology Institute • Pranaam Hospital • Kanchi Gachibowli Road • Tellapur-Nallagandla 100ft Road
+          </p>
         </div>
 
         <div className="pt-8 border-t border-white/10 flex flex-col md:flex-row justify-between items-center gap-4">

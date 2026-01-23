@@ -2,7 +2,7 @@
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
-    title: 'Contact Noble Dental Care | Nallagandla & Hyderabad Appointment',
+    title: 'Contact Us',
     description: 'Book your appointment online. Emergency dental slots available. Located opposite Citizens Hospital, Nallagandla.'
 };
 

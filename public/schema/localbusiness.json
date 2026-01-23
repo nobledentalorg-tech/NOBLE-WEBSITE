@@ -8,7 +8,7 @@
     "Noble Dental Clinic Nallagandla",
     "Noble Dental Care Hyderabad"
   ],
-  "description": "Top-rated multispeciality dental clinic in Nallagandla, Hyderabad providing microscopic root canal, dental implants, smile design, braces, pediatric dentistry, and laser treatments with expert care and modern technology.",
+  "description": "Top-rated multispeciality dental clinic in Nallagandla, Hyderabad providing microscopic root canal, dental implants, smile design, braces, pediatric dentistry, and laser treatments with expert care and modern technology. Accepts 24/7 Emergency Support.",
   "image": "https://nobledentalnallagandla.in/images/clinic-front.webp",
   "url": "https://nobledentalnallagandla.in/",
   "priceRange": "₹₹",
@@ -27,13 +27,31 @@
     "latitude": 17.47396,
     "longitude": 78.30599
   },
-    "areaServed": [
-    { "@type": "Place", "name": "Nallagandla, Hyderabad" },
-    { "@type": "Place", "name": "Tellapur, Hyderabad" },
-    { "@type": "Place", "name": "Gachibowli, Hyderabad" },
-    { "@type": "Place", "name": "Lingampally, Hyderabad" },
-    { "@type": "Place", "name": "Financial District, Hyderabad" },
-    { "@type": "Place", "name": "Chanda Nagar, Hyderabad" }
+  "areaServed": [
+    {
+      "@type": "Place",
+      "name": "Nallagandla, Hyderabad"
+    },
+    {
+      "@type": "Place",
+      "name": "Tellapur, Hyderabad"
+    },
+    {
+      "@type": "Place",
+      "name": "Gachibowli, Hyderabad"
+    },
+    {
+      "@type": "Place",
+      "name": "Lingampally, Hyderabad"
+    },
+    {
+      "@type": "Place",
+      "name": "Financial District, Hyderabad"
+    },
+    {
+      "@type": "Place",
+      "name": "Chanda Nagar, Hyderabad"
+    }
   ],
   "serviceArea": {
     "@type": "GeoCircle",
@@ -60,8 +78,8 @@
         "Friday",
         "Saturday"
       ],
-      "opens": "09:30",
-      "closes": "21:00"
+      "opens": "11:00",
+      "closes": "22:15"
     },
     {
       "@type": "OpeningHoursSpecification",
@@ -95,12 +113,24 @@
     "@id": "https://nobledentalnallagandla.in/schema/review.json"
   },
   "department": [
-    { "@id": "https://nobledentalnallagandla.in/#preventive-dentistry" },
-    { "@id": "https://nobledentalnallagandla.in/#restorative-dentistry" },
-    { "@id": "https://nobledentalnallagandla.in/#aesthetic-dentistry" },
-    { "@id": "https://nobledentalnallagandla.in/#advanced-dentistry" },
-    { "@id": "https://nobledentalnallagandla.in/#pediatric-dentistry" },
-    { "@id": "https://nobledentalnallagandla.in/#emergency-dentistry" }
+    {
+      "@id": "https://nobledentalnallagandla.in/#preventive-dentistry"
+    },
+    {
+      "@id": "https://nobledentalnallagandla.in/#restorative-dentistry"
+    },
+    {
+      "@id": "https://nobledentalnallagandla.in/#aesthetic-dentistry"
+    },
+    {
+      "@id": "https://nobledentalnallagandla.in/#advanced-dentistry"
+    },
+    {
+      "@id": "https://nobledentalnallagandla.in/#pediatric-dentistry"
+    },
+    {
+      "@id": "https://nobledentalnallagandla.in/#emergency-dentistry"
+    }
   ],
   "containedInPlace": {
     "@type": "Place",
@@ -130,7 +160,7 @@
     "Laser Dentistry Hyderabad",
     "Top Rated Dental Clinic Hyderabad"
   ],
-    "knowsAbout": [
+  "knowsAbout": [
     "dental implants in hyderabad",
     "best dentist in nallagandla",
     "emergency dental clinic near gachibowli",

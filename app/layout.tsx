@@ -2,6 +2,9 @@ import { Plus_Jakarta_Sans, Inter } from 'next/font/google';
 import './globals.css';
 import LayoutShell from '@/components/LayoutShell';
 import JsonLd from '@/components/JsonLd';
+import UIProtector from '@/components/UIProtector';
+import WhatsAppFloat from '@/components/WhatsAppFloat';
+import { LocalSeoSchema } from '@/components/LocalSeoSchema';
 import type { Metadata } from 'next';
 
 const jakarta = Plus_Jakarta_Sans({ subsets: ['latin'], variable: '--font-jakarta' });
@@ -18,16 +21,40 @@ export const metadata: Metadata = {
   },
   description: 'Rated Best Dental Clinic in Nallagandla & Tellapur. Dr. Dhivakaran merges AI-guided precision with regenerative ethics for painless Root Canals, Implants, and Invisalign.',
   keywords: [
-    // Top Ranked Search Terms (GMB Data)
-    'Best Dental Clinic in Nallagandla', 'Dentist Near Me Nallagandla', 'Dental Hospital Nallagandla',
-    // 10 Years Ahead (Futuristic)
-    'Bio-Digital Dentistry', 'Regenerative Endodontics', 'AI-Guided Implantology', 'Predictive Oral Health', 'Future of Dentistry Hyderabad',
-    // The Ethical Core
-    'Ethical Dentist Nallagandla', 'Honest Bio-Mimetic Care', 'Patient Safety First', 'Conservative Dentistry',
-    // Clinical Excellence
-    'Microscopic Root Canal Specialist', 'Laser Tissue Regeneration', 'Painless Precision Care',
+    // Urgency & Availability (High Intent)
+    'Emergency dentist Nallagandla', 'Dentist open on Sunday Nallagandla', 'Late night dental clinic Hyderabad', 'Urgent tooth extraction near me',
+
+    // Specific Demographics (Niche)
+    'Kids dentist Nallagandla', 'Pediatric dental clinic Hyderabad', 'Milk tooth extraction', 'Child friendly dentist',
+    'Dental care during pregnancy', 'Prenatal oral wellness clinic', 'Safe dental x-rays for pregnant women',
+
+    // Technology-Focused (High Authority)
+    'iTero clear aligners Nallagandla', 'Digital dental impressions', 'Laser dentistry Hyderabad', 'Painless laser gum surgery',
+    'Microscopic root canal Nallagandla', 'AI-Guided Implants',
+
+    // High-Volume Local
+    'Dentist in Nallagandla', 'Best Dental Clinic Nallagandla', 'Dental Hospital Nallagandla', 'Top Dentist Nallagandla',
+    'Dentist in Tellapur', 'Dentist in Gachibowli', 'Dentist in Lingampally', 'Dentist in Kokapet', 'Dentist in Kondapur',
+
+    // Core Services
+    'Root Canal Treatment Hyderabad', 'Dental Implants Hyderabad', 'Invisalign Hyderabad', 'Zirconia Crowns Hyderabad', 'Smile Design Hyderabad',
+
+    // Competitor Alternatives
+    'Better than Clove Dental', 'Best Multispecialty Dental Clinic',
+
     // Brand
-    'Noble Dental Care', 'Dr Dhivakaran'
+    'Dr Dhivakaran', 'Noble Dental Care', 'Noble Dental Care Nallagandla', 'noble dental clinic', 'noble dental care', 'noble dental', 'noble care implant', 'noble dental surgery', 'noble dentist', 'noble clinic', 'nobel dentistry', 'regal dental clinic nallagandla',
+
+    // GSC / Local Pack High Volume (User Data)
+    'dentist near me', 'dental clinic near me', 'dental clinic in nallagandla', 'dentist in nallagandla', 'dentist nallagandla',
+    'best dental clinic in nallagandla', 'best dentist in nallagandla', 'dental hospital near me', 'best dental clinic near me',
+    'root canal treatment', 'dental clinic nallagandla', 'zirconium crown in hyderabad', 'dental near me',
+    'best dental hospital in nallagandla', 'cost of smile correction in hyderabad', 'periodontist near me',
+    'dentists near me open now', 'dental care near me', 'teeth removal and implants', 'root canal treatment in nallagandla',
+    'dental clinics in nallagandla', 'dental hospital nallagandla', 'dental clinic in tellapur', 'smile correction cost in hyderabad',
+    'dental office near me', 'dental scanning near me', 'free dental care near me', 'dental clinic hyderabad near me',
+    'best affordable dentist near me', 'nallagandla dental clinic', 'dental hospital near me within 800m',
+    'best dentist in hyderabad near me', 'small dental clinic near me', 'dental clinics near me', 'best dental clinic in tellapur'
   ],
   openGraph: {
     type: 'website',
@@ -57,6 +84,14 @@ export const metadata: Metadata = {
   }
 };
 
+export const viewport = {
+  themeColor: '#0F172A',
+  width: 'device-width',
+  initialScale: 1,
+  maximumScale: 1,
+  userScalable: false,
+};
+
 import { GoogleTagManager } from '@next/third-parties/google';
 
 import { SessionProvider } from 'next-auth/react';
@@ -72,6 +107,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           </LayoutShell>
         </SessionProvider>
         <JsonLd />
+        <LocalSeoSchema />
+        <UIProtector />
+        <WhatsAppFloat />
       </body>
     </html>
   );

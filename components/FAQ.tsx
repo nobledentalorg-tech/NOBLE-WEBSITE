@@ -26,6 +26,22 @@ const FAQ = () => {
     {
       question: "How long does a root canal-treated tooth last?",
       answer: "With good oral hygiene and a crown restoration, root canal-treated teeth can last many years, often a lifetime. (Source: AAE)"
+    },
+    {
+      question: "What is Digital Smile Design (DSD)?",
+      answer: "DSD is a conceptual protocol that allows you to see your future smile before we treat it. We use high-definition photos and videos to analyze the relationship between your teeth, gums, lips, and face. It’s like an architectural blueprint for your smile."
+    },
+    {
+      question: "Is Laser Dentistry better than traditional surgery?",
+      answer: "For many soft tissue procedures, yes. Lasers cause less bleeding, minimize swelling, and speed up recovery. They are also quieter and reduce the need for anesthesia in some cases."
+    },
+    {
+      question: "Do you offer EMI or financing for implants?",
+      answer: "Yes, we believe financial constraints shouldn't stop you from getting the best care. We offer flexible 0% interest EMI options for implants and orthodontic treatments. Please ask our front desk for details."
+    },
+    {
+      question: "How do you ensure sterilization and safety?",
+      answer: "We follow a strict 4-step sterilization protocol (CDC & WHO guidelines). Instruments are chemically cleaned, ultrasonically scrubbed, autoclaved in Class-B sterilizers, and stored in UV sterile cabinets. Your safety is our non-negotiable priority."
     }
   ];
 
@@ -50,8 +66,8 @@ const FAQ = () => {
             <div
               key={index}
               className={`rounded-2xl border transition-all duration-300 overflow-hidden ${openIndex === index
-                  ? 'bg-white dark:bg-slate-800 border-blue-200 dark:border-cyan-500/30 shadow-lg'
-                  : 'bg-white/50 dark:bg-slate-900/30 border-slate-200 dark:border-white/5 hover:border-blue-300 dark:hover:border-white/20'
+                ? 'bg-white dark:bg-slate-800 border-blue-200 dark:border-cyan-500/30 shadow-lg'
+                : 'bg-white/50 dark:bg-slate-900/30 border-slate-200 dark:border-white/5 hover:border-blue-300 dark:hover:border-white/20'
                 }`}
             >
               <button

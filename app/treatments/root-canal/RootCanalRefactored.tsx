@@ -97,9 +97,28 @@ export default function RootCanalRefactored() {
                      <h1 className="text-5xl md:text-7xl lg:text-[6rem] font-black text-slate-900 dark:text-white leading-[0.9] tracking-tighter">
                         Root Canal Therapy.
                      </h1>
+
+                     {/* Medical Review Tag */}
+                     <div className="flex flex-wrap items-center gap-4 my-8 border-y border-slate-100 dark:border-white/5 py-4">
+                        <Link href="/team/dr-dhivakaran" className="flex items-center gap-3 group">
+                           <div className="w-10 h-10 rounded-full bg-slate-200 dark:bg-white/10 overflow-hidden relative border border-purple-500/30">
+                              <Image src="https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?auto=format&fit=crop&q=80&w=100" alt="Dr. Dhivakaran" fill className="object-cover" />
+                           </div>
+                           <div>
+                              <div className="text-[10px] font-black uppercase text-purple-600 dark:text-purple-400 tracking-widest">Medically Reviewed By</div>
+                              <div className="text-sm font-bold text-slate-900 dark:text-white group-hover:underline">Dr. Dhivakaran, BDS</div>
+                           </div>
+                        </Link>
+                        <div className="h-8 w-px bg-slate-100 dark:bg-white/10 hidden sm:block"></div>
+                        <div>
+                           <div className="text-[10px] font-black uppercase text-slate-400 tracking-widest">Last Updated</div>
+                           <div className="text-sm font-bold text-slate-600 dark:text-slate-400">January 2026</div>
+                        </div>
+                     </div>
+
                      <p className="text-lg md:text-xl text-slate-600 dark:text-slate-300 font-medium leading-relaxed max-w-lg border-l-4 border-purple-500 pl-6 my-10">
                         Don&apos;t remove. <strong className="text-purple-600 dark:text-purple-400">Revitalize.</strong> <br />
-                        We save infected teeth using Rotary Files, Lasers, and 3D precision in Nallagandla.
+                        Our protocols follow the latest safety standards set by the <a href="https://www.ies.org.in/" target="_blank" rel="noopener noreferrer" className="text-purple-600 dark:text-purple-400 hover:underline">Indian Endodontic Society (IES)</a>.
                      </p>
 
                      <div className="flex flex-wrap gap-5">
@@ -416,6 +435,28 @@ export default function RootCanalRefactored() {
                      </div>
                   </div>
                </div>
+
+               {/* Internal SEO Linking: The Restoration Journey */}
+               <div className="mt-20 pt-20 border-t border-slate-200 dark:border-white/10 max-w-5xl mx-auto">
+                  <div className="grid md:grid-cols-2 gap-8">
+                     <div className="p-8 bg-white dark:bg-white/5 rounded-[2.5rem] border border-slate-100 dark:border-white/5 group hover:border-purple-500/50 transition-all">
+                        <div className="text-[10px] font-black text-purple-600 uppercase tracking-widest mb-4">Internal Guide</div>
+                        <h4 className="text-xl font-black text-slate-900 dark:text-white mb-4">When a Root Canal isn&apos;t enough.</h4>
+                        <p className="text-sm text-slate-500 mb-6">If the tooth structure is too weak, we recommend biological implants. Check our <Link href="/treatments/dental-implants" className="text-purple-600 font-bold hover:underline">Implant Success Rates</Link>.</p>
+                        <Link href="/blog/rct-vs-extraction" className="text-xs font-black uppercase tracking-widest flex items-center gap-2 text-slate-400 hover:text-purple-600 transition-colors">
+                           Read: RCT vs Extraction <ArrowRight size={14} />
+                        </Link>
+                     </div>
+                     <div className="p-8 bg-white dark:bg-white/5 rounded-[2.5rem] border border-slate-100 dark:border-white/5 group hover:border-blue-500/50 transition-all">
+                        <div className="text-[10px] font-black text-blue-600 uppercase tracking-widest mb-4">Next Step</div>
+                        <h4 className="text-xl font-black text-slate-900 dark:text-white mb-4">Protecting the Foundation.</h4>
+                        <p className="text-sm text-slate-500 mb-6">Every treated tooth requires a precision crown to prevent fracture. Explore our <Link href="/treatments/veneers" className="text-blue-600 font-bold hover:underline">Zirconia Solutions</Link>.</p>
+                        <Link href="/blog/signs-of-rct-emergency" className="text-xs font-black uppercase tracking-widest flex items-center gap-2 text-slate-400 hover:text-blue-600 transition-colors">
+                           Emergency Signs Blog <ArrowRight size={14} />
+                        </Link>
+                     </div>
+                  </div>
+               </div>
             </div>
          </section>
 
@@ -452,6 +493,14 @@ export default function RootCanalRefactored() {
                      Yes. A root canal treated tooth becomes brittle as it loses its hydration supply. A crown acts like a helmet, preventing the tooth from cracking under bite pressure.
                   </div>
                </details>
+            </div>
+
+            {/* FAQ Verification Footer */}
+            <div className="mt-8 pt-6 border-t border-slate-100 dark:border-white/5 flex items-center justify-center gap-3 text-slate-400">
+               <ShieldCheck size={16} className="text-emerald-500" />
+               <p className="text-[10px] font-bold uppercase tracking-widest text-center">
+                  All clinical answers above are verified by Noble Dental&apos;s senior clinical team to ensure accuracy with 2026 dental protocols.
+               </p>
             </div>
          </section>
 

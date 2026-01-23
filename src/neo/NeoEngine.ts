@@ -3,6 +3,7 @@ import { ClinicalNode, NeoResponse } from '../types/neoSchema';
 import { SafetyFilter } from './SafetyFilter';
 import { IntentRouter } from './IntentRouter';
 import { ROSTER_DB, TARIFF_DB } from '../data/business/tariff'; // Note: TARIFF_DB is in tariff.ts
+import { treatmentsData } from '../../data/treatments';
 import { NEO_KNOWLEDGE_GRAPH } from './NeoKnowledgeGraph';
 import { NEO_CONFIG } from '../config/settings';
 import { ConfidenceCalculator } from './ConfidenceCalculator';
@@ -120,7 +121,7 @@ export class NeoEngine {
             id: 'availability_response',
             type: 'info',
             text: {
-                en: isOpen ? "✅ Yes, Dr. Dhivakaran is currently available." : "🕒 The clinic is currently closed. We open at 10:00 AM.",
+                en: isOpen ? "✅ Yes, Dr. Dhivakaran is currently available." : "🕒 The clinic is currently closed. We open at 11:00 AM.",
                 ta: isOpen ? "✅ ஆம், டாக்டர் இப்போது இருக்கிறார்." : "🕒 கிளினிக் இப்போது மூடப்பட்டுள்ளது."
             }
         };
@@ -156,6 +157,35 @@ export class NeoEngine {
                     ta: "பல் வெளுப்பாக்குதல் மருத்துவரால் மட்டுமே செய்யப்பட வேண்டும்."
                 }
             };
+        }
+
+        // 4. Content-Rich Treatments Lookup (The "King" Logic)
+        const treatments = Object.values(treatmentsData);
+        for (const t of treatments) {
+            // Check if input matches treatment title or keywords
+            const matchesKeyword = t.keywords.some(k => lower.includes(k.toLowerCase()));
+            const matchesTitle = lower.includes(t.title.toLowerCase());
+
+            if (matchesTitle || matchesKeyword) {
+                return {
+                    id: `treatment_${t.id}`,
+                    type: 'info',
+                    text: {
+                        en: `**${t.title}**: ${t.description}\n\n*Clinical Note*: ${t.longDescription}\n\nWould you like to check the cost or book an appointment?`,
+                        ta: t.description // Fallback
+                    },
+                    // Inject rich possibilities from the treatment itself
+                    possibilities: [
+                        {
+                            title: `Book ${t.title}`,
+                            description: "Schedule a consultation with our specialist.",
+                            likelihood: 'High',
+                            action: "Book Now",
+                            relatedSlug: t.id
+                        }
+                    ]
+                };
+            }
         }
 
         return null;

@@ -24,7 +24,7 @@ export default function LayoutShell({ children }: { children: React.ReactNode })
             <Footer onBookClick={openBooking} />
 
             {/* Global Widgets */}
-            <ChatWidget />
+            <ChatWidget onBookClick={openBooking} />
             <BookingModal isOpen={isBookingOpen} onClose={() => setIsBookingOpen(false)} />
         </Providers>
     );

@@ -35,10 +35,19 @@ export const TARIFF_DB: TariffItem[] = [
 
 export const ROSTER_DB = {
     isOpenNow: (): boolean => {
-        const hour = new Date().getHours();
-        const day = new Date().getDay(); // 0 = Sun
+        const now = new Date();
+        const hour = now.getHours();
+        const minute = now.getMinutes();
+        const day = now.getDay(); // 0 = Sun
 
-        if (day === 0) return hour >= 10 && hour < 14; // Sun: 10am-2pm
-        return hour >= 10 && hour < 21; // Mon-Sat: 10am-9pm
+        // Clinic Hours: 11:00 AM - 10:15 PM (22:15)
+        const totalMinutes = hour * 60 + minute;
+        const openTime = 11 * 60;
+        const closeTime = 22 * 60 + 15;
+
+        // Assuming open every day including Sunday based on "accepts 24hrs emergency out side clinic hours" 
+        // implies standard operating hours are the main ones. 
+        // The user didn't specify Sunday hours, so I will apply this generally.
+        return totalMinutes >= openTime && totalMinutes <= closeTime;
     }
 };

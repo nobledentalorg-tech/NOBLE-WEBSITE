@@ -207,9 +207,6 @@
     <changefreq>monthly</changefreq>
   </url>
 
-  <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-
   <!-- 26. Oral Cancer Screening -->
   <url>
     <loc>https://nobledentalnallagandla.in/oral-cancer</loc>
@@ -610,9 +607,6 @@
     <changefreq>monthly</changefreq>
   </url>
 
-  <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-
   <!-- 76. Pediatric Root Canal -->
   <url>
     <loc>https://nobledentalnallagandla.in/pediatric-root-canal</loc>
@@ -811,6 +805,7 @@
     <lastmod>2025-09-23</lastmod>
     <priority>1.0</priority>
     <changefreq>weekly</changefreq>
+  </url>
   <url>
     <loc>https://nobledentalnallagandla.in/ai-self-check/</loc>
     <lastmod>2025-09-28</lastmod>

@@ -6,7 +6,11 @@ import { Send, X, Bot, MessageSquare, ExternalLink, Mic, MicOff } from 'lucide-r
 import { NeoEngine } from '@/src/neo/NeoEngine';
 import { ChatMessage } from '@/types'; // Updated import
 
-const ChatWidget = () => {
+interface ChatWidgetProps {
+  onBookClick?: () => void;
+}
+
+const ChatWidget: React.FC<ChatWidgetProps> = ({ onBookClick }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [language, setLanguage] = useState<'en' | 'ta'>('en'); // Language State
   const [messages, setMessages] = useState<ChatMessage[]>([
@@ -17,6 +21,20 @@ const ChatWidget = () => {
   const [isListening, setIsListening] = useState(false);
   const messagesEndRef = useRef<HTMLDivElement>(null);
   const recognitionRef = useRef<any>(null);
+
+  // Track Chat Open
+  useEffect(() => {
+    if (isOpen) {
+      if (typeof window !== 'undefined' && (window as any).dataLayer) {
+        (window as any).dataLayer.push({
+          event: 'ai_chat_open',
+          location: 'ChatWidget',
+          timestamp: new Date().toISOString()
+        });
+      }
+      scrollToBottom();
+    }
+  }, [messages, isOpen]);
 
   // Update initial greeting when language changes
   useEffect(() => {
@@ -36,11 +54,6 @@ const ChatWidget = () => {
     messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
   };
 
-  useEffect(() => {
-    if (isOpen) {
-      scrollToBottom();
-    }
-  }, [messages, isOpen]);
 
   useEffect(() => {
     if (typeof window !== 'undefined') {
@@ -90,6 +103,15 @@ const ChatWidget = () => {
   const handleSend = async () => {
     if (!input.trim() || isLoading) return;
 
+    // Track Message
+    if (typeof window !== 'undefined' && (window as any).dataLayer) {
+      (window as any).dataLayer.push({
+        event: 'ai_chat_message',
+        message_length: input.length,
+        language: language
+      });
+    }
+
     // 1. User Message
     const userMsg: ChatMessage = {
       role: 'user',
@@ -125,6 +147,16 @@ const ChatWidget = () => {
     if (e.key === 'Enter') handleSend();
   };
 
+  const handleBookClick = () => {
+    if (typeof window !== 'undefined' && (window as any).dataLayer) {
+      (window as any).dataLayer.push({
+        event: 'ai_chat_lead',
+        method: 'header_button'
+      });
+    }
+    if (onBookClick) onBookClick();
+  };
+
   return (
     <div className="fixed bottom-6 right-6 z-[100] flex flex-col items-end">
       {isOpen && (
@@ -137,10 +169,11 @@ const ChatWidget = () => {
               </div>
               <div>
                 <h3 className="font-bold text-slate-900 dark:text-white text-sm transition-colors duration-500">Noble Dental AI</h3>
-                <div className="flex items-center gap-1.5">
-                  <span className="w-1.5 h-1.5 bg-green-500 rounded-full animate-pulse"></span>
-                  <span className="text-[10px] text-slate-500 dark:text-slate-400 font-bold uppercase tracking-wider transition-colors duration-500">Online & Grounded</span>
-                </div>
+
+                {/* Book Link - NEW TRACKED ACTION */}
+                <button onClick={handleBookClick} className="flex items-center gap-1 text-[10px] text-blue-600 dark:text-cyan-400 font-black uppercase tracking-wider hover:underline mt-0.5">
+                  Book Appointment <ExternalLink size={10} />
+                </button>
               </div>
             </div>
             <div className="flex items-center gap-2">

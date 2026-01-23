@@ -1,8 +1,7 @@
-'use client';
-
 import React, { useState } from 'react';
 import { Doctor } from '@/types'; // Import from root alias
 import Image from 'next/image';
+import Link from 'next/link';
 import { X, Award, ArrowRight, ShieldCheck, Microscope, Zap, Star, GraduationCap, ExternalLink, BookOpen, Sparkles } from 'lucide-react';
 import { RevealOnScroll } from './RevealOnScroll';
 
@@ -14,45 +13,49 @@ const Doctors: React.FC = () => {
       id: 'dhivakaran',
       name: 'Dr. Dhivakaran',
       role: 'Chief Clinical Officer',
-      specialty: 'Implantology & Endodontics',
-      experience: '18+ Years',
+      specialty: 'Dental Surgeon & Implantologist',
+      experience: '11+ Years',
       image: 'https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?auto=format&fit=crop&q=80&w=600',
       cases: '25k+',
       success: '98%',
       aligners: false,
+      bio: 'Dr. Dhivakaran is a pioneer in the field of Dentistry (11+ Years) and a published author in "Triumph\'s Complete Review of Dentistry". He served at SIIMS Hospital during the COVID crisis and holds multiple WHO certifications. Beyond clinical practice, he drives digital health innovation as the Director of HealthFlo, collaborating with hospitals across India to revolutionize patient care.'
     },
     {
       id: 'roger',
       name: 'Dr. Roger Ronaldo',
       role: 'Clinical Director',
       specialty: 'Oral Maxillofacial Surgery',
-      experience: '12 Years',
+      experience: '13+ Years',
       image: 'https://images.unsplash.com/photo-1537368910025-700350fe46c7?auto=format&fit=crop&q=80&w=600',
       cases: '15k+',
-      success: '95%',
-      aligners: false
+      success: '99%',
+      aligners: false,
+      bio: 'Dr. Roger is a renowned Maxillofacial Surgeon, founder of "Dr. Rogers Dental" (Krishnagiri), and a contributor to the best-selling book "Triumph\'s Complete Review of Dentistry". Specializing in complex trauma, full-mouth rehabilitation, and zygomatic implants, he brings hospital-grade surgical precision to Noble Dental.'
     },
     {
       id: 'deepak',
       name: 'Dr. Deepak',
       role: 'Head Orthodontist',
       specialty: 'Digital Clear Aligners',
-      experience: '10 Years',
+      experience: '12+ Years',
       image: 'https://images.unsplash.com/photo-1622253692010-333f2da6031d?auto=format&fit=crop&q=80&w=600',
       cases: '5k+',
       success: '99%',
-      aligners: true
+      aligners: true,
+      bio: 'Dr. Deepak is a certified Invisalign Provider and Assistant Professor of Orthodontics. Driving the digital shift at Noble Dental, he specializes in both premium Invisalign systems and in-house Clear Aligners. He runs "The Smile Arc" in Chennai and is celebrated for treating complex alignment cases with "Invisible Physics" and AI-driven planning.'
     },
     {
       id: 'thikvijay',
       name: 'Dr. Thikvijay',
-      role: 'Cosmetologist',
-      specialty: 'Digital Smile Design',
+      role: 'Cosmetologist | NEO AI Faculty',
+      specialty: 'Dental & Facial Aesthetics',
       experience: '10+ Years',
       image: 'https://images.unsplash.com/photo-1582752948309-dad47532276c?auto=format&fit=crop&q=80&w=600',
       cases: '2k+',
       success: '97%',
-      aligners: false
+      aligners: false,
+      bio: 'Dr. Thikvijay is a rare dual-specialist in Dental & Facial Aesthetics. Formerly with Dr. Kamakshi Memorial Hospitals, he now bridges the gap between dentistry and cosmetology. His "Total Face" approach at "Glow Up & Smile Up" integrates Digital Smile Design with dermal therapies (Skin/Hair), ensuring your smile harmonizes perfectly with your facial features.'
     }
   ];
 
@@ -66,9 +69,9 @@ const Doctors: React.FC = () => {
             <div className="inline-flex items-center gap-2 text-blue-600 dark:text-cyan-400 font-bold tracking-[0.2em] text-[10px] uppercase mb-4">
               <ShieldCheck size={14} /> Academic Leadership
             </div>
-            <h2 className="text-4xl md:text-6xl font-black text-slate-900 dark:text-white mb-6 tracking-tight">Our Specialists.</h2>
+            <h2 className="text-4xl md:text-6xl font-black text-slate-900 dark:text-white mb-6 tracking-tight">Clinical Core of NEO AI.</h2>
             <p className="text-lg text-slate-500 dark:text-slate-400 max-w-2xl mx-auto font-medium leading-relaxed">
-              A council of experts dedicated to biological precision and evidence-based clinical excellence.
+              Meet the architects. Every treatment protocol and AI response is validated by this council of independent clinic owners and hospital chiefs.
             </p>
           </RevealOnScroll>
         </div>
@@ -130,10 +133,10 @@ const Doctors: React.FC = () => {
                     {doc.specialty}
                   </p>
 
-                  <div className="mt-auto pt-6 border-t border-slate-50 dark:border-white/5 flex items-center justify-between text-[10px] font-black uppercase tracking-widest text-blue-600 dark:text-cyan-400">
+                  <Link href={`/team/${doc.id || doc.name.toLowerCase().replace('dr. ', '').replace(' ', '-')}`} className="mt-auto pt-6 border-t border-slate-50 dark:border-white/5 flex items-center justify-between text-[10px] font-black uppercase tracking-widest text-blue-600 dark:text-cyan-400">
                     View Clinical Profile
                     <ArrowRight size={14} className="group-hover:translate-x-1 transition-transform" />
-                  </div>
+                  </Link>
                 </div>
               </div>
             </RevealOnScroll>
@@ -241,7 +244,7 @@ const Doctors: React.FC = () => {
                   <GraduationCap size={16} className="text-blue-500" /> Academic Dossier
                 </h4>
                 <p className="text-slate-600 dark:text-slate-400 text-base leading-relaxed font-medium">
-                  Leading with a patient-first biological approach, Dr. {selectedDoctor.name.split(' ')[1]} specializes in <strong>{selectedDoctor.specialty.toLowerCase()}</strong>. As an academic faculty contributor, he ensures the latest clinical evidence is integrated into every procedure at Noble Dental Care.
+                  {selectedDoctor.bio || `Leading with a patient-first biological approach, Dr. ${selectedDoctor.name.split(' ')[1]} specializes in ${selectedDoctor.specialty.toLowerCase()}. As an academic faculty contributor, he ensures the latest clinical evidence is integrated into every procedure at Noble Dental Care.`}
                 </p>
               </div>
 

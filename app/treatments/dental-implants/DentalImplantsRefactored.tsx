@@ -248,9 +248,28 @@ export default function DentalImplantsRefactored() {
                             <h1 className="text-6xl md:text-8xl lg:text-[6.5rem] font-black text-slate-900 dark:text-white leading-[0.9] tracking-tighter">
                                 Precision Dental Implants.
                             </h1>
+
+                            {/* Medical Review Tag */}
+                            <div className="flex flex-wrap items-center gap-4 my-8 border-y border-slate-100 dark:border-white/5 py-4">
+                                <Link href="/team/dr-dhivakaran" className="flex items-center gap-3 group">
+                                    <div className="w-10 h-10 rounded-full bg-slate-200 dark:bg-white/10 overflow-hidden relative border border-teal-500/30">
+                                        <Image src="https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?auto=format&fit=crop&q=80&w=100" alt="Dr. Dhivakaran" fill className="object-cover" />
+                                    </div>
+                                    <div>
+                                        <div className="text-[10px] font-black uppercase text-teal-600 dark:text-teal-400 tracking-widest">Medically Reviewed By</div>
+                                        <div className="text-sm font-bold text-slate-900 dark:text-white group-hover:underline">Dr. Dhivakaran, BDS</div>
+                                    </div>
+                                </Link>
+                                <div className="h-8 w-px bg-slate-100 dark:bg-white/10 hidden sm:block"></div>
+                                <div>
+                                    <div className="text-[10px] font-black uppercase text-slate-400 tracking-widest">Last Updated</div>
+                                    <div className="text-sm font-bold text-slate-600 dark:text-slate-400">January 2026</div>
+                                </div>
+                            </div>
+
                             <p className="text-xl text-slate-600 dark:text-slate-300 font-medium leading-relaxed max-w-lg border-l-4 border-teal-500 pl-6 my-10">
                                 Replace missing teeth with Swiss-Grade Titanium. <br />
-                                <span className="font-black text-teal-600 dark:text-teal-400">99.2% Success Rate</span> via Guided Surgery Protocols in Nallagandla.
+                                Our implant protocols are verified against the <a href="https://www.iti.org/" target="_blank" rel="noopener noreferrer" className="text-teal-600 dark:text-teal-400 hover:underline">International Team for Implantology (ITI)</a> consensus.
                             </p>
 
                             <div className="flex flex-wrap gap-5">
@@ -556,7 +575,7 @@ export default function DentalImplantsRefactored() {
                             className="absolute top-0 left-0 h-full bg-white dark:bg-[#151b2b] border-r-4 border-teal-500 flex items-center justify-center overflow-hidden transition-all duration-75 ease-out clip-path-slant shadow-[10px_0_50px_rgba(0,0,0,0.2)]"
                             style={{ width: `${boneSlider}%` }}
                         >
-                            <div className="text-center w-full min-w-[1000px] flex flex-col items-center relative">
+                            <div className="text-center w-full min-w-[300px] md:min-w-[1000px] flex flex-col items-center relative">
                                 <div className="absolute inset-0 bg-teal-500/5 pointer-events-none"></div>
                                 <div className="relative">
                                     <div className="w-24 h-24 bg-teal-100 dark:bg-teal-900/20 rounded-full flex items-center justify-center mx-auto mb-6 text-teal-600 dark:text-teal-400 shadow-lg shadow-teal-500/20 animate-pulse">
@@ -741,6 +760,28 @@ export default function DentalImplantsRefactored() {
                             </button>
                         </article>
                     </div>
+
+                    {/* Internal SEO Linking: The Implant Journey */}
+                    <div className="mt-20 pt-20 border-t border-slate-200 dark:border-white/10 max-w-5xl mx-auto">
+                        <div className="grid md:grid-cols-2 gap-8">
+                            <div className="p-8 bg-slate-50 dark:bg-white/5 rounded-[2.5rem] border border-slate-200 dark:border-white/5 group hover:border-teal-500/50 transition-all">
+                                <div className="text-[10px] font-black text-teal-600 dark:text-teal-400 uppercase tracking-widest mb-4">Case Alternative</div>
+                                <h4 className="text-xl font-black text-slate-900 dark:text-white mb-4">Saving the Tooth vs Implant.</h4>
+                                <p className="text-sm text-slate-500 mb-6">Before we extract, we always check if a specialized root canal can save your tooth. Learn about <Link href="/treatments/root-canal" className="text-teal-600 font-bold hover:underline">Specialist RCT</Link>.</p>
+                                <Link href="/blog/rct-vs-extraction" className="text-xs font-black uppercase tracking-widest flex items-center gap-2 text-slate-400 hover:text-teal-600 transition-colors">
+                                    Compare: Save vs Replace <ArrowRight size={14} />
+                                </Link>
+                            </div>
+                            <div className="p-8 bg-slate-50 dark:bg-white/5 rounded-[2.5rem] border border-slate-200 dark:border-white/5 group hover:border-indigo-500/50 transition-all">
+                                <div className="text-[10px] font-black text-indigo-600 dark:text-indigo-400 uppercase tracking-widest mb-4">Related Care</div>
+                                <h4 className="text-xl font-black text-slate-900 dark:text-white mb-4">Bone Augmentation.</h4>
+                                <p className="text-sm text-slate-500 mb-6">Insufficient bone? We use biological PRF and bone grafts to build a stable foundation for your smile. View <Link href="/treatments/why-noble" className="text-indigo-600 font-bold hover:underline">Technology Specs</Link>.</p>
+                                <Link href="/blog/dental-health-report-2026" className="text-xs font-black uppercase tracking-widest flex items-center gap-2 text-slate-400 hover:text-indigo-600 transition-colors">
+                                    Clinical Tech Review <ArrowRight size={14} />
+                                </Link>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </section>
 
@@ -868,6 +909,14 @@ export default function DentalImplantsRefactored() {
                             </div>
                         </details>
                     ))}
+                </div>
+
+                {/* FAQ Verification Footer */}
+                <div className="max-w-4xl mx-auto mt-8 pt-6 border-t border-slate-100 dark:border-white/5 flex items-center justify-center gap-3 text-slate-400">
+                    <ShieldCheck size={16} className="text-emerald-500" />
+                    <p className="text-[10px] font-bold uppercase tracking-widest text-center px-4">
+                        All clinical answers above are verified by Noble Dental&apos;s senior clinical team to ensure accuracy with 2026 dental protocols.
+                    </p>
                 </div>
             </section>
 

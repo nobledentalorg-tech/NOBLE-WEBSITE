@@ -5,7 +5,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { usePathname } from 'next/navigation';
 import { useTheme } from 'next-themes';
-import { Menu, X, Sun, Moon, CalendarCheck, ShoppingBag, Activity } from 'lucide-react';
+import { Menu, X, Sun, Moon, CalendarCheck, ShoppingBag, Activity, Globe } from 'lucide-react';
 
 interface HeaderProps {
   onBookClick?: () => void;
@@ -88,13 +88,19 @@ const Header: React.FC<HeaderProps> = ({ onBookClick }) => {
               Treatments
             </Link>
             <Link
+              href="/patient-safety"
+              className={`relative px-6 py-2.5 text-[13px] font-bold uppercase tracking-wider transition-all duration-300 rounded-full ${isActive('/patient-safety') ? 'text-white bg-blue-600 shadow-md' : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white'
+                }`}
+            >
+              Patient Safety
+            </Link>
+            <Link
               href="/team"
               className={`relative px-6 py-2.5 text-[13px] font-bold uppercase tracking-wider transition-all duration-300 rounded-full ${isActive('/team') ? 'text-white bg-blue-600 shadow-md' : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white'
                 }`}
             >
               Our Team
             </Link>
-
             <Link
               href="/products"
               className={`px-6 py-2.5 text-[13px] font-black uppercase tracking-wider rounded-full flex items-center gap-2 transition-all ${isActive('/products') ? 'bg-indigo-600 text-white shadow-lg' : 'text-indigo-600 dark:text-indigo-400 hover:bg-indigo-50 dark:hover:bg-indigo-900/20'
@@ -108,6 +114,13 @@ const Header: React.FC<HeaderProps> = ({ onBookClick }) => {
                 }`}
             >
               <Activity size={14} /> AI OS
+            </Link>
+            <Link
+              href="/international"
+              className={`px-6 py-2.5 text-[13px] font-black uppercase tracking-wider rounded-full flex items-center gap-2 transition-all ${isActive('/international') ? 'bg-amber-100 text-amber-700' : 'text-amber-600 dark:text-amber-500'
+                }`}
+            >
+              <Globe size={14} /> Global Care
             </Link>
           </nav>
 
@@ -139,8 +152,10 @@ const Header: React.FC<HeaderProps> = ({ onBookClick }) => {
         <div className="lg:hidden fixed inset-0 z-40 bg-white/95 dark:bg-[#0B1019]/95 backdrop-blur-xl flex flex-col items-center justify-center space-y-8 animate-in fade-in zoom-in duration-200">
           <Link href="/" onClick={() => setIsMobileMenuOpen(false)} className="text-2xl font-bold text-slate-900 dark:text-white">Home</Link>
           <Link href="/treatments" onClick={() => setIsMobileMenuOpen(false)} className="text-2xl font-bold text-slate-900 dark:text-white">Treatments</Link>
+          <Link href="/patient-safety" onClick={() => setIsMobileMenuOpen(false)} className="text-2xl font-bold text-emerald-500">Patient Safety</Link>
           <Link href="/team" onClick={() => setIsMobileMenuOpen(false)} className="text-2xl font-bold text-slate-900 dark:text-white">Our Team</Link>
           <Link href="/healthflo-ai" onClick={() => setIsMobileMenuOpen(false)} className="text-2xl font-bold text-blue-600">AI HealthOS</Link>
+          <Link href="/international" onClick={() => setIsMobileMenuOpen(false)} className="text-2xl font-bold text-amber-600">Global Patients</Link>
           <button onClick={() => { setIsMobileMenuOpen(false); onBookClick?.(); }} className="px-8 py-4 bg-blue-600 text-white rounded-full font-bold uppercase tracking-widest text-sm">
             Book Appointment
           </button>

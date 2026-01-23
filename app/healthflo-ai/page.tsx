@@ -3,11 +3,12 @@ import type { Metadata } from 'next';
 import NeoCompanionClient from '@/components/NeoCompanionClient';
 
 export const metadata: Metadata = {
-  title: 'Neo | Noble Dental AI Ecosystem',
-  description: 'Meet Neo, your advanced AI Dental Architect. Analyze symptoms, understand procedures, and plan your recovery with Noble Dental Care.',
+  title: 'Neo AI: Virtual Dental Consultant Nallagandla | Noble Dental',
+  description: 'Get an instant provisional diagnosis and cost estimates with Neo AI at Noble Dental Care. Nallagandla’s first AI-powered dental screening tool.',
+  keywords: ['Virtual Dental Consultant', 'AI Dentist Nallagandla', 'Dental Symptom Checker', 'Tooth Pain Calculator', 'Root Canal Cost Calculator Hyderabad'],
   openGraph: {
-    title: 'Neo | AI Dental Architect',
-    description: 'The future of dentistry is here. Self-check symptoms and get clinical guidance instantly.',
+    title: 'Neo AI: Your 24/7 Virtual Dental Expert',
+    description: 'Skip the wait and the guesswork. Neo AI uses advanced algorithms to provide instant insights into your dental health, treatment options, and estimated costs.',
     url: 'https://nobledentalnallagandla.in/healthflo-ai',
     siteName: 'Noble Dental Care',
     locale: 'en_IN',

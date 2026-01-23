@@ -31,7 +31,7 @@ export const treatmentsData: Record<string, TreatmentData> = {
     title: "Microscopic Root Canal",
     subtitle: "Endodontic precision under 25x magnification.",
     category: "Endodontics",
-    heroImage: "https://images.unsplash.com/photo-1606811971618-4486d14f3f72?auto=format&fit=crop&q=80&w=1200",
+    heroImage: "/assets/images/treatments/root-canal-hyderabad.webp",
     description: "Advanced single-visit root canal therapy using dental microscopes for 100% precision and zero pain.",
     longDescription: "Root canal treatment at Noble Dental Care is defined by technology. Utilizing Zeiss Extaro 300 microscopes, we identify micro-canals (MB2) that traditional methods often miss. Our protocol includes Er:YAG laser activation of irrigants, ensuring 99.9% bacterial elimination from the root system for predictable long-term healing.",
     stats: [
@@ -63,7 +63,7 @@ export const treatmentsData: Record<string, TreatmentData> = {
     title: "Biological Implants",
     subtitle: "Titanium stability with PRF biological healing.",
     category: "Surgery",
-    heroImage: "https://images.unsplash.com/photo-1628177142898-93e36e4e3a50?auto=format&fit=crop&q=80&w=1200",
+    heroImage: "/assets/images/treatments/implants-hyderabad.webp",
     description: "Replace missing teeth with titanium anchors that look, feel, and function exactly like natural teeth.",
     longDescription: "Dental implants at Noble combine surgical robotics (Guided Templates) with biological boosters. We utilize ITI (International Team for Implantology) standards, placing Grade-5 Titanium or Metal-Free Zirconia implants. Our unique PRF (Platelet Rich Fibrin) protocol uses your own growth factors to accelerate bone integration by 40%.",
     stats: [
@@ -82,20 +82,21 @@ export const treatmentsData: Record<string, TreatmentData> = {
       "Natural Biological Integration",
       "No Damage to Healthy Adjacent teeth",
       "Lifetime Global Warranty Card",
-      "Stable 100% Chewing Force"
+      "Stable 100% Chewing Force",
+      "Senior-Friendly (Minimal Recovery)"
     ],
     faqs: [
       { q: "How long is the healing?", a: "Biological integration (Osseointegration) typically takes 12 weeks, though you'll have a temporary tooth during this time." },
       { q: "Is it painful?", a: "Guided surgery is minimally invasive. Most patients report less discomfort than a simple extraction." }
     ],
-    keywords: ["missing tooth", "gap", "titanium", "surgery", "permanent", "fixed tooth"]
+    keywords: ["missing tooth", "gap", "titanium", "surgery", "permanent", "fixed tooth", "senior implants", "elderly care"]
   },
   "invisalign": {
     id: "invisalign",
     title: "iTero Clear Aligners",
     subtitle: "AI-planned invisible orthodontics.",
     category: "Orthodontics",
-    heroImage: "https://images.unsplash.com/photo-1595867372361-597621c258d4?auto=format&fit=crop&q=80&w=1200",
+    heroImage: "/assets/images/treatments/invisalign-hyderabad.webp",
     description: "The clear alternative to braces. Removable, comfortable, and virtually invisible trays.",
     longDescription: "Transform your smile without metal. Our aligner program utilizes the iTero Element 5D scanner to capture 6,000 images per second. Dr. Deepak's 3D planning software simulates your entire movement trajectory before the first tray is even manufactured, ensuring predictable results for professionals and students alike.",
     stats: [
@@ -127,7 +128,7 @@ export const treatmentsData: Record<string, TreatmentData> = {
     title: "Digital Crowns & Bridges",
     subtitle: "CAD/CAM engineered ceramic restorations.",
     category: "Restorative",
-    heroImage: "https://images.unsplash.com/photo-1593059812632-d74676be9a2c?auto=format&fit=crop&q=80&w=1200",
+    heroImage: "/assets/images/treatments/crowns-bridges-hyderabad.webp",
     description: "Custom-milled zirconia and E.max restorations for broken or missing teeth.",
     longDescription: "Our restorations are designed digitally for a 5-micron accuracy fit. We use multi-layered monolithic zirconia that mimics the translucency of natural enamel while providing high fracture resistance.",
     stats: [
@@ -150,7 +151,7 @@ export const treatmentsData: Record<string, TreatmentData> = {
     title: "Little Smiles Program",
     subtitle: "Fearless pediatric dental care.",
     category: "Pediatrics",
-    heroImage: "https://images.unsplash.com/photo-1559839734-2b71ea197ec2?auto=format&fit=crop&q=80&w=1200",
+    heroImage: "/assets/images/treatments/pediatric-hyderabad.webp",
     description: "Gentle dental checkups and treatments for infants and children in a friendly environment.",
     longDescription: "Building a lifetime of healthy habits starts here. Our pediatric specialists use 'Tell-Show-Do' techniques to ensure every child feels safe and empowered during their visit.",
     stats: [
@@ -164,16 +165,16 @@ export const treatmentsData: Record<string, TreatmentData> = {
       { title: "Fluoride Therapy", desc: "Strengthening enamel against decay." },
       { title: "Sealants", desc: "Protective coating for permanent molars." }
     ],
-    benefits: ["Anxiety-Free Environment", "Fluoride Protection", "Growth Monitoring", "Dietary Counseling"],
+    benefits: ["Anxiety-Free Environment", "Fluoride Protection", "Growth Monitoring", "Dietary Counseling", "Tongue-Tie Awareness"],
     faqs: [{ q: "When should the first visit be?", a: "The ADA recommends the first visit by age 1." }],
-    keywords: ["child", "pediatric", "baby", "kid", "cavity", "sealant"]
+    keywords: ["child", "pediatric", "baby", "kid", "cavity", "sealant", "tongue tie", "toddler"]
   },
   "pregnancy-dental-care": {
     id: "pregnancy-dental-care",
     title: "Prenatal Oral Wellness",
     subtitle: "Safe dental care for expecting mothers.",
     category: "Wellness",
-    heroImage: "https://images.unsplash.com/photo-1516627145497-ae6968895b74?auto=format&fit=crop&q=80&w=1200",
+    heroImage: "/assets/images/treatments/pregnancy-dental-hyderabad.webp",
     description: "Clinical hygiene and guidance specifically tailored for the safety of mother and baby.",
     longDescription: "Hormonal changes during pregnancy can increase the risk of gum disease. We provide specialized, fetal-safe protocols to maintain oral health during all three trimesters.",
     stats: [
@@ -195,7 +196,7 @@ export const treatmentsData: Record<string, TreatmentData> = {
     title: "Atraumatic Extraction",
     subtitle: "Piezo-surgical removal with minimal swelling.",
     category: "Surgery",
-    heroImage: "https://images.unsplash.com/photo-1579684385127-1ef15d508118?auto=format&fit=crop&q=80&w=1200",
+    heroImage: "/assets/images/treatments/extraction-hyderabad.webp",
     description: "Painless removal of decayed or impacted wisdom teeth using microsurgical instruments.",
     longDescription: "We redefine the extraction experience. Using Piezosurgery (ultrasonic bone cutting), we eliminate the trauma associated with traditional drills. This preserves the surrounding bone and soft tissue, resulting in 94% less post-operative swelling and significantly faster recovery times.",
     stats: [
@@ -227,7 +228,7 @@ export const treatmentsData: Record<string, TreatmentData> = {
     title: "Invisible Fillings",
     subtitle: "Biomimetic nano-composite restoration.",
     category: "Restorative",
-    heroImage: "https://images.unsplash.com/photo-1629909613654-28e377c37b09?auto=format&fit=crop&q=80&w=1200",
+    heroImage: "/assets/images/treatments/fillings-hyderabad.webp",
     description: "Nano-composite bonding that mimics your natural tooth color and strength.",
     longDescription: "We utilize biomimetic principles to 're-build' your tooth rather than just filling a hole. Using Tetric-N-Line nano-hybrid composites under rubber dam isolation, we ensure a 100% moisture-free chemical bond. This creates a restoration that flexes like natural dentin and looks like pure enamel.",
     stats: [
@@ -259,7 +260,7 @@ export const treatmentsData: Record<string, TreatmentData> = {
     title: "Guided Biofilm Therapy",
     subtitle: "Medical-grade hygiene and stain removal.",
     category: "Preventive",
-    heroImage: "https://images.unsplash.com/photo-1609840114035-1c29046a83ea?auto=format&fit=crop&q=80&w=1200",
+    heroImage: "/assets/images/treatments/scaling-hyderabad.webp",
     description: "Guided Biofilm Therapy (GBT) removes calculus and stains using heated ultrasonic waves, restoring gum health painlessly.",
     longDescription: "Traditional scaling is outdated. At Noble, we use EMS AirFlow® Guided Biofilm Therapy. This 8-step protocol uses disclosure dye to visualize plaque, followed by heated water and erythritol powder to clean deep into gum pockets without touching the sensitive enamel.",
     stats: [
@@ -294,21 +295,31 @@ export const treatmentsData: Record<string, TreatmentData> = {
     subtitle: "braces treatment",
     category: "Orthodontics",
     heroImage: "/assets/images/treatments/braces-hyderabad.webp",
-    description: "Correct misaligned teeth with metal, ceramic, or self-ligating braces. Based on AAO guidelines.",
-    longDescription: "Correct misaligned teeth with metal, ceramic, or self-ligating braces. Based on AAO guidelines. Improves smile and bite. Long-term stability",
+    description: "Correction of bite issues using self-ligating metal or ceramic braces. We follow AAO protocols for stable long-term alignment.",
+    longDescription: "Our orthodontic program isn't just about straight teeth; it's about a balanced facial profile. We use Daimon Self-Ligating Braces which reduce friction, meaning less pain and faster treatment times (up to 4 months faster than traditional braces). We also offer ceramic options that blend with your natural tooth color.",
     stats: [
-      { label: "Success Rate", value: "98%", icon: "Activity" },
-      { label: "Duration", value: "Varies", icon: "Clock" },
-      { label: "Comfort", value: "High", icon: "Heart" }
+      { label: "Speed", value: "30% Faster", icon: "Clock" },
+      { label: "Type", value: "Self-Ligating", icon: "Zap" },
+      { label: "Comfort", value: "Low Friction", icon: "Heart" }
     ],
     process: [
-      { title: "Consultation", desc: "Digital diagnosis." },
-      { title: "Treatment", desc: "Painless execution." },
-      { title: "Follow-up", desc: "Experience review." }
+      { title: "Digital Ceph", desc: "Bone structure analysis for precise movement planning." },
+      { title: "Bonding", desc: "Placing brackets with moisture-insensitive primer." },
+      { title: "Wire Seq", desc: "Progressive activation using thermal NiTi wires." },
+      { title: "Retainers", desc: "Fixed bonded retainers to prevent relapse." }
     ],
-    benefits: ["Improves smile and bite", "Long-term stability"],
-    faqs: [{ "q": "Is the procedure painful?", "a": "We use advanced numbing techniques." }, { "q": "How many visits?", "a": "Usually 1-2 visits." }],
-    keywords: ["braces", "orthodontics", "crooked teeth", "Hyderabad"]
+    benefits: [
+      "Corrects Overbite/Underbite",
+      "Reduces TMJ Jaw Pain",
+      "Improves Chewing Efficiency",
+      "Prevents uneven tooth wear",
+      "Daimon System Speed"
+    ],
+    faqs: [
+      { q: "Are metal braces faster?", a: "Generally, yes. Self-ligating metal braces are the gold standard for complex bite corrections." },
+      { q: "Do I need to extract teeth?", a: "Not always. We prioritize non-extraction expansion techniques whenever biologically possible." }
+    ],
+    keywords: ["braces", "orthodontics", "crooked teeth", "damon braces", "wire", "straight teeth"]
   },
   "invisalign-aligners": {
     id: "invisalign-aligners",
@@ -338,21 +349,31 @@ export const treatmentsData: Record<string, TreatmentData> = {
     subtitle: "teeth whitening treatment",
     category: "General Dentistry",
     heroImage: "/assets/images/treatments/whitening-hyderabad.webp",
-    description: "Brighten your smile with safe peroxide-based whitening gels. Approved by ADA, FDA.",
-    longDescription: "Brighten your smile with safe peroxide-based whitening gels. Approved by ADA, FDA. Instant results. Safe under dentist supervision",
+    description: "Professional medical-grade whitening using Philips Zoom or Pola Office +. Proven to lift shades by up to 8 levels safely.",
+    longDescription: "Over-the-counter kits only clean the surface. Our professional whitening penetrates the enamel rods to oxidize deep intrinsic stains from coffee, tea, or medication. We use a gingival barrier to protect your gums, ensuring zero burn and minimal sensitivity.",
     stats: [
-      { label: "Success Rate", value: "98%", icon: "Activity" },
-      { label: "Duration", value: "Varies", icon: "Clock" },
-      { label: "Comfort", value: "High", icon: "Heart" }
+      { label: "Shades", value: "Up to 8x", icon: "Sparkles" },
+      { label: "Time", value: "45 Mins", icon: "Clock" },
+      { label: "Safety", value: "Gum Shield", icon: "Shield" }
     ],
     process: [
-      { title: "Consultation", desc: "Digital diagnosis." },
-      { title: "Treatment", desc: "Painless execution." },
-      { title: "Follow-up", desc: "Experience review." }
+      { title: "Gum Protection", desc: "Applying a liquid dam to cover sensitive tissues." },
+      { title: "Gel Application", desc: "35% Carbamide Peroxide activated by LED light." },
+      { title: "3 Cycles", desc: "Three 15-minute rounds for maximum lift." },
+      { title: "Desensitizing", desc: "Fluoride paste application to seal tubules." }
     ],
-    benefits: ["Instant results", "Safe under dentist supervision"],
-    faqs: [{ "q": "Is the procedure painful?", "a": "We use advanced numbing techniques." }, { "q": "How many visits?", "a": "Usually 1-2 visits." }],
-    keywords: ["teeth whitening", "bleaching", "smile", "cosmetic", "Hyderabad"]
+    benefits: [
+      "Instant Results in 1 Hour",
+      "Removes Deep Coffee/Tea Stains",
+      "Safe for Enamel Structure",
+      "Long-Lasting (1-2 Years)",
+      "Look Younger Instantly"
+    ],
+    faqs: [
+      { q: "Will it make my teeth sensitive?", a: "Some temporary sensitivity to cold is normal for 24 hours. We provide a relief gel to manage this." },
+      { q: "Does it damage enamel?", a: "No. Professional whitening opens pores to clean them but does not strip the enamel layer." }
+    ],
+    keywords: ["teeth whitening", "bleaching", "yellow teeth", "zoom whitening", "bright smile"]
   },
   "dental-veneers": {
     id: "dental-veneers",
@@ -360,21 +381,31 @@ export const treatmentsData: Record<string, TreatmentData> = {
     subtitle: "veneers treatment",
     category: "General Dentistry",
     heroImage: "/assets/images/treatments/veneers-hyderabad.webp",
-    description: "Correct discolored, chipped, or uneven teeth with porcelain or composite veneers. Supported by AACD.",
-    longDescription: "Correct discolored, chipped, or uneven teeth with porcelain or composite veneers. Supported by AACD. Natural look. Durable results",
+    description: "Ultra-thin E.max porcelain shells that cover the front surface of teeth to mask discoloration, gaps, or chips perfectly.",
+    longDescription: "Veneers are the secret behind Hollywood smiles. We use Lithium Disilicate (E.max) ceramic, which is 4x stronger than traditional porcelain. Dr. Thikvijay uses Digital Smile Design to plan the shape and color, allowing us to preserve your natural tooth structure (minimal prep) while delivering a flawless transformation.",
     stats: [
-      { label: "Success Rate", value: "98%", icon: "Activity" },
-      { label: "Duration", value: "Varies", icon: "Clock" },
-      { label: "Comfort", value: "High", icon: "Heart" }
+      { label: "Material", value: "E.max Press", icon: "Shield" },
+      { label: "Thickness", value: "0.3mm", icon: "Ruler" },
+      { label: "Warranty", value: "15 Years", icon: "Star" }
     ],
     process: [
-      { title: "Consultation", desc: "Digital diagnosis." },
-      { title: "Treatment", desc: "Painless execution." },
-      { title: "Follow-up", desc: "Experience review." }
+      { title: "Digital Mockup", desc: "Test drive your smile with temporary potential." },
+      { title: "Minimal Prep", desc: "Removing <0.5mm enamel for bonding space." },
+      { title: "Shade Match", desc: "Custom staining to match your skin tone." },
+      { title: "Final Bonding", desc: "Permanent adhesion with resin cement." }
     ],
-    benefits: ["Natural look", "Durable results"],
-    faqs: [{ "q": "Is the procedure painful?", "a": "We use advanced numbing techniques." }, { "q": "How many visits?", "a": "Usually 1-2 visits." }],
-    keywords: ["veneers", "cosmetic", "smile design", "chipped teeth", "Hyderabad"]
+    benefits: [
+      "Stain-Proof Ceramic Surface",
+      "Closes Gaps (Diastema)",
+      "Fixes Chipped/Worn Edges",
+      "Permanent Whitening Solution",
+      "Symmetry Correction"
+    ],
+    faqs: [
+      { q: "Do you shave my teeth down?", a: "Minimal preparation is needed (less than a fingernail's thickness) to ensure the veneers don't look bulky." },
+      { q: "Can they break?", a: "They are extremely strong once bonded. However, you should avoid opening bottles with your teeth!" }
+    ],
+    keywords: ["veneers", "laminates", "smile design", "hollywood smile", "front teeth gap"]
   },
   "smile-design": {
     id: "smile-design",
@@ -396,7 +427,7 @@ export const treatmentsData: Record<string, TreatmentData> = {
     ],
     benefits: ["Improves facial aesthetics", "Tailored to each patient"],
     faqs: [{ "q": "Is the procedure painful?", "a": "We use advanced numbing techniques." }, { "q": "How many visits?", "a": "Usually 1-2 visits." }],
-    keywords: ["smile design", "cosmetic", "veneers", "crowns", "Hyderabad"]
+    keywords: ["smile design", "cosmetic", "veneers", "crowns", "Hyderabad", "celebrity smile", "CEO makeovers"]
   },
   "dentures": {
     id: "dentures",
@@ -865,7 +896,7 @@ export const treatmentsData: Record<string, TreatmentData> = {
     title: "Fluoride Therapy",
     subtitle: "fluoride therapy treatment",
     category: "General Dentistry",
-    heroImage: "/assets/images/treatments/fluoride-hyderabad.webp",
+    heroImage: "/assets/images/treatments/fluoride-therapy-hyderabad.webp",
     description: "Protects teeth from cavities with professional fluoride application. Backed by WHO, AAPD.",
     longDescription: "Protects teeth from cavities with professional fluoride application. Backed by WHO, AAPD. Strengthens enamel. Prevents early decay",
     stats: [
@@ -1019,7 +1050,7 @@ export const treatmentsData: Record<string, TreatmentData> = {
     title: "Comprehensive Dental Checkups",
     subtitle: "dental checkup treatment",
     category: "General Dentistry",
-    heroImage: "/assets/images/treatments/dental-checkups-hyderabad.webp",
+    heroImage: "/assets/images/treatments/preventive-hyderabad.webp",
     description: "Preventive oral exams & digital diagnostics. Recommended by ADA.",
     longDescription: "Preventive oral exams & digital diagnostics. Recommended by ADA. Detects problems early. Maintains lifelong oral health",
     stats: [
@@ -1085,7 +1116,7 @@ export const treatmentsData: Record<string, TreatmentData> = {
     title: "Fluoride Treatment",
     subtitle: "fluoride treatment treatment",
     category: "General Dentistry",
-    heroImage: "/assets/images/treatments/fluoride-treatment-hyderabad.webp",
+    heroImage: "/assets/images/treatments/fluoride-hyderabad.webp",
     description: "Strengthen teeth & reduce cavities and sensitivity. Endorsed by CDC, WHO.",
     longDescription: "Strengthen teeth & reduce cavities and sensitivity. Endorsed by CDC, WHO. Protects against decay. Safe & effective for all ages",
     stats: [
@@ -1173,7 +1204,7 @@ export const treatmentsData: Record<string, TreatmentData> = {
     title: "Pediatric Preventive Care",
     subtitle: "pediatric preventive care treatment",
     category: "Pediatrics",
-    heroImage: "/assets/images/treatments/pediatric-preventive-hyderabad.webp",
+    heroImage: "/assets/images/treatments/preventive-hyderabad.webp",
     description: "Kids-friendly preventive dental care. Endorsed by AAPD.",
     longDescription: "Kids-friendly preventive dental care. Endorsed by AAPD. Fluoride, sealants & regular exams. Builds healthy oral habits",
     stats: [
@@ -1195,7 +1226,7 @@ export const treatmentsData: Record<string, TreatmentData> = {
     title: "Pediatric Pulp Therapy",
     subtitle: "pediatric pulp therapy treatment",
     category: "Pediatrics",
-    heroImage: "/assets/images/treatments/pediatric-pulp-therapy-hyderabad.webp",
+    heroImage: "/assets/images/treatments/pediatric-pulp-hyderabad.webp",
     description: "Treat infected baby teeth with pulpotomy & pulpectomy. Supported by AAPD.",
     longDescription: "Treat infected baby teeth with pulpotomy & pulpectomy. Supported by AAPD. Preserves baby teeth till natural shedding. Relieves pain & infection",
     stats: [
@@ -1217,7 +1248,7 @@ export const treatmentsData: Record<string, TreatmentData> = {
     title: "Interceptive Orthodontics",
     subtitle: "interceptive orthodontics treatment",
     category: "General Dentistry",
-    heroImage: "/assets/images/treatments/interceptive-orthodontics-hyderabad.webp",
+    heroImage: "/assets/images/treatments/braces-hyderabad.webp",
     description: "Early braces to correct developing bite problems. Endorsed by AAO.",
     longDescription: "Early braces to correct developing bite problems. Endorsed by AAO. Prevents severe misalignment. Improves jaw growth",
     stats: [
@@ -1239,7 +1270,7 @@ export const treatmentsData: Record<string, TreatmentData> = {
     title: "Myofunctional Therapy",
     subtitle: "myofunctional therapy treatment",
     category: "General Dentistry",
-    heroImage: "/assets/images/treatments/myofunctional-therapy-hyderabad.webp",
+    heroImage: "/assets/images/treatments/pediatric-hyderabad.webp",
     description: "Exercises & appliances for tongue, lips & jaw alignment. Supported by AAO.",
     longDescription: "Exercises & appliances for tongue, lips & jaw alignment. Supported by AAO. Corrects tongue thrusting. Enhances orthodontic results",
     stats: [
@@ -1261,7 +1292,7 @@ export const treatmentsData: Record<string, TreatmentData> = {
     title: "Early Childhood Caries Treatment",
     subtitle: "early childhood caries treatment",
     category: "Pediatrics",
-    heroImage: "/assets/images/treatments/early-childhood-caries-hyderabad.webp",
+    heroImage: "/assets/images/treatments/pediatric-hyderabad.webp",
     description: "Specialized care for tooth decay in infants & toddlers. Backed by AAPD.",
     longDescription: "Specialized care for tooth decay in infants & toddlers. Backed by AAPD. Restores baby teeth. Prevents long-term damage",
     stats: [
@@ -1283,7 +1314,7 @@ export const treatmentsData: Record<string, TreatmentData> = {
     title: "Pediatric Dental Crowns",
     subtitle: "pediatric crowns treatment",
     category: "Pediatrics",
-    heroImage: "/assets/images/treatments/pediatric-crowns-hyderabad.webp",
+    heroImage: "/assets/images/treatments/pediatric-hyderabad.webp",
     description: "Durable stainless steel or zirconia crowns for kidsΓÇÖ teeth. Endorsed by AAPD.",
     longDescription: "Durable stainless steel or zirconia crowns for kidsΓÇÖ teeth. Endorsed by AAPD. Protects treated baby teeth. Restores chewing & aesthetics",
     stats: [
@@ -1327,7 +1358,7 @@ export const treatmentsData: Record<string, TreatmentData> = {
     title: "Pulpotomy",
     subtitle: "pulpotomy treatment",
     category: "General Dentistry",
-    heroImage: "/assets/images/treatments/pulpotomy-hyderabad.webp",
+    heroImage: "/assets/images/treatments/pediatric-pulp-hyderabad.webp",
     description: "Partial root canal for infected baby teeth. Supported by AAPD.",
     longDescription: "Partial root canal for infected baby teeth. Supported by AAPD. Preserves tooth structure. Quick relief for kids",
     stats: [
@@ -1349,7 +1380,7 @@ export const treatmentsData: Record<string, TreatmentData> = {
     title: "Pulpectomy",
     subtitle: "pulpectomy treatment",
     category: "General Dentistry",
-    heroImage: "/assets/images/treatments/pulpectomy-hyderabad.webp",
+    heroImage: "/assets/images/treatments/pediatric-pulp-hyderabad.webp",
     description: "Complete root canal for baby teeth. Endorsed by AAPD.",
     longDescription: "Complete root canal for baby teeth. Endorsed by AAPD. Treats severe infection. Prevents abscess & swelling",
     stats: [
@@ -1371,7 +1402,7 @@ export const treatmentsData: Record<string, TreatmentData> = {
     title: "Pediatric Extractions",
     subtitle: "pediatric extractions treatment",
     category: "Surgery",
-    heroImage: "/assets/images/treatments/pediatric-extractions-hyderabad.webp",
+    heroImage: "/assets/images/treatments/extraction-hyderabad.webp",
     description: "Safe, gentle tooth removal for kids when needed. Backed by AAPD.",
     longDescription: "Safe, gentle tooth removal for kids when needed. Backed by AAPD. Used only when necessary. Ensures permanent teeth alignment",
     stats: [
@@ -1393,7 +1424,7 @@ export const treatmentsData: Record<string, TreatmentData> = {
     title: "Smile Designing",
     subtitle: "smile designing treatment",
     category: "General Dentistry",
-    heroImage: "/assets/images/treatments/smile-designing-hyderabad.webp",
+    heroImage: "/assets/images/treatments/smile-design-hyderabad.webp",
     description: "Advanced digital smile makeover with AI-guided planning. Backed by AACD.",
     longDescription: "Advanced digital smile makeover with AI-guided planning. Backed by AACD. Try-on digital smile before treatment. Personalized aesthetics",
     stats: [
@@ -1415,7 +1446,7 @@ export const treatmentsData: Record<string, TreatmentData> = {
     title: "Gum Depigmentation",
     subtitle: "gum depigmentation treatment",
     category: "General Dentistry",
-    heroImage: "/assets/images/treatments/gum-depigmentation-hyderabad.webp",
+    heroImage: "/assets/images/treatments/gum-disease-hyderabad.webp",
     description: "Laser treatment for pink, healthy-looking gums. Supported by AAP.",
     longDescription: "Laser treatment for pink, healthy-looking gums. Supported by AAP. Safe & minimally invasive. Improves smile aesthetics",
     stats: [
@@ -1437,7 +1468,7 @@ export const treatmentsData: Record<string, TreatmentData> = {
     title: "Crown Lengthening",
     subtitle: "crown lengthening treatment",
     category: "General Dentistry",
-    heroImage: "/assets/images/treatments/crown-lengthening-hyderabad.webp",
+    heroImage: "/assets/images/treatments/gum-disease-hyderabad.webp",
     description: "Reshape gums & bone for crown fitting or gummy smile. Supported by AAP.",
     longDescription: "Reshape gums & bone for crown fitting or gummy smile. Supported by AAP. Improves tooth visibility. Essential for some restorations",
     stats: [
@@ -1459,7 +1490,7 @@ export const treatmentsData: Record<string, TreatmentData> = {
     title: "Ridge Augmentation",
     subtitle: "ridge augmentation treatment",
     category: "General Dentistry",
-    heroImage: "/assets/images/treatments/ridge-augmentation-hyderabad.webp",
+    heroImage: "/assets/images/treatments/implants-hyderabad.webp",
     description: "Bone grafting to rebuild jaw for implants. Supported by ITI.",
     longDescription: "Bone grafting to rebuild jaw for implants. Supported by ITI. Improves implant stability. Restores natural jawline",
     stats: [
@@ -1481,7 +1512,7 @@ export const treatmentsData: Record<string, TreatmentData> = {
     title: "Sinus Lift Surgery",
     subtitle: "sinus lift treatment",
     category: "General Dentistry",
-    heroImage: "/assets/images/treatments/sinus-lift-hyderabad.webp",
+    heroImage: "/assets/images/treatments/implants-hyderabad.webp",
     description: "Add bone in upper jaw for implant placement. Supported by ITI.",
     longDescription: "Add bone in upper jaw for implant placement. Supported by ITI. Restores bone near sinus. Increases implant success",
     stats: [
@@ -1503,7 +1534,7 @@ export const treatmentsData: Record<string, TreatmentData> = {
     title: "Bone Grafting",
     subtitle: "bone grafting treatment",
     category: "General Dentistry",
-    heroImage: "/assets/images/treatments/bone-grafting-hyderabad.webp",
+    heroImage: "/assets/images/treatments/implants-hyderabad.webp",
     description: "Rebuild jawbone with graft materials for implants. Endorsed by ITI.",
     longDescription: "Rebuild jawbone with graft materials for implants. Endorsed by ITI. Restores lost bone volume. Improves oral function",
     stats: [
@@ -1525,7 +1556,7 @@ export const treatmentsData: Record<string, TreatmentData> = {
     title: "Apicoectomy",
     subtitle: "apicoectomy treatment",
     category: "General Dentistry",
-    heroImage: "/assets/images/treatments/apicoectomy-hyderabad.webp",
+    heroImage: "/assets/images/treatments/root-canal-hyderabad.webp",
     description: "Root-end microsurgery for persistent infection. Backed by AAE.",
     longDescription: "Root-end microsurgery for persistent infection. Backed by AAE. Saves tooth after failed RCT. Minimally invasive procedure",
     stats: [
@@ -1635,7 +1666,7 @@ export const treatmentsData: Record<string, TreatmentData> = {
     title: "Frenectomy",
     subtitle: "frenectomy treatment",
     category: "General Dentistry",
-    heroImage: "/assets/images/treatments/frenectomy-hyderabad.webp",
+    heroImage: "/assets/images/treatments/laser-dentistry-hyderabad.webp",
     description: "Laser or surgical tongue-tie & lip-tie release. Supported by AAPD.",
     longDescription: "Laser or surgical tongue-tie & lip-tie release. Supported by AAPD. Improves speech & feeding. Minimally invasive with laser",
     stats: [
@@ -1657,7 +1688,7 @@ export const treatmentsData: Record<string, TreatmentData> = {
     title: "Orthodontic Retainers",
     subtitle: "orthodontic retainers treatment",
     category: "General Dentistry",
-    heroImage: "/assets/images/treatments/retainers-hyderabad.webp",
+    heroImage: "/assets/images/treatments/braces-hyderabad.webp",
     description: "Retainers to maintain teeth alignment post-braces. Backed by AAO.",
     longDescription: "Retainers to maintain teeth alignment post-braces. Backed by AAO. Prevents teeth shifting. Available as clear or fixed types",
     stats: [
@@ -1679,7 +1710,7 @@ export const treatmentsData: Record<string, TreatmentData> = {
     title: "Dental Jewellery",
     subtitle: "dental jewellery treatment",
     category: "General Dentistry",
-    heroImage: "/assets/images/treatments/dental-jewellery-hyderabad.webp",
+    heroImage: "/assets/images/treatments/cosmetic-dentistry-hyderabad.webp",
     description: "Add sparkle with safe, temporary tooth gems. Backed by AACD.",
     longDescription: "Add sparkle with safe, temporary tooth gems. Backed by AACD. Non-invasive cosmetic option. Easily removable",
     stats: [
@@ -1723,7 +1754,7 @@ export const treatmentsData: Record<string, TreatmentData> = {
     title: "Oral Hygiene Instruction",
     subtitle: "oral hygiene instruction treatment",
     category: "General Dentistry",
-    heroImage: "/assets/images/treatments/oral-hygiene-instruction-hyderabad.webp",
+    heroImage: "/assets/images/treatments/oral-prophylaxis-hyderabad.webp",
     description: "Dentist-guided brushing & flossing training. Supported by ADA.",
     longDescription: "Dentist-guided brushing & flossing training. Supported by ADA. Proper brushing techniques. Prevents gum disease",
     stats: [
@@ -1745,7 +1776,7 @@ export const treatmentsData: Record<string, TreatmentData> = {
     title: "Preventive Dentistry Programs",
     subtitle: "preventive dentistry programs treatment",
     category: "General Dentistry",
-    heroImage: "/assets/images/treatments/preventive-programs-hyderabad.webp",
+    heroImage: "/assets/images/treatments/preventive-hyderabad.webp",
     description: "Ongoing dental checkups & preventive care plans. Backed by WHO.",
     longDescription: "Ongoing dental checkups & preventive care plans. Backed by WHO. Customized oral care schedules. Early detection saves costs",
     stats: [
@@ -1767,7 +1798,7 @@ export const treatmentsData: Record<string, TreatmentData> = {
     title: "Digital Dental X-Rays",
     subtitle: "digital dental x-rays treatment",
     category: "General Dentistry",
-    heroImage: "/assets/images/treatments/digital-xrays-hyderabad.webp",
+    heroImage: "/assets/images/treatments/digital-dentistry-hyderabad.webp",
     description: "Low-radiation imaging for precise dental diagnosis. Supported by ADA, NHS.",
     longDescription: "Low-radiation imaging for precise dental diagnosis. Supported by ADA, NHS. Safe & accurate. Instant digital results",
     stats: [
@@ -1789,7 +1820,7 @@ export const treatmentsData: Record<string, TreatmentData> = {
     title: "Dental Cleaning (Scaling & Polishing)",
     subtitle: "dental cleaning treatment",
     category: "General Dentistry",
-    heroImage: "/assets/images/treatments/dental-cleaning-hyderabad.webp",
+    heroImage: "/assets/images/treatments/scaling-hyderabad.webp",
     description: "Professional scaling & polishing for clean, healthy teeth. Supported by ADA, IDA.",
     longDescription: "Professional scaling & polishing for clean, healthy teeth. Supported by ADA, IDA. Removes tartar & stains. Fresh breath & healthier gums",
     stats: [
@@ -1811,7 +1842,7 @@ export const treatmentsData: Record<string, TreatmentData> = {
     title: "Oral Hygiene Instruction",
     subtitle: "oral hygiene treatment",
     category: "General Dentistry",
-    heroImage: "/assets/images/treatments/oral-hygiene-hyderabad.webp",
+    heroImage: "/assets/images/treatments/oral-prophylaxis-hyderabad.webp",
     description: "Expert brushing & flossing training from dentists. Endorsed by ADA.",
     longDescription: "Expert brushing & flossing training from dentists. Endorsed by ADA. Prevents gum disease & cavities. Personalized oral hygiene advice",
     stats: [
@@ -1833,7 +1864,7 @@ export const treatmentsData: Record<string, TreatmentData> = {
     title: "Geriatric Dentistry",
     subtitle: "geriatric dentistry treatment",
     category: "General Dentistry",
-    heroImage: "/assets/images/treatments/geriatric-dentistry-hyderabad.webp",
+    heroImage: "/assets/images/treatments/dentures-hyderabad.webp",
     description: "Gentle dental care for senior citizens. Backed by WHO.",
     longDescription: "Gentle dental care for senior citizens. Backed by WHO. Comfortable treatment approach. Focus on function & comfort",
     stats: [
@@ -1855,7 +1886,7 @@ export const treatmentsData: Record<string, TreatmentData> = {
     title: "Oral Medicine & Diagnosis",
     subtitle: "oral medicine treatment",
     category: "General Dentistry",
-    heroImage: "/assets/images/treatments/oral-medicine-hyderabad.webp",
+    heroImage: "/assets/images/treatments/oral-cancer-hyderabad.webp",
     description: "Specialized diagnosis of oral lesions & conditions. Backed by WHO, CDC.",
     longDescription: "Specialized diagnosis of oral lesions & conditions. Backed by WHO, CDC. Identifies mouth diseases early. Guides proper treatment",
     stats: [
@@ -1877,7 +1908,7 @@ export const treatmentsData: Record<string, TreatmentData> = {
     title: "Maxillofacial Prosthetics",
     subtitle: "maxillofacial prosthetics treatment",
     category: "General Dentistry",
-    heroImage: "/assets/images/treatments/maxillofacial-prosthetics-hyderabad.webp",
+    heroImage: "/assets/images/treatments/maxillofacial-hyderabad.webp",
     description: "Custom prosthetics for jaw, face & oral defects. Backed by AAOMS.",
     longDescription: "Custom prosthetics for jaw, face & oral defects. Backed by AAOMS. Restores function & appearance. Improves speech & chewing",
     stats: [
@@ -1899,7 +1930,7 @@ export const treatmentsData: Record<string, TreatmentData> = {
     title: "Emergency Dental Trauma Care",
     subtitle: "emergency dental trauma treatment",
     category: "General Dentistry",
-    heroImage: "/assets/images/treatments/emergency-trauma-hyderabad.webp",
+    heroImage: "/assets/images/treatments/emergency-hyderabad.webp",
     description: "Immediate treatment for knocked-out or broken teeth. Backed by IDA.",
     longDescription: "Immediate treatment for knocked-out or broken teeth. Backed by IDA. 24├ù7 trauma support. Saves teeth when treated quickly",
     stats: [
@@ -1921,7 +1952,7 @@ export const treatmentsData: Record<string, TreatmentData> = {
     title: "Pre-Orthodontic Guidance",
     subtitle: "pre orthodontic guidance treatment",
     category: "General Dentistry",
-    heroImage: "/assets/images/treatments/pre-ortho-hyderabad.webp",
+    heroImage: "/assets/images/treatments/space-maintainers-hyderabad.webp",
     description: "Interceptive orthodontics for kidsΓÇÖ jaw growth. Backed by AAO.",
     longDescription: "Interceptive orthodontics for kidsΓÇÖ jaw growth. Backed by AAO. Prevents severe misalignment. Reduces need for future braces",
     stats: [
@@ -1943,7 +1974,7 @@ export const treatmentsData: Record<string, TreatmentData> = {
     title: "Tongue Cleaning Guidance",
     subtitle: "tongue cleaning treatment",
     category: "General Dentistry",
-    heroImage: "/assets/images/treatments/tongue-cleaning-hyderabad.webp",
+    heroImage: "/assets/images/treatments/oral-prophylaxis-hyderabad.webp",
     description: "Professional guidance on tongue cleaning to prevent bad breath. Supported by ADA.",
     longDescription: "Professional guidance on tongue cleaning to prevent bad breath. Supported by ADA. Improves breath freshness. Removes harmful bacteria",
     stats: [
@@ -1965,7 +1996,7 @@ export const treatmentsData: Record<string, TreatmentData> = {
     title: "Smoking Cessation Counseling",
     subtitle: "smoking cessation counseling treatment",
     category: "General Dentistry",
-    heroImage: "/assets/images/treatments/smoking-cessation-hyderabad.webp",
+    heroImage: "/assets/images/treatments/tobacco-cessation-hyderabad.webp",
     description: "Quit smoking & tobacco with dentist-led guidance. Backed by WHO, CDC.",
     longDescription: "Quit smoking & tobacco with dentist-led guidance. Backed by WHO, CDC. Prevents oral cancer risk. Improves overall oral health",
     stats: [
@@ -2009,7 +2040,7 @@ export const treatmentsData: Record<string, TreatmentData> = {
     title: "Pediatric Emergency Dental Care",
     subtitle: "kids dental emergency treatment",
     category: "Pediatrics",
-    heroImage: "/assets/images/treatments/pediatric-emergency-hyderabad.webp",
+    heroImage: "/assets/images/treatments/emergency-hyderabad.webp",
     description: "24├ù7 dental emergency care for kids. Supported by AAPD.",
     longDescription: "24├ù7 dental emergency care for kids. Supported by AAPD. Handles trauma & sudden pain. Gentle approach for children",
     stats: [

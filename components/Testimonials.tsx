@@ -2,35 +2,19 @@
 
 import React from 'react';
 import { Star } from 'lucide-react';
+import { googleReviews } from '@/data/reviews';
 
 const Testimonials = () => {
-  // Strategy: Use the most detailed/emotional reviews from the 39 available.
-  const reviews = [
-    {
-      id: '1',
-      name: 'Vishal Nirmal',
-      location: 'Patient',
-      rating: 5,
-      text: "Dr. Dhivakaran cares like family. He even attended my calls at 2 AM after surgery to answer doubts. He planned my treatment efficiently where others failed.",
-      treatment: "Emergency Care"
-    },
-    {
-      id: '2',
-      name: 'Sandhya Rani',
-      location: 'Patient',
-      rating: 5,
-      text: "Previous doctors said they had to cut my bone/do surgery. Dr. Dhivakaran cured the infection WITHOUT surgery. Very happy my problem is gone.",
-      treatment: "Second Opinion"
-    },
-    {
-      id: '3',
-      name: 'Suganya Sweety',
-      location: 'Patient',
-      rating: 5,
-      text: "One of the best dental experiences. So clean, careful, and thoughtful. Dr. Dhivakaran explained every procedure with pros and cons clearly.",
-      treatment: "Comprehensive Care"
-    },
-  ];
+  // Use the top reviews from our data file
+  // Filter for reviews with text content
+  const reviews = googleReviews.filter(r => r.text && r.text.length > 10).slice(0, 3).map((r, i) => ({
+    id: i.toString(),
+    name: r.name,
+    location: 'Patient',
+    rating: r.rating,
+    text: r.text,
+    treatment: 'Dental Care'
+  }));
 
   return (
     <section className="py-24 bg-slate-50 dark:bg-[#020617] relative overflow-hidden">

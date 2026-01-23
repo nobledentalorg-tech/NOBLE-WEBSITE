@@ -30,8 +30,8 @@ export default function NeoCompanionClient() {
     // Personalized Greeting if logged in
     // Personalized Greeting if logged in
     const fullIntroText = session?.user?.name
-        ? `Hi ${session.user.name.split(' ')[0]}. I am Neo, how can I assist you?`
-        : "Hi. I am Neo, how can i assist you.";
+        ? `Hi ${session.user.name.split(' ')[0]}. I am Neo, your Virtual Dental Consultant.`
+        : "Hi. I am Neo, your Virtual Dental Consultant.";
 
     // -- DB Sync State --
     const [currentChatId, setCurrentChatId] = useState<string | null>(null);
@@ -159,7 +159,7 @@ export default function NeoCompanionClient() {
     ];
 
     return (
-        <div className="relative min-h-screen bg-[#020202] text-slate-200 font-sans overflow-hidden selection:bg-red-500/30">
+        <div className="relative min-h-[100dvh] bg-[#020202] text-slate-200 font-sans overflow-hidden selection:bg-red-500/30">
 
             {/* --- STYLES & ANIMATIONS --- */}
             <style>{`
@@ -255,7 +255,7 @@ export default function NeoCompanionClient() {
             </nav>
 
             {/* --- MAIN INTERFACE --- */}
-            <main className="relative z-20 w-full h-screen flex flex-col items-center justify-center pt-20 pb-28 px-4">
+            <main className="relative z-20 w-full h-[100dvh] flex flex-col items-center justify-center pt-20 pb-28 px-4">
 
                 {messages.length === 0 ? (
                     /* HERO STATE */
@@ -277,7 +277,7 @@ export default function NeoCompanionClient() {
                         </h1>
 
                         <p className="font-gemini text-base md:text-lg text-zinc-400 max-w-lg mx-auto leading-relaxed mb-12 opacity-0 animate-in fade-in slide-in-from-bottom-4 delay-700 fill-mode-forwards">
-                            I am designed to analyze symptoms, explain procedures, and guide your recovery.
+                            Skip the guesswork. I provide instant provisional insights, cost estimates, and specialist referrals.
                         </p>
 
                         {/* Quick Actions Grid */}

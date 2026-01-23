@@ -9,7 +9,7 @@
     "Noble Dental Care Hyderabad"
   ],
   "legalName": "Noble Dental Care – Nallagandla",
-  "description": "Noble Dental Care is a trusted multi-speciality dental clinic in Nallagandla, Hyderabad offering advanced, restorative, aesthetic, preventive, pediatric, and emergency dental services under one roof.",
+  "description": "Noble Dental Care is a trusted multi-speciality dental clinic in Nallagandla, Hyderabad offering advanced, restorative, aesthetic, preventive, pediatric, and emergency dental services under one roof. Accepts 24/7 Emergency Support.",
   "url": "https://nobledentalnallagandla.in/",
   "mainEntityOfPage": "https://nobledentalnallagandla.in/",
   "inLanguage": "en-IN",
@@ -23,7 +23,6 @@
       "https://www.linkedin.com/in/dr-dhivakaran"
     ]
   },
-
   "logo": {
     "@type": "ImageObject",
     "url": "https://nobledentalnallagandla.in/images/logo-footer.webp",
@@ -31,13 +30,11 @@
     "width": "300",
     "height": "100"
   },
-
   "image": {
     "@type": "ImageObject",
     "url": "https://nobledentalnallagandla.in/images/clinic-front.webp",
     "caption": "Front view of Noble Dental Care – Nallagandla"
   },
-
   "address": {
     "@type": "PostalAddress",
     "streetAddress": "Shop No. 4, Ground Floor, Aparna CyberLife, Nallagandla",
@@ -46,35 +43,42 @@
     "postalCode": "500019",
     "addressCountry": "IN"
   },
-
   "geo": {
     "@type": "GeoCoordinates",
     "latitude": 17.4481,
     "longitude": 78.3214
   },
-
   "areaServed": {
     "@type": "AdministrativeArea",
     "name": "Nallagandla, Hyderabad"
   },
-
   "contactPoint": [
     {
       "@type": "ContactPoint",
       "contactType": "Customer Service",
       "telephone": "+91-9123456789",
       "email": "info@nobledentalnallagandla.in",
-      "availableLanguage": ["English", "Hindi", "Telugu"],
+      "availableLanguage": [
+        "English",
+        "Hindi",
+        "Telugu"
+      ],
       "areaServed": "IN"
     }
   ],
-
   "openingHoursSpecification": [
     {
       "@type": "OpeningHoursSpecification",
-      "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
-      "opens": "09:30",
-      "closes": "21:00"
+      "dayOfWeek": [
+        "Monday",
+        "Tuesday",
+        "Wednesday",
+        "Thursday",
+        "Friday",
+        "Saturday"
+      ],
+      "opens": "11:00",
+      "closes": "22:15"
     },
     {
       "@type": "OpeningHoursSpecification",
@@ -83,7 +87,6 @@
       "closes": "13:00"
     }
   ],
-
   "sameAs": [
     "https://maps.google.com/?cid=ChIJew1fcG2TyzsRrvHrnBzKGj8",
     "https://g.page/r/Ca7x65wcyho_EAE/review",
@@ -98,32 +101,48 @@
     "https://www.bing.com/forbusiness/singleEntity?bizid=fea71078-e6ec-4b85-9139-53758e89f98b",
     "https://www.justdial.com/Hyderabad/Noble-Dental-Care-Multispeciality-Dental-Clinic/040PXX40-XX40-230311104127-B8Q4_BZDET"
   ],
-
   "department": [
-    { "@id": "https://nobledentalnallagandla.in/#preventive-dentistry" },
-    { "@id": "https://nobledentalnallagandla.in/#restorative-dentistry" },
-    { "@id": "https://nobledentalnallagandla.in/#aesthetic-dentistry" },
-    { "@id": "https://nobledentalnallagandla.in/#advanced-dentistry" },
-    { "@id": "https://nobledentalnallagandla.in/#pediatric-dentistry" },
-    { "@id": "https://nobledentalnallagandla.in/#emergency-dentistry" }
+    {
+      "@id": "https://nobledentalnallagandla.in/#preventive-dentistry"
+    },
+    {
+      "@id": "https://nobledentalnallagandla.in/#restorative-dentistry"
+    },
+    {
+      "@id": "https://nobledentalnallagandla.in/#aesthetic-dentistry"
+    },
+    {
+      "@id": "https://nobledentalnallagandla.in/#advanced-dentistry"
+    },
+    {
+      "@id": "https://nobledentalnallagandla.in/#pediatric-dentistry"
+    },
+    {
+      "@id": "https://nobledentalnallagandla.in/#emergency-dentistry"
+    }
   ],
-
   "memberOf": {
     "@type": "Organization",
     "name": "Indian Dental Association (IDA)"
   },
-
   "hasOfferCatalog": {
     "@type": "OfferCatalog",
     "name": "Comprehensive Dental Treatments",
     "itemListElement": [
-      { "@id": "https://nobledentalnallagandla.in/#dental-implant" },
-      { "@id": "https://nobledentalnallagandla.in/#root-canal-treatment" },
-      { "@id": "https://nobledentalnallagandla.in/#braces-treatment" },
-      { "@id": "https://nobledentalnallagandla.in/#smile-design" }
+      {
+        "@id": "https://nobledentalnallagandla.in/#dental-implant"
+      },
+      {
+        "@id": "https://nobledentalnallagandla.in/#root-canal-treatment"
+      },
+      {
+        "@id": "https://nobledentalnallagandla.in/#braces-treatment"
+      },
+      {
+        "@id": "https://nobledentalnallagandla.in/#smile-design"
+      }
     ]
   },
-
   "knowsAbout": [
     "Dental implants",
     "Root canal therapy",
@@ -134,7 +153,6 @@
     "Laser dentistry",
     "Sedation dentistry"
   ],
-
   "review": {
     "@type": "Review",
     "reviewRating": {
@@ -147,14 +165,12 @@
       "name": "Verified Patient Reviews"
     }
   },
-
   "aggregateRating": {
     "@type": "AggregateRating",
     "ratingValue": "4.9",
     "reviewCount": "250",
     "bestRating": "5"
   },
-
   "hasMap": "https://goo.gl/maps/xyz123",
   "priceRange": "₹₹",
   "medicalSpecialty": [
