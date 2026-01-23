@@ -1,5 +1,5 @@
 import React from 'react';
-import { supabasePublic } from '@/lib/supabase';
+import { getSupabaseClient } from '@/lib/supabase';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import Link from 'next/link';
@@ -16,11 +16,17 @@ export const metadata = {
 };
 
 export default async function BlogIndex() {
-    const { data: posts } = await supabasePublic
-        .from('posts')
-        .select('*')
-        .eq('published', true)
-        .order('created_at', { ascending: false });
+    let posts = [];
+    try {
+        const { data } = await getSupabaseClient()
+            .from('posts')
+            .select('*')
+            .eq('published', true)
+            .order('created_at', { ascending: false });
+        if (data) posts = data;
+    } catch (error) {
+        console.warn("Supabase not configured or unreachable at build time. Skpping blog posts.");
+    }
 
     return (
         <main className="min-h-screen bg-slate-50 dark:bg-[#020617]">

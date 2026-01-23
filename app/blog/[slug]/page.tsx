@@ -1,5 +1,5 @@
 import React from 'react';
-import { supabasePublic } from '@/lib/supabase';
+import { getSupabaseClient } from '@/lib/supabase';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import Image from 'next/image';
@@ -18,34 +18,44 @@ interface PageProps {
 
 // SEO Generation
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
-    const { data: post } = await supabasePublic
-        .from('posts')
-        .select('*')
-        .eq('slug', params.slug)
-        .single();
+    try {
+        const { data: post } = await getSupabaseClient()
+            .from('posts')
+            .select('*')
+            .eq('slug', params.slug)
+            .single();
 
-    if (!post) {
-        return { title: 'Article Not Found' };
-    }
+        if (!post) {
+            return { title: 'Article Not Found' };
+        }
 
-    return {
-        title: `${post.title} | Noble Dental Blog`,
-        description: post.excerpt,
-        openGraph: {
-            title: post.title,
+        return {
+            title: `${post.title} | Noble Dental Blog`,
             description: post.excerpt,
-            images: post.cover_image ? [post.cover_image] : [],
-        },
-        authors: [{ name: post.author }],
-    };
+            openGraph: {
+                title: post.title,
+                description: post.excerpt,
+                images: post.cover_image ? [post.cover_image] : [],
+            },
+            authors: [{ name: post.author }],
+        };
+    } catch (error) {
+        return { title: 'Noble Dental Blog' };
+    }
 }
 
 export default async function BlogPostPage({ params }: PageProps) {
-    const { data: post } = await supabasePublic
-        .from('posts')
-        .select('*')
-        .eq('slug', params.slug)
-        .single();
+    let post = null;
+    try {
+        const { data } = await getSupabaseClient()
+            .from('posts')
+            .select('*')
+            .eq('slug', params.slug)
+            .single();
+        post = data;
+    } catch (error) {
+        console.warn("Supabase load failed");
+    }
 
     if (!post) {
         notFound();

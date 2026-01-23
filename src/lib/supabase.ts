@@ -12,11 +12,7 @@ export const getSupabaseClient = () => {
     return createClient(supabaseUrl, supabaseAnonKey)
 }
 
-// Added to match exports expected by app/blog/page.tsx
-export const supabasePublic = createClient(
-    process.env.NEXT_PUBLIC_SUPABASE_URL!,
-    process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!
-);
+// Function removed to prevent build-time crashes. Use getSupabaseClient() instead.
 
 export const getSupabaseAdmin = () => {
     const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL!;
