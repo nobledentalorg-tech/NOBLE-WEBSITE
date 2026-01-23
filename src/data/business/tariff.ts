@@ -30,6 +30,30 @@ export const TARIFF_DB: TariffItem[] = [
         name: { en: "Simple Extraction" },
         price: { min: 1500, max: 2500, currency: "INR" },
         unit: "per tooth"
+    },
+    {
+        id: 'implant',
+        name: { en: "Dental Implant" },
+        price: { min: 25000, max: 45000, currency: "INR" },
+        unit: "per unit"
+    },
+    {
+        id: 'veneer',
+        name: { en: "Ceramic Veneer" },
+        price: { min: 12000, max: 18000, currency: "INR" },
+        unit: "per tooth"
+    },
+    {
+        id: 'invisalign',
+        name: { en: "Invisalign (Clear Aligners)" },
+        price: { min: 150000, max: 350000, currency: "INR" },
+        unit: "full treatment"
+    },
+    {
+        id: 'whitening',
+        name: { en: "Laser Teeth Whitening" },
+        price: { min: 8000, currency: "INR" },
+        unit: "per session"
     }
 ];
 

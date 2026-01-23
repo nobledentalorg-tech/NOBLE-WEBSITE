@@ -1,5 +1,5 @@
 
-export type UserIntent = 'greeting' | 'triage' | 'cost' | 'availability' | 'unknown';
+export type UserIntent = 'greeting' | 'triage' | 'cost' | 'availability' | 'care' | 'unknown';
 
 export class IntentRouter {
 
@@ -21,9 +21,14 @@ export class IntentRouter {
             return 'greeting';
         }
 
-        // 4. Clinical Triage (Default for symptoms)
+        // 4. Clinical Triage (Symptoms)
         if (lower.includes('pain') || lower.includes('swelling') || lower.includes('blood') || lower.includes('broken') || lower.includes('hurt')) {
             return 'triage';
+        }
+
+        // 5. Post-Op Care / Instructions
+        if (lower.includes('care') || lower.includes('instruction') || lower.includes('post-op') || lower.includes('after') || lower.includes('do after')) {
+            return 'care';
         }
 
         return 'unknown';

@@ -1,0 +1,23 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model NeoMemory {
+  id          String   @id @default(uuid())
+  query       String   // The user's question (e.g., "reason for bleeding gums")
+  answer      String   // The answer Gemini gave
+  isVerified  Boolean  @default(false) // True = Dr. Dhivakaran approved it
+  useCount    Int      @default(1)     // How many times users asked this
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  @@index([query])
+}

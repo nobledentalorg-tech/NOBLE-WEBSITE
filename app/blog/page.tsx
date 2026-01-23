@@ -15,18 +15,47 @@ export const metadata = {
     description: 'Expert insights on dentistry, maxillo-facial surgery, and patient safety from Dr. Dhivakaran and team.',
 };
 
+import { NeoBlogEngine } from '@/neo/NeoBlogEngine';
+
 export default async function BlogIndex() {
-    let posts = [];
+    let manualPosts = [];
     try {
         const { data } = await getSupabaseClient()
             .from('posts')
             .select('*')
             .eq('published', true)
             .order('created_at', { ascending: false });
-        if (data) posts = data;
+        if (data) manualPosts = data;
     } catch (error) {
-        console.warn("Supabase not configured or unreachable at build time. Skpping blog posts.");
+        console.warn("Supabase not configured or unreachable at build time. Skipping blog posts.");
     }
+
+    // Combine with dynamically generated clinical guides (100+ pages)
+    const autoBlogs = NeoBlogEngine.getAllAutoBlogs();
+
+    // Normalize and Combine
+    const allPosts = [
+        ...manualPosts.map(p => ({
+            id: p.id,
+            slug: p.slug,
+            title: p.title,
+            excerpt: p.excerpt || p.content?.substring(0, 150) + '...',
+            date: p.created_at,
+            author: p.author || 'Dr. Dhivakaran',
+            category: p.category || 'General',
+            image: p.cover_image
+        })),
+        ...autoBlogs.map(b => ({
+            id: b.slug,
+            slug: b.slug,
+            title: b.title,
+            excerpt: b.excerpt,
+            date: b.date,
+            author: 'Clinical Intelligence (Neo)',
+            category: b.category,
+            image: null // Clinical blogs use icons/illustrations in the detail page
+        }))
+    ].sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
 
     return (
         <main className="min-h-screen bg-slate-50 dark:bg-[#020617]">
@@ -45,34 +74,37 @@ export default async function BlogIndex() {
 
             <section className="py-16 px-6">
                 <div className="max-w-7xl mx-auto grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-                    {posts && posts.length > 0 ? (
-                        posts.map((post) => (
+                    {allPosts && allPosts.length > 0 ? (
+                        allPosts.map((post) => (
                             <Link href={`/blog/${post.slug}`} key={post.id} className="group">
                                 <article className="bg-white dark:bg-[#111620] rounded-2xl overflow-hidden border border-slate-100 dark:border-white/5 shadow-sm hover:shadow-xl transition-all duration-300 hover:-translate-y-1 h-full flex flex-col">
                                     <div className="relative h-48 w-full bg-slate-200 dark:bg-white/5">
-                                        {post.cover_image ? (
+                                        {post.image ? (
                                             <Image
-                                                src={post.cover_image}
+                                                src={post.image}
                                                 alt={post.title}
                                                 fill
                                                 className="object-cover transition-transform duration-500 group-hover:scale-105"
                                             />
                                         ) : (
-                                            <div className="w-full h-full flex items-center justify-center text-slate-400">
-                                                No Image
+                                            <div className="w-full h-full flex flex-col items-center justify-center text-slate-400 p-6 text-center">
+                                                <div className="mb-2 p-3 rounded-full bg-blue-500/10 text-blue-500">
+                                                    <FileText size={24} />
+                                                </div>
+                                                <span className="text-[10px] font-bold uppercase tracking-widest">{post.category}</span>
                                             </div>
                                         )}
                                     </div>
                                     <div className="p-6 flex flex-col flex-grow">
                                         <div className="flex items-center gap-4 text-xs text-slate-500 dark:text-slate-400 mb-3">
-                                            <span className="flex items-center gap-1"><Calendar size={12} /> {format(new Date(post.created_at), 'MMM d, yyyy')}</span>
+                                            <span className="flex items-center gap-1"><Calendar size={12} /> {format(new Date(post.date), 'MMM d, yyyy')}</span>
                                             <span className="flex items-center gap-1"><User size={12} /> {post.author}</span>
                                         </div>
                                         <h2 className="text-xl font-bold text-slate-900 dark:text-white mb-3 line-clamp-2 group-hover:text-blue-500 transition-colors">
                                             {post.title}
                                         </h2>
                                         <p className="text-sm text-slate-600 dark:text-slate-400 mb-6 line-clamp-3 flex-grow">
-                                            {post.excerpt || post.content?.substring(0, 100) + '...'}
+                                            {post.excerpt}
                                         </p>
                                         <div className="flex items-center text-blue-600 dark:text-blue-400 font-bold text-sm uppercase tracking-wider group-hover:gap-2 transition-all">
                                             Read Article <ArrowRight size={16} className="ml-1" />

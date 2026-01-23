@@ -38,4 +38,5 @@ export interface ChatMessage {
   timestamp: number;
   sources?: Source[];
   possibilities?: Possibility[];
+  urgency?: 'low' | 'medium' | 'high' | 'emergency';
 }

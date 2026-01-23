@@ -1,12 +1,13 @@
 
-export type SupportedLanguage = 'en' | 'ta' | 'te' | 'kn' | 'hi';
+export type SupportedLanguage = 'en' | 'ta' | 'te' | 'kn' | 'hi' | 'ml';
 
 export interface LocalizedText {
-    en: string; // English is mandatory
+    en: string; // English
     ta?: string; // Tamil
     te?: string; // Telugu
-    kn?: string; // Kannada
     hi?: string; // Hindi
+    kn?: string; // Kannada
+    ml?: string; // Malayalam
 }
 
 export type ClinicalNodeType = 'question' | 'assessment' | 'info' | 'emergency';

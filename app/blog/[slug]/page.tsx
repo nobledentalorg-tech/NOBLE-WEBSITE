@@ -16,45 +16,77 @@ interface PageProps {
     params: { slug: string };
 }
 
-// SEO Generation
+import { NeoBlogEngine } from '@/neo/NeoBlogEngine';
+
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
+    const slug = params.slug;
+
+    // 1. Try Clinical Engine
+    const allAutoBlogs = NeoBlogEngine.getAllAutoBlogs();
+    const autoPost = allAutoBlogs.find(b => b.slug === slug || b.slug === `blog/${slug}` || b.slug.endsWith(slug));
+
+    if (autoPost) {
+        return {
+            title: `${autoPost.title} | Clinical Insights`,
+            description: autoPost.excerpt
+        };
+    }
+
+    // 2. Try Supabase
     try {
         const { data: post } = await getSupabaseClient()
             .from('posts')
             .select('*')
-            .eq('slug', params.slug)
+            .eq('slug', slug)
             .single();
 
-        if (!post) {
-            return { title: 'Article Not Found' };
-        }
-
-        return {
-            title: `${post.title} | Noble Dental Blog`,
-            description: post.excerpt,
-            openGraph: {
-                title: post.title,
+        if (post) {
+            return {
+                title: `${post.title} | Noble Dental Blog`,
                 description: post.excerpt,
-                images: post.cover_image ? [post.cover_image] : [],
-            },
-            authors: [{ name: post.author }],
-        };
-    } catch (error) {
-        return { title: 'Noble Dental Blog' };
-    }
+                openGraph: {
+                    title: post.title,
+                    description: post.excerpt,
+                    images: post.cover_image ? [post.cover_image] : [],
+                },
+                authors: [{ name: post.author }],
+            };
+        }
+    } catch (e) { }
+
+    return { title: 'Article | Noble Dental' };
 }
 
 export default async function BlogPostPage({ params }: PageProps) {
+    const slug = params.slug;
     let post = null;
-    try {
-        const { data } = await getSupabaseClient()
-            .from('posts')
-            .select('*')
-            .eq('slug', params.slug)
-            .single();
-        post = data;
-    } catch (error) {
-        console.warn("Supabase load failed");
+
+    // 1. Check Clinical Engine First
+    const allAutoBlogs = NeoBlogEngine.getAllAutoBlogs();
+    const autoPost = allAutoBlogs.find(b => b.slug === slug || b.slug === `blog/${slug}` || b.slug.endsWith(slug));
+
+    if (autoPost) {
+        post = {
+            title: autoPost.title,
+            content: autoPost.content,
+            excerpt: autoPost.excerpt,
+            created_at: autoPost.date,
+            author: 'Clinical Intelligence (Neo)',
+            tags: autoPost.tags,
+            cover_image: null
+        };
+    } else {
+        // 2. Check Supabase
+        try {
+            const { data } = await getSupabaseClient()
+                .from('posts')
+                .select('*')
+                .eq('slug', slug)
+                .single();
+            post = data;
+        } catch (error) {
+            console.warn("Supabase load failed");
+        }
     }
 
     if (!post) {

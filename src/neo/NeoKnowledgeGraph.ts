@@ -650,5 +650,37 @@ export const NEO_KNOWLEDGE_GRAPH: Record<string, ClinicalNode> = {
             action: "Manage Stress/Rx",
             relatedSlug: "general-dentistry"
         }]
+    },
+    // --- POST-OP CARE ---
+    extraction_care: {
+        id: 'extraction_care',
+        type: 'info',
+        text: {
+            en: "### Extraction Post-Op Care\n1. **Bite the Gauze**: Keep firm pressure for 45 mins.\n2. **No Rinsing/Spitting**: Do not disturb the clot for 24 hours.\n3. **Cold Pack**: Apply externally to reduce swelling (20 mins on/off).\n4. **Soft Food**: Avoid hot/spicy food for 2 days.\n5. Don't use a straw!",
+            ta: "### பல் பிடுங்கிய பின் கவனிக்க வேண்டியவை\n1. பஞ்சை 45 நிமிடங்கள் கடித்துக் கொள்ளவும்.\n2. 24 மணி நேரம் கொப்பளிக்கக் கூடாது.\n3. ஐஸ் கட்டி ஒத்தடம் கொடுக்கவும்.\n4. மென்மையான உணவுகளை உட்கொள்ளவும்."
+        },
+        possibilities: [{
+            title: "Post-Op Recovery",
+            description: "Follow these steps to ensure fast healing and prevent 'Dry Socket'.",
+            likelihood: 'High',
+            action: "Download PDF Guide",
+            relatedSlug: "wisdom-teeth-removal"
+        }]
+    },
+    rct_care: {
+        id: 'rct_care',
+        type: 'info',
+        text: {
+            en: "### Root Canal Post-Op Care\n1. **Avoid Chewing**: Do not eat on the treated side until the permanent crown is placed.\n2. **Mild Discomfort**: Some tenderness is normal for 2-3 days.\n3. **Medication**: Take prescribed antibiotics/painkillers as directed.\n4. **Temporary Filling**: If it falls out, contact us immediately.",
+            ta: "### வேர் சிகிச்சைக்கு பின் கவனிக்க வேண்டியவை\n1. சிகிச்சை செய்த பக்கத்தில் கடிக்க வேண்டாம்.\n2. 2-3 நாட்கள் லேசான வலி இருக்கலாம்.\n3. மருந்துகளை தவறாமல் உட்கொள்ளவும்."
+        },
+        possibilities: [{
+            title: "Endodontic Healing",
+            description: "The tooth is fragile until the final crown is fixed.",
+            likelihood: 'High',
+            action: "Book Crown Fitting",
+            relatedSlug: "root-canal"
+        }]
     }
 };
+ 

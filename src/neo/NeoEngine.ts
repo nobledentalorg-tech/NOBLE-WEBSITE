@@ -9,44 +9,70 @@ import { NEO_CONFIG } from '../config/settings';
 import { ConfidenceCalculator } from './ConfidenceCalculator';
 
 import { RiskAssessor } from './RiskAssessor';
+import { normalizeClinicalInput } from './NeoSynonyms';
+import { AuthorityHelper } from './NeoAuthority';
+
+// Specialist Module Imports
+import { RADIOLOGY_DB, RadiologyHelper } from './NeoRadiology';
+import { PEDO_DB, PediatricsHelper } from './NeoPediatrics';
+import { PUBLIC_HEALTH_DB, PublicHealthHelper } from './NeoPublicHealth';
+import { ENDO_DB, ORTHO_DB, SURGERY_DB, SpecialtyHelper } from './NeoSpecialties';
+import { PATHOLOGY_DB, PathologyHelper } from './NeoOralMedicine';
+import { PROSTHO_DB, ProsthoHelper } from './NeoProsthodontics';
+import { NeoSystemsLinker } from './NeoSystemsLinker';
+import { NeoLearningSystem } from './NeoLearning';
 
 export class NeoEngine {
 
     static processInput(input: string, currentStateId: string = 'root', historyLength: number = 0): NeoResponse {
 
+        // GLOBAL: NORMALIZE INPUT (Tanglish/Hinglish -> Clinical)
+        const cleanInput = normalizeClinicalInput(input);
+
         // LASER 1: SAFETY
-        const safetyBlock = SafetyFilter.check(input);
+        const safetyBlock = SafetyFilter.check(cleanInput);
         if (safetyBlock) return this.wrap(safetyBlock);
 
         // LAYER 2: INTENT
         const intent = IntentRouter.classify(input);
 
         // LAYER 3: ROUTING
-        if (intent === 'cost') return this.wrap(this.handleCost(input));
+        if (intent === 'cost') return this.wrap(this.handleCost(cleanInput));
         if (intent === 'availability') return this.wrap(this.handleAvailability());
+        if (intent === 'care') return this.wrap(this.handleCare(cleanInput));
         if (intent === 'greeting') return this.wrap(NEO_KNOWLEDGE_GRAPH['root']);
+
+        // --- NEW: SPECIALIST KNOWLEDGE LAYER ---
+        const specialistNode = this.findSpecialistKnowledge(cleanInput);
+        if (specialistNode) return this.wrap(specialistNode, cleanInput);
 
         // LAYER 4: CLINICAL STATE MACHINE
         let resultNode: ClinicalNode | null = null;
-
-        // shortcuts...
-        const shortcut = this.checkShortcuts(input);
+        // ... (rest of processInput) ...
+        // [Existing shortcut and graph traversal code]
+        const shortcut = this.checkShortcuts(cleanInput);
         if (shortcut) {
             resultNode = shortcut;
         } else {
-            // ... Graph Traversal
             const currentNode = NEO_KNOWLEDGE_GRAPH[currentStateId] || NEO_KNOWLEDGE_GRAPH['root'];
-
             if (currentNode.options) {
-                // Fuzzy Match Logic
-                const bestMatch = this.findBestMatch(input, currentNode.options);
+                const bestMatch = this.findBestMatch(cleanInput, currentNode.options);
                 if (bestMatch) {
-                    resultNode = NEO_KNOWLEDGE_GRAPH[bestMatch.nextId];
+                    const nextNode = NEO_KNOWLEDGE_GRAPH[bestMatch.nextId];
+                    if (nextNode.type === 'question' && nextNode.options) {
+                        const deepMatch = this.findBestMatch(cleanInput, nextNode.options);
+                        if (deepMatch) {
+                            resultNode = NEO_KNOWLEDGE_GRAPH[deepMatch.nextId];
+                        } else {
+                            resultNode = nextNode;
+                        }
+                    } else {
+                        resultNode = nextNode;
+                    }
                 }
             }
         }
 
-        // Fallback
         if (!resultNode) {
             resultNode = {
                 id: 'fallback',
@@ -56,15 +82,15 @@ export class NeoEngine {
                     ta: "தயவுசெய்து உங்கள் அறிகுறிகளை பற்றி மேலும் சொல்லுங்கள்."
                 }
             };
+            // 4. Learning: Track unknown terms for Dr. Dhivakaran
+            NeoLearningSystem.trackUnknownTerms(cleanInput, [cleanInput]); // Simplistic tracking
         }
 
-        // --- ADVANCED "BRAINS" LOGIC (Confidence & Risk) ---
-        let confidenceScore = 100; // Default to 100 (Implicitly confident unless calculated otherwise)
+        let confidenceScore = 100;
         let urgency: 'low' | 'medium' | 'high' | 'emergency' = 'low';
 
-        // 1. Confidence Injection
         if (resultNode.type === 'assessment' && resultNode.possibilities) {
-            confidenceScore = ConfidenceCalculator.calculate(resultNode, historyLength, [input]);
+            confidenceScore = ConfidenceCalculator.calculate(resultNode, historyLength, [cleanInput]);
             resultNode.possibilities = resultNode.possibilities.map(p => ({
                 ...p,
                 likelihood: confidenceScore > 80 ? 'High' : confidenceScore > 50 ? 'Moderate' : 'Low',
@@ -72,9 +98,25 @@ export class NeoEngine {
             }));
         }
 
-        // 2. Risk/Urgency Assessment
-        urgency = RiskAssessor.assess(resultNode, [input]);
+        urgency = RiskAssessor.assess(resultNode, [cleanInput]);
         resultNode.urgencyLevel = urgency;
+
+        // --- 5. Systemic Safety Linker (The "fatal error" prevention) ---
+        // Checks if user input mentions any medical condition (BP, Diabetes, etc.)
+        const conditions = ['hypertension', 'diabetes_mellitus', 'asthma', 'epilepsy', 'liver_disease', 'renal_failure', 'myocardial_infarction'];
+        for (const condId of conditions) {
+            if (cleanInput.includes(condId.replace('_', ' '))) {
+                const link = NeoSystemsLinker.analyzeSystemicImpact(condId);
+                if (link) {
+                    resultNode.text.en += `\n\n⚠️ **MEDICAL ALERT (${link.conditionId.toUpperCase()}):** ${link.explanation}\n* **Pharma**: ${link.affectedSystems.pharma}\n* **Surgery**: ${link.affectedSystems.surgery}`;
+                }
+            }
+        }
+
+        const citation = AuthorityHelper.getCitation(cleanInput.toLowerCase());
+        if (citation) {
+            resultNode.text.en += `\n\n> 🏛️ *${citation}*`;
+        }
 
         return {
             node: resultNode,
@@ -83,34 +125,219 @@ export class NeoEngine {
         };
     }
 
-    private static wrap(node: ClinicalNode): NeoResponse {
+    private static wrap(node: ClinicalNode, input?: string): NeoResponse {
+        // Final polish for specialist responses
+        if (input && node.id.includes('specialist')) {
+            const citation = AuthorityHelper.getCitation(input);
+            if (citation && !node.text.en.includes(citation)) {
+                node.text.en += `\n\n> 🏛️ *${citation}*`;
+            }
+        }
         return {
             node: node,
-            confidenceScore: 100, // Static responses are 100% confident
-            urgency: 'low'
+            confidenceScore: 100,
+            urgency: node.urgencyLevel || 'low'
         };
+    }
+
+    /**
+     * Master Lookup across all Clinical Specialist DBs
+     */
+    private static findSpecialistKnowledge(input: string): ClinicalNode | null {
+        const lower = input.toLowerCase();
+
+        // 1. Radiology Check
+        for (const [id, feature] of Object.entries(RADIOLOGY_DB)) {
+            if (lower.includes(id.replace('_', ' ')) || lower.includes(feature.name.en.toLowerCase())) {
+                return {
+                    id: `specialist_radio_${id}`,
+                    type: 'info',
+                    text: {
+                        en: `**Radiology Interpretation**: ${feature.description.en}\n\n*Clinical Note*: ${feature.clinicalSignificance}`,
+                        ta: feature.description.ta
+                    },
+                    urgencyLevel: 'low'
+                };
+            }
+        }
+
+        // 2. Specialty Triage (Endo/Ortho/Surgery)
+        const specialties = { ...ENDO_DB, ...ORTHO_DB, ...SURGERY_DB };
+        for (const [id, cond] of Object.entries(specialties)) {
+            if (lower.includes(id.replace('_', ' ')) || lower.includes(cond.diagnosis.toLowerCase())) {
+                const triage = SpecialtyHelper.getTriageLevel(cond.severityIndex);
+                return {
+                    id: `specialist_triage_${id}`,
+                    type: 'assessment',
+                    text: {
+                        en: `### ${cond.diagnosis}\n${cond.description.en}\n\n**Symptoms**: ${cond.symptoms?.en || 'N/A'}\n\n**Triage Status**: ${triage}`,
+                        ta: cond.description.ta
+                    },
+                    possibilities: [{
+                        title: cond.diagnosis,
+                        description: cond.treatment.en,
+                        likelihood: 'High',
+                        action: "View Treatment",
+                        relatedSlug: cond.specialty === 'Endo' ? 'root-canal' : cond.specialty === 'Ortho' ? 'braces-orthodontics' : 'wisdom-teeth-removal'
+                    }],
+                    urgencyLevel: cond.severityIndex >= 8 ? 'emergency' : cond.severityIndex >= 5 ? 'high' : 'low'
+                };
+            }
+        }
+
+        // 3. Radiology Safety / Modality Checks
+        if (lower.includes('x-ray') || lower.includes('radiation') || lower.includes('scanner')) {
+            let modality = "IOPA";
+            if (lower.includes('implant')) modality = "Implant";
+            if (lower.includes('wisdom') || lower.includes('full')) modality = "WisdomTooth";
+
+            const advice = RadiologyHelper.chooseModality(modality as any);
+            const safety = RadiologyHelper.explainRadiationSafety(true, 'en');
+
+            return {
+                id: 'specialist_radio_advice',
+                type: 'info',
+                text: {
+                    en: `${advice}\n\n${safety}`,
+                    ta: "எக்ஸ்-ரே மிகவும் பாதுகாப்பானது."
+                }
+            };
+        }
+
+        // 4. Lab Diagnostics
+        if (lower.includes('blood test') || lower.includes('cbc') || lower.includes('sugar')) {
+            return {
+                id: 'specialist_lab',
+                type: 'info',
+                text: {
+                    en: "I can help interpret your **CBC**, **HbA1c**, or **Clotting Profile**. Please provide your values (e.g., 'HbA1c is 8').",
+                    ta: "உங்கள் ரத்த பரிசோதனை முடிவுகளை நான் சரிபார்க்க முடியும்."
+                }
+            };
+        }
+
+        // 5. Pediatrics (Children)
+        for (const [id, protocol] of Object.entries(PEDO_DB)) {
+            if (lower.includes(id.replace('_', ' ')) || lower.includes('child') || lower.includes('baby')) {
+                return {
+                    id: `specialist_pedo_${id}`,
+                    type: 'info',
+                    text: {
+                        en: `### Child Care: ${protocol.diagnosis}\n${protocol.description.en}\n\n**Parent Advice**: ${protocol.advice.en}`,
+                        ta: protocol.description.ta
+                    },
+                    urgencyLevel: 'low'
+                };
+            }
+        }
+
+        // 6. Oral Medicine (Pathology/Lesions)
+        for (const [id, lesion] of Object.entries(PATHOLOGY_DB)) {
+            if (lower.includes(id.replace('_', ' ')) || lower.includes(lesion.name.en.toLowerCase())) {
+                const triage = PathologyHelper.getTriageAdvice(lesion.riskLevel as any);
+                return {
+                    id: `specialist_patho_${id}`,
+                    type: 'assessment',
+                    text: {
+                        en: `### ${lesion.name.en}\n${lesion.description.en}\n\n**Clinical Significance**: ${lesion.clinicalSignificance}\n\n**Triage**: ${triage}`,
+                        ta: lesion.description.ta
+                    },
+                    possibilities: [{
+                        title: lesion.name.en,
+                        description: "Biopsy or specialist consultation may be required.",
+                        likelihood: 'High',
+                        action: "Specialist Consult",
+                        relatedSlug: "scan-diagnostics"
+                    }],
+                    urgencyLevel: lesion.riskLevel === 'High' ? 'high' : 'low'
+                };
+            }
+        }
+
+        // 7. Prosthodontics (Denture/Crown materials)
+        for (const [id, material] of Object.entries(PROSTHO_DB)) {
+            if (lower.includes(id.replace('_', ' ')) || lower.includes(material.name.en.toLowerCase())) {
+                return {
+                    id: `specialist_prostho_${id}`,
+                    type: 'info',
+                    text: {
+                        en: `### ${material.name.en}\n${material.description.en}\n\n**Pros**: ${material.pros.join(', ')}\n**Best For**: ${material.bestFor.join(', ')}`,
+                        ta: material.description.ta
+                    },
+                    urgencyLevel: 'low'
+                };
+            }
+        }
+
+        // 8. Public Health & Insurance
+        for (const [id, info] of Object.entries(PUBLIC_HEALTH_DB)) {
+            if (lower.includes(id.replace('_', ' ')) || lower.includes(info.category.toLowerCase())) {
+                return {
+                    id: `specialist_ph_${id}`,
+                    type: 'info',
+                    text: {
+                        en: `### ${info.category}\n${info.description.en}\n\n**Insurance Advice**: ${info.insuranceAdvice?.en || 'N/A'}`,
+                        ta: info.description.ta
+                    },
+                    urgencyLevel: 'low'
+                };
+            }
+        }
+
+        return null;
     }
 
     private static handleCost(input: string): ClinicalNode {
         const lower = input.toLowerCase();
-        const item = TARIFF_DB.find(t => lower.includes(t.id) || lower.includes("root canal") && t.id === 'rct'); // Simple matching for now
+
+        // Improved multi-match for TARIFF_DB
+        const item = TARIFF_DB.find(t =>
+            lower.includes(t.id) ||
+            (t.id === 'rct' && lower.includes("root canal")) ||
+            (t.id === 'implant' && lower.includes("implant")) ||
+            (t.id === 'veneer' && lower.includes("veneer")) ||
+            (t.id === 'invisalign' && lower.includes("aligner")) ||
+            (t.id === 'whitening' && lower.includes("whiten"))
+        );
 
         if (item) {
             return {
                 id: 'cost_response',
                 type: 'info',
                 text: {
-                    en: `The estimated cost for ${item.name.en} starts at ${item.price.currency} ${item.price.min}. *Subject to examination.`,
+                    en: `The estimated cost for **${item.name.en}** starts at ${item.price.currency} ${item.price.min}${item.price.max ? ' - ' + item.price.max : ''}. \n\n*Note: This is a provisional estimate. Final cost depends on clinical examination.*`,
                     ta: `${item.name.ta || item.name.en} விலை ${item.price.min} முதல் தொடங்குகிறது.`
-                }
+                },
+                possibilities: [{
+                    title: `Plan ${item.name.en}`,
+                    description: "Schedule a digital scan and consultation with our specialist.",
+                    likelihood: 'High',
+                    action: "Book Now",
+                    relatedSlug: item.id === 'rct' ? 'root-canal' : item.id === 'implant' ? 'dental-implants' : item.id
+                }]
             };
         }
         return {
             id: 'cost_unknown',
             type: 'info',
             text: {
-                en: "I can estimate costs for Root Canals, Extractions, and Consultations. What specific treatment are you asking about?",
+                en: "I can estimate costs for Root Canals, Implants, Veneers, Aligners, and Whitening. Which treatment would you like to know about?",
                 ta: "எந்த சிகிச்சையின் விலை உங்களுக்கு வேண்டும்?"
+            }
+        };
+    }
+
+    private static handleCare(input: string): ClinicalNode {
+        const lower = input.toLowerCase();
+        if (lower.includes('extraction') || lower.includes('tooth removal')) return NEO_KNOWLEDGE_GRAPH['extraction_care'];
+        if (lower.includes('root canal') || lower.includes('rct') || lower.includes('nerve')) return NEO_KNOWLEDGE_GRAPH['rct_care'];
+
+        return {
+            id: 'care_general',
+            type: 'info',
+            text: {
+                en: "I can provide post-op care instructions for **Extractions** and **Root Canal** treatments. Which one did you have?",
+                ta: "எந்த சிகிச்சையின் பராமரிப்பு முறைகள் உங்களுக்கு வேண்டும்?"
             }
         };
     }
@@ -191,17 +418,23 @@ export class NeoEngine {
         return null;
     }
     private static findBestMatch(input: string, options: any[]): any | null {
-        const lowerInput = input.toLowerCase();
+        // 1. Normalize the user input (Translate slang -> clinical)
+        const cleanInput = normalizeClinicalInput(input);
+        const lowerInput = input.toLowerCase(); // Keep original too, just in case
 
         for (const opt of options) {
-            // 1. Direct Label Match (High Priority)
-            if (lowerInput.includes(opt.label.en.toLowerCase())) return opt;
-            if (opt.label.ta && lowerInput.includes(opt.label.ta.toLowerCase())) return opt;
+            // A. Check Direct Label Match (English & Tamil)
+            if (cleanInput.includes(opt.label.en.toLowerCase())) return opt;
+            if (opt.label.ta && cleanInput.includes(opt.label.ta.toLowerCase())) return opt;
 
-            // 2. Keyword Match (Medium Priority)
+            // B. Check Keywords (The Smart Check)
             if (opt.keywords) {
                 for (const kw of opt.keywords) {
-                    if (lowerInput.includes(kw.toLowerCase())) return opt;
+                    const lowKw = kw.toLowerCase();
+                    // Check both normalized input AND original input
+                    if (cleanInput.includes(lowKw) || lowerInput.includes(lowKw)) {
+                        return opt;
+                    }
                 }
             }
         }
