@@ -19,6 +19,9 @@ export const metadata: Metadata = {
   alternates: {
     canonical: '/',
   },
+  verification: {
+    google: 'coO5jvSypAc95p3t7cWWDaTsqtjt-W2bK3ybS21ZsIc',
+  },
   description: 'Rated Best Dental Clinic in Nallagandla & Tellapur. Dr. Dhivakaran merges AI-guided precision with regenerative ethics for painless Root Canals, Implants, and Invisalign.',
   keywords: [
     // Urgency & Availability (High Intent)
