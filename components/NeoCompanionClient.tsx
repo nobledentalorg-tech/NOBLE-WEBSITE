@@ -159,7 +159,7 @@ export default function NeoCompanionClient() {
     ];
 
     return (
-        <div className="relative min-h-[100dvh] bg-[#020202] text-slate-200 font-sans overflow-hidden selection:bg-red-500/30">
+        <div className="relative min-h-[100dvh] bg-slate-50 dark:bg-[#020202] text-slate-900 dark:text-slate-200 font-sans overflow-hidden selection:bg-red-500/30 transition-colors duration-300">
 
             {/* --- STYLES & ANIMATIONS --- */}
             <style>{`
@@ -169,8 +169,11 @@ export default function NeoCompanionClient() {
         
         /* Moving Spotlight Gradient */
         .cinematic-bg {
-          background: radial-gradient(circle at 50% 0%, rgba(220, 38, 38, 0.15), transparent 70%);
+          background: radial-gradient(circle at 50% 0%, rgba(220, 38, 38, 0.05), transparent 70%);
           animation: spotlight-move 10s infinite alternate ease-in-out;
+        }
+        :global(.dark) .cinematic-bg {
+          background: radial-gradient(circle at 50% 0%, rgba(220, 38, 38, 0.15), transparent 70%);
         }
         @keyframes spotlight-move {
           0% { background-position: 40% 0%; opacity: 0.8; }
@@ -182,16 +185,26 @@ export default function NeoCompanionClient() {
         }
 
         .glass-panel {
-          background: rgba(18, 18, 18, 0.6);
+          background: rgba(255, 255, 255, 0.7);
           backdrop-filter: blur(16px);
           -webkit-backdrop-filter: blur(16px);
+          border: 1px solid rgba(0, 0, 0, 0.05);
+          box-shadow: 0 4px 30px rgba(0, 0, 0, 0.05);
+        }
+        :global(.dark) .glass-panel {
+          background: rgba(18, 18, 18, 0.6);
           border: 1px solid rgba(255, 255, 255, 0.08);
           box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
         }
 
         .glass-input {
-          background: rgba(10, 10, 10, 0.8);
+          background: rgba(255, 255, 255, 0.9);
           backdrop-filter: blur(24px);
+          border: 1px solid rgba(0, 0, 0, 0.05);
+          box-shadow: 0 -10px 40px rgba(0,0,0,0.05);
+        }
+        :global(.dark) .glass-input {
+          background: rgba(10, 10, 10, 0.8);
           border: 1px solid rgba(255, 255, 255, 0.1);
           box-shadow: 0 -10px 40px rgba(0,0,0,0.5);
         }
@@ -228,10 +241,10 @@ export default function NeoCompanionClient() {
             {/* --- HEADER --- */}
             <nav className="absolute top-0 left-0 w-full p-6 z-50 flex justify-between items-center animate-in fade-in slide-in-from-top-4 duration-700">
                 <div onClick={handleBack} className="flex items-center gap-3 cursor-pointer group opacity-60 hover:opacity-100 transition-all">
-                    <div className="p-2 rounded-full bg-white/5 border border-white/5 group-hover:bg-white/10 group-hover:border-white/20 transition-all">
-                        <ArrowLeft size={18} />
+                    <div className="p-2 rounded-full bg-slate-200/50 dark:bg-white/5 border border-slate-200 dark:border-white/5 group-hover:bg-slate-200 dark:group-hover:bg-white/10 group-hover:border-slate-300 dark:group-hover:border-white/20 transition-all">
+                        <ArrowLeft size={18} className="text-slate-900 dark:text-white" />
                     </div>
-                    <span className="font-gemini font-bold text-xs tracking-[0.2em] uppercase text-slate-300 group-hover:text-white transition-colors">Exit</span>
+                    <span className="font-gemini font-bold text-xs tracking-[0.2em] uppercase text-slate-600 dark:text-slate-300 group-hover:text-slate-900 dark:group-hover:text-white transition-colors">Exit</span>
                 </div>
 
                 <div className="flex items-center gap-4">
@@ -272,7 +285,7 @@ export default function NeoCompanionClient() {
                         </div>
 
                         {/* Dynamic Intro */}
-                        <h1 className="font-gemini text-4xl md:text-6xl font-medium mb-6 tracking-tight text-white drop-shadow-2xl min-h-[4rem]">
+                        <h1 className="font-gemini text-4xl md:text-6xl font-medium mb-6 tracking-tight text-slate-900 dark:text-white drop-shadow-2xl min-h-[4rem]">
                             {typedText}<span className="animate-pulse text-red-500">_</span>
                         </h1>
 
@@ -309,8 +322,8 @@ export default function NeoCompanionClient() {
                                 )}
 
                                 <div className={`max-w-[85%] p-6 rounded-3xl backdrop-blur-xl ${msg.role === 'user'
-                                    ? 'bg-red-600/90 text-white rounded-tr-md shadow-[0_5px_20px_rgba(220,38,38,0.25)]'
-                                    : 'glass-panel text-zinc-200 rounded-tl-md'
+                                    ? 'bg-red-600 text-white rounded-tr-md shadow-[0_5px_20px_rgba(220,38,38,0.25)]'
+                                    : 'glass-panel text-slate-900 dark:text-zinc-200 rounded-tl-md'
                                     }`}>
                                     {msg.role !== 'user' && (
                                         <div className="flex items-center gap-2 mb-3 opacity-60">
@@ -327,7 +340,7 @@ export default function NeoCompanionClient() {
                                     {msg.possibilities && msg.possibilities.length > 0 && (
                                         <div className="flex gap-4 mt-6 overflow-x-auto pb-4 -mx-2 px-2 no-scrollbar">
                                             {msg.possibilities.map((p, idx) => (
-                                                <div key={idx} className="min-w-[260px] max-w-[300px] shrink-0 bg-white/5 border border-white/10 rounded-xl p-5 hover:border-red-500/30 transition-all hover:bg-white/10 group cursor-pointer" onClick={() => p.relatedSlug ? router.push(`/treatments/${p.relatedSlug}`) : null}>
+                                                <div key={idx} className="min-w-[260px] max-w-[300px] shrink-0 bg-white dark:bg-white/5 border border-slate-200 dark:border-white/10 rounded-xl p-5 hover:border-red-500/30 transition-all hover:bg-slate-50 dark:hover:bg-white/10 group cursor-pointer" onClick={() => p.relatedSlug ? router.push(`/treatments/${p.relatedSlug}`) : null}>
 
                                                     <div className="flex justify-between items-start mb-2">
                                                         <span className={`text-[10px] uppercase font-bold px-2 py-0.5 rounded-full ${p.likelihood === 'High' ? 'bg-red-500/20 text-red-400' : 'bg-yellow-500/20 text-yellow-400'}`}>
@@ -336,7 +349,7 @@ export default function NeoCompanionClient() {
                                                         <ArrowLeft size={14} className="rotate-180 opacity-0 group-hover:opacity-100 transition-opacity text-slate-400" />
                                                     </div>
 
-                                                    <h2 className="font-gemini font-bold text-lg text-white mb-2 leading-tight group-hover:text-red-400 transition-colors">
+                                                    <h2 className="font-gemini font-bold text-lg text-slate-900 dark:text-white mb-2 leading-tight group-hover:text-red-600 dark:group-hover:text-red-400 transition-colors">
                                                         {p.title}
                                                     </h2>
 
@@ -344,8 +357,8 @@ export default function NeoCompanionClient() {
                                                         {p.description}
                                                     </p>
 
-                                                    <div className="flex items-center gap-2 text-xs font-medium text-white border-t border-white/10 pt-3 mt-auto">
-                                                        <Sparkles size={12} className="text-red-500" />
+                                                    <div className="flex items-center gap-2 text-xs font-medium text-slate-900 dark:text-white border-t border-slate-200 dark:border-white/10 pt-3 mt-auto">
+                                                        <Sparkles size={12} className="text-red-600 dark:text-red-500" />
                                                         <span>{p.action}</span>
                                                     </div>
                                                 </div>
@@ -417,7 +430,7 @@ export default function NeoCompanionClient() {
                             onChange={(e) => setInput(e.target.value)}
                             onKeyDown={(e) => e.key === 'Enter' && handleSend()}
                             placeholder="Ask your companion..."
-                            className="flex-1 bg-transparent border-none outline-none text-white placeholder:text-zinc-500 font-gemini font-medium h-12 px-2 text-lg"
+                            className="flex-1 bg-transparent border-none outline-none text-slate-900 dark:text-white placeholder:text-zinc-500 font-gemini font-medium h-12 px-2 text-lg"
                         />
 
                         <button
