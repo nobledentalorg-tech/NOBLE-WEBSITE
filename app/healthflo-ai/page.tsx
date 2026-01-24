@@ -27,7 +27,7 @@ async function checkAdmin() {
 async function loginAdmin(formData: FormData) {
     'use server';
     const password = formData.get('password') as string;
-    const ADMIN_PASSWORD = process.env.ADMIN_PASSWORD || 'noble2026';
+    const ADMIN_PASSWORD = process.env.ADMIN_PASSWORD;
     
     if (password === ADMIN_PASSWORD) {
         cookies().set('admin_session', 'authorized', {
@@ -53,7 +53,7 @@ export default async function NeoPage() {
                   <form action={async (formData) => { 
                       'use server'; 
                       const password = formData.get('password') as string;
-                      const ADMIN_PASSWORD = process.env.ADMIN_PASSWORD || 'noble2026';
+                       const ADMIN_PASSWORD = process.env.ADMIN_PASSWORD;
                       if (password === ADMIN_PASSWORD) {
                           cookies().set('admin_session', 'authorized', { httpOnly: true, secure: true, sameSite: 'strict', maxAge: 86400 });
                       }

@@ -23,7 +23,7 @@ import {
 import { cookies } from 'next/headers';
 
 const prisma = new PrismaClient();
-const ADMIN_PASSWORD = process.env.ADMIN_PASSWORD || 'noble@1993';
+const ADMIN_PASSWORD = process.env.ADMIN_PASSWORD;
 
 // --- SERVER ACTIONS ---
 
