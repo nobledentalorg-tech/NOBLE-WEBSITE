@@ -152,10 +152,13 @@ const Header: React.FC<HeaderProps> = ({ onBookClick }) => {
         <div className="lg:hidden fixed inset-0 z-40 bg-white/95 dark:bg-[#0B1019]/95 backdrop-blur-xl flex flex-col items-center justify-center space-y-8 animate-in fade-in zoom-in duration-200">
           <Link href="/" onClick={() => setIsMobileMenuOpen(false)} className="text-2xl font-bold text-slate-900 dark:text-white">Home</Link>
           <Link href="/treatments" onClick={() => setIsMobileMenuOpen(false)} className="text-2xl font-bold text-slate-900 dark:text-white">Treatments</Link>
+          <Link href="/case-studies" onClick={() => setIsMobileMenuOpen(false)} className="text-2xl font-bold text-slate-900 dark:text-white">Clinical Cases</Link>
+          <Link href="/blog" onClick={() => setIsMobileMenuOpen(false)} className="text-2xl font-bold text-slate-900 dark:text-white">Blog & Guide</Link>
           <Link href="/patient-safety" onClick={() => setIsMobileMenuOpen(false)} className="text-2xl font-bold text-emerald-500">Patient Safety</Link>
           <Link href="/team" onClick={() => setIsMobileMenuOpen(false)} className="text-2xl font-bold text-slate-900 dark:text-white">Our Team</Link>
           <Link href="/healthflo-ai" onClick={() => setIsMobileMenuOpen(false)} className="text-2xl font-bold text-blue-600">AI HealthOS</Link>
           <Link href="/international" onClick={() => setIsMobileMenuOpen(false)} className="text-2xl font-bold text-amber-600">Global Patients</Link>
+
           <button onClick={() => { setIsMobileMenuOpen(false); onBookClick?.(); }} className="px-8 py-4 bg-blue-600 text-white rounded-full font-bold uppercase tracking-widest text-sm">
             Book Appointment
           </button>

@@ -27,4 +27,5 @@
 
 # Catch-All for other specialities or old folders
 /specialities/*  /treatments  301
-/blog/*          /            301
+/blog.html       /blog        301
+

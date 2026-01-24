@@ -28,20 +28,20 @@ const Footer: React.FC<FooterProps> = ({ onBookClick }) => {
 
           {/* Quick Links */}
           <div>
-            <h4 className="text-lg font-bold mb-6">Treatments</h4>
+            <h4 className="text-lg font-bold mb-6">Discover Care</h4>
             <ul className="space-y-3 text-sm text-slate-400">
-              <li><Link href="/treatments/dental-implants" className="hover:text-blue-400 transition-colors">Dental Implants</Link></li>
-              <li><Link href="/treatments/root-canal" className="hover:text-blue-400 transition-colors">Microscopic RCT</Link></li>
-              <li><Link href="/treatments/invisalign" className="hover:text-blue-400 transition-colors">Invisalign (Clear Aligners)</Link></li>
-              <li><Link href="/treatments/kids-dentistry" className="hover:text-blue-400 transition-colors">Kids Dentistry</Link></li>
-              <li><Link href="/neighborhood-guide" className="hover:text-blue-400 transition-colors text-amber-500 font-bold">📍 Neighborhood Guide</Link></li>
-              <li><button onClick={onBookClick} className="hover:text-blue-400 transition-colors text-left flex items-center gap-2"><CalendarCheck size={14} /> Book Visit</button></li>
+              <li><Link href="/treatments" className="hover:text-blue-400 transition-colors">All Protocols</Link></li>
+              <li><Link href="/case-studies" className="hover:text-blue-400 transition-colors font-bold text-white">Clinical Cases (Archives)</Link></li>
+              <li><Link href="/blog" className="hover:text-blue-400 transition-colors text-blue-400">Patient Education Blog</Link></li>
+              <li><Link href="/patient-safety" className="hover:text-blue-400 transition-colors text-emerald-500">Sterilization Safety</Link></li>
+              <li><Link href="/neighborhood-guide" className="hover:text-blue-400 transition-colors text-amber-500 font-bold">📍 Area Patient Guide</Link></li>
+              <li><button onClick={onBookClick} className="hover:text-white transition-colors text-left flex items-center gap-2"><CalendarCheck size={14} /> Book Surgery</button></li>
             </ul>
           </div>
 
           {/* Contact */}
           <div>
-            <h4 className="text-lg font-bold mb-6">Contact</h4>
+            <h4 className="text-lg font-bold mb-6">Patient Support</h4>
             <ul className="space-y-4 text-sm text-slate-400">
               <li className="flex items-start gap-3">
                 <MapPin size={18} className="text-blue-500 mt-0.5" />
@@ -68,9 +68,9 @@ const Footer: React.FC<FooterProps> = ({ onBookClick }) => {
             </div>
 
             <div className="pt-6 border-t border-white/10 space-y-3">
-              <h5 className="text-[10px] font-bold uppercase tracking-widest text-slate-500 flex items-center gap-2"><School size={12} /> Student Friendly</h5>
+              <h5 className="text-[10px] font-bold uppercase tracking-widest text-slate-500 flex items-center gap-2"><School size={12} /> Institutional Link</h5>
               <p className="text-[10px] text-slate-500 leading-relaxed">
-                Easy access for <strong>Epistemo Global</strong>, <strong>Manthan International</strong>, and <strong>Sadhana Infinity</strong> students.
+                Referral center for <strong>Epistemo Global</strong>, <strong>Manthan International</strong>, and <strong>Sadhana Infinity</strong>.
               </p>
             </div>
           </div>
@@ -78,20 +78,21 @@ const Footer: React.FC<FooterProps> = ({ onBookClick }) => {
 
         {/* SEO Footer Block */}
         <div className="pt-8 border-t border-white/10 mb-8">
-          <h5 className="text-[10px] font-bold uppercase tracking-widest text-blue-500 mb-3 flex items-center gap-2"><Navigation size={12} /> Serving Nallagandla Neighbors</h5>
+          <h5 className="text-[10px] font-bold uppercase tracking-widest text-blue-500 mb-3 flex items-center gap-2"><Navigation size={12} /> Serving West Hyderabad</h5>
           <p className="text-[10px] text-slate-500 leading-relaxed font-medium">
-            Aparna Sarovar Zenith • Ramky One Galaxia • My Home Sayuk • Rajapushpa Imperia • Aliens Space Station • Vertex Kingston Park • Citizens Hospital • American Oncology Institute • Pranaam Hospital • Kanchi Gachibowli Road • Tellapur-Nallagandla 100ft Road
+            Nallagandla • Tellapur • Aparna Sarovar • Ramky One Galaxia • My Home Sayuk • Rajapushpa Imperia • Aliens Space Station • Vertex Kingston Park • Citizens Hospital • Lingampally • Gachibowli
           </p>
         </div>
 
         <div className="pt-8 border-t border-white/10 flex flex-col md:flex-row justify-between items-center gap-4">
-          <p className="text-xs text-slate-500">© 2024 Noble Dental Care. All rights reserved.</p>
+          <p className="text-xs text-slate-500">© 2024 Noble Dental Care. Surgical Precision & Biological Standards.</p>
           <div className="flex gap-6 text-xs text-slate-500">
-            <Link href="/" className="hover:text-white">Privacy Policy</Link>
-            <Link href="/" className="hover:text-white">Terms of Service</Link>
-            <Link href="/api/auth/signin" className="hover:text-white">Admin Login</Link>
+            <Link href="/privacy" className="hover:text-white">Privacy Policy</Link>
+            <Link href="/terms" className="hover:text-white">Terms of Service</Link>
+            <Link href="/admin" className="hover:text-white font-bold opacity-0 hover:opacity-100 transition-opacity">Staff Terminal</Link>
           </div>
         </div>
+
       </div>
     </footer>
   );
