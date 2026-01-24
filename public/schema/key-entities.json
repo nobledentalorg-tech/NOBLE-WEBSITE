@@ -1,0 +1,165 @@
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@id": "https://nobledentalnallagandla.in/#noble-dental-care",
+      "@type": ["MedicalBusiness", "Dentist", "LocalBusiness"],
+      "name": "Noble Dental Care Nallagandla",
+      "description": "Award-winning multispeciality dental clinic in Nallagandla, Hyderabad offering advanced restorative, preventive, aesthetic, pediatric, orthodontic, and emergency dental services with microscopic dentistry.",
+      "url": "https://nobledentalnallagandla.in/",
+      "telephone": "+91-86104-25342",
+      "email": "nobledentalorg@gmail.com",
+      "logo": "https://nobledentalnallagandla.in/images/logo-footer.webp",
+      "image": "https://nobledentalnallagandla.in/images/clinic-front.webp",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "1st Floor - ICA Clinic, Plot No. 151/2, HUDA Layout, Water Tank Road, Nallagandla",
+        "addressLocality": "Hyderabad",
+        "addressRegion": "Telangana",
+        "postalCode": "500019",
+        "addressCountry": "IN"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": 17.47396,
+        "longitude": 78.30599
+      },
+      "founder": { "@id": "https://nobledentalnallagandla.in/#dr-dhivakaran" },
+      "memberOf": { "@id": "https://nobledentalnallagandla.in/#eeat-trustgraph" },
+      "areaServed": [
+        { "@type": "AdministrativeArea", "name": "Nallagandla, Hyderabad" },
+        { "@type": "AdministrativeArea", "name": "Tellapur, Hyderabad" },
+        { "@type": "AdministrativeArea", "name": "Gachibowli, Hyderabad" },
+        { "@type": "AdministrativeArea", "name": "Lingampally, Hyderabad" },
+        { "@type": "AdministrativeArea", "name": "Financial District, Hyderabad" }
+      ],
+      "makesOffer": [
+        { "@id": "https://nobledentalnallagandla.in/#service-root-canal" },
+        { "@id": "https://nobledentalnallagandla.in/#service-dental-implants" },
+        { "@id": "https://nobledentalnallagandla.in/#service-orthodontics" },
+        { "@id": "https://nobledentalnallagandla.in/#service-kids-dentistry" },
+        { "@id": "https://nobledentalnallagandla.in/#service-cosmetic-dentistry" },
+        { "@id": "https://nobledentalnallagandla.in/#service-gum-therapy" }
+      ]
+    },
+    {
+      "@id": "https://nobledentalnallagandla.in/#nallagandla-campus",
+      "@type": "Place",
+      "name": "Nallagandla Healthcare Cluster",
+      "description": "Growing residential and tech corridor in Western Hyderabad covering Nallagandla, Tellapur, and Gachibowli with increasing demand for premium dental care.",
+      "geo": {
+        "@type": "GeoShape",
+        "circle": "17.47396,78.30599 7km"
+      },
+      "containedInPlace": {
+        "@type": "Place",
+        "name": "Hyderabad Metropolitan Region",
+        "address": "Hyderabad, Telangana, India"
+      },
+      "sameAs": [
+        "https://en.wikipedia.org/wiki/Nallagandla",
+        "https://telangana.gov.in/"
+      ],
+      "keywords": [
+        "Dentist in Nallagandla",
+        "Dental clinic near Tellapur",
+        "Orthodontist Gachibowli",
+        "Emergency dentist Lingampally"
+      ]
+    },
+    {
+      "@id": "https://nobledentalnallagandla.in/#dr-dhivakaran",
+      "@type": "Person",
+      "name": "Dr. Dhivakaran",
+      "jobTitle": "Chief Dental Surgeon",
+      "gender": "Male",
+      "description": "Dr. Dhivakaran is a prosthodontist and smile design expert leading Noble Dental Care in Nallagandla with expertise in microscopic root canal therapy, implant prosthetics, and full mouth rehabilitation.",
+      "alumniOf": "The Tamil Nadu Dr. MGR Medical University",
+      "knowsAbout": [
+        "Microscopic Root Canal Therapy",
+        "Full Mouth Rehabilitation",
+        "Dental Implants",
+        "Cosmetic Smile Design",
+        "Pediatric Behavior Management"
+      ],
+      "award": "Dental Excellence Award – Hyderabad 2024",
+      "sameAs": [
+        "https://x.com/NobleDenta67864",
+        "https://www.facebook.com/profile.php?id=100087590145815",
+        "https://www.instagram.com/noble.dentalorg/",
+        "https://www.linkedin.com/in/noble-dental-200047375/",
+        "https://www.youtube.com/@YoursAnatomy",
+        "https://www.reddit.com/r/NDCnoble/?feed=home",
+        "https://www.pinterest.com/nobledentalorg",
+        "https://www.lybrate.com/nobledentalnallagandla",
+        "https://www.justdial.com/Hyderabad/Noble-Dental-Care-Multispeciality-Dental-Clinic/040PXX40-XX40-230311104127-B8Q4_BZDET"
+      ],
+      "worksFor": { "@id": "https://nobledentalnallagandla.in/#noble-dental-care" },
+      "medicalSpecialty": [
+        "Endodontics",
+        "Implantology",
+        "Cosmetic Dentistry"
+      ]
+    },
+    {
+      "@id": "https://nobledentalnallagandla.in/#service-root-canal",
+      "@type": "MedicalProcedure",
+      "name": "Microscope-Assisted Root Canal Treatment",
+      "description": "Single-visit rotary root canal therapy with dental microscope, Apex locator, and pain management for infected or inflamed teeth.",
+      "url": "https://nobledentalnallagandla.in/specialities/root-canal.html",
+      "medicalSpecialty": "Endodontics",
+      "provider": { "@id": "https://nobledentalnallagandla.in/#noble-dental-care" },
+      "areaServed": { "@type": "AdministrativeArea", "name": "Nallagandla" }
+    },
+    {
+      "@id": "https://nobledentalnallagandla.in/#service-dental-implants",
+      "@type": "MedicalProcedure",
+      "name": "Dental Implants and Full Mouth Rehabilitation",
+      "description": "Guided implant surgery with CBCT planning, PRF membrane, and zirconia crowns for long-term tooth replacement.",
+      "url": "https://nobledentalnallagandla.in/specialities/implants.html",
+      "medicalSpecialty": "Implantology",
+      "provider": { "@id": "https://nobledentalnallagandla.in/#noble-dental-care" },
+      "areaServed": { "@type": "AdministrativeArea", "name": "Tellapur" }
+    },
+    {
+      "@id": "https://nobledentalnallagandla.in/#service-orthodontics",
+      "@type": "MedicalProcedure",
+      "name": "Braces and Invisalign Aligners",
+      "description": "Orthodontic solutions including self-ligating braces, clear aligners, and Invisalign for teens and adults.",
+      "url": "https://nobledentalnallagandla.in/specialities/invisalign.html",
+      "medicalSpecialty": "Orthodontics",
+      "provider": { "@id": "https://nobledentalnallagandla.in/#noble-dental-care" },
+      "areaServed": { "@type": "AdministrativeArea", "name": "Gachibowli" }
+    },
+    {
+      "@id": "https://nobledentalnallagandla.in/#service-kids-dentistry",
+      "@type": "MedicalProcedure",
+      "name": "Kids and Preventive Dentistry",
+      "description": "Child-friendly fluoride treatments, pit and fissure sealants, pulpotomy, and space maintainers with behavior guidance.",
+      "url": "https://nobledentalnallagandla.in/specialities/kids-dentistry.html",
+      "medicalSpecialty": "Pediatric Dentistry",
+      "provider": { "@id": "https://nobledentalnallagandla.in/#noble-dental-care" },
+      "areaServed": { "@type": "AdministrativeArea", "name": "Lingampally" }
+    },
+    {
+      "@id": "https://nobledentalnallagandla.in/#service-cosmetic-dentistry",
+      "@type": "MedicalProcedure",
+      "name": "Smile Design and Cosmetic Dentistry",
+      "description": "Digital smile design, veneers, composite bonding, and teeth whitening to enhance aesthetics.",
+      "url": "https://nobledentalnallagandla.in/specialities/smile-design.html",
+      "medicalSpecialty": "Cosmetic Dentistry",
+      "provider": { "@id": "https://nobledentalnallagandla.in/#noble-dental-care" },
+      "areaServed": { "@type": "AdministrativeArea", "name": "Financial District" }
+    },
+    {
+      "@id": "https://nobledentalnallagandla.in/#service-gum-therapy",
+      "@type": "MedicalTherapy",
+      "name": "Advanced Gum Disease Therapy",
+      "description": "Scaling, root planing, laser gum therapy, and periodontal maintenance for bleeding gums and bone loss.",
+      "url": "https://nobledentalnallagandla.in/specialities/scaling-whitening.html",
+      "medicalSpecialty": "Periodontics",
+      "provider": { "@id": "https://nobledentalnallagandla.in/#noble-dental-care" },
+      "areaServed": { "@type": "AdministrativeArea", "name": "Chanda Nagar" }
+    }
+  ]
+}

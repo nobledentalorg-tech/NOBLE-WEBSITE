@@ -1,0 +1,32 @@
+/* ==========================================
+   Noble Dental Care – Humans.txt
+   Authorship • Transparency • Trust • E-E-A-T
+   ========================================== */
+
+Team:
+  Dr Dhivakaran – Chief Medical Director & Dentist
+  Dr Roger Ronaldo – Oral and Maxillofacial Surgeon
+  Dr Thik Vijay – Aesthetic and Cosmetic Dentistry
+  Dr Deepak – Orthodontist
+  Dr Idhaya – Chief Medical Director of HealthFlo
+
+Clinic:
+  Noble Dental Care – Nallagandla, Hyderabad
+  Address: Nallagandla Main Road, Hyderabad, Telangana, 500019, India
+  Phone: +91-86104-25342
+  Email: info@nobledentalnallagandla.in
+  Website: https://nobledentalnallagandla.in
+
+Reviewed By:
+  Noble Dental Care Editorial Board (NDC-D Team)
+  Verified sources: NHS, ADA, WHO, Mayo Clinic, AAE, AAPD
+
+Design & Development:
+  Noble Dental Digital Team
+  Stack: HTML • CSS • JavaScript • SEO • Netlify + GitHub
+
+Acknowledgements:
+  Inspired by global dental best practices
+  Compliant with schema.org, structured data & SEO guidelines
+
+Last Updated: 2025-09-23

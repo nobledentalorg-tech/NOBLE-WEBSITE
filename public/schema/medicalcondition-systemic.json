@@ -1,0 +1,130 @@
+{
+  "@context": "https://schema.org",
+  "@graph": [
+
+    {
+      "@id": "https://nobledentalnallagandla.in/schema/medicalcondition-systemic.json",
+      "@type": "MedicalEntity",
+      "name": "Systemic and Preventive Oral Health Conditions",
+      "description": "Structured list of oral-systemic and preventive dental conditions treated at Noble Dental Care — covering pregnancy-related oral care, diabetes-associated gum disease, halitosis, bruxism, and oral lesions.",
+      "url": "https://nobledentalnallagandla.in/specialities/preventive-dentistry.html",
+      "publisher": { "@id": "https://nobledentalnallagandla.in/#organization" },
+      "inLanguage": "en-IN",
+      "hasPart": [
+        { "@id": "https://nobledentalnallagandla.in/#pregnancy-dental-care" },
+        { "@id": "https://nobledentalnallagandla.in/#diabetes-gum-disease" },
+        { "@id": "https://nobledentalnallagandla.in/#halitosis" },
+        { "@id": "https://nobledentalnallagandla.in/#bruxism" },
+        { "@id": "https://nobledentalnallagandla.in/#oral-lesions" }
+      ],
+      "keywords": [
+        "Pregnancy Dental Care",
+        "Gum Disease Diabetes",
+        "Halitosis Treatment",
+        "Teeth Grinding",
+        "Oral Lesions",
+        "Preventive Dentistry Hyderabad"
+      ]
+    },
+
+    {
+      "@id": "https://nobledentalnallagandla.in/#pregnancy-dental-care",
+      "@type": "MedicalCondition",
+      "name": "Pregnancy Dental Care",
+      "alternateName": ["Pregnancy Gingivitis", "Prenatal Oral Health"],
+      "description": "Hormonal changes during pregnancy can lead to gum inflammation, bleeding, and increased plaque buildup, requiring specialized preventive care.",
+      "signOrSymptom": [
+        "Swollen or bleeding gums",
+        "Bad breath or metallic taste",
+        "Gum tenderness during brushing"
+      ],
+      "possibleTreatment": [
+        { "@type": "TherapeuticProcedure", "name": "Professional Oral Prophylaxis (2nd Trimester)" },
+        { "@type": "TherapeuticProcedure", "name": "Gentle Scaling and Oral Hygiene Counseling" },
+        { "@type": "TherapeuticProcedure", "name": "Nutritional and Oral Care Guidance" }
+      ],
+      "associatedAnatomy": { "@type": "AnatomicalStructure", "name": "Gingiva" },
+      "mainEntityOfPage": "https://nobledentalnallagandla.in/specialities/preventive-dentistry.html"
+    },
+
+    {
+      "@id": "https://nobledentalnallagandla.in/#diabetes-gum-disease",
+      "@type": "MedicalCondition",
+      "name": "Diabetes-Associated Gum Disease",
+      "alternateName": ["Periodontitis in Diabetics", "Diabetic Gingivitis"],
+      "description": "Uncontrolled blood sugar can aggravate gum disease, delay healing, and increase oral infection risk.",
+      "signOrSymptom": [
+        "Loose or shifting teeth",
+        "Recurrent gum bleeding",
+        "Delayed healing after dental work"
+      ],
+      "possibleTreatment": [
+        { "@type": "TherapeuticProcedure", "name": "Diabetic-Friendly Scaling & Root Planing" },
+        { "@type": "TherapeuticProcedure", "name": "Laser Periodontal Therapy" },
+        { "@type": "MedicalProcedure", "name": "Blood Sugar Controlled Dental Protocol" }
+      ],
+      "associatedAnatomy": { "@type": "AnatomicalStructure", "name": "Gums, Alveolar Bone" },
+      "mainEntityOfPage": "https://nobledentalnallagandla.in/specialities/advanced-dentistry.html"
+    },
+
+    {
+      "@id": "https://nobledentalnallagandla.in/#halitosis",
+      "@type": "MedicalCondition",
+      "name": "Halitosis (Bad Breath)",
+      "alternateName": ["Oral Malodor"],
+      "description": "Unpleasant odor from the mouth often due to plaque, gum infection, dry mouth, or systemic issues.",
+      "signOrSymptom": [
+        "Persistent mouth odor",
+        "Dry mouth sensation",
+        "Metallic taste"
+      ],
+      "possibleTreatment": [
+        { "@type": "MedicalProcedure", "name": "Tongue Cleaning & Oral Prophylaxis" },
+        { "@type": "TherapeuticProcedure", "name": "Antibacterial Mouthwash" },
+        { "@type": "TherapeuticProcedure", "name": "Hydration and Dietary Counseling" }
+      ],
+      "associatedAnatomy": { "@type": "AnatomicalStructure", "name": "Tongue and Gums" },
+      "mainEntityOfPage": "https://nobledentalnallagandla.in/specialities/general-oral-health.html"
+    },
+
+    {
+      "@id": "https://nobledentalnallagandla.in/#bruxism",
+      "@type": "MedicalCondition",
+      "name": "Bruxism (Teeth Grinding)",
+      "alternateName": ["Night Grinding", "Stress Clenching"],
+      "description": "A habitual grinding or clenching of teeth often related to stress or sleep disturbances, causing enamel wear or TMJ pain.",
+      "signOrSymptom": [
+        "Worn teeth edges",
+        "Jaw muscle pain or clicking sound",
+        "Morning headache"
+      ],
+      "possibleTreatment": [
+        { "@type": "MedicalDevice", "name": "Night Guard (Occlusal Splint)" },
+        { "@type": "TherapeuticProcedure", "name": "Stress Management Techniques" },
+        { "@type": "MedicalProcedure", "name": "TMJ Evaluation and Counseling" }
+      ],
+      "associatedAnatomy": { "@type": "AnatomicalStructure", "name": "Temporomandibular Joint, Teeth" },
+      "mainEntityOfPage": "https://nobledentalnallagandla.in/specialities/advanced-dentistry.html"
+    },
+
+    {
+      "@id": "https://nobledentalnallagandla.in/#oral-lesions",
+      "@type": "MedicalCondition",
+      "name": "Oral Lesions and Precancerous Conditions",
+      "alternateName": ["White Patch", "Leukoplakia", "Erythroplakia"],
+      "description": "Abnormal patches or sores inside the mouth, often linked to tobacco, alcohol, or chronic irritation — early detection is key.",
+      "signOrSymptom": [
+        "White or red patch inside mouth",
+        "Non-healing ulcer >2 weeks",
+        "Mild pain or burning sensation"
+      ],
+      "possibleTreatment": [
+        { "@type": "TherapeuticProcedure", "name": "Biopsy & Histopathological Evaluation" },
+        { "@type": "MedicalProcedure", "name": "Laser Lesion Removal" },
+        { "@type": "TherapeuticProcedure", "name": "Tobacco Cessation Counseling" }
+      ],
+      "associatedAnatomy": { "@type": "AnatomicalStructure", "name": "Oral Mucosa" },
+      "mainEntityOfPage": "https://nobledentalnallagandla.in/specialities/oral-pathology.html"
+    }
+  ]
+}

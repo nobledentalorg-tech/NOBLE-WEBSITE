@@ -1,0 +1,66 @@
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebPage",
+      "@id": "https://nobledentalnallagandla.in/#home",
+      "name": "Noble Dental Care Nallagandla | Multispeciality Dental Clinic",
+      "url": "https://nobledentalnallagandla.in/",
+      "inLanguage": "en-IN",
+      "about": [
+        "Dentist in Nallagandla",
+        "Microscopic Root Canal",
+        "Dental Implants",
+        "Emergency Dentistry"
+      ],
+      "speakable": {
+        "@type": "SpeakableSpecification",
+        "cssSelector": [
+          "#heroTitle",
+          "#bookTitle",
+          "#faqTitle"
+        ]
+      }
+    },
+    {
+      "@type": "WebPage",
+      "@id": "https://nobledentalnallagandla.in/specialities/root-canal.html#page",
+      "name": "Microscope Root Canal Treatment in Hyderabad | Noble Dental Care",
+      "url": "https://nobledentalnallagandla.in/specialities/root-canal.html",
+      "inLanguage": "en-IN",
+      "about": [
+        "Painless Root Canal",
+        "Single Visit RCT",
+        "Endodontist in Nallagandla"
+      ],
+      "speakable": {
+        "@type": "SpeakableSpecification",
+        "cssSelector": [
+          "#heroTitle",
+          "#indicationsTitle",
+          "#diagnosticsTitle"
+        ]
+      }
+    },
+    {
+      "@type": "WebPage",
+      "@id": "https://nobledentalnallagandla.in/specialities/implants.html#page",
+      "name": "Dental Implants in Nallagandla | Guided Full Mouth Rehabilitation",
+      "url": "https://nobledentalnallagandla.in/specialities/implants.html",
+      "inLanguage": "en-IN",
+      "about": [
+        "Dental Implants",
+        "Full Mouth Rehabilitation",
+        "Zirconia Crowns"
+      ],
+      "speakable": {
+        "@type": "SpeakableSpecification",
+        "cssSelector": [
+          "#heroTitle",
+          "#eligTitle",
+          "#faq .section-header h2"
+        ]
+      }
+    }
+  ]
+}

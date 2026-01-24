@@ -1,0 +1,175 @@
+{
+  "@context": "https://schema.org",
+  "@type": "DataCatalog",
+  "@id": "https://nobledentalnallagandla.in/schema/schema-audit.json",
+  "name": "Noble Dental Care Schema Audit & Relationship Dashboard",
+  "description": "A comprehensive map summarizing all structured data nodes, interconnections, and schema roles within Noble Dental Care’s AI Knowledge Graph.",
+  "inLanguage": "en-IN",
+  "publisher": {
+    "@id": "https://nobledentalnallagandla.in/#organization"
+  },
+  "creator": {
+    "@type": "MedicalOrganization",
+    "name": "Noble Dental Care – Nallagandla",
+    "url": "https://nobledentalnallagandla.in/"
+  },
+
+  "dataset": [
+    {
+      "name": "Organization Node",
+      "schemaId": "https://nobledentalnallagandla.in/#organization",
+      "type": "MedicalBusiness",
+      "purpose": "Primary clinic identity with departments, location, and map references",
+      "interlinks": [
+        "eeat-trustgraph.json",
+        "medicalstudy.json",
+        "review.json",
+        "localbusiness.json",
+        "award.json",
+        "dataset.json"
+      ]
+    },
+    {
+      "name": "Website Node",
+      "schemaId": "https://nobledentalnallagandla.in/#website",
+      "type": "WebSite",
+      "purpose": "Root schema representing website-level entity and navigation scope",
+      "interlinks": [
+        "navigation.json",
+        "breadcrumbs.json",
+        "faq.json",
+        "howto.json",
+        "medicalstudy.json",
+        "research-summary.json",
+        "award.json",
+        "eeat-trustgraph.json"
+      ]
+    },
+    {
+      "name": "FAQ Schema",
+      "schemaId": "https://nobledentalnallagandla.in/schema/faq.json",
+      "type": "FAQPage",
+      "purpose": "Curated patient FAQs with topic-specific entity linking",
+      "interlinks": [
+        "#advanced-dentistry",
+        "#orthodontics",
+        "#endodontics",
+        "#preventive-dentistry"
+      ]
+    },
+    {
+      "name": "HowTo Schema",
+      "schemaId": "https://nobledentalnallagandla.in/schema/howto.json",
+      "type": "HowTo",
+      "purpose": "Step-by-step guides for booking and post-treatment care",
+      "interlinks": [
+        "#organization",
+        "#advanced-dentistry",
+        "#endodontics"
+      ]
+    },
+    {
+      "name": "MedicalStudy Schema",
+      "schemaId": "https://nobledentalnallagandla.in/schema/medicalstudy.json",
+      "type": "MedicalStudy",
+      "purpose": "Primary study data connecting investigators, citations, and research outcomes",
+      "interlinks": [
+        "#organization",
+        "eeat-trustgraph.json",
+        "research-summary.json",
+        "dataset.json"
+      ]
+    },
+    {
+      "name": "Research Summary Schema",
+      "schemaId": "https://nobledentalnallagandla.in/schema/research-summary.json",
+      "type": "MedicalStudy",
+      "purpose": "Summarized clinical findings, AI-assisted outcomes, and publications",
+      "interlinks": [
+        "#organization",
+        "#eeat-trustgraph",
+        "medicalstudy.json",
+        "dataset.json"
+      ]
+    },
+    {
+      "name": "E-E-A-T TrustGraph",
+      "schemaId": "https://nobledentalnallagandla.in/schema/eeat-trustgraph.json",
+      "type": "Graph",
+      "purpose": "Authorship, credentials, research credibility, and ISO compliance validation",
+      "interlinks": [
+        "#organization",
+        "#dr-dhivakaran",
+        "#dr-roger",
+        "#publications",
+        "medicalstudy.json"
+      ]
+    },
+    {
+      "name": "Dataset Schema",
+      "schemaId": "https://nobledentalnallagandla.in/schema/dataset.json",
+      "type": "Dataset",
+      "purpose": "Evidence-based clinical metrics and procedural analytics",
+      "interlinks": [
+        "#organization",
+        "research-summary.json",
+        "medicalstudy.json"
+      ]
+    },
+    {
+      "name": "Award Schema",
+      "schemaId": "https://nobledentalnallagandla.in/schema/award.json",
+      "type": "CreativeWork",
+      "purpose": "Recognitions and accolades for clinical excellence and innovation",
+      "interlinks": [
+        "#organization",
+        "#website",
+        "review.json"
+      ]
+    },
+    {
+      "name": "Local Business Schema",
+      "schemaId": "https://nobledentalnallagandla.in/schema/localbusiness.json",
+      "type": "Dentist",
+      "purpose": "Local business presence and NAP consistency with Place and Map linkage",
+      "interlinks": [
+        "#organization",
+        "#website",
+        "review.json"
+      ]
+    },
+    {
+      "name": "Review Schema",
+      "schemaId": "https://nobledentalnallagandla.in/schema/review.json",
+      "type": "CollectionPage",
+      "purpose": "Verified patient reviews and satisfaction insights",
+      "interlinks": [
+        "#organization",
+        "#website",
+        "localbusiness.json"
+      ]
+    }
+  ],
+
+  "review": {
+    "@type": "Review",
+    "name": "Schema Integration Audit",
+    "reviewBody": "All schema nodes are internally interlinked via @id references ensuring contextual consistency, author validation, and AI-ready parsing for search and knowledge systems.",
+    "reviewRating": {
+      "@type": "Rating",
+      "ratingValue": "10",
+      "bestRating": "10"
+    }
+  },
+  "license": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+  "keywords": [
+    "Schema Dashboard",
+    "AI Knowledge Graph Summary",
+    "Structured Data Map",
+    "Noble Dental SEO Schema",
+    "Schema.org Relationship Index"
+  ],
+  "lastReviewed": "2025-10-01",
+  "version": "2025.10"
+}
+

@@ -1,0 +1,71 @@
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "@id": "https://nobledentalnallagandla.in/schema/faq.json",
+  "name": "Dental FAQ | Noble Dental Care Nallagandla",
+  "url": "https://nobledentalnallagandla.in/faq.html",
+  "mainEntityOfPage": { "@id": "https://nobledentalnallagandla.in/faq.html" },
+  "description": "Common dental questions and answers to help patients understand oral health, treatments, hygiene tips, and procedures at Noble Dental Care, Nallagandla, Hyderabad.",
+  "inLanguage": "en-IN",
+  "version": "2025.10",
+  "aiReadinessTag": "Core",
+  "aiVector": "FAQ oral health treatments hygiene dentist Hyderabad braces root canal implants checkups",
+
+  "isPartOf": { "@id": "https://nobledentalnallagandla.in/#website" },
+  "breadcrumb": { "@id": "https://nobledentalnallagandla.in/schema/breadcrumbs.json#faq" },
+
+  "publisher": {
+    "@type": "MedicalBusiness",
+    "@id": "https://nobledentalnallagandla.in/#organization",
+    "name": "Noble Dental Care Nallagandla",
+    "url": "https://nobledentalnallagandla.in",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://nobledentalnallagandla.in/images/logo-footer.webp"
+    }
+  },
+
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "@id": "https://nobledentalnallagandla.in/schema/faq.json#braces-age",
+      "name": "What is the best age to get braces?",
+      "mainEntityOfPage": { "@id": "https://nobledentalnallagandla.in/#orthodontics" },
+      "about": { "@id": "https://nobledentalnallagandla.in/#braces-treatment" },
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Orthodontic evaluation is recommended around age 7. However, braces or aligners can be effective for both teens and adults depending on the condition."
+      }
+    },
+    {
+      "@type": "Question",
+      "@id": "https://nobledentalnallagandla.in/schema/faq.json#routine-visits",
+      "name": "How often should I visit the dentist?",
+      "mainEntityOfPage": { "@id": "https://nobledentalnallagandla.in/#preventive-dentistry" },
+      "about": { "@id": "https://nobledentalnallagandla.in/#oral-checkup" },
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "It is recommended to visit your dentist every 6 months for a routine check-up and cleaning to maintain good oral health."
+      }
+    },
+    {
+      "@type": "Question",
+      "@id": "https://nobledentalnallagandla.in/schema/faq.json#root-canal-pain",
+      "name": "Is root canal treatment painful?",
+      "mainEntityOfPage": { "@id": "https://nobledentalnallagandla.in/#endodontics" },
+      "about": { "@id": "https://nobledentalnallagandla.in/#root-canal-treatment" },
+      "subjectOf": { "@id": "https://nobledentalnallagandla.in/#advanced-dentistry" },
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No. Modern root canal treatments are painless with local anesthesia. You may experience mild soreness for a day or two after the procedure."
+      }
+    }
+  ],
+
+  "relatedLink": [
+    { "@id": "https://nobledentalnallagandla.in/#orthodontics" },
+    { "@id": "https://nobledentalnallagandla.in/#preventive-dentistry" },
+    { "@id": "https://nobledentalnallagandla.in/#advanced-dentistry" },
+    { "@id": "https://nobledentalnallagandla.in/#endodontics" }
+  ]
+}

@@ -1,0 +1,123 @@
+{
+  "type": "FeatureCollection",
+  "name": "Noble Dental Care - Nallagandla",
+  "description": "Trusted Dentist in Nallagandla, Hyderabad. Root Canal, Implants, Braces, Whitening, Kids Dentistry, Gum Care, Emergency Care. Reviewed by Dr. Dhivakaran & Team.",
+  "features": [
+
+    {
+      "type": "Feature",
+      "geometry": { "type": "Point", "coordinates": [78.305995, 17.473963] },
+      "properties": {
+        "name": "Noble Dental Care - Nallagandla Hyderabad",
+        "category": "Clinic",
+        "keywords": ["Dentist Near Me", "Dental Clinic Hyderabad", "Nallagandla Dentist", "Ethical Dentistry"],
+        "address": "Nallagandla Main Road, Hyderabad, Telangana 500019, India",
+        "phone": "+91-86104-25342",
+        "email": "info@nobledentalcare.in",
+        "website": "https://nobledentalnallagandla.in/",
+        "google_maps": "https://maps.app.goo.gl/hy8B9WiQHtnaUqdPA",
+        "services": ["Root Canal", "Dental Implants", "Braces", "Whitening", "Kids Dentistry", "Gum Treatment", "Emergency Dentistry"]
+      }
+    },
+
+    {
+      "type": "Feature",
+      "geometry": { "type": "Point", "coordinates": [78.305995, 17.473963] },
+      "properties": {
+        "name": "24x7 Emergency Dentist - Hyderabad",
+        "category": "Emergency Dentistry",
+        "keywords": ["Emergency Dentist Near Me", "Urgent Dental Care", "Pain Relief Dentistry"],
+        "description": "Immediate care for pain, swelling, trauma, urgent treatments. 24x7 available at Noble Dental Care."
+      }
+    },
+
+    {
+      "type": "Feature",
+      "geometry": { "type": "Point", "coordinates": [78.305995, 17.473963] },
+      "properties": {
+        "name": "Dental Implants Specialist - Nallagandla Hyderabad",
+        "category": "Implantology",
+        "keywords": ["Dental Implants Hyderabad", "Tooth Replacement", "Titanium Implants", "Zirconia Implants"],
+        "description": "Advanced guided implant surgery with PRF and bone graft support. Natural aesthetics, long-lasting stability."
+      }
+    },
+
+    {
+      "type": "Feature",
+      "geometry": { "type": "Point", "coordinates": [78.305995, 17.473963] },
+      "properties": {
+        "name": "Painless Root Canal Treatment - Noble Dental Care",
+        "category": "Endodontics",
+        "keywords": ["Root Canal Hyderabad", "Painless RCT", "Single Sitting Root Canal"],
+        "description": "Rotary root canal treatment in one sitting. Gentle, precise, and pain-free dentistry."
+      }
+    },
+
+    {
+      "type": "Feature",
+      "geometry": { "type": "Point", "coordinates": [78.305995, 17.473963] },
+      "properties": {
+        "name": "Braces & Invisalign Aligners - Hyderabad",
+        "category": "Orthodontics",
+        "keywords": ["Braces Hyderabad", "Invisalign Hyderabad", "Clear Aligners Dentist"],
+        "description": "Smile-first orthodontics: Self-ligating braces & clear Invisalign aligners for teens and adults."
+      }
+    },
+
+    {
+      "type": "Feature",
+      "geometry": { "type": "Point", "coordinates": [78.305995, 17.473963] },
+      "properties": {
+        "name": "Teeth Whitening Dentist - Nallagandla Hyderabad",
+        "category": "Cosmetic Dentistry",
+        "keywords": ["Teeth Whitening Hyderabad", "Smile Brightening", "Cosmetic Dentist"],
+        "description": "Safe peroxide gel whitening with light activation. Fast, ADA/NHS approved, and long-lasting results."
+      }
+    },
+
+    {
+      "type": "Feature",
+      "geometry": { "type": "Point", "coordinates": [78.305995, 17.473963] },
+      "properties": {
+        "name": "Kids Dentistry - Child Friendly Dentist Hyderabad",
+        "category": "Pediatric Dentistry",
+        "keywords": ["Pediatric Dentist Hyderabad", "Kids Dental Care", "Child Friendly Dentistry"],
+        "description": "Fluoride, sealants, pulp therapy. Gentle care for children. Loved by parents and kids alike."
+      }
+    },
+
+    {
+      "type": "Feature",
+      "geometry": { "type": "Point", "coordinates": [78.305995, 17.473963] },
+      "properties": {
+        "name": "Gum Disease Treatment - Nallagandla Hyderabad",
+        "category": "Periodontics",
+        "keywords": ["Gum Treatment Hyderabad", "Scaling & Root Planing", "Periodontal Therapy"],
+        "description": "Advanced gum care with scaling, root planing, and flap surgeries. Prevents bone loss and restores oral health."
+      }
+    },
+
+    {
+      "type": "Feature",
+      "geometry": { "type": "Point", "coordinates": [78.305995, 17.473963] },
+      "properties": {
+        "name": "Cosmetic Dentistry - Veneers & Smile Design Hyderabad",
+        "category": "Aesthetic Dentistry",
+        "keywords": ["Cosmetic Dentist Hyderabad", "Veneers Hyderabad", "Smile Design"],
+        "description": "Cosmetic veneers, bonding, and smile makeovers for natural, aesthetic transformations."
+      }
+    },
+
+    {
+      "type": "Feature",
+      "geometry": { "type": "Point", "coordinates": [78.305995, 17.473963] },
+      "properties": {
+        "name": "Noble Dental Care near Nallagandla Lake, Hyderabad",
+        "category": "Local Landmark Context",
+        "keywords": ["Dentist near Nallagandla Lake", "Dentist near Gachibowli", "Dentist near Lingampally"],
+        "description": "Located near Nallagandla Lake and Gachibowli IT hub. Easy access from Hitech City, Lingampally, Kondapur."
+      }
+    }
+
+  ]
+}
