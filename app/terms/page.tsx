@@ -26,7 +26,7 @@ export default function TermsPage() {
           <div>
             <h2 className="text-2xl font-bold mb-4">2. Clinical Consultation</h2>
             <p>
-              A physical examination and possibly dental X-rays (RVG/OPG) are required before any surgical quote or final diagnosis can be provided. Clinical decisions are made in the best interest of the patient's long-term health.
+              A physical examination and possibly dental X-rays (RVG/OPG) are required before any surgical quote or final diagnosis can be provided. Clinical decisions are made in the best interest of the patient&apos;s long-term health.
             </p>
           </div>
 

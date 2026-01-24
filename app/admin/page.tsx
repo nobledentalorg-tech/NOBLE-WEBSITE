@@ -20,14 +20,35 @@ import {
     AlertCircle
 } from 'lucide-react';
 
+import { cookies } from 'next/headers';
+
 const prisma = new PrismaClient();
+const ADMIN_PASSWORD = process.env.ADMIN_PASSWORD || 'noble2026';
 
 // --- SERVER ACTIONS ---
 
+async function loginAdmin(formData: FormData) {
+    'use server';
+    const password = formData.get('password') as string;
+    if (password === ADMIN_PASSWORD) {
+        cookies().set('admin_session', 'authorized', {
+            httpOnly: true,
+            secure: process.env.NODE_ENV === 'production',
+            sameSite: 'strict',
+            maxAge: 60 * 60 * 24 // 24 hours
+        });
+    }
+    revalidatePath('/admin');
+}
+
+async function checkAdmin() {
+    const session = cookies().get('admin_session');
+    return session?.value === 'authorized';
+}
+
 async function updateMemory(formData: FormData) {
     'use server';
-    const session = await auth();
-    if ((session?.user as any)?.role !== 'admin') throw new Error("Unauthorized");
+    if (!await checkAdmin()) throw new Error("Unauthorized");
 
     const id = formData.get('id') as string;
     const action = formData.get('action') as string;
@@ -46,8 +67,7 @@ async function updateMemory(formData: FormData) {
 
 async function savePost(formData: FormData) {
     'use server';
-    const session = await auth();
-    if ((session?.user as any)?.role !== 'admin') throw new Error("Unauthorized");
+    if (!await checkAdmin()) throw new Error("Unauthorized");
 
     const id = formData.get('id') as string;
     const title = formData.get('title') as string;
@@ -78,8 +98,7 @@ async function savePost(formData: FormData) {
 
 async function deletePost(id: string) {
     'use server';
-    const session = await auth();
-    if ((session?.user as any)?.role !== 'admin') throw new Error("Unauthorized");
+    if (!await checkAdmin()) throw new Error("Unauthorized");
     await prisma.post.delete({ where: { id } });
     revalidatePath('/admin');
     revalidatePath('/blog');
@@ -87,8 +106,7 @@ async function deletePost(id: string) {
 
 async function saveCase(formData: FormData) {
     'use server';
-    const session = await auth();
-    if ((session?.user as any)?.role !== 'admin') throw new Error("Unauthorized");
+    if (!await checkAdmin()) throw new Error("Unauthorized");
 
     const id = formData.get('id') as string;
     const title = formData.get('title') as string;
@@ -119,8 +137,7 @@ async function saveCase(formData: FormData) {
 
 async function saveProduct(formData: FormData) {
     'use server';
-    const session = await auth();
-    if ((session?.user as any)?.role !== 'admin') throw new Error("Unauthorized");
+    if (!await checkAdmin()) throw new Error("Unauthorized");
 
     const id = formData.get('id') as string;
     const name = formData.get('name') as string;
@@ -152,31 +169,50 @@ async function saveProduct(formData: FormData) {
 
 async function deleteProduct(id: string) {
     'use server';
-    const session = await auth();
-    if ((session?.user as any)?.role !== 'admin') throw new Error("Unauthorized");
+    if (!await checkAdmin()) throw new Error("Unauthorized");
     await prisma.pharmacyProduct.delete({ where: { id } });
     revalidatePath('/admin');
     revalidatePath('/products');
 }
 
+async function logoutAdmin() {
+    'use server';
+    cookies().delete('admin_session');
+    revalidatePath('/admin');
+}
+
 // --- UI COMPONENT ---
 
 export default async function AdminPage({ searchParams }: { searchParams: { tab?: string } }) {
-    const session = await auth();
+    const isAdmin = await checkAdmin();
     const activeTab = searchParams.tab || 'ai';
 
-    if (!session || (session.user as any)?.role !== 'admin') {
+    if (!isAdmin) {
         return (
-            <div className="min-h-screen flex items-center justify-center bg-slate-950 text-white p-8">
-                <div className="max-w-md text-center">
-                    <h1 className="text-5xl font-black mb-6 text-red-500">RESTRICTED</h1>
-                    <p className="text-slate-400 mb-8 italic">Logged as: {session?.user?.email || 'Guest'}</p>
-                    <p className="text-slate-500 mb-8">Access limited to Dr. Dhivakaran CMD only.</p>
-                    <a href="/" className="px-8 py-3 bg-white text-black rounded-full font-bold">Return Home</a>
+            <div className="min-h-screen flex items-center justify-center bg-[#05070a] text-white p-8">
+                <div className="max-w-md w-full bg-white/5 border border-white/10 p-12 rounded-[2.5rem] text-center backdrop-blur-xl">
+                    <div className="w-16 h-16 bg-blue-600 rounded-2xl flex items-center justify-center font-black text-2xl mx-auto mb-8 shadow-lg shadow-blue-600/20">N</div>
+                    <h1 className="text-3xl font-black mb-2 uppercase tracking-tighter">Noble Secure OS</h1>
+                    <p className="text-slate-500 mb-10 text-sm font-bold">Authorized Clinical Personnel Only</p>
+                    
+                    <form action={loginAdmin} className="space-y-4">
+                        <input 
+                            name="password" 
+                            type="password" 
+                            required 
+                            placeholder="Enter Master Key" 
+                            className="w-full bg-black/40 border border-white/10 rounded-2xl p-4 text-center text-lg outline-none focus:border-blue-500 transition-all font-mono"
+                        />
+                        <button className="w-full bg-white text-black py-4 rounded-2xl font-black uppercase tracking-widest hover:bg-blue-600 hover:text-white transition-all shadow-xl">
+                            Unlock Dashboard
+                        </button>
+                    </form>
+                    <p className="mt-8 text-[10px] text-slate-600 uppercase font-black tracking-widest">noble dental care • surgical grade security</p>
                 </div>
             </div>
         );
     }
+
 
     // Data Fetching
     const memories = await prisma.neoMemory.findMany({ orderBy: { createdAt: 'desc' } });
@@ -203,11 +239,12 @@ export default async function AdminPage({ searchParams }: { searchParams: { tab?
                             <p className="text-[10px] text-slate-500 uppercase tracking-widest font-bold">Clinical Command Center</p>
                         </div>
                     </div>
-                    <form action={async () => { 'use server'; await signOut(); }}>
+                    <form action={logoutAdmin}>
                         <button className="flex items-center gap-2 px-4 py-2 rounded-lg bg-white/5 border border-white/10 hover:bg-red-500/10 hover:border-red-500/20 text-slate-400 hover:text-red-400 transition-all text-xs font-bold">
                             <LogOut size={14} /> Sign Out
                         </button>
                     </form>
+
                 </div>
             </header>
 

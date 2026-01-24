@@ -14,7 +14,7 @@ import { getNeoResponse } from '@/app/actions';
 import { ChatMessage } from '@/types';
 import { useSession, signIn, signOut } from 'next-auth/react';
 
-export default function NeoCompanionClient() {
+export default function NeoCompanionClient({ isAdmin = false }: { isAdmin?: boolean }) {
     const router = useRouter();
     const { data: session } = useSession();
 
@@ -34,13 +34,13 @@ export default function NeoCompanionClient() {
     // -- DB Sync State --
     const [currentChatId, setCurrentChatId] = useState<string | null>(null);
 
-    const fullIntroText = session?.user?.name
-        ? `Hi ${session.user.name.split(' ')[0]}. I am Neo, your Virtual Dental Consultant.`
-        : "Hi. I am Neo, your Virtual Dental Consultant.";
+    const userName = isAdmin ? "Dr. Dhivakaran" : (session?.user?.name?.split(' ')[0] || "Guest");
+    const fullIntroText = `Hi ${userName}. I am Neo, your Virtual Dental Consultant.`;
 
     // -- DB Sync Logic --
     const saveMessageToDb = async (role: 'user' | 'model', content: string) => {
-        if (!session?.user) return; // Only save if logged in
+        if (!isAdmin && !session?.user) return; // Only save if logged in or admin
+
 
         try {
             const res = await fetch('/api/chat/save', {

@@ -102,7 +102,33 @@ create table if not exists case_studies (
 );
 
 
--- 7. Row Level Security (RLS) Policies
+-- 7. Pharmacy Products Table
+create table if not exists pharmacy_products (
+    id uuid default gen_random_uuid() primary key,
+    name text not null,
+    brand text,
+    category text default 'Dental',
+    image text,
+    bg_image text,
+    title_image text,
+    clinic_price float8 not null,
+    mrp float8,
+    saving float8,
+    sub_text text,
+    badges text[],
+    tags text[],
+    indications text[],
+    usage text[],
+    ingredients text[],
+    form text,
+    is_prescription boolean default false,
+    rating float8 default 5.0,
+    reviews integer default 0,
+    available boolean default true,
+    created_at timestamp with time zone default now()
+);
+
+-- 8. Row Level Security (RLS) Policies
 alter table users enable row level security;
 alter table accounts enable row level security;
 alter table sessions enable row level security;
@@ -112,6 +138,7 @@ alter table messages enable row level security;
 alter table posts enable row level security;
 alter table case_studies enable row level security;
 alter table "NeoMemory" enable row level security;
+alter table pharmacy_products enable row level security;
 
 -- AI Chat Policies
 drop policy if exists "Users can view own chats" on chats;
@@ -131,5 +158,10 @@ create policy "Public can read posts" on posts for select using (published = tru
 -- Public Case Study Policies
 drop policy if exists "Public can read case studies" on case_studies;
 create policy "Public can read case studies" on case_studies for select using (published = true);
+
+-- Public Pharmacy Policies
+drop policy if exists "Public can read pharmacy products" on pharmacy_products;
+create policy "Public can read pharmacy products" on pharmacy_products for select using (true);
+
 
 
