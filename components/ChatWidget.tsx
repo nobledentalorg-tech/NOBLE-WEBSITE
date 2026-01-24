@@ -4,6 +4,7 @@ import React, { useState, useRef, useEffect } from 'react';
 import { Send, X, Bot, MessageSquare, ExternalLink, Mic, MicOff } from 'lucide-react';
 // import { sendMessageToAssistant } from '@/services/geminiService'; // Deprecated
 import { NeoEngine } from '@/src/neo/NeoEngine';
+import { getNeoResponse } from '@/app/actions';
 import { ChatMessage } from '@/types'; // Updated import
 
 interface ChatWidgetProps {
