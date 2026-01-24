@@ -214,11 +214,27 @@ export default async function AdminPage({ searchParams }: { searchParams: { tab?
     }
 
 
-    // Data Fetching
-    const memories = await prisma.neoMemory.findMany({ orderBy: { createdAt: 'desc' } });
-    const posts = await prisma.post.findMany({ orderBy: { createdAt: 'desc' } });
-    const cases = await prisma.caseStudy.findMany({ orderBy: { createdAt: 'desc' } });
-    const products = await prisma.pharmacyProduct.findMany({ orderBy: { createdAt: 'desc' } });
+    // Data Fetching with safe fallback
+    let memories: any[] = [];
+    let posts: any[] = [];
+    let cases: any[] = [];
+    let products: any[] = [];
+
+    try {
+        memories = await prisma.neoMemory.findMany({ orderBy: { createdAt: 'desc' } });
+    } catch (e) { console.error("Memory table missing"); }
+
+    try {
+        posts = await prisma.post.findMany({ orderBy: { createdAt: 'desc' } });
+    } catch (e) { console.error("Post table missing"); }
+
+    try {
+        cases = await prisma.caseStudy.findMany({ orderBy: { createdAt: 'desc' } });
+    } catch (e) { console.error("Case table missing"); }
+
+    try {
+        products = await prisma.pharmacyProduct.findMany({ orderBy: { createdAt: 'desc' } });
+    } catch (e) { console.error("Pharmacy table missing"); }
 
     const tabs = [
         { id: 'ai', label: 'Neo AI Brain', icon: <Brain size={18} /> },
