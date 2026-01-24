@@ -14,10 +14,10 @@ import { AuthorityHelper } from './NeoAuthority';
 
 // Specialist Module Imports
 import { RADIOLOGY_DB, RadiologyHelper } from './NeoRadiology';
-import { PEDO_CLINICAL_DB, PediatricsHelper } from './NeoPediatrics';
+import { PEDO_CLINICAL_DB } from './NeoPediatrics';
 import { PUBLIC_HEALTH_DB, PublicHealthHelper } from './NeoPublicHealth';
 import { ENDO_DB, ORTHO_DB, SURGERY_DB, SpecialtyHelper } from './NeoSpecialties';
-import { ORAL_MEDICINE_DB, OralMedicineHelper } from './NeoOralMedicine';
+import { ORAL_MEDICINE_DB } from './NeoOralMedicine';
 import { PROSTHO_DB, ProsthoHelper } from './NeoProsthodontics';
 import { NeoSystemsLinker } from './NeoSystemsLinker';
 import { NeoLearningSystem } from './NeoLearning';
@@ -217,14 +217,14 @@ export class NeoEngine {
         }
 
         // 5. Pediatrics (Children)
-        for (const [id, protocol] of Object.entries(PEDO_DB)) {
+        for (const [id, protocol] of Object.entries(PEDO_CLINICAL_DB)) {
             if (lower.includes(id.replace('_', ' ')) || lower.includes('child') || lower.includes('baby')) {
                 return {
                     id: `specialist_pedo_${id}`,
                     type: 'info',
                     text: {
-                        en: `### Child Care: ${protocol.diagnosis}\n${protocol.description.en}\n\n**Parent Advice**: ${protocol.advice.en}`,
-                        ta: protocol.description.ta
+                        en: `### Child Care: ${protocol.name.en}\n${protocol.indication.en}\n\n**Parent Advice**: ${protocol.parentAdvice.en}`,
+                        ta: protocol.indication.ta
                     },
                     urgencyLevel: 'low'
                 };
@@ -232,15 +232,15 @@ export class NeoEngine {
         }
 
         // 6. Oral Medicine (Pathology/Lesions)
-        for (const [id, lesion] of Object.entries(PATHOLOGY_DB)) {
+        for (const [id, lesion] of Object.entries(ORAL_MEDICINE_DB)) {
             if (lower.includes(id.replace('_', ' ')) || lower.includes(lesion.name.en.toLowerCase())) {
-                const triage = PathologyHelper.getTriageAdvice(lesion.riskLevel as any);
+                const triage = `Risk Level: ${lesion.riskLevel}`;
                 return {
                     id: `specialist_patho_${id}`,
                     type: 'assessment',
                     text: {
-                        en: `### ${lesion.name.en}\n${lesion.description.en}\n\n**Clinical Significance**: ${lesion.clinicalSignificance}\n\n**Triage**: ${triage}`,
-                        ta: lesion.description.ta
+                        en: `### ${lesion.name.en}\n${lesion.clinicalFeatures.appearance.en}\n\n**Management**: ${lesion.management.en}\n\n**Triage**: ${triage}`,
+                        ta: lesion.clinicalFeatures.appearance.ta
                     },
                     possibilities: [{
                         title: lesion.name.en,
@@ -249,7 +249,7 @@ export class NeoEngine {
                         action: "Specialist Consult",
                         relatedSlug: "scan-diagnostics"
                     }],
-                    urgencyLevel: lesion.riskLevel === 'High' ? 'high' : 'low'
+                    urgencyLevel: lesion.riskLevel === 'Emergency' ? 'emergency' : 'medium'
                 };
             }
         }
@@ -261,8 +261,8 @@ export class NeoEngine {
                     id: `specialist_prostho_${id}`,
                     type: 'info',
                     text: {
-                        en: `### ${material.name.en}\n${material.description.en}\n\n**Pros**: ${material.pros.join(', ')}\n**Best For**: ${material.bestFor.join(', ')}`,
-                        ta: material.description.ta
+                        en: `### ${material.name.en}\n${material.indication.en}\n\n**Patient Info**: ${material.patientPitch.en}\n\n**Lifespan**: ${material.lifespan}`,
+                        ta: material.indication.ta
                     },
                     urgencyLevel: 'low'
                 };
@@ -276,8 +276,8 @@ export class NeoEngine {
                     id: `specialist_ph_${id}`,
                     type: 'info',
                     text: {
-                        en: `### ${info.category}\n${info.description.en}\n\n**Insurance Advice**: ${info.insuranceAdvice?.en || 'N/A'}`,
-                        ta: info.description.ta
+                        en: `### ${info.title.en}\n${info.summary.en}\n\n**Action**: ${info.actionableAdvice.en}`,
+                        ta: info.summary.ta
                     },
                     urgencyLevel: 'low'
                 };
