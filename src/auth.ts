@@ -20,7 +20,7 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
         session({ session, user }) {
             if (session.user) {
                 session.user.id = user.id
-                // Add other custom fields if needed
+                session.user.role = (user as any).role // Standard users are 'user', admins are 'admin'
             }
             return session
         },

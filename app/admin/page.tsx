@@ -11,7 +11,7 @@ async function updateMemory(formData: FormData) {
     
     // Security check for the Action too
     const session = await auth();
-    if (session?.user?.role !== 'admin') throw new Error("Unauthorized");
+    if ((session?.user as any)?.role !== 'admin') throw new Error("Unauthorized");
 
     const id = formData.get('id') as string;
     const action = formData.get('action') as string;
@@ -40,7 +40,7 @@ export default async function AdminPage() {
     const session = await auth();
 
     // ⛔ SECURITY: Only allow Admins
-    if (!session || session.user?.role !== 'admin') {
+    if (!session || (session.user as any)?.role !== 'admin') {
         return (
             <div className="min-h-screen flex items-center justify-center bg-slate-50 text-slate-900 p-8">
                 <div className="max-w-md text-center">
