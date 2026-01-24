@@ -159,6 +159,7 @@ const Hero: React.FC<HeroProps> = ({ onBookClick }) => {
                   width={60}
                   height={60}
                   className="logo"
+                  priority
                 />
                 <h2>ITI_SLActive <span className="light">TITANIUM</span></h2>
                 <p className="subtitle">Swiss Grade Implant</p>
@@ -169,6 +170,7 @@ const Hero: React.FC<HeroProps> = ({ onBookClick }) => {
                   alt="Swiss Implant System"
                   width={300}
                   height={300}
+                  priority
                   unoptimized // External S3 bucket not in allowed patterns list yet? It is, but safer to add just in case of dimension issues
                 />
 

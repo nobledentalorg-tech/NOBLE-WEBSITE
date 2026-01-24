@@ -72,7 +72,7 @@ const Header: React.FC<HeaderProps> = ({ onBookClick }) => {
           </Link>
 
           {/* Desktop Navigation */}
-          <nav className="hidden xl:flex items-center flex-nowrap gap-1 bg-slate-100/50 dark:bg-white/5 p-1 rounded-full border border-slate-200/50 dark:border-white/10 backdrop-blur-md">
+          <nav className="hidden lg:flex items-center flex-nowrap gap-1 bg-slate-100/50 dark:bg-white/5 p-1 rounded-full border border-slate-200/50 dark:border-white/10 backdrop-blur-md">
             <Link
               href="/"
               className={`relative px-4 py-2.5 text-[12px] font-bold uppercase tracking-wider transition-all duration-300 rounded-full ${isActive('/') ? 'text-white bg-blue-600 shadow-md' : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white'
@@ -156,6 +156,7 @@ const Header: React.FC<HeaderProps> = ({ onBookClick }) => {
           <Link href="/blog" onClick={() => setIsMobileMenuOpen(false)} className="text-2xl font-bold text-slate-900 dark:text-white">Blog & Guide</Link>
           <Link href="/patient-safety" onClick={() => setIsMobileMenuOpen(false)} className="text-2xl font-bold text-emerald-500">Patient Safety</Link>
           <Link href="/team" onClick={() => setIsMobileMenuOpen(false)} className="text-2xl font-bold text-slate-900 dark:text-white">Our Team</Link>
+          <Link href="/products" onClick={() => setIsMobileMenuOpen(false)} className="text-2xl font-bold text-indigo-600">Noble Pharmacy</Link>
           <Link href="/healthflo-ai" onClick={() => setIsMobileMenuOpen(false)} className="text-2xl font-bold text-blue-600">AI HealthOS</Link>
           <Link href="/international" onClick={() => setIsMobileMenuOpen(false)} className="text-2xl font-bold text-amber-600">Global Patients</Link>
 

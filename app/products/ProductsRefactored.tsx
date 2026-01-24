@@ -36,62 +36,32 @@ const effectStyles = `
     overflow: hidden;
   }
 
-  .product-3d-card:hover .product-3d-wrapper {
-    transform: perspective(900px) translateY(-5%) rotateX(25deg) translateZ(0);
-    box-shadow: 2px 35px 32px -8px rgba(0, 0, 0, 0.4);
+  @media (hover: hover) {
+    .product-3d-card:hover .product-3d-wrapper {
+      transform: perspective(900px) translateY(-5%) rotateX(25deg) translateZ(0);
+      box-shadow: 2px 35px 32px -8px rgba(0, 0, 0, 0.4);
+    }
+
+    .product-3d-card:hover .product-3d-title {
+      transform: translate(-50%, -100px) translate3d(0%, 0, 100px);
+    }
+
+    .product-3d-card:hover .product-3d-character {
+      opacity: 1;
+      transform: translate3d(0%, -15%, 150px) scale(1.3);
+    }
   }
 
-  .product-3d-cover {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-  }
-
-  .product-3d-wrapper::after {
-    content: "";
-    opacity: 1;
-    width: 100%;
-    height: 120px;
-    transition: all 0.5s;
-    position: absolute;
-    left: 0;
-    bottom: 0;
-    z-index: 2;
-    background-image: linear-gradient(to bottom, transparent 46%, rgba(12, 13, 19, 0.4) 68%, rgba(12, 13, 19, 0.8) 97%);
-  }
-
-  .product-3d-title {
-    width: 60%;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    transition: transform 0.5s;
-    z-index: 3;
-    filter: drop-shadow(0 10px 20px rgba(0,0,0,0.5));
-    pointer-events: none;
-  }
-
-  .product-3d-card:hover .product-3d-title {
-    transform: translate(-50%, -100px) translate3d(0%, 0, 100px);
-  }
-
-  .product-3d-character {
-    width: 75%;
-    height: 85%;
-    object-fit: contain;
-    opacity: 0;
-    transition: all 0.5s;
-    position: absolute;
-    z-index: 4;
-    bottom: 0;
-    pointer-events: none;
-    filter: drop-shadow(0 20px 40px rgba(0,0,0,0.4));
-  }
-
-  .product-3d-card:hover .product-3d-character {
-    opacity: 1;
-    transform: translate3d(0%, -15%, 150px) scale(1.3);
+  /* Ensure character is visible if hover is not supported or for accessibility */
+  @media (hover: none) {
+    .product-3d-character {
+      opacity: 1;
+      transform: scale(1.1);
+      bottom: 5%;
+    }
+    .product-3d-title {
+      transform: translate(-50%, -120%) scale(0.8);
+    }
   }
 `;
 
@@ -217,17 +187,17 @@ export default function ProductsRefactored({ dbProducts = [] }: { dbProducts?: a
 
 
             <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-x-4 md:gap-x-8 gap-y-12 h-auto">
-               {filteredProducts.map((product: ProductData) => (
+               {filteredProducts.map((product: ProductData, index: number) => (
                   <div key={product.id}>
                      <RevealOnScroll>
                         <div className={`bg-white dark:bg-[#151b2b] rounded-[2.5rem] border border-slate-100 dark:border-white/5 shadow-sm hover:shadow-2xl transition-all duration-500 flex flex-col h-full group relative overflow-visible ${!product.available ? 'opacity-70 grayscale-[0.5]' : ''}`}>
 
                         <div className="product-3d-card cursor-pointer" onClick={() => setSelectedProduct(product)}>
                            <div className="product-3d-wrapper">
-                              {product.bgImage && <Image src={product.bgImage} className="product-3d-cover" alt={`${product.name} background`} width={300} height={320} unoptimized />}
+                              {product.bgImage && <Image src={product.bgImage} className="product-3d-cover" alt={`${product.name} background`} width={300} height={320} unoptimized priority={index < 4} />}
                            </div>
-                           {product.titleImage && <Image src={product.titleImage} className="product-3d-title" alt={`${product.name} brand logo`} width={200} height={100} unoptimized />}
-                           {product.image && <Image src={product.image} className="product-3d-character" alt={`${product.name} product shot`} width={250} height={250} unoptimized />}
+                           {product.titleImage && <Image src={product.titleImage} className="product-3d-title" alt={`${product.name} brand logo`} width={200} height={100} unoptimized priority={index < 4} />}
+                           {product.image && <Image src={product.image} className="product-3d-character" alt={`${product.name} product shot`} width={250} height={250} unoptimized priority={index < 4} />}
 
                            <div className="absolute bottom-4 left-4 flex gap-2 z-10">
                               {!product.available && (
@@ -276,10 +246,10 @@ export default function ProductsRefactored({ dbProducts = [] }: { dbProducts?: a
 
          {/* Product Detail Popup Modal: THE CLINICAL DOSSIER */}
          {selectedProduct && (
-            <div className="fixed inset-0 z-[1000] flex items-center justify-center p-4 sm:p-6 md:p-8">
-               <div className="absolute inset-0 bg-slate-950/95 backdrop-blur-2xl animate-in fade-in duration-500" onClick={() => setSelectedProduct(null)}></div>
+            <div className="fixed inset-0 z-[1000] flex items-center justify-center p-2 sm:p-4 md:p-8 overflow-y-auto">
+               <div className="fixed inset-0 bg-slate-950/95 backdrop-blur-2xl animate-in fade-in duration-500" onClick={() => setSelectedProduct(null)}></div>
 
-               <div className="relative w-full max-w-7xl bg-white dark:bg-[#0B1019] rounded-[3.5rem] shadow-4xl overflow-hidden animate-in zoom-in duration-500 flex flex-col lg:flex-row h-[95vh] lg:h-[85vh]">
+               <div className="relative w-full max-w-7xl bg-white dark:bg-[#0B1019] rounded-[2rem] sm:rounded-[3.5rem] shadow-4xl overflow-hidden animate-in zoom-in duration-500 flex flex-col lg:flex-row h-auto min-h-[50vh] max-h-[98vh] lg:h-[85vh]">
                   
                   {/* Left Side: Product Showcase & Pricing */}
                   <div className="lg:w-[35%] relative bg-slate-50 dark:bg-black/40 flex flex-col items-center justify-center p-8 lg:p-12 border-b lg:border-b-0 lg:border-r border-slate-100 dark:border-white/5 shrink-0">
