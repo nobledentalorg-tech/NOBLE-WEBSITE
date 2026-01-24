@@ -27,16 +27,8 @@ export const metadata: Metadata = {
 };
 
 export default async function ProductsPage() {
-   let dbProducts: any[] = [];
-   try {
-       dbProducts = await prisma.pharmacyProduct.findMany({
-           orderBy: { createdAt: 'desc' }
-       });
-   } catch (error) {
-       console.error("Pharmacy Database not synced yet:", error);
-   }
-
-   return <ProductsRefactored dbProducts={dbProducts} />;
+   return <ProductsRefactored dbProducts={[]} />;
 }
+
 
 
