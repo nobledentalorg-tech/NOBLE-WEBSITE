@@ -126,7 +126,7 @@ export default function NeoCompanionClient() {
             const patientContext = {
                 age: 28,
                 isPregnant: textToSend.toLowerCase().includes('pregnant') || messages.some(m => m.text.toLowerCase().includes('pregnant')),
-                medicalHistory: ['asthma'],
+                medicalHistory: [], // Cleared demo 'asthma' for free testing
                 trimester: 'Second' as any
             };
 
