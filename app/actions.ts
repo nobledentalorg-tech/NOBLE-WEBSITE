@@ -42,35 +42,53 @@ export async function getNeoResponse(
     patientContext?: any
 ): Promise<NeoResponse> {
     
-    // 1. Hard Initial Fallback (The Engine)
+    // 1. Initial State (Plain Data)
+    const cleanHistory = (history || []).map(h => ({ role: h.role, text: h.text }));
+    const currentState = currentStateId || 'root';
+
+    // 2. Hard Initial Fallback (The Engine)
     // We always have a local result ready as a safety net.
-    const fallbackResponse = NeoEngine.processInput(input, currentStateId, history.length);
+    let fallbackResponse: NeoResponse;
+    try {
+        fallbackResponse = NeoEngine.processInput(input, currentState, cleanHistory.length);
+    } catch (e) {
+        // Absolute Emergency Fallback
+        fallbackResponse = {
+            node: { id: 'error', type: 'info', text: { en: "I am temporarily unavailable. Please call +91 9963504149 for immediate assistance." } },
+            confidenceScore: 0,
+            urgency: 'low'
+        };
+    }
 
     try {
         const context: PatientContext = patientContext || { medicalHistory: [], isPregnant: false, age: 30 };
         const gemini = getGemini();
 
-        // 2. Compute Hybrid Response
+        // 3. Compute Hybrid Response
         const hybridResponse = await NeoBrain.processHybridInput(
             input,
             context,
             async (q, ctx) => {
-                if (!gemini) return "I am Dr. Neo. I recommend seeing a specialist for this concern.";
-                const histStr = history.map(h => `${h.role}: ${h.text}`).join('\n');
-                const prompt = `${ctx}\n\nCONVERSATION:\n${histStr}\n\nUSER: "${q}"\n\nShort answer (3 lines).`;
-                const result = await gemini.generateContent(prompt);
-                return result.response.text();
+                if (!gemini) return "I recommend seeing a specialist for this concern.";
+                try {
+                    const histStr = cleanHistory.slice(-5).map(h => `${h.role}: ${h.text}`).join('\n');
+                    const prompt = `${ctx}\n\nCONVERSATION:\n${histStr}\n\nUSER: "${q}"\n\nShort answer (3 lines).`;
+                    const result = await gemini.generateContent(prompt);
+                    const text = result.response.text();
+                    return text || "I understand. Let's look into that.";
+                } catch (aiErr) {
+                    console.error("AI Generation Error:", aiErr);
+                    return "I understand your concern. Please see our treatment details for more information.";
+                }
             },
-            currentStateId,
-            history.length
+            currentState,
+            cleanHistory.length
         );
 
-        // 3. Optional Background Memory Save (Silent)
+        // 4. Optional Background Memory Save (Silent)
         if (hybridResponse.node.id !== 'fallback') {
             try {
                 const db = getPrisma();
-                // We use findFirst to check if we already saved this (prevent duplicates)
-                // But for now just create. Wrapped in try-catch to never block the UI.
                 db.neoMemory.create({
                     data: {
                         query: input.toLowerCase().trim(),

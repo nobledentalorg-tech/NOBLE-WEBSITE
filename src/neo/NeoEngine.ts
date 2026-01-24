@@ -127,15 +127,18 @@ export class NeoEngine {
     }
 
     private static wrap(node: ClinicalNode, input?: string): NeoResponse {
+        // Clone the node so we don't mutate the global Knowledge Graph
+        const clonedNode = { ...node, text: { ...node.text } };
+
         // Final polish for specialist responses
-        if (input && node.id.includes('specialist')) {
+        if (input && clonedNode.id.includes('specialist')) {
             const citation = AuthorityHelper.getCitation(input);
-            if (citation && !node.text.en.includes(citation)) {
-                node.text.en += `\n\n> 🏛️ *${citation}*`;
+            if (citation && !clonedNode.text.en.includes(citation)) {
+                clonedNode.text.en += `\n\n> 🏛️ *${citation}*`;
             }
         }
         return {
-            node: node,
+            node: clonedNode,
             confidenceScore: 100,
             urgency: node.urgencyLevel || 'low'
         };
