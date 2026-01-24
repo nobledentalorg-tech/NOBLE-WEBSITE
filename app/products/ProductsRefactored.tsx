@@ -118,7 +118,7 @@ export default function ProductsRefactored({ dbProducts = [] }: { dbProducts?: a
    const [isCartOpen, setIsCartOpen] = useState(false);
    const [isBookingModalOpen, setIsBookingModalOpen] = useState(false);
 
-   const filteredProducts = inventory.filter(p => {
+   const filteredProducts = inventory.filter((p: any) => {
       const catMatch = activeCategory === 'All' || p.category?.toLowerCase() === activeCategory.toLowerCase();
       const searchMatch = p.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
          (p.brand || '').toLowerCase().includes(searchQuery.toLowerCase());
@@ -127,9 +127,9 @@ export default function ProductsRefactored({ dbProducts = [] }: { dbProducts?: a
 
 
    const addToCart = (product: ProductData) => {
-      setCart(prev => {
-         const existing = prev.find(item => item.id === product.id);
-         if (existing) return prev.map(item => item.id === product.id ? { ...item, quantity: item.quantity + 1 } : item);
+      setCart((prev: CartItem[]) => {
+         const existing = prev.find((item: CartItem) => item.id === product.id);
+         if (existing) return prev.map((item: CartItem) => item.id === product.id ? { ...item, quantity: item.quantity + 1 } : item);
          return [...prev, { ...product, quantity: 1 }];
       });
       setIsCartOpen(true);
@@ -140,7 +140,7 @@ export default function ProductsRefactored({ dbProducts = [] }: { dbProducts?: a
    };
 
    const updateQuantity = (id: string, delta: number) => {
-      setCart(prev => prev.map(item => {
+      setCart((prev: CartItem[]) => prev.map((item: CartItem) => {
          if (item.id === id) {
             const newQty = Math.max(1, item.quantity + delta);
             return { ...item, quantity: newQty };
@@ -149,7 +149,7 @@ export default function ProductsRefactored({ dbProducts = [] }: { dbProducts?: a
       }));
    };
 
-   const totalCart = cart.reduce((acc, item) => acc + (item.clinicPrice * item.quantity), 0);
+   const totalCart = cart.reduce((acc: number, item: CartItem) => acc + (item.clinicPrice * item.quantity), 0);
 
    return (
       <div className="pt-32 pb-24 min-h-screen bg-[#F8FAFC] dark:bg-[#020617] font-sans transition-colors duration-500">
@@ -282,21 +282,21 @@ export default function ProductsRefactored({ dbProducts = [] }: { dbProducts?: a
                         <section>
                            <h4 className="text-[10px] font-black uppercase text-blue-600 dark:text-cyan-400 tracking-[0.2em] mb-4 flex items-center gap-2"><HelpCircle size={14} /> Clinical Indications</h4>
                            <ul className="space-y-3">
-                              {selectedProduct.indications.map((ind, i) => (
-                                 <li key={i} className="flex items-center gap-3 text-sm font-bold text-slate-700 dark:text-slate-200">
-                                    <CheckCircle2 size={16} className="text-green-500" /> {ind}
-                                 </li>
-                              ))}
+                               {(selectedProduct.indications as string[])?.map((ind: string, i: number) => (
+                                  <li key={i} className="flex items-center gap-3 text-sm font-bold text-slate-700 dark:text-slate-200">
+                                     <CheckCircle2 size={16} className="text-green-500" /> {ind}
+                                  </li>
+                               ))}
                            </ul>
                         </section>
                         <section>
                            <h4 className="text-[10px] font-black uppercase text-blue-600 dark:text-cyan-400 tracking-[0.2em] mb-4 flex items-center gap-2"><ListChecks size={14} /> How to Use</h4>
                            <ul className="space-y-3">
-                              {selectedProduct.usage.map((step, i) => (
-                                 <li key={i} className="flex items-start gap-3 text-sm font-medium text-slate-600 dark:text-slate-400 leading-snug">
-                                    <div className="mt-1 w-1.5 h-1.5 rounded-full bg-slate-300 dark:bg-slate-700 shrink-0"></div> {step}
-                                 </li>
-                              ))}
+                               {(selectedProduct.usage as string[])?.map((step: string, i: number) => (
+                                  <li key={i} className="flex items-start gap-3 text-sm font-medium text-slate-600 dark:text-slate-400 leading-snug">
+                                     <div className="mt-1 w-1.5 h-1.5 rounded-full bg-slate-300 dark:bg-slate-700 shrink-0"></div> {step}
+                                  </li>
+                               ))}
                            </ul>
                         </section>
                      </div>
@@ -337,7 +337,7 @@ export default function ProductsRefactored({ dbProducts = [] }: { dbProducts?: a
                            <button onClick={() => setIsCartOpen(false)} className="text-blue-600 font-bold mt-4">Start browsing</button>
                         </div>
                      ) : (
-                        cart.map(item => (
+                         cart.map((item: CartItem) => (
                            <div key={item.id} className="flex gap-4 p-4 bg-slate-50 dark:bg-white/5 rounded-3xl border border-slate-100 dark:border-white/5 group">
                               <div className="w-20 h-20 bg-white dark:bg-black/20 rounded-2xl p-2 shrink-0">
                                  <Image src={item.image} alt={item.name} fill className="object-contain" unoptimized />

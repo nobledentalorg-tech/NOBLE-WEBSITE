@@ -23,7 +23,7 @@ import {
 import { cookies } from 'next/headers';
 
 const prisma = new PrismaClient();
-const ADMIN_PASSWORD = process.env.ADMIN_PASSWORD || 'noble2026';
+const ADMIN_PASSWORD = process.env.ADMIN_PASSWORD || 'noble@1993';
 
 // --- SERVER ACTIONS ---
 
@@ -277,7 +277,7 @@ export default async function AdminPage({ searchParams }: { searchParams: { tab?
                             </span>
                         </div>
                         <div className="grid gap-4">
-                            {memories.map(mem => (
+                            {memories.map((mem: any) => (
                                 <div key={mem.id} className="bg-white/5 border border-white/5 p-6 rounded-3xl group hover:border-white/10 transition-all">
                                     <div className="flex items-start justify-between gap-6">
                                         <div className="flex-1">
@@ -387,7 +387,7 @@ export default async function AdminPage({ searchParams }: { searchParams: { tab?
                         </section>
 
                         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-                            {cases.map(c => (
+                            {cases.map((c: any) => (
                                 <div key={c.id} className="bg-white/5 border border-white/5 rounded-3xl p-6 group hover:border-emerald-500/20 transition-all">
                                     <h3 className="font-bold text-lg mb-2">{c.title}</h3>
                                     <p className="text-xs text-emerald-400 font-black uppercase active:tracking-widest transition-all mb-4">{c.category}</p>
@@ -451,7 +451,7 @@ export default async function AdminPage({ searchParams }: { searchParams: { tab?
                         </section>
 
                         <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
-                            {products.map(p => (
+                            {products.map((p: any) => (
                                 <div key={p.id} className={`bg-white/5 border border-white/5 rounded-3xl p-6 transition-all relative ${!p.available ? 'opacity-50 grayscale' : ''}`}>
                                     <h3 className="font-bold text-sm mb-1">{p.name}</h3>
                                     <p className="text-[10px] text-slate-500 uppercase font-black">{p.brand} • ₹{p.clinicPrice}</p>
