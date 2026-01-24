@@ -186,7 +186,8 @@ export default function ProductsRefactored({ dbProducts = [] }: { dbProducts?: a
                </div>
             </div>
 
-                {filteredProducts.map((product) => (
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-12 h-auto">
+               {filteredProducts.map((product) => (
                   <RevealOnScroll key={product.id}>
                      <div className={`bg-white dark:bg-[#151b2b] rounded-[2.5rem] border border-slate-100 dark:border-white/5 shadow-sm hover:shadow-2xl transition-all duration-500 flex flex-col h-full group relative overflow-visible ${!product.available ? 'opacity-70 grayscale-[0.5]' : ''}`}>
 
@@ -236,6 +237,8 @@ export default function ProductsRefactored({ dbProducts = [] }: { dbProducts?: a
                      </div>
                   </RevealOnScroll>
                ))}
+            </div>
+
 
          </div>
 
