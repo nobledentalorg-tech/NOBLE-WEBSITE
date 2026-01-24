@@ -72,25 +72,33 @@ export async function getNeoResponse(
 
 async function callGeminiFallback(userQuery: string, systemPersona: string, history: SimpleMessage[] = []): Promise<string> {
     
-    // Format history into a string
-    const historyText = history.map(msg => `${msg.role === 'user' ? 'User' : 'Neo'}: ${msg.text}`).join('\n');
+    try {
+        // Format history into a string
+        const historyText = history.map(msg => `${msg.role === 'user' ? 'User' : 'Neo'}: ${msg.text}`).join('\n');
 
-    const prompt = `
-    ${systemPersona}
-    
-    PREVIOUS CONVERSATION:
-    ${historyText}
-    
-    CURRENT USER QUERY: "${userQuery}"
-    
-    Rules:
-    1. Answer only dental/clinic questions.
-    2. Use the previous conversation to understand context (e.g. if they say "How much is it?", check what "it" refers to).
-    3. Max 3 sentences. Professional & Warm.
-    4. No specific prescriptions.
-    5. If unsure about specific Noble Dental prices, say "Costs vary, please visit for an estimate."
-    `;
+        const prompt = `
+        ${systemPersona}
+        
+        PREVIOUS CONVERSATION:
+        ${historyText}
+        
+        CURRENT USER QUERY: "${userQuery}"
+        
+        Rules:
+        1. Answer only dental/clinic questions.
+        2. Use the previous conversation to understand context (e.g. if they say "How much is it?", check what "it" refers to).
+        3. Max 3 sentences. Professional & Warm.
+        4. No specific prescriptions.
+        5. If unsure about specific Noble Dental prices, say "Costs vary, please visit for an estimate."
+        `;
 
-    const result = await model.generateContent(prompt);
-    return result.response.text();
+        // Safety: check if model initialized
+        if (!model) throw new Error("AI Model not initialized");
+
+        const result = await model.generateContent(prompt);
+        return result.response.text();
+    } catch (error) {
+        console.error("Gemini API Error:", error);
+        return "I apologize, I am currently unable to access my generative knowledge base. Please visit the clinic for precise details.";
+    }
 }

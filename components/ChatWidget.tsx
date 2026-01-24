@@ -275,7 +275,7 @@ const ChatWidget: React.FC<ChatWidgetProps> = ({ onBookClick }) => {
                   onChange={(e) => setInput(e.target.value)}
                   onKeyDown={handleKeyPress}
                   placeholder="Type or use mic..."
-                  className="w-full bg-slate-50 dark:bg-black/40 border border-slate-200 dark:border-white/10 rounded-xl px-4 py-3 text-sm text-slate-900 dark:text-white focus:ring-2 focus:ring-blue-500 outline-none transition-all duration-500 pr-10"
+                  className="w-full bg-white dark:bg-black/40 border border-slate-200 dark:border-white/10 rounded-xl px-4 py-3 text-sm !text-black dark:!text-white placeholder:text-slate-500 focus:ring-2 focus:ring-blue-500 outline-none transition-all duration-500 pr-10 shadow-sm"
                   disabled={isLoading}
                 />
                 <button

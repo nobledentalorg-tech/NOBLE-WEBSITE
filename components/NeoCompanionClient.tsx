@@ -152,6 +152,12 @@ export default function NeoCompanionClient() {
 
         } catch (error) {
             console.error("Neo Error:", error);
+            // Show visible error to user
+            setMessages(prev => [...prev, {
+                role: 'model',
+                text: "I apologize, I'm having trouble connecting to the server. Please check your internet or try again.",
+                timestamp: Date.now()
+            }]);
         } finally {
             setIsLoading(false);
         }
@@ -212,9 +218,9 @@ export default function NeoCompanionClient() {
                             <span className="font-gemini text-[10px] font-bold text-blue-400 uppercase tracking-widest">Sign In</span>
                         </div>
                     )}
-                    <div className="flex items-center gap-2 px-3 py-1 rounded-full bg-red-500/10 border border-red-500/20">
-                        <div className="w-1.5 h-1.5 rounded-full bg-red-500 animate-pulse"></div>
-                        <span className="text-[10px] font-bold text-red-500 uppercase tracking-widest">Neo Online</span>
+                    <div className="flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/20">
+                        <div className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></div>
+                        <span className="text-[10px] font-bold text-emerald-500 uppercase tracking-widest">Neo Online</span>
                     </div>
                 </div>
             </nav>
