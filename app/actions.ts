@@ -66,7 +66,7 @@ export async function getNeoResponse(
         );
 
         // 3. Optional Background Memory Save (Silent)
-        if (hybridResponse.node.id === 'hybrid_gemini') {
+        if (hybridResponse.node.id !== 'fallback') {
             try {
                 const db = getPrisma();
                 // We use findFirst to check if we already saved this (prevent duplicates)
