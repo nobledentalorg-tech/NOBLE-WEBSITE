@@ -16,15 +16,17 @@
   }
 }
 
+/* Global reset for inputs to prevent white text in light mode */
+input, textarea, select {
+  color: inherit;
+  background-color: transparent;
+}
+
 body {
   color: rgb(var(--foreground-rgb));
   background: rgb(var(--background-start-rgb));
   font-family: var(--font-jakarta), sans-serif;
   overflow-x: hidden;
-/* Global reset for inputs to prevent white text in light mode */
-input, textarea, select {
-  color: inherit;
-  background-color: transparent;
 }
 
 @layer utilities {
