@@ -373,7 +373,7 @@ export default function ProductsRefactored({ dbProducts = [] }: { dbProducts?: a
                                     <div className="p-8 bg-slate-900 rounded-[2.5rem] relative overflow-hidden group">
                                        <div className="absolute inset-0 opacity-20 bg-[url('https://grainy-gradients.vercel.app/noise.svg')]"></div>
                                        <div className="relative z-10">
-                                          <p className="text-blue-400 font-mono text-[10px] uppercase mb-4 tracking-[0.3em]">/// K.D. Tripathi Reference: {selectedProduct.tripathiRef || 'General Pharmacology'}</p>
+                                          <p className="text-blue-400 font-mono text-[10px] uppercase mb-4 tracking-[0.3em]">» K.D. Tripathi Reference: {selectedProduct.tripathiRef || 'General Pharmacology'}</p>
                                           <p className="text-white text-lg font-bold leading-relaxed mb-6">
                                              {selectedProduct.howItWorks?.description || 'Loading pharmacological logic...'}
                                           </p>
