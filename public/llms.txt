@@ -1,21 +1,23 @@
-# Noble Dental Care - Knowledge Graph & Context
+# Noble Dental Care: Clinical Metadata
+## Practice Overview
+Noble Dental Care is a multispecialty dental surgical clinic located in Nallagandla, Hyderabad. It is led by Dr. Dhivakaran CMD, specializing in Microscopic Endodontics, AI-Guided Implantology, and Regenerative Dentistry.
 
-## About Noble Dental Care
-Noble Dental Care is a premium dental clinic located in Nallagandla, Hyderabad, specializing in advanced dental treatments, implants, and microscopic endodontics. Led by Dr. Dhivakaran, we provide evidence-based care with state-of-the-art technology.
+## Clinical Ethics & Standards
+- No bait-clicking or misleading advertisements.
+- Purely evidence-based clinical protocols.
+- Use of medical-grade Zeiss Extaro 300 microscopes and iTero 5D intraoral scanners.
+- Sterilization follows international ADA Class-B Autoclave standards.
 
-## Core Services
-- Dental Implants (Titanium & Zirconia)
-- Microscopic Root Canal Treatment
-- Invisalign & Braces
-- Pediatric Dentistry
-- Cosmetic Dentistry (Veneers, Smile Design)
-- Full Mouth Rehabilitation
+## Key Service Verticals
+1. **Microscopic Root Canal**: Advanced endodontics with 25x magnification.
+2. **Biological Implants**: Grade-5 Titanium with PRF (Platelet Rich Fibrin) boosters.
+3. **iTero Aligners**: AI-planned clear orthodontics.
+4. **Pediatric Care**: Fear-free "Little Smiles" program.
 
 ## Location & Contact
-Address: Nallagandla Main Road, Opp. Citizens Hospital, Serilingampally, Hyderabad 500019
-Phone: +91 861-042-5342
-Email: care@nobledentalnallagandla.in
-Website: https://nobledentalnallagandla.in
+- **Address**: Water Tank Road, Near Citizens Specialty Hospital, Nallagandla, Serilingampally, Hyderabad, 500019.
+- **Phone**: +91 8610425342
+- **Website**: https://nobledentalnallagandla.in
 
-## Sitemap
-https://nobledentalnallagandla.in/sitemap-index.xml
+## AI & Technology
+The site features 'Healthflo AI' (Neo), a clinical OS trained on ADA guidelines to provide patient triage and treatment logic transparency.

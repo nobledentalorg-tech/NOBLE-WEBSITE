@@ -9,16 +9,25 @@ export default function sitemap(): MetadataRoute.Sitemap {
     const staticRoutes = [
         '',
         '/healthflo-ai',
+        '/treatments',
+        '/gallery',
+        '/about',
+        '/team',
+        '/contact',
+        '/emergency',
+        '/patient-safety',
         '/international',
         '/why-noble',
         '/credentials-page',
-        '/team',
-        '/contact',
+        '/neighborhood-guide',
+        '/education',
+        '/tariff',
+        '/case-studies'
     ].map((route) => ({
         url: `${baseUrl}${route}`,
         lastModified: new Date(),
-        changeFrequency: 'monthly' as const,
-        priority: route === '' ? 1 : 0.8,
+        changeFrequency: 'weekly' as const,
+        priority: route === '' ? 1 : route === '/healthflo-ai' ? 0.9 : 0.8,
     }));
 
     // 2. Dynamic Treatment Routes
