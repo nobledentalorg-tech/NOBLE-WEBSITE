@@ -37,7 +37,7 @@ export async function getNeoResponse(
         const hybridResponse = await NeoBrain.processHybridInput(
             input,
             context,
-            async (q, ctx) => await callGeminiFallback(q, ctx),
+            async (q, ctx) => await callGeminiFallback(q, ctx, history),
             currentStateId,
             history.length
         );
@@ -67,13 +67,16 @@ export async function getNeoResponse(
     }
 }
 
-async function callGeminiFallback(userQuery: string, context: string): Promise<string> {
+async function callGeminiFallback(userQuery: string, systemPersona: string, history: SimpleMessage[] = []): Promise<string> {
+    
+    // Format history into a string
+    const historyText = history.map(msg => `${msg.role === 'user' ? 'User' : 'Neo'}: ${msg.text}`).join('\n');
+
     const prompt = `
-    You are Neo, Dental Assistant for Noble Dental Care (Nallagandla).
-    Lead Dentist: Dr. Dhivakaran.
+    ${systemPersona}
     
     PREVIOUS CONVERSATION:
-    ${context}
+    ${historyText}
     
     CURRENT USER QUERY: "${userQuery}"
     
