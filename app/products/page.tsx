@@ -1,8 +1,7 @@
 import type { Metadata } from 'next';
 import ProductsRefactored from './ProductsRefactored';
-import { PrismaClient } from '@prisma/client';
 
-const prisma = new PrismaClient();
+// Removed Prisma instantiation to prevent runtime engine crashes on Netlify
 
 export const metadata: Metadata = {
    title: 'Dental Pharmacy & Products | Noble Dental Care',

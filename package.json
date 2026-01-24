@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "next build",
+    "build": "prisma generate && next build",
     "postbuild": "node -e \"const sitemapUrl='https://nobledentalnallagandla.in/sitemap.xml'; fetch('https://www.google.com/ping?sitemap=' + encodeURIComponent(sitemapUrl)).then(() => console.log('✅ Google Pinger: Success')).catch(e => console.error('❌ Google Pinger: Fail', e))\"",
     "start": "next start",
     "lint": "next lint",
