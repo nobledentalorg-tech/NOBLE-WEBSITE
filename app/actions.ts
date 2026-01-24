@@ -1,104 +1,97 @@
 'use server';
 
-import { NeoEngine } from '@/src/neo/NeoEngine';
-import { NeoBrain, PatientContext } from '@/src/neo/NeoBrain';
-import { NeoResponse } from '@/src/types/neoSchema';
+import { NeoEngine } from '../src/neo/NeoEngine';
+import { NeoBrain, PatientContext } from '../src/neo/NeoBrain';
+import { NeoResponse } from '../src/types/neoSchema';
 import { GoogleGenerativeAI } from '@google/generative-ai';
 import { PrismaClient } from '@prisma/client';
 
-// 1. Setup
-// We use a global variable to prevent multiple Prisma instances in development
-const prisma = new PrismaClient();
-const genAI = new GoogleGenerativeAI(process.env.GOOGLE_API_KEY || '');
-const model = genAI.getGenerativeModel({ model: 'gemini-1.5-flash' });
+// -------------------------------------------------------------------------
+// SERVER-SIDE SINGLETONS (Lazy Init)
+// -------------------------------------------------------------------------
+let _prisma: PrismaClient | null = null;
+let _model: any = null;
 
-// ✅ NEW: Interface for History
-interface SimpleMessage {
-    role: 'user' | 'model';
-    text: string;
+function getPrisma() {
+    if (!_prisma) _prisma = new PrismaClient();
+    return _prisma;
 }
 
+function getGemini() {
+    if (!_model) {
+        try {
+            const key = process.env.GOOGLE_API_KEY;
+            if (!key) return null;
+            const genAI = new GoogleGenerativeAI(key);
+            _model = genAI.getGenerativeModel({ model: 'gemini-1.5-flash' });
+        } catch (e) {
+            console.error("AI Init Failed:", e);
+            return null;
+        }
+    }
+    return _model;
+}
+
+// -------------------------------------------------------------------------
+// CORE SERVER ACTION
+// -------------------------------------------------------------------------
 export async function getNeoResponse(
     input: string,
     currentStateId: string,
-    history: SimpleMessage[],
-    patientContext?: PatientContext
+    history: { role: 'user' | 'model', text: string }[],
+    patientContext?: any
 ): Promise<NeoResponse> {
+    
+    // 1. Hard Initial Fallback (The Engine)
+    // We always have a local result ready as a safety net.
+    const fallbackResponse = NeoEngine.processInput(input, currentStateId, history.length);
 
-    // Default context for anonymous users
-    const context: PatientContext = patientContext || {
-        medicalHistory: [],
-        isPregnant: false,
-        age: 30
-    };
-
-    // 1. NEObrain: HYBRID ORCHESTRATION
     try {
+        const context: PatientContext = patientContext || { medicalHistory: [], isPregnant: false, age: 30 };
+        const gemini = getGemini();
+
+        // 2. Compute Hybrid Response
         const hybridResponse = await NeoBrain.processHybridInput(
             input,
             context,
-            async (q, ctx) => await callGeminiFallback(q, ctx, history),
+            async (q, ctx) => {
+                if (!gemini) return "I am Dr. Neo. I recommend seeing a specialist for this concern.";
+                const histStr = history.map(h => `${h.role}: ${h.text}`).join('\n');
+                const prompt = `${ctx}\n\nCONVERSATION:\n${histStr}\n\nUSER: "${q}"\n\nShort answer (3 lines).`;
+                const result = await gemini.generateContent(prompt);
+                return result.response.text();
+            },
             currentStateId,
             history.length
         );
 
-        // LAYER 2: MEMORY (Save verified answers if needed)
-        const normalizedQuery = input.toLowerCase().trim();
-        // Skip saving safety interceptions or very short answers
-        if (hybridResponse.node.id === 'hybrid_gemini' && hybridResponse.node.text.en.length > 20) {
+        // 3. Optional Background Memory Save (Silent)
+        if (hybridResponse.node.id === 'hybrid_gemini') {
             try {
-                // Fire and forget - don't await this if we want speed, but for serverless we must await.
-                // We wrap in try-catch so DB errors don't block the user response.
-                await prisma.neoMemory.create({
+                const db = getPrisma();
+                // We use findFirst to check if we already saved this (prevent duplicates)
+                // But for now just create. Wrapped in try-catch to never block the UI.
+                db.neoMemory.create({
                     data: {
-                        query: normalizedQuery,
+                        query: input.toLowerCase().trim(),
                         answer: hybridResponse.node.text.en,
                         isVerified: false
                     }
-                });
-            } catch (saveError) {
-                console.error("⚠️ Database Save Failed (Non-fatal):", saveError);
-                // Swallow error so AI still replies
-            }
+                }).catch(() => {}); // Swallow errors completely
+            } catch (dbErr) {}
         }
 
-        return hybridResponse;
+        return JSON.parse(JSON.stringify(hybridResponse)); // Force serialization
 
-    } catch (error) {
-        console.error("NeoBrain Error:", error);
-        return NeoEngine.processInput(input, currentStateId, history.length);
+    } catch (criticalError) {
+        console.error("AI Engine Top-Level Error:", criticalError);
+        return JSON.parse(JSON.stringify(fallbackResponse));
     }
 }
 
-async function callGeminiFallback(userQuery: string, systemPersona: string, history: SimpleMessage[] = []): Promise<string> {
-    
-    try {
-        // Format history into a string
-        const historyText = history.map(msg => `${msg.role === 'user' ? 'User' : 'Neo'}: ${msg.text}`).join('\n');
-
-        const prompt = `
-        ${systemPersona}
-        
-        PREVIOUS CONVERSATION:
-        ${historyText}
-        
-        CURRENT USER QUERY: "${userQuery}"
-        
-        Rules:
-        1. Answer only dental/clinic questions.
-        2. Use the previous conversation to understand context (e.g. if they say "How much is it?", check what "it" refers to).
-        3. Max 3 sentences. Professional & Warm.
-        4. No specific prescriptions.
-        5. If unsure about specific Noble Dental prices, say "Costs vary, please visit for an estimate."
-        `;
-
-        // Safety: check if model initialized
-        if (!model) throw new Error("AI Model not initialized");
-
-        const result = await model.generateContent(prompt);
-        return result.response.text();
-    } catch (error) {
-        console.error("Gemini API Error:", error);
-        return "I apologize, I am currently unable to access my generative knowledge base. Please visit the clinic for precise details.";
-    }
+// -------------------------------------------------------------------------
+// FALLBACK HELPER (Deprecated, logic moved inside getNeoResponse)
+// -------------------------------------------------------------------------
+async function callGeminiFallback(userQuery: string, systemPersona: string, history: any[] = []) {
+    return "Fallback active";
 }
