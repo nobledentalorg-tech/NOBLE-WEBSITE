@@ -81,12 +81,28 @@ create table if not exists posts (
     content text,
     cover_image text,
     author text default 'Noble Dental Team',
+    category text default 'Clinical',
     tags text[],
     published boolean default true,
     created_at timestamp with time zone default now()
 );
 
--- 6. Row Level Security (RLS) Policies
+-- 6. Case Studies Table
+create table if not exists case_studies (
+    id uuid default gen_random_uuid() primary key,
+    title text not null,
+    subtitle text,
+    slug text not null unique,
+    description text,
+    beforeImage text,
+    afterImage text,
+    category text,
+    published boolean default true,
+    created_at timestamp with time zone default now()
+);
+
+
+-- 7. Row Level Security (RLS) Policies
 alter table users enable row level security;
 alter table accounts enable row level security;
 alter table sessions enable row level security;
@@ -94,6 +110,7 @@ alter table verification_tokens enable row level security;
 alter table chats enable row level security;
 alter table messages enable row level security;
 alter table posts enable row level security;
+alter table case_studies enable row level security;
 alter table "NeoMemory" enable row level security;
 
 -- AI Chat Policies
@@ -110,5 +127,9 @@ create policy "Anyone can read verified memories" on "NeoMemory" for select usin
 -- Public Blog Policies
 drop policy if exists "Public can read posts" on posts;
 create policy "Public can read posts" on posts for select using (published = true);
+
+-- Public Case Study Policies
+drop policy if exists "Public can read case studies" on case_studies;
+create policy "Public can read case studies" on case_studies for select using (published = true);
 
 

@@ -63,6 +63,37 @@ model Session {
   user         User     @relation(fields: [userId], references: [id], onDelete: Cascade)
 }
 
+model Post {
+  id          String   @id @default(uuid())
+  title       String
+  slug        String   @unique
+  excerpt     String?
+  content     String?  @db.Text
+  cover_image String?
+  author      String   @default("Noble Dental Team")
+  category    String   @default("Clinical")
+  tags        String[]
+  published   Boolean  @default(true)
+  createdAt   DateTime @default(now()) @map("created_at")
+
+  @@map("posts")
+}
+
+model CaseStudy {
+  id          String   @id @default(uuid())
+  title       String
+  subtitle    String?
+  slug        String   @unique
+  description String?  @db.Text
+  beforeImage String?
+  afterImage  String?
+  category    String
+  published   Boolean  @default(true)
+  createdAt   DateTime @default(now()) @map("created_at")
+
+  @@map("case_studies")
+}
+
 model VerificationToken {
   identifier String
   token      String   @unique
@@ -70,3 +101,4 @@ model VerificationToken {
 
   @@unique([identifier, token])
 }
+

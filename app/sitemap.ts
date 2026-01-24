@@ -1,13 +1,16 @@
 import { MetadataRoute } from 'next';
 import { treatmentsData } from '@/data/treatments';
 import { NeoBlogEngine } from '@/neo/NeoBlogEngine';
+import { getSupabaseClient } from '@/lib/supabase';
 
-export default function sitemap(): MetadataRoute.Sitemap {
-    const baseUrl = 'https://nobledentalnallagandla.in'; // Ensure this matches production
+export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
+    const baseUrl = 'https://nobledentalnallagandla.in';
 
     // 1. Static Routes
-    const staticRoutes = [
+    const staticRoutes: MetadataRoute.Sitemap = [
         '',
+        '/blog',
+        '/case-studies',
         '/healthflo-ai',
         '/treatments',
         '/gallery',
@@ -22,12 +25,11 @@ export default function sitemap(): MetadataRoute.Sitemap {
         '/neighborhood-guide',
         '/education',
         '/tariff',
-        '/case-studies'
     ].map((route) => ({
         url: `${baseUrl}${route}`,
         lastModified: new Date(),
         changeFrequency: 'weekly' as const,
-        priority: route === '' ? 1 : route === '/healthflo-ai' ? 0.9 : 0.8,
+        priority: route === '' ? 1 : 0.8,
     }));
 
     // 2. Dynamic Treatment Routes
@@ -38,14 +40,33 @@ export default function sitemap(): MetadataRoute.Sitemap {
         priority: 0.9,
     }));
 
-    // 3. Dynamic Blog Routes (Auto-Generated Clinical Guides)
+    // 3. Auto-Generated Blogs
     const autoBlogs = NeoBlogEngine.getAllAutoBlogs();
-    const blogRoutes = autoBlogs.map((post) => ({
+    const autoBlogRoutes = autoBlogs.map((post) => ({
         url: `${baseUrl}/blog/${post.slug}`,
         lastModified: new Date(),
-        changeFrequency: 'weekly' as const,
-        priority: 0.7,
+        changeFrequency: 'monthly' as const,
+        priority: 0.6,
     }));
 
-    return [...staticRoutes, ...treatmentRoutes, ...blogRoutes];
+    // 4. Custom User Blogs (from DB)
+    let customBlogRoutes: MetadataRoute.Sitemap = [];
+    try {
+        const { data: posts } = await getSupabaseClient()
+            .from('posts')
+            .select('slug, created_at')
+            .eq('published', true);
+        
+        if (posts) {
+            customBlogRoutes = posts.map(p => ({
+                url: `${baseUrl}/blog/${p.slug}`,
+                lastModified: new Date(p.created_at),
+                changeFrequency: 'weekly' as const,
+                priority: 0.7,
+            }));
+        }
+    } catch (e) {}
+
+    return [...staticRoutes, ...treatmentRoutes, ...autoBlogRoutes, ...customBlogRoutes];
 }
+

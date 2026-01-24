@@ -3,7 +3,7 @@ import React from 'react';
 import type { Metadata } from 'next';
 import Image from 'next/image';
 import Link from 'next/link';
-import { ShieldCheck, CheckCircle2, FlaskConical, Stethoscope, Baby } from 'lucide-react';
+import { ShieldCheck, CheckCircle2, FlaskConical, Stethoscope, Baby, BookOpen, FileText, ArrowRight } from 'lucide-react';
 import BookingButton from '../../components/BookingButton';
 
 export const metadata: Metadata = {
@@ -126,6 +126,103 @@ export default function PatientSafety() {
                                 <span className="text-slate-600 dark:text-slate-300">Disposables (needles, cups, suction tips) are 100% single-use.</span>
                             </li>
                         </ul>
+                    </div>
+                </div>
+            </section>
+
+            {/* Ethical Pricing & Transparency */}
+            <section className="py-24 bg-slate-900 text-white relative overflow-hidden">
+                <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-blue-500 to-transparent opacity-30"></div>
+                <div className="max-w-6xl mx-auto px-6 relative z-10">
+                    <div className="text-center mb-16">
+                        <h2 className="text-3xl md:text-5xl font-black mb-6">Why our charges are <span className="text-blue-400">Reasonable</span></h2>
+                        <p className="text-slate-400 text-lg max-w-3xl mx-auto">
+                            We believe premium dentistry shouldn't be a luxury. By cutting out the corporate &quot;noise&quot;, we pass the savings directly to you.
+                        </p>
+                    </div>
+
+                    <div className="grid md:grid-cols-3 gap-8 text-center md:text-left">
+                        {/* Point 1: No Ads */}
+                        <div className="bg-white/5 border border-white/10 p-8 rounded-[2rem] backdrop-blur-sm group hover:bg-white/[0.08] transition-all">
+                            <div className="w-12 h-12 bg-blue-500/20 rounded-xl flex items-center justify-center mb-6 border border-blue-500/30 mx-auto md:mx-0">
+                                <ShieldCheck className="text-blue-400" />
+                            </div>
+                            <h3 className="text-xl font-bold mb-4">You Don't Pay for Our Marketing</h3>
+                            <p className="text-slate-400 text-sm leading-relaxed">
+                                Corporate chains spend <strong>lakhs every month</strong> on Google Ads and expensive billboards. Those costs are eventually added to your bill. We spend <strong>Zero</strong> on ads. At Noble, you only pay for your treatment, not for our advertisements.
+                            </p>
+                        </div>
+
+                        {/* Point 2: Community Service */}
+                        <div className="bg-white/5 border border-white/10 p-8 rounded-[2rem] backdrop-blur-sm group hover:bg-white/[0.08] transition-all">
+                            <div className="w-12 h-12 bg-emerald-500/20 rounded-xl flex items-center justify-center mb-6 border border-emerald-500/30 mx-auto md:mx-0">
+                                <CheckCircle2 className="text-emerald-400" />
+                            </div>
+                            <h3 className="text-xl font-bold mb-4">Health for All (Social Equity)</h3>
+                            <p className="text-slate-400 text-sm leading-relaxed">
+                                We believe quality health is a human right. We regularly conduct <strong>Dental Camps for community equity</strong>, ensuring that even those who cannot afford premium care receive basic dental health. Our clinic is built on service, not just business.
+                            </p>
+                        </div>
+
+                        {/* Point 3: Premium Brands */}
+                        <div className="bg-white/5 border border-white/10 p-8 rounded-[2rem] backdrop-blur-sm group hover:bg-white/[0.08] transition-all">
+                            <div className="w-12 h-12 bg-amber-500/20 rounded-xl flex items-center justify-center mb-6 border border-amber-500/30 mx-auto md:mx-0">
+                                <FlaskConical className="text-amber-400" />
+                            </div>
+                            <h3 className="text-xl font-bold mb-4">Global Gold-Standard Materials</h3>
+                            <p className="text-slate-400 text-sm leading-relaxed">
+                                Reasonable doesn't mean cheap. We use the exact same materials used in top UK & USA clinics: <strong>Ivoclar Vivadent (Europe), 3M ESPE (USA), GC Fuji (Japan), and Zhermack (Italy).</strong> No local or generic substitutes.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div className="mt-16 p-8 bg-blue-600/10 border border-blue-500/20 rounded-3xl text-center">
+                        <p className="text-blue-300 font-bold text-lg mb-2">
+                            The Noble Promise: Transparency Above All.
+                        </p>
+                        <p className="text-slate-400 text-sm italic">
+                            No False Marketing. No Inflated Costs. No "Hidden" Hospital Charges. 
+                            Just Pure, Ethical Dentistry.
+                        </p>
+                    </div>
+                </div>
+            </section>
+
+            {/* Resources & Evidence */}
+            <section className="py-24 bg-white dark:bg-slate-950">
+                <div className="max-w-6xl mx-auto px-6">
+                    <div className="grid md:grid-cols-2 gap-12">
+                        {/* Blog Card */}
+                        <Link href="/blog" className="group block">
+                            <div className="h-full bg-slate-50 dark:bg-slate-900 p-10 rounded-[3rem] border border-slate-200 dark:border-white/5 hover:border-blue-500/30 transition-all shadow-sm hover:shadow-2xl">
+                                <div className="w-16 h-16 bg-blue-100 dark:bg-blue-900/30 rounded-2xl flex items-center justify-center mb-8 group-hover:scale-110 transition-transform">
+                                    <BookOpen className="w-8 h-8 text-blue-600 dark:text-blue-400" />
+                                </div>
+                                <h3 className="text-3xl font-bold mb-4 text-slate-900 dark:text-white">Clinical Guides</h3>
+                                <p className="text-slate-600 dark:text-slate-400 mb-8 text-lg">
+                                    Educate yourself on post-operative care, treatment longevity, and the science of oral health through our expert blog.
+                                </p>
+                                <div className="flex items-center gap-2 text-blue-600 dark:text-blue-400 font-bold group-hover:translate-x-2 transition-transform">
+                                    Read Expert Articles <ArrowRight size={20} />
+                                </div>
+                            </div>
+                        </Link>
+
+                        {/* Case Study Card */}
+                        <Link href="/case-studies" className="group block">
+                            <div className="h-full bg-slate-50 dark:bg-slate-900 p-10 rounded-[3rem] border border-slate-200 dark:border-white/5 hover:border-emerald-500/30 transition-all shadow-sm hover:shadow-2xl">
+                                <div className="w-16 h-16 bg-emerald-100 dark:bg-emerald-900/30 rounded-2xl flex items-center justify-center mb-8 group-hover:scale-110 transition-transform">
+                                    <FileText className="w-8 h-8 text-emerald-600 dark:text-emerald-400" />
+                                </div>
+                                <h3 className="text-3xl font-bold mb-4 text-slate-900 dark:text-white">Surgical Evidence</h3>
+                                <p className="text-slate-600 dark:text-slate-400 mb-8 text-lg">
+                                    See the results of our precision-led approach. Real case studies showcasing microscopic results and implant success.
+                                </p>
+                                <div className="flex items-center gap-2 text-emerald-600 dark:text-emerald-400 font-bold group-hover:translate-x-2 transition-transform">
+                                    View Patient Cases <ArrowRight size={20} />
+                                </div>
+                            </div>
+                        </Link>
                     </div>
                 </div>
             </section>
