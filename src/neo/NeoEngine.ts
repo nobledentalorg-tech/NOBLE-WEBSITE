@@ -14,10 +14,10 @@ import { AuthorityHelper } from './NeoAuthority';
 
 // Specialist Module Imports
 import { RADIOLOGY_DB, RadiologyHelper } from './NeoRadiology';
-import { PEDO_DB, PediatricsHelper } from './NeoPediatrics';
+import { PEDO_CLINICAL_DB, PediatricsHelper } from './NeoPediatrics';
 import { PUBLIC_HEALTH_DB, PublicHealthHelper } from './NeoPublicHealth';
 import { ENDO_DB, ORTHO_DB, SURGERY_DB, SpecialtyHelper } from './NeoSpecialties';
-import { PATHOLOGY_DB, PathologyHelper } from './NeoOralMedicine';
+import { ORAL_MEDICINE_DB, OralMedicineHelper } from './NeoOralMedicine';
 import { PROSTHO_DB, ProsthoHelper } from './NeoProsthodontics';
 import { NeoSystemsLinker } from './NeoSystemsLinker';
 import { NeoLearningSystem } from './NeoLearning';
