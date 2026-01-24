@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect, useRef } from 'react';
 import { useRouter } from 'next/navigation';
+import Link from 'next/link';
 import Image from 'next/image';
 import {
     Send, ArrowLeft, Mic, MicOff, Sparkles,
@@ -207,21 +208,43 @@ export default function NeoCompanionClient() {
                     <div className="p-2 rounded-full bg-white/5 border border-white/10"><ArrowLeft size={16} /></div>
                     <span className="text-xs font-bold uppercase tracking-widest">Back</span>
                 </div>
-                <div className="flex items-center gap-3">
-                    {/* Auth Button */}
-                    {session ? (
-                        <div className="flex items-center gap-2 px-3 py-1 rounded-full bg-white/5 border border-white/10">
-                            <Image src={session.user?.image || ''} alt="User" width={20} height={20} className="w-5 h-5 rounded-full" />
-                            <span className="font-gemini text-[10px] uppercase text-zinc-400 cursor-pointer hover:text-red-400" onClick={() => signOut()}>Sign Out</span>
+                <div className="flex items-center gap-4">
+                    {/* Training Badge (Mobile Hidden or Discreet) */}
+                    <div className="hidden md:flex flex-col items-end gap-0.5">
+                        <span className="text-[8px] font-bold uppercase text-zinc-500 tracking-tighter transition-all">IQ Efficiency: 88% — Under Training to improve Logic</span>
+                        <span className="text-[8px] font-bold text-slate-500 dark:text-zinc-400 uppercase tracking-tight italic">Dr. Dhivakaran CMD</span>
+                    </div>
+
+                    <div className="flex items-center gap-3">
+                        {/* Auth Button */}
+                        {session ? (
+                            <div className="flex items-center gap-3 px-3 py-1 rounded-full bg-white/5 border border-white/10 shrink-0">
+                                <div className="flex items-center gap-2">
+                                    <Image src={session.user?.image || ''} alt="User" width={20} height={20} className="w-5 h-5 rounded-full border border-white/10" />
+                                    <span className="font-gemini text-[10px] uppercase text-zinc-400">{session.user?.name?.split(' ')[0]}</span>
+                                </div>
+                                
+                                <div className="h-3 w-[1px] bg-white/10"></div>
+
+                                {(session.user as any)?.role === 'admin' && (
+                                    <Link href="/admin" className="text-[10px] font-bold text-amber-500 uppercase tracking-widest hover:text-amber-400 transition-colors">Admin</Link>
+                                )}
+
+                                <span className="font-gemini text-[10px] uppercase text-zinc-500 cursor-pointer hover:text-red-400 transition-colors" onClick={() => signOut()}>Exit</span>
+                            </div>
+                        ) : (
+                            <div onClick={() => signIn('google')} className="flex items-center gap-2 px-3 py-1 rounded-full bg-blue-500/10 border border-blue-500/20 cursor-pointer hover:bg-blue-500/20 transition-all shrink-0">
+                                <span className="font-gemini text-[10px] font-bold text-blue-400 uppercase tracking-widest">Sign In</span>
+                            </div>
+                        )}
+
+                        {/* Status Badge */}
+                        <div className="flex flex-col items-end gap-1 shrink-0">
+                            <div className="flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/20">
+                                <div className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></div>
+                                <span className="text-[10px] font-bold text-emerald-500 uppercase tracking-widest">Neo Online</span>
+                            </div>
                         </div>
-                    ) : (
-                        <div onClick={() => signIn('google')} className="flex items-center gap-2 px-3 py-1 rounded-full bg-blue-500/10 border border-blue-500/20 cursor-pointer hover:bg-blue-500/20 transition-all">
-                            <span className="font-gemini text-[10px] font-bold text-blue-400 uppercase tracking-widest">Sign In</span>
-                        </div>
-                    )}
-                    <div className="flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/20">
-                        <div className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></div>
-                        <span className="text-[10px] font-bold text-emerald-500 uppercase tracking-widest">Neo Online</span>
                     </div>
                 </div>
             </nav>

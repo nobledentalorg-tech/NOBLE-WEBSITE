@@ -186,7 +186,7 @@ const ChatWidget: React.FC<ChatWidgetProps> = ({ onBookClick }) => {
               </div>
               <div>
                 <h3 className="font-bold text-slate-900 dark:text-white text-sm transition-colors duration-500">Noble Dental AI</h3>
-
+                <p className="text-[8px] font-bold text-slate-400 dark:text-slate-500 uppercase tracking-tight italic">IQ Efficiency: Under Training to Improve</p>
                 {/* Book Link - NEW TRACKED ACTION */}
                 <button onClick={handleBookClick} className="flex items-center gap-1 text-[10px] text-blue-600 dark:text-cyan-400 font-black uppercase tracking-wider hover:underline mt-0.5">
                   Book Appointment <ExternalLink size={10} />

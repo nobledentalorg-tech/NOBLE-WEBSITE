@@ -45,8 +45,15 @@ export default async function AdminPage() {
             <div className="min-h-screen flex items-center justify-center bg-slate-50 text-slate-900 p-8">
                 <div className="max-w-md text-center">
                     <h1 className="text-4xl font-black mb-4">RESTRICTED</h1>
-                    <p className="text-slate-500 mb-6">This dashboard is for Dr. Dhivakaran and authorized clinic staff only.</p>
-                    <a href="/" className="inline-block px-6 py-2 bg-blue-600 text-white rounded-full font-bold">Return Home</a>
+                    <p className="text-slate-500 mb-6 italic">Current: {session?.user?.email || 'Not Signed In'}</p>
+                    <p className="text-slate-500 mb-8 font-medium">This dashboard is limited to Dr. Dhivakaran. If you are the owner, ensure your role is set to 'admin' in the database.</p>
+                    
+                    <div className="flex flex-col gap-3">
+                        <a href="/" className="px-6 py-2 bg-blue-600 text-white rounded-full font-bold">Return Home</a>
+                        <form action={async () => { 'use server'; await signOut(); }}>
+                            <button className="text-xs text-slate-400 underline uppercase font-bold">Sign Out</button>
+                        </form>
+                    </div>
                 </div>
             </div>
         );
