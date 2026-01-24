@@ -1,6 +1,6 @@
 import { PrismaClient } from '@prisma/client';
 import { revalidatePath } from 'next/cache';
-import { auth } from '@/src/auth';
+import { auth, signOut } from '@/src/auth';
 import { redirect } from 'next/navigation';
 
 const prisma = new PrismaClient();
