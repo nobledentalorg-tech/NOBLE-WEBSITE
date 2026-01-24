@@ -123,9 +123,16 @@ const ChatWidget: React.FC<ChatWidgetProps> = ({ onBookClick }) => {
     setInput('');
     setIsLoading(true);
 
-    // 2. Neo Logic Processing (Offline/Local)
-    setTimeout(() => {
-      const response = NeoEngine.processInput(userMsg.text, currentNodeId, messages.length);
+    setIsLoading(true);
+
+    try {
+      // 2. Neo Logic Processing (Server Side)
+      const response = await getNeoResponse(
+        userMsg.text,
+        currentNodeId,
+        messages.map(m => ({ role: m.role || 'user', text: m.text })) // Map to SimpleMessage
+      );
+
       const nextNode = response.node;
       setCurrentNodeId(nextNode.id);
 
@@ -138,8 +145,17 @@ const ChatWidget: React.FC<ChatWidgetProps> = ({ onBookClick }) => {
       };
 
       setMessages(prev => [...prev, aiResponse]);
+    } catch (error) {
+      console.error("AI Error:", error);
+      // Fallback UI
+      setMessages(prev => [...prev, {
+        role: 'model',
+        text: "I'm having trouble connecting to the clinic server. Please try again.",
+        timestamp: Date.now()
+      }]);
+    } finally {
       setIsLoading(false);
-    }, 600);
+    }
   };
 
 

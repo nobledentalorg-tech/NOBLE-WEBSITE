@@ -47,6 +47,8 @@ export async function getNeoResponse(
         // Skip saving safety interceptions or very short answers
         if (hybridResponse.node.id === 'hybrid_gemini' && hybridResponse.node.text.en.length > 20) {
             try {
+                // Fire and forget - don't await this if we want speed, but for serverless we must await.
+                // We wrap in try-catch so DB errors don't block the user response.
                 await prisma.neoMemory.create({
                     data: {
                         query: normalizedQuery,
@@ -55,7 +57,8 @@ export async function getNeoResponse(
                     }
                 });
             } catch (saveError) {
-                // Ignore uniqueness errors
+                console.error("⚠️ Database Save Failed (Non-fatal):", saveError);
+                // Swallow error so AI still replies
             }
         }
 
