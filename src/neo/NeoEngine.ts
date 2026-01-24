@@ -48,9 +48,10 @@ export class NeoEngine {
 
         // LAYER 4: CLINICAL STATE MACHINE
         let resultNode: ClinicalNode | null = null;
-        // ... (rest of processInput) ...
-        // [Existing shortcut and graph traversal code]
-        const shortcut = this.checkShortcuts(cleanInput);
+        
+        // Prevent shortcuts from overriding sub-branch logic if we are already deep
+        const shortcut = (currentStateId === 'root' || !currentStateId) ? this.checkShortcuts(cleanInput) : null;
+        
         if (shortcut) {
             resultNode = shortcut;
         } else {

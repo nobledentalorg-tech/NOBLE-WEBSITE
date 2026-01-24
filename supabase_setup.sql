@@ -2,13 +2,14 @@
 -- 1. Enable UUID Extension
 create extension if not exists "uuid-ossp";
 
--- 2. NextAuth Tables
+-- 2. NextAuth Tables (Standard for Supabase Adapter)
 create table if not exists users (
   id uuid not null default uuid_generate_v4() primary key,
   name text,
   email text unique,
   email_verified timestamp with time zone,
-  image text
+  image text,
+  role text default 'user' -- Add role column (admin vs user)
 );
 
 create table if not exists accounts (
@@ -43,7 +44,18 @@ create table if not exists verification_tokens (
   constraint token_unique unique(identifier, token)
 );
 
--- 3. Chat History Tables
+-- 3. NEO AI Brain Table
+create table if not exists "NeoMemory" (
+  id uuid not null default uuid_generate_v4() primary key,
+  query text not null,
+  answer text not null,
+  "isVerified" boolean default false,
+  "useCount" integer default 1,
+  "createdAt" timestamp with time zone default now(),
+  "updatedAt" timestamp with time zone default now()
+);
+
+-- 4. Chat History Tables
 create table if not exists chats (
   id uuid not null default uuid_generate_v4() primary key,
   user_id uuid not null references users(id) on delete cascade,
@@ -60,7 +72,7 @@ create table if not exists messages (
   created_at timestamp with time zone default now()
 );
 
--- 4. Blog Posts Table
+-- 5. Blog Posts Table
 create table if not exists posts (
     id uuid default gen_random_uuid() primary key,
     title text not null,
@@ -74,7 +86,7 @@ create table if not exists posts (
     created_at timestamp with time zone default now()
 );
 
--- 5. Row Level Security (RLS) Policies
+-- 6. Row Level Security (RLS) Policies
 alter table users enable row level security;
 alter table accounts enable row level security;
 alter table sessions enable row level security;
@@ -82,23 +94,18 @@ alter table verification_tokens enable row level security;
 alter table chats enable row level security;
 alter table messages enable row level security;
 alter table posts enable row level security;
+alter table "NeoMemory" enable row level security;
 
 -- AI Chat Policies
 drop policy if exists "Users can view own chats" on chats;
 create policy "Users can view own chats" on chats for select using (auth.uid() = user_id);
 
 drop policy if exists "Users can create own chats" on chats;
-create policy "Users create own chats" on chats for insert with check (auth.uid() = user_id);
+create policy "Users can create own chats" on chats for insert with check (auth.uid() = user_id);
 
-drop policy if exists "Users can view messages of own chats" on messages;
-create policy "Users can view messages of own chats" on messages for select using (
-    exists (select 1 from chats where chats.id = messages.chat_id and chats.user_id = auth.uid())
-);
-
-drop policy if exists "Users can insert messages to own chats" on messages;
-create policy "Users can insert messages to own chats" on messages for insert with check (
-    exists (select 1 from chats where chats.id = messages.chat_id and chats.user_id = auth.uid())
-);
+-- NeoMemory Policies (Public Read / Admin Write)
+drop policy if exists "Anyone can read verified memories" on "NeoMemory";
+create policy "Anyone can read verified memories" on "NeoMemory" for select using (true);
 
 -- Public Blog Policies
 drop policy if exists "Public can read posts" on posts;

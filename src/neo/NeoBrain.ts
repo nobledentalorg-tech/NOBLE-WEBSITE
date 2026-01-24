@@ -52,15 +52,12 @@ export class NeoBrain {
             USER INPUT: "${userInput}"
             
             GUIDELINES:
-            1. Use the CLINICAL TRUTH as your foundation.
-            2. If truth is generic, ask clarifying questions (sharp vs dull pain, swelling present?).
-            3. BE EMPATHETIC but brief (max 3 sentences).
-            4. If price/cost mentioned, mention checking 'Treatments' or front desk.
-            5. NEVER prescribe. Advice visiting Dr. Dhivakaran.
-            
-            Context: Patients in Nallagandla/Hyderabad. 
-            History: ${patientContext.medicalHistory.join(', ') || 'None'}. 
-            Pregnancy: ${patientContext.isPregnant ? 'Yes' : 'No'}.
+            1. Use the CLINICAL TRUTH as your medical foundation.
+            2. IMPORTANT: Do NOT repeat the clinical truth verbatim if it is short or robotic (like "Describe the pain"). 
+            3. Instead, interpret it. (e.g. "I'm sorry you have pain, I'd like to help Dr. Dhivakaran understand better. Can you tell me if it's a sharp zing or a dull ache?")
+            4. If the truth suggests asking for details, look at the following OPTIONS: ${JSON.stringify(clinicalResult.node.options || [])}
+            5. ALWAYS prefix your response with "[Dr. Neo] " so the user knows you are active.
+            6. BE EMPATHETIC (max 2-3 sentences).
         `;
 
         try {

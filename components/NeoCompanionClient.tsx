@@ -136,12 +136,13 @@ export default function NeoCompanionClient() {
             const nextNode = neoResponse.node;
             setCurrentNodeId(nextNode.id);
 
-            // C. Construct AI Response
+            // C. Construct AI Response (Include options for interactivity)
             const aiResponse: ChatMessage = {
                 role: 'model',
                 text: nextNode.text.en,
                 timestamp: Date.now(),
                 possibilities: nextNode.possibilities,
+                options: nextNode.options, // CRITICAL FIX: Persist buttons
                 urgency: neoResponse.urgency
             };
 
@@ -253,8 +254,23 @@ export default function NeoCompanionClient() {
                             <div key={i} className={`flex gap-4 ${msg.role === 'user' ? 'justify-end' : 'justify-start'} animate-in slide-in-from-bottom-2`}>
                                 {msg.role !== 'user' && <div className="w-8 h-8 rounded-full bg-zinc-900 border border-white/10 flex items-center justify-center shrink-0"><Flame size={14} className="text-red-500" /></div>}
 
-                                <div className={`max-w-[85%] p-5 rounded-2xl ${msg.role === 'user' ? 'bg-red-600 text-white rounded-tr-none' : 'glass-panel rounded-tl-none'}`}>
-                                    <p className="font-gemini text-sm md:text-base leading-relaxed whitespace-pre-wrap">{msg.text}</p>
+                                <div className={`max-w-[85%] p-5 rounded-2xl ${msg.role === 'user' ? 'bg-red-600 text-white rounded-tr-none' : 'glass-panel rounded-tl-none border-zinc-200'}`}>
+                                    <p className={`font-gemini text-sm md:text-base leading-relaxed whitespace-pre-wrap ${msg.role !== 'user' ? 'text-zinc-900 dark:text-zinc-100' : 'text-white'}`}>{msg.text}</p>
+
+                                    {/* Clinical Tree Options (Interactive Buttons) */}
+                                    {msg.options && msg.options.length > 0 && (
+                                        <div className="mt-4 flex flex-wrap gap-2">
+                                            {msg.options.map((opt: any, idx: number) => (
+                                                <button 
+                                                    key={idx} 
+                                                    onClick={() => handleSend(opt.label.en)}
+                                                    className="px-3 py-1.5 rounded-full bg-red-500/10 border border-red-500/20 text-[11px] font-bold uppercase text-red-600 hover:bg-red-500 hover:text-white transition-all"
+                                                >
+                                                    {opt.label.en}
+                                                </button>
+                                            ))}
+                                        </div>
+                                    )}
 
                                     {/* Possibility Cards */}
                                     {msg.possibilities && msg.possibilities.length > 0 && (

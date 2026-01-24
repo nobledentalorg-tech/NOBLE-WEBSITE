@@ -1,11 +1,18 @@
 import { PrismaClient } from '@prisma/client';
 import { revalidatePath } from 'next/cache';
+import { auth } from '@/src/auth';
+import { redirect } from 'next/navigation';
 
 const prisma = new PrismaClient();
 
 // Server Action to Verify/Delete
 async function updateMemory(formData: FormData) {
     'use server';
+    
+    // Security check for the Action too
+    const session = await auth();
+    if (session?.user?.role !== 'admin') throw new Error("Unauthorized");
+
     const id = formData.get('id') as string;
     const action = formData.get('action') as string;
     const newAnswer = formData.get('answer') as string;
@@ -30,6 +37,21 @@ interface NeoMemory {
 }
 
 export default async function AdminPage() {
+    const session = await auth();
+
+    // ⛔ SECURITY: Only allow Admins
+    if (!session || session.user?.role !== 'admin') {
+        return (
+            <div className="min-h-screen flex items-center justify-center bg-slate-50 text-slate-900 p-8">
+                <div className="max-w-md text-center">
+                    <h1 className="text-4xl font-black mb-4">RESTRICTED</h1>
+                    <p className="text-slate-500 mb-6">This dashboard is for Dr. Dhivakaran and authorized clinic staff only.</p>
+                    <a href="/" className="inline-block px-6 py-2 bg-blue-600 text-white rounded-full font-bold">Return Home</a>
+                </div>
+            </div>
+        );
+    }
+
     // Fetch all memories, newest first
     const memories = await prisma.neoMemory.findMany({
         orderBy: { createdAt: 'desc' }
