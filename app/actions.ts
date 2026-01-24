@@ -1,8 +1,8 @@
 'use server';
 
-import { NeoEngine } from '@/neo/NeoEngine';
-import { NeoBrain, PatientContext } from '@/neo/NeoBrain';
-import { NeoResponse } from '@/types/neoSchema';
+import { NeoEngine } from '@/src/neo/NeoEngine';
+import { NeoBrain, PatientContext } from '@/src/neo/NeoBrain';
+import { NeoResponse } from '@/src/types/neoSchema';
 import { GoogleGenerativeAI } from '@google/generative-ai';
 import { PrismaClient } from '@prisma/client';
 
