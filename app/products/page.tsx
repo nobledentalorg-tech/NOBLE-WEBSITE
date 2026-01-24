@@ -1,5 +1,8 @@
 import type { Metadata } from 'next';
 import ProductsRefactored from './ProductsRefactored';
+import { PrismaClient } from '@prisma/client';
+
+const prisma = new PrismaClient();
 
 export const metadata: Metadata = {
    title: 'Dental Pharmacy & Products | Noble Dental Care',
@@ -23,6 +26,11 @@ export const metadata: Metadata = {
    }
 };
 
-export default function ProductsPage() {
-   return <ProductsRefactored />;
+export default async function ProductsPage() {
+   const dbProducts = await prisma.pharmacyProduct.findMany({
+       orderBy: { createdAt: 'desc' }
+   });
+
+   return <ProductsRefactored dbProducts={dbProducts} />;
 }
+

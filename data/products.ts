@@ -19,7 +19,9 @@ export interface ProductData {
   isPrescription: boolean;
   rating: number;
   reviews: number;
+  available: boolean;
 }
+
 
 export const nobleProducts: ProductData[] = [
   // --- BEST SELLERS & PREVENTIVE ---
@@ -43,7 +45,8 @@ export const nobleProducts: ProductData[] = [
     form: 'Foam',
     isPrescription: false,
     rating: 4.9,
-    reviews: 1240
+    reviews: 1240,
+    available: true
   },
   {
     id: 'enafix-cream',
@@ -65,7 +68,8 @@ export const nobleProducts: ProductData[] = [
     form: 'Cream',
     isPrescription: false,
     rating: 4.8,
-    reviews: 856
+    reviews: 856,
+    available: true
   },
   {
     id: 'aclaim-cream',
@@ -87,7 +91,8 @@ export const nobleProducts: ProductData[] = [
     form: 'Cream',
     isPrescription: false,
     rating: 4.7,
-    reviews: 320
+    reviews: 320,
+    available: true
   },
   
   // --- ORTHODONTICS ---
@@ -111,7 +116,8 @@ export const nobleProducts: ProductData[] = [
     form: 'Paste',
     isPrescription: false,
     rating: 4.6,
-    reviews: 540
+    reviews: 540,
+    available: true
   },
   {
     id: 'amflor-rinse',
@@ -133,7 +139,8 @@ export const nobleProducts: ProductData[] = [
     form: 'Liquid',
     isPrescription: false,
     rating: 4.8,
-    reviews: 410
+    reviews: 410,
+    available: true
   },
 
   // --- ANTIBIOTICS & PAIN (Rx Only) ---
@@ -157,7 +164,8 @@ export const nobleProducts: ProductData[] = [
     form: 'Tablet',
     isPrescription: true,
     rating: 4.9,
-    reviews: 2100
+    reviews: 2100,
+    available: true
   },
   {
     id: 'ketorol-dt',
@@ -179,7 +187,8 @@ export const nobleProducts: ProductData[] = [
     form: 'Tablet',
     isPrescription: true,
     rating: 4.7,
-    reviews: 890
+    reviews: 890,
+    available: true
   },
 
   // --- KIDS DENTAL ---
@@ -203,7 +212,8 @@ export const nobleProducts: ProductData[] = [
     form: 'Kit',
     isPrescription: false,
     rating: 4.8,
-    reviews: 670
+    reviews: 670,
+    available: true
   },
   
   // --- WELLNESS & SPECIALTY ---
@@ -227,7 +237,8 @@ export const nobleProducts: ProductData[] = [
     form: 'Spray',
     isPrescription: false,
     rating: 4.6,
-    reviews: 150
+    reviews: 150,
+    available: true
   },
   {
     id: 'desmocare',
@@ -249,7 +260,8 @@ export const nobleProducts: ProductData[] = [
     form: 'Liquid',
     isPrescription: false,
     rating: 4.9,
-    reviews: 310
+    reviews: 310,
+    available: true
   },
   {
     id: 'densive-powder',
@@ -271,7 +283,8 @@ export const nobleProducts: ProductData[] = [
     form: 'Powder',
     isPrescription: false,
     rating: 4.5,
-    reviews: 420
+    reviews: 420,
+    available: true
   },
   {
     id: 'dental-probiotic',
@@ -293,6 +306,8 @@ export const nobleProducts: ProductData[] = [
     form: 'Powder',
     isPrescription: false,
     rating: 4.7,
-    reviews: 180
+    reviews: 180,
+    available: true
   }
 ];
+

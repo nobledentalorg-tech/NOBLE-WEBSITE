@@ -97,8 +97,9 @@ const Hero: React.FC<HeroProps> = ({ onBookClick }) => {
             </div>
 
             <h1 className="text-5xl md:text-[5.5rem] font-black text-slate-900 dark:text-white leading-[0.85] tracking-tighter">
-              Biological Precision.
+              Best Dentist in <span className="text-blue-600">Nallagandla.</span>
             </h1>
+
 
             <p className="text-xl text-slate-500 dark:text-slate-400 max-w-xl leading-relaxed">
               At Noble Dental Care, we specialize in high-precision surgery and advanced endodontics. Experience a clinic that defines the future of painless oral science.

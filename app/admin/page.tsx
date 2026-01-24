@@ -15,7 +15,9 @@ import {
     CheckCircle, 
     Clock, 
     ExternalLink,
-    Save
+    Save,
+    ShoppingBag,
+    AlertCircle
 } from 'lucide-react';
 
 const prisma = new PrismaClient();
@@ -115,6 +117,48 @@ async function saveCase(formData: FormData) {
     revalidatePath('/case-studies');
 }
 
+async function saveProduct(formData: FormData) {
+    'use server';
+    const session = await auth();
+    if ((session?.user as any)?.role !== 'admin') throw new Error("Unauthorized");
+
+    const id = formData.get('id') as string;
+    const name = formData.get('name') as string;
+    const brand = formData.get('brand') as string;
+    const category = formData.get('category') as string;
+    const clinic_price = parseFloat(formData.get('clinic_price') as string);
+    const available = formData.get('available') === 'true';
+    const image = formData.get('image') as string;
+    const subText = formData.get('subText') as string;
+
+    const data: any = {
+        name,
+        brand,
+        category,
+        clinicPrice: clinic_price,
+        available,
+        image,
+        subText,
+    };
+
+    if (id) {
+        await prisma.pharmacyProduct.update({ where: { id }, data });
+    } else {
+        await prisma.pharmacyProduct.create({ data });
+    }
+    revalidatePath('/admin');
+    revalidatePath('/products');
+}
+
+async function deleteProduct(id: string) {
+    'use server';
+    const session = await auth();
+    if ((session?.user as any)?.role !== 'admin') throw new Error("Unauthorized");
+    await prisma.pharmacyProduct.delete({ where: { id } });
+    revalidatePath('/admin');
+    revalidatePath('/products');
+}
+
 // --- UI COMPONENT ---
 
 export default async function AdminPage({ searchParams }: { searchParams: { tab?: string } }) {
@@ -138,11 +182,13 @@ export default async function AdminPage({ searchParams }: { searchParams: { tab?
     const memories = await prisma.neoMemory.findMany({ orderBy: { createdAt: 'desc' } });
     const posts = await prisma.post.findMany({ orderBy: { createdAt: 'desc' } });
     const cases = await prisma.caseStudy.findMany({ orderBy: { createdAt: 'desc' } });
+    const products = await prisma.pharmacyProduct.findMany({ orderBy: { createdAt: 'desc' } });
 
     const tabs = [
         { id: 'ai', label: 'Neo AI Brain', icon: <Brain size={18} /> },
         { id: 'posts', label: 'Clinical Blog', icon: <BookOpen size={18} /> },
         { id: 'cases', label: 'Case Studies', icon: <FileText size={18} /> },
+        { id: 'pharmacy', label: 'Pharmacy', icon: <ShoppingBag size={18} /> },
     ];
 
     return (
@@ -317,8 +363,80 @@ export default async function AdminPage({ searchParams }: { searchParams: { tab?
                         </div>
                     </div>
                 )}
+
+                {/* --- PHARMACY TAB --- */}
+                {activeTab === 'pharmacy' && (
+                    <div className="space-y-8">
+                        <section className="bg-indigo-600 rounded-3xl p-8 text-white">
+                            <h2 className="text-3xl font-black mb-2 italic">Clinical Inventory.</h2>
+                            <p className="text-indigo-100 mb-8 opacity-80">Add or manage clinic-exclusive products (Group Pharma etc).</p>
+                            <form action={saveProduct} className="grid grid-cols-1 md:grid-cols-3 gap-4 bg-black/20 p-6 rounded-2xl">
+                                <div className="md:col-span-2">
+                                    <label className="text-[10px] uppercase font-bold text-indigo-200 block mb-1">Product Name</label>
+                                    <input name="name" required placeholder="SHY-NM Toothpaste" className="w-full bg-white/10 border border-white/10 rounded-xl p-3 text-white outline-none" />
+                                </div>
+                                <div>
+                                    <label className="text-[10px] uppercase font-bold text-indigo-200 block mb-1">Brand</label>
+                                    <input name="brand" placeholder="Group Pharma" className="w-full bg-white/10 border border-white/10 rounded-xl p-3 text-white outline-none" />
+                                </div>
+                                <div>
+                                    <label className="text-[10px] uppercase font-bold text-indigo-200 block mb-1">Category</label>
+                                    <select name="category" className="w-full bg-white/10 border border-white/10 rounded-xl p-3 text-white outline-none text-black">
+                                        <option value="dental">Dental</option>
+                                        <option value="wellness">Wellness</option>
+                                        <option value="ortho">Ortho</option>
+                                        <option value="preventive">Preventive</option>
+                                    </select>
+                                </div>
+                                <div>
+                                    <label className="text-[10px] uppercase font-bold text-indigo-200 block mb-1">Clinic Price (₹)</label>
+                                    <input name="clinic_price" type="number" step="0.01" required className="w-full bg-white/10 border border-white/10 rounded-xl p-3 text-white outline-none" />
+                                </div>
+                                <div>
+                                    <label className="text-[10px] uppercase font-bold text-indigo-200 block mb-1">Available</label>
+                                    <select name="available" className="w-full bg-white/10 border border-white/10 rounded-xl p-3 text-white outline-none text-black">
+                                        <option value="true">In Stock (Active)</option>
+                                        <option value="false">Out of Stock (SEO Only)</option>
+                                    </select>
+                                </div>
+                                <div className="md:col-span-3">
+                                    <label className="text-[10px] uppercase font-bold text-indigo-200 block mb-1">Short Description</label>
+                                    <textarea name="subText" rows={2} className="w-full bg-white/10 border border-white/10 rounded-xl p-3 text-white outline-none"></textarea>
+                                </div>
+                                <div className="md:col-span-3">
+                                    <label className="text-[10px] uppercase font-bold text-indigo-200 block mb-1">Image URL</label>
+                                    <input name="image" placeholder="https://..." className="w-full bg-white/10 border border-white/10 rounded-xl p-3 text-white outline-none" />
+                                </div>
+                                <button className="md:col-span-3 bg-white text-indigo-600 py-4 rounded-xl font-black uppercase tracking-widest hover:bg-indigo-50 transition-colors">
+                                    Add/Update Product
+                                </button>
+                            </form>
+                        </section>
+
+                        <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
+                            {products.map(p => (
+                                <div key={p.id} className={`bg-white/5 border border-white/5 rounded-3xl p-6 transition-all relative ${!p.available ? 'opacity-50 grayscale' : ''}`}>
+                                    <h3 className="font-bold text-sm mb-1">{p.name}</h3>
+                                    <p className="text-[10px] text-slate-500 uppercase font-black">{p.brand} • ₹{p.clinicPrice}</p>
+                                    <div className="mt-4 flex items-center justify-between">
+                                        <span className={`text-[8px] px-2 py-0.5 rounded-full font-bold uppercase ${p.available ? 'bg-green-500/20 text-green-400' : 'bg-red-500/20 text-red-400'}`}>
+                                            {p.available ? 'In Stock' : 'Out of Stock'}
+                                        </span>
+                                        <div className="flex items-center gap-2">
+                                            {p.available ? <CheckCircle size={14} className="text-green-500" /> : <AlertCircle size={14} className="text-red-500" />}
+                                            <form action={async () => { 'use server'; await deleteProduct(p.id); }}>
+                                                <button className="text-slate-500 hover:text-red-500 transition-colors">
+                                                    <Trash2 size={14} />
+                                                </button>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            ))}
+                        </div>
+                    </div>
+                )}
             </main>
         </div>
     );
 }
-

@@ -94,6 +94,33 @@ model CaseStudy {
   @@map("case_studies")
 }
 
+model PharmacyProduct {
+  id             String   @id @default(uuid())
+  name           String
+  brand          String
+  category       String   @default("Dental")
+  image          String?
+  bgImage        String?  @map("bg_image")
+  titleImage     String?  @map("title_image")
+  clinicPrice    Float    @map("clinic_price")
+  mrp            Float?
+  saving         Float?
+  subText        String?  @map("sub_text")
+  badges         String[]
+  tags           String[]
+  indications    String[]
+  usage          String[]
+  ingredients    String[]
+  form           String?  
+  isPrescription Boolean  @default(false) @map("is_prescription")
+  rating         Float    @default(5.0)
+  reviews        Int      @default(0)
+  available      Boolean  @default(true)
+  createdAt      DateTime @default(now()) @map("created_at")
+
+  @@map("pharmacy_products")
+}
+
 model VerificationToken {
   identifier String
   token      String   @unique
@@ -101,4 +128,5 @@ model VerificationToken {
 
   @@unique([identifier, token])
 }
+
 

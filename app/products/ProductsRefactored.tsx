@@ -99,22 +99,32 @@ interface CartItem extends ProductData {
 
 // Metadata removed for client component
 
-export default function ProductsRefactored() {
-   const [inventory] = useState<ProductData[]>(nobleProducts);
+export default function ProductsRefactored({ dbProducts = [] }: { dbProducts?: any[] }) {
+   // Merge static products with DB products
+   // Priority: DB products come first, then static
+   const [inventory] = useState<any[]>(() => {
+       const all = [...dbProducts, ...nobleProducts];
+       // Sort: Available products first
+       return all.sort((a, b) => {
+           if (a.available === b.available) return 0;
+           return a.available ? -1 : 1;
+       });
+   });
+   
    const [searchQuery, setSearchQuery] = useState('');
    const [activeCategory, setActiveCategory] = useState('All');
-   const [selectedProduct, setSelectedProduct] = useState<ProductData | null>(null);
+   const [selectedProduct, setSelectedProduct] = useState<any | null>(null);
    const [cart, setCart] = useState<CartItem[]>([]);
    const [isCartOpen, setIsCartOpen] = useState(false);
    const [isBookingModalOpen, setIsBookingModalOpen] = useState(false);
 
    const filteredProducts = inventory.filter(p => {
-      const catMatch = activeCategory === 'All' || p.category === activeCategory.toLowerCase();
+      const catMatch = activeCategory === 'All' || p.category?.toLowerCase() === activeCategory.toLowerCase();
       const searchMatch = p.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
-         p.brand.toLowerCase().includes(searchQuery.toLowerCase()) ||
-         p.tags.some(t => t.toLowerCase().includes(searchQuery.toLowerCase()));
+         (p.brand || '').toLowerCase().includes(searchQuery.toLowerCase());
       return catMatch && searchMatch;
    });
+
 
    const addToCart = (product: ProductData) => {
       setCart(prev => {
@@ -176,20 +186,22 @@ export default function ProductsRefactored() {
                </div>
             </div>
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-10">
-               {filteredProducts.map((product) => (
+                {filteredProducts.map((product) => (
                   <RevealOnScroll key={product.id}>
-                     <div className="bg-white dark:bg-[#151b2b] rounded-[2.5rem] border border-slate-100 dark:border-white/5 shadow-sm hover:shadow-2xl transition-all duration-500 flex flex-col h-full group relative overflow-visible">
+                     <div className={`bg-white dark:bg-[#151b2b] rounded-[2.5rem] border border-slate-100 dark:border-white/5 shadow-sm hover:shadow-2xl transition-all duration-500 flex flex-col h-full group relative overflow-visible ${!product.available ? 'opacity-70 grayscale-[0.5]' : ''}`}>
 
                         <div className="product-3d-card cursor-pointer" onClick={() => setSelectedProduct(product)}>
                            <div className="product-3d-wrapper">
-                              <Image src={product.bgImage} className="product-3d-cover" alt={`${product.name} background`} width={300} height={320} unoptimized />
+                              {product.bgImage && <Image src={product.bgImage} className="product-3d-cover" alt={`${product.name} background`} width={300} height={320} unoptimized />}
                            </div>
-                           <Image src={product.titleImage} className="product-3d-title" alt={`${product.name} brand logo`} width={200} height={100} unoptimized />
-                           <Image src={product.image} className="product-3d-character" alt={`${product.name} product shot`} width={250} height={250} unoptimized />
+                           {product.titleImage && <Image src={product.titleImage} className="product-3d-title" alt={`${product.name} brand logo`} width={200} height={100} unoptimized />}
+                           {product.image && <Image src={product.image} className="product-3d-character" alt={`${product.name} product shot`} width={250} height={250} unoptimized />}
 
                            <div className="absolute bottom-4 left-4 flex gap-2 z-10">
-                              {product.badges.map(b => (
+                              {!product.available && (
+                                 <span className="px-3 py-1 bg-red-600 text-white rounded-lg text-[8px] font-black uppercase shadow-md">Out of Stock</span>
+                              )}
+                              {product.badges?.map((b: string) => (
                                  <span key={b} className="px-3 py-1 bg-white/90 dark:bg-black/70 rounded-lg text-[8px] font-black uppercase shadow-md dark:text-white">{b}</span>
                               ))}
                            </div>
@@ -203,22 +215,28 @@ export default function ProductsRefactored() {
                            <div className="mt-auto flex items-center justify-between">
                               <div>
                                  <div className="text-2xl font-black dark:text-white">₹{product.clinicPrice}</div>
-                                 <p className="text-[9px] font-bold text-green-500 uppercase">Save ₹{product.saving}</p>
+                                 {product.saving > 0 && <p className="text-[9px] font-bold text-green-500 uppercase">Save ₹{product.saving}</p>}
                               </div>
                               <div className="flex gap-2">
                                  <button onClick={(e) => { e.stopPropagation(); setSelectedProduct(product); }} className="w-10 h-10 bg-slate-100 dark:bg-white/5 text-slate-600 dark:text-white rounded-xl flex items-center justify-center transition-all hover:bg-slate-200">
                                     <Info size={18} />
                                  </button>
-                                 <button onClick={() => addToCart(product)} className="w-12 h-12 bg-blue-600 text-white rounded-2xl flex items-center justify-center shadow-xl hover:scale-110 active:scale-95 transition-all">
-                                    <Plus size={20} />
-                                 </button>
+                                 {product.available ? (
+                                    <button onClick={() => addToCart(product)} className="w-12 h-12 bg-blue-600 text-white rounded-2xl flex items-center justify-center shadow-xl hover:scale-110 active:scale-95 transition-all">
+                                       <Plus size={20} />
+                                    </button>
+                                 ) : (
+                                    <button disabled className="w-12 h-12 bg-slate-200 dark:bg-white/5 text-slate-400 rounded-2xl flex items-center justify-center cursor-not-allowed">
+                                       <ShoppingBag size={20} />
+                                    </button>
+                                 )}
                               </div>
                            </div>
                         </div>
                      </div>
                   </RevealOnScroll>
                ))}
-            </div>
+
          </div>
 
          {/* Product Detail Popup Modal */}
