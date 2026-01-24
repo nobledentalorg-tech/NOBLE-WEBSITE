@@ -200,7 +200,7 @@ export default async function AdminPage({ searchParams }: { searchParams: { tab?
                                         <div className="flex-1">
                                             <div className="flex items-center gap-3 mb-2">
                                                 <span className={`w-2 h-2 rounded-full ${mem.isVerified ? 'bg-green-500' : 'bg-amber-500 pulse'}`}></span>
-                                                <h3 className="font-bold text-slate-100 italic">"{mem.query}"</h3>
+                                                <h3 className="font-bold text-slate-100 italic">&quot;{mem.query}&quot;</h3>
                                             </div>
                                             <form action={updateMemory} className="space-y-4">
                                                 <input type="hidden" name="id" value={mem.id} />

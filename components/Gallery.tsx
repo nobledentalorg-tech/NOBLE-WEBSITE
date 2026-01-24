@@ -140,6 +140,61 @@ const OrthoAnim = () => (
 
 // --- MAIN COMPONENT ---
 
+// --- PLAYLIST (WIRED WITH WORKING DEMO URLs) ---
+const playlist = [
+  {
+    type: "audio",
+    name: "The Bionic Tooth",
+    artist: "Clinical Engineering",
+    description: "Why titanium implants are the only permanent solution for bone loss.",
+    component: <ImplantsAnim />, 
+    // Using reliable SoundHelix test audio. Replace with your 'implants.mp3' later.
+    audio: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3",
+    category: "Surgery",
+    tags: ['Implants', 'Biology']
+  },
+  {
+    type: "audio",
+    name: "The Instagram Trap",
+    artist: "Dr. Deepak",
+    description: "Are veneers worth it? Avoiding the 'Chiclet' look.",
+    component: <EthicsAnim />,
+    audio: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3", 
+    category: "Ethics",
+    tags: ['Veneers', 'Truth']
+  },
+  {
+    type: "audio",
+    name: "The Heart-Mouth Loop",
+    artist: "Systemic Health",
+    description: "The proven link between bleeding gums and heart disease.",
+    component: <HealthAnim />,
+    audio: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-3.mp3",
+    category: "Health",
+    tags: ['Wellness', 'Risk']
+  },
+  {
+    type: "journal",
+    name: "The 3-Year Warning",
+    artist: "Tech Analysis",
+    description: "How AI scanners detect decay 3 years before it becomes visible.",
+    component: <TechAnim />,
+    audio: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-8.mp3", 
+    category: "Technology",
+    tags: ['AI', 'Laser']
+  },
+  {
+    type: "journal",
+    name: "Invisible Physics",
+    artist: "Aligner Tech",
+    description: "The engineering behind clear plastic pushing teeth.",
+    component: <OrthoAnim />,
+    audio: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-15.mp3",
+    category: "Ortho",
+    tags: ['Physics', 'Aligners']
+  }
+];
+
 export default function Gallery() {
   const [currentTrackIndex, setCurrentTrackIndex] = useState(0);
   const [isTimerPlaying, setIsTimerPlaying] = useState(false);
@@ -152,60 +207,32 @@ export default function Gallery() {
   const audioRef = useRef<HTMLAudioElement | null>(null);
   const progressRef = useRef<HTMLDivElement | null>(null);
 
-  // --- PLAYLIST (WIRED WITH WORKING DEMO URLs) ---
-  const playlist = [
-    {
-      type: "audio",
-      name: "The Bionic Tooth",
-      artist: "Clinical Engineering",
-      description: "Why titanium implants are the only permanent solution for bone loss.",
-      component: <ImplantsAnim />, 
-      // Using reliable SoundHelix test audio. Replace with your 'implants.mp3' later.
-      audio: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3",
-      category: "Surgery",
-      tags: ['Implants', 'Biology']
-    },
-    {
-      type: "audio",
-      name: "The Instagram Trap",
-      artist: "Dr. Deepak",
-      description: "Are veneers worth it? Avoiding the 'Chiclet' look.",
-      component: <EthicsAnim />,
-      audio: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3", 
-      category: "Ethics",
-      tags: ['Veneers', 'Truth']
-    },
-    {
-      type: "audio",
-      name: "The Heart-Mouth Loop",
-      artist: "Systemic Health",
-      description: "The proven link between bleeding gums and heart disease.",
-      component: <HealthAnim />,
-      audio: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-3.mp3",
-      category: "Health",
-      tags: ['Wellness', 'Risk']
-    },
-    {
-      type: "journal",
-      name: "The 3-Year Warning",
-      artist: "Tech Analysis",
-      description: "How AI scanners detect decay 3 years before it becomes visible.",
-      component: <TechAnim />,
-      audio: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-8.mp3", 
-      category: "Technology",
-      tags: ['AI', 'Laser']
-    },
-    {
-      type: "journal",
-      name: "Invisible Physics",
-      artist: "Aligner Tech",
-      description: "The engineering behind clear plastic pushing teeth.",
-      component: <OrthoAnim />,
-      audio: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-15.mp3",
-      category: "Ortho",
-      tags: ['Physics', 'Aligners']
+  const handleNext = React.useCallback(() => {
+    setIsTimerPlaying(true); 
+    setCurrentTrackIndex((prev) => (prev + 1) % playlist.length);
+  }, []);
+
+  const handlePrev = React.useCallback(() => {
+    setIsTimerPlaying(true); 
+    setCurrentTrackIndex((prev) => (prev - 1 + playlist.length) % playlist.length);
+  }, []);
+
+  const togglePlay = React.useCallback(() => {
+    if(!audioRef.current) return;
+    if(isTimerPlaying) { 
+      audioRef.current.pause(); 
+      setIsTimerPlaying(false); 
+    } else { 
+      audioRef.current.play(); 
+      setIsTimerPlaying(true); 
     }
-  ];
+  }, [isTimerPlaying]);
+
+  const toggleMute = React.useCallback(() => {
+    if(!audioRef.current) return;
+    audioRef.current.muted = !isMuted;
+    setIsMuted(!isMuted);
+  }, [isMuted]);
 
   const currentTrack = playlist[currentTrackIndex];
 
@@ -244,7 +271,7 @@ export default function Gallery() {
       audio.removeEventListener('loadedmetadata', updateProgress);
       audio.removeEventListener('ended', handleEnded);
     };
-  }, []);
+  }, [handleNext]);
 
   useEffect(() => {
     if (audioRef.current) {
@@ -258,34 +285,7 @@ export default function Gallery() {
         setCurrentTime("0:00");
       }
     }
-  }, [currentTrackIndex]);
-
-  const togglePlay = () => {
-    if(!audioRef.current) return;
-    if(isTimerPlaying) { 
-      audioRef.current.pause(); 
-      setIsTimerPlaying(false); 
-    } else { 
-      audioRef.current.play(); 
-      setIsTimerPlaying(true); 
-    }
-  };
-
-  const toggleMute = () => {
-    if(!audioRef.current) return;
-    audioRef.current.muted = !isMuted;
-    setIsMuted(!isMuted);
-  }
-
-  const handleNext = () => {
-    setIsTimerPlaying(true); 
-    setCurrentTrackIndex((prev) => (prev + 1) % playlist.length);
-  };
-
-  const handlePrev = () => {
-    setIsTimerPlaying(true); 
-    setCurrentTrackIndex((prev) => (prev - 1 + playlist.length) % playlist.length);
-  };
+  }, [currentTrackIndex, isTimerPlaying]);
 
   const handleSeek = (e: React.MouseEvent<HTMLDivElement>) => {
     if (!audioRef.current || !progressRef.current) return;
@@ -299,6 +299,7 @@ export default function Gallery() {
     setIsTimerPlaying(true);
     setShowPlaylist(false);
   }
+
 
   return (
     <section id="gallery" className="py-24 relative transition-colors duration-500 overflow-hidden bg-slate-50 dark:bg-[#0B1019]">
