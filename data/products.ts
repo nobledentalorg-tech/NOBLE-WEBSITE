@@ -3,6 +3,7 @@ export interface ProductData {
   name: string;
   brand: string;
   category: string;
+  healthIssue?: string; // New: Categorization by health issue (Netmeds style)
   image: string;
   bgImage: string;
   titleImage: string;
@@ -15,21 +16,209 @@ export interface ProductData {
   indications: string[];
   usage: string[];
   ingredients: string[];
-  form: 'Paste' | 'Gel' | 'Liquid' | 'Tablet' | 'Kit' | 'Cream' | 'Spray' | 'Powder' | 'Foam';
+  form: 'Paste' | 'Gel' | 'Liquid' | 'Tablet' | 'Kit' | 'Cream' | 'Spray' | 'Powder' | 'Foam' | 'Capsule';
   isPrescription: boolean;
   rating: number;
   reviews: number;
   available: boolean;
+  
+  // --- NEW CLINICAL FIELDS (NETMEDS STYLE) ---
+  introduction?: string;
+  howItWorks?: {
+    description: string;
+    animationType: 'ions' | 'shield' | 'bacteria-kill' | 'none'; // MOA Animation Trigger
+  };
+  sideEffects?: {
+    common: string[];
+    uncommon: string[];
+    rare: string[];
+  };
+  warnings?: {
+    pregnancy: string;
+    breastfeeding: string;
+    kidney: string;
+    liver: string;
+  };
+  drugInteractions?: string[];
+  tripathiRef?: string; // K.D. Tripathi Reference
 }
 
 
+
 export const nobleProducts: ProductData[] = [
-  // --- BEST SELLERS & PREVENTIVE ---
+  // --- BACTERIAL INFECTIONS (NETMEDS DATA) ---
+  {
+    id: 'resteclin-500',
+    name: 'Resteclin 500mg Capsule',
+    brand: 'Abbott',
+    category: 'dental',
+    healthIssue: 'Bacterial Infection',
+    image: 'https://www.netmeds.com/images/product-v1/600x600/8237271/resteclin_500mg_capsule_10s_0_1.jpg',
+    bgImage: 'https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?auto=format&fit=crop&q=80&w=600',
+    titleImage: 'https://via.placeholder.com/200x50/000000/FFFFFF?text=RESTECLIN',
+    clinicPrice: 42,
+    mrp: 50,
+    saving: 8,
+    subText: 'Broad-spectrum Tetracycline antibiotic for acute dental infections.',
+    badges: ['Rx Only', 'Antibiotic'],
+    tags: ['infection', 'antibiotic', 'tetracycline'],
+    indications: ['Dental Abscess', 'Gingivitis', 'Respiratory Infections'],
+    usage: ['Swallow 1 hr before or 2 hrs after meals', 'Do not lie down for 30 mins'],
+    ingredients: ['Tetracycline 500mg'],
+    form: 'Capsule',
+    isPrescription: true,
+    rating: 4.8,
+    reviews: 540,
+    available: true,
+    introduction: 'RESTECLIN 500MG CAPSULE contains Tetracycline which belongs to the group of medicines called Antibiotics. It works by stopping bacterial growth.',
+    howItWorks: {
+      description: 'Inhibits bacterial protein synthesis by binding to the 30S ribosomal subunit, preventing the addition of amino acids to the growing peptide chain.',
+      animationType: 'bacteria-kill'
+    },
+    sideEffects: {
+      common: ['Nausea', 'Vomiting', 'Diarrhea'],
+      uncommon: ['Skin Peeling', 'Rash'],
+      rare: ['Vision Loss', 'Pancreatitis']
+    },
+    warnings: {
+      pregnancy: 'Not recommended; causes permanent tooth discoloration in unborn babies.',
+      breastfeeding: 'Not recommended; passes into breast milk.',
+      kidney: 'Not recommended for severe kidney disease.',
+      liver: 'Use with caution in liver impairment.'
+    },
+    tripathiRef: 'Chapter 52: Tetracyclines and Chloramphenicol'
+  },
+  {
+    id: 'metrogyl-400',
+    name: 'Metrogyl 400mg Tablet',
+    brand: 'JB Chemicals',
+    category: 'dental',
+    healthIssue: 'Bacterial Infection',
+    image: 'https://www.netmeds.com/images/product-v1/600x600/15992/metrogyl_400mg_tablet_15s_0_1.jpg',
+    bgImage: 'https://images.unsplash.com/photo-1588776814546-1ffcf47267a5?auto=format&fit=crop&q=80&w=600',
+    titleImage: 'https://via.placeholder.com/200x50/000000/FFFFFF?text=METROGYL',
+    clinicPrice: 22,
+    mrp: 25,
+    saving: 3,
+    subText: 'Effective against anaerobic bacteria prevalent in gum diseases.',
+    badges: ['Anaerobic Cover', 'Gum Care'],
+    tags: ['anaerobic', 'metronidazole', 'abscess'],
+    indications: ['Acute Ulcerative Gingivitis', 'Pericoronitis', 'Dental Abscess'],
+    usage: ['Take with food to avoid stomach upset', 'Avoid alcohol during therapy'],
+    ingredients: ['Metronidazole 400mg'],
+    form: 'Tablet',
+    isPrescription: true,
+    rating: 4.7,
+    reviews: 890,
+    available: true,
+    introduction: 'Metrogyl 400 contains Metronidazole, a nitroimidazole antimicrobial used for anaerobic bacterial and parasitic infections.',
+    howItWorks: {
+      description: 'Works by damaging the DNA of the bacteria, leading to cell death of anaerobic microorganisms.',
+      animationType: 'bacteria-kill'
+    },
+    sideEffects: {
+      common: ['Metallic Taste', 'Headache', 'Nausea'],
+      uncommon: ['Dizziness', 'Stomach Pain'],
+      rare: ['Seizures', 'Dark Urine']
+    },
+    warnings: {
+      pregnancy: 'Avoid in 1st trimester.',
+      breastfeeding: 'Consult MD; enters milk.',
+      kidney: 'Dose adjustment needed in severe cases.',
+      liver: 'Dose reduction required in severe liver disease.'
+    },
+    tripathiRef: 'Chapter 60: Antiamoebic and Other Antiprotozoal Drugs'
+  },
+  {
+    id: 'dalacin-c-300',
+    name: 'Dalacin C 300mg Capsule',
+    brand: 'Pfizer',
+    category: 'dental',
+    healthIssue: 'Bacterial Infection',
+    image: 'https://www.netmeds.com/images/product-v1/600x600/15822/dalacin_c_300mg_capsule_10s_0_1.jpg',
+    bgImage: 'https://images.unsplash.com/photo-1587854692152-cbe660dbde88?auto=format&fit=crop&q=80&w=600',
+    titleImage: 'https://via.placeholder.com/200x50/000000/FFFFFF?text=DALACIN',
+    clinicPrice: 215,
+    mrp: 238,
+    saving: 23,
+    subText: 'Superior bone penetration; ideal for jaw and bone-related infections.',
+    badges: ['Bone Penetration', 'Surgery Choice'],
+    tags: ['clindamycin', 'bone infection', 'jaw'],
+    indications: ['Osteomyelitis', 'Post-Op Jaw Infection', 'Penicillin Allergy Alt'],
+    usage: ['Take with 1 full glass of water', 'Do not lie down for 30 mins'],
+    ingredients: ['Clindamycin 300mg'],
+    form: 'Capsule',
+    isPrescription: true,
+    rating: 4.9,
+    reviews: 310,
+    available: true,
+    introduction: 'Dalacin C contains Clindamycin, a lincosamide antibiotic highly effective against aerobic and anaerobic Gram-positive bacteria.',
+    howItWorks: {
+      description: 'Suppresses bacterial protein synthesis by binding to the 50S ribosomal subunit.',
+      animationType: 'bacteria-kill'
+    },
+    sideEffects: {
+      common: ['Diarrhea', 'Abdominal Pain'],
+      uncommon: ['Vaginal Infection', 'Esophagitis'],
+      rare: ['Pseudomembranous Colitis']
+    },
+    warnings: {
+      pregnancy: 'Use only if clearly needed.',
+      breastfeeding: 'Monitor infant for GIT symptoms.',
+      kidney: 'No major dose adjustment for mild cases.',
+      liver: 'Monitor liver function during long-term use.'
+    },
+    tripathiRef: 'Chapter 53: Lincosamides and Glycopeptides'
+  },
+  {
+    id: 'azee-500',
+    name: 'Azee 500mg Tablet',
+    brand: 'Cipla',
+    category: 'dental',
+    healthIssue: 'Bacterial Infection',
+    image: 'https://www.netmeds.com/images/product-v1/600x600/15266/azee_500mg_tablet_5s_0_1.jpg',
+    bgImage: 'https://images.unsplash.com/photo-1585435557343-3b092031a831?auto=format&fit=crop&q=80&w=600',
+    titleImage: 'https://via.placeholder.com/200x50/000000/FFFFFF?text=AZEE',
+    clinicPrice: 110,
+    mrp: 132,
+    saving: 22,
+    subText: 'Convenient once-daily dosing for dental infections.',
+    badges: ['Once Daily', 'Patient Favorite'],
+    tags: ['azithromycin', 'macrolide', 'compliance'],
+    indications: ['Dental Abscess', 'Periodontitis', 'Allergy to Penicillin'],
+    usage: ['One tablet daily for 3-5 days', 'Take 1 hr before food'],
+    ingredients: ['Azithromycin 500mg'],
+    form: 'Tablet',
+    isPrescription: true,
+    rating: 4.8,
+    reviews: 1200,
+    available: true,
+    introduction: 'Azee 500 contains Azithromycin, a macrolide antibiotic that stops the growth of bacteria by inhibiting protein synthesis.',
+    howItWorks: {
+      description: 'Prevents bacteria from growing by interfering with their protein synthesis (50S subunit).',
+      animationType: 'bacteria-kill'
+    },
+    sideEffects: {
+      common: ['Loose Stools', 'Nausea', 'Vomiting'],
+      uncommon: ['Dizziness', 'Headache'],
+      rare: ['Liver Dysfunction', 'Arrhythmia']
+    },
+    warnings: {
+      pregnancy: 'Generally safe; consult MD.',
+      breastfeeding: 'Caution; monitor infant.',
+      kidney: 'Use with caution in renal failure.',
+      liver: 'Contraindicated in severe liver disease.'
+    },
+    tripathiRef: 'Chapter 54: Macrolides and Ketolides'
+  },
+
+  // --- HYPERSENSITIVITY ---
   {
     id: 'shy-nm-foam',
     name: 'SHY-NM Tooth Sensitivity Foam',
     brand: 'Group Pharma',
     category: 'preventive',
+    healthIssue: 'Hypersensitivity',
     image: 'https://images.unsplash.com/photo-1620916566398-39f1143ab7be?auto=format&fit=crop&q=80&w=400',
     bgImage: 'https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?auto=format&fit=crop&q=80&w=600',
     titleImage: 'https://via.placeholder.com/200x50/000000/FFFFFF?text=SHY-NM',
@@ -46,13 +235,21 @@ export const nobleProducts: ProductData[] = [
     isPrescription: false,
     rating: 4.9,
     reviews: 1240,
-    available: true
+    available: true,
+    introduction: 'SHY-NM Uses patented NovaMin technology to provide clinically proven relief from dentinal hypersensitivity.',
+    howItWorks: {
+      description: 'Forms a tooth-like mineral layer (HCA) over exposed dentinal tubules to block nerve impulses.',
+      animationType: 'shield'
+    }
   },
+
+  // --- ENAMEL EROSION ---
   {
     id: 'enafix-cream',
     name: 'Enafix Remineralising Cream',
     brand: 'Group Pharma',
     category: 'preventive',
+    healthIssue: 'Enamel Erosion',
     image: 'https://images.unsplash.com/photo-1559586616-361e18714958?auto=format&fit=crop&q=80&w=400',
     bgImage: 'https://images.unsplash.com/photo-1571772996211-2f02c9727629?auto=format&fit=crop&q=80&w=600',
     titleImage: 'https://via.placeholder.com/200x50/000000/FFFFFF?text=Enafix',
@@ -69,245 +266,13 @@ export const nobleProducts: ProductData[] = [
     isPrescription: false,
     rating: 4.8,
     reviews: 856,
-    available: true
-  },
-  {
-    id: 'aclaim-cream',
-    name: 'Aclaim Remineralising Cream',
-    brand: 'Group Pharma',
-    category: 'preventive',
-    image: 'https://images.unsplash.com/photo-1629198688000-71f23e745b6e?auto=format&fit=crop&q=80&w=400',
-    bgImage: 'https://images.unsplash.com/photo-1608248597279-f99d160bfbc8?auto=format&fit=crop&q=80&w=600',
-    titleImage: 'https://via.placeholder.com/200x50/000000/FFFFFF?text=Aclaim',
-    clinicPrice: 563,
-    mrp: 750,
-    saving: 187,
-    subText: 'Restores and strengthens braces-weakened enamel with hydroxyapatite.',
-    badges: ['New Arrival', 'Ortho Safe'],
-    tags: ['hydroxyapatite', 'sensitivity', 'braces'],
-    indications: ['Orthodontic White Spots', 'Hypersensitivity', 'Weak Enamel'],
-    usage: ['Apply after brushing', 'Do not rinse'],
-    ingredients: ['Nano Hydroxyapatite', 'Fluoride'],
-    form: 'Cream',
-    isPrescription: false,
-    rating: 4.7,
-    reviews: 320,
-    available: true
-  },
-  
-  // --- ORTHODONTICS ---
-  {
-    id: 'amflor-toothpaste',
-    name: 'Amflor Anti-Cavity Toothpaste',
-    brand: 'Group Pharma',
-    category: 'ortho',
-    image: 'https://images.unsplash.com/photo-1550989460-0adf9ea622e2?auto=format&fit=crop&q=80&w=400',
-    bgImage: 'https://images.unsplash.com/photo-1588776814546-1ffcf47267a5?auto=format&fit=crop&q=80&w=600',
-    titleImage: 'https://via.placeholder.com/200x50/000000/FFFFFF?text=Amflor',
-    clinicPrice: 158,
-    mrp: 210,
-    saving: 52,
-    subText: 'Extends care beyond braces with organic amine fluoride.',
-    badges: ['Braces Essential', 'Cavity Shield'],
-    tags: ['braces', 'ortho', 'fluoride'],
-    indications: ['Orthodontic Therapy', 'Plaque Control', 'Bracket Cleaning'],
-    usage: ['Brush 2x daily', 'Focus on bracket margins'],
-    ingredients: ['Amine Fluoride', 'Xylitol'],
-    form: 'Paste',
-    isPrescription: false,
-    rating: 4.6,
-    reviews: 540,
-    available: true
-  },
-  {
-    id: 'amflor-rinse',
-    name: 'Amflor Oral Rinse',
-    brand: 'Group Pharma',
-    category: 'ortho',
-    image: 'https://images.unsplash.com/photo-1608248597279-f99d160bfbc8?auto=format&fit=crop&q=80&w=400',
-    bgImage: 'https://images.unsplash.com/photo-1583947215259-38e31be8751f?auto=format&fit=crop&q=80&w=600',
-    titleImage: 'https://via.placeholder.com/200x50/000000/FFFFFF?text=Amflor',
-    clinicPrice: 214,
-    mrp: 285,
-    saving: 71,
-    subText: 'Alcohol-free amine fluoride mouthwash for orthodontic hygiene.',
-    badges: ['Alcohol Free', 'Ortho Rinse'],
-    tags: ['mouthwash', 'braces', 'fresh breath'],
-    indications: ['Orthodontic Hygiene', 'White Spot Prevention'],
-    usage: ['Rinse with 10ml', 'Use after brushing'],
-    ingredients: ['Amine Fluoride', 'Mint'],
-    form: 'Liquid',
-    isPrescription: false,
-    rating: 4.8,
-    reviews: 410,
-    available: true
-  },
-
-  // --- ANTIBIOTICS & PAIN (Rx Only) ---
-  {
-    id: 'augmentin-625',
-    name: 'Augmentin 625 Duo',
-    brand: 'GSK',
-    category: 'dental',
-    image: 'https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?auto=format&fit=crop&q=80&w=400',
-    bgImage: 'https://images.unsplash.com/photo-1587854692152-cbe660dbde88?auto=format&fit=crop&q=80&w=600',
-    titleImage: 'https://via.placeholder.com/200x50/000000/FFFFFF?text=Augmentin',
-    clinicPrice: 369,
-    mrp: 410,
-    saving: 41,
-    subText: 'Controls acute dental infections and systemic fevers.',
-    badges: ['Rx Only', 'Doctor Supervised'],
-    tags: ['antibiotic', 'infection', 'swelling'],
-    indications: ['Dental Abscess', 'Post-Surgical Infection', 'Cellulitis'],
-    usage: ['As prescribed by dentist', 'Complete full course'],
-    ingredients: ['Amoxicillin 500mg', 'Clavulanic Acid 125mg'],
-    form: 'Tablet',
-    isPrescription: true,
-    rating: 4.9,
-    reviews: 2100,
-    available: true
-  },
-  {
-    id: 'ketorol-dt',
-    name: 'Ketorol DT 10mg',
-    brand: 'Dr. Reddys',
-    category: 'dental',
-    image: 'https://images.unsplash.com/photo-1628771065518-0d82f1938462?auto=format&fit=crop&q=80&w=400',
-    bgImage: 'https://images.unsplash.com/photo-1585435557343-3b092031a831?auto=format&fit=crop&q=80&w=600',
-    titleImage: 'https://via.placeholder.com/200x50/000000/FFFFFF?text=Ketorol',
-    clinicPrice: 131,
-    mrp: 145,
-    saving: 14,
-    subText: 'Potent relief for intense acute toothache and extraction pain.',
-    badges: ['Rx Only', 'Severe Pain'],
-    tags: ['pain relief', 'toothache', 'acute'],
-    indications: ['Acute Toothache', 'Post-Extraction Pain'],
-    usage: ['Dissolve in water', 'Max 5 days use'],
-    ingredients: ['Ketorolac Tromethamine 10mg'],
-    form: 'Tablet',
-    isPrescription: true,
-    rating: 4.7,
-    reviews: 890,
-    available: true
-  },
-
-  // --- KIDS DENTAL ---
-  {
-    id: 'pediflor-kidz-kit',
-    name: 'PediflorKidz Day & Night Kit',
-    brand: 'Group Pharma',
-    category: 'dental',
-    image: 'https://images.unsplash.com/photo-1544367563-12123d832d34?auto=format&fit=crop&q=80&w=400',
-    bgImage: 'https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&q=80&w=600',
-    titleImage: 'https://via.placeholder.com/200x50/000000/FFFFFF?text=Pediflor',
-    clinicPrice: 126,
-    mrp: 168,
-    saving: 42,
-    subText: 'All-in-one kit with toothpaste, toothbrush and tracking tool.',
-    badges: ['Kids 3-12', 'Fun Brushing'],
-    tags: ['kids', 'cavity', 'fluoride'],
-    indications: ['Early Hygiene Habit', 'Cavity Prevention'],
-    usage: ['Brush morning & night', 'Pea sized amount'],
-    ingredients: ['Fluoride', 'Xylitol'],
-    form: 'Kit',
-    isPrescription: false,
-    rating: 4.8,
-    reviews: 670,
-    available: true
-  },
-  
-  // --- WELLNESS & SPECIALTY ---
-  {
-    id: 'ormist-spray',
-    name: 'ORMIST Hydrating Mouth Spray',
-    brand: 'Group Pharma',
-    category: 'wellness',
-    image: 'https://images.unsplash.com/photo-1617135008560-6147291f4215?auto=format&fit=crop&q=80&w=400',
-    bgImage: 'https://images.unsplash.com/photo-1618331835717-801e976710b2?auto=format&fit=crop&q=80&w=600',
-    titleImage: 'https://via.placeholder.com/200x50/000000/FFFFFF?text=ORMIST',
-    clinicPrice: 293,
-    mrp: 293,
-    saving: 0,
-    subText: 'Paraben-free Hyaluronic Acid formula for dry mouth relief.',
-    badges: ['Dry Mouth', 'Hyaluronic Acid'],
-    tags: ['xerostomia', 'hydration', 'spray'],
-    indications: ['Dry Mouth', 'Low Saliva'],
-    usage: ['Spray 2-3 times', 'Use as needed'],
-    ingredients: ['Hyaluronic Acid', 'Essential Minerals'],
-    form: 'Spray',
-    isPrescription: false,
-    rating: 4.6,
-    reviews: 150,
-    available: true
-  },
-  {
-    id: 'desmocare',
-    name: 'Desmocare Implant Mouthwash',
-    brand: 'Group Pharma',
-    category: 'dental',
-    image: 'https://images.unsplash.com/photo-1532453288672-3a27e9be9efd?auto=format&fit=crop&q=80&w=400',
-    bgImage: 'https://images.unsplash.com/photo-1579684385127-1ef15d508118?auto=format&fit=crop&q=80&w=600',
-    titleImage: 'https://via.placeholder.com/200x50/000000/FFFFFF?text=Desmo',
-    clinicPrice: 131,
-    mrp: 175,
-    saving: 44,
-    subText: 'Antioxidant-rich mouthwash for dental implant healing.',
-    badges: ['Implant Specialist', 'Antioxidant'],
-    tags: ['implants', 'healing', 'gums'],
-    indications: ['Post-Implant Surgery', 'Peri-implantitis Prevention'],
-    usage: ['Rinse twice daily', 'Do not dilute'],
-    ingredients: ['Desmotite', 'Antioxidants'],
-    form: 'Liquid',
-    isPrescription: false,
-    rating: 4.9,
-    reviews: 310,
-    available: true
-  },
-  {
-    id: 'densive-powder',
-    name: 'Densive Denture Adhesive',
-    brand: 'Group Pharma',
-    category: 'dental',
-    image: 'https://images.unsplash.com/photo-1598256989800-fe5f95da9787?auto=format&fit=crop&q=80&w=400',
-    bgImage: 'https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?auto=format&fit=crop&q=80&w=600',
-    titleImage: 'https://via.placeholder.com/200x50/000000/FFFFFF?text=Densive',
-    clinicPrice: 182,
-    mrp: 242,
-    saving: 60,
-    subText: 'Odor-free adhesive powder for secure denture retention.',
-    badges: ['Denture Care', 'Strong Hold'],
-    tags: ['denture', 'adhesive', 'elderly'],
-    indications: ['Loose Dentures', 'Improved Chewing'],
-    usage: ['Apply to wet denture', 'Insert and press'],
-    ingredients: ['Adhesive Copolymer'],
-    form: 'Powder',
-    isPrescription: false,
-    rating: 4.5,
-    reviews: 420,
-    available: true
-  },
-  {
-    id: 'dental-probiotic',
-    name: 'Dental Probiotic Sachets',
-    brand: 'Group Pharma',
-    category: 'wellness',
-    image: 'https://images.unsplash.com/photo-1626947346165-4c22880c2ea2?auto=format&fit=crop&q=80&w=400',
-    bgImage: 'https://images.unsplash.com/photo-1505751172876-fa1923c5c528?auto=format&fit=crop&q=80&w=600',
-    titleImage: 'https://via.placeholder.com/200x50/000000/FFFFFF?text=Probiotic',
-    clinicPrice: 320,
-    mrp: 320,
-    saving: 0,
-    subText: 'Lactobacillus reuteri sachets for oral microbiome balance.',
-    badges: ['Microbiome', 'Gut Health'],
-    tags: ['probiotic', 'bad breath', 'gut'],
-    indications: ['Halitosis', 'Post-Antibiotic Care'],
-    usage: ['One sachet daily', 'Directly on tongue'],
-    ingredients: ['Lactobacillus reuteri'],
-    form: 'Powder',
-    isPrescription: false,
-    rating: 4.7,
-    reviews: 180,
-    available: true
+    available: true,
+    introduction: 'Enafix provides bio-available Calcium and Phosphate through ACP-CPP technology to remineralize surface enamel.',
+    howItWorks: {
+      description: 'Releases Calcium and Phosphate ions into the subsurface enamel, rebuilding the hydroxyapatite crystalline structure.',
+      animationType: 'ions'
+    }
   }
 ];
+
 
