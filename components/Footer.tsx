@@ -89,7 +89,6 @@ const Footer: React.FC<FooterProps> = ({ onBookClick }) => {
           <div className="flex gap-6 text-xs text-slate-500">
             <Link href="/privacy" className="hover:text-white">Privacy Policy</Link>
             <Link href="/terms" className="hover:text-white">Terms of Service</Link>
-            <Link href="/admin" className="hover:text-white font-bold opacity-0 hover:opacity-100 transition-opacity">Staff Terminal</Link>
           </div>
         </div>
 
