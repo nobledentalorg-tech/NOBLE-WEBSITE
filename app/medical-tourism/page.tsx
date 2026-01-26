@@ -101,7 +101,7 @@ export default function MedicalTourismPage() {
                             We know that many parents visiting from <strong>Vijayawada, Guntur, or Bhimavaram</strong> delay their dental needs because they fear &quot;Big City Doctors&quot;.
                         </p>
                         <p className="text-slate-600 dark:text-slate-300 leading-relaxed mb-8">
-                            Dr. Dhivakaran speaks their language. No medical jargon. Just honest, clear advice for fixed teeth (Implants/Bridges) within their short stay. We offer <strong>Priority Weekend Slots</strong> so you don't have to take leave from work.
+                            Dr. Dhivakaran speaks their language. No medical jargon. Just honest, clear advice for fixed teeth (Implants/Bridges) within their short stay. We offer <strong>Priority Weekend Slots</strong> so you don&apos;t have to take leave from work.
                         </p>
                         <div className="flex gap-4">
                             <div className="px-6 py-4 bg-white dark:bg-[#0B1019] rounded-xl shadow-sm text-sm font-bold">

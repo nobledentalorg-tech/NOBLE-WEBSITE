@@ -82,7 +82,7 @@ export default function BlogPost() {
                         </p>
                         <ul>
                             <li><strong>Material:</strong> Invisalign uses patented SmartTrack material (faster, less painful).</li>
-                            <li><strong>Safety:</strong> A guarantee that your bite won't be ruined.</li>
+                            <li><strong>Safety:</strong> A guarantee that your bite won&apos;t be ruined.</li>
                             <li><strong>Results:</strong> Ability to fix complex overcrowding that simple plastic trays cannot touch.</li>
                         </ul>
 
