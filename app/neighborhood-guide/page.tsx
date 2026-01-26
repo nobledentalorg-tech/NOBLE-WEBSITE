@@ -1,4 +1,4 @@
-```javascript
+
 import React from 'react';
 import { MapPin, School, Building2, Navigation, Clock, Moon, Star } from 'lucide-react';
 import Link from 'next/link';

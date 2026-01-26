@@ -1,5 +1,5 @@
 import React from 'react';
-import React from 'react';
+
 import { Award, User, Target, Heart } from 'lucide-react';
 import Image from 'next/image';
 import type { Metadata } from 'next';
