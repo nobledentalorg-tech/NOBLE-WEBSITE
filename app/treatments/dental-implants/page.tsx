@@ -2,8 +2,8 @@ import type { Metadata } from 'next';
 import DentalImplantsRefactored from './DentalImplantsRefactored';
 
 export const metadata: Metadata = {
-    title: 'Dental Implants Hyderabad',
-    description: 'Restore your smile with 99.2% success rate implants. Authorized centre for Straumann (Swiss) and Nobel Biocare (USA). Lifetime Warranty available.',
+    title: 'Dental Implants Cost in Nallagandla | Best Implantlogist Hyderabad',
+    description: 'Affordable Dental Implants in Nallagandla starting @ ₹22k. Swiss Technology (Straumann/Nobel). Check cost, procedure & EMI options by Dr. Dhivakaran.',
     alternates: {
         canonical: '/treatments/dental-implants'
     },

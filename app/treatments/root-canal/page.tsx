@@ -2,8 +2,8 @@ import type { Metadata } from 'next';
 import RootCanalRefactored from './RootCanalRefactored';
 
 export const metadata: Metadata = {
-   title: 'Root Canal Treatment Hyderabad',
-   description: 'Save your natural tooth with microscopic precision. Single-visit root canals using laser disinfection and bioceramic sealers effectively.',
+   title: 'Painless Root Canal Treatment in Nallagandla | 100% Success Rate',
+   description: 'Stop tooth pain instantly with Microscopic Root Canal treatment in Nallagandla. 100% Painless, Single-Sitting procedure by Endodontist Dr. Dhivakaran.',
    alternates: {
       canonical: '/treatments/root-canal'
    },

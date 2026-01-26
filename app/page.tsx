@@ -111,7 +111,7 @@ export default function Home() {
                             Why Noble is Rated the <span className="text-blue-600">Best Dentist</span> in Nallagandla
                         </h2>
                         <p className="text-slate-500 max-w-2xl mx-auto">
-                            We don&apos;t just claim to be the best; our patients say it for us. With a focus on <strong className="text-slate-700 dark:text-slate-300">Pain-Free Precision</strong> and <strong className="text-slate-700 dark:text-slate-300">Affordable Luxury</strong>, we are the top choice for families near Huda Water Tank.
+                            We don&apos;t just claim to be the best; our patients say it for us. With a focus on <strong className="text-slate-700 dark:text-slate-300">Pain-Free Precision</strong> and <strong className="text-slate-700 dark:text-slate-300">Affordable Luxury</strong>, we are the Rating #1 <strong className="text-blue-600">Family Dentist near Nallagandla</strong> & Tellapur.
                         </p>
                     </div>
 

@@ -10,6 +10,17 @@ export interface TreatmentFAQ {
   a: string;
 }
 
+export interface ProductRecommendation {
+  id: string;
+  name: string;
+  image: string;
+  subText: string;
+  purpose: string;
+  usage: string;
+  isPrescription: boolean;
+  safetyNote?: string;
+}
+
 export interface TreatmentData {
   id: string;
   title: string;
@@ -23,151 +34,216 @@ export interface TreatmentData {
   benefits: string[];
   faqs: TreatmentFAQ[];
   keywords: string[];
+  recommendedProducts?: ProductRecommendation[];
 }
 
 export const treatmentsData: Record<string, TreatmentData> = {
   "root-canal": {
     id: "root-canal",
     title: "Microscopic Root Canal",
-    subtitle: "Endodontic precision under 25x magnification.",
+    subtitle: "Painless single-sitting rct with Zeiss optics.",
     category: "Endodontics",
     heroImage: "/assets/images/treatments/root-canal-hyderabad.webp",
-    description: "Advanced single-visit root canal therapy using dental microscopes for 100% precision and zero pain.",
-    longDescription: "Root canal treatment at Noble Dental Care is defined by technology. Utilizing Zeiss Extaro 300 microscopes, we identify micro-canals (MB2) that traditional methods often miss. Our protocol includes Er:YAG laser activation of irrigants, ensuring 99.9% bacterial elimination from the root system for predictable long-term healing.",
+    description: "Experience 100% painless root canal treatment in Nallagandla using advanced German Microscopes.",
+    longDescription: "Stop searching for 'root canal near me' and discover precision. At Noble Dental Care, we specialize in Microscopic Root Canal Treatment. Unlike traditional methods, our Zeiss Extaro 300 magnification allows us to see and clean hidden canals (MB2) that others miss. This ensures a 99.2% success rate and a completely painless, single-sitting experience.",
     stats: [
-      { label: "Duration", value: "45 Mins", icon: "Clock" },
-      { label: "Precision", value: "Microscopic", icon: "Ruler" },
-      { label: "Success Rate", value: "99.2%", icon: "Activity" }
+      { label: "Pain Score", value: "0/10", icon: "Heart" },
+      { label: "Precision", value: "25x Zoom", icon: "Ruler" },
+      { label: "Visits", value: "Single Sitting", icon: "Clock" }
     ],
     process: [
-      { title: "CBCT Root Mapping", desc: "3D visualization of canal anatomy to prevent perforations." },
-      { title: "Digital Anesthesia", desc: "Buffered electronic numbing for an instant, sting-free experience." },
-      { title: "Activated Irrigation", desc: "Sonic and Laser activation to disinfect accessory canals." },
-      { title: "Bioceramic Sealing", desc: "Advanced biocompatible obturation that reinforces tooth walls." }
+      { title: "3D CBCT Scan", desc: "We map your tooth roots digitally to prevent errors." },
+      { title: "Painless Numbing", desc: "Computer-controlled anesthesia (The Wand) for zero-sting injection." },
+      { title: "Laser Disinfection", desc: "Er,Cr:YSGG Laser cleaning of deep canals." },
+      { title: "Bioceramic Seal", desc: "Permanent 3D obturation for lifetime durability." }
     ],
     benefits: [
-      "99.2% Radiographic Success Rate",
-      "Painless Single-Visit Completion",
-      "Preserves Max Natural Tooth Structure",
-      "CBCT-Guided Precision Access",
-      "24/7 Post-Op Clinical Support"
+      "No Pain, No Swelling",
+      "Completed in 45 Minutes (Single Visit)",
+      "Save Your Natural Tooth",
+      "Affordable Cost in Nallagandla",
+      "10-Year Warranty on Crowns"
     ],
     faqs: [
-      { q: "Is single-visit RCT safe?", a: "Absolutely. With microscopic and laser disinfection, most infections can be resolved in one session without risk of flare-ups." },
-      { q: "Do I really need a crown after?", a: "Yes. After RCT, the tooth loses its blood supply and becomes brittle. A zirconia crown acts as a safety helmet to prevent fractures." }
+      { q: "Is it really painless?", a: "Yes. Our microscopic technique combined with digital anesthesia ensures you feel absolutely nothing." },
+      { q: "What is the cost of Root Canal in Nallagandla?", a: "Our microscopic RCT starts from ₹4,500. We offer transparent pricing with no hidden charges." }
     ],
-    keywords: ["pain", "rct", "toothache", "infection", "painless"]
+    keywords: ["microscopic root canal", "painless rct nallagandla", "single sitting root canal", "endodontist near me", "root canal cost"],
+    recommendedProducts: [
+      {
+        id: "ketorol-dt",
+        name: "Ketorol DT 10mg",
+        image: "https://images.unsplash.com/photo-1628771065518-0d82f1938462?auto=format&fit=crop&q=80&w=400",
+        subText: "Potent relief for intense acute toothache.",
+        purpose: "Pain Management",
+        usage: "Dissolve in water. Take only if prescribed.",
+        isPrescription: true,
+        safetyNote: "Do not take on an empty stomach. Max 5 days."
+      },
+      {
+        id: "augmentin-625",
+        name: "Augmentin 625 Duo",
+        image: "https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?auto=format&fit=crop&q=80&w=400",
+        subText: "Standard of care for dental infections.",
+        purpose: "Infection Control",
+        usage: "1 tablet every 12 hours after meals.",
+        isPrescription: true,
+        safetyNote: "Complete full 3-5 day course even if pain stops."
+      }
+    ]
   },
   "dental-implants": {
     id: "dental-implants",
-    title: "Biological Implants",
-    subtitle: "Titanium stability with PRF biological healing.",
+    title: "Guided Dental Implants",
+    subtitle: "Permanent fixed teeth with 3D surgical guides.",
     category: "Surgery",
     heroImage: "/assets/images/treatments/implants-hyderabad.webp",
-    description: "Replace missing teeth with titanium anchors that look, feel, and function exactly like natural teeth.",
-    longDescription: "Dental implants at Noble combine surgical robotics (Guided Templates) with biological boosters. We utilize ITI (International Team for Implantology) standards, placing Grade-5 Titanium or Metal-Free Zirconia implants. Our unique PRF (Platelet Rich Fibrin) protocol uses your own growth factors to accelerate bone integration by 40%.",
+    description: "Replace missing teeth with Nobel Biocare / Straumann implants. Minimally invasive, suture-free options available.",
+    longDescription: "Reclaim your ability to eat and smile. We are Nallagandla's premier center for 'Computer Guided Implant Surgery'. By planning your surgery digitally, we place implants with 0.1mm accuracy, often without cutting the gums (Flapless). This means less pain, faster healing, and a lifetime warranty on your new teeth.",
     stats: [
-      { label: "Stability", value: "Guided Fix", icon: "Shield" },
-      { label: "Healing", value: "PRF Fast-Track", icon: "Droplets" },
-      { label: "Warranty", value: "Lifetime", icon: "Star" }
+      { label: "Accuracy", value: "0.1mm", icon: "Ruler" },
+      { label: "Warranty", value: "Lifetime", icon: "Shield" },
+      { label: "Healing", value: "3 Days", icon: "Clock" }
     ],
     process: [
-      { title: "Bone Density Scan", desc: "3D assessment of jaw volume using digital CBCT." },
-      { title: "Guided Placement", desc: "Computer-designed templates for 0.1mm accuracy." },
-      { title: "Biological Loading", desc: "Application of growth factors (PRF) for rapid healing." },
-      { title: "Digital Impression", desc: "High-speed intraoral scan for the final ceramic crown." }
+      { title: "Free 3D Scan", desc: "In-house CBCT to assess bone quality instantly." },
+      { title: "Virtual Planning", desc: "Dr. Dhivakaran designs your surgery on software first." },
+      { title: "3D Printed Guide", desc: "A custom template ensures the implant goes exactly where planned." },
+      { title: "Immediate Loading", desc: "Walk out with a fixed temporary tooth on the same day." }
     ],
     benefits: [
-      "Prevents Facial Bone Resorption",
-      "Natural Biological Integration",
-      "No Damage to Healthy Adjacent teeth",
-      "Lifetime Global Warranty Card",
-      "Stable 100% Chewing Force",
-      "Senior-Friendly (Minimal Recovery)"
+      "Transparent Cost (No Hidden Fees)",
+      "Global Brands (Nobel/Straumann)",
+      "Fixed Teeth in 72 Hours",
+      "Safe for Diabetics (Guided Protocol)",
+      "0% EMI Options Available"
     ],
     faqs: [
-      { q: "How long is the healing?", a: "Biological integration (Osseointegration) typically takes 12 weeks, though you'll have a temporary tooth during this time." },
-      { q: "Is it painful?", a: "Guided surgery is minimally invasive. Most patients report less discomfort than a simple extraction." }
+      { q: "How much do dental implants cost?", a: "Implants start from ₹25,000. Basic options to premium Swiss brands available. We provide a full cost breakdown upfront." },
+      { q: "Is it painful?", a: "With our 'Keyhole Guided Surgery', most patients report less pain than a simple extraction and return to work the next day." }
     ],
-    keywords: ["missing tooth", "gap", "titanium", "surgery", "permanent", "fixed tooth", "senior implants", "elderly care"]
+    keywords: ["dental implants cost nallagandla", "full mouth implants", "guided implant surgery", "best implantologist hyderabad", "fixed teeth cost"],
+    recommendedProducts: [
+      {
+        id: "desmocare",
+        name: "Desmocare Implant Mouthwash",
+        image: "https://images.unsplash.com/photo-1532453288672-3a27e9be9efd?auto=format&fit=crop&q=80&w=400",
+        subText: "Antioxidant-rich mouthwash for healing.",
+        purpose: "Site Healing",
+        usage: "Rinse gently twice daily. Do not dilute.",
+        isPrescription: false
+      },
+      {
+        id: "augmentin-625",
+        name: "Augmentin 625 Duo",
+        image: "https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?auto=format&fit=crop&q=80&w=400",
+        subText: "Prevents surgical site infection.",
+        purpose: "Infection Control",
+        usage: "As prescribed by Dr. Dhivakaran.",
+        isPrescription: true,
+        safetyNote: "Report any skin rash immediately."
+      }
+    ]
   },
   "invisalign": {
     id: "invisalign",
-    title: "iTero Clear Aligners",
-    subtitle: "AI-planned invisible orthodontics.",
+    title: "Invisalign & Aligners",
+    subtitle: "Invisible teeth straightening with AI planning.",
     category: "Orthodontics",
     heroImage: "/assets/images/treatments/invisalign-hyderabad.webp",
-    description: "The clear alternative to braces. Removable, comfortable, and virtually invisible trays.",
-    longDescription: "Transform your smile without metal. Our aligner program utilizes the iTero Element 5D scanner to capture 6,000 images per second. Dr. Deepak's 3D planning software simulates your entire movement trajectory before the first tray is even manufactured, ensuring predictable results for professionals and students alike.",
+    description: "Straighten crooked teeth without metal braces. Certified Invisalign providers in Nallagandla.",
+    longDescription: "Transform your smile discreetly. Using the iTero 5D Scanner, we show you your 'After' smile before you even start. Whether you choose Invisalign or affordable clear aligners, our AI-driven planning ensures precise movement for faster results compared to traditional metal braces.",
     stats: [
-      { label: "Scanning", value: "iTero 5D", icon: "Scan" },
-      { label: "Comfort", value: "Ultra-Thin", icon: "Smile" },
-      { label: "Planning", value: "AI-Driven", icon: "Activity" }
+      { label: "Visibility", value: "Invisible", icon: "Sparkles" },
+      { label: "Scan", value: "iTero 5D", icon: "Scan" },
+      { label: "Speed", value: "2x Faster", icon: "Zap" }
     ],
     process: [
-      { title: "3D Smile Scan", desc: "Instant digital map of your bite and alignment." },
-      { title: "Outcome Simulator", desc: "Preview your finished smile on screen immediately." },
-      { title: "Custom Fabrication", desc: "Sequential PETG trays engineered for your teeth." },
-      { title: "Remote Monitoring", desc: "Track progress via our smartphone app weekly." }
+      { title: "3D Smile Scan", desc: "Instant simulation of your straight teeth." },
+      { title: "Custom Plan", desc: "Review your digital treatment video." },
+      { title: "Aligner Delivery", desc: "Receive your set of custom transparent trays." },
+      { title: "Remote Monitoring", desc: "Weekly check-ins via app, minimal clinic visits." }
     ],
     benefits: [
-      "Virtually Invisible Aesthetics",
-      "Removable for Meals & Events",
-      "30% Faster Move Technology",
-      "Zero Emergency Wire Pokes",
-      "Better Gum Health Maintenance"
+      "No Food Restrictions",
+      "Remove for Parties/Meetings",
+      "Comfortable & Smooth",
+      "Fewer Clinic Visits",
+      "EMI Plans for Affordability"
     ],
     faqs: [
-      { q: "Can I eat anything?", a: "Yes! Since trays are removable, there are zero food restrictions. Just brush before putting them back." },
-      { q: "Does it work for severe cases?", a: "Yes, modern aligners with smart-attachments can fix 90% of orthodontic issues including severe crowding." }
+      { q: "What is the cost of Invisalign in Nallagandla?", a: "Clear aligners start from ₹65,000 for simple cases. Invisalign pricing depends on complexity. Book a scan for a quote." },
+      { q: "Does it work for severe gaps?", a: "Yes, modern aligners can fix complex crowding, gaps, and bite issues just like braces." }
     ],
-    keywords: ["straighten", "braces", "aligners", "invisible", "crooked teeth", "smile design"]
+    keywords: ["invisalign cost nallagandla", "clear aligners", "invisible braces", "teeth straightening cost", "orthodontist near me"],
+    recommendedProducts: [
+      {
+        id: "amflor-rinse",
+        name: "Amflor Oral Rinse",
+        image: "https://images.unsplash.com/photo-1608248597279-f99d160bfbc8?auto=format&fit=crop&q=80&w=400",
+        subText: "Amine fluoride protection for aligner wearers.",
+        purpose: "Cavity Prevention",
+        usage: "Rinse daily before bed.",
+        isPrescription: false
+      }
+    ]
   },
   "crowns-bridges": {
     id: "crowns-bridges",
-    title: "Digital Crowns & Bridges",
-    subtitle: "CAD/CAM engineered ceramic restorations.",
+    title: "Zirconia Crowns & Bridges",
+    subtitle: "Metal-free digital caps with 15-year warranty.",
     category: "Restorative",
     heroImage: "/assets/images/treatments/crowns-bridges-hyderabad.webp",
-    description: "Custom-milled zirconia and E.max restorations for broken or missing teeth.",
-    longDescription: "Our restorations are designed digitally for a 5-micron accuracy fit. We use multi-layered monolithic zirconia that mimics the translucency of natural enamel while providing high fracture resistance.",
+    description: "Replace broken or missing teeth with high-strength Monolith Zirconia. 3D designed for perfect fit.",
+    longDescription: "Say goodbye to black metal lines. We use exclusively Metal-Free Zirconia and E.max crowns. Milled with 5-micron CAD/CAM precision, our crowns fit perfectly and look exactly like your natural enamel. Ideal for front teeth aesthetics and back teeth chewing strength.",
     stats: [
-      { label: "Fit", value: "Digital CAD", icon: "Scan" },
-      { label: "Strength", value: "1200 MPa", icon: "Shield" },
-      { label: "Warranty", value: "10 Years", icon: "Award" }
+      { label: "Material", value: "Zirconia", icon: "Shield" },
+      { label: "Warranty", value: "15 Years", icon: "Award" },
+      { label: "Speed", value: "48 Hours", icon: "Clock" }
     ],
     process: [
-      { title: "Digital Scan", desc: "Intraoral mapping with iTero 5D." },
-      { title: "Design", desc: "Virtual modeling of tooth anatomy." },
-      { title: "Milling", desc: "5-axis precision ceramic milling." },
-      { title: "Bonding", desc: "Adhesive cementation for a permanent seal." }
+      { title: "Digital Scan", desc: "No messy clay impressions, just a quick 3D scan." },
+      { title: "CAD Design", desc: "Computer engineering of your tooth shape." },
+      { title: "Robot Milling", desc: "Carved from a solid diamond-hard zirconia block." },
+      { title: "Bonding", desc: "Permanently fixed for chewing power." }
     ],
-    benefits: ["Natural Aesthetics", "High Durability", "Biocompatible", "Plaque Resistant"],
-    faqs: [{ q: "How long do they last?", a: "Typically 15-20 years with good clinical hygiene." }],
-    keywords: ["crown", "cap", "bridge", "broken tooth", "zirconia"]
+    benefits: [
+      "Look 100% Natural",
+      "Chip-Resistant Strength",
+      "Biocompatible (Gum Friendly)",
+      "Digital Warranty Card",
+      "Stain Proof"
+    ],
+    faqs: [{ q: "How much does a Zirconia crown cost?", a: "Zirconia crowns start from ₹8,000 depending on the warranty and brand (3M/BruxZir)." }],
+    keywords: ["zirconia crown cost", "dental caps", "ceramic bridge", "tooth cap price nallagandla", "metal free crown"]
   },
   "kids-dentistry": {
     id: "kids-dentistry",
-    title: "Little Smiles Program",
-    subtitle: "Fearless pediatric dental care.",
+    subtitle: "Fear-free dental care for children.",
     category: "Pediatrics",
     heroImage: "/assets/images/treatments/pediatric-hyderabad.webp",
-    description: "Gentle dental checkups and treatments for infants and children in a friendly environment.",
-    longDescription: "Building a lifetime of healthy habits starts here. Our pediatric specialists use 'Tell-Show-Do' techniques to ensure every child feels safe and empowered during their visit.",
+    description: "Specialized pediatric center offering Conscious Sedation (Laughing Gas) for anxious children.",
+    longDescription: "We make dentistry fun, not scary. For children with dental anxiety, we offer 'Happy Air' (Nitrous Oxide sedation). This safe, sweet-smelling gas relaxes your child instantly, allowing us to complete fillings or extractions while they watch cartoons. No trauma, no tears.",
     stats: [
-      { label: "Approach", value: "No Tears", icon: "Heart" },
-      { label: "Focus", value: "Prevention", icon: "Shield" },
-      { label: "Fun", value: "Reward Kits", icon: "Star" }
+      { label: "Anxiety", value: "Zero", icon: "Smile" },
+      { label: "Tech", value: "Laughing Gas", icon: "Zap" },
+      { label: "Specialist", value: "Pedodontist", icon: "User" }
     ],
     process: [
-      { title: "Welcome Orientation", desc: "Gentle introduction to the dental chair." },
-      { title: "Prophylaxis", desc: "Kid-friendly cleaning and polishing." },
-      { title: "Fluoride Therapy", desc: "Strengthening enamel against decay." },
-      { title: "Sealants", desc: "Protective coating for permanent molars." }
+      { title: "Tell-Show-Do", desc: "We explain everything in kid-friendly language." },
+      { title: "Flavor Choice", desc: "Kids pick their fluoride flavor (Bubblegum/Strawberry)." },
+      { title: "Happy Air", desc: "Optional mild sedation for relaxed treatment." },
+      { title: "Reward", desc: "Every brave patient gets a toy and certificate." }
     ],
-    benefits: ["Anxiety-Free Environment", "Fluoride Protection", "Growth Monitoring", "Dietary Counseling", "Tongue-Tie Awareness"],
-    faqs: [{ q: "When should the first visit be?", a: "The ADA recommends the first visit by age 1." }],
-    keywords: ["child", "pediatric", "baby", "kid", "cavity", "sealant", "tongue tie", "toddler"]
+    benefits: [
+      "Sedation Dentistry Available",
+      "Fluoride Cavity Protection",
+      "Painless Injection Wand",
+      "Habit Breaking (Thumb Sucking)",
+      "Emergency Trauma Care"
+    ],
+    faqs: [{ q: "Is sedation safe for kids?", a: "Yes, Nitrous Oxide is the safest sedative. It wears off instantly after the mask is removed, and your child walks out fully awake." }],
+    keywords: ["pediatric dentist nallagandla", "sedation dentistry for kids", "child dentist", "kids root canal", "laughing gas dental"]
   },
   "pregnancy-dental-care": {
     id: "pregnancy-dental-care",
@@ -1131,7 +1207,27 @@ export const treatmentsData: Record<string, TreatmentData> = {
     ],
     benefits: ["Protects against decay", "Safe & effective for all ages"],
     faqs: [{ "q": "Is the procedure painful?", "a": "We use advanced numbing techniques." }, { "q": "How many visits?", "a": "Usually 1-2 visits." }],
-    keywords: ["fluoride treatment", "cavity prevention", "tooth sensitivity", "Hyderabad"]
+    keywords: ["fluoride treatment", "cavity prevention", "tooth sensitivity", "Hyderabad"],
+    recommendedProducts: [
+      {
+        id: "shy-nm-foam",
+        name: "SHY-NM Tooth Sensitivity Foam",
+        image: "https://images.unsplash.com/photo-1620916566398-39f1143ab7be?auto=format&fit=crop&q=80&w=400",
+        subText: "Bioactive glass for instant sensitivity relief.",
+        purpose: "Sensitivity Relief",
+        usage: "Apply foam, leave for 2 mins, spit out.",
+        isPrescription: false
+      },
+      {
+        id: "enafix-cream",
+        name: "Enafix Remineralising Cream",
+        image: "https://images.unsplash.com/photo-1559586616-361e18714958?auto=format&fit=crop&q=80&w=400",
+        subText: "Rehardens weak enamel.",
+        purpose: "Enamel Repair",
+        usage: "Massage pea-sized amount nightly.",
+        isPrescription: false
+      }
+    ]
   },
   "nutritional-counseling": {
     id: "nutritional-counseling",
