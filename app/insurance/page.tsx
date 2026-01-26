@@ -32,7 +32,7 @@ export default function InsurancePage() {
                                 </span>
                             </h1>
                             <p className="text-lg text-slate-600 dark:text-slate-400 max-w-lg leading-relaxed">
-                                We don't just "accept" insurance. We create it. Using our in-house <strong>HealthFlo</strong> technology, we decode your policy, handle the paperwork, and process reimbursements so you don't have to.
+                                We don&apos;t just &quot;accept&quot; insurance. We create it. Using our in-house <strong>HealthFlo</strong> technology, we decode your policy, handle the paperwork, and process reimbursements so you don&apos;t have to.
                             </p>
                             <div className="flex flex-wrap gap-4 pt-4">
                                 <a
@@ -102,7 +102,7 @@ export default function InsurancePage() {
                 <div className="container mx-auto max-w-4xl text-center mb-16">
                     <h2 className="text-3xl font-bold mb-4">Why Noble Dental is Different</h2>
                     <p className="text-slate-600 dark:text-slate-400 text-lg">
-                        Most clinics hand you a bill and say "Good luck." We handle the entire backend process.
+                        Most clinics hand you a bill and say &quot;Good luck.&quot; We handle the entire backend process.
                     </p>
                 </div>
 
@@ -113,7 +113,7 @@ export default function InsurancePage() {
                         </div>
                         <h3 className="text-2xl font-bold mb-4">AI Policy Decoder</h3>
                         <p className="text-slate-600 dark:text-slate-400 leading-relaxed">
-                            Insurance policies are confusing. Our AI engine instantly scans your policy to check for "Room Rent" limits (which affect dental claims), co-pay clauses, and waiting periods. We tell you <em>exactly</em> what is covered before you start.
+                            Insurance policies are confusing. Our AI engine instantly scans your policy to check for &quot;Room Rent&quot; limits (which affect dental claims), co-pay clauses, and waiting periods. We tell you <em>exactly</em> what is covered before you start.
                         </p>
                     </div>
 
@@ -188,7 +188,7 @@ export default function InsurancePage() {
                     <div className="text-center mb-16">
                         <h2 className="text-3xl font-bold mb-4">0% EMI & Finance Options</h2>
                         <p className="text-slate-600 dark:text-slate-400">
-                            Insurance doesn't cover Implants or Smile Makeovers. But our Finance partners do.
+                            Insurance doesn&apos;t cover Implants or Smile Makeovers. But our Finance partners do.
                         </p>
                     </div>
 
