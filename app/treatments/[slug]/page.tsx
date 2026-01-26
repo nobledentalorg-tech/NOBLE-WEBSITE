@@ -235,5 +235,46 @@ export default function TreatmentPage({ params }: { params: { slug: string } }) 
             )}
 
           </div>
-          );
+
+          {/* RIGHT COLUMN (Sticky Sidebar) */}
+          <div className="lg:col-span-1">
+            <div className="sticky top-8 space-y-6">
+
+              {/* Booking Card */}
+              <div className="bg-white dark:bg-zinc-900 rounded-3xl p-8 shadow-xl border border-red-100 dark:border-red-900/20 relative overflow-hidden">
+                <div className="absolute top-0 right-0 w-32 h-32 bg-red-500/10 rounded-full -mr-16 -mt-16 blur-2xl"></div>
+
+                <h3 className="text-xl font-bold mb-2">Ready to restore your smile?</h3>
+                <p className="text-slate-500 mb-6 text-sm">Dr. Dhivakaran is accepting new patients for {t.title}.</p>
+
+                <button className="w-full py-4 bg-red-600 hover:bg-red-700 text-white rounded-xl font-bold flex items-center justify-center gap-2 transition-transform active:scale-95 shadow-lg shadow-red-600/20">
+                  <Calendar size={18} />
+                  Book Appointment
+                </button>
+
+                <div className="mt-6 flex items-center justify-center gap-2 text-xs text-slate-400">
+                  <Shield size={12} />
+                  <span>HIPAA Compliant & Secure</span>
+                </div>
+              </div>
+
+              {/* Benefits List */}
+              <div className="bg-slate-50 dark:bg-white/5 rounded-3xl p-8 border border-slate-100 dark:border-white/5">
+                <h3 className="font-bold mb-6 text-sm uppercase tracking-widest text-slate-500">Key Benefits</h3>
+                <ul className="space-y-4">
+                  {t.benefits.map((benefit, idx) => (
+                    <li key={idx} className="flex items-start gap-3 text-slate-700 dark:text-slate-300">
+                      <CheckCircle size={18} className="text-green-500 shrink-0 mt-0.5" />
+                      <span className="text-sm font-medium">{benefit}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+
+            </div>
+          </div>
+
+        </div>
+      </div>
+      );
 }
