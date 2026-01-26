@@ -167,16 +167,16 @@ export default function InsurancePage() {
 
                             <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-6">
                                 {[
-                                    { name: "Star Health", src: "https://upload.wikimedia.org/wikipedia/commons/4/42/Star_Health_and_Allied_Insurance_Logo.jpg" },
-                                    { name: "HDFC Ergo", src: "https://upload.wikimedia.org/wikipedia/commons/e/e4/HDFC_ERGO_Logo.jpg" },
-                                    { name: "ICICI Lombard", src: "https://upload.wikimedia.org/wikipedia/commons/e/ec/ICICI_Lombard_Logo.svg" },
-                                    { name: "Niva Bupa", src: "https://placehold.co/200x80/white/black?text=Niva+Bupa" },
-                                    { name: "Care Health", src: "https://upload.wikimedia.org/wikipedia/commons/e/e4/Care_Health_Insurance_Logo.jpg" },
+                                    { name: "Star Health", src: "/images/brands/star-health.jpg" },
+                                    { name: "HDFC Ergo", src: "/images/brands/hdfc-ergo.jpg" },
+                                    { name: "ICICI Lombard", src: "/images/brands/icici-lombard.svg" },
+                                    { name: "Niva Bupa", src: "/images/brands/niiva-bupa.png" },
+                                    { name: "Care Health", src: "/images/brands/care-health.jpg" },
                                     { name: "Manipal Cigna", src: "https://placehold.co/200x80/white/black?text=Manipal+Cigna" },
-                                    { name: "Tata AIG", src: "https://upload.wikimedia.org/wikipedia/commons/2/23/Tata_AIG_Logo.png" },
-                                    { name: "Aditya Birla", src: "https://placehold.co/200x80/white/black?text=Aditya+Birla" },
-                                    { name: "Bajaj Allianz", src: "https://upload.wikimedia.org/wikipedia/commons/1/1a/Bajaj_Allianz_General_Insurance_Logo.jpg" },
-                                    { name: "SBI General", src: "https://upload.wikimedia.org/wikipedia/commons/a/a2/SBI_General_Insurance_Logo.png" }
+                                    { name: "Tata AIG", src: "/images/brands/tata-aig.png" },
+                                    { name: "Aditya Birla", src: "/images/brands/aditya-birla.png" },
+                                    { name: "Bajaj Allianz", src: "/images/brands/bajaj-allianz.png" },
+                                    { name: "SBI General", src: "/images/brands/sbi-general.png" }
                                 ].map((brand, idx) => (
                                     <div
                                         key={idx}
@@ -201,7 +201,7 @@ export default function InsurancePage() {
                             <h3 className="font-bold text-lg mb-6 text-slate-700 dark:text-slate-300">Third Party Administrators (TPAs)</h3>
                             <div className="grid grid-cols-3 md:grid-cols-6 gap-4">
                                 {[
-                                    { name: "MediAssist", src: "https://upload.wikimedia.org/wikipedia/en/2/23/Medi_Assist_Logo.jpg" },
+                                    { name: "MediAssist", src: "/images/brands/medi-assist.jpg" },
                                     { name: "Vidal Health", src: "https://placehold.co/200x80/white/black?text=Vidal+Health" },
                                     { name: "FHPL", src: "https://placehold.co/200x80/white/black?text=FHPL" },
                                     { name: "MDIndia", src: "https://placehold.co/200x80/white/black?text=MDIndia" },
