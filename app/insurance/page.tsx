@@ -1,295 +1,279 @@
+'use client';
+
 import React from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-import { Metadata } from 'next';
+import { motion } from 'framer-motion';
 import {
     ShieldCheck, FileCheck, CheckCircle, Calculator, Building2, Wallet,
-    ArrowRight, Phone, Smartphone, BadgeCheck, ClipboardCheck, Landmark
+    ArrowRight, BadgeCheck, ClipboardCheck, Landmark,
+    Zap, Activity, LayoutGrid, FileText
 } from 'lucide-react';
 
-export const metadata: Metadata = {
-    title: 'Insurance Claims & 0% EMI Options | Noble Dental Care Nallagandla',
-    description: 'Cashless insurance claims processed via HealthFlo AI. 0% EMI for implants & aligners. Corporate benefits for Microsoft, Amazon, Infosys employees.',
-    keywords: ['dental insurance hyderabad', 'cashless dental treatment', 'healthflo claims', 'dental emi nallagandla', 'corporate dental benefits'],
+const fadeInUp = {
+    hidden: { opacity: 0, y: 30 },
+    visible: { opacity: 1, y: 0, transition: { duration: 0.8, ease: "easeOut" } }
+};
+
+const staggerContainer = {
+    hidden: { opacity: 0 },
+    visible: { opacity: 1, transition: { staggerChildren: 0.1 } }
 };
 
 export default function InsurancePage() {
     return (
-        <div className="min-h-screen bg-white dark:bg-black text-slate-900 dark:text-slate-100 font-sans">
+        <div className="min-h-screen bg-white dark:bg-[#050505] text-slate-900 dark:text-slate-100 font-sans selection:bg-blue-500/30">
 
-            {/* 1. HERO SECTION */}
-            <section className="relative pt-32 pb-20 px-6 overflow-hidden bg-slate-50 dark:bg-zinc-900 border-b border-slate-200 dark:border-white/5">
-                <div className="container mx-auto max-w-6xl relative z-10">
-                    <div className="grid lg:grid-cols-2 gap-12 items-center">
-                        <div className="space-y-6">
-                            <span className="inline-block px-4 py-1.5 rounded-full bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-400 font-bold text-sm tracking-wide uppercase">
-                                Powered by HealthFlo™ Engine
-                            </span>
-                            <h1 className="text-4xl md:text-6xl font-extrabold leading-tight">
-                                Dental Benefits. <br />
-                                <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-indigo-600">
-                                    Zero Headaches.
-                                </span>
-                            </h1>
-                            <p className="text-lg text-slate-600 dark:text-slate-400 max-w-lg leading-relaxed">
-                                We don&apos;t just &quot;accept&quot; insurance. We create it. Using our in-house <strong>HealthFlo</strong> technology, we decode your policy, handle the paperwork, and process reimbursements so you don&apos;t have to.
-                            </p>
-                            <div className="flex flex-wrap gap-4 pt-4">
-                                <a
-                                    href="https://wa.me/91XXXXXXXXXX?text=Hi, I want to check my insurance eligibility."
-                                    className="px-8 py-4 bg-blue-600 hover:bg-blue-700 text-white rounded-xl font-bold transition-all shadow-lg flex items-center gap-2"
-                                >
-                                    <Smartphone size={20} />
-                                    Check Eligibility (WhatsApp)
-                                </a>
-                                <a
-                                    href="#emi-options"
-                                    className="px-8 py-4 bg-white dark:bg-white/5 border border-slate-200 dark:border-white/10 hover:bg-slate-50 dark:hover:bg-white/10 rounded-xl font-bold transition-all flex items-center gap-2"
-                                >
-                                    <Calculator size={20} />
-                                    View EMI Plans
-                                </a>
-                            </div>
-                        </div>
+            {/* 1. HERO SECTION (Neutral & Professional) */}
+            <section className="relative pt-32 pb-24 px-6 overflow-hidden">
+                {/* Subtle background for "Hospital Admin" feel */}
+                <div className="absolute inset-0 bg-slate-50/50 dark:bg-[#0A0A0A] -z-10"></div>
 
-                        {/* Visual Graphic */}
-                        <div className="relative">
-                            <div className="absolute inset-0 bg-blue-500/20 blur-3xl rounded-full opacity-50"></div>
-                            <div className="relative bg-white dark:bg-zinc-800 rounded-3xl p-6 shadow-2xl border border-slate-100 dark:border-white/10 z-10">
-                                {/* Mock UI for HealthFlo App */}
-                                <div className="flex items-center justify-between mb-8 border-b border-slate-100 dark:border-white/5 pb-4">
-                                    <div className="flex items-center gap-3">
-                                        <div className="w-10 h-10 bg-indigo-600 rounded-lg flex items-center justify-center text-white font-bold">HF</div>
-                                        <div>
-                                            <div className="text-sm font-bold">Claim Packet #9021</div>
-                                            <div className="text-xs text-green-500 font-medium">● AI Approved</div>
+                <div className="container mx-auto max-w-7xl relative z-10">
+                    <motion.div
+                        initial="hidden"
+                        animate="visible"
+                        variants={fadeInUp}
+                        className="text-center max-w-4xl mx-auto mb-16"
+                    >
+                        <motion.div
+                            className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-slate-100 dark:bg-white/5 text-slate-600 dark:text-slate-300 font-semibold text-sm border border-slate-200 dark:border-white/10 mb-8"
+                        >
+                            <FileText size={14} />
+                            <span>Administrative Support Portal</span>
+                        </motion.div>
+
+                        <h1 className="text-4xl md:text-6xl font-bold tracking-tight mb-8 leading-tight text-slate-800 dark:text-white">
+                            Insurance Support & <br />
+                            <span className="text-slate-500">Financial Transparency</span>
+                        </h1>
+
+                        <p className="text-xl text-slate-600 dark:text-slate-400 font-medium leading-relaxed max-w-3xl mx-auto">
+                            We provide all necessary medical documentation to facilitate your reimbursement claims.
+                            Our administrative processes are designed to ensure accuracy and compliance with insurer guidelines.
+                        </p>
+                    </motion.div>
+
+                    {/* HERO VISUAL: The "Paperwork" Card */}
+                    <motion.div
+                        initial={{ opacity: 0, scale: 0.98 }}
+                        animate={{ opacity: 1, scale: 1 }}
+                        transition={{ delay: 0.3, duration: 0.8 }}
+                        className="relative max-w-5xl mx-auto"
+                    >
+                        <div className="relative bg-white dark:bg-[#111] rounded-3xl border border-slate-200 dark:border-white/10 shadow-xl overflow-hidden p-8 md:p-12">
+                            <div className="grid lg:grid-cols-2 gap-12 items-center">
+                                <div>
+                                    <h3 className="text-2xl font-bold mb-2">How We Support Your Claim</h3>
+                                    <p className="text-slate-500 mb-8">At Noble Dental Care, we believe in complete administrative transparency.</p>
+
+                                    <div className="space-y-6">
+                                        <div className="flex gap-4 items-start">
+                                            <div className="w-10 h-10 rounded-full bg-blue-100 dark:bg-blue-900/20 text-blue-600 flex items-center justify-center shrink-0">
+                                                <ClipboardCheck size={20} />
+                                            </div>
+                                            <div>
+                                                <div className="font-bold text-lg">Standardized Billing</div>
+                                                <p className="text-slate-500 text-sm mt-1">We use ADA-compliant procedure codes recognized by all major insurers to prevent technical discrepancies.</p>
+                                            </div>
+                                        </div>
+                                        <div className="flex gap-4 items-start">
+                                            <div className="w-10 h-10 rounded-full bg-blue-100 dark:bg-blue-900/20 text-blue-600 flex items-center justify-center shrink-0">
+                                                <FileCheck size={20} />
+                                            </div>
+                                            <div>
+                                                <div className="font-bold text-lg">Digital Records</div>
+                                                <p className="text-slate-500 text-sm mt-1">We provide high-quality pre- and post-treatment X-rays and intra-oral photos required for claim verification.</p>
+                                            </div>
                                         </div>
                                     </div>
-                                    <div className="text-right">
-                                        <div className="text-xs text-slate-400">Estimated Refund</div>
-                                        <div className="text-lg font-bold text-slate-900 dark:text-white">₹18,500</div>
-                                    </div>
                                 </div>
 
-                                <div className="space-y-4">
-                                    <div className="flex items-center gap-3 p-3 bg-slate-50 dark:bg-black/20 rounded-xl">
-                                        <CheckCircle size={18} className="text-green-500 shrink-0" />
-                                        <span className="text-sm text-slate-600 dark:text-slate-300">Policy Decoder Analysis Complete</span>
+                                {/* HealthFlo "Efficiency" Angle */}
+                                <div className="bg-slate-50 dark:bg-black/50 rounded-2xl p-8 border border-slate-100 dark:border-white/5">
+                                    <div className="flex items-center gap-3 mb-6">
+                                        <div className="w-12 h-12 bg-white dark:bg-[#1A1A1A] rounded-xl border border-slate-100 dark:border-white/5 flex items-center justify-center shadow-sm">
+                                            <Activity size={24} className="text-slate-700 dark:text-slate-300" />
+                                        </div>
+                                        <div>
+                                            <div className="text-xs font-bold text-slate-400 uppercase tracking-wider">Administrative Partner</div>
+                                            <div className="font-bold text-lg">HealthFlo™</div>
+                                        </div>
                                     </div>
-                                    <div className="flex items-center gap-3 p-3 bg-slate-50 dark:bg-black/20 rounded-xl">
-                                        <CheckCircle size={18} className="text-green-500 shrink-0" />
-                                        <span className="text-sm text-slate-600 dark:text-slate-300">ADA Codes Validated</span>
-                                    </div>
-                                    <div className="flex items-center gap-3 p-3 bg-slate-50 dark:bg-black/20 rounded-xl">
-                                        <CheckCircle size={18} className="text-green-500 shrink-0" />
-                                        <span className="text-sm text-slate-600 dark:text-slate-300">Claim Submitted to Insurer</span>
-                                    </div>
-                                </div>
 
-                                <div className="mt-6 pt-4 text-center border-t border-slate-100 dark:border-white/5">
-                                    <p className="text-xs text-slate-400 font-medium uppercase tracking-widest">
-                                        Noble Dental Clinical Excellence + HealthFlo Claims Tech
+                                    <p className="text-slate-600 dark:text-slate-400 text-sm leading-relaxed mb-6">
+                                        To ensure your claim files are complete and error-free, we utilize the HealthFlo platform for documentation. This helps reduce administrative queries and processing delays.
                                     </p>
+
+                                    <div className="p-4 bg-white dark:bg-[#1A1A1A] rounded-xl border border-slate-100 dark:border-white/5 text-xs text-slate-500">
+                                        <span className="font-bold text-slate-700 dark:text-slate-300">Important Note:</span> We do not guarantee claim approval. Coverage depends entirely on your specific policy terms.
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    </motion.div>
                 </div>
             </section>
 
-            {/* 2. THE HEALTHFLO ADVANTAGE (USP) */}
-            <section className="py-20 px-6">
-                <div className="container mx-auto max-w-4xl text-center mb-16">
-                    <h2 className="text-3xl font-bold mb-4">Why Noble Dental is Different</h2>
-                    <p className="text-slate-600 dark:text-slate-400 text-lg">
-                        Most clinics hand you a bill and say &quot;Good luck.&quot; We handle the entire backend process.
-                    </p>
-                </div>
-
-                <div className="container mx-auto max-w-6xl grid md:grid-cols-2 gap-8">
-                    <div className="bg-slate-50 dark:bg-zinc-900 p-8 rounded-3xl border border-slate-100 dark:border-white/5">
-                        <div className="w-14 h-14 bg-blue-100 dark:bg-blue-900/30 text-blue-600 rounded-2xl flex items-center justify-center mb-6">
-                            <FileCheck size={32} />
-                        </div>
-                        <h3 className="text-2xl font-bold mb-4">AI Policy Decoder</h3>
-                        <p className="text-slate-600 dark:text-slate-400 leading-relaxed">
-                            Insurance policies are confusing. Our AI engine instantly scans your policy to check for &quot;Room Rent&quot; limits (which affect dental claims), co-pay clauses, and waiting periods. We tell you <em>exactly</em> what is covered before you start.
-                        </p>
-                    </div>
-
-                    <div className="bg-slate-50 dark:bg-zinc-900 p-8 rounded-3xl border border-slate-100 dark:border-white/5">
-                        <div className="w-14 h-14 bg-indigo-100 dark:bg-indigo-900/30 text-indigo-600 rounded-2xl flex items-center justify-center mb-6">
-                            <ClipboardCheck size={32} />
-                        </div>
-                        <h3 className="text-2xl font-bold mb-4">Professional Claims Desk</h3>
-                        <p className="text-slate-600 dark:text-slate-400 leading-relaxed">
-                            Rejections happen due to wrong codes. Our dedicated desk prepares your claim packet with the correct <strong>ADA (American Dental Association)</strong> procedural codes and intra-oral photographs to maximize your approval chances.
-                        </p>
-                    </div>
-                </div>
-            </section>
-
-            {/* 3. PARTNERS & CORPORATE */}
-            <section className="py-20 px-6 bg-slate-900 text-white">
+            {/* 2. ACCEPTED DOCUMENTATION NETWORKS */}
+            <section className="py-24 px-6 bg-white dark:bg-[#050505]">
                 <div className="container mx-auto max-w-6xl">
-                    <div className="grid lg:grid-cols-2 gap-16 items-start">
-
-                        {/* Insurance Partners */}
+                    <motion.div
+                        variants={staggerContainer}
+                        initial="hidden"
+                        whileInView="visible"
+                        viewport={{ once: true }}
+                        className="space-y-16"
+                    >
+                        {/* A. Insurance Companies */}
                         <div>
-                            <h2 className="text-2xl font-bold mb-6 flex items-center gap-3">
-                                <ShieldCheck className="text-blue-400" />
-                                We Support Claims For
-                            </h2>
-                            <p className="text-slate-400 mb-8 border-l-2 border-blue-500 pl-4">
-                                We specialize in <strong>Hassle-Free Reimbursement</strong>. You focus on recovery; we prepare the paperwork.
-                            </p>
-                            <div className="grid grid-cols-2 gap-4">
-                                {['Star Health', 'HDFC Ergo', 'ICICI Lombard', 'MediAssist', 'Vidal Health', 'Niva Bupa'].map((partner) => (
-                                    <div key={partner} className="p-4 bg-white/5 rounded-xl border border-white/10 text-center font-medium hover:bg-white/10 transition-colors">
-                                        {partner}
+                            <div className="border-b border-slate-100 dark:border-white/5 pb-6 mb-10">
+                                <h2 className="text-2xl font-bold mb-2 flex items-center gap-2">
+                                    <ShieldCheck className="text-slate-400" />
+                                    We Accept Documentation Requests For:
+                                </h2>
+                                <p className="text-slate-500 text-sm">
+                                    We provide itemized bills and treatment summaries aligned with standard formats for these providers.
+                                </p>
+                            </div>
+
+                            <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-6">
+                                {[
+                                    { name: "Star Health", src: "https://placehold.co/200x80/white/black?text=Star+Health" },
+                                    { name: "HDFC Ergo", src: "https://placehold.co/200x80/white/black?text=HDFC+Ergo" },
+                                    { name: "ICICI Lombard", src: "https://placehold.co/200x80/white/black?text=ICICI+Lombard" },
+                                    { name: "Niva Bupa", src: "https://placehold.co/200x80/white/black?text=Niva+Bupa" },
+                                    { name: "Care Health", src: "https://placehold.co/200x80/white/black?text=Care+Health" },
+                                    { name: "Manipal Cigna", src: "https://placehold.co/200x80/white/black?text=Manipal+Cigna" },
+                                    { name: "Tata AIG", src: "https://placehold.co/200x80/white/black?text=Tata+AIG" },
+                                    { name: "Aditya Birla", src: "https://placehold.co/200x80/white/black?text=Aditya+Birla" },
+                                    { name: "Bajaj Allianz", src: "https://placehold.co/200x80/white/black?text=Bajaj+Allianz" },
+                                    { name: "SBI General", src: "https://placehold.co/200x80/white/black?text=SBI+General" }
+                                ].map((brand, idx) => (
+                                    <div
+                                        key={idx}
+                                        className="h-20 bg-slate-50 dark:bg-white/5 border border-slate-100 dark:border-white/5 rounded-lg flex items-center justify-center p-4 grayscale opacity-80 hover:opacity-100 hover:grayscale-0 transition-all"
+                                    >
+                                        <div className="relative w-full h-full">
+                                            <Image
+                                                src={brand.src}
+                                                alt={brand.name}
+                                                fill
+                                                className="object-contain"
+                                                unoptimized
+                                            />
+                                        </div>
                                     </div>
                                 ))}
                             </div>
                         </div>
 
-                        {/* Corporate Corner */}
-                        <div className="bg-gradient-to-br from-blue-900/50 to-indigo-900/50 p-8 rounded-3xl border border-white/10">
-                            <div className="flex items-center gap-2 mb-6 text-blue-300 font-bold uppercase tracking-wider text-sm">
-                                <Building2 size={16} />
-                                Corporate Corner - Nallagandla
-                            </div>
-
-                            <h3 className="text-2xl font-bold mb-4">Work at a Tech Hub?</h3>
-                            <p className="text-slate-300 mb-6 leading-relaxed">
-                                Employees of <strong>Microsoft, Amazon, Infosys, Wipro, and TCS</strong> effectively utilize their corporate health cards here. Your policy likely covers:
-                            </p>
-
-                            <ul className="space-y-3 mb-8">
-                                {['Root Canal Treatments', 'Surgical Extractions', 'Disimpactions (Wisdom Tooth)', 'Scaling (Cleaning)'].map(item => (
-                                    <li key={item} className="flex items-center gap-3 text-slate-200">
-                                        <CheckCircle size={16} className="text-green-400" />
-                                        {item}
-                                    </li>
+                        {/* B. TPAs */}
+                        <div>
+                            <h3 className="font-bold text-lg mb-6 text-slate-700 dark:text-slate-300">Third Party Administrators (TPAs)</h3>
+                            <div className="grid grid-cols-3 md:grid-cols-6 gap-4">
+                                {[
+                                    { name: "MediAssist", src: "https://placehold.co/200x80/white/black?text=MediAssist" },
+                                    { name: "Vidal Health", src: "https://placehold.co/200x80/white/black?text=Vidal+Health" },
+                                    { name: "FHPL", src: "https://placehold.co/200x80/white/black?text=FHPL" },
+                                    { name: "MDIndia", src: "https://placehold.co/200x80/white/black?text=MDIndia" },
+                                    { name: "Paramount", src: "https://placehold.co/200x80/white/black?text=Paramount" },
+                                    { name: "Raksha TPA", src: "https://placehold.co/200x80/white/black?text=Raksha" },
+                                ].map((tpa, idx) => (
+                                    <div
+                                        key={idx}
+                                        className="h-16 bg-white dark:bg-white/5 border border-slate-200 dark:border-white/5 rounded flex items-center justify-center p-2 opacity-70"
+                                    >
+                                        <div className="relative w-full h-full">
+                                            <Image
+                                                src={tpa.src}
+                                                alt={tpa.name}
+                                                fill
+                                                className="object-contain"
+                                                unoptimized
+                                            />
+                                        </div>
+                                    </div>
                                 ))}
-                            </ul>
-
-                            <div className="p-4 bg-black/30 rounded-xl text-sm text-slate-400 border border-white/5">
-                                <span className="text-white font-bold">Pro Tip:</span> Corporate limits usually reset on April 1st. Use your balance before it lapses!
                             </div>
+                            <p className="mt-8 text-xs text-slate-400 text-center max-w-2xl mx-auto italic">
+                                Disclaimer: Note: Approvals are at the sole discretion of your insurance provider and policy terms. We assist with documentation but do not influence claim outcomes.
+                            </p>
                         </div>
+                    </motion.div>
+                </div>
+            </section>
 
+            {/* 3. CORPORATE REIMBURSEMENT ASSISTANCE */}
+            <section className="py-24 px-6 bg-slate-50 dark:bg-[#0A0A0A] border-t border-slate-100 dark:border-white/5">
+                <div className="container mx-auto max-w-4xl">
+                    <div className="flex flex-col md:flex-row items-center gap-10">
+                        <div className="w-16 h-16 bg-blue-100 dark:bg-blue-900/20 text-blue-600 rounded-2xl flex items-center justify-center shrink-0">
+                            <Building2 size={32} />
+                        </div>
+                        <div>
+                            <h2 className="text-2xl font-bold mb-3">
+                                Corporate Reimbursement Assistance
+                            </h2>
+                            <p className="text-slate-600 dark:text-slate-400 leading-relaxed mb-6">
+                                We are familiar with the claim formats required for employees of major IT campuses in Nallagandla (e.g., <strong>Infosys, Microsoft, TCS, Wipro</strong>). We provide itemized bills and treatment summaries aligned with standard TPA formats to simplify your submission process.
+                            </p>
+                        </div>
                     </div>
                 </div>
             </section>
 
-            {/* 4. EMI & FINANCE */}
-            <section id="emi-options" className="py-20 px-6">
+            {/* 4. FINANCIAL OPTIONS (Safe Tone) */}
+            <section id="emi-options" className="py-24 px-6 bg-white dark:bg-[#050505]">
                 <div className="container mx-auto max-w-6xl">
                     <div className="text-center mb-16">
-                        <h2 className="text-3xl font-bold mb-4">0% EMI & Finance Options</h2>
-                        <p className="text-slate-600 dark:text-slate-400">
-                            Insurance doesn&apos;t cover Implants or Smile Makeovers. But our Finance partners do.
+                        <h2 className="text-3xl font-bold mb-4">Transparent Payment Options</h2>
+                        <p className="text-slate-500 max-w-2xl mx-auto">
+                            For treatments not covered by insurance (such as Implants or Veneers), we offer structured payment plans to manage costs effectively.
                         </p>
                     </div>
 
                     <div className="grid md:grid-cols-3 gap-8">
-                        {/* Card 1 */}
-                        <div className="p-8 rounded-3xl bg-white dark:bg-zinc-900 border border-slate-100 dark:border-white/5 shadow-xl hover:-translate-y-1 transition-transform">
-                            <div className="w-12 h-12 bg-green-100 dark:bg-green-900/30 text-green-600 rounded-xl flex items-center justify-center mb-6">
-                                <Wallet size={24} />
+                        {/* Bajaj Finserv */}
+                        <div className="p-8 rounded-2xl bg-slate-50 dark:bg-[#111] border border-slate-100 dark:border-white/5">
+                            <div className="flex items-center gap-3 mb-6">
+                                <Wallet className="text-slate-400" />
+                                <h3 className="font-bold text-lg">Bajaj Finserv</h3>
                             </div>
-                            <h3 className="text-xl font-bold mb-2">0% Cost EMI</h3>
-                            <p className="text-sm text-slate-500 mb-4">Pay in 3, 6, or 9 months with zero extra interest.</p>
-                            <div className="space-y-2 border-t border-slate-100 dark:border-white/5 pt-4">
-                                <div className="text-xs font-bold text-slate-400 uppercase">Partners</div>
-                                <div className="font-medium">Bajaj Finserv, HealthFlo Finance</div>
-                            </div>
+                            <p className="text-slate-500 text-sm mb-4">Standard EMI options available for cardholders.</p>
+                            <div className="text-xs font-medium px-3 py-1 bg-green-100 text-green-700 w-fit rounded-full">0% Interest Plans Available</div>
                         </div>
 
-                        {/* Card 2 */}
-                        <div className="p-8 rounded-3xl bg-white dark:bg-zinc-900 border border-slate-100 dark:border-white/5 shadow-xl hover:-translate-y-1 transition-transform">
-                            <div className="w-12 h-12 bg-purple-100 dark:bg-purple-900/30 text-purple-600 rounded-xl flex items-center justify-center mb-6">
-                                <Landmark size={24} />
+                        {/* HealthFlo Finance */}
+                        <div className="p-8 rounded-2xl bg-white dark:bg-[#111] border border-slate-200 dark:border-white/5 shadow-lg relative overflow-hidden">
+                            <div className="absolute top-0 right-0 w-20 h-20 bg-blue-500/10 rounded-full blur-xl"></div>
+                            <div className="flex items-center gap-3 mb-6">
+                                <Activity className="text-blue-600" />
+                                <h3 className="font-bold text-lg">HealthFlo Finance</h3>
                             </div>
-                            <h3 className="text-xl font-bold mb-2">Instant Approval</h3>
-                            <p className="text-sm text-slate-500 mb-4">Paperless approval in under 5 minutes at the clinic desk.</p>
-                            <div className="space-y-2 border-t border-slate-100 dark:border-white/5 pt-4">
-                                <div className="text-xs font-bold text-slate-400 uppercase">Requirement</div>
-                                <div className="font-medium">PAN Card + Aadhar Linked Mobile</div>
-                            </div>
+                            <p className="text-slate-500 text-sm mb-4">Digital financing for medical procedures. Paperless approval process.</p>
+                            <div className="text-xs font-medium px-3 py-1 bg-blue-100 text-blue-700 w-fit rounded-full">KYC Required</div>
                         </div>
 
-                        {/* Card 3 */}
-                        <div className="p-8 rounded-3xl bg-white dark:bg-zinc-900 border border-slate-100 dark:border-white/5 shadow-xl hover:-translate-y-1 transition-transform">
-                            <div className="w-12 h-12 bg-orange-100 dark:bg-orange-900/30 text-orange-600 rounded-xl flex items-center justify-center mb-6">
-                                <BadgeCheck size={24} />
+                        {/* Credit Cards */}
+                        <div className="p-8 rounded-2xl bg-slate-50 dark:bg-[#111] border border-slate-100 dark:border-white/5">
+                            <div className="flex items-center gap-3 mb-6">
+                                <Landmark className="text-slate-400" />
+                                <h3 className="font-bold text-lg">Credit Card EMI</h3>
                             </div>
-                            <h3 className="text-xl font-bold mb-2">High Approval Rate</h3>
-                            <p className="text-sm text-slate-500 mb-4">Designed for medical treatments, ensuring higher eligibility.</p>
-                            <div className="space-y-2 border-t border-slate-100 dark:border-white/5 pt-4">
-                                <div className="text-xs font-bold text-slate-400 uppercase">Covered Treatments</div>
-                                <div className="font-medium">Implants, Aligners, Veneers</div>
-                            </div>
+                            <p className="text-slate-500 text-sm mb-4">Convert payments into monthly installments via your bank.</p>
+                            <div className="text-xs font-medium px-3 py-1 bg-slate-100 text-slate-600 w-fit rounded-full">All Major Banks</div>
                         </div>
                     </div>
-                </div>
-            </section>
 
-            {/* 5. PROCESS FLOWCHART */}
-            <section className="py-20 px-6 bg-slate-50 dark:bg-zinc-900/50">
-                <div className="container mx-auto max-w-5xl">
-                    <h2 className="text-3xl font-bold text-center mb-16">How Reimbursement Works</h2>
-
-                    <div className="relative">
-                        {/* Connecting Line (Desktop) */}
-                        <div className="hidden md:block absolute top-12 left-0 right-0 h-0.5 bg-slate-200 dark:bg-white/10 -z-0"></div>
-
-                        <div className="grid md:grid-cols-4 gap-8 relative z-10">
-                            {[
-                                { step: "01", title: "Consultation", desc: "We check your policy limits instantly via HealthFlo." },
-                                { step: "02", title: "Treatment", desc: "You pay for the service and get proper invoices." },
-                                { step: "03", title: "Claim Packet", desc: "We prepare & submit photos, X-rays, and notes." },
-                                { step: "04", title: "Credited", desc: "Amount is refunded to your account in 7-15 days." }
-                            ].map((item, idx) => (
-                                <div key={idx} className="bg-white dark:bg-black p-6 rounded-2xl border border-slate-100 dark:border-white/5 shadow-sm text-center">
-                                    <div className="w-10 h-10 bg-blue-600 text-white rounded-full flex items-center justify-center font-bold text-lg mx-auto mb-4 border-4 border-white dark:border-black">
-                                        {item.step}
-                                    </div>
-                                    <h4 className="font-bold text-lg mb-2">{item.title}</h4>
-                                    <p className="text-sm text-slate-500">{item.desc}</p>
-                                </div>
-                            ))}
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            {/* 6. FINAL CTA */}
-            <section className="py-24 px-6 text-center">
-                <div className="container mx-auto max-w-3xl">
-                    <h2 className="text-3xl md:text-4xl font-bold mb-6">Stop leaving money on the table.</h2>
-                    <p className="text-slate-600 dark:text-slate-400 text-lg mb-10">
-                        Let our technology handle your claims while you enjoy expert dental care.
-                    </p>
-                    <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                        <a
-                            href="https://wa.me/91XXXXXXXXXX?text=Hi, I want to check my insurance eligibility."
-                            className="px-8 py-4 bg-blue-600 hover:bg-blue-700 text-white rounded-xl font-bold transition-all shadow-xl hover:shadow-2xl flex items-center justify-center gap-2"
-                        >
-                            <Smartphone size={20} />
-                            Check Eligibility Now
-                        </a>
+                    <div className="mt-16 text-center">
                         <Link
                             href="/contact"
-                            className="px-8 py-4 bg-white dark:bg-zinc-800 border border-slate-200 dark:border-white/10 hover:border-slate-300 rounded-xl font-bold transition-all flex items-center justify-center gap-2"
+                            className="inline-flex items-center gap-2 px-8 py-4 bg-slate-900 dark:bg-white text-white dark:text-black rounded-lg font-bold transition-all hover:opacity-90"
                         >
-                            <Phone size={20} />
-                            Book Appointment
+                            Contact Administrative Desk <ArrowRight size={18} />
                         </Link>
                     </div>
-                    <p className="mt-6 text-xs text-slate-400">
-                        *Approvals are subject to individual insurance policy terms. We assist in filing; final decision lies with the insurer.
-                    </p>
                 </div>
             </section>
 
