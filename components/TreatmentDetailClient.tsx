@@ -107,147 +107,148 @@ export default function TreatmentDetailClient({ treatment }: Props) {
                         <p className="text-slate-600 dark:text-slate-400 text-lg leading-relaxed">
                             {treatment.longDescription}
                         </p>
-                        {/* [NEW] MEDICAL DEEP DIVE: ETIOLOGY */}
-                        {treatment.medicalContext && (
-                            <section className="space-y-12">
-                                <div className="bg-blue-50 dark:bg-blue-900/10 rounded-3xl p-8 border border-blue-100 dark:border-blue-800/30">
-                                    <h3 className="text-2xl font-bold text-slate-900 dark:text-white mb-8 flex items-center gap-3">
-                                        <Search className="text-blue-600" /> Understanding the Cause
-                                    </h3>
-                                    <div className="grid md:grid-cols-3 gap-6">
-                                        {treatment.medicalContext.etiology.map((item, idx) => (
-                                            <div key={idx} className="bg-white dark:bg-[#0B1019] p-6 rounded-2xl shadow-sm">
-                                                <div className="text-xs font-bold text-blue-500 uppercase tracking-widest mb-2">{item.medicalTerm}</div>
-                                                <div className="font-bold text-lg text-slate-900 dark:text-white mb-2">{item.cause}</div>
-                                                <p className="text-sm text-slate-500 leading-relaxed">{item.description}</p>
-                                            </div>
-                                        ))}
-                                    </div>
-                                </div>
-
-                                <div className="grid md:grid-cols-2 gap-8">
-                                    <div>
-                                        <h4 className="font-bold text-lg mb-4 flex items-center gap-2">
-                                            <Scan size={20} className="text-purple-500" /> Investigations Required
-                                        </h4>
-                                        <ul className="space-y-3">
-                                            {treatment.medicalContext.investigations.map((inv, idx) => (
-                                                <li key={idx} className="flex items-start gap-3 bg-white dark:bg-white/5 p-4 rounded-xl border border-slate-100 dark:border-white/5">
-                                                    <div className="w-1.5 h-1.5 rounded-full bg-purple-500 mt-2"></div>
-                                                    <div>
-                                                        <div className="font-bold text-sm text-slate-900 dark:text-white">{inv.name}</div>
-                                                        <div className="text-xs text-slate-500">{inv.purpose}</div>
-                                                    </div>
-                                                </li>
-                                            ))}
-                                        </ul>
-                                    </div>
-                                    <div>
-                                        <h4 className="font-bold text-lg mb-4 flex items-center gap-2">
-                                            <ShieldCheck size={20} className="text-green-500" /> Prevention Strategy
-                                        </h4>
-                                        <ul className="space-y-3">
-                                            {treatment.medicalContext.prevention.map((prev, idx) => (
-                                                <li key={idx} className="flex items-center gap-3 bg-white dark:bg-white/5 p-4 rounded-xl border border-slate-100 dark:border-white/5 text-sm text-slate-600 dark:text-slate-300">
-                                                    <CheckCircle2 size={16} className="text-green-500 shrink-0" />
-                                                    {prev}
-                                                </li>
-                                            ))}
-                                        </ul>
-                                    </div>
-                                </div>
-                            </section>
-                        )}
-
-                        <section>
-                            <RevealOnScroll>
-                                <h3 className="text-2xl font-bold text-slate-900 dark:text-white mb-10 flex items-center gap-3">
-                                    <Layers className="text-blue-500" /> Clinical Procedure Step-by-Step
+                    </RevealOnScroll>
+                    {/* [NEW] MEDICAL DEEP DIVE: ETIOLOGY */}
+                    {treatment.medicalContext && (
+                        <section className="space-y-12">
+                            <div className="bg-blue-50 dark:bg-blue-900/10 rounded-3xl p-8 border border-blue-100 dark:border-blue-800/30">
+                                <h3 className="text-2xl font-bold text-slate-900 dark:text-white mb-8 flex items-center gap-3">
+                                    <Search className="text-blue-600" /> Understanding the Cause
                                 </h3>
-
-                                {/* NEW: Detailed Timeline View if available, else fallback to cards */}
-                                {treatment.procedureDetailed ? (
-                                    <div className="space-y-0 relative border-l-2 border-slate-200 dark:border-white/10 ml-4 md:ml-6 pb-12">
-                                        {treatment.procedureDetailed.map((step, idx) => (
-                                            <div key={idx} className="relative pl-8 md:pl-12 pb-12 last:pb-0">
-                                                {/* Timeline Dot */}
-                                                <div className="absolute -left-[9px] top-0 w-4 h-4 rounded-full bg-blue-600 border-4 border-white dark:border-[#0B1019]"></div>
-
-                                                <div className="bg-white dark:bg-white/5 p-6 rounded-2xl border border-slate-100 dark:border-white/5 hover:border-blue-500/30 transition-all">
-                                                    <div className="flex justify-between items-start mb-2">
-                                                        <h4 className="text-lg font-bold text-slate-900 dark:text-white">{step.step}</h4>
-                                                        <span className="text-xs font-bold uppercase tracking-wider bg-slate-100 dark:bg-black/20 px-2 py-1 rounded text-slate-500">{step.duration}</span>
-                                                    </div>
-                                                    <p className="text-slate-600 dark:text-slate-400 text-sm leading-relaxed mb-3">
-                                                        {step.description}
-                                                    </p>
-                                                    <div className="inline-flex items-center gap-1.5 text-[10px] font-bold uppercase tracking-widest text-green-600 bg-green-50 dark:bg-green-900/10 px-2 py-1 rounded">
-                                                        <Smile size={12} /> Pain Level: {step.painLevel}
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        ))}
-                                    </div>
-                                ) : (
-                                    // Fallback for legacy pages
-                                    <div className="space-y-4">
-                                        {treatment.process.map((step: any, idx) => ( // Cast to any to handle legacy types
-                                            <div key={idx} className="p-6 rounded-2xl bg-white dark:bg-white/5 border border-slate-100 dark:border-white/5">
-                                                <h4 className="font-bold text-slate-900 dark:text-white">{step.title}</h4>
-                                                <p className="text-sm text-slate-500">{step.desc}</p>
-                                            </div>
-                                        ))}
-                                    </div>
-                                )}
-
-                                {/* [NEW] POST-OP & RECOVERY GUIDE */}
-                                {treatment.postOp && (
-                                    <section className="mt-20">
-                                        <h3 className="text-2xl font-bold text-slate-900 dark:text-white mb-8 flex items-center gap-3">
-                                            <HeartPulse className="text-red-500" /> Recovery & Aftercare
-                                        </h3>
-                                        <div className="grid md:grid-cols-2 gap-6">
-                                            <div className="bg-slate-50 dark:bg-[#0F172A] p-6 rounded-2xl">
-                                                <h4 className="font-bold text-slate-900 dark:text-white mb-4 flex items-center gap-2">⚡ Immediate Post-Op</h4>
-                                                <ul className="space-y-3">
-                                                    {treatment.postOp.immediate.map((item, i) => (
-                                                        <li key={i} className="text-sm text-slate-600 dark:text-slate-400 flex items-start gap-2">
-                                                            <Clock size={16} className="text-blue-500 mt-0.5 shrink-0" /> {item}
-                                                        </li>
-                                                    ))}
-                                                </ul>
-                                            </div>
-                                            <div className="bg-red-50 dark:bg-red-900/10 p-6 rounded-2xl">
-                                                <h4 className="font-bold text-red-700 dark:text-red-400 mb-4 flex items-center gap-2">⚠️ Warning Signs</h4>
-                                                <ul className="space-y-3">
-                                                    {treatment.postOp.warningSigns.map((item, i) => (
-                                                        <li key={i} className="text-sm text-red-600/80 dark:text-red-300 flex items-start gap-2">
-                                                            <Activity size={16} className="mt-0.5 shrink-0" /> {item}
-                                                        </li>
-                                                    ))}
-                                                </ul>
-                                            </div>
-                                        </div>
-                                    </section>
-                                )}
-                            </RevealOnScroll>
-                        </section>
-
-                        <section>
-                            <RevealOnScroll>
-                                <h3 className="text-2xl font-bold text-slate-900 dark:text-white mb-8">Common Questions</h3>
-                                <div className="grid gap-4">
-                                    {treatment.faqs.map((faq, i) => (
-                                        <div key={i} className="bg-white dark:bg-slate-900 p-6 rounded-2xl border border-slate-200 dark:border-white/5 hover:border-blue-300 dark:hover:border-white/10 transition-colors">
-                                            <h4 className="font-bold text-slate-900 dark:text-white mb-2 flex items-center gap-3">
-                                                <div className="w-1.5 h-1.5 rounded-full bg-blue-500"></div> {faq.q}
-                                            </h4>
-                                            <p className="text-slate-600 dark:text-slate-400 text-sm ml-4.5 leading-relaxed">{faq.a}</p>
+                                <div className="grid md:grid-cols-3 gap-6">
+                                    {treatment.medicalContext.etiology.map((item, idx) => (
+                                        <div key={idx} className="bg-white dark:bg-[#0B1019] p-6 rounded-2xl shadow-sm">
+                                            <div className="text-xs font-bold text-blue-500 uppercase tracking-widest mb-2">{item.medicalTerm}</div>
+                                            <div className="font-bold text-lg text-slate-900 dark:text-white mb-2">{item.cause}</div>
+                                            <p className="text-sm text-slate-500 leading-relaxed">{item.description}</p>
                                         </div>
                                     ))}
                                 </div>
-                            </RevealOnScroll>
+                            </div>
+
+                            <div className="grid md:grid-cols-2 gap-8">
+                                <div>
+                                    <h4 className="font-bold text-lg mb-4 flex items-center gap-2">
+                                        <Scan size={20} className="text-purple-500" /> Investigations Required
+                                    </h4>
+                                    <ul className="space-y-3">
+                                        {treatment.medicalContext.investigations.map((inv, idx) => (
+                                            <li key={idx} className="flex items-start gap-3 bg-white dark:bg-white/5 p-4 rounded-xl border border-slate-100 dark:border-white/5">
+                                                <div className="w-1.5 h-1.5 rounded-full bg-purple-500 mt-2"></div>
+                                                <div>
+                                                    <div className="font-bold text-sm text-slate-900 dark:text-white">{inv.name}</div>
+                                                    <div className="text-xs text-slate-500">{inv.purpose}</div>
+                                                </div>
+                                            </li>
+                                        ))}
+                                    </ul>
+                                </div>
+                                <div>
+                                    <h4 className="font-bold text-lg mb-4 flex items-center gap-2">
+                                        <ShieldCheck size={20} className="text-green-500" /> Prevention Strategy
+                                    </h4>
+                                    <ul className="space-y-3">
+                                        {treatment.medicalContext.prevention.map((prev, idx) => (
+                                            <li key={idx} className="flex items-center gap-3 bg-white dark:bg-white/5 p-4 rounded-xl border border-slate-100 dark:border-white/5 text-sm text-slate-600 dark:text-slate-300">
+                                                <CheckCircle2 size={16} className="text-green-500 shrink-0" />
+                                                {prev}
+                                            </li>
+                                        ))}
+                                    </ul>
+                                </div>
+                            </div>
                         </section>
+                    )}
+
+                    <section>
+                        <RevealOnScroll>
+                            <h3 className="text-2xl font-bold text-slate-900 dark:text-white mb-10 flex items-center gap-3">
+                                <Layers className="text-blue-500" /> Clinical Procedure Step-by-Step
+                            </h3>
+
+                            {/* NEW: Detailed Timeline View if available, else fallback to cards */}
+                            {treatment.procedureDetailed ? (
+                                <div className="space-y-0 relative border-l-2 border-slate-200 dark:border-white/10 ml-4 md:ml-6 pb-12">
+                                    {treatment.procedureDetailed.map((step, idx) => (
+                                        <div key={idx} className="relative pl-8 md:pl-12 pb-12 last:pb-0">
+                                            {/* Timeline Dot */}
+                                            <div className="absolute -left-[9px] top-0 w-4 h-4 rounded-full bg-blue-600 border-4 border-white dark:border-[#0B1019]"></div>
+
+                                            <div className="bg-white dark:bg-white/5 p-6 rounded-2xl border border-slate-100 dark:border-white/5 hover:border-blue-500/30 transition-all">
+                                                <div className="flex justify-between items-start mb-2">
+                                                    <h4 className="text-lg font-bold text-slate-900 dark:text-white">{step.step}</h4>
+                                                    <span className="text-xs font-bold uppercase tracking-wider bg-slate-100 dark:bg-black/20 px-2 py-1 rounded text-slate-500">{step.duration}</span>
+                                                </div>
+                                                <p className="text-slate-600 dark:text-slate-400 text-sm leading-relaxed mb-3">
+                                                    {step.description}
+                                                </p>
+                                                <div className="inline-flex items-center gap-1.5 text-[10px] font-bold uppercase tracking-widest text-green-600 bg-green-50 dark:bg-green-900/10 px-2 py-1 rounded">
+                                                    <Smile size={12} /> Pain Level: {step.painLevel}
+                                                </div>
+                                            </div>
+                                        </div>
+                                    ))}
+                                </div>
+                            ) : (
+                                // Fallback for legacy pages
+                                <div className="space-y-4">
+                                    {treatment.process.map((step: any, idx) => ( // Cast to any to handle legacy types
+                                        <div key={idx} className="p-6 rounded-2xl bg-white dark:bg-white/5 border border-slate-100 dark:border-white/5">
+                                            <h4 className="font-bold text-slate-900 dark:text-white">{step.title}</h4>
+                                            <p className="text-sm text-slate-500">{step.desc}</p>
+                                        </div>
+                                    ))}
+                                </div>
+                            )}
+
+                            {/* [NEW] POST-OP & RECOVERY GUIDE */}
+                            {treatment.postOp && (
+                                <section className="mt-20">
+                                    <h3 className="text-2xl font-bold text-slate-900 dark:text-white mb-8 flex items-center gap-3">
+                                        <HeartPulse className="text-red-500" /> Recovery & Aftercare
+                                    </h3>
+                                    <div className="grid md:grid-cols-2 gap-6">
+                                        <div className="bg-slate-50 dark:bg-[#0F172A] p-6 rounded-2xl">
+                                            <h4 className="font-bold text-slate-900 dark:text-white mb-4 flex items-center gap-2">⚡ Immediate Post-Op</h4>
+                                            <ul className="space-y-3">
+                                                {treatment.postOp.immediate.map((item, i) => (
+                                                    <li key={i} className="text-sm text-slate-600 dark:text-slate-400 flex items-start gap-2">
+                                                        <Clock size={16} className="text-blue-500 mt-0.5 shrink-0" /> {item}
+                                                    </li>
+                                                ))}
+                                            </ul>
+                                        </div>
+                                        <div className="bg-red-50 dark:bg-red-900/10 p-6 rounded-2xl">
+                                            <h4 className="font-bold text-red-700 dark:text-red-400 mb-4 flex items-center gap-2">⚠️ Warning Signs</h4>
+                                            <ul className="space-y-3">
+                                                {treatment.postOp.warningSigns.map((item, i) => (
+                                                    <li key={i} className="text-sm text-red-600/80 dark:text-red-300 flex items-start gap-2">
+                                                        <Activity size={16} className="mt-0.5 shrink-0" /> {item}
+                                                    </li>
+                                                ))}
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </section>
+                            )}
+                        </RevealOnScroll>
+                    </section>
+
+                    <section>
+                        <RevealOnScroll>
+                            <h3 className="text-2xl font-bold text-slate-900 dark:text-white mb-8">Common Questions</h3>
+                            <div className="grid gap-4">
+                                {treatment.faqs.map((faq, i) => (
+                                    <div key={i} className="bg-white dark:bg-slate-900 p-6 rounded-2xl border border-slate-200 dark:border-white/5 hover:border-blue-300 dark:hover:border-white/10 transition-colors">
+                                        <h4 className="font-bold text-slate-900 dark:text-white mb-2 flex items-center gap-3">
+                                            <div className="w-1.5 h-1.5 rounded-full bg-blue-500"></div> {faq.q}
+                                        </h4>
+                                        <p className="text-slate-600 dark:text-slate-400 text-sm ml-4.5 leading-relaxed">{faq.a}</p>
+                                    </div>
+                                ))}
+                            </div>
+                        </RevealOnScroll>
+                    </section>
                 </div>
 
                 <div className="space-y-10">
