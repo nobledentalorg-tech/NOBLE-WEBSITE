@@ -1,7 +1,5 @@
 import React from 'react';
 import { getSupabaseClient } from '@/lib/supabase';
-import Header from '@/components/Header';
-import Footer from '@/components/Footer';
 import Image from 'next/image';
 import { notFound } from 'next/navigation';
 import { Calendar, User, ArrowLeft, Tag } from 'lucide-react';
@@ -94,8 +92,7 @@ export default async function BlogPostPage({ params }: PageProps) {
     }
 
     return (
-        <main className="min-h-screen bg-white dark:bg-[#020617]">
-            <Header />
+        <div className="min-h-screen bg-white dark:bg-[#020617]">
 
             <article className="pt-32 pb-16">
                 {/* Hero / Header */}
@@ -166,7 +163,6 @@ export default async function BlogPostPage({ params }: PageProps) {
                 </div>
             </article>
 
-            <Footer />
-        </main>
+        </div>
     );
 }

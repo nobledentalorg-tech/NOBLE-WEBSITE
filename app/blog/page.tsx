@@ -1,7 +1,5 @@
 import React from 'react';
 import { getSupabaseClient } from '@/lib/supabase';
-import Header from '@/components/Header';
-import Footer from '@/components/Footer';
 import Link from 'next/link';
 import Image from 'next/image';
 import { Calendar, User, ArrowRight, FileText } from 'lucide-react';
@@ -84,8 +82,7 @@ export default async function BlogIndex() {
     ].sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
 
     return (
-        <main className="min-h-screen bg-slate-50 dark:bg-[#020617]">
-            <Header />
+        <div className="min-h-screen bg-slate-50 dark:bg-[#020617]">
 
             <section className="pt-32 pb-12 px-6 bg-white dark:bg-[#0B1221]">
                 <div className="max-w-7xl mx-auto text-center">
@@ -147,7 +144,6 @@ export default async function BlogIndex() {
                 </div>
             </section>
 
-            <Footer />
-        </main>
+        </div>
     );
 }
