@@ -9,6 +9,7 @@ import {
     ArrowRight, BadgeCheck, ClipboardCheck, Landmark,
     Zap, Activity, LayoutGrid, FileText
 } from 'lucide-react';
+import Script from 'next/script'; // [NEW] For JSON-LD
 
 const fadeInUp = {
     hidden: { opacity: 0, y: 30 },
@@ -21,8 +22,35 @@ const staggerContainer = {
 };
 
 export default function InsurancePage() {
+
+    // [NEW] EEAT Schema for Production
+    const jsonLd = {
+        "@context": "https://schema.org",
+        "@type": "MedicalOrganization",
+        "name": "Noble Dental Care",
+        "department": {
+            "@type": "MedicalBusiness",
+            "name": "Insurance & Claims Department",
+            "description": "Administrative support for dental insurance claims and EMI financing in Nallagandla."
+        },
+        "paymentAccepted": ["Cash", "Credit Card", "Insurance", "0% EMI"],
+        "priceRange": "$$",
+        "areaServed": {
+            "@type": "Place",
+            "name": "Nallagandla"
+        },
+        "knowsAbout": ["Insurance Claims", "Dental Financing", "Cashless Treatment"]
+    };
+
     return (
         <div className="min-h-screen bg-white dark:bg-[#050505] text-slate-900 dark:text-slate-100 font-sans selection:bg-blue-500/30">
+
+            {/* [NEW] JSON-LD Injection */}
+            <Script
+                id="insurance-jsonld"
+                type="application/ld+json"
+                dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+            />
 
             {/* 1. HERO SECTION (Neutral & Professional) */}
             <section className="relative pt-32 pb-24 px-6 overflow-hidden">
@@ -66,7 +94,7 @@ export default function InsurancePage() {
                                 <div>
                                     <h3 className="text-2xl font-bold mb-2">How We Support Your Claim</h3>
                                     <p className="text-slate-500 mb-8">At Noble Dental Care, we believe in complete administrative transparency.</p>
-
+                                    {/* ... Content ... */}
                                     <div className="space-y-6">
                                         <div className="flex gap-4 items-start">
                                             <div className="w-10 h-10 rounded-full bg-blue-100 dark:bg-blue-900/20 text-blue-600 flex items-center justify-center shrink-0">
@@ -139,16 +167,16 @@ export default function InsurancePage() {
 
                             <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-6">
                                 {[
-                                    { name: "Star Health", src: "https://placehold.co/200x80/white/black?text=Star+Health" },
-                                    { name: "HDFC Ergo", src: "https://placehold.co/200x80/white/black?text=HDFC+Ergo" },
-                                    { name: "ICICI Lombard", src: "https://placehold.co/200x80/white/black?text=ICICI+Lombard" },
+                                    { name: "Star Health", src: "https://upload.wikimedia.org/wikipedia/commons/4/42/Star_Health_and_Allied_Insurance_Logo.jpg" },
+                                    { name: "HDFC Ergo", src: "https://upload.wikimedia.org/wikipedia/commons/e/e4/HDFC_ERGO_Logo.jpg" },
+                                    { name: "ICICI Lombard", src: "https://upload.wikimedia.org/wikipedia/commons/e/ec/ICICI_Lombard_Logo.svg" },
                                     { name: "Niva Bupa", src: "https://placehold.co/200x80/white/black?text=Niva+Bupa" },
-                                    { name: "Care Health", src: "https://placehold.co/200x80/white/black?text=Care+Health" },
+                                    { name: "Care Health", src: "https://upload.wikimedia.org/wikipedia/commons/e/e4/Care_Health_Insurance_Logo.jpg" },
                                     { name: "Manipal Cigna", src: "https://placehold.co/200x80/white/black?text=Manipal+Cigna" },
-                                    { name: "Tata AIG", src: "https://placehold.co/200x80/white/black?text=Tata+AIG" },
+                                    { name: "Tata AIG", src: "https://upload.wikimedia.org/wikipedia/commons/2/23/Tata_AIG_Logo.png" },
                                     { name: "Aditya Birla", src: "https://placehold.co/200x80/white/black?text=Aditya+Birla" },
-                                    { name: "Bajaj Allianz", src: "https://placehold.co/200x80/white/black?text=Bajaj+Allianz" },
-                                    { name: "SBI General", src: "https://placehold.co/200x80/white/black?text=SBI+General" }
+                                    { name: "Bajaj Allianz", src: "https://upload.wikimedia.org/wikipedia/commons/1/1a/Bajaj_Allianz_General_Insurance_Logo.jpg" },
+                                    { name: "SBI General", src: "https://upload.wikimedia.org/wikipedia/commons/a/a2/SBI_General_Insurance_Logo.png" }
                                 ].map((brand, idx) => (
                                     <div
                                         key={idx}
@@ -157,7 +185,7 @@ export default function InsurancePage() {
                                         <div className="relative w-full h-full">
                                             <Image
                                                 src={brand.src}
-                                                alt={brand.name}
+                                                alt={`${brand.name} Insurance Logo`}
                                                 fill
                                                 className="object-contain"
                                                 unoptimized
@@ -173,7 +201,7 @@ export default function InsurancePage() {
                             <h3 className="font-bold text-lg mb-6 text-slate-700 dark:text-slate-300">Third Party Administrators (TPAs)</h3>
                             <div className="grid grid-cols-3 md:grid-cols-6 gap-4">
                                 {[
-                                    { name: "MediAssist", src: "https://placehold.co/200x80/white/black?text=MediAssist" },
+                                    { name: "MediAssist", src: "https://upload.wikimedia.org/wikipedia/en/2/23/Medi_Assist_Logo.jpg" },
                                     { name: "Vidal Health", src: "https://placehold.co/200x80/white/black?text=Vidal+Health" },
                                     { name: "FHPL", src: "https://placehold.co/200x80/white/black?text=FHPL" },
                                     { name: "MDIndia", src: "https://placehold.co/200x80/white/black?text=MDIndia" },
@@ -187,7 +215,7 @@ export default function InsurancePage() {
                                         <div className="relative w-full h-full">
                                             <Image
                                                 src={tpa.src}
-                                                alt={tpa.name}
+                                                alt={`${tpa.name} TPA Logo`}
                                                 fill
                                                 className="object-contain"
                                                 unoptimized
