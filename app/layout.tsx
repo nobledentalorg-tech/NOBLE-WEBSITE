@@ -57,6 +57,13 @@ export const metadata: Metadata = {
     'dentist near me', 'dental clinic near me', 'dental clinic in nallagandla', 'dentist in nallagandla', 'dentist nallagandla',
     'best dental clinic in nallagandla', 'best dentist in nallagandla', 'dental hospital near me', 'best dental clinic near me',
     'root canal treatment', 'dental clinic nallagandla', 'zirconium crown in hyderabad', 'dental near me',
+    // Hyper-Local Landmarks (Group 1 - Nallagandla Domination)
+    'Dentist near Aparna Sarovar Zenith', 'Dentist near Aparna Neo Mall', 'Dentist near Tridasa Rise',
+    'Dental clinic near Citizen Hospital', 'Dentist near Ratnadeep Nallagandla', 'Dental clinic near Vijaya Diagnostic Nallagandla',
+    'Dentist serving BHEL Hyderabad', 'Dental clinic in Gopanpally', 'Best dentist in Serilingampally',
+    'Dentist near Lingampally', 'Dental clinic near My Home Sayuk',
+
+    // Core Intent
     'best dental hospital in nallagandla', 'cost of smile correction in hyderabad', 'periodontist near me',
     'dentists near me open now', 'dental care near me', 'teeth removal and implants', 'root canal treatment in nallagandla',
     'dental clinics in nallagandla', 'dental hospital nallagandla', 'dental clinic in tellapur', 'smile correction cost in hyderabad',

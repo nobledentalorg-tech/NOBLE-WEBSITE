@@ -22,7 +22,7 @@ const About = () => {
             </h2>
 
             <p className="text-slate-600 dark:text-slate-300 text-lg leading-relaxed mb-6">
-              At Noble Dental, we believe true care combines warmth with world-class technology. We don&apos;t just fix teeth; we treat the person behind the smile.
+              "I believe true care combines warmth with world-class technology. When you walk into my clinic, I don&apos;t just see a patient; I see a neighbor, a friend, and a person who deserves the best."
             </p>
             <p className="text-slate-600 dark:text-slate-300 text-lg leading-relaxed mb-10">
               Led by <span className="font-bold text-slate-900 dark:text-white">Dr. Dhivakaran</span> (Director, HealthFlo & Author), we are your personal dental consultants—offering the comfort of a friend and the accuracy of advanced digital dentistry.
@@ -35,7 +35,7 @@ const About = () => {
                 </div>
                 <div>
                   <h3 className="font-bold text-lg text-slate-900 dark:text-white mb-1">Your Personal Consultant</h3>
-                  <p className="text-slate-500 dark:text-slate-400 text-sm">We listen first. Every treatment plan is co-authored by you and Dr. Dhivakaran.</p>
+                  <p className="text-slate-500 dark:text-slate-400 text-sm">I listen first. Every treatment plan is co-authored by you and me, ensuring you are always in control.</p>
                 </div>
               </div>
 
@@ -54,8 +54,8 @@ const About = () => {
           {/* Image Section - The "Personal" Touch */}
           <div className="relative order-1 lg:order-2 h-[600px] w-full rounded-[3rem] overflow-hidden shadow-2xl group">
             <Image
-              src="https://images.unsplash.com/photo-1629909613654-28e377c37b09?q=80&w=2068&auto=format&fit=crop"
-              alt="Dr. Dhivakaran Consultation"
+              src="/images/dr-dhivakaran-real.jpg" // [AUDIT FIX] TODO: Replace this file with a REAL photo of Dr. Dhivakaran. Stock photos reduce trust.
+              alt="Dr. Dhivakaran - Chief Dental Surgeon"
               fill
               className="object-cover transition-transform duration-700 group-hover:scale-105"
             />

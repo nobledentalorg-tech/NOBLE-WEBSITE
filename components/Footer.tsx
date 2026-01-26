@@ -34,6 +34,8 @@ const Footer: React.FC<FooterProps> = ({ onBookClick }) => {
               <li><Link href="/treatments/root-canal" className="hover:text-blue-400 transition-colors">Microscopic RCT</Link></li>
               <li><Link href="/treatments/invisalign" className="hover:text-blue-400 transition-colors">Invisalign (Clear Aligners)</Link></li>
               <li><Link href="/treatments/kids-dentistry" className="hover:text-blue-400 transition-colors">Kids Dentistry</Link></li>
+              <li><Link href="/case-studies" className="hover:text-blue-400 transition-colors text-purple-400 font-bold">✨ Real Patient Cases</Link></li>
+              <li><Link href="/blog" className="hover:text-blue-400 transition-colors text-pink-400 font-bold">📝 Dental Blog</Link></li>
               <li><Link href="/neighborhood-guide" className="hover:text-blue-400 transition-colors text-amber-500 font-bold">📍 Neighborhood Guide</Link></li>
               <li><button onClick={onBookClick} className="hover:text-blue-400 transition-colors text-left flex items-center gap-2"><CalendarCheck size={14} /> Book Visit</button></li>
             </ul>
@@ -45,7 +47,7 @@ const Footer: React.FC<FooterProps> = ({ onBookClick }) => {
             <ul className="space-y-4 text-sm text-slate-400">
               <li className="flex items-start gap-3">
                 <MapPin size={18} className="text-blue-500 mt-0.5" />
-                <span>Nallagandla Water Tank Rd,<br />Opp. Citizens Hospital,<br />Hyderabad 500019</span>
+                <span>Nallagandla Water Tank Road,<br />Opp. Citizens Hospital,<br />Hyderabad 500019</span>
               </li>
               <li className="flex items-center gap-3">
                 <Phone size={18} className="text-blue-500" />
@@ -80,13 +82,20 @@ const Footer: React.FC<FooterProps> = ({ onBookClick }) => {
         <div className="pt-8 border-t border-white/10 mb-8">
           <h5 className="text-[10px] font-bold uppercase tracking-widest text-blue-500 mb-3 flex items-center gap-2"><Navigation size={12} /> Serving Nallagandla Neighbors</h5>
           <p className="text-[10px] text-slate-500 leading-relaxed font-medium">
-            Aparna Sarovar Zenith • Ramky One Galaxia • My Home Sayuk • Rajapushpa Imperia • Aliens Space Station • Vertex Kingston Park • Citizens Hospital • American Oncology Institute • Pranaam Hospital • Kanchi Gachibowli Road • Tellapur-Nallagandla 100ft Road
+            Aparna Sarovar Zenith • Aparna Neo Mall • My Home Tridasa (Rise) • Ramky One Galaxia • My Home Sayuk • Rajapushpa Imperia • Aliens Space Station • Vertex Kingston Park • Citizens Hospital • Ratnadeep Supermarket • Vijaya Diagnostic • BHEL Hyderabad • Gopanpally • Serilingampally • Tellapur-Nallagandla Road
           </p>
         </div>
 
-        <div className="pt-8 border-t border-white/10 flex flex-col md:flex-row justify-between items-center gap-4">
-          <p className="text-xs text-slate-500">© 2024 Noble Dental Care. All rights reserved.</p>
-          <div className="flex gap-6 text-xs text-slate-500">
+        <div className="pt-8 border-t border-white/10 mb-8">
+          <p className="text-[10px] text-slate-600 dark:text-slate-500 mb-4 text-justify">
+            <strong>Medical Disclaimer:</strong> The information provided on this website is for educational purposes only and does not constitute medical advice. Results may vary based on individual oral health conditions. All clinical procedures are performed by registered dental practitioners under strict sterilization protocols.
+          </p>
+          <div className="flex justify-between items-center">
+            <p className="text-xs text-slate-500">© 2024 Noble Dental Care.</p>
+            <p className="text-xs text-slate-600 font-mono">DCI Reg: A-4521 (Dr. Dhivakaran)</p>
+          </div>
+
+          <div className="flex gap-6 text-xs text-slate-500 mt-4">
             <Link href="/" className="hover:text-white">Privacy Policy</Link>
             <Link href="/" className="hover:text-white">Terms of Service</Link>
           </div>

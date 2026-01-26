@@ -92,16 +92,20 @@ const Hero: React.FC<HeroProps> = ({ onBookClick }) => {
           {/* Left Text Block */}
           <div className="flex flex-col items-start space-y-8 animate-fade-in-up">
             <div className="inline-flex items-center gap-2 px-4 py-2 bg-blue-50 dark:bg-blue-900/20 rounded-full border border-blue-100 dark:border-blue-800">
-              <span className="w-2 h-2 rounded-full bg-blue-600 animate-pulse"></span>
-              <span className="text-[10px] font-black text-blue-600 dark:text-blue-400 uppercase tracking-widest">Nallagandla Surgical Wing</span>
+              <span className="w-2 h-2 rounded-full bg-red-500 animate-pulse"></span>
+              <span className="text-[10px] font-black text-slate-600 dark:text-blue-400 uppercase tracking-widest">
+                Heart of Nallagandla (Opp. Citizens)
+              </span>
             </div>
 
             <h1 className="text-5xl md:text-[5.5rem] font-black text-slate-900 dark:text-white leading-[0.85] tracking-tighter">
+              <span className="sr-only">Best Dentist in Nallagandla</span>
               Biological Precision.
             </h1>
 
             <p className="text-xl text-slate-500 dark:text-slate-400 max-w-xl leading-relaxed">
-              At Noble Dental Care, we specialize in high-precision surgery and advanced endodontics. Experience a clinic that defines the future of painless oral science.
+              At **Noble Dental Care**, we specialize in high-precision surgery and advanced endodontics.
+              <br /><span className="text-slate-700 dark:text-slate-300 font-medium">World-class care that feels like home. Pain-free treatments for your parents, your kids, and you.</span>
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4 w-full flex-wrap">
@@ -168,6 +172,7 @@ const Hero: React.FC<HeroProps> = ({ onBookClick }) => {
                   alt="Swiss Implant System"
                   width={300}
                   height={300}
+                  priority={true} // [SEO] LCP Optimization
                   unoptimized // External S3 bucket not in allowed patterns list yet? It is, but safer to add just in case of dimension issues
                 />
 

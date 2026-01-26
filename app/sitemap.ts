@@ -1,5 +1,6 @@
 import { MetadataRoute } from 'next';
 import { treatmentsData } from '@/data/treatments';
+import { NeoBlogEngine } from '@/neo/NeoBlogEngine';
 
 const BASE_URL = 'https://nobledentalnallagandla.in';
 
@@ -9,8 +10,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
         '',
         '/about',
         '/contact',
-        '/insurance',
+        '/emergency',
+        '/medical-tourism',
+        '/second-opinion',
+        '/treatments/dental-implants',
         '/treatments', // Main treatments listing page
+        '/blog',
+        '/case-studies',
     ].map((route) => ({
         url: `${BASE_URL}${route}`,
         lastModified: new Date(),
@@ -26,5 +32,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
         priority: 0.9,
     }));
 
-    return [...staticRoutes, ...treatmentRoutes];
+    // 3. Dynamic Blog Routes (NeoEngine)
+    const blogRoutes = NeoBlogEngine.getAllAutoBlogs().map((blog) => ({
+        url: `${BASE_URL}/blog/${blog.slug}`,
+        lastModified: new Date(blog.date),
+        changeFrequency: 'monthly' as const,
+        priority: 0.8,
+    }));
+
+    return [...staticRoutes, ...treatmentRoutes, ...blogRoutes];
 }

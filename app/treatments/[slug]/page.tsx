@@ -113,8 +113,40 @@ export default function TreatmentPage({ params }: { params: { slug: string } }) 
         </div>
       </section>
 
+      {/* --- ENGAGEMENT HOOK (Hyper-Relevance) --- */}
+      {t.storyHook && (
+        <section className="bg-white dark:bg-zinc-900 border-b border-slate-100 dark:border-white/5 relative z-30 -mt-20 mx-6 rounded-3xl overflow-hidden shadow-2xl max-w-5xl lg:mx-auto p-8 md:p-12 mb-16">
+          <div className="grid md:grid-cols-2 gap-12 items-center">
+            <div>
+              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-100 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400 text-xs font-bold uppercase tracking-widest mb-6">
+                <Sparkles size={12} fill="currentColor" /> Dr. Dhivakaran's Insight
+              </div>
+              <h2 className="text-3xl md:text-4xl font-black text-slate-900 dark:text-white mb-4 leading-tight">
+                {t.storyHook.headline}
+              </h2>
+              <h3 className="text-lg font-bold text-red-500 mb-6">{t.storyHook.subheadline}</h3>
+              <p className="text-slate-600 dark:text-slate-400 leading-relaxed whitespace-pre-line text-lg mb-8">
+                {t.storyHook.body}
+              </p>
+              <p className="text-xs font-bold uppercase tracking-widest text-slate-400">Read the full clinical breakdown below ↓</p>
+            </div>
+            {t.storyHook.videoUrl && (
+              <div className="relative rounded-2xl overflow-hidden shadow-xl aspect-video group cursor-pointer">
+                <div className="absolute inset-0 bg-black/20 group-hover:bg-black/10 transition-colors z-10 flex items-center justify-center">
+                  <div className="w-16 h-16 bg-white/20 backdrop-blur-md rounded-full flex items-center justify-center pl-1 group-hover:scale-110 transition-transform">
+                    <div className="w-0 h-0 border-t-[10px] border-t-transparent border-l-[18px] border-l-white border-b-[10px] border-b-transparent"></div>
+                  </div>
+                </div>
+                <video src={t.storyHook.videoUrl} className="w-full h-full object-cover" muted loop playsInline autoPlay />
+                <p className="absolute bottom-4 left-4 z-20 text-white text-xs font-bold bg-black/50 px-2 py-1 rounded">Watch: {t.title} Process</p>
+              </div>
+            )}
+          </div>
+        </section>
+      )}
+
       {/* --- CONTENT CONTAINER --- */}
-      <div className="container mx-auto px-6 py-16 grid grid-cols-1 lg:grid-cols-3 gap-12 -mt-20 relative z-20">
+      <div className={`container mx-auto px-6 py-16 grid grid-cols-1 lg:grid-cols-3 gap-12 ${t.storyHook ? '' : '-mt-20'} relative z-20`}>
 
         {/* LEFT COLUMN (Main Info) */}
         <div className="lg:col-span-2 space-y-12">
@@ -139,6 +171,36 @@ export default function TreatmentPage({ params }: { params: { slug: string } }) 
                 );
               })}
             </div>
+
+            {/* Price War Table (If Data Exists) */}
+            {t.priceComparison && (
+              <div className="mt-8 border-t border-slate-100 dark:border-white/5 pt-8">
+                <h3 className="font-bold text-lg mb-4 flex items-center gap-2">
+                  <Award className="text-amber-500" size={18} /> Transparent Pricing
+                </h3>
+                <div className="overflow-hidden rounded-xl border border-slate-200 dark:border-white/10">
+                  <table className="w-full text-sm">
+                    <thead className="bg-slate-50 dark:bg-white/5">
+                      <tr>
+                        <th className="p-3 text-left">Treatment</th>
+                        <th className="p-3 text-right text-red-500">Market Avg</th>
+                        <th className="p-3 text-right text-green-600 font-bold bg-green-50 dark:bg-green-900/20">Noble Price</th>
+                      </tr>
+                    </thead>
+                    <tbody className="divide-y divide-slate-100 dark:divide-white/5">
+                      {t.priceComparison.map((row, idx) => (
+                        <tr key={idx}>
+                          <td className="p-3 font-medium">{row.item}</td>
+                          <td className="p-3 text-right text-slate-500 decoration-red-400 line-through">{row.marketPrice}</td>
+                          <td className="p-3 text-right font-bold bg-green-50 dark:bg-green-900/20">{row.noblePrice}</td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
+                <p className="text-[10px] text-slate-400 mt-2 italic">*Prices may vary based on bone condition.</p>
+              </div>
+            )}
           </div>
 
           {/* 2. The Process */}

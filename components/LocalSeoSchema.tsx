@@ -12,11 +12,19 @@ export const LocalSeoSchema = () => {
         "telephone": "+918610425342",
         "address": {
             "@type": "PostalAddress",
-            "streetAddress": "Nallagandla Water Tank Road",
-            "addressLocality": "Nallagandla, Serilingampally",
+            "streetAddress": "Nallagandla Water Tank Road, Opp. Citizens Hospital",
+            "addressLocality": "Hyderabad",
             "addressRegion": "Telangana",
             "postalCode": "500019",
             "addressCountry": "IN"
+        },
+        "priceRange": "$$",
+        "aggregateRating": {
+            "@type": "AggregateRating",
+            "ratingValue": "4.9",
+            "reviewCount": "520",
+            "bestRating": "5",
+            "worstRating": "1"
         },
         "geo": {
             "@type": "GeoCoordinates",

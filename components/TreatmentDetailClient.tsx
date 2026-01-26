@@ -6,7 +6,7 @@ import Link from 'next/link';
 import {
     ArrowLeft, CheckCircle2, Calendar, Shield, Activity, Clock, Play, Zap,
     ArrowRight, Layers, Star, Smile, Sparkles, Ruler, Award, ShieldCheck, HeartPulse, Heart, Scan,
-    Baby, Scissors, PenTool, User, Search, ChevronDown, Check
+    Baby, Scissors, PenTool, User, Search, ChevronDown, Check, Share2, BookOpen
 } from 'lucide-react';
 import { RevealOnScroll } from '@/components/RevealOnScroll';
 import { TreatmentData } from '@/data/treatments';
@@ -61,6 +61,43 @@ export default function TreatmentDetailClient({ treatment }: Props) {
                                 <button className="px-8 py-4 bg-white dark:bg-white/5 border border-slate-200 dark:border-white/10 text-slate-900 dark:text-white rounded-full font-bold transition-all flex items-center gap-2 hover:bg-slate-50 dark:hover:bg-white/10">
                                     <Play size={16} fill="currentColor" /> Watch Video
                                 </button>
+                                <button
+                                    onClick={() => {
+                                        if (navigator.share) {
+                                            navigator.share({
+                                                title: treatment.title,
+                                                text: treatment.description,
+                                                url: window.location.href,
+                                            }).catch(console.error);
+                                        } else {
+                                            alert("Link copied to clipboard!");
+                                            navigator.clipboard.writeText(window.location.href);
+                                        }
+                                    }}
+                                    className="w-14 h-14 flex items-center justify-center rounded-full bg-slate-100 dark:bg-white/5 text-slate-900 dark:text-white hover:bg-slate-200 dark:hover:bg-white/10 transition-all border border-slate-200 dark:border-white/10"
+                                    aria-label="Share this treatment"
+                                >
+                                    <Share2 size={20} />
+                                </button>
+                            </div>
+
+                            {/* Reviewer Badge */}
+                            <div className="flex items-center gap-4 pt-6 border-t border-slate-100 dark:border-white/10 mt-8">
+                                <div className="relative w-12 h-12 rounded-full overflow-hidden border-2 border-slate-100 dark:border-white/10">
+                                    <Image
+                                        src="/images/dhivakaran.webp"
+                                        alt="Dr. Dhivakaran"
+                                        fill
+                                        className="object-cover"
+                                    />
+                                </div>
+                                <div>
+                                    <div className="text-[10px] font-bold uppercase tracking-widest text-slate-500 mb-0.5">Medically Reviewed By</div>
+                                    <div className="font-bold text-slate-900 dark:text-white text-sm flex items-center gap-2">
+                                        Dr. Dhivakaran <span className="text-blue-500 text-[10px] bg-blue-50 dark:bg-blue-900/20 px-1.5 py-0.5 rounded border border-blue-100 dark:border-blue-800">CMD</span>
+                                    </div>
+                                    <div className="text-[10px] text-slate-400">January 2026</div>
+                                </div>
                             </div>
                         </RevealOnScroll>
                     </div>
@@ -249,6 +286,22 @@ export default function TreatmentDetailClient({ treatment }: Props) {
                             </div>
                         </RevealOnScroll>
                     </section>
+
+                    {/* [NEW] CITATIONS & REFERENCES */}
+                    {treatment.citations && (
+                        <section className="mt-16 pt-8 border-t border-slate-200 dark:border-white/10">
+                            <h4 className="text-sm font-bold uppercase tracking-widest text-slate-400 mb-4 flex items-center gap-2">
+                                <BookOpen size={14} /> Medical References
+                            </h4>
+                            <ul className="space-y-2">
+                                {treatment.citations.map((cite, i) => (
+                                    <li key={i} className="text-[10px] md:text-xs text-slate-500 italic">
+                                        {cite}
+                                    </li>
+                                ))}
+                            </ul>
+                        </section>
+                    )}
                 </div>
 
                 <div className="space-y-10">

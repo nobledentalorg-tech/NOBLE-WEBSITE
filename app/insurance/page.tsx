@@ -262,15 +262,7 @@ export default function InsurancePage() {
                     </div>
 
                     <div className="grid md:grid-cols-3 gap-8">
-                        {/* Bajaj Finserv */}
-                        <div className="p-8 rounded-2xl bg-slate-50 dark:bg-[#111] border border-slate-100 dark:border-white/5">
-                            <div className="flex items-center gap-3 mb-6">
-                                <Wallet className="text-slate-400" />
-                                <h3 className="font-bold text-lg">Bajaj Finserv</h3>
-                            </div>
-                            <p className="text-slate-500 text-sm mb-4">Standard EMI options available for cardholders.</p>
-                            <div className="text-xs font-medium px-3 py-1 bg-green-100 text-green-700 w-fit rounded-full">0% Interest Plans Available</div>
-                        </div>
+
 
                         {/* HealthFlo Finance */}
                         <div className="p-8 rounded-2xl bg-white dark:bg-[#111] border border-slate-200 dark:border-white/5 shadow-lg relative overflow-hidden">

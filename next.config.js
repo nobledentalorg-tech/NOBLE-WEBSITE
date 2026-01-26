@@ -13,6 +13,7 @@ const nextConfig = {
       { protocol: 'https', hostname: 'dentcare-website-s3-bucket-01.s3.eu-north-1.amazonaws.com' },
       { protocol: 'https', hostname: 'upload.wikimedia.org' },
       { protocol: 'https', hostname: 'raw.githubusercontent.com' },
+      { protocol: 'https', hostname: 'placehold.co' },
     ],
   },
   eslint: {
@@ -31,6 +32,30 @@ const nextConfig = {
           { key: 'Referrer-Policy', value: 'strict-origin-when-cross-origin' },
           { key: 'Strict-Transport-Security', value: 'max-age=63072000; includeSubDomains; preload' },
         ],
+      },
+    ];
+  },
+  async redirects() {
+    return [
+      {
+        source: '/products/shy-nm-foaming-toothpaste.html',
+        destination: '/treatments',
+        permanent: true,
+      },
+      {
+        source: '/products/enafix-toothpaste.html',
+        destination: '/treatments',
+        permanent: true,
+      },
+      {
+        source: '/products/amflor-toothpaste.html',
+        destination: '/treatments',
+        permanent: true,
+      },
+      {
+        source: '/products/stolin-gum-paint.html',
+        destination: '/treatments',
+        permanent: true,
       },
     ];
   },

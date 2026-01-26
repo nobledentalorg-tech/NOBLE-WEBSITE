@@ -2,6 +2,7 @@
 
 import React from 'react';
 import { Star } from 'lucide-react';
+import Image from 'next/image';
 import { googleReviews } from '@/data/reviews';
 
 const Testimonials = () => {
@@ -46,8 +47,14 @@ const Testimonials = () => {
           <div key={review.id} className="relative bg-white dark:bg-slate-900 p-8 rounded-3xl border border-slate-100 dark:border-slate-800 shadow-xl shadow-slate-200/50 dark:shadow-none hover:-translate-y-1 transition-transform">
 
             {/* Visual Trust Badge */}
-            <div className="absolute top-8 right-8 text-[#12B2A0] opacity-20">
-              <Star size={40} fill="currentColor" />
+            {/* Visual Trust Badge */}
+            <div className="absolute top-8 right-8 opacity-20 hover:opacity-100 transition-opacity">
+              <Image
+                src="https://upload.wikimedia.org/wikipedia/commons/5/53/Google_%22G%22_Logo.svg"
+                width={24}
+                height={24}
+                alt="Verified Google Review"
+              />
             </div>
 
             <div className="flex gap-1 text-yellow-400 mb-6">

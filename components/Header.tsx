@@ -122,6 +122,20 @@ const Header: React.FC<HeaderProps> = ({ onBookClick }) => {
             >
               <Globe size={14} /> Global Care
             </Link>
+            <Link
+              href="/case-studies"
+              className={`px-4 py-2.5 text-[12px] font-bold uppercase tracking-wider rounded-full transition-all ${isActive('/case-studies') ? 'bg-purple-100 text-purple-700' : 'text-slate-600 dark:text-slate-400 hover:text-purple-600'
+                }`}
+            >
+              Cases
+            </Link>
+            <Link
+              href="/blog"
+              className={`px-4 py-2.5 text-[12px] font-bold uppercase tracking-wider rounded-full transition-all ${isActive('/blog') ? 'bg-pink-100 text-pink-700' : 'text-slate-600 dark:text-slate-400 hover:text-pink-600'
+                }`}
+            >
+              Blog
+            </Link>
           </nav>
 
           {/* Action Buttons */}
@@ -140,7 +154,7 @@ const Header: React.FC<HeaderProps> = ({ onBookClick }) => {
               <CalendarCheck size={18} /> Book Now
             </button>
 
-            <button className="lg:hidden w-11 h-11 flex items-center justify-center rounded-2xl bg-slate-100 dark:bg-white/5 text-slate-900 dark:text-white" onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}>
+            <button className="lg:hidden w-12 h-12 flex items-center justify-center rounded-2xl bg-slate-100 dark:bg-white/5 text-slate-900 dark:text-white" onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}>
               {isMobileMenuOpen ? <X size={20} /> : <Menu size={20} />}
             </button>
           </div>
@@ -158,6 +172,8 @@ const Header: React.FC<HeaderProps> = ({ onBookClick }) => {
           <Link href="/healthflo-ai" onClick={() => setIsMobileMenuOpen(false)} className="text-2xl font-bold text-blue-600">AI HealthOS</Link>
           <Link href="/insurance" onClick={() => setIsMobileMenuOpen(false)} className="text-2xl font-bold text-indigo-600">Insurance & EMI</Link>
           <Link href="/international" onClick={() => setIsMobileMenuOpen(false)} className="text-2xl font-bold text-amber-600">Global Patients</Link>
+          <Link href="/case-studies" onClick={() => setIsMobileMenuOpen(false)} className="text-2xl font-bold text-purple-600">Case Studies</Link>
+          <Link href="/blog" onClick={() => setIsMobileMenuOpen(false)} className="text-2xl font-bold text-pink-600">Blog & Insights</Link>
           <button onClick={() => { setIsMobileMenuOpen(false); onBookClick?.(); }} className="px-8 py-4 bg-blue-600 text-white rounded-full font-bold uppercase tracking-widest text-sm">
             Book Appointment
           </button>

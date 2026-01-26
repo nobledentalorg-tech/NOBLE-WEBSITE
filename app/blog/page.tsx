@@ -18,16 +18,42 @@ export const metadata = {
 import { NeoBlogEngine } from '@/neo/NeoBlogEngine';
 
 export default async function BlogIndex() {
-    let manualPosts = [];
+    // [FIX] Hardcoded File-Based Blogs (High Priority)
+    let manualPosts: any[] = [
+        {
+            id: 'avoid-root-canal',
+            slug: 'avoid-root-canal',
+            title: 'Can I Avoid a Root Canal? The Honest Truth.',
+            excerpt: 'Searching for how to avoid root canal? Read this honest guide by Dr. Dhivakaran. Learn when antibiotics work and when to save vs extract.',
+            created_at: new Date().toISOString(),
+            author: 'Dr. Dhivakaran',
+            category: 'Patient Education',
+            cover_image: null
+        },
+        {
+            id: 'invisalign-vs-toothsi',
+            slug: 'invisalign-vs-toothsi',
+            title: 'Invisalign vs. Direct-to-Home Aligners: Which is Safe?',
+            excerpt: 'Thinking about ordering aligners online? Read this comparison first. We compare cost, safety, and results of Invisalign vs Toothsi.',
+            created_at: new Date().toISOString(),
+            author: 'Dr. Dhivakaran',
+            category: 'Orthodontic Guide',
+            cover_image: null
+        }
+    ];
+
     try {
         const { data } = await getSupabaseClient()
             .from('posts')
             .select('*')
             .eq('published', true)
             .order('created_at', { ascending: false });
-        if (data) manualPosts = data;
+        if (data) {
+            // Append Supabase posts to the hardcoded ones
+            manualPosts = [...manualPosts, ...data];
+        }
     } catch (error) {
-        console.warn("Supabase not configured or unreachable at build time. Skipping blog posts.");
+        console.warn("Supabase not configured or unreachable at build time. Using local blogs only.");
     }
 
     // Combine with dynamically generated clinical guides (100+ pages)

@@ -83,11 +83,11 @@ export default function ContactPage() {
                     <MapPin size={18} className="text-blue-600" /> Serving Nallagandla & Tellapur
                   </h3>
                   <p className="text-sm text-slate-600 dark:text-slate-400 leading-relaxed mb-4">
-                    We are the dental clinic of choice for residents of <strong>Aparna Sarovar</strong>, <strong>Ramky One Galaxia</strong>, and <strong>My Home Sayuk</strong>.
+                    We are the dental clinic of choice for residents of <strong>Aparna Sarovar Zicon</strong>, <strong>My Home Tridasa (Tellapur)</strong>, and <strong>Ramky One Galaxia</strong>.
                   </p>
                   <div className="flex flex-col gap-2 text-xs text-slate-500 font-medium">
                     <span className="flex items-center gap-2"><Clock size={14} className="text-green-600" /> 5 mins from Citizens Hospital</span>
-                    <span className="flex items-center gap-2"><Clock size={14} className="text-green-600" /> 8 mins from American Oncology Institute</span>
+                    <span className="flex items-center gap-2"><Clock size={14} className="text-green-600" /> Opposite Ratnadeep Supermarket</span>
                   </div>
                 </div>
 
@@ -95,12 +95,11 @@ export default function ContactPage() {
                 <div className="p-6 bg-slate-50 dark:bg-white/5 rounded-3xl border border-slate-100 dark:border-white/10 relative overflow-hidden">
                   <div className="absolute top-0 right-0 p-4 opacity-10"><Store size={80} /></div>
                   <h4 className="font-bold text-slate-900 dark:text-white mb-2 text-sm flex items-center gap-2 relative z-10">
-                    <span className="w-2 h-2 rounded-full bg-pink-500 animate-pulse"></span> Heading to the Movies?
+                    <span className="w-2 h-2 rounded-full bg-pink-500 animate-pulse"></span> Heading to Dmart or Neo Mall?
                   </h4>
                   <p className="text-xs text-slate-500 leading-relaxed relative z-10 font-medium">
-                    We are just <strong>450 meters</strong> from <strong>Aparna Neo Mall</strong>.
-                    Many patients drop their family for a movie at Neo Mall and get their dental cleaning done with us in the meantime!
-                    Ample parking available.
+                    We are just <strong>450 meters</strong> from <strong>Aparna Neo Mall</strong> and near the <strong>Nallagandla Dmart</strong>.
+                    Many patients drop their family for a movie or grocery run and get their dental cleaning done with us in the meantime!
                   </p>
                 </div>
 

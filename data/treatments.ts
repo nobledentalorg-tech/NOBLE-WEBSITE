@@ -35,6 +35,21 @@ export interface TreatmentData {
   faqs: { q: string; a: string }[];
   keywords: string[];
   recommendedProducts?: ProductRecommendation[];
+  storyHook?: {
+    headline: string;
+    subheadline: string;
+    body: string;
+    headline: string;
+    subheadline: string;
+    body: string;
+    videoUrl?: string;
+  };
+  // [NEW] Price War Table
+  priceComparison?: {
+    item: string;
+    noblePrice: string;
+    marketPrice: string;
+  }[];
 
   // [NEW] Deep Dive Medical Data
   medicalContext?: {
@@ -59,12 +74,18 @@ export interface TreatmentData {
 export const treatmentsData: Record<string, TreatmentData> = {
   "root-canal": {
     id: "root-canal",
-    title: "Microscopic Root Canal",
-    subtitle: "Painless single-sitting RCT with Zeiss optics.",
+    title: "Microscopic Root Canal (Pain-Free Treatment)",
+    subtitle: "Advanced microscopy-guided Endodontics.",
+    storyHook: {
+      headline: "I would rather give birth than have a Root Canal.",
+      subheadline: "The Myth of Root Canal Pain: Why You Are Scared (And Why You Shouldn't Be).",
+      body: "I hear this all the time. And I understand why. Traditional root canals used to be painful because doctors worked blindly.\n\nBut at Noble Dental, we use **Microscopes**. Imagine trying to thread a needle in the dark vs. doing it with a spotlight. That is the difference.",
+      videoUrl: "https://videos.pexels.com/video-files/3195394/3195394-hd_1920_1080_25fps.mp4" // Placeholder
+    },
     category: "Endodontics",
     heroImage: "/assets/images/treatments/root-canal-hyderabad.webp",
-    description: "Experience 100% painless root canal treatment in Nallagandla using advanced German Microscopes.",
-    longDescription: "Stop searching for 'root canal near me' and discover precision. At Noble Dental Care, we specialize in Microscopic Root Canal Treatment (Endodontics). Unlike traditional methods, our Zeiss Extaro 300 magnification allows us to see and clean hidden canals (MB2) that others miss. This ensures a 99.2% success rate and a completely painless, single-sitting experience.",
+    description: "Microscopic Root Canal treatment performed strictly according to international endodontic guidelines.",
+    longDescription: "At Noble Dental Care, we prioritize long-term clinical success over marketing trends. While we are equipped for Single-Visit Root Canals, we strictly follow medical evidence: complex infections or severe abscesses may require multiple visits to ensure complete disinfection. We do not rush biology. Using Zeiss Extaro 300 magnification, we locate and treat hidden canals (MB2) to prevent failure, ensuring your tooth is saved for life.\n\n**Transparency in Pricing:**\nWe believe in no hidden costs. Root Canal treatment ranges from **₹4,500 - ₹7,000** depending on the complexity (e.g., re-treatment is higher). Zirconia Crowns start from **₹8,000**.\n\n**Is it Safe?**\nYes. We follow a strict 4-step sterilization protocol (Class B Autoclave) to ensure 100% bacterial elimination, making the procedure safe even for diabetic and cardiac patients.",
 
     // [NEW] Medical Context - Etiology
     medicalContext: {
@@ -86,6 +107,7 @@ export const treatmentsData: Record<string, TreatmentData> = {
         }
       ],
       investigations: [
+        { name: "Pre-Procedural Evaluation", purpose: "Vitals check (BP/Sugar) & Pre-Anesthetic assessment for patient safety." },
         { name: "Digital IOPA X-Ray", purpose: "To visualize the root tip and depth of decay." },
         { name: "Pulp Vitality Test", purpose: "Thermal test (Cold/Hot) to confirm if the nerve is dead or alive." },
         { name: "CBCT (3D Scan)", purpose: "For re-treatment cases to find hidden canals (MB2) missed by previous dentists." }
@@ -98,89 +120,89 @@ export const treatmentsData: Record<string, TreatmentData> = {
     },
 
     stats: [
-      { label: "Pain Score", value: "0/10", icon: "Heart" },
+      { label: "Protocol", value: "Guideline Based", icon: "Shield" },
       { label: "Precision", value: "25x Zoom", icon: "Ruler" },
-      { label: "Visits", value: "Single Sitting", icon: "Clock" }
+      { label: "Success", value: "99.2%", icon: "Activity" }
     ],
 
     // [NEW] Deep Dive Procedure
     procedureDetailed: [
       {
-        step: "Local Anesthesia",
-        description: "We use 'The Wand' (Computer Controlled Anesthesia) to numb the tooth. You won't even feel the needle.",
-        duration: "5 Mins",
-        painLevel: "None"
-      },
-      {
-        step: "Rubber Dam Isolation",
-        description: "A latex/nitrile sheet isolates the tooth. This keeps the field sterile and prevents you from swallowing water/chemicals.",
-        duration: "2 Mins",
-        painLevel: "None"
-      },
-      {
-        step: "Microscopic Access",
-        description: "Dr. Dhivakaran uses the Zeiss Microscope to find all main and accessory canals (MB2).",
+        step: "Safety & Anesthesia",
+        description: "We begin with a Pre-Anesthetic Checkup. Once cleared, we use 'The Wand' for computer-controlled, painless anesthesia.",
         duration: "10 Mins",
         painLevel: "None"
       },
       {
-        step: "Laser Disinfection",
-        description: "We use BIOLASE Lasers to kill 99.9% of bacteria deep within the dentinal tubules.",
-        duration: "10 Mins",
+        step: "Isolation & Access",
+        description: "Rubber dam isolation ensures a sterile field. Dr. Dhivakaran uses the Zeiss Microscope to locate all canals, including the hidden MB2.",
+        duration: "15 Mins",
+        painLevel: "None"
+      },
+      {
+        step: "Cleaning & Shaping",
+        description: "Infected tissue is removed. We use ultrasonic activation to flush bacteria from deep anatomical irregularities.",
+        duration: "15 Mins",
+        painLevel: "None"
+      },
+      {
+        step: "Assessment of Healing",
+        description: "Medical Decision Point: If the canal is dry, we seal it (Single Visit). If infection is active (pus), we place medication and wait (Multi-Visit).",
+        duration: "Clinical Decision",
         painLevel: "None"
       },
       {
         step: "3D Obturation",
-        description: "The canals are filled with Bio-Ceramic sealer (biocompatible material) that creates a permanent bacteria-tight seal.",
+        description: "The tooth is sealed with a biocompatible ceramic material to prevent future re-infection.",
         duration: "15 Mins",
         painLevel: "None"
       }
     ],
 
-    // Legacy Process for Cards (Simplified)
+    // Legacy Process (Keep for now or remove if unused)
     process: [
-      { title: "3D CBCT Scan", desc: "We map your tooth roots digitally." },
-      { title: "Painless Numbing", desc: "Computer-controlled anesthesia." },
-      { title: "Laser Disinfection", desc: "Er,Cr:YSGG Laser cleaning." },
-      { title: "Bioceramic Seal", desc: "Permanent 3D obturation." }
+      { title: "Safety Check", desc: "Vitals & Pre-Anesthetic validation." },
+      { title: "Microscopic Clean", desc: "Removing infection with precision." },
+      { title: "Medical Assessment", desc: "Strict evidence-based timing." },
+      { title: "Bio-Seal", desc: "Permanent ceramic obturation." }
     ],
 
     // [NEW] Post-Op Guide
     postOp: {
       immediate: [
-        "Do not eat until the numbness wears off (approx. 2 hours) to avoid biting your cheek.",
-        "Avoid hot liquids for the first 24 hours.",
-        "Take the first dose of painkiller before the anesthesia wears off."
+        "Numbness lasts 2-3 hours. Avoid chewing to prevent biting your cheek.",
+        "A temporary filling is placed; avoid sticky foods.",
+        "Mild discomfort is normal as the anesthesia wears off."
       ],
       diet: [
-        "Soft Diet for 2 days (Yogurt, Smoothies, Rice).",
-        "Chew on the opposite side until the permanent crown is placed.",
-        "Avoid sticky foods (Caramel, Gum)."
+        "Soft diet (Dal, Curd Rice, Smoothies) for the first 24 hours.",
+        "Resume normal chewing once the permanent crown is placed.",
+        "Stay hydrated."
       ],
       warningSigns: [
-        "Visible swelling on the face outside the jaw.",
-        "Severe pain that does not subside with medication.",
-        "High fever (>101°F)."
+        "Visible facial swelling spreading to the eye or neck.",
+        "Difficulty in opening the mouth (limited range of motion).",
+        "Medication failing to relieve pain after 48 hours."
       ]
     },
 
     citations: [
-      "American Association of Endodontists (AAE) Guidelines 2024",
-      "Cohen's Pathways of the Pulp - 12th Edition",
-      "Journal of Endodontics: Success Rates of Microscopic Endodontics"
+      "American Association of Endodontists (AAE): Guide to Clinical Endodontics (2024)",
+      "Cohen's Pathways of the Pulp - 12th Edition: Chapter on 'Antibiotic Stewardship'",
+      "Burket's Oral Medicine: Systemic Disease Considerations in Dentistry"
     ],
 
     benefits: [
-      "No Pain, No Swelling",
-      "Completed in 45 Minutes (Single Visit)",
+      "Microscope-Enhanced Precision",
+      "Evidence-Based Treatment Plans",
       "Save Your Natural Tooth",
-      "Affordable Cost in Nallagandla",
+      "Transparent 'No-Hype' Pricing",
       "10-Year Warranty on Crowns"
     ],
     faqs: [
-      { q: "Is it really painless?", a: "Yes. Our microscopic technique combined with digital anesthesia ensures you feel absolutely nothing. Most patients sleep during the procedure." },
-      { q: "What is the cost of Root Canal in Nallagandla?", a: "Microscopic RCT starts from ₹4,500. With a Zirconia Crown, the package is approx ₹12,000. We offer transparent pricing." },
-      { q: "Do I need a crown after RCT?", a: "Yes. A root canal treated tooth becomes brittle. A crown acts like a helmet, protecting it from fracturing under bite force." }
+      { q: "Is it painful after the procedure?", a: "Mild soreness is possible as the body heals. We prescribe analgesics to manage this comfortably." },
+      { q: "Do I need antibiotics?", a: "Antibiotics are prescribed based on the **severity of infection** and your **systemic health** (e.g., Diabetes/Cardiac issues). We follow strict medical guidelines to avoid overuse." },
+      { q: "Why check Vitals before procedure?", a: "Your safety is paramount. We evaluate your blood pressure and sugar levels (if diabetic) to ensure you can tolerate the procedure safely." }
     ],
     keywords: ["microscopic root canal", "painless rct nallagandla", "single sitting root canal", "endodontist near me", "root canal cost"],
     recommendedProducts: [
@@ -210,6 +232,11 @@ export const treatmentsData: Record<string, TreatmentData> = {
     id: "dental-implants",
     title: "Guided Dental Implants",
     subtitle: "Permanent fixed teeth with 3D surgical guides.",
+    storyHook: {
+      headline: "Don't Let Them Pull Your Tooth Yet.",
+      subheadline: "Why 30% of 'Unsavable' teeth can actually be saved with Microscopic Dentistry.",
+      body: "I often see patients who were told their tooth is 'gone' and they need a ₹35,000 implant. But here is the secret most clinics won't tell you: **Nothing is better than your natural tooth.**\n\nBefore you agree to an extraction, we run a 'Save-My-Tooth' Assessment. Using our Dental Microscope, we check if the root is truly fractured. If it’s not, we save it. If it is, then we talk about Implants."
+    },
     category: "Surgery",
     heroImage: "/assets/images/treatments/implants-hyderabad.webp",
     description: "Replace missing teeth with Nobel Biocare / Straumann implants. Minimally invasive, suture-free options available.",
@@ -230,13 +257,90 @@ export const treatmentsData: Record<string, TreatmentData> = {
       "Global Brands (Nobel/Straumann)",
       "Fixed Teeth in 72 Hours",
       "Safe for Diabetics (Guided Protocol)",
+      "Safe for Diabetics (Guided Protocol)",
       "0% EMI Options Available"
+    ],
+    priceComparison: [
+      { item: "Straumann Implant (Swiss)", noblePrice: "₹ 25,000", marketPrice: "₹ 35,000+" },
+      { item: "Zirconia Crown (Monolith)", noblePrice: "₹ 8,000", marketPrice: "₹ 15,000" },
+      { item: "3D Surgical Guide", noblePrice: "Included", marketPrice: "₹ 5,000 (Extra)" }
     ],
     faqs: [
       { q: "How much do dental implants cost?", a: "Implants start from ₹25,000. Basic options to premium Swiss brands available. We provide a full cost breakdown upfront." },
       { q: "Is it painful?", a: "With our 'Keyhole Guided Surgery', most patients report less pain than a simple extraction and return to work the next day." }
     ],
     keywords: ["dental implants cost nallagandla", "full mouth implants", "guided implant surgery", "best implantologist hyderabad", "fixed teeth cost"],
+    medicalContext: {
+      etiology: [
+        {
+          cause: "Tooth Loss",
+          medicalTerm: "Edentulism",
+          description: "Loss of teeth due to decay, gum disease, or trauma leads to bone resorption (shrinking jaw)."
+        },
+        {
+          cause: "Loose Dentures",
+          medicalTerm: "Alveolar Atrophy",
+          description: "Long-term denture wear causes the jawbone to melt away, making dentures loose and uncomfortable."
+        }
+      ],
+      investigations: [
+        { name: "CBCT Bone Scan", purpose: "To measure bone width (D1/D2/D3 quality) for implant stability." },
+        { name: "Virtual Surgical Plan", purpose: "Digital placement of the implant on software to avoid nerves." },
+        { name: "HbA1c Test", purpose: "To ensure diabetes is under control (<7.0) for healing." }
+      ],
+      prevention: [
+        "Replace missing teeth immediately to stop bone loss.",
+        "Maintain excellent hygiene around existing implants."
+      ]
+    },
+    procedureDetailed: [
+      {
+        step: "3D Planning",
+        description: "We merge your CBCT scan with an intraoral scan to design a custom surgical guide.",
+        duration: "24 Hours (Lab)",
+        painLevel: "None"
+      },
+      {
+        step: "Guide Placement",
+        description: "The 3D printed guide is placed over your gums. No cuts or blades are needed (Flapless).",
+        duration: "5 Mins",
+        painLevel: "None"
+      },
+      {
+        step: "Implant Insertion",
+        description: "The titanium implant is placed through the guide with 0.1mm precision.",
+        duration: "15 Mins",
+        painLevel: "Mild"
+      },
+      {
+        step: "Immediate Tooth",
+        description: "If bone stability is high (ISQ > 70), we place a fixed temporary tooth immediately.",
+        duration: "20 Mins",
+        painLevel: "None"
+      }
+    ],
+    postOp: {
+      immediate: [
+        "Apply ice pack on cheek for 15 mins every hour.",
+        "Do not spit; swallow saliva to protect the clot.",
+        "Take prescribed antibiotics (Augmentin) on time."
+      ],
+      diet: [
+        "Cold, soft diet for 3 days (Ice cream, yogurt).",
+        "Avoid chewing on the implant side for 6 weeks (Osseointegration phase).",
+        "No hot coffee/tea for 24 hours."
+      ],
+      warningSigns: [
+        "Numbness in the lip persisting after 24 hours.",
+        "Implant mobility (shaking).",
+        "Severe throbbing pain not controlled by medication."
+      ]
+    },
+    citations: [
+      "Journal of Oral Implantology: 'Accuracy of Computer-Guided Surgery' (2023)",
+      "Nobel Biocare: 'All-on-4 Clinical Protocol'",
+      "ITI (International Team for Implantology) Guidelines"
+    ],
     recommendedProducts: [
       {
         id: "desmocare",
@@ -263,6 +367,11 @@ export const treatmentsData: Record<string, TreatmentData> = {
     id: "invisalign",
     title: "Invisalign & Aligners",
     subtitle: "Invisible teeth straightening with AI planning.",
+    storyHook: {
+      headline: "The Hidden Cost of 'Cheap' Online Aligners.",
+      subheadline: "Why DIY plastic trays can permanently damage your roots.",
+      body: "You've seen the ads on Instagram: 'Straight teeth at home for ₹30,000'.\n\n**Here is the Dangerous Truth:** Moving teeth without a doctor's supervision can lead to root resorption (where the root dissolves) or a ruined bite that costs ₹2 Lakhs to fix.\n\nI use **Invisalign & FDA-Approved Aligners** that actually track your roots in 3D. Don't gamble with your bone health."
+    },
     category: "Orthodontics",
     heroImage: "/assets/images/treatments/invisalign-hyderabad.webp",
     description: "Straighten crooked teeth without metal braces. Certified Invisalign providers in Nallagandla.",
@@ -290,6 +399,76 @@ export const treatmentsData: Record<string, TreatmentData> = {
       { q: "Does it work for severe gaps?", a: "Yes, modern aligners can fix complex crowding, gaps, and bite issues just like braces." }
     ],
     keywords: ["invisalign cost nallagandla", "clear aligners", "invisible braces", "teeth straightening cost", "orthodontist near me"],
+    medicalContext: {
+      etiology: [
+        {
+          cause: "Crowding",
+          medicalTerm: "Dental Malocclusion",
+          description: "Lack of jaw space causes teeth to overlap, making cleaning difficult and increasing cavity risk."
+        },
+        {
+          cause: "Gaps",
+          medicalTerm: "Diastema",
+          description: "Spacing between teeth affects speech and can lead to gum pocket formation."
+        }
+      ],
+      investigations: [
+        { name: "iTero 5D Scan", purpose: "Infrared scan to visualize teeth structure without radiation." },
+        { name: "Lateral Cephalogram", purpose: "X-ray to measure jaw bone angle and growth." },
+        { name: "ClinCheck AI", purpose: "Software simulation of the final result." }
+      ],
+      prevention: [
+        "Early orthodontic screening at age 7.",
+        "Identify thumb-sucking habits early."
+      ]
+    },
+    procedureDetailed: [
+      {
+        step: "Digital Scan",
+        description: "We scan your teeth using iTero Element 5D. No gooey impression material used.",
+        duration: "10 Mins",
+        painLevel: "None"
+      },
+      {
+        step: "AI Planning",
+        description: "Dr. Dhivakaran plans the movement of every single tooth using ClinCheck software.",
+        duration: "3 Days (Lab)",
+        painLevel: "None"
+      },
+      {
+        step: "Attachment Placement",
+        description: "Tiny tooth-colored buttons are placed on teeth to give the aligners grip.",
+        duration: "20 Mins",
+        painLevel: "None"
+      },
+      {
+        step: "Fitting",
+        description: "You receive your first set of aligners and learn how to wear/remove them.",
+        duration: "15 Mins",
+        painLevel: "Mild"
+      }
+    ],
+    postOp: {
+      immediate: [
+        "Teeth may feel 'tight' or slightly loose for 2 days.",
+        "Speech might be slightly lisping for 24 hours.",
+        "Use chewies to seat the aligners properly."
+      ],
+      diet: [
+        "Eat WHATEVER you want! Just remove aligners first.",
+        "Drink only water while wearing aligners.",
+        "Avoid turmeric/curry while wearing (stains the plastic)."
+      ],
+      warningSigns: [
+        "Aligner cracking or breaking.",
+        "Sharp edge cutting the tongue (use an emery board to smooth it)."
+      ]
+    },
+    citations: [
+      "American Journal of Orthodontics: 'Efficacy of Clear Aligners' (2022)",
+      "Invisalign Master Clinical Protocol",
+      "PubMed: 'Periodontal Health in Aligners vs Braces'"
+    ],
     recommendedProducts: [
       {
         id: "amflor-rinse",
@@ -306,6 +485,11 @@ export const treatmentsData: Record<string, TreatmentData> = {
     id: "crowns-bridges",
     title: "Zirconia Crowns & Bridges",
     subtitle: "Metal-free digital caps with 15-year warranty.",
+    storyHook: {
+      headline: "Does your Crown look like a 'Chiclet'?",
+      subheadline: "If you have a black line near your gums, it's time to upgrade.",
+      body: "Old-school PFM (Porcelain Fused to Metal) crowns cause that ugly grey shadow at the gumline. They also chip easily.\n\nI treat teeth like jewelry. Using **Monolithic Zirconia**, we mill crowns that catch light exactly like natural enamel. No metal. No shadows. Just a seamless smile that lasts 15+ years."
+    },
     category: "Restorative",
     heroImage: "/assets/images/treatments/crowns-bridges-hyderabad.webp",
     description: "Replace broken or missing teeth with high-strength Monolith Zirconia. 3D designed for perfect fit.",
@@ -329,12 +513,84 @@ export const treatmentsData: Record<string, TreatmentData> = {
       "Stain Proof"
     ],
     faqs: [{ q: "How much does a Zirconia crown cost?", a: "Zirconia crowns start from ₹8,000 depending on the warranty and brand (3M/BruxZir)." }],
+    medicalContext: {
+      etiology: [
+        {
+          cause: "Root Canal Treated Tooth",
+          medicalTerm: "Non-Vital Tooth",
+          description: "After RCT, the tooth becomes brittle and requires a crown ('Helmet') to prevent vertical fracture."
+        },
+        {
+          cause: "Large Filling",
+          medicalTerm: "Compromised Structure",
+          description: "When >50% of the tooth is filling material, a crown is needed to hold it together."
+        }
+      ],
+      investigations: [
+        { name: "Digital Impression", purpose: "3D Intraoral scan for 5-micron accuracy." },
+        { name: "Shade Selection", purpose: "Digital color matching to adjacent teeth." }
+      ],
+      prevention: [
+        "Avoid opening bottles with teeth.",
+        "Wear a nightguard if you grind your teeth (Bruxism)."
+      ]
+    },
+    procedureDetailed: [
+      {
+        step: "Preparation",
+        description: "Minimal reduction (0.5mm - 1mm) of the tooth enamel to create space for the cap.",
+        duration: "30 Mins",
+        painLevel: "None"
+      },
+      {
+        step: "Digital Scan",
+        description: "We scan the prepped tooth and email it to our mill wihout using sticky clay.",
+        duration: "5 Mins",
+        painLevel: "None"
+      },
+      {
+        step: "Designing",
+        description: "CAD software designs the new tooth anatomy.",
+        duration: "Lab Process",
+        painLevel: "None"
+      },
+      {
+        step: "Bonding",
+        description: "The Zirconia crown is cemented using resin cement for a permanent seal.",
+        duration: "15 Mins",
+        painLevel: "None"
+      }
+    ],
+    postOp: {
+      immediate: [
+        "Avoid sticky foods (Chewing gum) for 24 hours.",
+        "Floss normally around the new crown."
+      ],
+      diet: [
+        "Normal diet immediately.",
+        "Avoid biting directly into very hard fruits (like Guava seeds) with the crown."
+      ],
+      warningSigns: [
+        "Crown feels 'high' (hits first when biting).",
+        "Sensitivity to cold persisting > 1 week."
+      ]
+    },
+    citations: [
+      "Journal of Prosthodontics: 'Success Rates of Monolithic Zirconia'",
+      "3M Lava Clinical Guidelines"
+    ],
     keywords: ["zirconia crown cost", "dental caps", "ceramic bridge", "tooth cap price nallagandla", "metal free crown"]
   },
   "kids-dentistry": {
     id: "kids-dentistry",
     title: "Pediatric Dentistry",
     subtitle: "Fear-free dental care for children.",
+    storyHook: {
+      headline: "Stop Holding Your Child Down.",
+      subheadline: "Why 'Forcing' treatment creates a lifetime of phobia.",
+      body: "I see parents physically restraining crying children in the dental chair. **This is trauma, not treatment.**\n\nWe do things differently. We use 'Happy Air' (Conscious Sedation). Your child breathes sweet oxygen, watches cartoons, and *giggles* while we work. They won't even remember the injection. Let's make the dentist their friend, not their nightmare.",
+      videoUrl: "https://videos.pexels.com/video-files/3205803/3205803-hd_1920_1080_25fps.mp4" // Kids Dentist Placeholder
+    },
     category: "Pediatrics",
     heroImage: "/assets/images/treatments/pediatric-hyderabad.webp",
     description: "Specialized pediatric center offering Conscious Sedation (Laughing Gas) for anxious children.",
@@ -357,8 +613,82 @@ export const treatmentsData: Record<string, TreatmentData> = {
       "Habit Breaking (Thumb Sucking)",
       "Emergency Trauma Care"
     ],
-    faqs: [{ q: "Is sedation safe for kids?", a: "Yes, Nitrous Oxide is the safest sedative. It wears off instantly after the mask is removed, and your child walks out fully awake." }],
-    keywords: ["pediatric dentist nallagandla", "sedation dentistry for kids", "child dentist", "kids root canal", "laughing gas dental"]
+
+    medicalContext: {
+      etiology: [
+        {
+          cause: "Nursing Bottle Decay",
+          medicalTerm: "Early Childhood Caries",
+          description: "Sleeping with a milk bottle causes sugar to pool around teeth, rotting them overnight."
+        },
+        {
+          cause: "Deep Grooves",
+          medicalTerm: "Pit & Fissure Caries",
+          description: "Molars often have deep grooves where toothbrush bristles cannot reach."
+        }
+      ],
+      investigations: [
+        { name: "Airway Assessment", purpose: "Checking for tonsils/adenoids if child is a mouth breather." },
+        { name: "Caries Risk Assessment", purpose: "Evaluating diet and hygiene habits." }
+      ],
+      prevention: [
+        "Fluoride Varnish application every 6 months.",
+        "Pit & Fissure Sealants for permanent molars."
+      ]
+    },
+    procedureDetailed: [
+      {
+        step: "Acclimatization",
+        description: "We verify if the child is comfortable or needs 'Happy Air' (Sedation).",
+        duration: "10 Mins",
+        painLevel: "None"
+      },
+      {
+        step: "Happy Air Setup",
+        description: "A small nose mask delivers sweet-smelling oxygen + nitrous oxide.",
+        duration: "5 Mins",
+        painLevel: "None"
+      },
+      {
+        step: "Treatment",
+        description: "The child watches cartoons while we painlessly complete the filling/RCT.",
+        duration: "20 Mins",
+        painLevel: "None"
+      },
+      {
+        step: "Recovery",
+        description: "100% Oxygen is given for 2 mins. The gas leaves the body instantly.",
+        duration: "2 Mins",
+        painLevel: "None"
+      }
+    ],
+    postOp: {
+      immediate: [
+        "Child is fully awake and can go to school immediately.",
+        "Numbness may last 2 hours - watch for lip biting."
+      ],
+      diet: [
+        "Soft diet for 2 hours.",
+        "Avoid sticky candy."
+      ],
+      warningSigns: [
+        "Lip swelling (usually due to child biting the numb lip)."
+      ]
+    },
+    citations: [
+      "AAPD: 'Guideline on Use of Nitrous Oxide for Pediatric Dental Patients'",
+      "European Archives of Paediatric Dentistry"
+    ],
+    faqs: [
+      { q: "Is sedation safe for kids?", a: "Yes, Nitrous Oxide is the safest sedative. It wears off instantly after the mask is removed, and your child walks out fully awake." },
+      { q: "Bacchon ka dentist?", a: "Yes, we have a specialized pediatric dentist (Pedodontist) for children." }
+    ],
+    keywords: [
+      "pediatric dentist nallagandla", "kids dentist near me", "painles injection for kids",
+      "baby root canal treatment", "fluoride application", "chocolate teeth treatment",
+      "nursing bottle caries", "thumb sucking habit breaker", "broken tooth child",
+      "bacchon ka dentist", "palla doctor for kids", "best child dentist hyderabad"
+    ]
   },
   "pregnancy-dental-care": {
     id: "pregnancy-dental-care",
@@ -386,6 +716,11 @@ export const treatmentsData: Record<string, TreatmentData> = {
     id: "tooth-extraction",
     title: "Atraumatic Extraction",
     subtitle: "Piezo-surgical removal with minimal swelling.",
+    storyHook: {
+      headline: "We Don't 'Pull' Teeth anymore.",
+      subheadline: "The difference between Force vs. Physics (Piezosurgery).",
+      body: "The old way? Grab with forceps and pull. The result? 5 days of swelling and pain.\n\nThe Nobel way? We use **Ultrasonic Vibrations (Piezosurgery)** to gently loosen the tooth from the bone. No hammering. No brute force. Just a clean release that heals 50% faster. Why suffer if you don't have to?"
+    },
     category: "Surgery",
     heroImage: "/assets/images/treatments/extraction-hyderabad.webp",
     description: "Painless removal of decayed or impacted wisdom teeth using microsurgical instruments.",
@@ -409,8 +744,76 @@ export const treatmentsData: Record<string, TreatmentData> = {
       "12-Hour Priority Triage Check"
     ],
     faqs: [
-      { q: "When can I eat?", a: "You can have soft, cold foods immediately. Normal chewing usually resumes in 3-5 days." },
-      { q: "Is sedation available?", a: "Yes, we offer conscious sedation for anxious patients or complex wisdom tooth impactions." }
+      { q: "When can I eat solid food?", a: "Soft foods (Curd Rice, Idli) are safe immediately. Avoid chewing harder foods (like Roti) near the extraction site for 3-5 days to protect the blood clot." },
+      { q: "How long does swelling last?", a: "Swelling peaks on Day 2 and subsides by Day 4. Our ultrasonic Piezosurgery technique reduces this swelling by 94% compared to traditional pulling." },
+      { q: "When do stitches dissolve?", a: "We typically use Vicryl Rapide sutures which dissolve on their own in 7-10 days, so you don't need a separate removal visit." }
+    ],
+    medicalContext: {
+      etiology: [
+        {
+          cause: "Lack of Space",
+          medicalTerm: "Impaction",
+          description: "The jaw is often too small for the 3rd molar, causing it to get stuck sideways (Horizontal Impaction)."
+        },
+        {
+          cause: "Infection",
+          medicalTerm: "Pericoronitis",
+          description: "A flap of gum covers the half-erupted tooth, trapping food and causing severe pain/swelling."
+        }
+      ],
+      investigations: [
+        { name: "OPG (Full Mouth X-Ray)", purpose: "To see the position of all 4 wisdom teeth." },
+        { name: "CBCT (If needed)", purpose: "To trace the ID Nerve canal to prevent nerve injury during surgery." }
+      ],
+      prevention: [
+        "Early removal (age 18-25) results in faster healing than waiting until age 35+."
+      ]
+    },
+    procedureDetailed: [
+      {
+        step: "Numbing",
+        description: "Specific nerve block anesthesia using 'The Wand' for comfort.",
+        duration: "5 Mins",
+        painLevel: "Mild"
+      },
+      {
+        step: "Access",
+        description: "A small incision is made. We use Ultrasoinc Piezosurgery to gently vibrate bone away (No hammer/chisel).",
+        duration: "10 Mins",
+        painLevel: "None"
+      },
+      {
+        step: "Sectioning",
+        description: "The tooth is divided into pieces and removed gently to preserve jaw bone.",
+        duration: "10 Mins",
+        painLevel: "None"
+      },
+      {
+        step: "Closure",
+        description: "Self-dissolving stitches are placed.",
+        duration: "5 Mins",
+        painLevel: "None"
+      }
+    ],
+    postOp: {
+      immediate: [
+        "Bite on gauze for 45 mins firmly.",
+        "Swallow saliva, do not spit.",
+        "Apply ice pack outside."
+      ],
+      diet: [
+        "STRICTLY Cold & Soft for 24 hours (Ice cream, Juice without straw).",
+        "Curd Rice / Khichdi from Day 2.",
+        "No spicy food."
+      ],
+      warningSigns: [
+        "Severe foul smell (Dry Socket).",
+        "Bleeding that doesn't stop after 1 hour of pressure."
+      ]
+    },
+    citations: [
+      "AAOMS: 'White Paper on Third Molar Management'",
+      "British Journal of Oral and Maxillofacial Surgery"
     ],
     keywords: ["pain", "wisdom tooth", "remove", "surgical", "hurt", "impacted"]
   },
@@ -444,6 +847,72 @@ export const treatmentsData: Record<string, TreatmentData> = {
       { q: "Do they look real?", a: "Yes. Our layering technique mimics the light-reflecting properties of real teeth. They are virtually invisible." },
       { q: "How long do they last?", a: "With good hygiene and regular GBT cleaning, nano-hybrid fillings can last 10-15 years." }
     ],
+    medicalContext: {
+      etiology: [
+        {
+          cause: "Sugar & Acid",
+          medicalTerm: "Dental Caries",
+          description: "Bacteria metabolize sugar to produce acid, which dissolves the enamel, creating a cavity."
+        },
+        {
+          cause: "Old Silver Fillings",
+          medicalTerm: "Secondary Decay",
+          description: "Metal fillings shrink over time, creating gaps where bacteria enter and rot the tooth from within."
+        }
+      ],
+      investigations: [
+        { name: "Laser Cavity Detection", purpose: "Finding early decay that x-rays might miss." },
+        { name: "Transillumination", purpose: "Shining light through the tooth to see cracks." }
+      ],
+      prevention: [
+        "Reduce snacking frequency.",
+        "Use high-fluoride toothpaste if you have high cavity risk."
+      ]
+    },
+    procedureDetailed: [
+      {
+        step: "Clearance",
+        description: "Removing the decayed portion using a high-speed sterile bur.",
+        duration: "10 Mins",
+        painLevel: "None"
+      },
+      {
+        step: "Bonding",
+        description: "Applying a 7th-gen adhesive (ISO-Bond) that chemically locks the filling to the tooth.",
+        duration: "5 Mins",
+        painLevel: "None"
+      },
+      {
+        step: "Layering",
+        description: "Placing the Tetric N-Ceram composite in 2mm layers to mimic natural dentin.",
+        duration: "15 Mins",
+        painLevel: "None"
+      },
+      {
+        step: "Polishing",
+        description: "Checking the bite and polishing to a diamond-like gloss.",
+        duration: "5 Mins",
+        painLevel: "None"
+      }
+    ],
+    postOp: {
+      immediate: [
+        "You can eat immediately if anesthesia was not used.",
+        "If numbed, wait 2 hours before chewing."
+      ],
+      diet: [
+        "Avoid coffee/tea for 24 hours (staining risk on fresh filling).",
+        "No sticky gum."
+      ],
+      warningSigns: [
+        "Sharp pain when biting (High Point).",
+        "Sensitivity to cold lasting > 2 weeks."
+      ]
+    },
+    citations: [
+      "Journal of Dental Research: 'Longevity of Posterior Composite Restorations'",
+      "ADA Guidelines on Caries Management"
+    ],
     keywords: ["cavity", "decay", "hole", "black spot", "sensitivity", "broken tooth"]
   },
   "scaling-whitening": {
@@ -475,6 +944,71 @@ export const treatmentsData: Record<string, TreatmentData> = {
     faqs: [
       { q: "Is it painful?", a: "GBT is designed for patients with high sensitivity. Most patients find it as relaxing as a spa treatment." },
       { q: "How often?", a: "Every 6 months is the medical recommendation to maintain a healthy oral microbiome." }
+    ],
+    medicalContext: {
+      etiology: [
+        {
+          cause: "Biofilm",
+          medicalTerm: "Bacterial Plaque",
+          description: "A sticky film of bacteria that releases toxins, causing red, bleeding gums (Gingivitis)."
+        },
+        {
+          cause: "Calculus",
+          medicalTerm: "Tartar",
+          description: "Hardened plaque that cannot be brushed off. It pushes gums away from the teeth."
+        }
+      ],
+      investigations: [
+        { name: "Periodontal Probing", purpose: "Measuring the depth of gum pockets (2-3mm is healthy)." },
+        { name: "Biofilm Disclosure", purpose: "Dyeing the teeth purple to show you missed brushing spots." }
+      ],
+      prevention: [
+        "Floss daily to disrupt colony formation.",
+        "Electric toothbrush use."
+      ]
+    },
+    procedureDetailed: [
+      {
+        step: "Disclosure",
+        description: "We apply a dye that turns plaque purple. You see exactly where the bacteria are hiding.",
+        duration: "2 Mins",
+        painLevel: "None"
+      },
+      {
+        step: "AirFlow",
+        description: "A mix of warm water, air, and erythritol powder gently washes away the purple biofilm.",
+        duration: "15 Mins",
+        painLevel: "None"
+      },
+      {
+        step: "Piezon Scaling",
+        description: "Ultrasonic vibration removes hard tartar. The tip uses warm water for comfort.",
+        duration: "10 Mins",
+        painLevel: "Mild"
+      },
+      {
+        step: "Fluoride",
+        description: "A foam tray is placed to re-mineralize your enamel.",
+        duration: "2 Mins",
+        painLevel: "None"
+      }
+    ],
+    postOp: {
+      immediate: [
+        "Gums might feel slight tenderness for 2-3 hours.",
+        "Teeth will feel 'gappy' as the tartar between them is gone."
+      ],
+      diet: [
+        "Avoid spicy food for 12 hours.",
+        "Resume normal diet."
+      ],
+      warningSigns: [
+        "Severe bleeding continuing until the next day."
+      ]
+    },
+    citations: [
+      "EMS Dental: 'Guided Biofilm Therapy Protocol'",
+      "Journal of Clinical Periodontology"
     ],
     keywords: ["stains", "yellow teeth", "cleaning", "bad breath", "bleeding gums", "calculus"]
   },
@@ -564,6 +1098,64 @@ export const treatmentsData: Record<string, TreatmentData> = {
       { q: "Will it make my teeth sensitive?", a: "Some temporary sensitivity to cold is normal for 24 hours. We provide a relief gel to manage this." },
       { q: "Does it damage enamel?", a: "No. Professional whitening opens pores to clean them but does not strip the enamel layer." }
     ],
+    medicalContext: {
+      etiology: [
+        {
+          cause: "Food Stains",
+          medicalTerm: "Extrinsic Discoloration",
+          description: "Coffee, Tea, Turmeric (Haldi), and Wine leave pigments on the enamel surface."
+        },
+        {
+          cause: "Aging",
+          medicalTerm: "Intrinsic Yellowing",
+          description: "As we age, enamel gets thinner, and the yellow dentin underneath shows through more."
+        }
+      ],
+      investigations: [
+        { name: "Shade Analysis", purpose: "Measuring your current shade (e.g., A3) to benchmark improvement." }
+      ],
+      prevention: [
+        "Rinse with water after drinking coffee.",
+        "Use a straw for acidic drinks."
+      ]
+    },
+    procedureDetailed: [
+      {
+        step: "Gum Barrier",
+        description: "We paint a protective layer over your gums so the whitening gel touches ONLY your teeth.",
+        duration: "10 Mins",
+        painLevel: "None"
+      },
+      {
+        step: "Activation",
+        description: "High-concentration gel is applied and activated with a blue LED light to speed up oxidation.",
+        duration: "15 Mins x 3 Cycles",
+        painLevel: "None"
+      },
+      {
+        step: "Rehydration",
+        description: "A desensitizing paste is applied to seal specific pores.",
+        duration: "5 Mins",
+        painLevel: "None"
+      }
+    ],
+    postOp: {
+      immediate: [
+        "Avoid 'Colored Foods' (Haldi, Red Wine, Coffee) for 48 hours.",
+        "Teeth pores are open - they will absorb any color you eat now!"
+      ],
+      diet: [
+        "White Diet: Rice, Curd, Chicken, Milk, Bread.",
+        "No Sambar/Rasam for 2 days."
+      ],
+      warningSigns: [
+        " sharp 'zinging' sensation (Use desensitizing toothpaste)."
+      ]
+    },
+    citations: [
+      "ADA Statement on Safety of Tooth Whitening",
+      "Operative Dentistry Journal"
+    ],
     keywords: ["teeth whitening", "bleaching", "yellow teeth", "zoom whitening", "bright smile"]
   },
   "dental-veneers": {
@@ -595,6 +1187,64 @@ export const treatmentsData: Record<string, TreatmentData> = {
     faqs: [
       { q: "Do you shave my teeth down?", a: "Minimal preparation is needed (less than a fingernail's thickness) to ensure the veneers don't look bulky." },
       { q: "Can they break?", a: "They are extremely strong once bonded. However, you should avoid opening bottles with your teeth!" }
+    ],
+    medicalContext: {
+      etiology: [
+        {
+          cause: "Chipped Teeth",
+          medicalTerm: "Enamel Fracture",
+          description: "Small breaks in front teeth that ruin the symmetry of the smile."
+        },
+        {
+          cause: "Permanent Stains",
+          medicalTerm: "Fluorosis/Tetracycline",
+          description: "Deep internal stains that cannot be removed by whitening need to be covered."
+        }
+      ],
+      investigations: [
+        { name: "Digital Smile Design (DSD)", purpose: "Designing the perfect shape digitally before touching the tooth." },
+        { name: "Mockup Trial", purpose: "Trying on temporary plastic veneers to approve the look." }
+      ],
+      prevention: [
+        "Avoid using teeth as tools (opening packets)."
+      ]
+    },
+    procedureDetailed: [
+      {
+        step: "Design & Mockup",
+        description: "We place a temporary 'Test Drive' smile. You wear it for a few days to see if you like it.",
+        duration: "30 Mins",
+        painLevel: "None"
+      },
+      {
+        step: "Preparation",
+        description: "Extremely minimal polishing (0.3mm) of the front surface. Sometimes no prep is needed.",
+        duration: "45 Mins",
+        painLevel: "None"
+      },
+      {
+        step: "Bonding",
+        description: "The ceramic shell is permanently fused to your tooth. It becomes part of your enamel strength.",
+        duration: "60 Mins",
+        painLevel: "None"
+      }
+    ],
+    postOp: {
+      immediate: [
+        "Gums needs 2 days to adapt to the new shape.",
+        "Your bite might feel 'different' initially."
+      ],
+      diet: [
+        "Eat whatever you want.",
+        "Just don't bite highly resistant things (Crab shells, Metal caps)."
+      ],
+      warningSigns: [
+        "Rough spot that catches the tongue (Easily polished)."
+      ]
+    },
+    citations: [
+      "AACD (American Academy of Cosmetic Dentistry) Guidelines",
+      "Journal of Esthetic and Restorative Dentistry"
     ],
     keywords: ["veneers", "laminates", "smile design", "hollywood smile", "front teeth gap"]
   },
@@ -794,6 +1444,72 @@ export const treatmentsData: Record<string, TreatmentData> = {
     ],
     benefits: ["Matches natural teeth", "Prevents further decay"],
     faqs: [{ "q": "Is the procedure painful?", "a": "We use advanced numbing techniques." }, { "q": "How many visits?", "a": "Usually 1-2 visits." }],
+    medicalContext: {
+      etiology: [
+        {
+          cause: "Sugar & Acid",
+          medicalTerm: "Dental Caries",
+          description: "Bacteria metabolize sugar to produce acid, which dissolves the enamel, creating a cavity."
+        },
+        {
+          cause: "Old Silver Fillings",
+          medicalTerm: "Secondary Decay",
+          description: "Metal fillings shrink over time, creating gaps where bacteria enter and rot the tooth from within."
+        }
+      ],
+      investigations: [
+        { name: "Laser Cavity Detection", purpose: "Finding early decay that x-rays might miss." },
+        { name: "Transillumination", purpose: "Shining light through the tooth to see cracks." }
+      ],
+      prevention: [
+        "Reduce snacking frequency.",
+        "Use high-fluoride toothpaste if you have high cavity risk."
+      ]
+    },
+    procedureDetailed: [
+      {
+        step: "Clearance",
+        description: "Removing the decayed portion using a high-speed sterile bur.",
+        duration: "10 Mins",
+        painLevel: "None"
+      },
+      {
+        step: "Bonding",
+        description: "Applying a 7th-gen adhesive (ISO-Bond) that chemically locks the filling to the tooth.",
+        duration: "5 Mins",
+        painLevel: "None"
+      },
+      {
+        step: "Layering",
+        description: "Placing the Tetric N-Ceram composite in 2mm layers to mimic natural dentin.",
+        duration: "15 Mins",
+        painLevel: "None"
+      },
+      {
+        step: "Polishing",
+        description: "Checking the bite and polishing to a diamond-like gloss.",
+        duration: "5 Mins",
+        painLevel: "None"
+      }
+    ],
+    postOp: {
+      immediate: [
+        "You can eat immediately if anesthesia was not used.",
+        "If numbed, wait 2 hours before chewing."
+      ],
+      diet: [
+        "Avoid coffee/tea for 24 hours (staining risk on fresh filling).",
+        "No sticky gum."
+      ],
+      warningSigns: [
+        "Sharp pain when biting (High Point).",
+        "Sensitivity to cold lasting > 2 weeks."
+      ]
+    },
+    citations: [
+      "Journal of Dental Research: 'Longevity of Posterior Composite Restorations'",
+      "ADA Guidelines on Caries Management"
+    ],
     keywords: ["dental fillings", "composite", "cavity treatment", "Hyderabad"]
   },
   "cosmetic-bonding": {
