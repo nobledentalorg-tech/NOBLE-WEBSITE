@@ -31,7 +31,7 @@
 
 # Missing Asset Redirects
 /favicon.ico               /assets/images/treatments/whitening-hyderabad.webp   301
-/logo.png                 /images/logo-footer.webp             301
+
 /assets/neo-ai-meta.jpg   /assets/images/treatments/whitening-hyderabad.webp   301
 /assets/og-image.jpg      /assets/images/treatments/whitening-hyderabad.webp   301
 /assets/dr-dhivakaran.jpg /assets/images/treatments/whitening-hyderabad.webp   301
