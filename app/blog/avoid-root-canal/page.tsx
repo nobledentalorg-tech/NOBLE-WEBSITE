@@ -2,8 +2,6 @@
 import React from 'react';
 import { Share2, Clock, User, ArrowLeft, ShieldCheck, XCircle, CheckCircle2 } from 'lucide-react';
 import Link from 'next/link';
-import Footer from '@/components/Footer';
-import Header from '@/components/Header';
 
 export const metadata = {
     title: 'Can I Avoid a Root Canal? When to Save vs Extract | Noble Dental Nallagandla',
@@ -13,7 +11,6 @@ export const metadata = {
 export default function BlogPost() {
     return (
         <main className="min-h-screen bg-white dark:bg-[#0B1019] font-sans">
-            <Header />
             <article className="pt-32 pb-20">
                 <div className="max-w-3xl mx-auto px-6">
 
@@ -104,7 +101,6 @@ export default function BlogPost() {
 
                 </div>
             </article>
-            <Footer />
         </main>
     );
 }

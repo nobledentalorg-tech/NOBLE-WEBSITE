@@ -1,7 +1,6 @@
 import React from 'react';
-import Header from '@/components/Header';
-import Footer from '@/components/Footer';
-import { CheckCircle2, ShieldCheck, IndianRupee, Percent } from 'lucide-react';
+import { Coins, CheckCircle2, Shield, Info, ArrowRight, IndianRupee, Percent } from 'lucide-react';
+import Link from 'next/link';
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
@@ -11,8 +10,7 @@ export const metadata: Metadata = {
 
 export default function TariffPage() {
     return (
-        <main className="min-h-screen bg-slate-50 dark:bg-[#020617] font-sans">
-            <Header />
+        <main className="min-h-screen bg-white dark:bg-[#0B1019]">
 
             <section className="pt-32 pb-20 px-6">
                 <div className="max-w-4xl mx-auto text-center mb-16">
@@ -41,7 +39,7 @@ export default function TariffPage() {
                             </button>
                         </div>
                         <div className="bg-white/10 rounded-2xl p-6 border border-white/20">
-                            <h3 className="font-bold text-lg mb-4 flex items-center gap-2"><ShieldCheck className="text-green-400" /> Best Value Guarantee</h3>
+                            <h3 className="font-bold text-lg mb-4 flex items-center gap-2"><Shield className="text-green-400" /> Best Value Guarantee</h3>
                             <ul className="space-y-4 text-sm">
                                 <li className="flex items-center gap-3"><CheckCircle2 size={16} className="text-green-400" /> <span><strong>No Hidden Consumable Charges:</strong> What you see is what you pay.</span></li>
                                 <li className="flex items-center gap-3"><CheckCircle2 size={16} className="text-green-400" /> <span><strong>Free Consultations:</strong> For all Implant & Ortho assessments.</span></li>
@@ -83,7 +81,6 @@ export default function TariffPage() {
 
             </section>
 
-            <Footer />
         </main>
     );
 }

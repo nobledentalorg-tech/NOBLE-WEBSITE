@@ -3,13 +3,10 @@
 import React from 'react';
 import Link from 'next/link';
 import { Phone, Clock, AlertTriangle, CheckCircle2, ArrowRight } from 'lucide-react';
-import Header from '@/components/Header';
-import Footer from '@/components/Footer';
 
 export default function EmergencyPage() {
     return (
         <main className="min-h-screen bg-slate-50 dark:bg-[#050505]">
-            <Header />
 
             {/* 1. HERO: PANIC MODE DESIGN (High Contrast) */}
             <section className="pt-32 pb-20 px-6 bg-red-50 dark:bg-red-900/10 border-b border-red-100 dark:border-red-900/20 relative overflow-hidden">
@@ -113,7 +110,6 @@ export default function EmergencyPage() {
                 ></iframe>
             </section>
 
-            <Footer />
         </main>
     );
 }

@@ -2,8 +2,6 @@
 import React from 'react';
 import { IndianRupee, User, Info, Check } from 'lucide-react';
 import Link from 'next/link';
-import Footer from '@/components/Footer';
-import Header from '@/components/Header';
 
 export const metadata = {
     title: 'Cost of Root Canal Treatment in Hyderabad (2025 Guide) | Noble Dental',
@@ -13,7 +11,6 @@ export const metadata = {
 export default function BlogPost() {
     return (
         <main className="min-h-screen bg-white dark:bg-[#0B1019] font-sans">
-            <Header />
             <article className="pt-32 pb-20">
                 <div className="max-w-3xl mx-auto px-6">
 
@@ -85,7 +82,6 @@ export default function BlogPost() {
 
                 </div>
             </article>
-            <Footer />
         </main>
     );
 }

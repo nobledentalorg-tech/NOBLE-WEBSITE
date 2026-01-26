@@ -4,13 +4,10 @@ import React from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { Plane, Map, ShieldCheck, Banknote, Languages, ArrowRight, CheckCircle2 } from 'lucide-react';
-import Header from '@/components/Header';
-import Footer from '@/components/Footer';
 
 export default function MedicalTourismPage() {
     return (
         <main className="min-h-screen bg-slate-50 dark:bg-[#050505]">
-            <Header />
 
             {/* 1. HERO: The Destination Hook */}
             <section className="pt-40 pb-20 px-6 bg-white dark:bg-[#050505]">
@@ -164,7 +161,6 @@ export default function MedicalTourismPage() {
                 </div>
             </section>
 
-            <Footer />
         </main>
     );
 }

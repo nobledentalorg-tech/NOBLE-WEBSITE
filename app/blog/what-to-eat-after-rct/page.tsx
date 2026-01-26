@@ -1,10 +1,7 @@
-
 import React from 'react';
 import Image from 'next/image';
 import { Share2, Clock, User, Bookmark, ChevronLeft } from 'lucide-react';
 import Link from 'next/link';
-import Footer from '@/components/Footer';
-import Header from '@/components/Header';
 
 export const metadata = {
     title: 'What to Eat After Root Canal Treatment | Noble Dental Care',
@@ -14,7 +11,6 @@ export const metadata = {
 export default function BlogPost() {
     return (
         <main className="min-h-screen bg-white dark:bg-[#0B1019] font-sans">
-            <Header />
             <article className="pt-32 pb-20">
                 <div className="max-w-3xl mx-auto px-6">
 
@@ -88,7 +84,6 @@ export default function BlogPost() {
 
                 </div>
             </article>
-            <Footer />
         </main>
     );
 }

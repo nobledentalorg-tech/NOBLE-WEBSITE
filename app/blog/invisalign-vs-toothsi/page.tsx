@@ -2,7 +2,6 @@
 import React from 'react';
 import { Share2, Clock, User, ArrowLeft, ShieldAlert, CheckCircle2, Zap } from 'lucide-react';
 import Link from 'next/link';
-import Footer from '@/components/Footer';
 import Header from '@/components/Header';
 
 export const metadata = {
@@ -102,7 +101,6 @@ export default function BlogPost() {
 
                 </div>
             </article>
-            <Footer />
         </main>
     );
 }

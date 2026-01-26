@@ -4,13 +4,10 @@ import React from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { ArrowRight, MapPin, CheckCircle2, Phone, Star, User } from 'lucide-react';
-import Header from '@/components/Header';
-import Footer from '@/components/Footer';
 
 export default function AparnaResidentsPage() {
     return (
         <main className="min-h-screen bg-slate-50 dark:bg-[#0B1019]">
-            <Header />
 
             {/* 1. HERO: Hyper-Local Sniper */}
             <section className="pt-40 pb-20 px-6 bg-white dark:bg-[#050505]">
@@ -104,7 +101,6 @@ export default function AparnaResidentsPage() {
                 </div>
             </section>
 
-            <Footer />
         </main>
     );
 }

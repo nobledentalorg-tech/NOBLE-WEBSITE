@@ -1,6 +1,5 @@
 import React from 'react';
-import Header from '@/components/Header';
-import Footer from '@/components/Footer';
+import React from 'react';
 import { Award, User, Target, Heart } from 'lucide-react';
 import Image from 'next/image';
 import type { Metadata } from 'next';
@@ -13,7 +12,6 @@ export const metadata: Metadata = {
 export default function AboutPage() {
     return (
         <main className="min-h-screen bg-slate-50 dark:bg-[#020617] font-sans">
-            <Header />
 
             <section className="pt-32 pb-20 px-6">
                 <div className="max-w-4xl mx-auto mb-16">
@@ -66,7 +64,6 @@ export default function AboutPage() {
 
             </section>
 
-            <Footer />
         </main>
     );
 }

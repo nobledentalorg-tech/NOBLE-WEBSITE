@@ -1,7 +1,5 @@
 import React from 'react';
 import { Award, BookOpen, GraduationCap, Microscope, ShieldCheck, Mail, MapPin, ExternalLink, Calendar, CheckCircle, Smartphone } from 'lucide-react';
-import Header from '@/components/Header';
-import Footer from '@/components/Footer';
 import Image from 'next/image';
 import Link from 'next/link';
 import type { Metadata } from 'next';
@@ -13,8 +11,7 @@ export const metadata: Metadata = {
 
 export default function DrDhivakaranProfile() {
     return (
-        <main className="min-h-screen bg-slate-50 dark:bg-[#020617] font-sans">
-            <Header />
+        <main className="min-h-screen bg-slate-50 dark:bg-[#020617]">
 
             <div className="pt-32 pb-20 px-6">
                 <div className="max-w-7xl mx-auto">
@@ -165,7 +162,6 @@ export default function DrDhivakaranProfile() {
                 </div>
             </div>
 
-            <Footer />
         </main>
     );
 }

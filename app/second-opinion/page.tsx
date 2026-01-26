@@ -3,13 +3,10 @@
 import React from 'react';
 import Link from 'next/link';
 import { AlertCircle, FileText, CheckCircle2, XCircle, ArrowRight, ShieldCheck } from 'lucide-react';
-import Header from '@/components/Header';
-import Footer from '@/components/Footer';
 
 export default function SecondOpinionPage() {
     return (
         <main className="min-h-screen bg-slate-50 dark:bg-[#050505]">
-            <Header />
 
             {/* 1. HERO: The Hook */}
             <section className="pt-40 pb-20 px-6 bg-white dark:bg-[#050505]">
@@ -96,7 +93,6 @@ export default function SecondOpinionPage() {
                 </div>
             </section>
 
-            <Footer />
         </main>
     );
 }

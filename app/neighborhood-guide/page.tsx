@@ -1,6 +1,5 @@
+```javascript
 import React from 'react';
-import Header from '@/components/Header';
-import Footer from '@/components/Footer';
 import { MapPin, School, Building2, Navigation, Clock, Moon, Star } from 'lucide-react';
 import Link from 'next/link';
 import { Metadata } from 'next';
@@ -13,7 +12,6 @@ export const metadata: Metadata = {
 export default function NeighborhoodGuide() {
     return (
         <main className="min-h-screen bg-slate-50 dark:bg-[#020617] font-sans">
-            <Header />
 
             {/* Hero */}
             <section className="pt-32 pb-16 bg-blue-600 text-white relative overflow-hidden">
@@ -189,7 +187,6 @@ export default function NeighborhoodGuide() {
                     </Link>
                 </div>
             </section>
-            <Footer />
         </main>
     );
 }

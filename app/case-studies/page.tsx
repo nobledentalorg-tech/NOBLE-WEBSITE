@@ -4,8 +4,6 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { cases } from '@/data/cases';
 import CaseCard from '@/components/CaseCard';
 import { Filter, Search } from 'lucide-react';
-import Header from '@/components/Header';
-import Footer from '@/components/Footer';
 
 const CaseStudiesPage = () => {
     const [filter, setFilter] = useState('All');
@@ -17,7 +15,6 @@ const CaseStudiesPage = () => {
 
     return (
         <main className="min-h-screen bg-slate-50 dark:bg-[#020617] transition-colors duration-500">
-            <Header />
 
             {/* Hero Section */}
             <section className="pt-32 pb-16 px-6">
@@ -77,7 +74,6 @@ const CaseStudiesPage = () => {
                 </div>
             </section>
 
-            <Footer />
         </main>
     );
 };
