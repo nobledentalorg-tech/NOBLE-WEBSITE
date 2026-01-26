@@ -219,6 +219,7 @@ export const treatmentsData: Record<string, TreatmentData> = {
   },
   "kids-dentistry": {
     id: "kids-dentistry",
+    title: "Pediatric Dentistry",
     subtitle: "Fear-free dental care for children.",
     category: "Pediatrics",
     heroImage: "/assets/images/treatments/pediatric-hyderabad.webp",
