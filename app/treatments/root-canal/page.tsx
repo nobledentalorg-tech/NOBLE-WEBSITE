@@ -39,35 +39,6 @@ export default function RootCanalPage() {
             },
             "description": "Advanced root canal therapy using Zeiss Microscopes and Diode Lasers for 99.9% bacterial elimination.",
             "followup": "Permanent Crown placement within 3 days."
-         },
-         {
-            "@type": "FAQPage",
-            "mainEntity": [
-               {
-                  "@type": "Question",
-                  "name": "How much does a Microscopic Root Canal cost in Nallagandla?",
-                  "acceptedAnswer": {
-                     "@type": "Answer",
-                     "text": "At Noble Dental Care, standard rotary RCT starts at ₹3,500. Microscopic RCT starts around ₹6,000 depending on complexity. Check our <a href='/tariff'>Live Tariff Page</a> for transparent pricing."
-                  }
-               },
-               {
-                  "@type": "Question",
-                  "name": "Is the procedure painful?",
-                  "acceptedAnswer": {
-                     "@type": "Answer",
-                     "text": "No. We use computer-controlled Local Anesthesia (STA System) which makes the injection itself painless. The procedure is performed under high magnification, ensuring precise and trauma-free cleaning."
-                  }
-               },
-               {
-                  "@type": "Question",
-                  "name": "Can I get a Root Canal on Sunday?",
-                  "acceptedAnswer": {
-                     "@type": "Answer",
-                     "text": "Yes, Noble Dental Care handles emergency root canals 24/7, including Sundays. Please call ahead."
-                  }
-               }
-            ]
          }
       ]
    };

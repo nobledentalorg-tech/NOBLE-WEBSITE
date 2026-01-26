@@ -12,17 +12,22 @@ const inter = Inter({ subsets: ['latin'], variable: '--font-inter' });
 
 export const metadata: Metadata = {
   title: {
-    default: 'Noble Dental Care | Premium Dentistry in Nallagandla & Tellapur',
+    default: 'Noble Dental Care | Best Dentist in Nallagandla & Tellapur',
     template: '%s | Noble Dental Care'
   },
   metadataBase: new URL('https://nobledentalnallagandla.in'),
   alternates: {
     canonical: '/',
   },
+  icons: {
+    icon: '/favicon.ico',
+    shortcut: '/favicon.ico',
+    apple: '/apple-touch-icon.png',
+  },
   verification: {
     google: 'coO5jvSypAc95p3t7cWWDaTsqtjt-W2bK3ybS21ZsIc',
   },
-  description: 'Rated Best Dental Clinic in Nallagandla & Tellapur. Dr. Dhivakaran merges AI-guided precision with regenerative ethics for painless Root Canals, Implants, and Invisalign.',
+  description: 'Best Dental Clinic in Nallagandla & Tellapur. Dr. Dhivakaran offers painless Root Canals, Implants & Invisalign with AI-guided precision.',
   keywords: [
     // Urgency & Availability (High Intent)
     'Emergency dentist Nallagandla', 'Dentist open on Sunday Nallagandla', 'Late night dental clinic Hyderabad', 'Urgent tooth extraction near me',

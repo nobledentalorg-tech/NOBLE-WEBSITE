@@ -1,6 +1,8 @@
 import { PrismaClient } from '@prisma/client';
 import { revalidatePath } from 'next/cache';
 
+export const dynamic = 'force-dynamic';
+
 const prisma = new PrismaClient();
 
 // Server Action to Verify/Delete
