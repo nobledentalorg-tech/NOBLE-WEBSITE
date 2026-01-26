@@ -40,13 +40,13 @@ export default function BlogPost() {
                     {/* Content */}
                     <div className="prose prose-lg dark:prose-invert prose-blue max-w-none">
                         <p className="lead text-xl text-slate-600 dark:text-slate-300">
-                            We see this search trend rising in Hyderabad: <em>"How to avoid root canal naturally"</em> or <em>"Root canal alternative medicine."</em>
+                            We see this search trend rising in Hyderabad: <em>&quot;How to avoid root canal naturally&quot;</em> or <em>&quot;Root canal alternative medicine.&quot;</em>
                         </p>
                         <p>
-                            I understand the hesitation. Root canals have a bad reputation for being painful (though <Link href="/treatments/root-canal">modern microscopic treatment</Link> is painless). Patients often ask: <strong>"Can't I just take medicine?"</strong>
+                            I understand the hesitation. Root canals have a bad reputation for being painful (though <Link href="/treatments/root-canal">modern microscopic treatment</Link> is painless). Patients often ask: <strong>&quot;Can&apos;t I just take medicine?&quot;</strong>
                         </p>
 
-                        <h3>The "Antibiotic Myth"</h3>
+                        <h3>The &quot;Antibiotic Myth&quot;</h3>
                         <p>
                             Here is the hard medical truth: <strong>Antibiotics cannot cure a tooth infection.</strong> They can only temporarily reduce the swelling.
                         </p>
@@ -55,7 +55,7 @@ export default function BlogPost() {
                                 <XCircle className="text-red-500 shrink-0 mt-1" />
                                 <div>
                                     <strong className="text-red-700 dark:text-red-400 block mb-1">Why Medicine Fails</strong>
-                                    <span className="text-slate-600 dark:text-slate-400 text-sm">Once the nerve inside the tooth is dead, there is no blood supply to carry the antibiotic into the tooth. The infection effectively "hides" inside the root, safe from the medicine.</span>
+                                    <span className="text-slate-600 dark:text-slate-400 text-sm">Once the nerve inside the tooth is dead, there is no blood supply to carry the antibiotic into the tooth. The infection effectively &quot;hides&quot; inside the root, safe from the medicine.</span>
                                 </div>
                             </li>
                         </ul>

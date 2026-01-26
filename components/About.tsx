@@ -22,7 +22,7 @@ const About = () => {
             </h2>
 
             <p className="text-slate-600 dark:text-slate-300 text-lg leading-relaxed mb-6">
-              "I believe true care combines warmth with world-class technology. When you walk into my clinic, I don&apos;t just see a patient; I see a neighbor, a friend, and a person who deserves the best."
+              &quot;I believe true care combines warmth with world-class technology. When you walk into my clinic, I don&apos;t just see a patient; I see a neighbor, a friend, and a person who deserves the best.&quot;
             </p>
             <p className="text-slate-600 dark:text-slate-300 text-lg leading-relaxed mb-10">
               Led by <span className="font-bold text-slate-900 dark:text-white">Dr. Dhivakaran</span> (Director, HealthFlo & Author), we are your personal dental consultants—offering the comfort of a friend and the accuracy of advanced digital dentistry.

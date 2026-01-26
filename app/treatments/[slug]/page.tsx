@@ -119,7 +119,7 @@ export default function TreatmentPage({ params }: { params: { slug: string } }) 
           <div className="grid md:grid-cols-2 gap-12 items-center">
             <div>
               <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-100 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400 text-xs font-bold uppercase tracking-widest mb-6">
-                <Sparkles size={12} fill="currentColor" /> Dr. Dhivakaran's Insight
+                <Sparkles size={12} fill="currentColor" /> Dr. Dhivakaran&apos;s Insight
               </div>
               <h2 className="text-3xl md:text-4xl font-black text-slate-900 dark:text-white mb-4 leading-tight">
                 {t.storyHook.headline}

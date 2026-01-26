@@ -21,7 +21,7 @@ export default function EmergencyPage() {
                         <AlertTriangle size={14} /> Priority Triage Active
                     </div>
                     <h1 className="text-5xl md:text-7xl font-black text-slate-900 dark:text-white mb-6 leading-tight">
-                        In Pain? <span className="text-red-600">Don't Wait.</span>
+                        In Pain? <span className="text-red-600">Don&apos;t Wait.</span>
                     </h1>
                     <p className="text-xl text-slate-600 dark:text-slate-300 font-medium leading-relaxed max-w-2xl mx-auto mb-10">
                         We keep <strong>2 Emergency Slots</strong> open every day for acute pain cases.
@@ -85,7 +85,7 @@ export default function EmergencyPage() {
                                     </li>
                                     <li className="flex gap-4">
                                         <CheckCircle2 className="text-green-500 shrink-0" />
-                                        <p className="text-slate-300"><strong>Keep Head Elevated:</strong> Don't lie flat; it increases blood pressure to the head (and pain).</p>
+                                        <p className="text-slate-300"><strong>Keep Head Elevated:</strong> Don&apos;t lie flat; it increases blood pressure to the head (and pain).</p>
                                     </li>
                                 </ul>
                                 <div className="mt-10 p-6 bg-white/10 rounded-2xl border border-white/10">

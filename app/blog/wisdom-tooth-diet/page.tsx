@@ -41,10 +41,10 @@ export default function BlogPost() {
                     {/* Content */}
                     <div className="prose prose-lg dark:prose-invert prose-blue max-w-none">
                         <p className="lead text-xl text-slate-600 dark:text-slate-300">
-                            The Hunger is Real. You just had your <Link href="/treatments/tooth-extraction">wisdom tooth removed</Link>. The anesthesia is wearing off, and you are starving. But you are terrified: <em>"If I eat the wrong thing, will it hurt? Will I get a Dry Socket?"</em>
+                            The Hunger is Real. You just had your <Link href="/treatments/tooth-extraction">wisdom tooth removed</Link>. The anesthesia is wearing off, and you are starving. But you are terrified: <em>&quot;If I eat the wrong thing, will it hurt? Will I get a Dry Socket?&quot;</em>
                         </p>
                         <p>
-                            We see this question every day at Noble Dental. The good news is, you don't have to starve. You just have to be strategic. Here is your timeline for safe eating, specifically for our patients in Hyderabad.
+                            We see this question every day at Noble Dental. The good news is, you don&apos;t have to starve. You just have to be strategic. Here is your timeline for safe eating, specifically for our patients in Hyderabad.
                         </p>
 
                         <div className="bg-red-50 dark:bg-red-900/20 p-6 rounded-2xl border border-red-100 dark:border-red-800 my-8">
@@ -52,11 +52,11 @@ export default function BlogPost() {
                                 <AlertTriangle size={20} /> The Golden Rule: NO STRAWS
                             </h4>
                             <p className="text-slate-700 dark:text-slate-300 m-0">
-                                Before we look at food, remember this: <strong>Never use a straw for 7 days.</strong> The sucking motion creates a vacuum that can pull out the blood clot, causing a painful condition called "Dry Socket." Drink directly from the cup or use a spoon.
+                                Before we look at food, remember this: <strong>Never use a straw for 7 days.</strong> The sucking motion creates a vacuum that can pull out the blood clot, causing a painful condition called &quot;Dry Socket.&quot; Drink directly from the cup or use a spoon.
                             </p>
                         </div>
 
-                        <h2>📅 Day 1: The "Cool & Liquid" Phase (First 24 Hours)</h2>
+                        <h2>📅 Day 1: The &quot;Cool & Liquid&quot; Phase (First 24 Hours)</h2>
                         <p><strong>Goal:</strong> Stop the bleeding and reduce swelling.<br /><strong>Rule:</strong> No hot food. No chewing.</p>
                         <p>In the first 24 hours, heat increases blood flow, which can restart bleeding. Stick to cold liquids.</p>
 
@@ -68,20 +68,20 @@ export default function BlogPost() {
                             <li><strong>Cold Milkshakes:</strong> Boost or Horlicks (chilled).</li>
                         </ul>
 
-                        <h2>📅 Day 2 & 3: The "No-Chew" Phase</h2>
+                        <h2>📅 Day 2 & 3: The &quot;No-Chew&quot; Phase</h2>
                         <p><strong>Goal:</strong> Nutrition without jaw movement.<br /><strong>Rule:</strong> Warm food is okay now, but nothing spicy.</p>
                         <p>Your jaw will be stiff. You need soft foods that can be swallowed with minimal effort.</p>
 
                         <h3>✅ What to Eat:</h3>
                         <ul>
                             <li><strong>Mashed Potatoes:</strong> With plenty of butter/ghee.</li>
-                            <li><strong>Curd Rice (Thayir Sadam):</strong> Make it extra mushy ("gooey"). This is the perfect healing food for Hyderabad summers.</li>
+                            <li><strong>Curd Rice (Thayir Sadam):</strong> Make it extra mushy (&quot;gooey&quot;). This is the perfect healing food for Hyderabad summers.</li>
                             <li><strong>Scrambled Eggs:</strong> Soft, not dry.</li>
                             <li><strong>Dal / Sambar (Filtered):</strong> Soaked with soft rice or eaten as soup. Avoid drumsticks or hard veggies.</li>
                             <li><strong>Idli soaked in Sambar:</strong> Soft Idlis are great; avoid crispy Dosa or Vada for now.</li>
                         </ul>
 
-                        <h2>📅 Day 4 to 7: The "Semi-Solid" Transition</h2>
+                        <h2>📅 Day 4 to 7: The &quot;Semi-Solid&quot; Transition</h2>
                         <p><strong>Goal:</strong> Regaining strength.<br /><strong>Rule:</strong> You can chew gently, but chew on the opposite side of the extraction.</p>
 
                         <h3>✅ What to Eat:</h3>
@@ -100,7 +100,7 @@ export default function BlogPost() {
                             <li><strong>Wait for:</strong> Chewy mutton or steak for at least 10-14 days. If food gets stuck in the socket, use a warm salt water rinse to gently dislodge it. Do not use a toothpick!</li>
                         </ul>
 
-                        <h2>❌ The "Danger Zone" (Avoid for 10 Days)</h2>
+                        <h2>❌ The &quot;Danger Zone&quot; (Avoid for 10 Days)</h2>
                         <p>These foods are notorious for getting stuck in the wound or causing infection:</p>
                         <ul>
                             <li><strong>Rice Grains (Biryani):</strong> Loose grains can get trapped in the socket. Stick to mushy Curd Rice or Khichdi initially.</li>

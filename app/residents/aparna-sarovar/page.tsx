@@ -80,7 +80,7 @@ export default function AparnaResidentsPage() {
                     <div className="grid md:grid-cols-2 gap-8">
                         <div className="bg-white dark:bg-[#0B1019] p-8 rounded-3xl shadow-sm text-left">
                             <div className="flex items-center gap-1 text-amber-400 mb-4"><Star fill="currentColor" size={16} /><Star fill="currentColor" size={16} /><Star fill="currentColor" size={16} /><Star fill="currentColor" size={16} /><Star fill="currentColor" size={16} /></div>
-                            <p className="text-slate-600 dark:text-slate-300 mb-6 font-medium">"Dr. Dhivakaran is a gem. I literally walked from Zenith to his clinic. Saved my molar which another clinic asked to extract."</p>
+                            <p className="text-slate-600 dark:text-slate-300 mb-6 font-medium">&quot;Dr. Dhivakaran is a gem. I literally walked from Zenith to his clinic. Saved my molar which another clinic asked to extract.&quot;</p>
                             <div className="flex items-center gap-3">
                                 <div className="w-10 h-10 bg-slate-200 rounded-full flex items-center justify-center"><User size={20} /></div>
                                 <div>
@@ -91,7 +91,7 @@ export default function AparnaResidentsPage() {
                         </div>
                         <div className="bg-white dark:bg-[#0B1019] p-8 rounded-3xl shadow-sm text-left">
                             <div className="flex items-center gap-1 text-amber-400 mb-4"><Star fill="currentColor" size={16} /><Star fill="currentColor" size={16} /><Star fill="currentColor" size={16} /><Star fill="currentColor" size={16} /><Star fill="currentColor" size={16} /></div>
-                            <p className="text-slate-600 dark:text-slate-300 mb-6 font-medium">"Very convenient for my parents. The lift access and the patience of the doctor is commendable. Highly recommend for Zicon families."</p>
+                            <p className="text-slate-600 dark:text-slate-300 mb-6 font-medium">&quot;Very convenient for my parents. The lift access and the patience of the doctor is commendable. Highly recommend for Zicon families.&quot;</p>
                             <div className="flex items-center gap-3">
                                 <div className="w-10 h-10 bg-slate-200 rounded-full flex items-center justify-center"><User size={20} /></div>
                                 <div>

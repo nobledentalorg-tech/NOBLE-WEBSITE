@@ -29,7 +29,7 @@ export default function BlogPost() {
                             Invisalign vs. Direct-to-Home Aligners: Which is Safe?
                         </h1>
                         <p className="text-xl text-slate-600 dark:text-slate-400 mb-6">
-                            The "at-home" scans are convenient, but are they risking your permanent smile?
+                            The &quot;at-home&quot; scans are convenient, but are they risking your permanent smile?
                         </p>
                         <div className="flex items-center gap-6 text-sm text-slate-500 border-b border-slate-100 dark:border-white/10 pb-8">
                             <span className="flex items-center gap-2"><User size={16} /> Dr. Dhivakaran</span>
@@ -40,10 +40,10 @@ export default function BlogPost() {
                     {/* Content */}
                     <div className="prose prose-lg dark:prose-invert prose-blue max-w-none">
                         <p className="lead text-xl text-slate-600 dark:text-slate-300">
-                            We see the ads everywhere in Hyderabad. <em>"Straighten your teeth at home for ₹49,999."</em> Brands like Toothsi, Snazzy, and Whistle promise a dentist-free experience. But as dental specialists, we are seeing the side effects of "DIY Orthodontics" walking into our clinic months later.
+                            We see the ads everywhere in Hyderabad. <em>&quot;Straighten your teeth at home for ₹49,999.&quot;</em> Brands like Toothsi, Snazzy, and Whistle promise a dentist-free experience. But as dental specialists, we are seeing the side effects of &quot;DIY Orthodontics&quot; walking into our clinic months later.
                         </p>
 
-                        <h3>The Core Difference: "Supervision"</h3>
+                        <h3>The Core Difference: &quot;Supervision&quot;</h3>
                         <p>
                             Moving teeth involves reshaping bone. It is a biological process, not just cosmetic.
                         </p>
@@ -86,9 +86,9 @@ export default function BlogPost() {
                             <li><strong>Results:</strong> Ability to fix complex overcrowding that simple plastic trays cannot touch.</li>
                         </ul>
 
-                        <h3>Conclusion: Don't Gambles with Bone</h3>
+                        <h3>Conclusion: Don&apos;t Gambles with Bone</h3>
                         <p>
-                            If you have a very minor gap, home aligners might work. But for 90% of cases, you need a doctor's hand. Saving ₹50,000 now might cost you ₹2,00,000 in repair work later.
+                            If you have a very minor gap, home aligners might work. But for 90% of cases, you need a doctor&apos;s hand. Saving ₹50,000 now might cost you ₹2,00,000 in repair work later.
                         </p>
 
                         <div className="bg-slate-50 dark:bg-white/5 p-8 rounded-3xl text-center mt-12">

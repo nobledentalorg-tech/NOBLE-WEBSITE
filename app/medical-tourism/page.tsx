@@ -20,7 +20,7 @@ export default function MedicalTourismPage() {
                     </div>
                     <h1 className="text-4xl md:text-6xl font-black text-slate-900 dark:text-white mb-6 leading-tight">
                         World-Class Dentistry. <br />
-                        <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-indigo-600">Without the "Metro" Markup.</span>
+                        <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-indigo-600">Without the &quot;Metro&quot; Markup.</span>
                     </h1>
                     <p className="text-xl text-slate-500 dark:text-slate-400 font-medium leading-relaxed max-w-2xl mx-auto mb-10">
                         Whether you are flying in from <strong>Bangalore/Chennai</strong> or visiting parents from <strong>Andhra</strong>,
@@ -95,10 +95,10 @@ export default function MedicalTourismPage() {
                         </div>
                         <h2 className="text-3xl md:text-5xl font-black text-slate-900 dark:text-white mb-6">
                             Visiting Parents? <br />
-                            Get their "Kattudu Pallu" Fixed.
+                            Get their &quot;Kattudu Pallu&quot; Fixed.
                         </h2>
                         <p className="text-slate-600 dark:text-slate-300 leading-relaxed mb-6">
-                            We know that many parents visiting from <strong>Vijayawada, Guntur, or Bhimavaram</strong> delay their dental needs because they fear "Big City Doctors".
+                            We know that many parents visiting from <strong>Vijayawada, Guntur, or Bhimavaram</strong> delay their dental needs because they fear &quot;Big City Doctors&quot;.
                         </p>
                         <p className="text-slate-600 dark:text-slate-300 leading-relaxed mb-8">
                             Dr. Dhivakaran speaks their language. No medical jargon. Just honest, clear advice for fixed teeth (Implants/Bridges) within their short stay. We offer <strong>Priority Weekend Slots</strong> so you don't have to take leave from work.
@@ -132,7 +132,7 @@ export default function MedicalTourismPage() {
                         <Languages size={14} /> Language Safety
                     </div>
                     <h2 className="text-3xl font-black mb-8">
-                        "My Parents speak only Tamil. Will they handle it?"
+                        &quot;My Parents speak only Tamil. Will they handle it?&quot;
                     </h2>
                     <div className="bg-slate-900 text-white p-10 rounded-[2.5rem] shadow-2xl relative overflow-hidden">
                         <div className="absolute top-0 right-0 w-64 h-64 bg-blue-500/20 rounded-full blur-3xl -mr-16 -mt-16"></div>
@@ -151,7 +151,7 @@ export default function MedicalTourismPage() {
                             <div className="bg-white/10 p-6 rounded-2xl border border-white/10">
                                 <div className="text-xs font-bold uppercase tracking-widest text-slate-400 mb-2">Virtual Triage</div>
                                 <h4 className="font-bold text-lg">Send X-Ray First</h4>
-                                <p className="text-sm text-slate-400 mt-2">Don't travel blindly. Get a confirmation before booking tickets.</p>
+                                <p className="text-sm text-slate-400 mt-2">Don&apos;t travel blindly. Get a confirmation before booking tickets.</p>
                             </div>
                         </div>
 

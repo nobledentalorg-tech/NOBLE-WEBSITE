@@ -24,7 +24,7 @@ export default function SecondOpinionPage() {
                     <p className="text-xl text-slate-500 dark:text-slate-400 font-medium leading-relaxed max-w-2xl mx-auto mb-10">
                         40% of standard dental diagnoses are aggressive or unnecessary.
                         <br />Before you agree to surgery, let Dr. Dhivakaran audit your X-Ray.
-                        <br /><strong>We save 3 out of 10 "Unsavable" teeth.</strong>
+                        <br /><strong>We save 3 out of 10 &quot;Unsavable&quot; teeth.</strong>
                     </p>
 
                     <div className="flex justify-center">
@@ -41,7 +41,7 @@ export default function SecondOpinionPage() {
                     <div>
                         <h2 className="text-3xl font-black mb-6">Why do diagnoses differ?</h2>
                         <p className="text-slate-600 dark:text-slate-300 text-lg leading-relaxed mb-6">
-                            Many corporate chains have <strong>monthly targets</strong>. A small cavity that could be filled is often pushed as a "Root Canal" to meet a quota.
+                            Many corporate chains have <strong>monthly targets</strong>. A small cavity that could be filled is often pushed as a &quot;Root Canal&quot; to meet a quota.
                         </p>
                         <p className="text-slate-600 dark:text-slate-300 text-lg leading-relaxed mb-8">
                             At Noble Dental, we are <strong>Owner-Operated</strong>. Dr. Dhivakaran answers only to his conscience, not a sales manager. If a tooth can be saved with a simple filling, that is exactly what we will do.
@@ -54,7 +54,7 @@ export default function SecondOpinionPage() {
                             </div>
                             <div className="flex items-center gap-4 p-4 bg-red-50 dark:bg-red-900/10 rounded-xl border border-red-100 dark:border-red-900/20">
                                 <XCircle className="text-red-500 shrink-0" />
-                                <span className="font-bold text-slate-700 dark:text-slate-300">No "Rotational" Junior Doctors</span>
+                                <span className="font-bold text-slate-700 dark:text-slate-300">No &quot;Rotational&quot; Junior Doctors</span>
                             </div>
                             <div className="flex items-center gap-4 p-4 bg-green-50 dark:bg-green-900/10 rounded-xl border border-green-100 dark:border-green-900/20">
                                 <CheckCircle2 className="text-green-500 shrink-0" />
@@ -65,11 +65,11 @@ export default function SecondOpinionPage() {
 
                     <div className="bg-slate-900 p-10 rounded-[2.5rem] relative overflow-hidden text-white">
                         <div className="absolute top-0 right-0 w-40 h-40 bg-blue-500 rounded-full blur-[80px] opacity-50"></div>
-                        <h3 className="text-2xl font-bold mb-8">Case Study: "The Saved Molar"</h3>
+                        <h3 className="text-2xl font-bold mb-8">Case Study: &quot;The Saved Molar&quot;</h3>
                         <div className="space-y-6 text-sm text-slate-300">
                             <div className="flex gap-4">
                                 <div className="w-8 h-8 rounded-full bg-red-500/20 flex items-center justify-center text-red-500 font-bold shrink-0">1</div>
-                                <p>Patient advised "Extraction + Implant" (Cost: ₹35,000) by a local chain clinic.</p>
+                                <p>Patient advised &quot;Extraction + Implant&quot; (Cost: ₹35,000) by a local chain clinic.</p>
                             </div>
                             <div className="flex gap-4">
                                 <div className="w-8 h-8 rounded-full bg-blue-500/20 flex items-center justify-center text-blue-500 font-bold shrink-0">2</div>
