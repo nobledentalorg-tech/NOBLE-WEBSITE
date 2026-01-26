@@ -177,64 +177,55 @@ export default function TreatmentPage({ params }: { params: { slug: string } }) 
             </div>
           </div>
 
-        </div>
-
-        {/* 4. RECOMMENDED PRODUCTS (Education Only) */}
-        {t.recommendedProducts && t.recommendedProducts.length > 0 && (
-          <div className="mt-12 border-t border-slate-200 dark:border-white/5 pt-12">
-            <h2 className="text-2xl font-bold mb-6 flex items-center gap-2">
-              <ShieldCheck className="text-green-600" />
-              Recovery & Maintenance Guide
-            </h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              {t.recommendedProducts.map((prod) => (
-                <div key={prod.id} className="bg-white dark:bg-zinc-900 rounded-2xl p-6 border border-slate-200 dark:border-white/5 flex gap-4 items-start">
-                  <div className="relative w-24 h-24 shrink-0 rounded-xl overflow-hidden bg-slate-100">
-                    <Image
-                      src={prod.image}
-                      alt={prod.name}
-                      fill
-                      className="object-cover"
-                    />
-                  </div>
-                  <div>
-                    <div className="flex flex-wrap gap-2 mb-2">
-                      <span className="px-2 py-0.5 rounded-full bg-slate-100 dark:bg-white/10 text-xs font-bold uppercase tracking-wider text-slate-500">
-                        {prod.purpose}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            {t.recommendedProducts.map((prod) => (
+              <div key={prod.id} className="bg-white dark:bg-zinc-900 rounded-2xl p-6 border border-slate-200 dark:border-white/5 flex gap-4 items-start">
+                <div className="relative w-24 h-24 shrink-0 rounded-xl overflow-hidden bg-slate-100">
+                  <Image
+                    src={prod.image}
+                    alt={prod.name}
+                    fill
+                    className="object-cover"
+                  />
+                </div>
+                <div>
+                  <div className="flex flex-wrap gap-2 mb-2">
+                    <span className="px-2 py-0.5 rounded-full bg-slate-100 dark:bg-white/10 text-xs font-bold uppercase tracking-wider text-slate-500">
+                      {prod.purpose}
+                    </span>
+                    {prod.isPrescription && (
+                      <span className="px-2 py-0.5 rounded-full bg-red-100 text-red-600 text-xs font-bold uppercase tracking-wider border border-red-200">
+                        Rx Required
                       </span>
-                      {prod.isPrescription && (
-                        <span className="px-2 py-0.5 rounded-full bg-red-100 text-red-600 text-xs font-bold uppercase tracking-wider border border-red-200">
-                          Rx Required
-                        </span>
-                      )}
-                    </div>
-                    <h3 className="font-bold text-lg leading-tight mb-1">{prod.name}</h3>
-                    <p className="text-sm text-slate-500 mb-2">{prod.subText}</p>
+                    )}
+                  </div>
+                  <h3 className="font-bold text-lg leading-tight mb-1">{prod.name}</h3>
+                  <p className="text-sm text-slate-500 mb-2">{prod.subText}</p>
 
-                    <div className="text-xs bg-slate-50 dark:bg-white/5 p-2 rounded border border-slate-100 dark:border-white/5 text-slate-600 dark:text-slate-400">
-                      <span className="font-semibold text-slate-900 dark:text-slate-200">Doc's Advice:</span> {prod.usage}
-                      {prod.safetyNote && <span className="block mt-1 text-red-500 font-medium">⚠️ {prod.safetyNote}</span>}
-                    </div>
+                  <div className="text-xs bg-slate-50 dark:bg-white/5 p-2 rounded border border-slate-100 dark:border-white/5 text-slate-600 dark:text-slate-400">
+                    <span className="font-semibold text-slate-900 dark:text-slate-200">Doc's Advice:</span> {prod.usage}
+                    {prod.safetyNote && <span className="block mt-1 text-red-500 font-medium">⚠️ {prod.safetyNote}</span>}
                   </div>
                 </div>
-              ))}
-            </div>
-
-            {/* MEDICAL DISCLAIMER */}
-            <div className="mt-8 bg-slate-50 dark:bg-zinc-900/50 p-4 rounded-xl border border-slate-200 dark:border-white/5 text-xs text-slate-500 leading-relaxed">
-              <p className="font-bold text-slate-700 dark:text-slate-300 mb-2 flex items-center gap-2">
-                <Activity size={14} className="text-red-500" />
-                MEDICAL DISCLAIMER & LEGAL NOTICE
-              </p>
-              <p>
-                1. <strong>Educational Purpose Only:</strong> The information provided here regarding medications (e.g., Augmentin, Ketorol) is strictly for educational recovery guidance for existing patients. This is NOT an advertisement or offer for sale. We do not sell medications online.
-                <br />
-                2. <strong>No Doctor-Patient Relationship:</strong> Reading this guide does not constitute medical advice. Always follow the specific prescription provided by Dr. Dhivakaran.
-                <br />
-                3. <strong>Prescription Required:</strong> Many items listed are Schedule H/H1 Drugs and cannot be purchased without a valid prescription. Do not self-medicate.
-              </p>
-            </div>
+              </div>
+            ))}
           </div>
+
+          {/* MEDICAL DISCLAIMER */}
+          <div className="mt-8 bg-slate-50 dark:bg-zinc-900/50 p-4 rounded-xl border border-slate-200 dark:border-white/5 text-xs text-slate-500 leading-relaxed">
+            <p className="font-bold text-slate-700 dark:text-slate-300 mb-2 flex items-center gap-2">
+              <Activity size={14} className="text-red-500" />
+              MEDICAL DISCLAIMER & LEGAL NOTICE
+            </p>
+            <p>
+              1. <strong>Educational Purpose Only:</strong> The information provided here regarding medications (e.g., Augmentin, Ketorol) is strictly for educational recovery guidance for existing patients. This is NOT an advertisement or offer for sale. We do not sell medications online.
+              <br />
+              2. <strong>No Doctor-Patient Relationship:</strong> Reading this guide does not constitute medical advice. Always follow the specific prescription provided by Dr. Dhivakaran.
+              <br />
+              3. <strong>Prescription Required:</strong> Many items listed are Schedule H/H1 Drugs and cannot be purchased without a valid prescription. Do not self-medicate.
+            </p>
+          </div>
+        </div>
         )}
 
       </div>
