@@ -39,9 +39,6 @@ export interface TreatmentData {
     headline: string;
     subheadline: string;
     body: string;
-    headline: string;
-    subheadline: string;
-    body: string;
     videoUrl?: string;
   };
   // [NEW] Price War Table
@@ -256,7 +253,6 @@ export const treatmentsData: Record<string, TreatmentData> = {
       "Transparent Cost (No Hidden Fees)",
       "Global Brands (Nobel/Straumann)",
       "Fixed Teeth in 72 Hours",
-      "Safe for Diabetics (Guided Protocol)",
       "Safe for Diabetics (Guided Protocol)",
       "0% EMI Options Available"
     ],
