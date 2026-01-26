@@ -175,7 +175,7 @@ export default function InsurancePage() {
                                     { name: "Manipal Cigna", src: "https://placehold.co/200x80/white/black?text=Manipal+Cigna" },
                                     { name: "Tata AIG", src: "/images/brands/tata-aig.png" },
                                     { name: "Aditya Birla", src: "/images/brands/aditya-birla.png" },
-                                    { name: "Bajaj Allianz", src: "/images/brands/bajaj-allianz.png" },
+                                    { name: "Bajaj Allianz", src: "/images/brands/bajaj-allianz.jpg" },
                                     { name: "SBI General", src: "/images/brands/sbi-general.png" }
                                 ].map((brand, idx) => (
                                     <div
