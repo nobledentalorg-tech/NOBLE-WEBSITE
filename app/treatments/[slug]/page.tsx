@@ -209,7 +209,7 @@ export default function TreatmentPage({ params }: { params: { slug: string } }) 
                         <p className="text-sm text-slate-500 mb-2">{prod.subText}</p>
 
                         <div className="text-xs bg-slate-50 dark:bg-white/5 p-2 rounded border border-slate-100 dark:border-white/5 text-slate-600 dark:text-slate-400">
-                          <span className="font-semibold text-slate-900 dark:text-slate-200">Doc's Advice:</span> {prod.usage}
+                          <span className="font-semibold text-slate-900 dark:text-slate-200">Doc&apos;s Advice:</span> {prod.usage}
                           {prod.safetyNote && <span className="block mt-1 text-red-500 font-medium">⚠️ {prod.safetyNote}</span>}
                         </div>
                       </div>
