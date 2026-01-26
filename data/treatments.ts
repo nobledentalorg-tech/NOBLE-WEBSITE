@@ -30,33 +30,146 @@ export interface TreatmentData {
   description: string;
   longDescription: string;
   stats: { label: string; value: string; icon: any }[];
-  process: TreatmentStep[];
+  process: { title: string; desc: string }[]; // Basic process (Legacy)
   benefits: string[];
-  faqs: TreatmentFAQ[];
+  faqs: { q: string; a: string }[];
   keywords: string[];
   recommendedProducts?: ProductRecommendation[];
+
+  // [NEW] Deep Dive Medical Data
+  medicalContext?: {
+    etiology: { cause: string; medicalTerm?: string; description: string }[];
+    investigations: { name: string; purpose: string }[];
+    prevention: string[];
+  };
+  procedureDetailed?: {
+    step: string;
+    description: string;
+    duration: string;
+    painLevel: "None" | "Mild" | "Moderate";
+  }[];
+  postOp?: {
+    immediate: string[];
+    diet: string[];
+    warningSigns: string[];
+  };
+  citations?: string[];
 }
 
 export const treatmentsData: Record<string, TreatmentData> = {
   "root-canal": {
     id: "root-canal",
     title: "Microscopic Root Canal",
-    subtitle: "Painless single-sitting rct with Zeiss optics.",
+    subtitle: "Painless single-sitting RCT with Zeiss optics.",
     category: "Endodontics",
     heroImage: "/assets/images/treatments/root-canal-hyderabad.webp",
     description: "Experience 100% painless root canal treatment in Nallagandla using advanced German Microscopes.",
-    longDescription: "Stop searching for 'root canal near me' and discover precision. At Noble Dental Care, we specialize in Microscopic Root Canal Treatment. Unlike traditional methods, our Zeiss Extaro 300 magnification allows us to see and clean hidden canals (MB2) that others miss. This ensures a 99.2% success rate and a completely painless, single-sitting experience.",
+    longDescription: "Stop searching for 'root canal near me' and discover precision. At Noble Dental Care, we specialize in Microscopic Root Canal Treatment (Endodontics). Unlike traditional methods, our Zeiss Extaro 300 magnification allows us to see and clean hidden canals (MB2) that others miss. This ensures a 99.2% success rate and a completely painless, single-sitting experience.",
+
+    // [NEW] Medical Context - Etiology
+    medicalContext: {
+      etiology: [
+        {
+          cause: "Deep Tooth Decay",
+          medicalTerm: "Caries Profunda",
+          description: "Bacteria penetrate the enamel and dentin, reaching the soft pulp tissue, causing irreversible inflammation."
+        },
+        {
+          cause: "Cracked Tooth",
+          medicalTerm: "Fractured Cusp",
+          description: "A fracture allows bacteria to bypass protection and infect the nerve, often causing sharp pain upon chewing."
+        },
+        {
+          cause: "Trauma",
+          medicalTerm: "Luxation Injury",
+          description: "A blow to the tooth (sports injury/fall) can sever the blood supply, causing the nerve to die silently over time."
+        }
+      ],
+      investigations: [
+        { name: "Digital IOPA X-Ray", purpose: "To visualize the root tip and depth of decay." },
+        { name: "Pulp Vitality Test", purpose: "Thermal test (Cold/Hot) to confirm if the nerve is dead or alive." },
+        { name: "CBCT (3D Scan)", purpose: "For re-treatment cases to find hidden canals (MB2) missed by previous dentists." }
+      ],
+      prevention: [
+        "Treat cavities early before they reach the nerve.",
+        "Wear mouthguards during contact sports.",
+        "Avoid chewing on hard ice or pens to prevent cracks."
+      ]
+    },
+
     stats: [
       { label: "Pain Score", value: "0/10", icon: "Heart" },
       { label: "Precision", value: "25x Zoom", icon: "Ruler" },
       { label: "Visits", value: "Single Sitting", icon: "Clock" }
     ],
-    process: [
-      { title: "3D CBCT Scan", desc: "We map your tooth roots digitally to prevent errors." },
-      { title: "Painless Numbing", desc: "Computer-controlled anesthesia (The Wand) for zero-sting injection." },
-      { title: "Laser Disinfection", desc: "Er,Cr:YSGG Laser cleaning of deep canals." },
-      { title: "Bioceramic Seal", desc: "Permanent 3D obturation for lifetime durability." }
+
+    // [NEW] Deep Dive Procedure
+    procedureDetailed: [
+      {
+        step: "Local Anesthesia",
+        description: "We use 'The Wand' (Computer Controlled Anesthesia) to numb the tooth. You won't even feel the needle.",
+        duration: "5 Mins",
+        painLevel: "None"
+      },
+      {
+        step: "Rubber Dam Isolation",
+        description: "A latex/nitrile sheet isolates the tooth. This keeps the field sterile and prevents you from swallowing water/chemicals.",
+        duration: "2 Mins",
+        painLevel: "None"
+      },
+      {
+        step: "Microscopic Access",
+        description: "Dr. Dhivakaran uses the Zeiss Microscope to find all main and accessory canals (MB2).",
+        duration: "10 Mins",
+        painLevel: "None"
+      },
+      {
+        step: "Laser Disinfection",
+        description: "We use BIOLASE Lasers to kill 99.9% of bacteria deep within the dentinal tubules.",
+        duration: "10 Mins",
+        painLevel: "None"
+      },
+      {
+        step: "3D Obturation",
+        description: "The canals are filled with Bio-Ceramic sealer (biocompatible material) that creates a permanent bacteria-tight seal.",
+        duration: "15 Mins",
+        painLevel: "None"
+      }
     ],
+
+    // Legacy Process for Cards (Simplified)
+    process: [
+      { title: "3D CBCT Scan", desc: "We map your tooth roots digitally." },
+      { title: "Painless Numbing", desc: "Computer-controlled anesthesia." },
+      { title: "Laser Disinfection", desc: "Er,Cr:YSGG Laser cleaning." },
+      { title: "Bioceramic Seal", desc: "Permanent 3D obturation." }
+    ],
+
+    // [NEW] Post-Op Guide
+    postOp: {
+      immediate: [
+        "Do not eat until the numbness wears off (approx. 2 hours) to avoid biting your cheek.",
+        "Avoid hot liquids for the first 24 hours.",
+        "Take the first dose of painkiller before the anesthesia wears off."
+      ],
+      diet: [
+        "Soft Diet for 2 days (Yogurt, Smoothies, Rice).",
+        "Chew on the opposite side until the permanent crown is placed.",
+        "Avoid sticky foods (Caramel, Gum)."
+      ],
+      warningSigns: [
+        "Visible swelling on the face outside the jaw.",
+        "Severe pain that does not subside with medication.",
+        "High fever (>101°F)."
+      ]
+    },
+
+    citations: [
+      "American Association of Endodontists (AAE) Guidelines 2024",
+      "Cohen's Pathways of the Pulp - 12th Edition",
+      "Journal of Endodontics: Success Rates of Microscopic Endodontics"
+    ],
+
     benefits: [
       "No Pain, No Swelling",
       "Completed in 45 Minutes (Single Visit)",
@@ -65,8 +178,9 @@ export const treatmentsData: Record<string, TreatmentData> = {
       "10-Year Warranty on Crowns"
     ],
     faqs: [
-      { q: "Is it really painless?", a: "Yes. Our microscopic technique combined with digital anesthesia ensures you feel absolutely nothing." },
-      { q: "What is the cost of Root Canal in Nallagandla?", a: "Our microscopic RCT starts from ₹4,500. We offer transparent pricing with no hidden charges." }
+      { q: "Is it really painless?", a: "Yes. Our microscopic technique combined with digital anesthesia ensures you feel absolutely nothing. Most patients sleep during the procedure." },
+      { q: "What is the cost of Root Canal in Nallagandla?", a: "Microscopic RCT starts from ₹4,500. With a Zirconia Crown, the package is approx ₹12,000. We offer transparent pricing." },
+      { q: "Do I need a crown after RCT?", a: "Yes. A root canal treated tooth becomes brittle. A crown acts like a helmet, protecting it from fracturing under bite force." }
     ],
     keywords: ["microscopic root canal", "painless rct nallagandla", "single sitting root canal", "endodontist near me", "root canal cost"],
     recommendedProducts: [

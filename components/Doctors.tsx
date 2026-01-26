@@ -15,7 +15,7 @@ const Doctors: React.FC = () => {
       role: 'Chief Clinical Officer',
       specialty: 'Dental Surgeon & Implantologist',
       experience: '11+ Years',
-      image: 'https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?auto=format&fit=crop&q=80&w=600',
+      image: '/images/dhivakaran.webp',
       cases: '25k+',
       success: '98%',
       aligners: false,

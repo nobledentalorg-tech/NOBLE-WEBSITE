@@ -3,7 +3,7 @@ import './globals.css';
 import LayoutShell from '@/components/LayoutShell';
 import JsonLd from '@/components/JsonLd';
 import UIProtector from '@/components/UIProtector';
-import WhatsAppFloat from '@/components/WhatsAppFloat';
+import FloatingCTA from '@/components/FloatingCTA';
 import { LocalSeoSchema } from '@/components/LocalSeoSchema';
 import type { Metadata } from 'next';
 
@@ -117,7 +117,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <JsonLd />
         <LocalSeoSchema />
         <UIProtector />
-        <WhatsAppFloat />
+        <FloatingCTA />
       </body>
     </html>
   );
