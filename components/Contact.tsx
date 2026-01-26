@@ -117,27 +117,11 @@ const Contact = () => {
                                 <MapPin size={24} />
                             </div>
                             <h4 className="text-[9px] font-black text-slate-400 uppercase tracking-widest mb-1">Nallagandla</h4>
-                            <p className="text-sm font-bold text-slate-700 dark:text-slate-300 leading-tight">ICA Building, Opp. Citizens Hospital.</p>
+                            <p className="text-sm font-bold text-slate-700 dark:text-slate-300 leading-tight">ICA Clinic Building, Main Road.</p>
                         </div>
                     </RevealOnScroll>
                 </div>
-
-                {/* Local Map Embed for SEO & Trust */}
-                <RevealOnScroll delay={400}>
-                   <div className="w-full h-[300px] rounded-[2.5rem] overflow-hidden border border-slate-200 dark:border-white/10 shadow-2xl relative bg-slate-100 dark:bg-white/5">
-                      <iframe 
-                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15220.076864112347!2d78.3081889!3d17.4738964!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bcb936d705f0d7b%3A0x3f1aca1c9cebf1ae!2sNoble%20Dental%20Care%20%7C%20Multispeciality%20Dental%20clinic%20in%20Nallagandla!5e0!3m2!1sen!2sin!4v1714400000000!5m2!1sen!2sin" 
-                        width="100%" 
-                        height="100%" 
-                        style={{ border: 0 }} 
-                        allowFullScreen={true} 
-                        loading="lazy" 
-                        referrerPolicy="no-referrer-when-downgrade"
-                      ></iframe>
-                   </div>
-                </RevealOnScroll>
             </div>
-
 
             {/* Reservation Form */}
             <div className="lg:col-span-7">

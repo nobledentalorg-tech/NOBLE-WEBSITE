@@ -9,19 +9,18 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
             clientSecret: process.env.AUTH_GOOGLE_SECRET,
         }),
     ],
-    trustHost: true,
+    // Prevent build-time error if env vars are missing
     adapter: (process.env.NEXT_PUBLIC_SUPABASE_URL && process.env.SUPABASE_SERVICE_ROLE_KEY)
         ? SupabaseAdapter({
             url: process.env.NEXT_PUBLIC_SUPABASE_URL,
             secret: process.env.SUPABASE_SERVICE_ROLE_KEY,
         })
         : undefined,
-
     callbacks: {
         session({ session, user }) {
             if (session.user) {
                 session.user.id = user.id
-                session.user.role = (user as any).role // Standard users are 'user', admins are 'admin'
+                // Add other custom fields if needed
             }
             return session
         },

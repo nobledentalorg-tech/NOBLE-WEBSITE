@@ -2,7 +2,6 @@
 
 import React, { useState, useEffect, useRef } from 'react';
 import { useRouter } from 'next/navigation';
-import Link from 'next/link';
 import Image from 'next/image';
 import {
     Send, ArrowLeft, Mic, MicOff, Sparkles,
@@ -14,7 +13,7 @@ import { getNeoResponse } from '@/app/actions';
 import { ChatMessage } from '@/types';
 import { useSession, signIn, signOut } from 'next-auth/react';
 
-export default function NeoCompanionClient({ isAdmin = false }: { isAdmin?: boolean }) {
+export default function NeoCompanionClient() {
     const router = useRouter();
     const { data: session } = useSession();
 
@@ -34,13 +33,13 @@ export default function NeoCompanionClient({ isAdmin = false }: { isAdmin?: bool
     // -- DB Sync State --
     const [currentChatId, setCurrentChatId] = useState<string | null>(null);
 
-    const userName = isAdmin ? "Dr. Dhivakaran" : (session?.user?.name?.split(' ')[0] || "Guest");
-    const fullIntroText = `Hi ${userName}. I am Neo, your Virtual Dental Consultant.`;
+    const fullIntroText = session?.user?.name
+        ? `Hi ${session.user.name.split(' ')[0]}. I am Neo, your Virtual Dental Consultant.`
+        : "Hi. I am Neo, your Virtual Dental Consultant.";
 
     // -- DB Sync Logic --
     const saveMessageToDb = async (role: 'user' | 'model', content: string) => {
-        if (!isAdmin && !session?.user) return; // Only save if logged in or admin
-
+        if (!session?.user) return; // Only save if logged in
 
         try {
             const res = await fetch('/api/chat/save', {
@@ -127,7 +126,7 @@ export default function NeoCompanionClient({ isAdmin = false }: { isAdmin?: bool
             const patientContext = {
                 age: 28,
                 isPregnant: textToSend.toLowerCase().includes('pregnant') || messages.some(m => m.text.toLowerCase().includes('pregnant')),
-                medicalHistory: [], // Cleared demo 'asthma' for free testing
+                medicalHistory: ['asthma'],
                 trimester: 'Second' as any
             };
 
@@ -137,13 +136,12 @@ export default function NeoCompanionClient({ isAdmin = false }: { isAdmin?: bool
             const nextNode = neoResponse.node;
             setCurrentNodeId(nextNode.id);
 
-            // C. Construct AI Response (Include options for interactivity)
+            // C. Construct AI Response
             const aiResponse: ChatMessage = {
                 role: 'model',
                 text: nextNode.text.en,
                 timestamp: Date.now(),
                 possibilities: nextNode.possibilities,
-                options: nextNode.options, // CRITICAL FIX: Persist buttons
                 urgency: neoResponse.urgency
             };
 
@@ -154,12 +152,6 @@ export default function NeoCompanionClient({ isAdmin = false }: { isAdmin?: bool
 
         } catch (error) {
             console.error("Neo Error:", error);
-            // Show visible error to user
-            setMessages(prev => [...prev, {
-                role: 'model',
-                text: "I apologize, I'm having trouble connecting to the server. Please check your internet or try again.",
-                timestamp: Date.now()
-            }]);
         } finally {
             setIsLoading(false);
         }
@@ -208,43 +200,21 @@ export default function NeoCompanionClient({ isAdmin = false }: { isAdmin?: bool
                     <div className="p-2 rounded-full bg-white/5 border border-white/10"><ArrowLeft size={16} /></div>
                     <span className="text-xs font-bold uppercase tracking-widest">Back</span>
                 </div>
-                <div className="flex items-center gap-4">
-                    {/* Training Badge (Mobile Hidden or Discreet) */}
-                    <div className="hidden md:flex flex-col items-end gap-0.5">
-                        <span className="text-[8px] font-bold uppercase text-zinc-500 tracking-tighter transition-all">IQ Efficiency: 88% — Under Training to improve Logic</span>
-                        <span className="text-[8px] font-bold text-slate-500 dark:text-zinc-400 uppercase tracking-tight italic">Dr. Dhivakaran CMD</span>
-                    </div>
-
-                    <div className="flex items-center gap-3">
-                        {/* Auth Button */}
-                        {session ? (
-                            <div className="flex items-center gap-3 px-3 py-1 rounded-full bg-white/5 border border-white/10 shrink-0">
-                                <div className="flex items-center gap-2">
-                                    <Image src={session.user?.image || ''} alt="User" width={20} height={20} className="w-5 h-5 rounded-full border border-white/10" />
-                                    <span className="font-gemini text-[10px] uppercase text-zinc-400">{session.user?.name?.split(' ')[0]}</span>
-                                </div>
-                                
-                                <div className="h-3 w-[1px] bg-white/10"></div>
-
-                                {(session.user as any)?.role === 'admin' && (
-                                    <Link href="/admin" className="text-[10px] font-bold text-amber-500 uppercase tracking-widest hover:text-amber-400 transition-colors">Admin</Link>
-                                )}
-
-                                <span className="font-gemini text-[10px] uppercase text-zinc-500 cursor-pointer hover:text-red-400 transition-colors" onClick={() => signOut()}>Exit</span>
-                            </div>
-                        ) : (
-                            <div onClick={() => signIn('google')} className="flex items-center gap-2 px-3 py-1 rounded-full bg-blue-500/10 border border-blue-500/20 cursor-pointer hover:bg-blue-500/20 transition-all shrink-0">
-                                <span className="font-gemini text-[10px] font-bold text-blue-400 uppercase tracking-widest">Sign In</span>
-                            </div>
-                        )}
-
-                        {/* Status Badge */}
-                        <div className="flex flex-col items-end gap-1 shrink-0">
-                            <div className="flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/20">
-                                <div className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></div>
-                                <span className="text-[10px] font-bold text-emerald-500 uppercase tracking-widest">Neo Online</span>
-                            </div>
+                <div className="flex items-center gap-3">
+                    {/* Auth Button */}
+                    {session ? (
+                        <div className="flex items-center gap-2 px-3 py-1 rounded-full bg-white/5 border border-white/10">
+                            <Image src={session.user?.image || ''} alt="User" width={20} height={20} className="w-5 h-5 rounded-full" />
+                            <span className="font-gemini text-[10px] uppercase text-zinc-400 cursor-pointer hover:text-red-400" onClick={() => signOut()}>Sign Out</span>
                         </div>
+                    ) : (
+                        <div onClick={() => signIn('google')} className="flex items-center gap-2 px-3 py-1 rounded-full bg-blue-500/10 border border-blue-500/20 cursor-pointer hover:bg-blue-500/20 transition-all">
+                            <span className="font-gemini text-[10px] font-bold text-blue-400 uppercase tracking-widest">Sign In</span>
+                        </div>
+                    )}
+                    <div className="flex items-center gap-2 px-3 py-1 rounded-full bg-red-500/10 border border-red-500/20">
+                        <div className="w-1.5 h-1.5 rounded-full bg-red-500 animate-pulse"></div>
+                        <span className="text-[10px] font-bold text-red-500 uppercase tracking-widest">Neo Online</span>
                     </div>
                 </div>
             </nav>
@@ -277,23 +247,8 @@ export default function NeoCompanionClient({ isAdmin = false }: { isAdmin?: bool
                             <div key={i} className={`flex gap-4 ${msg.role === 'user' ? 'justify-end' : 'justify-start'} animate-in slide-in-from-bottom-2`}>
                                 {msg.role !== 'user' && <div className="w-8 h-8 rounded-full bg-zinc-900 border border-white/10 flex items-center justify-center shrink-0"><Flame size={14} className="text-red-500" /></div>}
 
-                                <div className={`max-w-[85%] p-5 rounded-2xl ${msg.role === 'user' ? 'bg-red-600 text-white rounded-tr-none' : 'glass-panel rounded-tl-none border-zinc-200'}`}>
-                                    <p className={`font-gemini text-sm md:text-base leading-relaxed whitespace-pre-wrap ${msg.role !== 'user' ? 'text-zinc-900 dark:text-zinc-100' : 'text-white'}`}>{msg.text}</p>
-
-                                    {/* Clinical Tree Options (Interactive Buttons) */}
-                                    {msg.options && msg.options.length > 0 && (
-                                        <div className="mt-4 flex flex-wrap gap-2">
-                                            {msg.options.map((opt: any, idx: number) => (
-                                                <button 
-                                                    key={idx} 
-                                                    onClick={() => handleSend(opt.label.en)}
-                                                    className="px-3 py-1.5 rounded-full bg-red-500/10 border border-red-500/20 text-[11px] font-bold uppercase text-red-600 hover:bg-red-500 hover:text-white transition-all"
-                                                >
-                                                    {opt.label.en}
-                                                </button>
-                                            ))}
-                                        </div>
-                                    )}
+                                <div className={`max-w-[85%] p-5 rounded-2xl ${msg.role === 'user' ? 'bg-red-600 text-white rounded-tr-none' : 'glass-panel rounded-tl-none'}`}>
+                                    <p className="font-gemini text-sm md:text-base leading-relaxed whitespace-pre-wrap">{msg.text}</p>
 
                                     {/* Possibility Cards */}
                                     {msg.possibilities && msg.possibilities.length > 0 && (

@@ -97,9 +97,8 @@ const Hero: React.FC<HeroProps> = ({ onBookClick }) => {
             </div>
 
             <h1 className="text-5xl md:text-[5.5rem] font-black text-slate-900 dark:text-white leading-[0.85] tracking-tighter">
-              Best Dentist in <span className="text-blue-600">Nallagandla.</span>
+              Biological Precision.
             </h1>
-
 
             <p className="text-xl text-slate-500 dark:text-slate-400 max-w-xl leading-relaxed">
               At Noble Dental Care, we specialize in high-precision surgery and advanced endodontics. Experience a clinic that defines the future of painless oral science.
@@ -159,20 +158,17 @@ const Hero: React.FC<HeroProps> = ({ onBookClick }) => {
                   width={60}
                   height={60}
                   className="logo"
-                  priority
                 />
                 <h2>ITI_SLActive <span className="light">TITANIUM</span></h2>
                 <p className="subtitle">Swiss Grade Implant</p>
 
-                {/* External S3 bucket - using unoptimized for reliable loading */}
                 <Image
                   className="product-pop"
                   src="https://dentcare-website-s3-bucket-01.s3.eu-north-1.amazonaws.com/storage/assets/uploads/JCK1DentcareZirconiaClassic-1.png"
                   alt="Swiss Implant System"
                   width={300}
                   height={300}
-                  priority
-                  unoptimized
+                  unoptimized // External S3 bucket not in allowed patterns list yet? It is, but safer to add just in case of dimension issues
                 />
 
                 <span className="nmd">ITI</span>

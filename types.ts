@@ -38,8 +38,5 @@ export interface ChatMessage {
   timestamp: number;
   sources?: Source[];
   possibilities?: Possibility[];
-  options?: any[]; // For clinical tree buttons
   urgency?: 'low' | 'medium' | 'high' | 'emergency';
-  isError?: boolean;
-  provider?: 'gemini' | 'engine';
 }

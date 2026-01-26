@@ -8,7 +8,6 @@ import { Calendar, User, ArrowLeft, Tag } from 'lucide-react';
 import { format } from 'date-fns';
 import Link from 'next/link';
 import type { Metadata } from 'next';
-import ReactMarkdown from 'react-markdown';
 
 // Revalidate every hour
 export const revalidate = 3600;
@@ -134,13 +133,15 @@ export default async function BlogPostPage({ params }: PageProps) {
 
                 {/* Content Body */}
                 <div className="max-w-3xl mx-auto px-6">
-                    <div className="prose prose-lg dark:prose-invert max-w-none prose-headings:font-bold prose-headings:font-display prose-blue prose-h1:text-3xl prose-h1:font-black prose-h2:text-2xl prose-h2:font-black prose-h2:mt-12 prose-h2:mb-4 prose-h3:text-xl prose-h3:font-bold prose-h3:mt-8 prose-h3:mb-3 prose-p:text-slate-700 dark:prose-p:text-slate-300 prose-p:leading-relaxed prose-a:text-blue-600 dark:prose-a:text-blue-400 prose-a:font-semibold hover:prose-a:underline prose-strong:text-slate-900 dark:prose-strong:text-white prose-strong:font-bold prose-ul:my-6 prose-li:my-2 prose-blockquote:border-l-4 prose-blockquote:border-blue-500 prose-blockquote:bg-blue-50 dark:prose-blockquote:bg-blue-900/10 prose-blockquote:py-4 prose-blockquote:px-6 prose-blockquote:not-italic prose-code:text-blue-600 dark:prose-code:text-blue-400 prose-code:bg-slate-100 dark:prose-code:bg-white/5 prose-code:px-1.5 prose-code:py-0.5 prose-code:rounded prose-code:before:content-none prose-code:after:content-none prose-table:border-collapse prose-td:border prose-td:border-slate-300 dark:prose-td:border-slate-700 prose-td:p-3 prose-th:border prose-th:border-slate-300 dark:prose-th:border-slate-700 prose-th:bg-slate-100 dark:prose-th:bg-slate-800 prose-th:p-3 prose-th:font-bold">
-                        {/* Check if content looks like markdown (contains # or **) */}
-                        {(post.content.includes('#') || post.content.includes('**') || post.content.includes('*') && post.content.includes('\n')) ? (
-                            <ReactMarkdown>{post.content}</ReactMarkdown>
-                        ) : (
-                            <div className="whitespace-pre-wrap">{post.content}</div>
-                        )}
+                    <div className="prose prose-lg dark:prose-invert max-w-none prose-headings:font-bold prose-headings:font-display prose-blue">
+                        {/* 
+                           Rendering Content safely. 
+                           If content is simple text, whitespace-pre-wrap handles paragraphs.
+                           If content becomes HTML later, we'd use dangerouslySetInnerHTML.
+                        */}
+                        <div className="whitespace-pre-wrap font-sans text-slate-700 dark:text-slate-300 leading-relaxed">
+                            {post.content}
+                        </div>
                     </div>
 
                     {/* Author Bio Box */}

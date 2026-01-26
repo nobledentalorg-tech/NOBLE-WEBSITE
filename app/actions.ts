@@ -1,115 +1,90 @@
 'use server';
 
-import { NeoEngine } from '../src/neo/NeoEngine';
-import { NeoBrain, PatientContext } from '../src/neo/NeoBrain';
-import { NeoResponse } from '../src/types/neoSchema';
+import { NeoEngine } from '@/neo/NeoEngine';
+import { NeoBrain, PatientContext } from '@/neo/NeoBrain';
+import { NeoResponse } from '@/types/neoSchema';
 import { GoogleGenerativeAI } from '@google/generative-ai';
 import { PrismaClient } from '@prisma/client';
 
-// -------------------------------------------------------------------------
-// SERVER-SIDE SINGLETONS (Lazy Init)
-// -------------------------------------------------------------------------
-let _prisma: PrismaClient | null = null;
-let _model: any = null;
+// 1. Setup
+// We use a global variable to prevent multiple Prisma instances in development
+const prisma = new PrismaClient();
+const genAI = new GoogleGenerativeAI(process.env.GOOGLE_API_KEY || '');
+const model = genAI.getGenerativeModel({ model: 'gemini-1.5-flash' });
 
-function getPrisma() {
-    if (!_prisma) _prisma = new PrismaClient();
-    return _prisma;
+// ✅ NEW: Interface for History
+interface SimpleMessage {
+    role: 'user' | 'model';
+    text: string;
 }
 
-function getGemini() {
-    if (!_model) {
-        try {
-            const key = process.env.GOOGLE_API_KEY;
-            if (!key) return null;
-            const genAI = new GoogleGenerativeAI(key);
-            _model = genAI.getGenerativeModel({ model: 'gemini-1.5-flash' });
-        } catch (e) {
-            console.error("AI Init Failed:", e);
-            return null;
-        }
-    }
-    return _model;
-}
-
-// -------------------------------------------------------------------------
-// CORE SERVER ACTION
-// -------------------------------------------------------------------------
 export async function getNeoResponse(
     input: string,
     currentStateId: string,
-    history: { role: 'user' | 'model', text: string }[],
-    patientContext?: any
+    history: SimpleMessage[],
+    patientContext?: PatientContext
 ): Promise<NeoResponse> {
-    
-    // 1. Initial State (Plain Data)
-    const cleanHistory = (history || []).map(h => ({ role: h.role, text: h.text }));
-    const currentState = currentStateId || 'root';
 
-    // 2. Hard Initial Fallback (The Engine)
-    // We always have a local result ready as a safety net.
-    let fallbackResponse: NeoResponse;
+    // Default context for anonymous users
+    const context: PatientContext = patientContext || {
+        medicalHistory: [],
+        isPregnant: false,
+        age: 30
+    };
+
+    // 1. NEObrain: HYBRID ORCHESTRATION
     try {
-        fallbackResponse = NeoEngine.processInput(input, currentState, cleanHistory.length);
-    } catch (e) {
-        // Absolute Emergency Fallback
-        fallbackResponse = {
-            node: { id: 'error', type: 'info', text: { en: "I am temporarily unavailable. Please call +91 9963504149 for immediate assistance." } },
-            confidenceScore: 0,
-            urgency: 'low'
-        };
-    }
-
-    try {
-        const context: PatientContext = patientContext || { medicalHistory: [], isPregnant: false, age: 30 };
-        const gemini = getGemini();
-
-        // 3. Compute Hybrid Response
         const hybridResponse = await NeoBrain.processHybridInput(
             input,
             context,
-            async (q, ctx) => {
-                if (!gemini) return "I recommend seeing a specialist for this concern.";
-                try {
-                    const histStr = cleanHistory.slice(-5).map(h => `${h.role}: ${h.text}`).join('\n');
-                    const prompt = `${ctx}\n\nCONVERSATION:\n${histStr}\n\nUSER: "${q}"\n\nShort answer (3 lines).`;
-                    const result = await gemini.generateContent(prompt);
-                    const text = result.response.text();
-                    return text || "I understand. Let's look into that.";
-                } catch (aiErr) {
-                    console.error("AI Generation Error:", aiErr);
-                    return "I understand your concern. Please see our treatment details for more information.";
-                }
-            },
-            currentState,
-            cleanHistory.length
+            async (q, ctx) => await callGeminiFallback(q, ctx),
+            currentStateId,
+            history.length
         );
 
-        // 4. Optional Background Memory Save (Silent)
-        if (hybridResponse.node.id !== 'fallback') {
+        // LAYER 2: MEMORY (Save verified answers if needed)
+        const normalizedQuery = input.toLowerCase().trim();
+        // Skip saving safety interceptions or very short answers
+        if (hybridResponse.node.id === 'hybrid_gemini' && hybridResponse.node.text.en.length > 20) {
             try {
-                const db = getPrisma();
-                db.neoMemory.create({
+                await prisma.neoMemory.create({
                     data: {
-                        query: input.toLowerCase().trim(),
+                        query: normalizedQuery,
                         answer: hybridResponse.node.text.en,
                         isVerified: false
                     }
-                }).catch(() => {}); // Swallow errors completely
-            } catch (dbErr) {}
+                });
+            } catch (saveError) {
+                // Ignore uniqueness errors
+            }
         }
 
-        return JSON.parse(JSON.stringify(hybridResponse)); // Force serialization
+        return hybridResponse;
 
-    } catch (criticalError) {
-        console.error("AI Engine Top-Level Error:", criticalError);
-        return JSON.parse(JSON.stringify(fallbackResponse));
+    } catch (error) {
+        console.error("NeoBrain Error:", error);
+        return NeoEngine.processInput(input, currentStateId, history.length);
     }
 }
 
-// -------------------------------------------------------------------------
-// FALLBACK HELPER (Deprecated, logic moved inside getNeoResponse)
-// -------------------------------------------------------------------------
-async function callGeminiFallback(userQuery: string, systemPersona: string, history: any[] = []) {
-    return "Fallback active";
+async function callGeminiFallback(userQuery: string, context: string): Promise<string> {
+    const prompt = `
+    You are Neo, Dental Assistant for Noble Dental Care (Nallagandla).
+    Lead Dentist: Dr. Dhivakaran.
+    
+    PREVIOUS CONVERSATION:
+    ${context}
+    
+    CURRENT USER QUERY: "${userQuery}"
+    
+    Rules:
+    1. Answer only dental/clinic questions.
+    2. Use the previous conversation to understand context (e.g. if they say "How much is it?", check what "it" refers to).
+    3. Max 3 sentences. Professional & Warm.
+    4. No specific prescriptions.
+    5. If unsure about specific Noble Dental prices, say "Costs vary, please visit for an estimate."
+    `;
+
+    const result = await model.generateContent(prompt);
+    return result.response.text();
 }

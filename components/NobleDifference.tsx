@@ -22,9 +22,9 @@ const NobleDifference = () => {
 
                     {/* Left: Corporate Chains */}
                     <div className="bg-slate-50 dark:bg-[#111620] p-10 relative">
-                        <div className="absolute top-0 right-0 bg-slate-200 dark:bg-slate-800 px-4 py-1 rounded-bl-xl text-xs font-bold uppercase text-slate-500">Chain Networks</div>
+                        <div className="absolute top-0 right-0 bg-slate-200 dark:bg-slate-800 px-4 py-1 rounded-bl-xl text-xs font-bold uppercase text-slate-500">Standard Dental Chains</div>
                         <h3 className="text-2xl font-bold text-slate-400 dark:text-slate-500 mb-8 flex items-center gap-3">
-                            <Users size={24} /> Standard Corporate Care
+                            <Users size={24} /> Mass Market Clinics
                         </h3>
 
                         <div className="space-y-8">

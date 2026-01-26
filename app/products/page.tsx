@@ -1,8 +1,6 @@
 import type { Metadata } from 'next';
 import ProductsRefactored from './ProductsRefactored';
 
-// Removed Prisma instantiation to prevent runtime engine crashes on Netlify
-
 export const metadata: Metadata = {
    title: 'Dental Pharmacy & Products | Noble Dental Care',
    description: 'Official clinical pharmacy. Order prescribed Group Pharma products (Enafix, Shy-NM, Rexidine) directly from our verified stock.',
@@ -25,9 +23,6 @@ export const metadata: Metadata = {
    }
 };
 
-export default async function ProductsPage() {
-   return <ProductsRefactored dbProducts={[]} />;
+export default function ProductsPage() {
+   return <ProductsRefactored />;
 }
-
-
-

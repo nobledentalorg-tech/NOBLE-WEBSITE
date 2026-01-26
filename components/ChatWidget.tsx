@@ -4,7 +4,6 @@ import React, { useState, useRef, useEffect } from 'react';
 import { Send, X, Bot, MessageSquare, ExternalLink, Mic, MicOff } from 'lucide-react';
 // import { sendMessageToAssistant } from '@/services/geminiService'; // Deprecated
 import { NeoEngine } from '@/src/neo/NeoEngine';
-import { getNeoResponse } from '@/app/actions';
 import { ChatMessage } from '@/types'; // Updated import
 
 interface ChatWidgetProps {
@@ -124,16 +123,9 @@ const ChatWidget: React.FC<ChatWidgetProps> = ({ onBookClick }) => {
     setInput('');
     setIsLoading(true);
 
-    setIsLoading(true);
-
-    try {
-      // 2. Neo Logic Processing (Server Side)
-      const response = await getNeoResponse(
-        userMsg.text,
-        currentNodeId,
-        messages.map(m => ({ role: m.role || 'user', text: m.text })) // Map to SimpleMessage
-      );
-
+    // 2. Neo Logic Processing (Offline/Local)
+    setTimeout(() => {
+      const response = NeoEngine.processInput(userMsg.text, currentNodeId, messages.length);
       const nextNode = response.node;
       setCurrentNodeId(nextNode.id);
 
@@ -146,17 +138,8 @@ const ChatWidget: React.FC<ChatWidgetProps> = ({ onBookClick }) => {
       };
 
       setMessages(prev => [...prev, aiResponse]);
-    } catch (error) {
-      console.error("AI Error:", error);
-      // Fallback UI
-      setMessages(prev => [...prev, {
-        role: 'model',
-        text: "I'm having trouble connecting to the clinic server. Please try again.",
-        timestamp: Date.now()
-      }]);
-    } finally {
       setIsLoading(false);
-    }
+    }, 600);
   };
 
 
@@ -186,7 +169,7 @@ const ChatWidget: React.FC<ChatWidgetProps> = ({ onBookClick }) => {
               </div>
               <div>
                 <h3 className="font-bold text-slate-900 dark:text-white text-sm transition-colors duration-500">Noble Dental AI</h3>
-                <p className="text-[8px] font-bold text-slate-400 dark:text-slate-500 uppercase tracking-tight italic">IQ Efficiency: Under Training to Improve</p>
+
                 {/* Book Link - NEW TRACKED ACTION */}
                 <button onClick={handleBookClick} className="flex items-center gap-1 text-[10px] text-blue-600 dark:text-cyan-400 font-black uppercase tracking-wider hover:underline mt-0.5">
                   Book Appointment <ExternalLink size={10} />
@@ -275,7 +258,7 @@ const ChatWidget: React.FC<ChatWidgetProps> = ({ onBookClick }) => {
                   onChange={(e) => setInput(e.target.value)}
                   onKeyDown={handleKeyPress}
                   placeholder="Type or use mic..."
-                  className="w-full bg-white dark:bg-black/40 border border-slate-200 dark:border-white/10 rounded-xl px-4 py-3 text-sm !text-black dark:!text-white placeholder:text-slate-500 focus:ring-2 focus:ring-blue-500 outline-none transition-all duration-500 pr-10 shadow-sm"
+                  className="w-full bg-slate-50 dark:bg-black/40 border border-slate-200 dark:border-white/10 rounded-xl px-4 py-3 text-sm text-slate-900 dark:text-white focus:ring-2 focus:ring-blue-500 outline-none transition-all duration-500 pr-10"
                   disabled={isLoading}
                 />
                 <button

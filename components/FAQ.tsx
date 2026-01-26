@@ -49,28 +49,8 @@ const FAQ = () => {
     setOpenIndex(openIndex === index ? null : index);
   };
 
-  // 🛡️ AD-KILLER: FAQ Structured Data for Google
-  const faqSchema = {
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
-    "mainEntity": faqs.map(item => ({
-      "@type": "Question",
-      "name": item.question,
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": item.answer
-      }
-    }))
-  };
-
   return (
     <section id="faq" className="py-24 relative overflow-hidden transition-colors duration-500 bg-slate-50 dark:bg-[#0B1019]">
-      {/* Inject FAQ Schema for 'People Also Ask' positioning */}
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
-      />
-      
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
 
         <div className="text-center mb-16">

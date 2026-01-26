@@ -16,12 +16,6 @@
   }
 }
 
-/* Global reset for inputs to prevent white text in light mode */
-input, textarea, select {
-  color: inherit;
-  background-color: transparent;
-}
-
 body {
   color: rgb(var(--foreground-rgb));
   background: rgb(var(--background-start-rgb));

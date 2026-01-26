@@ -3,15 +3,11 @@
 
 generator client {
   provider = "prisma-client-js"
-  binaryTargets = ["native", "rhel-openssl-3.0.x", "linux-musl-openssl-3.0.x"]
 }
 
-
-
 datasource db {
-  provider = "postgresql"
-  url       = env("DATABASE_URL")
-  directUrl = env("DIRECT_URL")
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
 }
 
 model NeoMemory {
@@ -25,111 +21,3 @@ model NeoMemory {
 
   @@index([query])
 }
-
-// --- AUTH MODELS FOR ADMIN LOGIN ---
-
-model User {
-  id            String    @id @default(uuid())
-  name          String?
-  email         String?   @unique
-  emailVerified DateTime?
-  image         String?
-  role          String    @default("user") // "admin" or "user"
-  accounts      Account[]
-  sessions      Session[]
-}
-
-model Account {
-  id                 String  @id @default(uuid())
-  userId             String
-  type               String
-  provider           String
-  providerAccountId  String
-  refresh_token      String?  @db.Text
-  access_token       String?  @db.Text
-  expires_at         Int?
-  token_type         String?
-  scope              String?
-  id_token           String?  @db.Text
-  session_state      String?
-
-  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
-
-  @@unique([provider, providerAccountId])
-}
-
-model Session {
-  id           String   @id @default(uuid())
-  sessionToken String   @unique
-  userId       String
-  expires      DateTime
-  user         User     @relation(fields: [userId], references: [id], onDelete: Cascade)
-}
-
-model Post {
-  id          String   @id @default(uuid())
-  title       String
-  slug        String   @unique
-  excerpt     String?
-  content     String?  @db.Text
-  cover_image String?
-  author      String   @default("Noble Dental Team")
-  category    String   @default("Clinical")
-  tags        String[]
-  published   Boolean  @default(true)
-  createdAt   DateTime @default(now()) @map("created_at")
-
-  @@map("posts")
-}
-
-model CaseStudy {
-  id          String   @id @default(uuid())
-  title       String
-  subtitle    String?
-  slug        String   @unique
-  description String?  @db.Text
-  beforeImage String?
-  afterImage  String?
-  category    String
-  published   Boolean  @default(true)
-  createdAt   DateTime @default(now()) @map("created_at")
-
-  @@map("case_studies")
-}
-
-model PharmacyProduct {
-  id             String   @id @default(uuid())
-  name           String
-  brand          String
-  category       String   @default("Dental")
-  image          String?
-  bgImage        String?  @map("bg_image")
-  titleImage     String?  @map("title_image")
-  clinicPrice    Float    @map("clinic_price")
-  mrp            Float?
-  saving         Float?
-  subText        String?  @map("sub_text")
-  badges         String[]
-  tags           String[]
-  indications    String[]
-  usage          String[]
-  ingredients    String[]
-  form           String?  
-  isPrescription Boolean  @default(false) @map("is_prescription")
-  rating         Float    @default(5.0)
-  reviews        Int      @default(0)
-  available      Boolean  @default(true)
-  createdAt      DateTime @default(now()) @map("created_at")
-
-  @@map("pharmacy_products")
-}
-
-model VerificationToken {
-  identifier String
-  token      String   @unique
-  expires    DateTime
-
-  @@unique([identifier, token])
-}
-
-

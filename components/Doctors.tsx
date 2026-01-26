@@ -1,13 +1,9 @@
 import React, { useState } from 'react';
-import { Doctor } from '@/types';
+import { Doctor } from '@/types'; // Import from root alias
 import Image from 'next/image';
 import Link from 'next/link';
 import { X, Award, ArrowRight, ShieldCheck, Microscope, Zap, Star, GraduationCap, ExternalLink, BookOpen, Sparkles } from 'lucide-react';
-import BookingButton from './BookingButton';
 import { RevealOnScroll } from './RevealOnScroll';
-
-
-
 
 const Doctors: React.FC = () => {
   const [selectedDoctor, setSelectedDoctor] = useState<Doctor | null>(null);
@@ -187,9 +183,12 @@ const Doctors: React.FC = () => {
               >
                 Preview the Book <ExternalLink size={12} />
               </a>
-              <BookingButton className="px-10 py-5 bg-white text-slate-900 rounded-2xl font-black uppercase tracking-widest text-xs hover:scale-105 transition-all shadow-xl flex items-center justify-center gap-3">
+              <a
+                href="/contact"
+                className="px-10 py-5 bg-white text-slate-900 rounded-2xl font-black uppercase tracking-widest text-xs hover:scale-105 transition-all shadow-xl flex items-center justify-center gap-3"
+              >
                 Book Expert Session <ArrowRight size={16} />
-              </BookingButton>
+              </a>
             </div>
           </div>
         </RevealOnScroll>
@@ -250,12 +249,12 @@ const Doctors: React.FC = () => {
               </div>
 
               <div className="flex flex-col sm:flex-row gap-4">
-                <BookingButton className="flex-1 py-5 bg-blue-600 text-white rounded-2xl font-black uppercase tracking-widest text-[11px] shadow-2xl shadow-blue-500/40 hover:bg-blue-700 hover:-translate-y-1 transition-all">
+                <button className="flex-1 py-5 bg-blue-600 text-white rounded-2xl font-black uppercase tracking-widest text-[11px] shadow-2xl shadow-blue-500/40 hover:bg-blue-700 hover:-translate-y-1 transition-all">
                   Schedule Consult
-                </BookingButton>
-                <Link href="/case-studies" className="flex-1 py-5 bg-slate-100 dark:bg-white/5 text-slate-900 dark:text-white rounded-2xl font-black uppercase tracking-widest text-[11px] hover:bg-slate-200 dark:hover:bg-white/10 transition-all text-center">
+                </button>
+                <button className="flex-1 py-5 bg-slate-100 dark:bg-white/5 text-slate-900 dark:text-white rounded-2xl font-black uppercase tracking-widest text-[11px] hover:bg-slate-200 dark:hover:bg-white/10 transition-all">
                   View Case Study
-                </Link>
+                </button>
               </div>
             </div>
           </div>

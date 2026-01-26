@@ -1,55 +1,11 @@
-import React from 'react';
 import { PrismaClient } from '@prisma/client';
 import { revalidatePath } from 'next/cache';
-import { auth, signOut } from '@/src/auth';
-import { redirect } from 'next/navigation';
-import Link from 'next/link';
-
-import { 
-    Brain, 
-    BookOpen, 
-    FileText, 
-    LogOut, 
-    Plus, 
-    Trash2, 
-    CheckCircle, 
-    Clock, 
-    ExternalLink,
-    Save,
-    ShoppingBag,
-    AlertCircle
-} from 'lucide-react';
-
-import { cookies } from 'next/headers';
 
 const prisma = new PrismaClient();
-const ADMIN_PASSWORD = process.env.ADMIN_PASSWORD;
 
-// --- SERVER ACTIONS ---
-
-async function loginAdmin(formData: FormData) {
-    'use server';
-    const password = formData.get('password') as string;
-    if (password === ADMIN_PASSWORD) {
-        cookies().set('admin_session', 'authorized', {
-            httpOnly: true,
-            secure: process.env.NODE_ENV === 'production',
-            sameSite: 'strict',
-            maxAge: 60 * 60 * 24 // 24 hours
-        });
-    }
-    revalidatePath('/admin');
-}
-
-async function checkAdmin() {
-    const session = cookies().get('admin_session');
-    return session?.value === 'authorized';
-}
-
+// Server Action to Verify/Delete
 async function updateMemory(formData: FormData) {
     'use server';
-    if (!await checkAdmin()) throw new Error("Unauthorized");
-
     const id = formData.get('id') as string;
     const action = formData.get('action') as string;
     const newAnswer = formData.get('answer') as string;
@@ -65,431 +21,91 @@ async function updateMemory(formData: FormData) {
     revalidatePath('/admin');
 }
 
-async function savePost(formData: FormData) {
-    'use server';
-    if (!await checkAdmin()) throw new Error("Unauthorized");
-
-    const id = formData.get('id') as string;
-    const title = formData.get('title') as string;
-    const slug = formData.get('slug') as string;
-    const content = formData.get('content') as string;
-    const category = formData.get('category') as string;
-    const excerpt = formData.get('excerpt') as string;
-    const image = formData.get('image') as string;
-
-    const data = {
-        title,
-        slug,
-        content,
-        category,
-        excerpt,
-        cover_image: image,
-        published: true
-    };
-
-    if (id) {
-        await prisma.post.update({ where: { id }, data });
-    } else {
-        await prisma.post.create({ data });
-    }
-    revalidatePath('/admin');
-    revalidatePath('/blog');
+interface NeoMemory {
+    id: string;
+    query: string;
+    answer: string;
+    isVerified: boolean;
+    useCount: number;
 }
 
-async function deletePost(id: string) {
-    'use server';
-    if (!await checkAdmin()) throw new Error("Unauthorized");
-    await prisma.post.delete({ where: { id } });
-    revalidatePath('/admin');
-    revalidatePath('/blog');
-}
-
-async function saveCase(formData: FormData) {
-    'use server';
-    if (!await checkAdmin()) throw new Error("Unauthorized");
-
-    const id = formData.get('id') as string;
-    const title = formData.get('title') as string;
-    const slug = formData.get('slug') as string;
-    const category = formData.get('category') as string;
-    const description = formData.get('description') as string;
-    const beforeImage = formData.get('beforeImage') as string;
-    const afterImage = formData.get('afterImage') as string;
-
-    const data = {
-        title,
-        slug,
-        category,
-        description,
-        beforeImage,
-        afterImage,
-        published: true
-    };
-
-    if (id) {
-        await prisma.caseStudy.update({ where: { id }, data });
-    } else {
-        await prisma.caseStudy.create({ data });
-    }
-    revalidatePath('/admin');
-    revalidatePath('/case-studies');
-}
-
-async function saveProduct(formData: FormData) {
-    'use server';
-    if (!await checkAdmin()) throw new Error("Unauthorized");
-
-    const id = formData.get('id') as string;
-    const name = formData.get('name') as string;
-    const brand = formData.get('brand') as string;
-    const category = formData.get('category') as string;
-    const clinic_price = parseFloat(formData.get('clinic_price') as string);
-    const available = formData.get('available') === 'true';
-    const image = formData.get('image') as string;
-    const subText = formData.get('subText') as string;
-
-    const data: any = {
-        name,
-        brand,
-        category,
-        clinicPrice: clinic_price,
-        available,
-        image,
-        subText,
-    };
-
-    if (id) {
-        await prisma.pharmacyProduct.update({ where: { id }, data });
-    } else {
-        await prisma.pharmacyProduct.create({ data });
-    }
-    revalidatePath('/admin');
-    revalidatePath('/products');
-}
-
-async function deleteProduct(id: string) {
-    'use server';
-    if (!await checkAdmin()) throw new Error("Unauthorized");
-    await prisma.pharmacyProduct.delete({ where: { id } });
-    revalidatePath('/admin');
-    revalidatePath('/products');
-}
-
-async function logoutAdmin() {
-    'use server';
-    cookies().delete('admin_session');
-    revalidatePath('/admin');
-}
-
-// --- UI COMPONENT ---
-
-export default async function AdminPage({ searchParams }: { searchParams: { tab?: string } }) {
-    const isAdmin = await checkAdmin();
-    const activeTab = searchParams.tab || 'ai';
-
-    if (!isAdmin) {
-        return (
-            <div className="min-h-screen flex items-center justify-center bg-[#05070a] text-white p-8">
-                <div className="max-w-md w-full bg-white/5 border border-white/10 p-12 rounded-[2.5rem] text-center backdrop-blur-xl">
-                    <div className="w-16 h-16 bg-blue-600 rounded-2xl flex items-center justify-center font-black text-2xl mx-auto mb-8 shadow-lg shadow-blue-600/20">N</div>
-                    <h1 className="text-3xl font-black mb-2 uppercase tracking-tighter">Noble Secure OS</h1>
-                    <p className="text-slate-500 mb-10 text-sm font-bold">Authorized Clinical Personnel Only</p>
-                    
-                    <form action={loginAdmin} className="space-y-4">
-                        <input 
-                            name="password" 
-                            type="password" 
-                            required 
-                            placeholder="Enter Master Key" 
-                            className="w-full bg-black/40 border border-white/10 rounded-2xl p-4 text-center text-lg outline-none focus:border-blue-500 transition-all font-mono"
-                        />
-                        <button className="w-full bg-white text-black py-4 rounded-2xl font-black uppercase tracking-widest hover:bg-blue-600 hover:text-white transition-all shadow-xl">
-                            Unlock Dashboard
-                        </button>
-                    </form>
-                    <p className="mt-8 text-[10px] text-slate-600 uppercase font-black tracking-widest">noble dental care • surgical grade security</p>
-                </div>
-            </div>
-        );
-    }
-
-
-    // Data Fetching with safe fallback
-    let memories: any[] = [];
-    let posts: any[] = [];
-    let cases: any[] = [];
-    let products: any[] = [];
-
-    try {
-        memories = await prisma.neoMemory.findMany({ orderBy: { createdAt: 'desc' } });
-    } catch (e) { console.error("Memory table missing"); }
-
-    try {
-        posts = await prisma.post.findMany({ orderBy: { createdAt: 'desc' } });
-    } catch (e) { console.error("Post table missing"); }
-
-    try {
-        cases = await prisma.caseStudy.findMany({ orderBy: { createdAt: 'desc' } });
-    } catch (e) { console.error("Case table missing"); }
-
-    try {
-        products = await prisma.pharmacyProduct.findMany({ orderBy: { createdAt: 'desc' } });
-    } catch (e) { console.error("Pharmacy table missing"); }
-
-    const tabs = [
-        { id: 'ai', label: 'Neo AI Brain', icon: <Brain size={18} /> },
-        { id: 'posts', label: 'Clinical Blog', icon: <BookOpen size={18} /> },
-        { id: 'cases', label: 'Case Studies', icon: <FileText size={18} /> },
-        { id: 'pharmacy', label: 'Pharmacy', icon: <ShoppingBag size={18} /> },
-    ];
+export default async function AdminPage() {
+    // Fetch all memories, newest first
+    const memories = await prisma.neoMemory.findMany({
+        orderBy: { createdAt: 'desc' }
+    }) as NeoMemory[];
 
     return (
-        <div className="min-h-screen bg-[#05070a] text-slate-200 font-sans">
-            {/* Header */}
-            <header className="border-b border-white/5 bg-black/50 backdrop-blur-xl sticky top-0 z-50">
-                <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
-                    <div className="flex items-center gap-4">
-                        <div className="w-10 h-10 bg-blue-600 rounded-xl flex items-center justify-center font-black text-white shadow-lg shadow-blue-600/20">N</div>
-                        <div>
-                            <h1 className="font-bold text-sm leading-tight text-white">Noble Admin OS</h1>
-                            <p className="text-[10px] text-slate-500 uppercase tracking-widest font-bold">Clinical Command Center</p>
-                        </div>
-                    </div>
-                    <form action={logoutAdmin}>
-                        <button className="flex items-center gap-2 px-4 py-2 rounded-lg bg-white/5 border border-white/10 hover:bg-red-500/10 hover:border-red-500/20 text-slate-400 hover:text-red-400 transition-all text-xs font-bold">
-                            <LogOut size={14} /> Sign Out
-                        </button>
-                    </form>
+        <div className="min-h-screen bg-slate-50 p-8 text-slate-900">
+            <div className="max-w-6xl mx-auto">
+                <h1 className="text-3xl font-bold mb-2">Neo AI Brain Manager</h1>
+                <p className="text-slate-500 mb-8">Review and verify what your AI is learning.</p>
 
-                </div>
-            </header>
+                <div className="bg-white rounded-xl shadow-sm border border-slate-200 overflow-hidden">
+                    <table className="w-full text-left border-collapse">
+                        <thead>
+                            <tr className="bg-slate-100 text-slate-500 text-xs uppercase tracking-wider">
+                                <th className="p-4 border-b">Status</th>
+                                <th className="p-4 border-b">User Query</th>
+                                <th className="p-4 border-b w-1/2">AI Answer (Editable)</th>
+                                <th className="p-4 border-b">Stats</th>
+                                <th className="p-4 border-b">Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody className="divide-y divide-slate-100">
+                            {memories.map((mem) => (
+                                <tr key={mem.id} className="hover:bg-slate-50 transition-colors">
+                                    <td className="p-4">
+                                        {mem.isVerified ? (
+                                            <span className="px-2 py-1 bg-green-100 text-green-700 rounded-full text-xs font-bold">Verified</span>
+                                        ) : (
+                                            <span className="px-2 py-1 bg-yellow-100 text-yellow-700 rounded-full text-xs font-bold">Pending</span>
+                                        )}
+                                    </td>
+                                    <td className="p-4 font-medium text-sm">{mem.query}</td>
 
-            <main className="max-w-7xl mx-auto px-6 py-12">
-                
-                {/* Tabs */}
-                <div className="flex items-center gap-2 mb-12 p-1 bg-white/5 rounded-2xl w-fit border border-white/5">
-                    {tabs.map(tab => (
-                        <a 
-                            key={tab.id}
-                            href={`/admin?tab=${tab.id}`}
-                            className={`flex items-center gap-2 px-6 py-2.5 rounded-xl text-sm font-bold transition-all ${
-                                activeTab === tab.id 
-                                ? 'bg-blue-600 text-white shadow-lg shadow-blue-600/20' 
-                                : 'text-slate-500 hover:text-slate-200 hover:bg-white/5'
-                            }`}
-                        >
-                            {tab.icon} {tab.label}
-                        </a>
-                    ))}
-                </div>
+                                    {/* EDIT FORM */}
+                                    <td className="p-4" colSpan={3}>
+                                        <form action={updateMemory} className="flex gap-4 items-start w-full">
+                                            <input type="hidden" name="id" value={mem.id} />
 
-                {/* --- AI BRAIN TAB --- */}
-                {activeTab === 'ai' && (
-                    <div className="space-y-6">
-                        <div className="flex items-center justify-between mb-2">
-                            <h2 className="text-2xl font-bold text-white">Learning Queue</h2>
-                            <span className="px-3 py-1 rounded-full bg-blue-500/10 border border-blue-500/20 text-blue-400 text-xs font-bold">
-                                {memories.length} Memories
-                            </span>
-                        </div>
-                        <div className="grid gap-4">
-                            {memories.map((mem: any) => (
-                                <div key={mem.id} className="bg-white/5 border border-white/5 p-6 rounded-3xl group hover:border-white/10 transition-all">
-                                    <div className="flex items-start justify-between gap-6">
-                                        <div className="flex-1">
-                                            <div className="flex items-center gap-3 mb-2">
-                                                <span className={`w-2 h-2 rounded-full ${mem.isVerified ? 'bg-green-500' : 'bg-amber-500 pulse'}`}></span>
-                                                <h3 className="font-bold text-slate-100 italic">&quot;{mem.query}&quot;</h3>
-                                            </div>
-                                            <form action={updateMemory} className="space-y-4">
-                                                <input type="hidden" name="id" value={mem.id} />
-                                                <textarea 
-                                                    name="answer"
-                                                    defaultValue={mem.answer}
-                                                    className="w-full bg-black/40 border border-white/10 rounded-2xl p-4 text-sm text-slate-400 focus:text-white focus:border-blue-500 outline-none transition-all min-h-[100px]"
-                                                />
-                                                <div className="flex items-center gap-4">
-                                                    <button name="action" value="verify" className="flex items-center gap-2 bg-blue-600 hover:bg-blue-500 text-white px-6 py-2 rounded-full text-xs font-bold transition-all">
-                                                        <Save size={14} /> {mem.isVerified ? 'Update Knowledge' : 'Verify & Approve'}
-                                                    </button>
-                                                    <button name="action" value="delete" className="text-slate-500 hover:text-red-500 text-xs font-bold flex items-center gap-1 transition-colors">
-                                                        <Trash2 size={14} /> Delete
-                                                    </button>
-                                                    <span className="ml-auto text-[10px] text-slate-600 uppercase font-black tracking-widest">Asked {mem.useCount} times</span>
-                                                </div>
-                                            </form>
-                                        </div>
-                                    </div>
-                                </div>
-                            ))}
-                        </div>
-                    </div>
-                )}
+                                            <textarea
+                                                name="answer"
+                                                defaultValue={mem.answer}
+                                                className="flex-1 p-2 text-sm border border-slate-300 rounded-md focus:ring-2 focus:ring-blue-500 outline-none min-h-[80px]"
+                                            />
 
-                {/* --- BLOG POSTS TAB --- */}
-                {activeTab === 'posts' && (
-                    <div className="space-y-8">
-                        <section className="bg-blue-600 rounded-3xl p-8 text-white relative overflow-hidden">
-                            <div className="relative z-10">
-                                <h2 className="text-3xl font-black mb-2 italic">Publish Wisdom.</h2>
-                                <p className="text-blue-100 max-w-lg mb-8 opacity-80">Share your dental expertise with Nallagandla directly. SEO friendly and medical grade.</p>
-                                <form action={savePost} className="grid grid-cols-1 md:grid-cols-2 gap-4 bg-black/20 p-6 rounded-2xl backdrop-blur-md">
-                                    <div className="md:col-span-2">
-                                        <label className="text-[10px] uppercase font-bold text-blue-200 block mb-2 tracking-widest">Article Title</label>
-                                        <input name="title" required placeholder="e.g., The Truth About Wisdom Teeth" className="w-full bg-white/10 border border-white/10 rounded-xl p-3 text-white outline-none focus:bg-white/20" />
-                                    </div>
-                                    <div>
-                                        <label className="text-[10px] uppercase font-bold text-blue-200 block mb-2 tracking-widest">Slug (URL)</label>
-                                        <input name="slug" required placeholder="wisdom-teeth-guide" className="w-full bg-white/10 border border-white/10 rounded-xl p-3 text-white outline-none" />
-                                    </div>
-                                    <div>
-                                        <label className="text-[10px] uppercase font-bold text-blue-200 block mb-2 tracking-widest">Category</label>
-                                        <input name="category" defaultValue="Clinical" className="w-full bg-white/10 border border-white/10 rounded-xl p-3 text-white outline-none" />
-                                    </div>
-                                    <div className="md:col-span-2">
-                                        <label className="text-[10px] uppercase font-bold text-blue-200 block mb-2 tracking-widest">Full Content (Markdown Supported)</label>
-                                        <textarea name="content" required rows={10} className="w-full bg-white/10 border border-white/10 rounded-xl p-4 text-white outline-none" placeholder="Start writing clinical excellence..."></textarea>
-                                    </div>
-                                    <button className="md:col-span-2 bg-white text-blue-600 py-4 rounded-xl font-black flex items-center justify-center gap-2 hover:bg-blue-50 transition-colors uppercase tracking-widest">
-                                        <Plus size={20} /> Publish Article
-                                    </button>
-                                </form>
-                            </div>
-                        </section>
+                                            <div className="flex flex-col gap-2 min-w-[100px]">
+                                                <div className="text-xs text-slate-400 text-center mb-1">Used: {mem.useCount}x</div>
 
-                        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-                            {posts.map(post => (
-                                <div key={post.id} className="bg-white/5 border border-white/5 rounded-3xl p-6 hover:border-blue-500/20 transition-all group">
-                                    <h3 className="font-bold text-lg mb-2">{post.title}</h3>
-                                    <p className="text-xs text-slate-500 mb-4 uppercase tracking-widest font-black">{post.category} • {new Date(post.createdAt).toLocaleDateString()}</p>
-                                    <div className="flex items-center gap-4">
-                                        <Link href={`/blog/${post.slug}`} target="_blank" className="text-blue-400 hover:underline text-xs font-bold flex items-center gap-1">
-                                            <ExternalLink size={12} /> View Live
-                                        </Link>
-                                    </div>
-                                </div>
-                            ))}
-                        </div>
-                    </div>
-                )}
-
-                {/* --- CASE STUDIES TAB --- */}
-                {activeTab === 'cases' && (
-                    <div className="space-y-8">
-                        <section className="bg-emerald-600 rounded-3xl p-8 text-white">
-                            <h2 className="text-3xl font-black mb-2 italic">Proof of Excellence.</h2>
-                            <p className="text-emerald-100 mb-8 opacity-80">Add clinical before/after results to build surgical trust.</p>
-                            <form action={saveCase} className="grid grid-cols-1 md:grid-cols-2 gap-4 bg-black/20 p-6 rounded-2xl">
-                                <div className="md:col-span-2">
-                                    <label className="text-[10px] uppercase font-bold text-emerald-200 block mb-2">Case Title</label>
-                                    <input name="title" required placeholder="Full Mouth Rehabilitation - Zeiss Guided" className="w-full bg-white/10 border border-white/10 rounded-xl p-3 text-white outline-none" />
-                                </div>
-                                <div className="md:col-span-2">
-                                    <label className="text-[10px] uppercase font-bold text-emerald-200 block mb-2">Description</label>
-                                    <textarea name="description" required rows={3} className="w-full bg-white/10 border border-white/10 rounded-xl p-3 text-white outline-none"></textarea>
-                                </div>
-                                <div>
-                                    <label className="text-[10px] uppercase font-bold text-emerald-200 block mb-2">Before Image (URL)</label>
-                                    <input name="beforeImage" placeholder="/images/cases/user-before.jpg" className="w-full bg-white/10 border border-white/10 rounded-xl p-3 text-white outline-none" />
-                                </div>
-                                <div>
-                                    <label className="text-[10px] uppercase font-bold text-emerald-200 block mb-2">After Image (URL)</label>
-                                    <input name="afterImage" placeholder="/images/cases/user-after.jpg" className="w-full bg-white/10 border border-white/10 rounded-xl p-3 text-white outline-none" />
-                                </div>
-                                <button className="md:col-span-2 bg-white text-emerald-600 py-4 rounded-xl font-black uppercase tracking-widest hover:bg-emerald-50 transition-colors">
-                                    Archive Case Study
-                                </button>
-                            </form>
-                        </section>
-
-                        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-                            {cases.map((c: any) => (
-                                <div key={c.id} className="bg-white/5 border border-white/5 rounded-3xl p-6 group hover:border-emerald-500/20 transition-all">
-                                    <h3 className="font-bold text-lg mb-2">{c.title}</h3>
-                                    <p className="text-xs text-emerald-400 font-black uppercase active:tracking-widest transition-all mb-4">{c.category}</p>
-                                    <div className="flex items-center gap-2">
-                                        <div className="w-8 h-8 rounded bg-white/5 border border-white/5 flex items-center justify-center text-[10px] text-slate-500">B</div>
-                                        <div className="w-8 h-8 rounded bg-white/5 border border-white/5 flex items-center justify-center text-[10px] text-slate-500">A</div>
-                                    </div>
-                                </div>
-                            ))}
-                        </div>
-                    </div>
-                )}
-
-                {/* --- PHARMACY TAB --- */}
-                {activeTab === 'pharmacy' && (
-                    <div className="space-y-8">
-                        <section className="bg-indigo-600 rounded-3xl p-8 text-white">
-                            <h2 className="text-3xl font-black mb-2 italic">Clinical Inventory.</h2>
-                            <p className="text-indigo-100 mb-8 opacity-80">Add or manage clinic-exclusive products (Group Pharma etc).</p>
-                            <form action={saveProduct} className="grid grid-cols-1 md:grid-cols-3 gap-4 bg-black/20 p-6 rounded-2xl">
-                                <div className="md:col-span-2">
-                                    <label className="text-[10px] uppercase font-bold text-indigo-200 block mb-1">Product Name</label>
-                                    <input name="name" required placeholder="SHY-NM Toothpaste" className="w-full bg-white/10 border border-white/10 rounded-xl p-3 text-white outline-none" />
-                                </div>
-                                <div>
-                                    <label className="text-[10px] uppercase font-bold text-indigo-200 block mb-1">Brand</label>
-                                    <input name="brand" placeholder="Group Pharma" className="w-full bg-white/10 border border-white/10 rounded-xl p-3 text-white outline-none" />
-                                </div>
-                                <div>
-                                    <label className="text-[10px] uppercase font-bold text-indigo-200 block mb-1">Category</label>
-                                    <select name="category" className="w-full bg-white/10 border border-white/10 rounded-xl p-3 text-white outline-none text-black">
-                                        <option value="dental">Dental</option>
-                                        <option value="wellness">Wellness</option>
-                                        <option value="ortho">Ortho</option>
-                                        <option value="preventive">Preventive</option>
-                                    </select>
-                                </div>
-                                <div>
-                                    <label className="text-[10px] uppercase font-bold text-indigo-200 block mb-1">Clinic Price (₹)</label>
-                                    <input name="clinic_price" type="number" step="0.01" required className="w-full bg-white/10 border border-white/10 rounded-xl p-3 text-white outline-none" />
-                                </div>
-                                <div>
-                                    <label className="text-[10px] uppercase font-bold text-indigo-200 block mb-1">Available</label>
-                                    <select name="available" className="w-full bg-white/10 border border-white/10 rounded-xl p-3 text-white outline-none text-black">
-                                        <option value="true">In Stock (Active)</option>
-                                        <option value="false">Out of Stock (SEO Only)</option>
-                                    </select>
-                                </div>
-                                <div className="md:col-span-3">
-                                    <label className="text-[10px] uppercase font-bold text-indigo-200 block mb-1">Short Description</label>
-                                    <textarea name="subText" rows={2} className="w-full bg-white/10 border border-white/10 rounded-xl p-3 text-white outline-none"></textarea>
-                                </div>
-                                <div className="md:col-span-3">
-                                    <label className="text-[10px] uppercase font-bold text-indigo-200 block mb-1">Image URL</label>
-                                    <input name="image" placeholder="https://..." className="w-full bg-white/10 border border-white/10 rounded-xl p-3 text-white outline-none" />
-                                </div>
-                                <button className="md:col-span-3 bg-white text-indigo-600 py-4 rounded-xl font-black uppercase tracking-widest hover:bg-indigo-50 transition-colors">
-                                    Add/Update Product
-                                </button>
-                            </form>
-                        </section>
-
-                        <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
-                            {products.map((p: any) => (
-                                <div key={p.id} className={`bg-white/5 border border-white/5 rounded-3xl p-6 transition-all relative ${!p.available ? 'opacity-50 grayscale' : ''}`}>
-                                    <h3 className="font-bold text-sm mb-1">{p.name}</h3>
-                                    <p className="text-[10px] text-slate-500 uppercase font-black">{p.brand} • ₹{p.clinicPrice}</p>
-                                    <div className="mt-4 flex items-center justify-between">
-                                        <span className={`text-[8px] px-2 py-0.5 rounded-full font-bold uppercase ${p.available ? 'bg-green-500/20 text-green-400' : 'bg-red-500/20 text-red-400'}`}>
-                                            {p.available ? 'In Stock' : 'Out of Stock'}
-                                        </span>
-                                        <div className="flex items-center gap-2">
-                                            {p.available ? <CheckCircle size={14} className="text-green-500" /> : <AlertCircle size={14} className="text-red-500" />}
-                                            <form action={async () => { 'use server'; await deleteProduct(p.id); }}>
-                                                <button className="text-slate-500 hover:text-red-500 transition-colors">
-                                                    <Trash2 size={14} />
+                                                <button
+                                                    name="action"
+                                                    value="verify"
+                                                    className="bg-green-600 hover:bg-green-700 text-white px-3 py-1.5 rounded text-xs font-bold transition-colors"
+                                                >
+                                                    {mem.isVerified ? 'Update' : 'Approve'}
                                                 </button>
-                                            </form>
-                                        </div>
-                                    </div>
-                                </div>
+
+                                                <button
+                                                    name="action"
+                                                    value="delete"
+                                                    className="bg-red-50 hover:bg-red-100 text-red-600 px-3 py-1.5 rounded text-xs font-bold transition-colors"
+                                                >
+                                                    Delete
+                                                </button>
+                                            </div>
+                                        </form>
+                                    </td>
+                                </tr>
                             ))}
-                        </div>
-                    </div>
-                )}
-            </main>
+                        </tbody>
+                    </table>
+
+                    {memories.length === 0 && (
+                        <div className="p-12 text-center text-slate-400">No memories recorded yet. Start chatting with Neo!</div>
+                    )}
+                </div>
+            </div>
         </div>
     );
 }

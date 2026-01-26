@@ -4,8 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "prisma generate && next build",
-    "postbuild": "node -e \"const sitemapUrl='https://nobledentalnallagandla.in/sitemap.xml'; fetch('https://www.google.com/ping?sitemap=' + encodeURIComponent(sitemapUrl)).then(() => console.log('✅ Google Pinger: Success')).catch(e => console.error('❌ Google Pinger: Fail', e))\"",
+    "build": "next build",
     "start": "next start",
     "lint": "next lint",
     "postinstall": "prisma generate"
@@ -25,7 +24,6 @@
     "next-themes": "^0.3.0",
     "react": "^18",
     "react-dom": "^18",
-    "react-markdown": "^9.0.1",
     "swiper": "^11.0.0",
     "tailwind-merge": "^2.3.0"
   },

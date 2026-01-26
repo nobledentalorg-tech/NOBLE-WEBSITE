@@ -48,10 +48,9 @@ export class NeoEngine {
 
         // LAYER 4: CLINICAL STATE MACHINE
         let resultNode: ClinicalNode | null = null;
-        
-        // Prevent shortcuts from overriding sub-branch logic if we are already deep
-        const shortcut = (currentStateId === 'root' || !currentStateId) ? this.checkShortcuts(cleanInput) : null;
-        
+        // ... (rest of processInput) ...
+        // [Existing shortcut and graph traversal code]
+        const shortcut = this.checkShortcuts(cleanInput);
         if (shortcut) {
             resultNode = shortcut;
         } else {
@@ -127,18 +126,15 @@ export class NeoEngine {
     }
 
     private static wrap(node: ClinicalNode, input?: string): NeoResponse {
-        // Clone the node so we don't mutate the global Knowledge Graph
-        const clonedNode = { ...node, text: { ...node.text } };
-
         // Final polish for specialist responses
-        if (input && clonedNode.id.includes('specialist')) {
+        if (input && node.id.includes('specialist')) {
             const citation = AuthorityHelper.getCitation(input);
-            if (citation && !clonedNode.text.en.includes(citation)) {
-                clonedNode.text.en += `\n\n> 🏛️ *${citation}*`;
+            if (citation && !node.text.en.includes(citation)) {
+                node.text.en += `\n\n> 🏛️ *${citation}*`;
             }
         }
         return {
-            node: clonedNode,
+            node: node,
             confidenceScore: 100,
             urgency: node.urgencyLevel || 'low'
         };

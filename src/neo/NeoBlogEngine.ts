@@ -4,7 +4,6 @@ import { PERMANENT_TEETH_DB, PRIMARY_TEETH_DB } from './NeoAnatomy';
 import { ORAL_PATHOLOGY_DB } from './NeoPathology';
 import { DENTAL_MATERIALS_DB } from './NeoMaterials';
 import { LocalizedText } from '../types/neoSchema';
-import { MANUAL_BLOG_POSTS } from './NeoBlogArticles';
 
 export interface BlogPost {
     slug: string;
@@ -200,19 +199,6 @@ If you are looking for a balance of strength and beauty, this is a strong conten
      */
     static getAllAutoBlogs(): BlogPost[] {
         const blogs: BlogPost[] = [];
-
-        // 0. Add Manual High-Quality Articles First
-        MANUAL_BLOG_POSTS.forEach(post => {
-            blogs.push({
-                slug: post.slug,
-                title: post.title,
-                excerpt: post.excerpt,
-                content: post.content,
-                category: post.category,
-                tags: post.tags,
-                date: post.date
-            });
-        });
 
         // 1. Generate Drug Blogs
         Object.keys(DENTAL_PHARMACOPOEIA).forEach(id => {
