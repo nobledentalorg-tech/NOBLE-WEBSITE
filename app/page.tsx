@@ -24,7 +24,7 @@ export default function Home() {
     const offers = [
         { text: "Braces Treatment starting at ₹35,000 only!", icon: Zap },
         { text: "Medical Grade Scaling & Tooth Cleaning at ₹1,500", icon: Sparkles },
-        { text: "Premium In-house Clear Aligners at ₹950 per tray", icon: Heart },
+        { text: "Certified In-house Clear Aligners at ₹950 per tray", icon: Heart },
         { text: "Limited Slots Available for Implants! Book Now.", icon: Calendar }
     ];
 
@@ -113,7 +113,7 @@ export default function Home() {
                             Why Noble is Rated the <span className="text-blue-600">Best Dentist</span> in Nallagandla
                         </h2>
                         <p className="text-slate-500 max-w-2xl mx-auto">
-                            We don&apos;t just claim to be the best; our patients say it for us. With a focus on <strong className="text-slate-700 dark:text-slate-300">Pain-Free Precision</strong> and <strong className="text-slate-700 dark:text-slate-300">Affordable Luxury</strong>, we are the Rating #1 <strong className="text-blue-600">Family Dentist near Nallagandla</strong> & Tellapur.
+                            We don&apos;t just claim to be the best; our patients say it for us. With a focus on <strong className="text-slate-700 dark:text-slate-300">Pain-Free Precision</strong> and <strong className="text-slate-700 dark:text-slate-300">Affordable Quality Care</strong>, we are the Rating #1 <strong className="text-blue-600">Family Dentist near Nallagandla</strong> & Tellapur.
                         </p>
                     </div>
 
@@ -131,7 +131,7 @@ export default function Home() {
                             <div className="absolute top-0 right-0 p-4 opacity-10"><Heart size={60} /></div>
                             <h3 className="font-bold text-lg text-slate-900 dark:text-white mb-3 flex items-center gap-2">💎 Cheap & Best Value</h3>
                             <p className="text-sm text-slate-500 leading-relaxed">
-                                Global Technology at Indian Prices. We offer <strong>Transparent Pricing</strong> and <strong>0% EMI</strong>, making us the most affordable premium clinic near you.
+                                Global Technology at Indian Prices. We offer <strong>Transparent Pricing</strong> and <strong>0% EMI</strong>, making us the most accessible clinic near you.
                             </p>
                         </div>
 

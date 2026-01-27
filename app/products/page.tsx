@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import ProductsRefactored from './ProductsRefactored';
 
 export const metadata: Metadata = {
-   title: 'Dental Pharmacy & Products | Noble Dental Care',
+   title: 'Dental Pharmacy & Oral Care Products - Noble Dental',
    description: 'Official clinical pharmacy. Order prescribed Group Pharma products (Enafix, Shy-NM, Rexidine) directly from our verified stock.',
    alternates: {
       canonical: '/products'

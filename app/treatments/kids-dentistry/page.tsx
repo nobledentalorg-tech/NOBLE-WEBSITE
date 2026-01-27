@@ -2,7 +2,7 @@ import { Metadata } from 'next';
 import KidsDentistryRefactored from './KidsDentistryRefactored';
 
 export const metadata: Metadata = {
-    title: 'Best Kids Dentist Nallagandla | No-Drill Pediatric Dentistry',
+    title: 'Pediatric Dentist Nallagandla: Sedation Care - Noble Dental',
     description: "Anxiety-free kids dentistry in Nallagandla. We use 'Happy Air' (Nitrous) and No-Drill SDF technology. Building future health, not just fixing baby teeth. Dr. Dhivakaran's protocol.",
     keywords: [
         'kids dentist nallagandla',

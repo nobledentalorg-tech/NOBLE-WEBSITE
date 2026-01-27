@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import VeneersRefactored from './VeneersRefactored';
 
 export const metadata: Metadata = {
-    title: 'Porcelain Veneers Hyderabad | Hollywood Smile Design | Noble Dental',
+    title: 'Porcelain Veneers & Smile Design Nallagandla - Noble Dental',
     description: 'Transform your smile with ultra-thin E.max veneers. Fix gaps, chips, and stains with our 2-visit digital smile design protocol.',
     alternates: {
         canonical: '/treatments/veneers'

@@ -110,12 +110,12 @@ const Hero: React.FC<HeroProps> = ({ onBookClick }) => {
 
             <h1 className="text-5xl md:text-[5.5rem] font-black text-slate-900 dark:text-white leading-[0.85] tracking-tighter">
               <span className="sr-only">Best Dentist in Nallagandla</span>
-              Biological Precision.
+              Trusted Family Dentist.
             </h1>
 
             <p className="text-xl text-slate-500 dark:text-slate-400 max-w-xl leading-relaxed">
               At **Noble Dental Care**, we specialize in high-precision surgery and advanced endodontics.
-              <br /><span className="text-slate-700 dark:text-slate-300 font-medium">World-class care that feels like home. Pain-free treatments for your parents, your kids, and you.</span>
+              <br /><span className="text-slate-700 dark:text-slate-300 font-medium">Trusted neighborhood care that feels like home. Pain-free treatments for your parents, your kids, and you.</span>
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4 w-full flex-wrap">

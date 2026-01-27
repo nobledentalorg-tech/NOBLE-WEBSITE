@@ -136,13 +136,13 @@ export default function InvisalignRefactored() {
                                 <div className="relative bg-white dark:bg-slate-900 rounded-[3rem] p-4 border border-white/20 overflow-hidden shadow-2xl">
                                     <Image
                                         src="/assets/images/treatments/aligner-case.png"
-                                        alt="Invisalign Premium Case"
+                                        alt="Invisalign Complex Case"
                                         width={600}
                                         height={600}
                                         className="w-full h-auto object-contain hover:scale-110 transition-transform duration-1000"
                                     />
                                     <div className="absolute top-8 right-8 bg-blue-500 text-white text-[10px] font-black px-4 py-2 rounded-full shadow-xl">
-                                        PREMIUM CASE
+                                        COMPLEX CASE
                                     </div>
                                 </div>
                             </div>

@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import RootCanalRefactored from './RootCanalRefactored';
 
 export const metadata: Metadata = {
-   title: 'Painless Root Canal Treatment in Nallagandla | 100% Success Rate',
+   title: 'Painless Root Canal Nallagandla (Single Visit) - Noble Dental',
    description: 'Stop tooth pain instantly with Microscopic Root Canal treatment in Nallagandla. 100% Painless, Single-Sitting procedure by Endodontist Dr. Dhivakaran.',
    alternates: {
       canonical: '/treatments/root-canal'

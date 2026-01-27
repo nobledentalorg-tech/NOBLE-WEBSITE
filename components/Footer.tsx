@@ -22,7 +22,7 @@ const Footer: React.FC<FooterProps> = ({ onBookClick }) => {
             </div>
             <p className="text-slate-400 text-sm leading-relaxed">
               Dr. Dhivakaran&apos;s Owner-Operated Cluster.<br />
-              Pioneering biological dentistry with advanced surgical protocols and microscopic precision in Nallagandla.
+              Trusted family dentistry with advanced surgical protocols and microscopic precision in Nallagandla.
             </p>
           </div>
 
@@ -46,12 +46,12 @@ const Footer: React.FC<FooterProps> = ({ onBookClick }) => {
             <h4 className="text-lg font-bold mb-6 text-white/90">Quick Links</h4>
             <ul className="space-y-3 text-sm text-slate-500 font-medium">
               <li><Link href="/treatments/gum-disease" className="hover:text-blue-400 transition-colors">• Gum Disease Treatment</Link></li>
-              <li><Link href="/treatments/sleep-apnea" className="hover:text-blue-400 transition-colors">• Sleep Apnea Dentistry</Link></li>
+              <li><Link href="/treatments/oral-medicine" className="hover:text-blue-400 transition-colors">• Oral Diagnosis</Link></li>
               <li><Link href="/treatments/tmj-disorders" className="hover:text-blue-400 transition-colors">• TMJ Disorder</Link></li>
               <li><Link href="/treatments/laser-dentistry" className="hover:text-blue-400 transition-colors">• Laser Dentistry</Link></li>
-              <li><Link href="/treatments/oral-cancer-screening" className="hover:text-blue-400 transition-colors">• Oral Cancer Screening</Link></li>
-              <li><Link href="/treatments/tooth-extraction" className="hover:text-blue-400 transition-colors">• Wisdom Tooth Surgery</Link></li>
-              <li><Link href="/treatments/pediatric-dentistry" className="hover:text-blue-400 transition-colors">• Child Friendly Dentist</Link></li>
+              <li><Link href="/treatments/oral-biopsy" className="hover:text-blue-400 transition-colors">• Oral Biopsy</Link></li>
+              <li><Link href="/treatments/wisdom-tooth-surgery" className="hover:text-blue-400 transition-colors">• Wisdom Tooth Surgery</Link></li>
+              <li><Link href="/treatments/kids-dentistry" className="hover:text-blue-400 transition-colors">• Child Friendly Dentist</Link></li>
               <li><Link href="/treatments/pregnancy-dental-care" className="hover:text-blue-400 transition-colors">• Prenatal Oral Care</Link></li>
             </ul>
           </div>
@@ -66,7 +66,7 @@ const Footer: React.FC<FooterProps> = ({ onBookClick }) => {
               </li>
               <li className="flex items-center gap-3">
                 <Phone size={18} className="text-blue-500" />
-                <a href="tel:+918610425342" className="hover:text-white">+91 861-042-5342</a>
+                <a href="tel:+918074512305" className="hover:text-white">+91 80745 12305</a>
               </li>
               <li className="flex items-center gap-3">
                 <Mail size={18} className="text-blue-500" />

@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import DentalImplantsRefactored from './DentalImplantsRefactored';
 
 export const metadata: Metadata = {
-    title: 'Dental Implants Cost in Nallagandla | Best Implantlogist Hyderabad',
+    title: 'Dental Implants Nallagandla: Cost & Surgeon - Noble Dental',
     description: 'Affordable Dental Implants in Nallagandla starting @ ₹22k. Swiss Technology (Straumann/Nobel). Check cost, procedure & EMI options by Dr. Dhivakaran.',
     alternates: {
         canonical: '/treatments/dental-implants'
@@ -48,7 +48,7 @@ export default function Page() {
                 "name": "Swiss-Grade Dental Implant Restoration",
                 "procedureType": "Surgical",
                 "bodyLocation": "Jawbone",
-                "description": "Premium dental implant surgery using Straumann SLActive and Nobel Biocare technologies. Includes Osstell ISQ biological stability measurement and digital guided surgery.",
+                "description": "Advanced dental implant surgery using Straumann SLActive and Nobel Biocare technologies. Includes Osstell ISQ biological stability measurement and digital guided surgery.",
                 "relevantSpecialty": {
                     "@type": "MedicalSpecialty",
                     "name": "Implantology"
@@ -67,7 +67,7 @@ export default function Page() {
                 "name": "What is the cost of dental implants in Hyderabad?",
                 "acceptedAnswer": {
                     "@type": "Answer",
-                    "text": "The cost of dental implants at Noble Dental Care Hyderabad ranges from ₹22,000 for standard implants to ₹58,000 for premium Swiss-grade Straumann SLActive implants."
+                    "text": "The cost of dental implants at Noble Dental Care Hyderabad ranges from ₹22,000 for standard implants to ₹58,000 for advanced Swiss-grade Straumann SLActive implants."
                 }
             }
         ]

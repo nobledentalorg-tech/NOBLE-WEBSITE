@@ -7,7 +7,7 @@ import { RevealOnScroll } from './RevealOnScroll';
 const MissionValues = () => {
   const values = [
     {
-      title: "Bio-Digital Architecture",
+      title: "Advanced Painless Dental Implants in Nallagandla",
       desc: "We don&apos;t just &quot;fill cavities&quot;. We engineer health. Using AI diagnostics and regenerative biology, we treat the root cause of gum disease and decay before it even starts.",
       icon: Heart,
       color: "text-rose-500",
@@ -71,7 +71,7 @@ const MissionValues = () => {
                 <h3 className="text-2xl font-bold text-slate-900 dark:text-white">Our Mission</h3>
               </div>
               <blockquote className="text-2xl md:text-3xl font-bold text-slate-800 dark:text-slate-200 leading-tight tracking-tight italic">
-                &quot;To provide the Nallagandla community with world-class, transparent dental solutions that prioritize longevity, ethics, and patient comfort over commercial gains.&quot;
+                &quot;To provide the Nallagandla community with accessible, high-quality dental solutions that prioritize longevity, ethics, and patient comfort over commercial gains.&quot;
               </blockquote>
               <div className="mt-8 pt-8 border-t border-slate-200 dark:border-white/10 flex items-center gap-3">
                 <div className="w-10 h-10 rounded-full bg-blue-100 dark:bg-blue-900/30 flex items-center justify-center text-blue-600 dark:text-blue-400">

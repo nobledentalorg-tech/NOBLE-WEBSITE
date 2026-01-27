@@ -18,7 +18,7 @@ const IconMap: Record<string, any> = {
 };
 
 export const metadata: Metadata = {
-    title: 'Teeth Whitening Treatment Nallagandla | 45-Min Instant Brightening',
+    title: 'Teeth Whitening in Nallagandla (45 Mins) - Noble Dental Care',
     description: 'Best Teeth Whitening in Nallagandla using Philips Zoom & Pola Office+. Get 8 shades lighter in 45 mins. Medical-grade bleaching by cosmetic dentists.',
     keywords: ['Teeth Whitening Nallagandla', 'Dental Bleaching', 'Laser Whitening', 'Yellow Teeth Treatment', 'Cosmetic Dentist Nallagandla'],
     alternates: {

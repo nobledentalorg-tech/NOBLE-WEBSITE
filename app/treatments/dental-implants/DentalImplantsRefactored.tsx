@@ -131,7 +131,7 @@ export default function DentalImplantsRefactored() {
             style: "border-slate-200"
         },
         {
-            tier: "Premium",
+            tier: "Advanced",
             brand: "Nobel Biocare",
             market: "₹75,000+",
             noble: "₹42,000",
@@ -219,7 +219,7 @@ export default function DentalImplantsRefactored() {
                                 </div>
                                 <div>
                                     <div className="text-2xl font-black text-slate-900 dark:text-white">Lifetime</div>
-                                    <div className="text-xs font-bold text-slate-500 uppercase tracking-wider">Premium Support</div>
+                                    <div className="text-xs font-bold text-slate-500 uppercase tracking-wider">Priority Support</div>
                                 </div>
                                 <div>
                                     <div className="text-2xl font-black text-slate-900 dark:text-white">Digital</div>

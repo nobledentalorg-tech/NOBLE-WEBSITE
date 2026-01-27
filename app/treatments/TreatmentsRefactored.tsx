@@ -57,7 +57,10 @@ const TreatmentsRefactored = () => {
   const [mounted, setMounted] = useState(false);
 
   // Categories with dynamic counts
-  const categories = ['All', 'Endodontics', 'Surgery', 'Orthodontics', 'Restorative', 'Preventive'];
+  const categories = useMemo(() => {
+    const cats = new Set(treatmentsList.map((t: any) => t.category));
+    return ['All', ...Array.from(cats)].sort();
+  }, [treatmentsList]);
 
   // Simulate network request for realism
   useEffect(() => {

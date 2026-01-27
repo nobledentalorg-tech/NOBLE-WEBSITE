@@ -12,8 +12,8 @@ const inter = Inter({ subsets: ['latin'], variable: '--font-inter' });
 
 export const metadata: Metadata = {
   title: {
-    default: 'Noble Dental Care | Best Dentist in Nallagandla & Tellapur',
-    template: '%s | Noble Dental Care'
+    default: 'Best Dentist in Nallagandla | Noble Dental Care - Implants & RCT',
+    template: '%s'
   },
   metadataBase: new URL('https://nobledentalnallagandla.in'),
   alternates: {
@@ -81,7 +81,7 @@ export const metadata: Metadata = {
         url: '/assets/og-image.jpg',
         width: 1200,
         height: 630,
-        alt: 'Noble Dental Care - Premium Dentistry'
+        alt: 'Noble Dental Care - Trusted Family Dentistry'
       }
     ]
   },
@@ -89,7 +89,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     site: '@nobledentalcare',
     creator: '@drdhivakaran',
-    title: 'Noble Dental Care | Premium Dentistry Hyderabad',
+    title: 'Noble Dental Care | Trusted Family Dentistry Hyderabad',
     description: 'Expert dental care in Nallagandla & Tellapur. Root Canals, Implants, and Invisalign by Dr. Dhivakaran.',
     images: ['/assets/og-image.jpg'],
   },

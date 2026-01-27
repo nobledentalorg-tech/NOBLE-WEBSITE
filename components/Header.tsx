@@ -5,7 +5,8 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { usePathname } from 'next/navigation';
 import { useTheme } from 'next-themes';
-import { Menu, X, Sun, Moon, CalendarCheck, ShoppingBag, Activity, Globe, ShieldCheck, Sparkles, Heart, Zap, ChevronDown } from 'lucide-react';
+import { Menu, X, Sun, Moon, CalendarCheck, ShoppingBag, Activity, Globe, ShieldCheck, Sparkles, Heart, Zap, ChevronDown, Phone } from 'lucide-react';
+import { motion, AnimatePresence } from 'framer-motion';
 
 interface HeaderProps {
   onBookClick?: () => void;
@@ -14,6 +15,7 @@ interface HeaderProps {
 const Header: React.FC<HeaderProps> = ({ onBookClick }) => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [expandedTreatment, setExpandedTreatment] = useState(false);
   const [mounted, setMounted] = useState(false);
 
   const { theme, setTheme } = useTheme();
@@ -73,8 +75,8 @@ const Header: React.FC<HeaderProps> = ({ onBookClick }) => {
       icon: <Sparkles size={18} className="text-amber-500" />,
       description: "Smile Aesthetics",
       links: [
-        { name: "Smile Designing", href: "/treatments/smile-designing" },
-        { name: "Veneers / Laminates", href: "/treatments/dental-veneers" },
+        { name: "Smile Designing", href: "/treatments/smile-design" },
+        { name: "Veneers / Laminates", href: "/treatments/veneers" },
         { name: "Teeth Whitening", href: "/treatments/teeth-whitening" },
         { name: "Invisalign", href: "/treatments/invisalign" },
         { name: "Cosmetic Bonding", href: "/treatments/cosmetic-bonding" },
@@ -88,7 +90,7 @@ const Header: React.FC<HeaderProps> = ({ onBookClick }) => {
         { name: "Pediatric Dentistry", href: "/treatments/kids-dentistry" },
         { name: "Prenatal Wellness", href: "/treatments/pregnancy-dental-care" },
         { name: "Guided Biofilm Therapy", href: "/treatments/scaling-whitening" },
-        { name: "Fluoride & Sealants", href: "/treatments/dental-sealants" },
+        { name: "Fluoride & Sealants", href: "/treatments/preventive-sealants" },
       ]
     },
     {
@@ -96,9 +98,9 @@ const Header: React.FC<HeaderProps> = ({ onBookClick }) => {
       icon: <Activity size={18} className="text-purple-500" />,
       description: "Ortho Hub",
       links: [
-        { name: "Braces & Ortho", href: "/treatments/braces-orthodontics" },
-        { name: "Clear Aligners", href: "/treatments/invisalign-aligners" },
-        { name: "Interceptive Ortho", href: "/treatments/interceptive-ortho" },
+        { name: "Braces & Ortho", href: "/treatments/braces" },
+        { name: "Clear Aligners", href: "/treatments/invisalign" },
+        { name: "Interceptive Ortho", href: "/treatments/pre-ortho" },
       ]
     },
     {
@@ -107,10 +109,10 @@ const Header: React.FC<HeaderProps> = ({ onBookClick }) => {
       description: "Specialized Care",
       links: [
         { name: "Jaw Surgery", href: "/treatments/orthognathic-surgery" },
-        { name: "Trauma Care", href: "/treatments/maxillofacial-surgery" },
+        { name: "Trauma Care", href: "/treatments/emergency-trauma" },
         { name: "TMJ Disorders", href: "/treatments/tmj-disorders" },
         { name: "Laser Dentistry", href: "/treatments/laser-dentistry" },
-        { name: "Oral Cancer Screening", href: "/treatments/oral-cancer-screening" },
+        { name: "Oral Medicine", href: "/treatments/oral-medicine" },
       ]
     }
   ];
@@ -119,7 +121,7 @@ const Header: React.FC<HeaderProps> = ({ onBookClick }) => {
     <header
       className={`fixed top-0 left-0 w-full z-[100] transition-all duration-500 ease-out ${isScrolled
         ? 'bg-white/70 dark:bg-[#0B1019]/80 backdrop-blur-xl shadow-lg border-b border-slate-200/50 dark:border-white/10 py-3'
-        : 'bg-transparent py-6'
+        : 'bg-transparent py-4 md:py-6'
         }`}
     >
       <div className="max-w-[95rem] mx-auto px-4 lg:px-6">
@@ -127,7 +129,7 @@ const Header: React.FC<HeaderProps> = ({ onBookClick }) => {
 
           {/* Logo */}
           <Link href="/" className="flex items-center gap-3 group z-50">
-            <div className="relative w-12 h-10 transition-all duration-500 group-hover:scale-110">
+            <div className="relative w-10 md:w-12 h-10 transition-all duration-500 group-hover:scale-110">
               {/* Note: Ensure this image exists in your /public/images folder */}
               <Image
                 src="/images/dentalcare.nallagandla.png"
@@ -138,8 +140,8 @@ const Header: React.FC<HeaderProps> = ({ onBookClick }) => {
               />
             </div>
             <div className="flex flex-col border-l-2 border-slate-200 dark:border-white/10 pl-3">
-              <span className="text-xl font-black tracking-tight text-slate-900 dark:text-white leading-none">NOBLE <span className="text-blue-600 dark:text-cyan-400">DENTAL</span></span>
-              <span className="text-[9px] font-black tracking-[0.3em] text-slate-500 dark:text-slate-400 uppercase">Care</span>
+              <span className="text-lg md:text-xl font-black tracking-tight text-slate-900 dark:text-white leading-none">NOBLE <span className="text-blue-600 dark:text-cyan-400">DENTAL</span></span>
+              <span className="text-[9px] font-black tracking-[0.3em] text-slate-500 dark:text-slate-400 uppercase">Neighborhood Care</span>
             </div>
           </Link>
 
@@ -254,10 +256,14 @@ const Header: React.FC<HeaderProps> = ({ onBookClick }) => {
           </nav>
 
           {/* Action Buttons */}
-          <div className="flex items-center gap-4">
+          <div className="flex items-center gap-2 md:gap-4">
+            <a href="tel:+918074512305" className="hidden lg:flex items-center gap-2 text-sm font-bold text-slate-700 dark:text-slate-200 hover:text-blue-600 dark:hover:text-cyan-400 transition-colors mr-2">
+              <Phone size={18} />
+              <span>+91 80745 12305</span>
+            </a>
             <button
               onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
-              className="w-11 h-11 rounded-2xl flex items-center justify-center bg-slate-100 dark:bg-white/5 text-slate-600 dark:text-white transition-all hover:bg-slate-200 dark:hover:bg-white/10"
+              className="w-10 h-10 md:w-11 md:h-11 rounded-2xl flex items-center justify-center bg-slate-100 dark:bg-white/5 text-slate-600 dark:text-white transition-all hover:bg-slate-200 dark:hover:bg-white/10"
             >
               {mounted && (theme === 'dark' ? <Sun size={20} /> : <Moon size={20} />)}
             </button>
@@ -269,56 +275,127 @@ const Header: React.FC<HeaderProps> = ({ onBookClick }) => {
               <CalendarCheck size={18} /> Book Now
             </button>
 
-            <button className="lg:hidden w-12 h-12 flex items-center justify-center rounded-2xl bg-slate-100 dark:bg-white/5 text-slate-900 dark:text-white" onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}>
+            {/* Mobile Menu Toggle */}
+            <button
+              className="xl:hidden w-12 h-12 flex items-center justify-center rounded-2xl bg-slate-100 dark:bg-white/5 text-slate-900 dark:text-white z-[110]"
+              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+            >
               {isMobileMenuOpen ? <X size={20} /> : <Menu size={20} />}
             </button>
           </div>
         </div>
       </div>
 
-      {/* Mobile Menu Overlay */}
-      {isMobileMenuOpen && (
-        <div className="lg:hidden fixed inset-0 z-40 bg-white/95 dark:bg-[#0B1019]/95 backdrop-blur-xl flex flex-col items-center justify-center space-y-8 animate-in fade-in zoom-in duration-200">
-          <Link href="/" onClick={() => setIsMobileMenuOpen(false)} className="text-2xl font-bold text-slate-900 dark:text-white">Home</Link>
+      {/* Mobile Menu Overlay - Refined */}
+      <AnimatePresence>
+        {isMobileMenuOpen && (
+          <motion.div
+            initial={{ opacity: 0, scale: 0.95, y: -20 }}
+            animate={{ opacity: 1, scale: 1, y: 0 }}
+            exit={{ opacity: 0, scale: 0.95, y: -20 }}
+            transition={{ duration: 0.2, ease: "easeOut" }}
+            className="xl:hidden fixed inset-0 z-[100] bg-white/95 dark:bg-[#0B1019]/95 backdrop-blur-3xl overflow-y-auto"
+          >
+            <div className="min-h-screen flex flex-col pt-24 pb-10 px-6">
 
-          <div className="w-full px-6 flex flex-col items-center gap-4 py-4 overflow-y-auto max-h-[50vh]">
-            <h3 className="text-[10px] font-black uppercase tracking-widest text-slate-400">Our Treatment Hubs</h3>
-            <div className="grid grid-cols-2 gap-3 w-full">
-              {treatmentCategories.map((cat, idx) => (
-                <div key={idx} className="bg-slate-50 dark:bg-white/5 p-4 rounded-3xl border border-slate-200/50 dark:border-white/10">
-                  <div className="flex items-center gap-2 mb-2">
-                    {cat.icon}
-                    <span className="text-[10px] font-black uppercase tracking-wider text-slate-900 dark:text-white">{cat.title}</span>
+              <div className="space-y-6">
+                {/* Primary Nav Links */}
+                <div className="flex flex-col gap-1">
+                  <Link href="/" onClick={() => setIsMobileMenuOpen(false)} className="text-3xl font-black text-slate-900 dark:text-white py-2">
+                    Home
+                  </Link>
+
+                  {/* Expandable Treatments Section */}
+                  <div className="border-y border-slate-100 dark:border-white/5 py-4 my-2">
+                    <button
+                      onClick={() => setExpandedTreatment(!expandedTreatment)}
+                      className="flex items-center justify-between w-full text-3xl font-black text-slate-900 dark:text-white"
+                    >
+                      Treatments
+                      <ChevronDown size={24} className={`transition-transform duration-300 ${expandedTreatment ? 'rotate-180' : ''}`} />
+                    </button>
+
+                    <AnimatePresence>
+                      {expandedTreatment && (
+                        <motion.div
+                          initial={{ height: 0, opacity: 0 }}
+                          animate={{ height: "auto", opacity: 1 }}
+                          exit={{ height: 0, opacity: 0 }}
+                          className="overflow-hidden"
+                        >
+                          <div className="pt-6 pb-2 grid grid-cols-1 gap-4">
+                            {treatmentCategories.map((cat, idx) => (
+                              <div key={idx} className="bg-slate-50 dark:bg-white/5 p-4 rounded-3xl border border-slate-200/50 dark:border-white/5">
+                                <div className="flex items-center gap-3 mb-3">
+                                  <div className="w-8 h-8 rounded-lg bg-white dark:bg-white/10 flex items-center justify-center">
+                                    {cat.icon}
+                                  </div>
+                                  <span className="text-sm font-black uppercase tracking-wider text-slate-900 dark:text-white">{cat.title}</span>
+                                </div>
+                                <div className="grid grid-cols-1 gap-2 pl-11">
+                                  {cat.links.slice(0, 3).map((link, lIdx) => (
+                                    <Link
+                                      key={lIdx}
+                                      href={link.href}
+                                      onClick={() => setIsMobileMenuOpen(false)}
+                                      className="text-xs font-bold text-slate-500 dark:text-slate-400"
+                                    >
+                                      {link.name}
+                                    </Link>
+                                  ))}
+                                  <Link href="/treatments" onClick={() => setIsMobileMenuOpen(false)} className="text-xs font-black text-blue-600 dark:text-cyan-400 mt-1 uppercase">
+                                    View Link +
+                                  </Link>
+                                </div>
+                              </div>
+                            ))}
+                          </div>
+                        </motion.div>
+                      )}
+                    </AnimatePresence>
                   </div>
-                  <ul className="space-y-1.5">
-                    {cat.links.slice(0, 3).map((link, lIdx) => (
-                      <li key={lIdx}>
-                        <Link href={link.href} onClick={() => setIsMobileMenuOpen(false)} className="text-[10px] font-bold text-slate-500 dark:text-slate-400 block truncate leading-tight">
-                          {link.name}
-                        </Link>
-                      </li>
-                    ))}
-                    <li>
-                      <Link href="/treatments" onClick={() => setIsMobileMenuOpen(false)} className="text-[9px] font-black text-blue-600 dark:text-cyan-400 uppercase"> More +</Link>
-                    </li>
-                  </ul>
-                </div>
-              ))}
-            </div>
-          </div>
 
-          <Link href="/patient-safety" onClick={() => setIsMobileMenuOpen(false)} className="text-2xl font-bold text-emerald-500">Patient Safety</Link>
-          <Link href="/team" onClick={() => setIsMobileMenuOpen(false)} className="text-2xl font-bold text-slate-900 dark:text-white">Our Team</Link>
-          <Link href="/healthflo-ai" onClick={() => setIsMobileMenuOpen(false)} className="text-2xl font-bold text-blue-600">AI HealthOS</Link>
-          <Link href="/insurance" onClick={() => setIsMobileMenuOpen(false)} className="text-2xl font-bold text-indigo-600">Insurance & EMI</Link>
-          <Link href="/international" onClick={() => setIsMobileMenuOpen(false)} className="text-2xl font-bold text-amber-600">Global Patients</Link>
-          <Link href="/case-studies" onClick={() => setIsMobileMenuOpen(false)} className="text-2xl font-bold text-purple-600">Case Studies</Link>
-          <Link href="/blog" onClick={() => setIsMobileMenuOpen(false)} className="text-2xl font-bold text-pink-600">Blog & Insights</Link>
-          <button onClick={() => { setIsMobileMenuOpen(false); onBookClick?.(); }} className="px-8 py-4 bg-blue-600 text-white rounded-full font-bold uppercase tracking-widest text-sm">
-            Book Appointment
-          </button>
-        </div>
-      )}
+                  <Link href="/patient-safety" onClick={() => setIsMobileMenuOpen(false)} className="text-2xl font-bold text-slate-800 dark:text-slate-200 py-2">
+                    Patient Safety
+                  </Link>
+                  <Link href="/team" onClick={() => setIsMobileMenuOpen(false)} className="text-2xl font-bold text-slate-800 dark:text-slate-200 py-2">
+                    Our Team
+                  </Link>
+                </div>
+
+                {/* Secondary Feature Links (Grid) */}
+                <div className="grid grid-cols-2 gap-3 mt-4">
+                  <Link href="/healthflo-ai" onClick={() => setIsMobileMenuOpen(false)} className="bg-blue-50 dark:bg-blue-900/10 p-4 rounded-2xl flex flex-col gap-2">
+                    <Activity size={20} className="text-blue-600" />
+                    <span className="font-bold text-blue-800 dark:text-blue-300">Dental AI</span>
+                  </Link>
+                  <Link href="/insurance" onClick={() => setIsMobileMenuOpen(false)} className="bg-indigo-50 dark:bg-indigo-900/10 p-4 rounded-2xl flex flex-col gap-2">
+                    <ShieldCheck size={20} className="text-indigo-600" />
+                    <span className="font-bold text-indigo-800 dark:text-indigo-300">Insurance</span>
+                  </Link>
+                  <Link href="/international" onClick={() => setIsMobileMenuOpen(false)} className="bg-amber-50 dark:bg-amber-900/10 p-4 rounded-2xl flex flex-col gap-2">
+                    <Globe size={20} className="text-amber-600" />
+                    <span className="font-bold text-amber-800 dark:text-amber-300">Global Patients</span>
+                  </Link>
+                  <Link href="/blog" onClick={() => setIsMobileMenuOpen(false)} className="bg-pink-50 dark:bg-pink-900/10 p-4 rounded-2xl flex flex-col gap-2">
+                    <Sparkles size={20} className="text-pink-600" />
+                    <span className="font-bold text-pink-800 dark:text-pink-300">Blog</span>
+                  </Link>
+                </div>
+
+                {/* Book Now Button */}
+                <button
+                  onClick={() => { setIsMobileMenuOpen(false); onBookClick?.(); }}
+                  className="w-full py-5 bg-gradient-to-r from-blue-600 to-indigo-600 text-white rounded-2xl font-black uppercase tracking-widest text-sm shadow-xl mt-6"
+                >
+                  Book Appointment
+                </button>
+
+              </div>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </header>
   );
 };

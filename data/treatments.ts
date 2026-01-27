@@ -1010,8 +1010,8 @@ export const treatmentsData: Record<string, TreatmentData> = {
   },
 
   // --- Migrated Legacy Content ---
-  "braces-orthodontics": {
-    id: "braces-orthodontics",
+  "braces": {
+    id: "braces",
     title: "Braces & Orthodontics",
     subtitle: "braces treatment",
     category: "Orthodontics",
@@ -1041,28 +1041,6 @@ export const treatmentsData: Record<string, TreatmentData> = {
       { q: "Do I need to extract teeth?", a: "Not always. We prioritize non-extraction expansion techniques whenever biologically possible." }
     ],
     keywords: ["braces", "orthodontics", "crooked teeth", "damon braces", "wire", "straight teeth"]
-  },
-  "invisalign-aligners": {
-    id: "invisalign-aligners",
-    title: "Invisalign Clear Aligners",
-    subtitle: "invisalign treatment",
-    category: "Orthodontics",
-    heroImage: "/assets/images/treatments/invisalign-hyderabad.webp",
-    description: "Straighten teeth with removable clear aligners for comfort and aesthetics. Backed by Invisalign, AAO.",
-    longDescription: "Straighten teeth with removable clear aligners for comfort and aesthetics. Backed by Invisalign, AAO. Nearly invisible. Eat & brush normally",
-    stats: [
-      { label: "Success Rate", value: "98%", icon: "Activity" },
-      { label: "Duration", value: "Varies", icon: "Clock" },
-      { label: "Comfort", value: "High", icon: "Heart" }
-    ],
-    process: [
-      { title: "Consultation", desc: "Digital diagnosis." },
-      { title: "Treatment", desc: "Painless execution." },
-      { title: "Follow-up", desc: "Experience review." }
-    ],
-    benefits: ["Nearly invisible", "Eat & brush normally"],
-    faqs: [{ "q": "Is the procedure painful?", "a": "We use advanced numbing techniques." }, { "q": "How many visits?", "a": "Usually 1-2 visits." }],
-    keywords: ["invisalign", "aligners", "clear braces", "crooked teeth", "Hyderabad"]
   },
   "teeth-whitening": {
     id: "teeth-whitening",
@@ -1154,8 +1132,8 @@ export const treatmentsData: Record<string, TreatmentData> = {
     ],
     keywords: ["teeth whitening", "bleaching", "yellow teeth", "zoom whitening", "bright smile"]
   },
-  "dental-veneers": {
-    id: "dental-veneers",
+  "veneers": {
+    id: "veneers",
     title: "Dental Veneers",
     subtitle: "veneers treatment",
     category: "General Dentistry",
@@ -1287,28 +1265,6 @@ export const treatmentsData: Record<string, TreatmentData> = {
     benefits: ["Affordable solution", "Restores chewing ability"],
     faqs: [{ "q": "Is the procedure painful?", "a": "We use advanced numbing techniques." }, { "q": "How many visits?", "a": "Usually 1-2 visits." }],
     keywords: ["dentures", "missing teeth", "removable", "prosthesis", "Hyderabad"]
-  },
-  "pediatric-dentistry": {
-    id: "pediatric-dentistry",
-    title: "Pediatric Dentistry",
-    subtitle: "pediatric treatment",
-    category: "Pediatrics",
-    heroImage: "/assets/images/treatments/pediatric-hyderabad.webp",
-    description: "Gentle dental care for infants, toddlers, and children. Supported by AAPD.",
-    longDescription: "Gentle dental care for infants, toddlers, and children. Supported by AAPD. Prevents cavities early. Child-friendly approach",
-    stats: [
-      { label: "Success Rate", value: "98%", icon: "Activity" },
-      { label: "Duration", value: "Varies", icon: "Clock" },
-      { label: "Comfort", value: "High", icon: "Heart" }
-    ],
-    process: [
-      { title: "Consultation", desc: "Digital diagnosis." },
-      { title: "Treatment", desc: "Painless execution." },
-      { title: "Follow-up", desc: "Experience review." }
-    ],
-    benefits: ["Prevents cavities early", "Child-friendly approach"],
-    faqs: [{ "q": "Is the procedure painful?", "a": "We use advanced numbing techniques." }, { "q": "How many visits?", "a": "Usually 1-2 visits." }],
-    keywords: ["pediatric", "kids dentistry", "children", "fluoride", "sealants", "Hyderabad"]
   },
   "preventive-dentistry": {
     id: "preventive-dentistry",
@@ -1552,28 +1508,6 @@ export const treatmentsData: Record<string, TreatmentData> = {
     faqs: [{ "q": "Is the procedure painful?", "a": "We use advanced numbing techniques." }, { "q": "How many visits?", "a": "Usually 1-2 visits." }],
     keywords: ["full mouth rehabilitation", "implants", "crowns", "Hyderabad"]
   },
-  "dental-bridges": {
-    id: "dental-bridges",
-    title: "Dental Bridges",
-    subtitle: "dental bridges treatment",
-    category: "General Dentistry",
-    heroImage: "/assets/images/treatments/dental-bridges-hyderabad.webp",
-    description: "Replace missing teeth with fixed dental bridges. Based on Prosthodontic Guidelines.",
-    longDescription: "Replace missing teeth with fixed dental bridges. Based on Prosthodontic Guidelines. Fixed solution. Restores chewing",
-    stats: [
-      { label: "Success Rate", value: "98%", icon: "Activity" },
-      { label: "Duration", value: "Varies", icon: "Clock" },
-      { label: "Comfort", value: "High", icon: "Heart" }
-    ],
-    process: [
-      { title: "Consultation", desc: "Digital diagnosis." },
-      { title: "Treatment", desc: "Painless execution." },
-      { title: "Follow-up", desc: "Experience review." }
-    ],
-    benefits: ["Fixed solution", "Restores chewing"],
-    faqs: [{ "q": "Is the procedure painful?", "a": "We use advanced numbing techniques." }, { "q": "How many visits?", "a": "Usually 1-2 visits." }],
-    keywords: ["dental bridges", "missing teeth", "prosthesis", "Hyderabad"]
-  },
   "cosmetic-dentistry": {
     id: "cosmetic-dentistry",
     title: "Cosmetic Dentistry",
@@ -1750,8 +1684,8 @@ export const treatmentsData: Record<string, TreatmentData> = {
     faqs: [{ "q": "Is the procedure painful?", "a": "We use advanced numbing techniques." }, { "q": "How many visits?", "a": "Usually 1-2 visits." }],
     keywords: ["laser dentistry", "painless treatment", "gum surgery", "Hyderabad"]
   },
-  "emergency-dentistry": {
-    id: "emergency-dentistry",
+  "emergency-trauma": {
+    id: "emergency-trauma",
     title: "Emergency Dentistry",
     subtitle: "emergency dentistry treatment",
     category: "General Dentistry",
@@ -2077,28 +2011,6 @@ export const treatmentsData: Record<string, TreatmentData> = {
     benefits: ["Reduces sugar-related decay", "Improves gum healing"],
     faqs: [{ "q": "Is the procedure painful?", "a": "We use advanced numbing techniques." }, { "q": "How many visits?", "a": "Usually 1-2 visits." }],
     keywords: ["nutritional counseling", "oral health diet", "preventive dentistry", "Hyderabad"]
-  },
-  "tmj-treatment": {
-    id: "tmj-treatment",
-    title: "TMJ Disorder Treatment",
-    subtitle: "TMJ disorder treatment",
-    category: "General Dentistry",
-    heroImage: "/assets/images/treatments/tmj-treatment-hyderabad.webp",
-    description: "Relief for jaw pain, clicking, and TMJ dysfunction. Cited by NIH.",
-    longDescription: "Relief for jaw pain, clicking, and TMJ dysfunction. Cited by NIH. Custom splints for relief. Reduces headaches & strain",
-    stats: [
-      { label: "Success Rate", value: "98%", icon: "Activity" },
-      { label: "Duration", value: "Varies", icon: "Clock" },
-      { label: "Comfort", value: "High", icon: "Heart" }
-    ],
-    process: [
-      { title: "Consultation", desc: "Digital diagnosis." },
-      { title: "Treatment", desc: "Painless execution." },
-      { title: "Follow-up", desc: "Experience review." }
-    ],
-    benefits: ["Custom splints for relief", "Reduces headaches & strain"],
-    faqs: [{ "q": "Is the procedure painful?", "a": "We use advanced numbing techniques." }, { "q": "How many visits?", "a": "Usually 1-2 visits." }],
-    keywords: ["TMJ disorder", "jaw pain", "clicking jaw", "Hyderabad"]
   },
   "tobacco-cessation": {
     id: "tobacco-cessation",
@@ -2935,28 +2847,6 @@ export const treatmentsData: Record<string, TreatmentData> = {
     benefits: ["Prevents oral cancer risk", "Improves overall oral health"],
     faqs: [{ "q": "Is the procedure painful?", "a": "We use advanced numbing techniques." }, { "q": "How many visits?", "a": "Usually 1-2 visits." }],
     keywords: ["smoking cessation counseling", "quit tobacco", "oral cancer prevention", "Hyderabad"]
-  },
-  "pregnancy-dental": {
-    id: "pregnancy-dental",
-    title: "Pregnancy Dental Care",
-    subtitle: "pregnancy dental care treatment",
-    category: "General Dentistry",
-    heroImage: "/assets/images/treatments/pregnancy-dental-hyderabad.webp",
-    description: "Safe dental treatments during pregnancy. Backed by ADA, CDC.",
-    longDescription: "Safe dental treatments during pregnancy. Backed by ADA, CDC. Prevents gum disease & cavities. Special care in 2nd trimester",
-    stats: [
-      { label: "Success Rate", value: "98%", icon: "Activity" },
-      { label: "Duration", value: "Varies", icon: "Clock" },
-      { label: "Comfort", value: "High", icon: "Heart" }
-    ],
-    process: [
-      { title: "Consultation", desc: "Digital diagnosis." },
-      { title: "Treatment", desc: "Painless execution." },
-      { title: "Follow-up", desc: "Experience review." }
-    ],
-    benefits: ["Prevents gum disease & cavities", "Special care in 2nd trimester"],
-    faqs: [{ "q": "Is the procedure painful?", "a": "We use advanced numbing techniques." }, { "q": "How many visits?", "a": "Usually 1-2 visits." }],
-    keywords: ["pregnancy dental care", "safe dental treatment during pregnancy", "Hyderabad"]
   },
   "pediatric-emergency": {
     id: "pediatric-emergency",

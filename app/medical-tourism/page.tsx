@@ -21,7 +21,7 @@ export default function MedicalTourismPage() {
                     </h1>
                     <p className="text-xl text-slate-500 dark:text-slate-400 font-medium leading-relaxed max-w-2xl mx-auto mb-10">
                         Whether you are flying in from <strong>Bangalore/Chennai</strong> or visiting parents from <strong>Andhra</strong>,
-                        Noble Dental Care is your destination for 1-Day Premium Dentistry.
+                        Noble Dental Care is your destination for 1-Day Advanced Dentistry.
                     </p>
 
                     {/* Trust Signals for Travelers */}
@@ -77,7 +77,7 @@ export default function MedicalTourismPage() {
                                 </tbody>
                             </table>
                         </div>
-                        <p className="text-[10px] text-slate-400 mt-4 italic">*Prices based on average quotes from premium tier clinics in Indiranagar/Bandra (2024).</p>
+                        <p className="text-[10px] text-slate-400 mt-4 italic">*Prices based on average quotes from high-end tier clinics in Indiranagar/Bandra (2024).</p>
                     </div>
                 </div>
             </section>

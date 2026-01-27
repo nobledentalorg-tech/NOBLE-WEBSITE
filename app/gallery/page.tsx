@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import GalleryRefactored from './GalleryRefactored';
 
 export const metadata: Metadata = {
-  title: 'Clinical Gallery & Archives | Noble Dental Care',
+  title: 'Clinical Gallery & Patient Results - Noble Dental Nallagandla',
   description: 'Visual documentation of our surgical precision, smile makeovers, and full mouth reconstructions in Hyderabad.',
   alternates: {
     canonical: '/gallery'

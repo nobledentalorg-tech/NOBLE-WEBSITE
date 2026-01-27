@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import BracesRefactored from './BracesRefactored';
 
 export const metadata: Metadata = {
-   title: 'Invisible Braces Hyderabad | Invisalign & Damon System | Noble Dental',
+   title: 'Invisible Braces & Invisalign in Nallagandla - Noble Dental',
    description: 'Correct teeth alignment with world-class orthodontics. From metal braces to invisible aligners, we offer 3D-planned precision for all ages.',
    alternates: {
       canonical: '/treatments/braces'

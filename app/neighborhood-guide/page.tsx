@@ -109,7 +109,7 @@ export default function NeighborhoodGuide() {
                             </p>
                             <p className="text-sm text-slate-500 dark:text-slate-400 mb-8">
                                 We are the most convenient multispecialty clinic for shoppers and movie-goers at <strong>Aparna Cinemas</strong>.
-                                Finish your shopping and drop by for a quick, premium dental cleaning!
+                                Finish your shopping and drop by for a quick, quality dental cleaning!
                             </p>
 
                             <div className="grid grid-cols-2 gap-4">

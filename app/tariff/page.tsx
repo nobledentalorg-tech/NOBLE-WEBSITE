@@ -5,7 +5,7 @@ import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
     title: 'Dental Treatment Costs Nallagandla | Transparent Tariff',
-    description: 'Affordable dental care in Nallagandla. Check our transparent pricing for Root Canals, Implants, and Braces. 0% EMI options available for premium treatments.',
+    description: 'Affordable dental care in Nallagandla. Check our transparent pricing for Root Canals, Implants, and Braces. 0% EMI options available for advanced treatments.',
 };
 
 export default function TariffPage() {
@@ -18,7 +18,7 @@ export default function TariffPage() {
                         Transparent Pricing. <span className="text-blue-600">No Surprises.</span>
                     </h1>
                     <p className="text-lg text-slate-600 dark:text-slate-400">
-                        High-quality care doesn&apos;t have to be expensive. We believe in being &quot;Cheap and Best&quot; — offering premium global standards at honest, affordable Indian rates.
+                        High-quality care doesn&apos;t have to be expensive. We believe in being &quot;Cheap and Best&quot; — offering advanced global standards at honest, affordable Indian rates.
                     </p>
                 </div>
 
@@ -43,7 +43,7 @@ export default function TariffPage() {
                             <ul className="space-y-4 text-sm">
                                 <li className="flex items-center gap-3"><CheckCircle2 size={16} className="text-green-400" /> <span><strong>No Hidden Consumable Charges:</strong> What you see is what you pay.</span></li>
                                 <li className="flex items-center gap-3"><CheckCircle2 size={16} className="text-green-400" /> <span><strong>Free Consultations:</strong> For all Implant & Ortho assessments.</span></li>
-                                <li className="flex items-center gap-3"><CheckCircle2 size={16} className="text-green-400" /> <span><strong>Lifetime Warranty:</strong> On premium Zirconia Crowns & Implants.</span></li>
+                                <li className="flex items-center gap-3"><CheckCircle2 size={16} className="text-green-400" /> <span><strong>Lifetime Warranty:</strong> On certified Zirconia Crowns & Implants.</span></li>
                             </ul>
                         </div>
                     </div>
