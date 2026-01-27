@@ -89,7 +89,7 @@ export default function VeneersRefactored() {
             noble: "₹16,500",
             savings: "Save ₹8k+",
             feature: "Glass Aesthetic",
-            desc: "High-strength glass ceramic. The global standard for 'Hollywood Smiles'. Cannot stain. Lasts 15+ years."
+            desc: "High-strength glass ceramic. The global standard for &apos;Hollywood Smiles&apos;. Cannot stain. Lasts 15+ years."
         },
         {
             type: "Ultra-Thin (No Prep)",

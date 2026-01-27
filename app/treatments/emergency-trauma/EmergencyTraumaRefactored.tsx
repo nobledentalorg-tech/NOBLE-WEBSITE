@@ -191,7 +191,7 @@ export default function EmergencyTraumaRefactored() {
                             <ShieldCheck size={48} />
                         </div>
                         <h3 className="text-3xl font-black text-white mb-6 uppercase tracking-tight italic">Zero Wait Policy</h3>
-                        <p className="text-lg text-slate-400 italic">"Dental emergencies don't have business hours. If you are experiencing acute trauma or uncontrolled swelling, you skip the queue. Your health is the only priority."</p>
+                        <p className="text-lg text-slate-400 italic">&quot;Dental emergencies don&apos;t have business hours. If you are experiencing acute trauma or uncontrolled swelling, you skip the queue. Your health is the only priority.&quot;</p>
                         <div className="mt-8 text-[10px] font-black text-red-500 tracking-widest uppercase">— Dr. Dhivakaran</div>
                     </div>
                 </div>
@@ -207,7 +207,7 @@ export default function EmergencyTraumaRefactored() {
                     <div className="space-y-6">
                         {[
                             {
-                                q: "What if I can't find the tooth?",
+                                q: "What if I can&apos;t find the tooth?",
                                 a: "Come in immediately anyway. We need to check for jaw fractures or root fragments left in the socket. The sooner we clean the wound, the better the healing."
                             },
                             {
@@ -239,7 +239,7 @@ export default function EmergencyTraumaRefactored() {
                 <div className="max-w-5xl mx-auto px-6 relative z-10 text-center text-white">
                     <RevealOnScroll>
                         <h2 className="text-5xl md:text-8xl font-black tracking-tighter mb-10 leading-[0.9] italic uppercase">
-                            Don't Wait. <br />
+                            Don&apos;t Wait. <br />
                             <span className="text-red-100">Save the Smile.</span>
                         </h2>
                         <div className="flex flex-col md:flex-row items-center justify-center gap-6">

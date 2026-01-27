@@ -339,11 +339,11 @@ export default function DentalImplantsRefactored() {
                     <RevealOnScroll>
                         <div className="section-header text-center mb-20">
                             <h2 className="text-4xl md:text-5xl font-black text-slate-900 dark:text-white mb-6 tracking-tight leading-tight">
-                                Wolf's Law: <br />
+                                Wolf&apos;s Law: <br />
                                 <span className="text-blue-600 dark:text-blue-400 text-3xl md:text-4xl lowercase font-bold">Use it or lose it.</span>
                             </h2>
                             <p className="text-lg text-slate-600 dark:text-slate-400 max-w-2xl mx-auto leading-relaxed">
-                                When a tooth is lost, the jawbone no longer receives "load" signals. <br />
+                                When a tooth is lost, the jawbone no longer receives &quot;load&quot; signals. <br />
                                 <strong>Like a muscle that atrophies without exercise, your bone disappears.</strong>
                             </p>
                         </div>
@@ -363,7 +363,7 @@ export default function DentalImplantsRefactored() {
                                     </div>
                                     <h3 className="text-3xl font-black text-slate-900 dark:text-white mb-6 tracking-tight">Facial Atrophy.</h3>
                                     <p className="text-slate-600 dark:text-slate-300 leading-relaxed max-w-sm">
-                                        Without the root's stimulation, the jaw resorbs by up to <strong>25% in the first year</strong>. This causes the "sunken look" as the facial height collapses.
+                                        Without the root&apos;s stimulation, the jaw resorbs by up to <strong>25% in the first year</strong>. This causes the &quot;sunken look&quot; as the facial height collapses.
                                     </p>
                                 </div>
                                 <div className="mt-8 pt-8 border-t border-slate-100 dark:border-white/5 z-10">
@@ -407,7 +407,7 @@ export default function DentalImplantsRefactored() {
                                 <div className="w-2/3">
                                     <h3 className="text-2xl font-black text-slate-900 dark:text-white mb-3 tracking-tight uppercase italic">Bridges vs All-on-4.</h3>
                                     <p className="text-sm text-slate-500 dark:text-slate-400 leading-relaxed">
-                                        Bridges only replace the crown, leading to bone melting. Our **All-on-4 Dental Implants** and **Basal Implants Hyderabad** stimulate the bone bio-mechanically, stopping the "sunken face" look permanently.
+                                        Bridges only replace the crown, leading to bone melting. Our **All-on-4 Dental Implants** and **Basal Implants Hyderabad** stimulate the bone bio-mechanically, stopping the &quot;sunken face&quot; look permanently.
                                     </p>
                                 </div>
                             </div>
@@ -483,8 +483,8 @@ export default function DentalImplantsRefactored() {
                                     <Shield size={12} /> Clinical Risk Mitigation
                                 </div>
                                 <h2 className="text-4xl md:text-5xl font-black text-slate-900 dark:text-white tracking-tight leading-tight">
-                                    Safety isn't a feature. <br />
-                                    <span className="text-teal-600">It's a biological system.</span>
+                                    Safety isn&apos;t a feature. <br />
+                                    <span className="text-teal-600">It&apos;s a biological system.</span>
                                 </h2>
                                 <p className="text-lg text-slate-600 dark:text-slate-300 leading-relaxed">
                                     At Noble Dental Care, we treat implants as <strong>Ortho-Medical Procedures</strong>. We focus on soft tissue, bone density, and long-term periodontal health.
@@ -766,7 +766,7 @@ export default function DentalImplantsRefactored() {
                     <div className="mt-8 pt-6 border-t border-slate-100 dark:border-white/5 flex items-center justify-center gap-3 text-slate-400">
                         <ShieldCheck size={16} className="text-emerald-500" />
                         <p className="text-[10px] font-black uppercase tracking-widest text-center px-4">
-                            All clinical protocols are verified by Noble Dental's medical board for 2026 safety standards.
+                            All clinical protocols are verified by Noble Dental&apos;s medical board for 2026 safety standards.
                         </p>
                     </div>
                 </RevealOnScroll>

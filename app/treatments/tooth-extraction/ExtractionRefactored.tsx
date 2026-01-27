@@ -211,10 +211,10 @@ export default function ExtractionRefactored() {
                                     <Info size={12} /> Surgical Philosophy
                                 </div>
                                 <h2 className="text-4xl md:text-5xl font-black text-slate-900 dark:text-white mb-8 tracking-tighter leading-tight">
-                                    "I am scared of the pain and the pressure."
+                                    &quot;I am scared of the pain and the pressure.&quot;
                                 </h2>
                                 <p className="text-lg text-slate-600 dark:text-slate-400 mb-8 leading-relaxed font-medium italic">
-                                    &quot;Most patients fear the 'pulling' sensation. As the **Best Dentist in Nallagandla**, I use Physics Forceps and **PRF Therapy in Dentistry** to ensure a **Painless Tooth Removal** experience. At **Noble Dental Care Hyderabad**, our focus is **Socket Preservation Nallagandla**—ensuring the bone remains intact for future implants using surgical **Bone Grafts after Extraction**.&quot; — **Dr. Dhivakaran**
+                                    &quot;Most patients fear the &apos;pulling&apos; sensation. As the **Best Dentist in Nallagandla**, I use Physics Forceps and **PRF Therapy in Dentistry** to ensure a **Painless Tooth Removal** experience. At **Noble Dental Care Hyderabad**, our focus is **Socket Preservation Nallagandla**—ensuring the bone remains intact for future implants using surgical **Bone Grafts after Extraction**.&quot; — **Dr. Dhivakaran**
                                 </p>
                                 <div className="space-y-4">
                                     {[
@@ -240,7 +240,7 @@ export default function ExtractionRefactored() {
                                     <span className="text-blue-600 italic">Save the bone. Protect the face.</span>
                                 </h3>
                                 <p className="text-slate-500 leading-relaxed text-lg">
-                                    A fast extraction today usually means an expensive **Bone Graft** tomorrow. At **Noble Dental Care Hyderabad**, located **Near Aparna Sarovar / Citizens Hospital**, we take the time to perform **Atraumatic Extraction Hyderabad**, ensuring your facial structure doesn't shrink over time.
+                                    A fast extraction today usually means an expensive **Bone Graft** tomorrow. At **Noble Dental Care Hyderabad**, located **Near Aparna Sarovar / Citizens Hospital**, we take the time to perform **Atraumatic Extraction Hyderabad**, ensuring your facial structure doesn&apos;t shrink over time.
                                 </p>
                                 <div className="grid grid-cols-2 gap-4">
                                     <div className="p-6 bg-slate-50 dark:bg-white/5 rounded-3xl border border-slate-100 dark:border-white/10 text-center">
@@ -364,7 +364,7 @@ export default function ExtractionRefactored() {
                                     <span className="text-blue-400">The Medical Check.</span>
                                 </h2>
                                 <p className="text-slate-400 text-lg mb-12">
-                                    Extraction is minor surgery. For Nallagandla's high-stress environment, we treat it with medical seriousness.
+                                    Extraction is minor surgery. For Nallagandla&apos;s high-stress environment, we treat it with medical seriousness.
                                 </p>
                                 <div className="grid gap-4">
                                     {[
@@ -419,7 +419,7 @@ export default function ExtractionRefactored() {
                                         <tr className="bg-slate-900 text-white">
                                             <th className="px-10 py-8 text-[10px] font-black uppercase tracking-widest">Condition</th>
                                             <th className="px-10 py-8 text-[10px] font-black uppercase tracking-widest">Recommendation</th>
-                                            <th className="px-10 py-8 text-[10px] font-black uppercase tracking-widest">The "Why"</th>
+                                            <th className="px-10 py-8 text-[10px] font-black uppercase tracking-widest">The &quot;Why&quot;</th>
                                         </tr>
                                     </thead>
                                     <tbody className="divide-y divide-slate-200 dark:divide-white/5">
@@ -460,7 +460,7 @@ export default function ExtractionRefactored() {
                                 <Award size={12} /> Market Transparency
                             </div>
                             <h2 className="text-4xl md:text-5xl font-black text-slate-900 dark:text-white tracking-tighter mb-4">Nallagandla Pricing.</h2>
-                            <p className="text-slate-500 text-lg">Fees based on microsurgical complexity, not just 'pulling' time.</p>
+                            <p className="text-slate-500 text-lg">Fees based on microsurgical complexity, not just &apos;pulling&apos; time.</p>
                         </div>
 
                         <div className="max-w-4xl mx-auto">
@@ -507,7 +507,7 @@ export default function ExtractionRefactored() {
                                     a: "The cost ranges from ₹6,000 to ₹12,500 depending on the depth and position of the tooth. We use Piezosurgery for a safer and faster recovery."
                                 },
                                 {
-                                    q: "What is 'Dry Socket'?",
+                                    q: "What is &apos;Dry Socket&apos;?",
                                     a: "A painful condition where the blood clot dislodges. Prevention: Do NOT spit, use a straw, or smoke for 24 hours. At **Noble Dental Care Hyderabad**, we reduce this risk using PRF."
                                 }
                             ].map((faq, i) => (

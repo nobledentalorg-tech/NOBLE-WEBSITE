@@ -230,9 +230,9 @@ export default function InvisalignRefactored() {
                                     <div className="space-y-6 text-center">
                                         <Award className="mx-auto text-blue-500" size={48} />
                                         <div className="text-2xl font-black text-slate-900 dark:text-white">International Standards</div>
-                                        <p className="text-slate-500 text-sm">Our aligners meet the same durability and transparency benchmarks as the world's leading brands.</p>
+                                        <p className="text-slate-500 text-sm">Our aligners meet the same durability and transparency benchmarks as the world&apos;s leading brands.</p>
                                         <div className="h-1 w-24 bg-blue-500 mx-auto rounded-full"></div>
-                                        <p className="italic text-slate-400 text-sm">"The tool is local, the precision is global." <br /> — Dr. Deepak</p>
+                                        <p className="italic text-slate-400 text-sm">&quot;The tool is local, the precision is global.&quot; <br /> — Dr. Deepak</p>
                                     </div>
                                 </div>
                             </div>

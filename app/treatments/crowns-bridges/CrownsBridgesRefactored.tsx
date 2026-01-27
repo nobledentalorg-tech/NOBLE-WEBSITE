@@ -166,8 +166,8 @@ export default function CrownsBridgesRefactored() {
                             key={tab.id}
                             href={`#${tab.id}`}
                             className={`text-[10px] font-black uppercase tracking-[0.2em] whitespace-nowrap transition-all duration-300 px-4 py-2 rounded-full ${activeTab === tab.id
-                                    ? 'bg-blue-600 text-white'
-                                    : 'text-slate-400 hover:text-slate-900 dark:hover:text-white'
+                                ? 'bg-blue-600 text-white'
+                                : 'text-slate-400 hover:text-slate-900 dark:hover:text-white'
                                 }`}
                         >
                             {tab.label}
@@ -183,20 +183,20 @@ export default function CrownsBridgesRefactored() {
                         <div className="grid lg:grid-cols-2 gap-20 items-center">
                             <div className="space-y-12">
                                 <div className="inline-flex items-center gap-2 px-3 py-1 bg-red-100 dark:bg-red-900/30 rounded-full text-[10px] font-black uppercase tracking-widest text-red-600 dark:text-red-400">
-                                    <AlertCircle size={12} /> The "Noble Truth"
+                                    <AlertCircle size={12} /> The &quot;Noble Truth&quot;
                                 </div>
                                 <h2 className="text-5xl font-black text-slate-900 dark:text-white tracking-tighter leading-none">
-                                    "Why is there a <br />
-                                    <span className="text-blue-600 italic">Black Line</span> at my gum?"
+                                    &quot;Why is there a <br />
+                                    <span className="text-blue-600 italic">Black Line</span> at my gum?&quot;
                                 </h2>
                                 <p className="text-xl text-slate-600 dark:text-slate-400 leading-relaxed font-medium">
-                                    That black line is Metal. Old-school PFM crowns use a metal base that leaches oxides into your gums, causing recession and "Grey Gum Disease."
+                                    That black line is Metal. Old-school PFM crowns use a metal base that leaches oxides into your gums, causing recession and &quot;Grey Gum Disease.&quot;
                                 </p>
 
                                 <div className="space-y-6">
                                     {[
                                         { title: "The Gimmick: Cheap Caps", desc: "Local clinics offer ₹2000 crowns. These are high-metal alloys that often cause allergic reactions and tooth decay underneath.", icon: XCircle },
-                                        { title: "The Reality: Biological Width", desc: "If a crown is fitted poorly, it invades the 'Biological Width,' causing permanent bone loss around the tooth.", icon: Info },
+                                        { title: "The Reality: Biological Width", desc: "If a crown is fitted poorly, it invades the &apos;Biological Width,&apos; causing permanent bone loss around the tooth.", icon: Info },
                                         { title: "The Noble Way: Monolithic", desc: "We use 100% Metal-Free Bio-Zirconia. No oxides. No shadows. Just health.", icon: CheckCircle2 }
                                     ].map((item, i) => (
                                         <div key={i} className="flex gap-4 p-6 ios-glass rounded-3xl border border-white/40">
@@ -217,8 +217,8 @@ export default function CrownsBridgesRefactored() {
                                     <div className="w-24 h-24 bg-blue-600 rounded-full flex items-center justify-center text-white mb-8 shadow-2xl shadow-blue-500/50">
                                         <Shield size={48} />
                                     </div>
-                                    <h3 className="text-3xl font-black text-slate-900 dark:text-white mb-6 tracking-tight">Dr. Dhivakaran's Refusal</h3>
-                                    <p className="text-lg text-slate-500 italic">"I refuse to place metal-based crowns on front teeth. Your biology deserves better than a cheap alloy."</p>
+                                    <h3 className="text-3xl font-black text-slate-900 dark:text-white mb-6 tracking-tight">Dr. Dhivakaran&apos;s Refusal</h3>
+                                    <p className="text-lg text-slate-500 italic">&quot;I refuse to place metal-based crowns on front teeth. Your biology deserves better than a cheap alloy.&quot;</p>
                                 </div>
                             </div>
                         </div>
@@ -285,7 +285,7 @@ export default function CrownsBridgesRefactored() {
                                 Material <br />
                                 <span className="text-blue-600">Decision Matrix.</span>
                             </h2>
-                            <p className="text-lg text-slate-500">Choosing the right "Helmet" for your tooth.</p>
+                            <p className="text-lg text-slate-500">Choosing the right &quot;Helmet&quot; for your tooth.</p>
                         </div>
 
                         <div className="ios-glass overflow-hidden rounded-[3rem] border border-white/20 shadow-2xl">
@@ -353,7 +353,7 @@ export default function CrownsBridgesRefactored() {
                                     <Stethoscope size={12} /> The Medical Protocol
                                 </div>
                                 <h2 className="text-4xl font-black text-slate-900 dark:text-white tracking-tighter leading-none">
-                                    We Don't Just "Fit" Crowns. <br />
+                                    We Don&apos;t Just &quot;Fit&quot; Crowns. <br />
                                     <span className="text-blue-600">We Integrate Them.</span>
                                 </h2>
                                 <div className="grid gap-4">

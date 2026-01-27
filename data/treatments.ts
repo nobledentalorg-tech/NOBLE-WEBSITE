@@ -2760,28 +2760,7 @@ export const treatmentsData: Record<string, TreatmentData> = {
     faqs: [{ "q": "Is the procedure painful?", "a": "We use advanced numbing techniques." }, { "q": "How many visits?", "a": "Usually 1-2 visits." }],
     keywords: ["maxillofacial prosthetics", "prosthodontics", "oral rehabilitation", "Hyderabad"]
   },
-  "emergency-trauma": {
-    id: "emergency-trauma",
-    title: "Emergency Dental Trauma Care",
-    subtitle: "emergency dental trauma treatment",
-    category: "General Dentistry",
-    heroImage: "/assets/images/treatments/emergency-hyderabad.webp",
-    description: "Immediate treatment for knocked-out or broken teeth. Backed by IDA.",
-    longDescription: "Immediate treatment for knocked-out or broken teeth. Backed by IDA. 24├ù7 trauma support. Saves teeth when treated quickly",
-    stats: [
-      { label: "Success Rate", value: "98%", icon: "Activity" },
-      { label: "Duration", value: "Varies", icon: "Clock" },
-      { label: "Comfort", value: "High", icon: "Heart" }
-    ],
-    process: [
-      { title: "Consultation", desc: "Digital diagnosis." },
-      { title: "Treatment", desc: "Painless execution." },
-      { title: "Follow-up", desc: "Experience review." }
-    ],
-    benefits: ["24├ù7 trauma support", "Saves teeth when treated quickly"],
-    faqs: [{ "q": "Is the procedure painful?", "a": "We use advanced numbing techniques." }, { "q": "How many visits?", "a": "Usually 1-2 visits." }],
-    keywords: ["emergency dental trauma", "knocked out tooth", "Hyderabad"]
-  },
+
   "pre-ortho": {
     id: "pre-ortho",
     title: "Pre-Orthodontic Guidance",

@@ -26,7 +26,7 @@ const HERO_IMAGE = "/assets/images/treatments/whitening-hyderabad.webp"; // Ensu
 const SYMPTOMS = [
     {
         id: 'coffee',
-        title: "The 'Coffee' Smile",
+        title: "The &apos;Coffee&apos; Smile",
         desc: "Dark brown stains stuck in the micropores of your enamel.",
         icon: <div className="text-3xl">☕</div>,
         color: "bg-amber-100 border-amber-200 text-amber-800"
@@ -290,7 +290,7 @@ export default function TeethWhiteningRefactored() {
                         </h2>
                         <div className="prose prose-lg mx-auto text-slate-600 leading-relaxed">
                             <p>
-                                We’ve all seen the commercials. “Whitens teeth in 2 weeks!” So you scrub. And you scrub.
+                                We’ve all seen the commercials. &quot;Whitens teeth in 2 weeks!&quot; So you scrub. And you scrub.
                                 But your teeth stay yellow. Why?
                             </p>
                             <p>

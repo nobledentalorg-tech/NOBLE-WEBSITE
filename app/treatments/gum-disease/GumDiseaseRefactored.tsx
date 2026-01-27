@@ -226,7 +226,7 @@ export default function GumDiseaseRefactored() {
                                         <Stethoscope size={48} />
                                     </div>
                                     <h3 className="text-3xl font-black text-slate-900 dark:text-white mb-6 tracking-tight uppercase">Medical Refusal</h3>
-                                    <p className="text-lg text-slate-500 italic">"I refuse to call a simple polish a 'cleaning'. If your gum thickness is < 3mm, we perform a medical-grade prophylaxis, not just a cosmetic one."</p>
+                                    <p className="text-lg text-slate-500 italic">&quot;I refuse to call a simple polish a &apos;cleaning&apos;. If your gum thickness is &lt; 3mm, we perform a medical-grade prophylaxis, not just a cosmetic one.&quot;</p>
                                     <div className="mt-8 text-[10px] font-black text-red-600 tracking-widest uppercase">— Dr. Dhivakaran</div>
                                 </div>
                             </div>
@@ -422,7 +422,7 @@ export default function GumDiseaseRefactored() {
                                 {
                                     q: "Who is the Best Gum Specialist in Nallagandla?",
                                     a: "**Dr. Dhivakaran** is recognized as the **Best Gum Specialist in Nallagandla** for implementing Swiss GBT and **Laser Gum Surgery Hyderabad** protocols to save teeth that others might extract."
-                                }
+                                },
                                 {
                                     q: "Why do you use heated water?",
                                     a: "Patients with gum disease often have exposed roots that are hypersensitive. The Guided Biofilm Therapy (GBT) system uses water at a precise 37°C for a painless, comfortable experience."

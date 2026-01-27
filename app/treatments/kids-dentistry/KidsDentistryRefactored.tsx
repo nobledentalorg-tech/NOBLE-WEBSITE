@@ -97,19 +97,19 @@ export default function KidsDentistryRefactored() {
                     <RevealOnScroll>
                         <div className="space-y-8">
                             <div className="inline-flex items-center gap-2 px-3 py-1 bg-blue-50 dark:bg-blue-900/30 rounded-full text-[10px] font-black uppercase tracking-widest text-blue-600 dark:text-blue-400 border border-blue-100 dark:border-blue-500/20">
-                                <Baby size={12} /> The "No-Tears" Protocol
+                                <Baby size={12} /> The &quot;No-Tears&quot; Protocol
                             </div>
                             <h1 className="text-6xl md:text-8xl font-black text-slate-900 dark:text-white leading-[0.9] tracking-tighter uppercase italic">
                                 Kids <br />
                                 <span className="gradient-text">Dentistry.</span>
                             </h1>
                             <p className="text-xl text-slate-600 dark:text-slate-400 font-medium leading-relaxed max-w-lg">
-                                Welcome to the best **Kids Dentistry Nallagandla** offers at **Noble Dental Care Hyderabad**. Located **Near Aparna Sarovar / Citizens Hospital**, **Dr. Dhivakaran** specializes as a **Painless Kids Dentist** for your child's developing smile.
+                                Welcome to the best **Kids Dentistry Nallagandla** offers at **Noble Dental Care Hyderabad**. Located **Near Aparna Sarovar / Citizens Hospital**, **Dr. Dhivakaran** specializes as a **Painless Kids Dentist** for your child&apos;s developing smile.
                             </p>
 
                             <div className="flex flex-wrap gap-4">
                                 <button className="px-8 py-4 bg-blue-600 text-white rounded-full font-bold shadow-2xl transition-all flex items-center gap-2 hover:scale-105 active:scale-95">
-                                    <Calendar size={18} /> Book a "Happy Visit"
+                                    <Calendar size={18} /> Book a &quot;Happy Visit&quot;
                                 </button>
                                 <div className="flex items-center gap-4 px-6 border-l border-slate-200 dark:border-white/10">
                                     <div className="text-[10px] uppercase font-black text-slate-400 tracking-widest leading-none">
@@ -183,14 +183,14 @@ export default function KidsDentistryRefactored() {
                         <div className="grid lg:grid-cols-2 gap-20 items-center">
                             <div className="space-y-12">
                                 <div className="inline-flex items-center gap-2 px-3 py-1 bg-blue-100 dark:bg-blue-800/30 rounded-full text-[10px] font-black uppercase tracking-widest text-blue-600 dark:text-blue-400">
-                                    <Info size={12} /> The "Noble Truth"
+                                    <Info size={12} /> The &quot;Noble Truth&quot;
                                 </div>
                                 <h2 className="text-5xl font-black text-slate-900 dark:text-white tracking-tighter leading-none uppercase italic">
                                     Pediatric <br />
                                     <span className="text-blue-600 italic">Dentist Nallagandla.</span>
                                 </h2>
                                 <p className="text-xl text-slate-600 dark:text-slate-400 leading-relaxed font-medium">
-                                    At our **Dental Clinic in Nallagandla**, we believe baby teeth are the "Space Savers". Whether it's a **Milk Teeth Filling** or preventive care, **Dr. Dhivakaran** ensures your child is handled with the utmost precision.
+                                    At our **Dental Clinic in Nallagandla**, we believe baby teeth are the &quot;Space Savers&quot;. Whether it&apos;s a **Milk Teeth Filling** or preventive care, **Dr. Dhivakaran** ensures your child is handled with the utmost precision.
                                 </p>
 
                                 <div className="space-y-6">
@@ -218,7 +218,7 @@ export default function KidsDentistryRefactored() {
                                         <CheckCircle2 size={48} />
                                     </div>
                                     <h3 className="text-3xl font-black text-slate-900 dark:text-white mb-6 tracking-tight">Our Philosophy</h3>
-                                    <p className="text-lg text-slate-500 italic">"We save the baby tooth to save the adult smile."</p>
+                                    <p className="text-lg text-slate-500 italic">&quot;We save the baby tooth to save the adult smile.&quot;</p>
                                 </div>
                             </div>
                         </div>
@@ -235,7 +235,7 @@ export default function KidsDentistryRefactored() {
                                 Painless <br />
                                 <span className="gradient-text">Kids Dentist.</span>
                             </h2>
-                            <p className="text-xl text-slate-500">As the top-rated **Pediatric Dentist Nallagandla** parents trust, we use the "Happy Air" protocol for zero-anxiety visits.</p>
+                            <p className="text-xl text-slate-500">As the top-rated **Pediatric Dentist Nallagandla** parents trust, we use the &quot;Happy Air&quot; protocol for zero-anxiety visits.</p>
                         </div>
 
                         <div className="grid lg:grid-cols-2 gap-12 items-center">
@@ -253,13 +253,13 @@ export default function KidsDentistryRefactored() {
                                 </div>
                                 <div className="absolute bottom-6 left-6 right-6 p-4 ios-glass rounded-2xl">
                                     <div className="text-[10px] font-black uppercase tracking-widest text-slate-400 mb-1">LIVE DEMO</div>
-                                    <div className="text-sm font-bold text-slate-900 dark:text-white">Watch how "Happy Air" relaxes your child in 2 minutes.</div>
+                                    <div className="text-sm font-bold text-slate-900 dark:text-white">Watch how &quot;Happy Air&quot; relaxes your child in 2 minutes.</div>
                                 </div>
                             </div>
 
                             <div className="space-y-8">
                                 <div className="p-8 ios-glass rounded-[2.5rem] bg-teal-50/50 dark:bg-teal-900/10">
-                                    <h3 className="text-2xl font-black text-slate-900 dark:text-white mb-4 uppercase tracking-tight">What is "Happy Air"?</h3>
+                                    <h3 className="text-2xl font-black text-slate-900 dark:text-white mb-4 uppercase tracking-tight">What is &quot;Happy Air&quot;?</h3>
                                     <p className="text-slate-600 dark:text-slate-400 leading-relaxed font-semibold">
                                         It is Nitrous Oxide (Laughing Gas). It is a sweet-smelling air that makes your child feel floaty, warm, and happy within 2 minutes.
                                     </p>

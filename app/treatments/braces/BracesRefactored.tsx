@@ -516,7 +516,7 @@ export default function BracesRefactored() {
                                 {foodCategory === 'safe' ? "Bracket Safe" : "High Risk"}
                             </h3>
                             <p className="text-slate-500 max-w-xs mx-auto text-sm">
-                                {foodCategory === 'safe' ? "These foods are soft and won't pop your brackets off." : "Shear force from these foods will snap the adhesive instantly."}
+                                {foodCategory === 'safe' ? "These foods are soft and won&apos;t pop your brackets off." : "Shear force from these foods will snap the adhesive instantly."}
                             </p>
                         </div>
                     </div>

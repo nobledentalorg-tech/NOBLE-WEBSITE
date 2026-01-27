@@ -103,7 +103,7 @@ export default function ToothFillingsRefactored() {
                                 <span className="gradient-text">Bonding.</span>
                             </h1>
                             <p className="text-xl text-slate-600 dark:text-slate-400 font-medium leading-relaxed max-w-lg">
-                                Not just "filling a hole." We re-engineer your tooth with nano-hybrid ceramic that mimics natural enamel flex and transparency.
+                                Not just &quot;filling a hole.&quot; We re-engineer your tooth with nano-hybrid ceramic that mimics natural enamel flex and transparency.
                             </p>
 
                             <div className="flex flex-wrap gap-4">
@@ -165,8 +165,8 @@ export default function ToothFillingsRefactored() {
                             key={tab.id}
                             href={`#${tab.id}`}
                             className={`text-[10px] font-black uppercase tracking-[0.2em] whitespace-nowrap transition-all duration-300 px-4 py-2 rounded-full ${activeTab === tab.id
-                                    ? 'bg-blue-600 text-white'
-                                    : 'text-slate-400 hover:text-slate-900 dark:hover:text-white'
+                                ? 'bg-blue-600 text-white'
+                                : 'text-slate-400 hover:text-slate-900 dark:hover:text-white'
                                 }`}
                         >
                             {tab.label}
@@ -185,16 +185,16 @@ export default function ToothFillingsRefactored() {
                                     <AlertCircle size={12} /> The Anti-Gimmick
                                 </div>
                                 <h2 className="text-5xl font-black text-slate-900 dark:text-white tracking-tighter leading-none">
-                                    "Why do cheap <br />
-                                    <span className="text-blue-600 italic">Fillings fail?</span>"
+                                    &quot;Why do cheap <br />
+                                    <span className="text-blue-600 italic">Fillings fail?</span>&quot;
                                 </h2>
                                 <p className="text-xl text-slate-600 dark:text-slate-400 leading-relaxed font-medium">
-                                    Saliva. If even a molecule of saliva touches the cavity during a filling, the bond will fail in months. Most clinics skip the "Rubber Dam" to save 5 minutes. We don't.
+                                    Saliva. If even a molecule of saliva touches the cavity during a filling, the bond will fail in months. Most clinics skip the &quot;Rubber Dam&quot; to save 5 minutes. We don&apos;t.
                                 </p>
 
                                 <div className="space-y-6">
                                     {[
-                                        { title: "The Gimmick: 5-Minute Fillings", desc: "Skipping isolation leads to 'Secondary Decay'—where your tooth rots UNDER the expensive filling.", icon: XCircle },
+                                        { title: "The Gimmick: 5-Minute Fillings", desc: "Skipping isolation leads to &apos;Secondary Decay&apos;—where your tooth rots UNDER the expensive filling.", icon: XCircle },
                                         { title: "The Gimmick: Silver Amalgam", desc: "Mercury-based silver fillings expand over time, acting like a wedge that eventually cracks your natural tooth in half.", icon: AlertCircle },
                                         { title: "The Noble Way: Biomimetic", desc: "We use nano-composites that physically bond to the tooth, strengthening it rather than just sitting in it.", icon: CheckCircle2 }
                                     ].map((item, i) => (
@@ -216,8 +216,8 @@ export default function ToothFillingsRefactored() {
                                     <div className="w-24 h-24 bg-blue-600 rounded-full flex items-center justify-center text-white mb-8 shadow-2xl shadow-blue-500/50">
                                         <Shield size={48} />
                                     </div>
-                                    <h3 className="text-3xl font-black text-slate-900 dark:text-white mb-6 tracking-tight">The "No-Compromise" Guarantee</h3>
-                                    <p className="text-lg text-slate-500 italic">"I will never perform a composite restoration without absolute moisture control. Your tooth's life depends on that 7th-gen bond."</p>
+                                    <h3 className="text-3xl font-black text-slate-900 dark:text-white mb-6 tracking-tight">The &quot;No-Compromise&quot; Guarantee</h3>
+                                    <p className="text-lg text-slate-500 italic">&quot;I will never perform a composite restoration without absolute moisture control. Your tooth&apos;s life depends on that 7th-gen bond.&quot;</p>
                                     <div className="mt-8 text-[10px] font-black text-blue-600 tracking-widest uppercase">— Dr. Dhivakaran</div>
                                 </div>
                             </div>
@@ -235,14 +235,14 @@ export default function ToothFillingsRefactored() {
                                 Nano-Hybrid <br />
                                 <span className="gradient-text">Ceramic Science.</span>
                             </h2>
-                            <p className="text-xl text-slate-500">We don't use plastic. We use liquid ceramic infused with nano-glass.</p>
+                            <p className="text-xl text-slate-500">We don&apos;t use plastic. We use liquid ceramic infused with nano-glass.</p>
                         </div>
 
                         <div className="grid lg:grid-cols-3 gap-8">
                             {[
                                 { title: "Chameleon Effect", desc: "Our composite has glass particles that pick up the color of surrounding tooth structure, making it invisible.", icon: Sparkles },
                                 { title: "Flexural Strength", desc: "Unlike brittle silver, biomimetic fillings bend slightly when you chew, preventing tooth fractures.", icon: Activity },
-                                { title: "7th Gen Bonding", desc: "A 'chemical weld' that merges the filling with your natural enamel at a molecular level.", icon: Zap }
+                                { title: "7th Gen Bonding", desc: "A &apos;chemical weld&apos; that merges the filling with your natural enamel at a molecular level.", icon: Zap }
                             ].map((item, i) => (
                                 <div key={i} className="p-8 ios-glass rounded-[2.5rem] border border-slate-100 dark:border-white/5 space-y-6 ios-card-hover group">
                                     <div className="w-16 h-16 rounded-2xl bg-blue-600 text-white flex items-center justify-center shadow-xl shadow-blue-500/20 group-hover:scale-110 transition-transform">
@@ -271,7 +271,7 @@ export default function ToothFillingsRefactored() {
                             <span className="text-blue-500">No Moisture. Zero Failure.</span>
                         </h2>
                         <p className="text-xl text-slate-400 leading-relaxed">
-                            90% of dentists in India skip this. It's a medical-grade sheet that isolate the tooth from your tongue, breath, and saliva.
+                            90% of dentists in India skip this. It&apos;s a medical-grade sheet that isolate the tooth from your tongue, breath, and saliva.
                         </p>
                         <ul className="space-y-6">
                             {[
@@ -312,7 +312,7 @@ export default function ToothFillingsRefactored() {
                     <RevealOnScroll>
                         <div className="text-center mb-20 max-w-2xl mx-auto">
                             <h2 className="text-5xl font-black text-slate-900 dark:text-white tracking-tighter mb-4">The Precision <br /> <span className="text-blue-600">5-Step Build.</span></h2>
-                            <p className="text-lg text-slate-500 italic">We don't "plug" holes. We anatomically sculpt them.</p>
+                            <p className="text-lg text-slate-500 italic">We don&apos;t &quot;plug&quot; holes. We anatomically sculpt them.</p>
                         </div>
 
                         <div className="grid gap-6">

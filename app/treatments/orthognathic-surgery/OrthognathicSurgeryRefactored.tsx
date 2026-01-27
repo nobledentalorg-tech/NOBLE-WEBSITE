@@ -10,7 +10,7 @@ import {
     Stethoscope, Award, Calendar, Headphones,
     AlertCircle, Pill, Syringe, Droplets, Thermometer,
     Clock, FileText, Calculator, HelpCircle,
-    Scan, Camera, Monitor, Scissors
+    Scan, Camera, Monitor, Scissors, Waves, Bone
 } from 'lucide-react';
 import { RevealOnScroll } from '@/components/RevealOnScroll';
 
@@ -170,8 +170,8 @@ export default function OrthognathicSurgeryRefactored() {
                             key={tab.id}
                             href={`#${tab.id}`}
                             className={`text-[10px] font-black uppercase tracking-[0.2em] whitespace-nowrap transition-all duration-300 px-4 py-2 rounded-full ${activeTab === tab.id
-                                    ? 'bg-blue-600 text-white'
-                                    : 'text-slate-400 hover:text-slate-900 dark:hover:text-white'
+                                ? 'bg-blue-600 text-white'
+                                : 'text-slate-400 hover:text-slate-900 dark:hover:text-white'
                                 }`}
                         >
                             {tab.label}
@@ -190,8 +190,8 @@ export default function OrthognathicSurgeryRefactored() {
                                     <Activity size={12} /> Functional Harmony
                                 </div>
                                 <h2 className="text-5xl font-black text-slate-900 dark:text-white tracking-tighter leading-none">
-                                    "It's not just <br />
-                                    <span className="text-blue-600 italic">Face Correction.</span>"
+                                    &quot;It&apos;s not just <br />
+                                    <span className="text-blue-600 italic">Face Correction.</span>&quot;
                                 </h2>
                                 <p className="text-xl text-slate-600 dark:text-slate-400 leading-relaxed font-medium">
                                     While the aesthetic change is dramatic, the primary goal is functional. We fix the architecture so your teeth meet normally, your airway opens up, and your jaw joints (TMJ) relax.
@@ -220,7 +220,7 @@ export default function OrthognathicSurgeryRefactored() {
                                         <Ruler size={48} />
                                     </div>
                                     <h3 className="text-3xl font-black text-slate-900 dark:text-white mb-6 uppercase tracking-tight italic">The Golden Ratio</h3>
-                                    <p className="text-lg text-slate-500 italic">"We don't 'move' bones arbitrarily. We calculate the exact millimetric shift required to align your profile with the phi ratio: 1.618."</p>
+                                    <p className="text-lg text-slate-500 italic">&quot;We don&apos;t &apos;move&apos; bones arbitrarily. We calculate the exact millimetric shift required to align your profile with the phi ratio: 1.618.&quot;</p>
                                     <div className="mt-8 text-[10px] font-black text-blue-600 tracking-widest uppercase">— Dr. Dhivakaran</div>
                                 </div>
                             </div>
@@ -336,7 +336,7 @@ export default function OrthognathicSurgeryRefactored() {
                             {[
                                 {
                                     q: "Is surgery painful?",
-                                    a: "The surgery is performed under General Anesthesia; you feel nothing. Post-operatively, most patients report a feeling of 'Tightness' or 'Numbness' rather than sharp pain. We usage long-acting local anesthetics and precision medication to keep you comfortable."
+                                    a: "The surgery is performed under General Anesthesia; you feel nothing. Post-operatively, most patients report a feeling of &apos;Tightness&apos; or &apos;Numbness&apos; rather than sharp pain. We usage long-acting local anesthetics and precision medication to keep you comfortable."
                                 },
                                 {
                                     q: "Will I have scars on my face?",
@@ -348,7 +348,7 @@ export default function OrthognathicSurgeryRefactored() {
                                 },
                                 {
                                     q: "Do I still need braces?",
-                                    a: "Yes. Surgery fixes the bones; braces fix the teeth. Usually, there is a 'Pre-Surgical' phase to align teeth, and a 'Post-Surgical' phase for fine-tuning. We coordinate directly with your Orthodontist."
+                                    a: "Yes. Surgery fixes the bones; braces fix the teeth. Usually, there is a &apos;Pre-Surgical&apos; phase to align teeth, and a &apos;Post-Surgical&apos; phase for fine-tuning. We coordinate directly with your Orthodontist."
                                 }
                             ].map((faq, i) => (
                                 <div key={i} className="p-8 ios-glass rounded-[2.5rem] border border-slate-100 dark:border-white/5 ios-card-hover group">
