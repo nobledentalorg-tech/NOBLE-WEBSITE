@@ -109,11 +109,11 @@ export default function RootCanalRefactored() {
                <div className="space-y-8 order-2 lg:order-1">
                   <RevealOnScroll>
                      <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-slate-200/50 dark:bg-white/10 backdrop-blur-md text-purple-600 dark:text-purple-400 font-bold text-[11px] uppercase tracking-[0.2em]">
-                        <Activity size={12} /> Root Canal Therapy
+                        <Activity size={12} /> Painless Root Canal Protocol
                      </div>
                      <h1 className="text-6xl md:text-8xl font-black text-slate-900 dark:text-white leading-[0.9] -tracking-[0.04em]">
-                        Save your <br />
-                        <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-600 to-blue-500">Natural Tooth.</span>
+                        Precision <br />
+                        <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-600 to-blue-500 uppercase italic">Root Canal Treatment <br /> in Nallagandla.</span>
                      </h1>
 
                      {/* Medical Review Pill */}
@@ -129,8 +129,8 @@ export default function RootCanalRefactored() {
                         </Link>
                      </div>
 
-                     <p className="text-xl md:text-2xl text-slate-500 dark:text-slate-400 font-medium leading-normal max-w-lg -tracking-[0.02em]">
-                        Advanced Digital Endodontics with <span className="text-purple-600 dark:text-purple-400 font-semibold">Swiss Rotary Technology</span>. Painless. Precise. Preserved.
+                     <p className="text-xl md:text-2xl text-slate-600 dark:text-slate-400 font-medium leading-normal max-w-lg -tracking-[0.02em]">
+                        As the **Best Dentist in Nallagandla**, **Dr. Dhivakaran** leads our specialized team at **Noble Dental Care Hyderabad**, located **Near Aparna Sarovar / Citizens Hospital**. We specialize in **Microscopic Root Canal Nallagandla** using advanced surgical **Microscopes** and **Laser Root Canal Treatment** protocols for 100% sterilization.
                      </p>
 
                      <div className="flex flex-wrap gap-4 pt-4">
@@ -225,15 +225,15 @@ export default function RootCanalRefactored() {
                         </h2>
                         <div className="space-y-4 max-w-2xl">
                            <p className="text-white/90 text-lg leading-relaxed italic">
-                              &quot;The #1 fear patients have isn&apos;t the infection—it&apos;s the treatment itself. At Noble Dental, we use Swiss Rotary technology and computer-controlled anesthesia to make Root Canal therapy completely &apos;Ouchless&apos;. In 2024, an RCT should be as routine as a filling.&quot;
+                              &quot;The #1 fear patients have isn&apos;t the infection—it&apos;s the treatment itself. As a leading **Dental Clinic in Nallagandla** located **Near Aparna Sarovar / Citizens Hospital**, we have redefined the patient experience. At Noble Dental, we ensure a **Painless Root Canal** experience by utilizing computer-controlled anesthesia and Swiss Rotary files. Our expertise in **Microscopic Root Canal Nallagandla** and **Laser Root Canal Treatment** ensures that we save teeth that others might extract. In 2024, **Root Canal Treatment in Nallagandla** should be as routine and comfortable as a simple filling.&quot;
                            </p>
                            <div className="flex items-center gap-3 pt-4">
                               <div className="w-12 h-12 rounded-full border-2 border-white/30 overflow-hidden">
-                                 <Image src="https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?auto=format&fit=crop&q=80&w=100" alt="Dr. Dhivakaran" width={48} height={48} />
+                                 <Image src="/images/dhivakaran.webp" alt="Dr. Dhivakaran" width={48} height={48} />
                               </div>
                               <div>
                                  <p className="text-white font-bold text-sm">Dr. Dhivakaran, CMD</p>
-                                 <p className="text-white/60 text-xs">Chief Clinical Director</p>
+                                 <p className="text-white/60 text-[10px] uppercase tracking-widest font-black">Best Dentist in Nallagandla</p>
                               </div>
                            </div>
                         </div>
@@ -497,8 +497,8 @@ export default function RootCanalRefactored() {
          <section id="protocol" className="py-24 bg-[#F2F2F7] dark:bg-[#000000]">
             <div className="max-w-[1000px] mx-auto px-6">
                <div className="text-center mb-20">
-                  <p className="text-purple-600 dark:text-purple-400 font-bold uppercase tracking-widest text-xs mb-2">The Workflow</p>
-                  <h2 className="text-4xl md:text-5xl font-black text-slate-900 dark:text-white tracking-tight">45 Minutes. <br /> Zero Pain.</h2>
+                  <p className="text-purple-600 dark:text-purple-400 font-bold uppercase tracking-widest text-xs mb-2">The Clinical Workflow</p>
+                  <h2 className="text-4xl md:text-5xl font-black text-slate-900 dark:text-white tracking-tight italic uppercase">Single Sitting <br /> Root Canal.</h2>
                </div>
 
                <div className="space-y-12 relative">
@@ -557,16 +557,16 @@ export default function RootCanalRefactored() {
                                     <p className="font-bold text-slate-900 dark:text-white">Single-Visit RCT</p>
                                     <p className="text-[10px] font-bold text-emerald-500 uppercase tracking-wide">Vital Pulp</p>
                                  </td>
-                                 <td className="py-6 text-sm text-slate-500 dark:text-slate-400">Irreversible pulpitis in vital teeth without peri-apical infection.</td>
-                                 <td className="py-6 text-sm font-medium text-slate-900 dark:text-white">45-min precision using dedicated Endo-Motor.</td>
+                                 <td className="py-6 text-sm text-slate-500 dark:text-slate-400">Irreversible pulpitis in vital teeth without peri-apical infection. Our **Endodontist in Nallagandla** performs this in 45 mins.</td>
+                                 <td className="py-6 text-sm font-medium text-slate-900 dark:text-white">45-min precision using dedicated Endo-Motor and **Laser Root Canal Treatment** disinfection.</td>
                               </tr>
                               <tr>
                                  <td className="py-6">
                                     <p className="font-bold text-slate-900 dark:text-white">Multi-Visit RCT</p>
                                     <p className="text-[10px] font-bold text-orange-500 uppercase tracking-wide">Pus/Abscess</p>
                                  </td>
-                                 <td className="py-6 text-sm text-slate-500 dark:text-slate-400">Severely infected teeth, pus discharge, or failing old RCTs.</td>
-                                 <td className="py-6 text-sm font-medium text-slate-900 dark:text-white">Inter-appointment Calcium Hydroxide medication.</td>
+                                 <td className="py-6 text-sm text-slate-500 dark:text-slate-400">Severely infected teeth, pus discharge, or failing old RCTs. Best managed by a specialist **Endodontist in Nallagandla**.</td>
+                                 <td className="py-6 text-sm font-medium text-slate-900 dark:text-white">Inter-appointment Calcium Hydroxide medication with microscopic verification.</td>
                               </tr>
                            </tbody>
                         </table>
@@ -580,9 +580,12 @@ export default function RootCanalRefactored() {
          <section id="pricing" className="py-24 bg-[#F2F2F7] dark:bg-[#000000] overflow-hidden">
             <div className="max-w-[1200px] mx-auto px-6 grid md:grid-cols-2 gap-16 items-start">
                <div>
-                  <h2 className="text-5xl font-black text-slate-900 dark:text-white tracking-tight mb-6">Simple <br /> Pricing.</h2>
-                  <p className="text-lg text-slate-500 dark:text-slate-400 mb-8 leading-relaxed">
-                     No hidden costs. Just honest, Nallagandla market-standard rates for premium digital care.
+                  <div className="inline-flex items-center gap-2 px-3 py-1 bg-purple-100 dark:bg-purple-900/30 text-purple-600 rounded-full text-[10px] font-black uppercase tracking-widest mb-6 border border-purple-200">
+                     Root Canal Cost in Hyderabad
+                  </div>
+                  <h2 className="text-5xl font-black text-slate-900 dark:text-white tracking-tight mb-6 italic uppercase">Transparent <br /> Investment.</h2>
+                  <p className="text-lg text-slate-600 dark:text-slate-400 mb-8 leading-relaxed">
+                     Understanding the **Dental Cap / Crown Cost** and **Root Canal Treatment in Nallagandla** is essential for informed care. At Noble Dental, we provide honest, market-standard rates for premium **Micro-Endodontics**.
                   </p>
 
                   {/* Glassmorphism Feature List */}
@@ -606,9 +609,9 @@ export default function RootCanalRefactored() {
                <div className="relative h-[600px] flex items-center justify-center wallet-stack perspective-[1000px]">
                   {[
                      { name: "Consultation", price: "₹300", color: "bg-blue-500", top: "top-0", z: "z-10" },
-                     { name: "Root Canal (Anterior)", price: "₹4,500", color: "bg-purple-600", top: "top-16", z: "z-20" },
-                     { name: "Root Canal (Molar)", price: "₹6,000", color: "bg-slate-900", top: "top-32", z: "z-30" },
-                     { name: "Zirconia Crown", price: "₹8,000", sub: "15yr Warranty", color: "bg-emerald-600", top: "top-48", z: "z-40" }
+                     { name: "Single Sitting RCT", price: "₹4,500", sub: "Pain Relief Focus", color: "bg-purple-600", top: "top-16", z: "z-20" },
+                     { name: "Molar Root Canal", price: "₹6,000", sub: "Root Canal Cost in Hyderabad", color: "bg-slate-900", top: "top-32", z: "z-30" },
+                     { name: "Zirconia Crown", price: "₹8,000", sub: "Dental Cap / Crown Cost", color: "bg-emerald-600", top: "top-48", z: "z-40" }
                   ].map((card, i) => (
                      <div
                         key={i}
@@ -643,10 +646,11 @@ export default function RootCanalRefactored() {
 
                <div className="bg-[#F2F2F7] dark:bg-black rounded-2xl overflow-hidden divide-y divide-slate-300 dark:divide-slate-800 border border-slate-200 dark:border-slate-800">
                   {[
-                     { q: "Is it safe for Heart Patients?", a: "Yes. We coordinate with your cardiologist to adjust blood thinners if needed. Antibiotic prophylaxis is provided." },
-                     { q: "Can I drive back home?", a: "Absolutely. Local anesthesia only numbs the tooth area. You are fully alert." },
-                     { q: "What if I delay treatment?", a: "Infection spreads to the bone (Cyst) and eventually to neck spaces (Ludwig's Angina), becoming a life-threatening emergency." },
-                     { q: "Is it painful?", a: "No. With pre-emptive analgesia and computer-controlled injections, you will likely sleep through the procedure." }
+                     { q: "Is Root Canal Treatment in Nallagandla painful?", a: "No. At Noble Dental Care, we specialize in **Painless Root Canal** therapy. Using computer-controlled injections and advanced numbing agents, most patients feel nothing more than a slight pressure during the procedure." },
+                     { q: "What is a Single Sitting Root Canal?", a: "A **Single Sitting Root Canal** is a high-precision procedure where the entire endodontic therapy is completed in one visit of about 45-60 minutes. This is ideal for busy IT professionals in Nallagandla." },
+                     { q: "Do you have a specialist Endodontist in Nallagandla?", a: "Yes. Our team includes an expert **Endodontist in Nallagandla** who handles complex retreats and **Microscopic Root Canal Nallagandla** cases to ensure the best possible success rates." },
+                     { q: "What determines the Root Canal Cost in Hyderabad?", a: "The cost depends on the number of roots (Anterior vs Molar) and whether it's a first-time treatment or a retreatment. We provide transparent estimates for both the procedure and the **Dental Cap / Crown Cost**." },
+                     { q: "Why choose Dr. Dhivakaran for my treatment?", a: "As the **Best Dentist in Nallagandla**, Dr. Dhivakaran uses **Microscopic Root Canal Nallagandla** and Swiss technology to ensure a 98% success rate in saving natural teeth." }
                   ].map((item, i) => (
                      <details key={i} className="group bg-white dark:bg-[#1C1C1E] open:bg-slate-50 dark:open:bg-[#2C2C2E] transition-colors cursor-pointer">
                         <summary className="flex items-center justify-between p-5 text-slate-900 dark:text-white font-semibold select-none list-none">
@@ -668,18 +672,19 @@ export default function RootCanalRefactored() {
                <div className="w-20 h-20 bg-purple-100 dark:bg-purple-900/30 rounded-full flex items-center justify-center mx-auto mb-6 text-purple-600 dark:text-purple-400">
                   <Siren size={32} />
                </div>
-               <h2 className="text-3xl font-bold text-slate-900 dark:text-white mb-4 tracking-tight">In Pain Right Now?</h2>
-               <p className="text-slate-500 dark:text-slate-400 mb-8 max-w-xl mx-auto">
-                  We keep &quot;Rapid Relief&quot; slots open every morning. Don&apos;t wait until it swells.
+               <h2 className="text-3xl font-bold text-slate-900 dark:text-white mb-4 tracking-tight uppercase italic">Emergency Pain Relief.</h2>
+               <p className="text-slate-600 dark:text-slate-400 mb-8 max-w-xl mx-auto leading-relaxed font-medium">
+                  If you are searching for a **Dental Clinic in Nallagandla** located **Near Aparna Sarovar / Citizens Hospital** for an emergency **Root Canal Treatment in Nallagandla**, we can help. **Dr. Dhivakaran** and his team reserve slots for rapid pain relief daily.
                </p>
                <div className="flex gap-4 justify-center">
                   <button className="ios-btn px-8 py-3 bg-red-500 text-white rounded-full font-bold text-sm shadow-lg shadow-red-500/30">
-                     Book Emergency Slot
+                     Emergency Appointment
                   </button>
                   <button className="ios-btn px-8 py-3 bg-white dark:bg-[#1C1C1E] text-slate-900 dark:text-white border border-slate-200 dark:border-white/10 rounded-full font-bold text-sm">
-                     Call Reception
+                     Call Noble Dental Care
                   </button>
                </div>
+               <p className="mt-8 text-[10px] text-slate-400 uppercase tracking-widest font-bold">Noble Dental Care Hyderabad | Your Neighborhood Expert</p>
             </div>
          </div>
 

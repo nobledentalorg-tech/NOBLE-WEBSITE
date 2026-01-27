@@ -1,30 +1,26 @@
-import React from 'react';
-import Image from 'next/image';
+import type { Metadata } from 'next';
+import { treatmentsData } from '@/data/treatments';
 import { notFound } from 'next/navigation';
-import { Metadata } from 'next';
+import Image from 'next/image';
 import Link from 'next/link';
 import {
-  CheckCircle, Clock, Shield, Star,
-  ChevronRight, ArrowLeft, Calendar,
-  Activity, Ruler, Droplets, Scan, Smile, ShieldCheck, HeartPulse, Zap, Award, Heart, Sparkles
+  ArrowLeft, CheckCircle2, Activity, Clock,
+  ShieldCheck, Sparkles, ChevronRight,
+  Star, Heart, Shield, Calendar, Zap,
+  Stethoscope, Award, Microscope, Ruler,
+  Monitor, Scissors, Waves
 } from 'lucide-react';
+import { RevealOnScroll } from '@/components/RevealOnScroll';
 
-// Import your Golden Data
-import { treatmentsData } from '@/data/treatments';
-
-// Icon mapping helper
-const IconMap: Record<string, any> = {
-  Clock, Ruler, Activity, Shield, Star,
-  Droplets, Scan, Smile, ShieldCheck, HeartPulse,
-  Zap, Award, Heart, Sparkles
+// --- ICON MAPPER ---
+const IconMap: any = {
+  Activity, Star, Clock, Heart, Shield,
+  ShieldCheck, Sparkles, CheckCircle2, Zap
 };
 
-// 1. GENERATE STATIC ROUTES (SSG)
-// This tells Next.js to build these 30+ pages at build time.
-// Result: Instant loading speed + Perfect SEO.
+// 1. DYNAMIC STATIC PATHS
 export async function generateStaticParams() {
-  // Exclude static pages that now have their own dedicated folders
-  const staticPages = ['kids-dentistry', 'teeth-whitening', 'root-canal', 'dental-implants'];
+  const staticPages = ['kids-dentistry', 'teeth-whitening', 'root-canal', 'dental-implants', 'invisalign', 'tooth-extraction', 'braces', 'veneers', 'crowns-bridges', 'tooth-fillings', 'gum-disease', 'orthognathic-surgery', 'emergency-trauma'];
 
   return Object.keys(treatmentsData)
     .filter(slug => !staticPages.includes(slug))
@@ -34,7 +30,6 @@ export async function generateStaticParams() {
 }
 
 // 2. DYNAMIC SEO METADATA
-// Google sees a unique title/description for every single page.
 export async function generateMetadata({ params }: { params: { slug: string } }): Promise<Metadata> {
   const treatment = treatmentsData[params.slug];
   if (!treatment) return {};
@@ -55,10 +50,8 @@ export async function generateMetadata({ params }: { params: { slug: string } })
 export default function TreatmentPage({ params }: { params: { slug: string } }) {
   const t = treatmentsData[params.slug];
 
-  // 404 Safety: If slug doesn't exist, show 404 page
   if (!t) return notFound();
 
-  // JSON-LD Schema (The "MedicalWebPage" data for Google)
   const jsonLd = {
     '@context': 'https://schema.org',
     '@type': 'MedicalWebPage',
@@ -82,262 +75,221 @@ export default function TreatmentPage({ params }: { params: { slug: string } }) 
   };
 
   return (
-    <div className="min-h-screen bg-slate-50 dark:bg-black text-slate-900 dark:text-slate-200 font-sans">
+    <div className="min-h-screen bg-white dark:bg-[#020617] text-slate-900 dark:text-slate-100 font-sans selection:bg-blue-500/30">
+      <style>{`
+        .ios-glass {
+          background: rgba(255, 255, 255, 0.7);
+          backdrop-filter: blur(20px) saturate(180%);
+          border: 1px solid rgba(255, 255, 255, 0.4);
+          box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.07);
+        }
+        .dark .ios-glass {
+          background: rgba(15, 23, 42, 0.7);
+          border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+        .gradient-text {
+          background: linear-gradient(135deg, #2563eb 0%, #7c3aed 100%);
+          -webkit-background-clip: text;
+          -webkit-text-fill-color: transparent;
+        }
+      `}</style>
+
       {/* Inject Schema */}
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
 
-      {/* --- HERO SECTION --- */}
-      <section className="relative h-[60vh] min-h-[500px] flex items-end pb-20 overflow-hidden">
-        <Image
-          src={t.heroImage}
-          alt={t.title}
-          fill
-          className="object-cover brightness-[0.3]"
-          priority
-        />
-        <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent"></div>
+      {/* --- PREMIUM HERO --- */}
+      <section className="relative min-h-[70vh] flex items-center overflow-hidden pt-20">
+        <div className="absolute inset-0 z-0">
+          <Image
+            src={t.heroImage}
+            alt={t.title}
+            fill
+            className="object-cover brightness-[0.3] dark:brightness-[0.2]"
+            priority
+          />
+          <div className="absolute inset-0 bg-gradient-to-b from-transparent via-white/10 to-white dark:to-[#020617]"></div>
+        </div>
 
-        <div className="container mx-auto px-6 relative z-10 text-white">
-          <Link href="/" className="inline-flex items-center gap-2 text-sm text-slate-300 hover:text-white mb-6 transition-colors">
-            <ArrowLeft size={16} /> Back to Home
-          </Link>
-
-          <span className="inline-block px-3 py-1 bg-red-600/20 border border-red-500/50 rounded-full text-red-400 text-xs font-bold uppercase tracking-widest mb-4">
-            {t.category}
-          </span>
-          <h1 className="text-4xl md:text-6xl font-bold mb-4">{t.title}</h1>
-          <p className="text-lg md:text-xl text-slate-300 max-w-2xl">{t.subtitle}</p>
+        <div className="max-w-7xl mx-auto px-6 relative z-10 w-full">
+          <RevealOnScroll>
+            <div className="space-y-6 max-w-4xl">
+              <div className="inline-flex items-center gap-2 px-3 py-1 bg-white/10 backdrop-blur-md rounded-full text-[10px] font-black uppercase tracking-widest text-white border border-white/20">
+                <Activity size={12} className="text-blue-400" /> Clinical Protocol
+              </div>
+              <h1 className="text-5xl md:text-8xl font-black text-white leading-[0.9] tracking-tighter uppercase italic">
+                {t.title}
+              </h1>
+              <p className="text-xl text-slate-300 font-medium leading-relaxed max-w-2xl">
+                {t.description}
+              </p>
+              <div className="flex flex-wrap gap-4 pt-4">
+                <button className="px-8 py-4 bg-blue-600 text-white rounded-full font-bold shadow-2xl transition-all hover:scale-105 active:scale-95">
+                  Book Procedure
+                </button>
+                <div className="flex items-center gap-4 px-6 border-l border-white/20">
+                  <div className="text-[10px] uppercase font-black text-slate-400 tracking-widest leading-none">
+                    System Category <br />
+                    <span className="text-white uppercase">{t.category}</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </RevealOnScroll>
         </div>
       </section>
 
-      {/* --- ENGAGEMENT HOOK (Hyper-Relevance) --- */}
-      {t.storyHook && (
-        <section className="bg-white dark:bg-zinc-900 border-b border-slate-100 dark:border-white/5 relative z-30 -mt-20 mx-6 rounded-3xl overflow-hidden shadow-2xl max-w-5xl lg:mx-auto p-8 md:p-12 mb-16">
-          <div className="grid md:grid-cols-2 gap-12 items-center">
-            <div>
-              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-100 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400 text-xs font-bold uppercase tracking-widest mb-6">
-                <Sparkles size={12} fill="currentColor" /> Dr. Dhivakaran&apos;s Insight
-              </div>
-              <h2 className="text-3xl md:text-4xl font-black text-slate-900 dark:text-white mb-4 leading-tight">
-                {t.storyHook.headline}
-              </h2>
-              <h3 className="text-lg font-bold text-red-500 mb-6">{t.storyHook.subheadline}</h3>
-              <p className="text-slate-600 dark:text-slate-400 leading-relaxed whitespace-pre-line text-lg mb-8">
-                {t.storyHook.body}
-              </p>
-              <p className="text-xs font-bold uppercase tracking-widest text-slate-400">Read the full clinical breakdown below ↓</p>
-            </div>
-            {t.storyHook.videoUrl && (
-              <div className="relative rounded-2xl overflow-hidden shadow-xl aspect-video group cursor-pointer">
-                <div className="absolute inset-0 bg-black/20 group-hover:bg-black/10 transition-colors z-10 flex items-center justify-center">
-                  <div className="w-16 h-16 bg-white/20 backdrop-blur-md rounded-full flex items-center justify-center pl-1 group-hover:scale-110 transition-transform">
-                    <div className="w-0 h-0 border-t-[10px] border-t-transparent border-l-[18px] border-l-white border-b-[10px] border-b-transparent"></div>
+      {/* --- STATS BAR --- */}
+      <section className="relative -mt-16 z-20 pb-20">
+        <div className="max-w-7xl mx-auto px-6">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            {(t.stats || []).map((stat: any, i: number) => {
+              const Icon = IconMap[stat.icon] || Activity;
+              return (
+                <RevealOnScroll key={i} delay={i * 100}>
+                  <div className="p-8 ios-glass rounded-[2rem] flex items-center gap-6 border border-white/40 shadow-xl group hover:scale-[1.02] transition-all">
+                    <div className="w-14 h-14 bg-slate-900 dark:bg-white dark:text-slate-900 text-white rounded-2xl flex items-center justify-center group-hover:bg-blue-600 transition-colors">
+                      <Icon size={24} />
+                    </div>
+                    <div>
+                      <div className="text-[10px] font-black text-slate-400 uppercase tracking-widest leading-none mb-1">{stat.label}</div>
+                      <div className="text-2xl font-black text-slate-900 dark:text-white uppercase tracking-tighter italic">{stat.value}</div>
+                    </div>
+                  </div>
+                </RevealOnScroll>
+              );
+            })}
+          </div>
+        </div>
+      </section>
+
+      {/* --- CONTENT SECTION --- */}
+      <section className="py-24 bg-white dark:bg-[#020617]">
+        <div className="max-w-7xl mx-auto px-6">
+          <div className="grid lg:grid-cols-2 gap-20">
+            <RevealOnScroll>
+              <div className="space-y-12">
+                <div className="space-y-6">
+                  <h2 className="text-4xl font-black text-slate-900 dark:text-white tracking-tighter uppercase italic leading-none">
+                    Clinical <br /> <span className="text-blue-600">Observation.</span>
+                  </h2>
+                  <p className="text-xl text-slate-600 dark:text-slate-400 leading-relaxed font-medium">
+                    {t.longDescription}
+                  </p>
+                </div>
+
+                <div className="space-y-8">
+                  <h3 className="text-xl font-black uppercase tracking-tighter text-slate-900 dark:text-white italic">Protocol Benefits</h3>
+                  <div className="grid gap-4">
+                    {(t.benefits || []).map((benefit: string, i: number) => (
+                      <div key={i} className="flex gap-4 items-center p-4 bg-slate-50 dark:bg-white/5 rounded-2xl border border-slate-100 dark:border-white/5 transition-all hover:translate-x-2">
+                        <div className="w-6 h-6 rounded-full bg-blue-600 text-white flex items-center justify-center shrink-0">
+                          <CheckCircle2 size={14} />
+                        </div>
+                        <span className="text-slate-700 dark:text-slate-300 font-medium">{benefit}</span>
+                      </div>
+                    ))}
                   </div>
                 </div>
-                <video src={t.storyHook.videoUrl} className="w-full h-full object-cover" muted loop playsInline autoPlay />
-                <p className="absolute bottom-4 left-4 z-20 text-white text-xs font-bold bg-black/50 px-2 py-1 rounded">Watch: {t.title} Process</p>
               </div>
-            )}
+            </RevealOnScroll>
+
+            <div className="space-y-12">
+              <RevealOnScroll delay={200}>
+                <div className="p-10 ios-glass rounded-[3rem] border-2 border-dashed border-blue-200 dark:border-blue-900">
+                  <h3 className="text-2xl font-black text-slate-900 dark:text-white mb-8 tracking-tighter uppercase italic">The Treatment Process</h3>
+                  <div className="space-y-8">
+                    {(t.process || []).map((step: any, i: number) => (
+                      <div key={i} className="flex gap-6 relative">
+                        {i < t.process.length - 1 && (
+                          <div className="absolute left-6 top-10 bottom-0 w-px bg-slate-200 dark:bg-white/10"></div>
+                        )}
+                        <div className="w-12 h-12 bg-slate-900 dark:bg-white dark:text-slate-900 text-white rounded-full flex items-center justify-center shrink-0 font-black italic relative z-10 transition-transform hover:scale-110">
+                          {i + 1}
+                        </div>
+                        <div className="pt-1">
+                          <h4 className="text-lg font-black text-slate-900 dark:text-white uppercase tracking-tight italic mb-2">{step.title}</h4>
+                          <p className="text-slate-500 dark:text-slate-400 text-sm">{step.desc}</p>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              </RevealOnScroll>
+
+              <RevealOnScroll delay={400}>
+                <div className="bg-slate-900 p-8 rounded-[2.5rem] text-white">
+                  <div className="flex gap-4 mb-6">
+                    <div className="w-12 h-12 bg-white text-slate-900 rounded-2xl flex items-center justify-center">
+                      <ShieldCheck size={24} />
+                    </div>
+                    <div>
+                      <div className="text-[10px] font-black text-blue-400 uppercase tracking-widest">Quality Assurance</div>
+                      <div className="font-bold">ADA Compliant Protocol</div>
+                    </div>
+                  </div>
+                  <p className="text-slate-400 text-sm leading-relaxed mb-6">
+                    We adhere to the highest clinical standards. Every instrument is sterilized using Class-B autoclaves, and every procedure is digitally logged in our AI HealthOS.
+                  </p>
+                  <button className="w-full py-4 bg-white/10 hover:bg-white/20 text-white rounded-full font-bold uppercase tracking-widest text-[10px] border border-white/10 transition-all">
+                    View Safety Standards
+                  </button>
+                </div>
+              </RevealOnScroll>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* --- FAQ SECTION --- */}
+      {t.faqs && t.faqs.length > 0 && (
+        <section className="py-24 bg-slate-50 dark:bg-slate-950/20">
+          <div className="max-w-4xl mx-auto px-6">
+            <RevealOnScroll>
+              <div className="text-center mb-16">
+                <h2 className="text-4xl font-black text-slate-900 dark:text-white uppercase tracking-tighter italic">Common Inquiries</h2>
+                <div className="w-20 h-1 bg-blue-600 mx-auto mt-4 rounded-full"></div>
+              </div>
+              <div className="space-y-6">
+                {t.faqs.map((faq: any, i: number) => (
+                  <div key={i} className="p-8 ios-glass rounded-[2rem] border border-white/40 shadow-sm transition-all hover:scale-[1.01]">
+                    <h3 className="text-lg font-bold text-slate-900 dark:text-white mb-4 flex gap-4">
+                      <span className="text-blue-600 font-black italic">Q.</span> {faq.q}
+                    </h3>
+                    <p className="text-slate-500 dark:text-slate-400 leading-relaxed pl-8 text-sm">{faq.a}</p>
+                  </div>
+                ))}
+              </div>
+            </RevealOnScroll>
           </div>
         </section>
       )}
 
-      {/* --- CONTENT CONTAINER --- */}
-      <div className={`container mx-auto px-6 py-16 grid grid-cols-1 lg:grid-cols-3 gap-12 ${t.storyHook ? '' : '-mt-20'} relative z-20`}>
-
-        {/* LEFT COLUMN (Main Info) */}
-        <div className="lg:col-span-2 space-y-12">
-
-          {/* 1. Overview Card */}
-          <div className="bg-white dark:bg-zinc-900 rounded-3xl p-8 shadow-xl border border-slate-100 dark:border-white/5">
-            <h2 className="text-2xl font-bold mb-6">Overview</h2>
-            <p className="text-slate-600 dark:text-slate-400 leading-relaxed whitespace-pre-line text-lg">
-              {t.longDescription}
-            </p>
-
-            {/* Stats Grid */}
-            <div className="grid grid-cols-3 gap-4 mt-8 border-t border-slate-100 dark:border-white/5 pt-8">
-              {t.stats.map((stat, idx) => {
-                const Icon = IconMap[stat.icon] || Star;
-                return (
-                  <div key={idx} className="text-center p-4 bg-slate-50 dark:bg-white/5 rounded-2xl">
-                    <div className="text-red-500 mb-2 flex justify-center"><Icon size={20} /></div>
-                    <div className="font-bold text-lg">{stat.value}</div>
-                    <div className="text-xs text-slate-500 uppercase tracking-wide">{stat.label}</div>
-                  </div>
-                );
-              })}
-            </div>
-
-            {/* Price War Table (If Data Exists) */}
-            {t.priceComparison && (
-              <div className="mt-8 border-t border-slate-100 dark:border-white/5 pt-8">
-                <h3 className="font-bold text-lg mb-4 flex items-center gap-2">
-                  <Award className="text-amber-500" size={18} /> Transparent Pricing
-                </h3>
-                <div className="overflow-hidden rounded-xl border border-slate-200 dark:border-white/10">
-                  <table className="w-full text-sm">
-                    <thead className="bg-slate-50 dark:bg-white/5">
-                      <tr>
-                        <th className="p-3 text-left">Treatment</th>
-                        <th className="p-3 text-right text-red-500">Market Avg</th>
-                        <th className="p-3 text-right text-green-600 font-bold bg-green-50 dark:bg-green-900/20">Noble Price</th>
-                      </tr>
-                    </thead>
-                    <tbody className="divide-y divide-slate-100 dark:divide-white/5">
-                      {t.priceComparison.map((row, idx) => (
-                        <tr key={idx}>
-                          <td className="p-3 font-medium">{row.item}</td>
-                          <td className="p-3 text-right text-slate-500 decoration-red-400 line-through">{row.marketPrice}</td>
-                          <td className="p-3 text-right font-bold bg-green-50 dark:bg-green-900/20">{row.noblePrice}</td>
-                        </tr>
-                      ))}
-                    </tbody>
-                  </table>
-                </div>
-                <p className="text-[10px] text-slate-400 mt-2 italic">*Prices may vary based on bone condition.</p>
-              </div>
-            )}
-          </div>
-
-          {/* 2. The Process */}
-          <div>
-            <h2 className="text-2xl font-bold mb-8">Clinical Process</h2>
-            <div className="space-y-6">
-              {t.process.map((step, idx) => (
-                <div key={idx} className="flex gap-6 group">
-                  <div className="flex flex-col items-center">
-                    <div className="w-10 h-10 rounded-full bg-slate-200 dark:bg-white/10 flex items-center justify-center font-bold text-slate-500 group-hover:bg-red-600 group-hover:text-white transition-colors">
-                      {idx + 1}
-                    </div>
-                    {idx !== t.process.length - 1 && <div className="w-0.5 h-full bg-slate-200 dark:bg-white/5 my-2"></div>}
-                  </div>
-                  <div className="pb-8">
-                    <h3 className="text-xl font-bold mb-2">{step.title}</h3>
-                    <p className="text-slate-500 leading-relaxed">{step.desc}</p>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-
-          {/* 3. FAQs (Accordion) */}
-          <div className="bg-slate-100 dark:bg-white/5 rounded-3xl p-8">
-            <h2 className="text-2xl font-bold mb-8">Common Questions</h2>
-            <div className="space-y-4">
-              {t.faqs.map((faq, idx) => (
-                <div key={idx} className="bg-white dark:bg-zinc-900 p-6 rounded-xl border border-slate-200 dark:border-white/5 hover:border-red-500/30 transition-colors">
-                  <h3 className="font-bold text-lg mb-2 flex items-start gap-3">
-                    <span className="text-red-500">Q.</span> {faq.q}
-                  </h3>
-                  <p className="text-slate-500 pl-7">{faq.a}</p>
-                </div>
-              ))}
-            </div>
-
-            {/* 4. RECOMMENDED PRODUCTS (Education Only) */}
-            {t.recommendedProducts && t.recommendedProducts.length > 0 && (
-              <div className="mt-12 border-t border-slate-200 dark:border-white/5 pt-12">
-                <h2 className="text-2xl font-bold mb-6 flex items-center gap-2">
-                  <ShieldCheck className="text-green-600" />
-                  Recovery & Maintenance Guide
-                </h2>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                  {t.recommendedProducts.map((prod) => (
-                    <div key={prod.id} className="bg-white dark:bg-zinc-900 rounded-2xl p-6 border border-slate-200 dark:border-white/5 flex gap-4 items-start">
-                      <div className="relative w-24 h-24 shrink-0 rounded-xl overflow-hidden bg-slate-100">
-                        <Image
-                          src={prod.image}
-                          alt={prod.name}
-                          fill
-                          className="object-cover"
-                        />
-                      </div>
-                      <div>
-                        <div className="flex flex-wrap gap-2 mb-2">
-                          <span className="px-2 py-0.5 rounded-full bg-slate-100 dark:bg-white/10 text-xs font-bold uppercase tracking-wider text-slate-500">
-                            {prod.purpose}
-                          </span>
-                          {prod.isPrescription && (
-                            <span className="px-2 py-0.5 rounded-full bg-red-100 text-red-600 text-xs font-bold uppercase tracking-wider border border-red-200">
-                              Rx Required
-                            </span>
-                          )}
-                        </div>
-                        <h3 className="font-bold text-lg leading-tight mb-1">{prod.name}</h3>
-                        <p className="text-sm text-slate-500 mb-2">{prod.subText}</p>
-
-                        <div className="text-xs bg-slate-50 dark:bg-white/5 p-2 rounded border border-slate-100 dark:border-white/5 text-slate-600 dark:text-slate-400">
-                          <span className="font-semibold text-slate-900 dark:text-slate-200">Doc&apos;s Advice:</span> {prod.usage}
-                          {prod.safetyNote && <span className="block mt-1 text-red-500 font-medium">⚠️ {prod.safetyNote}</span>}
-                        </div>
-                      </div>
-                    </div>
-                  ))}
-                </div>
-
-                {/* MEDICAL DISCLAIMER */}
-                <div className="mt-8 bg-slate-50 dark:bg-zinc-900/50 p-4 rounded-xl border border-slate-200 dark:border-white/5 text-xs text-slate-500 leading-relaxed">
-                  <p className="font-bold text-slate-700 dark:text-slate-300 mb-2 flex items-center gap-2">
-                    <Activity size={14} className="text-red-500" />
-                    MEDICAL DISCLAIMER & LEGAL NOTICE
-                  </p>
-                  <p>
-                    1. <strong>Educational Purpose Only:</strong> The information provided here regarding medications (e.g., Augmentin, Ketorol) is strictly for educational recovery guidance for existing patients. This is NOT an advertisement or offer for sale. We do not sell medications online.
-                    <br />
-                    2. <strong>No Doctor-Patient Relationship:</strong> Reading this guide does not constitute medical advice. Always follow the specific prescription provided by Dr. Dhivakaran.
-                    <br />
-                    3. <strong>Prescription Required:</strong> Many items listed are Schedule H/H1 Drugs and cannot be purchased without a valid prescription. Do not self-medicate.
-                  </p>
-                </div>
-              </div>
-            )}
-
-          </div>
+      {/* --- FINAL CTA --- */}
+      <section className="py-32 bg-slate-900 relative overflow-hidden">
+        <div className="absolute inset-0 opacity-20 pointer-events-none">
+          <div className="absolute top-0 left-0 w-full h-full bg-[radial-gradient(circle_at_center,_transparent_0%,_#000_70%)]"></div>
         </div>
 
-        {/* RIGHT COLUMN (Sticky Sidebar) */}
-        <div className="lg:col-span-1">
-          <div className="sticky top-8 space-y-6">
-
-            {/* Booking Card */}
-            <div className="bg-white dark:bg-zinc-900 rounded-3xl p-8 shadow-xl border border-red-100 dark:border-red-900/20 relative overflow-hidden">
-              <div className="absolute top-0 right-0 w-32 h-32 bg-red-500/10 rounded-full -mr-16 -mt-16 blur-2xl"></div>
-
-              <h3 className="text-xl font-bold mb-2">Ready to restore your smile?</h3>
-              <p className="text-slate-500 mb-6 text-sm">Dr. Dhivakaran is accepting new patients for {t.title}.</p>
-
-              <button className="w-full py-4 bg-red-600 hover:bg-red-700 text-white rounded-xl font-bold flex items-center justify-center gap-2 transition-transform active:scale-95 shadow-lg shadow-red-600/20">
-                <Calendar size={18} />
-                Book Appointment
+        <div className="max-w-5xl mx-auto px-6 relative z-10 text-center">
+          <RevealOnScroll>
+            <h2 className="text-6xl md:text-8xl font-black text-white tracking-tighter mb-10 leading-[0.9] italic uppercase">
+              Schedule <br />
+              <span className="text-blue-500">Your Care.</span>
+            </h2>
+            <div className="flex flex-col md:flex-row items-center justify-center gap-6">
+              <button className="px-10 py-5 bg-blue-600 text-white rounded-full font-black uppercase tracking-widest text-xs shadow-2xl hover:scale-105 active:scale-95 transition-all">
+                Book Consultation
               </button>
-
-              <div className="mt-6 flex items-center justify-center gap-2 text-xs text-slate-400">
-                <Shield size={12} />
-                <span>HIPAA Compliant & Secure</span>
-              </div>
+              <a href="tel:+918610425342" className="px-10 py-5 bg-white/10 text-white border border-white/20 rounded-full font-black uppercase tracking-widest text-xs hover:bg-white/20">
+                Call Clinic
+              </a>
             </div>
-
-            {/* Benefits List */}
-            <div className="bg-slate-50 dark:bg-white/5 rounded-3xl p-8 border border-slate-100 dark:border-white/5">
-              <h3 className="font-bold mb-6 text-sm uppercase tracking-widest text-slate-500">Key Benefits</h3>
-              <ul className="space-y-4">
-                {t.benefits.map((benefit, idx) => (
-                  <li key={idx} className="flex items-start gap-3 text-slate-700 dark:text-slate-300">
-                    <CheckCircle size={18} className="text-green-500 shrink-0 mt-0.5" />
-                    <span className="text-sm font-medium">{benefit}</span>
-                  </li>
-                ))}
-              </ul>
-            </div>
-
-          </div>
+          </RevealOnScroll>
         </div>
-
-      </div>
+      </section>
     </div>
   );
 }

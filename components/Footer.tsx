@@ -26,9 +26,9 @@ const Footer: React.FC<FooterProps> = ({ onBookClick }) => {
             </p>
           </div>
 
-          {/* Quick Links */}
+          {/* Treatments Hub */}
           <div>
-            <h4 className="text-lg font-bold mb-6">Treatments</h4>
+            <h4 className="text-lg font-bold mb-6 text-blue-400">Treatments</h4>
             <ul className="space-y-3 text-sm text-slate-400">
               <li><Link href="/treatments/dental-implants" className="hover:text-blue-400 transition-colors">Dental Implants</Link></li>
               <li><Link href="/treatments/root-canal" className="hover:text-blue-400 transition-colors">Microscopic RCT</Link></li>
@@ -37,7 +37,22 @@ const Footer: React.FC<FooterProps> = ({ onBookClick }) => {
               <li><Link href="/case-studies" className="hover:text-blue-400 transition-colors text-purple-400 font-bold">✨ Real Patient Cases</Link></li>
               <li><Link href="/blog" className="hover:text-blue-400 transition-colors text-pink-400 font-bold">📝 Dental Blog</Link></li>
               <li><Link href="/neighborhood-guide" className="hover:text-blue-400 transition-colors text-amber-500 font-bold">📍 Neighborhood Guide</Link></li>
-              <li><button onClick={onBookClick} className="hover:text-blue-400 transition-colors text-left flex items-center gap-2"><CalendarCheck size={14} /> Book Visit</button></li>
+              <li><button onClick={onBookClick} className="hover:text-blue-400 transition-colors text-left flex items-center gap-2 font-black text-blue-500"><CalendarCheck size={14} /> BOOK APPOINTMENT</button></li>
+            </ul>
+          </div>
+
+          {/* SEO Quick Links */}
+          <div>
+            <h4 className="text-lg font-bold mb-6 text-white/90">Quick Links</h4>
+            <ul className="space-y-3 text-sm text-slate-500 font-medium">
+              <li><Link href="/treatments/gum-disease" className="hover:text-blue-400 transition-colors">• Gum Disease Treatment</Link></li>
+              <li><Link href="/treatments/sleep-apnea" className="hover:text-blue-400 transition-colors">• Sleep Apnea Dentistry</Link></li>
+              <li><Link href="/treatments/tmj-disorders" className="hover:text-blue-400 transition-colors">• TMJ Disorder</Link></li>
+              <li><Link href="/treatments/laser-dentistry" className="hover:text-blue-400 transition-colors">• Laser Dentistry</Link></li>
+              <li><Link href="/treatments/oral-cancer-screening" className="hover:text-blue-400 transition-colors">• Oral Cancer Screening</Link></li>
+              <li><Link href="/treatments/tooth-extraction" className="hover:text-blue-400 transition-colors">• Wisdom Tooth Surgery</Link></li>
+              <li><Link href="/treatments/pediatric-dentistry" className="hover:text-blue-400 transition-colors">• Child Friendly Dentist</Link></li>
+              <li><Link href="/treatments/pregnancy-dental-care" className="hover:text-blue-400 transition-colors">• Prenatal Oral Care</Link></li>
             </ul>
           </div>
 

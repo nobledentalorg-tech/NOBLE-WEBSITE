@@ -1,23 +1,23 @@
 import { Metadata } from 'next';
-import KidsDentistryRefactored from './KidsDentistryRefactored';
+import ExtractionRefactored from './ExtractionRefactored';
 
 export const metadata: Metadata = {
-    title: 'Best Kids Dentist Nallagandla | No-Drill Pediatric Dentistry',
-    description: "Anxiety-free kids dentistry in Nallagandla. We use 'Happy Air' (Nitrous) and No-Drill SDF technology. Building future health, not just fixing baby teeth. Dr. Dhivakaran's protocol.",
+    title: 'Painless Tooth Extraction Nallagandla | Atraumatic Wisdom Teeth Surgery',
+    description: 'Expert atraumatic tooth extraction in Nallagandla using Physics Forceps. We preserve your jawbone for future implants with microsurgical precision by Dr. Dhivakaran.',
     keywords: [
-        'kids dentist nallagandla',
-        'pediatric dentist hyderabad',
-        'laughing gas for kids cost',
-        'no drill dentistry for children',
-        'baby tooth root canal price',
-        'thumb sucking habit breaker'
+        'tooth extraction cost nallagandla',
+        'painless wisdom tooth removal',
+        'atraumatic extraction physics forceps',
+        'socket preservation hyderabad',
+        'wisdom tooth surgery cost',
+        'dry socket prevention'
     ],
     alternates: {
-        canonical: '/treatments/kids-dentistry'
+        canonical: '/treatments/tooth-extraction'
     }
 };
 
-export default function KidsDentistryPage() {
+export default function ExtractionPage() {
     const jsonLd = {
         "@context": "https://schema.org",
         "@graph": [
@@ -41,26 +41,26 @@ export default function KidsDentistryPage() {
                 "@id": "https://nobledental.in/#dr-dhivakaran",
                 "name": "Dr. Dhivakaran",
                 "jobTitle": "Chief Medical Director",
-                "medicalSpecialty": "Pediatric Dentistry",
+                "medicalSpecialty": "Oral and Maxillofacial Surgery",
                 "worksFor": { "@id": "https://nobledental.in/#clinic" }
             },
             {
                 "@type": "MedicalProcedure",
-                "name": "Pediatric Sedation Dentistry",
-                "procedureType": "NoninvasiveProcedure",
+                "name": "Atraumatic Tooth Extraction",
+                "procedureType": "SurgicalProcedure",
                 "bodyLocation": "Mouth",
                 "status": "Active",
-                "description": "Anxiety-free dental care for children using Nitrous Oxide (Happy Air) and No-Drill SDF technology.",
+                "description": "Painless removal of teeth using Physics Forceps and periotomes to preserve jawbone for future implants.",
                 "performer": { "@id": "https://nobledental.in/#dr-dhivakaran" },
                 "location": { "@id": "https://nobledental.in/#clinic" },
                 "offers": {
                     "@type": "Offer",
                     "priceCurrency": "INR",
-                    "price": "500",
+                    "price": "2500",
                     "priceSpecification": {
                         "@type": "PriceSpecification",
-                        "minPrice": "500",
-                        "maxPrice": "5000",
+                        "minPrice": "1500",
+                        "maxPrice": "8500",
                         "priceCurrency": "INR"
                     }
                 }
@@ -70,26 +70,26 @@ export default function KidsDentistryPage() {
                 "mainEntity": [
                     {
                         "@type": "Question",
-                        "name": "Is Nitrous Oxide (Laughing Gas) safe for children?",
+                        "name": "How much does tooth extraction cost in Nallagandla?",
                         "acceptedAnswer": {
                             "@type": "Answer",
-                            "text": "Yes. Nitrous Oxide is the safest mild sedative used in pediatric dentistry. It keeps the child calm and awake, and leaves the body within minutes after the mask is removed."
+                            "text": "At Noble Dental, simple extractions start from ₹1,500. Atraumatic extractions (using Physics Forceps) range from ₹3,000 to ₹4,500. Surgical wisdom tooth removal ranges from ₹6,000 to ₹8,500."
                         }
                     },
                     {
                         "@type": "Question",
-                        "name": "How much does a kids root canal cost in Nallagandla?",
+                        "name": "Is tooth extraction painful?",
                         "acceptedAnswer": {
                             "@type": "Answer",
-                            "text": "At Noble Dental, a Baby Tooth Root Canal (Pulpectomy) ranges from ₹3,500 to ₹5,000. This saves the tooth from early extraction and prevents future orthodontic problems."
+                            "text": "No. We use computer-assisted local anesthesia to fully numb the area. You will feel pressure during the procedure, but no sharp pain. We also offer sedation for anxious patients."
                         }
                     },
                     {
                         "@type": "Question",
-                        "name": "What is SDF (No-Drill) treatment?",
+                        "name": "What is the fastest way to recover from tooth extraction?",
                         "acceptedAnswer": {
                             "@type": "Answer",
-                            "text": "Silver Diamine Fluoride (SDF) is a liquid medication we paint on cavities to stop decay instantly without using a drill or injection. It is ideal for anxious toddlers."
+                            "text": "Avoid spitting, smoking, or using straws for 24 hours to prevent Dry Socket. Apply ice packs to reduce swelling and stick to a soft, cold diet (ice cream, yogurt) for the first day."
                         }
                     }
                 ]
@@ -103,7 +103,7 @@ export default function KidsDentistryPage() {
                 type="application/ld+json"
                 dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
             />
-            <KidsDentistryRefactored />
+            <ExtractionRefactored />
         </>
     );
 }

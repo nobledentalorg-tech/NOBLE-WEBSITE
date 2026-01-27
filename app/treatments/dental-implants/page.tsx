@@ -28,17 +28,47 @@ export default function Page() {
         "@context": "https://schema.org",
         "@graph": [
             {
+                "@type": "MedicalClinic",
+                "@id": "https://nobledentalnallagandla.in/#clinic",
+                "name": "Noble Dental Care",
+                "url": "https://nobledentalnallagandla.in",
+                "logo": "https://nobledentalnallagandla.in/logo.png",
+                "medicalSpecialty": ["Dentistry", "Implantology"],
+                "address": {
+                    "@type": "PostalAddress",
+                    "streetAddress": "Nallagandla",
+                    "addressLocality": "Hyderabad",
+                    "addressRegion": "Telangana",
+                    "postalCode": "500019",
+                    "addressCountry": "IN"
+                }
+            },
+            {
                 "@type": "MedicalProcedure",
-                "name": "Dental Implant Surgery",
+                "name": "Swiss-Grade Dental Implant Restoration",
                 "procedureType": "Surgical",
                 "bodyLocation": "Jawbone",
-                "provider": {
-                    "@type": "Dentist",
-                    "name": "Noble Dental Care",
-                    "image": "https://nobledentalnallagandla.in/logo.png"
+                "description": "Premium dental implant surgery using Straumann SLActive and Nobel Biocare technologies. Includes Osstell ISQ biological stability measurement and digital guided surgery.",
+                "relevantSpecialty": {
+                    "@type": "MedicalSpecialty",
+                    "name": "Implantology"
                 },
-                "description": "Titanium or Zirconia tooth replacement using Straumann/Nobel Biocare implants. 99.2% success rate.",
-                "followup": "Osseointegration check after 3 months."
+                "provider": { "@id": "https://nobledentalnallagandla.in/#clinic" },
+                "offers": {
+                    "@type": "AggregateOffer",
+                    "priceCurrency": "INR",
+                    "lowPrice": "22000",
+                    "highPrice": "58000",
+                    "offerCount": "3"
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "What is the cost of dental implants in Hyderabad?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "The cost of dental implants at Noble Dental Care Hyderabad ranges from ₹22,000 for standard implants to ₹58,000 for premium Swiss-grade Straumann SLActive implants."
+                }
             }
         ]
     };

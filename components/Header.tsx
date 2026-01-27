@@ -5,7 +5,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { usePathname } from 'next/navigation';
 import { useTheme } from 'next-themes';
-import { Menu, X, Sun, Moon, CalendarCheck, ShoppingBag, Activity, Globe, ShieldCheck } from 'lucide-react';
+import { Menu, X, Sun, Moon, CalendarCheck, ShoppingBag, Activity, Globe, ShieldCheck, Sparkles, Heart, Zap, ChevronDown } from 'lucide-react';
 
 interface HeaderProps {
   onBookClick?: () => void;
@@ -42,6 +42,78 @@ const Header: React.FC<HeaderProps> = ({ onBookClick }) => {
 
   // Helper to check if link is active
   const isActive = (path: string) => pathname === path;
+
+  const treatmentCategories = [
+    {
+      title: "Pain & Surgery",
+      icon: <Zap size={18} className="text-red-500" />,
+      description: "Urgent & Surgical Care",
+      links: [
+        { name: "Microscopic RCT", href: "/treatments/root-canal" },
+        { name: "Wisdom Tooth Surgery", href: "/treatments/wisdom-tooth-surgery" },
+        { name: "Atraumatic Extraction", href: "/treatments/tooth-extraction" },
+        { name: "Emergency Dentistry", href: "/treatments/emergency-dentistry" },
+        { name: "Gum Disease Treatment", href: "/treatments/gum-disease" },
+      ]
+    },
+    {
+      title: "Restoration",
+      icon: <ShieldCheck size={18} className="text-blue-500" />,
+      description: "Fix & Rebuild",
+      links: [
+        { name: "Dental Implants", href: "/treatments/dental-implants" },
+        { name: "Crowns & Bridges", href: "/treatments/crowns-bridges" },
+        { name: "Dentures", href: "/treatments/dentures" },
+        { name: "Full Mouth Rehab", href: "/treatments/full-mouth-rehab" },
+        { name: "Invisible Fillings", href: "/treatments/tooth-fillings" },
+      ]
+    },
+    {
+      title: "Cosmetic",
+      icon: <Sparkles size={18} className="text-amber-500" />,
+      description: "Smile Aesthetics",
+      links: [
+        { name: "Smile Designing", href: "/treatments/smile-designing" },
+        { name: "Veneers / Laminates", href: "/treatments/dental-veneers" },
+        { name: "Teeth Whitening", href: "/treatments/teeth-whitening" },
+        { name: "Invisalign", href: "/treatments/invisalign" },
+        { name: "Cosmetic Bonding", href: "/treatments/cosmetic-bonding" },
+      ]
+    },
+    {
+      title: "Family Hub",
+      icon: <Heart size={18} className="text-pink-500" />,
+      description: "Kids & Wellness",
+      links: [
+        { name: "Pediatric Dentistry", href: "/treatments/kids-dentistry" },
+        { name: "Prenatal Wellness", href: "/treatments/pregnancy-dental-care" },
+        { name: "Guided Biofilm Therapy", href: "/treatments/scaling-whitening" },
+        { name: "Fluoride & Sealants", href: "/treatments/dental-sealants" },
+      ]
+    },
+    {
+      title: "Alignment",
+      icon: <Activity size={18} className="text-purple-500" />,
+      description: "Ortho Hub",
+      links: [
+        { name: "Braces & Ortho", href: "/treatments/braces-orthodontics" },
+        { name: "Clear Aligners", href: "/treatments/invisalign-aligners" },
+        { name: "Interceptive Ortho", href: "/treatments/interceptive-ortho" },
+      ]
+    },
+    {
+      title: "Advanced",
+      icon: <Globe size={18} className="text-emerald-500" />,
+      description: "Specialized Care",
+      links: [
+        { name: "Jaw Surgery", href: "/treatments/orthognathic-surgery" },
+        { name: "Trauma Care", href: "/treatments/maxillofacial-surgery" },
+        { name: "TMJ Disorders", href: "/treatments/tmj-disorders" },
+        { name: "Laser Dentistry", href: "/treatments/laser-dentistry" },
+        { name: "Oral Cancer Screening", href: "/treatments/oral-cancer-screening" },
+      ]
+    }
+  ];
 
   return (
     <header
@@ -80,13 +152,56 @@ const Header: React.FC<HeaderProps> = ({ onBookClick }) => {
             >
               Home
             </Link>
-            <Link
-              href="/treatments"
-              className={`relative px-4 py-2.5 text-[12px] font-bold uppercase tracking-wider transition-all duration-300 rounded-full ${isActive('/treatments') ? 'text-white bg-blue-600 shadow-md' : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white'
-                }`}
-            >
-              Treatments
-            </Link>
+            {/* Treatments Mega-Menu */}
+            <div className="relative group/mega">
+              <Link
+                href="/treatments"
+                className={`relative px-4 py-2.5 text-[12px] font-bold uppercase tracking-wider transition-all duration-300 rounded-full flex items-center gap-1.5 ${isActive('/treatments') ? 'text-white bg-blue-600 shadow-md' : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white'
+                  }`}
+              >
+                Treatments <ChevronDown size={14} className="group-hover/mega:rotate-180 transition-transform duration-300" />
+              </Link>
+
+              {/* Mega Menu Panel */}
+              <div className="absolute top-full left-1/2 -translate-x-1/2 pt-4 opacity-0 invisible group-hover/mega:opacity-100 group-hover/mega:visible transition-all duration-300 w-[90vw] max-w-5xl">
+                <div className="bg-white dark:bg-[#0B1019] rounded-[2.5rem] border border-slate-200/50 dark:border-white/10 shadow-2xl overflow-hidden backdrop-blur-xl p-8">
+                  <div className="grid grid-cols-3 gap-8">
+                    {treatmentCategories.map((cat, idx) => (
+                      <div key={idx} className="space-y-4">
+                        <div className="flex items-center gap-3">
+                          <div className="w-10 h-10 rounded-xl bg-slate-50 dark:bg-white/5 flex items-center justify-center">
+                            {cat.icon}
+                          </div>
+                          <div>
+                            <h4 className="text-[13px] font-black uppercase tracking-wider text-slate-900 dark:text-white">{cat.title}</h4>
+                            <p className="text-[10px] text-slate-500 dark:text-slate-400 font-bold uppercase tracking-tighter opacity-60">{cat.description}</p>
+                          </div>
+                        </div>
+                        <ul className="space-y-2 pl-1.5 border-l border-slate-100 dark:border-white/5 ml-5">
+                          {cat.links.map((link, lIdx) => (
+                            <li key={lIdx}>
+                              <Link
+                                href={link.href}
+                                className="text-[11px] font-medium text-slate-600 dark:text-slate-400 hover:text-blue-600 dark:hover:text-cyan-400 transition-colors flex items-center gap-2 group/item"
+                              >
+                                <span className="w-1 h-1 rounded-full bg-slate-300 dark:bg-slate-700 group-hover/item:bg-blue-600 transition-colors" />
+                                {link.name}
+                              </Link>
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
+                    ))}
+                  </div>
+
+                  {/* Bottom Strip */}
+                  <div className="mt-8 pt-6 border-t border-slate-100 dark:border-white/5 flex items-center justify-between">
+                    <p className="text-[10px] text-slate-400 font-medium">✨ Powered by Dr. Dhivakaran&apos;s Advanced Protocols</p>
+                    <Link href="/treatments" className="text-[10px] font-black text-blue-600 dark:text-cyan-400 hover:underline uppercase tracking-widest">View All 40+ Protocols</Link>
+                  </div>
+                </div>
+              </div>
+            </div>
             <Link
               href="/patient-safety"
               className={`relative px-4 py-2.5 text-[12px] font-bold uppercase tracking-wider transition-all duration-300 rounded-full ${isActive('/patient-safety') ? 'text-white bg-blue-600 shadow-md' : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white'
@@ -165,8 +280,33 @@ const Header: React.FC<HeaderProps> = ({ onBookClick }) => {
       {isMobileMenuOpen && (
         <div className="lg:hidden fixed inset-0 z-40 bg-white/95 dark:bg-[#0B1019]/95 backdrop-blur-xl flex flex-col items-center justify-center space-y-8 animate-in fade-in zoom-in duration-200">
           <Link href="/" onClick={() => setIsMobileMenuOpen(false)} className="text-2xl font-bold text-slate-900 dark:text-white">Home</Link>
-          <Link href="/treatments" onClick={() => setIsMobileMenuOpen(false)} className="text-2xl font-bold text-slate-900 dark:text-white">Treatments</Link>
-          <Link href="/treatments/dental-implants" onClick={() => setIsMobileMenuOpen(false)} className="text-xl font-medium text-slate-600 dark:text-slate-300 ml-4">Dental Implants</Link>
+
+          <div className="w-full px-6 flex flex-col items-center gap-4 py-4 overflow-y-auto max-h-[50vh]">
+            <h3 className="text-[10px] font-black uppercase tracking-widest text-slate-400">Our Treatment Hubs</h3>
+            <div className="grid grid-cols-2 gap-3 w-full">
+              {treatmentCategories.map((cat, idx) => (
+                <div key={idx} className="bg-slate-50 dark:bg-white/5 p-4 rounded-3xl border border-slate-200/50 dark:border-white/10">
+                  <div className="flex items-center gap-2 mb-2">
+                    {cat.icon}
+                    <span className="text-[10px] font-black uppercase tracking-wider text-slate-900 dark:text-white">{cat.title}</span>
+                  </div>
+                  <ul className="space-y-1.5">
+                    {cat.links.slice(0, 3).map((link, lIdx) => (
+                      <li key={lIdx}>
+                        <Link href={link.href} onClick={() => setIsMobileMenuOpen(false)} className="text-[10px] font-bold text-slate-500 dark:text-slate-400 block truncate leading-tight">
+                          {link.name}
+                        </Link>
+                      </li>
+                    ))}
+                    <li>
+                      <Link href="/treatments" onClick={() => setIsMobileMenuOpen(false)} className="text-[9px] font-black text-blue-600 dark:text-cyan-400 uppercase"> More +</Link>
+                    </li>
+                  </ul>
+                </div>
+              ))}
+            </div>
+          </div>
+
           <Link href="/patient-safety" onClick={() => setIsMobileMenuOpen(false)} className="text-2xl font-bold text-emerald-500">Patient Safety</Link>
           <Link href="/team" onClick={() => setIsMobileMenuOpen(false)} className="text-2xl font-bold text-slate-900 dark:text-white">Our Team</Link>
           <Link href="/healthflo-ai" onClick={() => setIsMobileMenuOpen(false)} className="text-2xl font-bold text-blue-600">AI HealthOS</Link>
