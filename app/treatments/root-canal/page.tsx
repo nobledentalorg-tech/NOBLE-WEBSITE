@@ -39,6 +39,43 @@ export default function RootCanalPage() {
             },
             "description": "Advanced root canal therapy using Zeiss Microscopes and Diode Lasers for 99.9% bacterial elimination.",
             "followup": "Permanent Crown placement within 3 days."
+         },
+         {
+            "@type": "FAQPage",
+            "mainEntity": [
+               {
+                  "@type": "Question",
+                  "name": "Is it safe for Heart Patients or Diabetics?",
+                  "acceptedAnswer": {
+                     "@type": "Answer",
+                     "text": "Yes. In fact, removing the infection is crucial for your heart and blood sugar control. We coordinate with your cardiologist/physician if blood thinners need to be adjusted."
+                  }
+               },
+               {
+                  "@type": "Question",
+                  "name": "What happens if I delay treatment?",
+                  "acceptedAnswer": {
+                     "@type": "Answer",
+                     "text": "The infection will spread to the bone, causing a cyst. In severe cases, it can spread to the neck spaces (Ludwig’s Angina), which is a life-threatening emergency."
+                  }
+               },
+               {
+                  "@type": "Question",
+                  "name": "Can I drive back home after the procedure?",
+                  "acceptedAnswer": {
+                     "@type": "Answer",
+                     "text": "Yes. Local anesthesia only numbs the tooth. You will be fully alert and can drive or return to work immediately."
+                  }
+               },
+               {
+                  "@type": "Question",
+                  "name": "Why check Vitals before the procedure?",
+                  "acceptedAnswer": {
+                     "@type": "Answer",
+                     "text": "Your safety is paramount. We evaluate your blood pressure and sugar levels (if diabetic) to ensure you can tolerate the procedure safely."
+                  }
+               }
+            ]
          }
       ]
    };
