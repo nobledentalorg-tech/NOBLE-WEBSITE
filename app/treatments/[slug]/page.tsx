@@ -24,7 +24,7 @@ const IconMap: Record<string, any> = {
 // Result: Instant loading speed + Perfect SEO.
 export async function generateStaticParams() {
   // Exclude static pages that now have their own dedicated folders
-  const staticPages = ['kids-dentistry', 'teeth-whitening'];
+  const staticPages = ['kids-dentistry', 'teeth-whitening', 'root-canal'];
 
   return Object.keys(treatmentsData)
     .filter(slug => !staticPages.includes(slug))
