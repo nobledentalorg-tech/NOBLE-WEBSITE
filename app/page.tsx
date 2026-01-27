@@ -2,21 +2,22 @@
 
 import React from 'react';
 import Link from 'next/link';
+import dynamic from 'next/dynamic';
 import { Zap, Sparkles, Heart, Calendar, Megaphone, Activity, Bot, Shield } from 'lucide-react';
 import Hero from '@/components/Hero';
-import Services from '@/components/Services';
-import Testimonials from '@/components/Testimonials';
-import { RevealOnScroll } from '@/components/RevealOnScroll';
 
-import About from '@/components/About';
-import MissionValues from '@/components/MissionValues';
-import Gallery from '@/components/Gallery';
-import Doctors from '@/components/Doctors';
-import FAQ from '@/components/FAQ';
-import Contact from '@/components/Contact';
-import Credentials from '@/components/Credentials';
-import TechnologyGrid from '@/components/TechnologyGrid';
-import NobleDifference from '@/components/NobleDifference';
+// Dynamically import components below the fold to improve LCP and TBT
+const Services = dynamic(() => import('@/components/Services'));
+const Testimonials = dynamic(() => import('@/components/Testimonials'));
+const About = dynamic(() => import('@/components/About'));
+const MissionValues = dynamic(() => import('@/components/MissionValues'));
+const Gallery = dynamic(() => import('@/components/Gallery'));
+const Doctors = dynamic(() => import('@/components/Doctors'));
+const FAQ = dynamic(() => import('@/components/FAQ'));
+const Contact = dynamic(() => import('@/components/Contact'));
+const Credentials = dynamic(() => import('@/components/Credentials'));
+const TechnologyGrid = dynamic(() => import('@/components/TechnologyGrid'));
+const NobleDifference = dynamic(() => import('@/components/NobleDifference'));
 
 export default function Home() {
     const offers = [

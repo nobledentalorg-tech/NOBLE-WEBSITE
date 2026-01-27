@@ -181,7 +181,7 @@ const Hero: React.FC<HeroProps> = ({ onBookClick }) => {
 
                 <Image
                   className="product-pop"
-                  src="https://dentcare-website-s3-bucket-01.s3.eu-north-1.amazonaws.com/storage/assets/uploads/JCK1DentcareZirconiaClassic-1.png"
+                  src="/assets/images/hero-implant-optimized.png"
                   alt="Swiss Implant System"
                   width={300}
                   height={300}
