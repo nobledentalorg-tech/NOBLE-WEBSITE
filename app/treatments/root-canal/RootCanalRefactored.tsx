@@ -243,6 +243,31 @@ export default function RootCanalRefactored() {
             </div>
          </section>
 
+         {/* ================= 1.3 QUICK NAVIGATION ================= */}
+         <section className="py-6 sticky top-20 z-40">
+            <div className="max-w-4xl mx-auto px-6">
+               <div className="ios-glass flex items-center gap-2 p-2 rounded-full overflow-x-auto hide-scrollbar shadow-lg border-white/20 dark:border-white/5">
+                  {[
+                     { name: "Insight", id: "insight", icon: Microscope },
+                     { name: "Symptoms", id: "symptoms", icon: Activity },
+                     { name: "Safety", id: "safety", icon: ShieldCheck },
+                     { name: "Protocol", id: "protocol", icon: Layers },
+                     { name: "Pricing", id: "pricing", icon: Zap },
+                     { name: "FAQ", id: "faq", icon: Info }
+                  ].map((item, i) => (
+                     <button
+                        key={i}
+                        onClick={() => document.getElementById(item.id)?.scrollIntoView({ behavior: 'smooth' })}
+                        className="flex items-center gap-2 px-5 py-2 rounded-full text-xs font-bold text-slate-600 dark:text-slate-400 hover:bg-white dark:hover:bg-white/10 hover:text-slate-900 dark:hover:text-white transition-all whitespace-nowrap"
+                     >
+                        <item.icon size={14} />
+                        {item.name}
+                     </button>
+                  ))}
+               </div>
+            </div>
+         </section>
+
          {/* ================= 2. ETIOLOGY: BENTO GRID WIDGETS ================= */}
          <section id="etiology" className="py-24 bg-[#F2F2F7] dark:bg-[#000000]">
             <div className="max-w-[1200px] mx-auto px-6">
@@ -298,17 +323,17 @@ export default function RootCanalRefactored() {
                         <div className="w-12 h-12 bg-emerald-100 dark:bg-emerald-900/30 text-emerald-600 rounded-2xl flex items-center justify-center mb-4 rotate-3 group-hover:rotate-0 transition-transform">
                            <Layers size={24} />
                         </div>
-                        <h3 className="font-bold text-slate-900 dark:text-white">Cracked Tooth</h3>
-                        <p className="text-xs text-slate-400 mt-2">Stress & Bruxism</p>
+                        <h4 className="font-bold text-slate-900 dark:text-white mb-2">Cracked Teeth</h4>
+                        <p className="text-[10px] text-slate-500 dark:text-slate-400 leading-relaxed">Micro-cracks allowing bacterial ingress into the pulp chamber.</p>
                      </div>
 
-                     {/* Small Widget: Gum Issues */}
+                     {/* Small Widget: Retreatment */}
                      <div className="col-span-1 bg-white dark:bg-[#1C1C1E] rounded-[2.5rem] p-8 flex flex-col justify-center items-center text-center shadow-sm border border-slate-100 dark:border-black ios-card-hover">
-                        <div className="w-12 h-12 bg-rose-100 dark:bg-rose-900/30 text-rose-600 rounded-full flex items-center justify-center mb-4">
-                           <Thermometer size={24} />
+                        <div className="w-12 h-12 bg-blue-100 dark:bg-blue-900/30 text-blue-600 rounded-2xl flex items-center justify-center mb-4 -rotate-3 group-hover:rotate-0 transition-transform">
+                           <HeartPulse size={24} />
                         </div>
-                        <h3 className="font-bold text-slate-900 dark:text-white">Infection</h3>
-                        <p className="text-xs text-slate-400 mt-2">Retrograde Spread</p>
+                        <h4 className="font-bold text-slate-900 dark:text-white mb-2">Retreatment</h4>
+                        <p className="text-[10px] text-slate-500 dark:text-slate-400 leading-relaxed">Fixing failed root canals from other clinics where canals weren&apos;t fully cleaned.</p>
                      </div>
 
                   </div>
