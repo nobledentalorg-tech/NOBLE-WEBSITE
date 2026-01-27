@@ -186,7 +186,6 @@ const Hero: React.FC<HeroProps> = ({ onBookClick }) => {
                   width={300}
                   height={300}
                   priority={true} // [SEO] LCP Optimization
-                  unoptimized
                 />
 
                 <span className="nmd">ITI</span>

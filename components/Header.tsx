@@ -261,6 +261,7 @@ const Header: React.FC<HeaderProps> = ({ onBookClick }) => {
             <button
               onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
               className="w-10 h-10 md:w-11 md:h-11 rounded-2xl flex items-center justify-center bg-slate-100 dark:bg-white/5 text-slate-600 dark:text-white transition-all hover:bg-slate-200 dark:hover:bg-white/10"
+              aria-label="Toggle Theme"
             >
               {mounted && (theme === 'dark' ? <Sun size={20} /> : <Moon size={20} />)}
             </button>
@@ -276,6 +277,7 @@ const Header: React.FC<HeaderProps> = ({ onBookClick }) => {
             <button
               className="xl:hidden w-12 h-12 flex items-center justify-center rounded-2xl bg-slate-100 dark:bg-white/5 text-slate-900 dark:text-white z-[110]"
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+              aria-label={isMobileMenuOpen ? "Close Menu" : "Open Menu"}
             >
               {isMobileMenuOpen ? <X size={20} /> : <Menu size={20} />}
             </button>

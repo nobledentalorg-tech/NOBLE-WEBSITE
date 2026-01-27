@@ -1,23 +1,23 @@
 {
-  "name": "Noble Dental Care - Nallagandla",
-  "short_name": "Noble Dental",
-  "description": "Trusted dental clinic in Nallagandla, Hyderabad — painless root canal, implants, braces, and smile makeovers by Dr. Dhivakaran.",
-  "start_url": "/index.html",
-  "scope": "/",
+  "name": "Noble Dental Care",
+  "short_name": "Noble",
+  "start_url": "/",
   "display": "standalone",
-  "orientation": "portrait",
-  "theme_color": "#12B2A0",
   "background_color": "#ffffff",
+  "theme_color": "#2563eb",
+  "orientation": "portrait",
   "icons": [
     {
-      "src": "/images/logo-footer.webp",
+      "src": "/images/logo.png",
       "sizes": "192x192",
-      "type": "image/webp"
+      "type": "image/png",
+      "purpose": "maskable any"
     },
     {
-      "src": "/images/logo-footer.webp",
+      "src": "/images/logo.png",
       "sizes": "512x512",
-      "type": "image/webp"
+      "type": "image/png",
+      "purpose": "maskable any"
     }
   ]
 }

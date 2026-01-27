@@ -28,7 +28,7 @@ const Footer: React.FC<FooterProps> = ({ onBookClick }) => {
 
           {/* Treatments Hub */}
           <div>
-            <h4 className="text-lg font-bold mb-6 text-blue-400">Treatments</h4>
+            <h3 className="text-lg font-bold mb-6 text-blue-400">Treatments</h3>
             <ul className="space-y-3 text-sm text-slate-400">
               <li><Link href="/treatments/dental-implants" className="hover:text-blue-400 transition-colors">Dental Implants</Link></li>
               <li><Link href="/treatments/root-canal" className="hover:text-blue-400 transition-colors">Microscopic RCT</Link></li>
@@ -43,7 +43,7 @@ const Footer: React.FC<FooterProps> = ({ onBookClick }) => {
 
           {/* SEO Quick Links */}
           <div>
-            <h4 className="text-lg font-bold mb-6 text-white/90">Quick Links</h4>
+            <h3 className="text-lg font-bold mb-6 text-white/90">Quick Links</h3>
             <ul className="space-y-3 text-sm text-slate-500 font-medium">
               <li><Link href="/treatments/gum-disease" className="hover:text-blue-400 transition-colors">• Gum Disease Treatment</Link></li>
               <li><Link href="/treatments/oral-medicine" className="hover:text-blue-400 transition-colors">• Oral Diagnosis</Link></li>
@@ -58,7 +58,7 @@ const Footer: React.FC<FooterProps> = ({ onBookClick }) => {
 
           {/* Contact */}
           <div>
-            <h4 className="text-lg font-bold mb-6">Contact</h4>
+            <h3 className="text-lg font-bold mb-6">Contact</h3>
             <ul className="space-y-4 text-sm text-slate-400">
               <li className="flex items-start gap-3">
                 <MapPin size={18} className="text-blue-500 mt-0.5" />
@@ -77,16 +77,18 @@ const Footer: React.FC<FooterProps> = ({ onBookClick }) => {
 
           {/* Social & SEO */}
           <div>
-            <h4 className="text-lg font-bold mb-6">Connect</h4>
+            <h3 className="text-lg font-bold mb-6">Connect</h3>
             <div className="flex gap-4 mb-8">
-              <a href="https://www.instagram.com/noble.dentalorg/" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center hover:bg-blue-600 transition-all"><Instagram size={18} /></a>
-              <a href="https://www.facebook.com/profile.php?id=100087590145815" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center hover:bg-blue-600 transition-all"><Facebook size={18} /></a>
-              <a href="https://x.com/NobleDenta67864" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center hover:bg-blue-600 transition-all"><Twitter size={18} /></a>
+              <div className="flex gap-4 mb-8">
+                <a href="https://www.instagram.com/noble.dentalorg/" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center hover:bg-blue-600 transition-all" aria-label="Follow us on Instagram"><Instagram size={18} /></a>
+                <a href="https://www.facebook.com/profile.php?id=100087590145815" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center hover:bg-blue-600 transition-all" aria-label="Follow us on Facebook"><Facebook size={18} /></a>
+                <a href="https://x.com/NobleDenta67864" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center hover:bg-blue-600 transition-all" aria-label="Follow us on X (Twitter)"><Twitter size={18} /></a>
+              </div>
             </div>
 
             <div className="pt-6 border-t border-white/10 space-y-3">
-              <h5 className="text-[10px] font-bold uppercase tracking-widest text-slate-500 flex items-center gap-2"><School size={12} /> Student Friendly</h5>
-              <p className="text-[10px] text-slate-500 leading-relaxed">
+              <h4 className="text-[10px] font-bold uppercase tracking-widest text-slate-300 flex items-center gap-2"><School size={12} /> Student Friendly</h4>
+              <p className="text-[10px] text-slate-400 leading-relaxed">
                 Easy access for <strong>Epistemo Global</strong>, <strong>Manthan International</strong>, and <strong>Sadhana Infinity</strong> students.
               </p>
             </div>
@@ -95,8 +97,8 @@ const Footer: React.FC<FooterProps> = ({ onBookClick }) => {
 
         {/* SEO Footer Block */}
         <div className="pt-8 border-t border-white/10 mb-8">
-          <h5 className="text-[10px] font-bold uppercase tracking-widest text-blue-500 mb-3 flex items-center gap-2"><Navigation size={12} /> Serving Nallagandla Neighbors</h5>
-          <p className="text-[10px] text-slate-500 leading-relaxed font-medium">
+          <h4 className="text-[10px] font-bold uppercase tracking-widest text-blue-500 mb-3 flex items-center gap-2"><Navigation size={12} /> Serving Nallagandla Neighbors</h4>
+          <p className="text-[10px] text-slate-400 leading-relaxed font-medium">
             Aparna Sarovar Zenith • Aparna Neo Mall • My Home Tridasa (Rise) • Ramky One Galaxia • My Home Sayuk • Rajapushpa Imperia • Aliens Space Station • Vertex Kingston Park • Citizens Hospital • Ratnadeep Supermarket • Vijaya Diagnostic • BHEL Hyderabad • Gopanpally • Serilingampally • Tellapur-Nallagandla Road
           </p>
         </div>

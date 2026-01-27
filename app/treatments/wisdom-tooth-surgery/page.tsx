@@ -13,6 +13,7 @@ import {
     Thermometer, Scaling, Check, X
 } from 'lucide-react';
 import { RevealOnScroll } from '@/components/RevealOnScroll';
+import SchemaFAQ from '@/components/SchemaFAQ';
 
 const customStyles = `
   .ios-glass {
@@ -111,17 +112,32 @@ export default function WisdomToothPage() {
             "url": "https://nobledentalnallagandla.in/team/dr-dhivakaran"
         }
     };
+    const faqs = [
+        {
+            q: "Is wisdom tooth removal painful?",
+            a: "With modern anesthesia and leverage-based techniques, the procedure itself is painless. Post-op discomfort typically lasts 2-3 days."
+        },
+        {
+            q: "How long is the recovery?",
+            a: "Swelling peaks at 48 hours and subsides by day 4. You can usually return to work in 2-3 days."
+        },
+        {
+            q: "What is a Dry Socket?",
+            a: "It's a complication we aim to eliminate using PRF therapy and strict surgical protocols."
+        }
+    ];
 
     return (
-        <div className="min-h-screen bg-white dark:bg-[#020617] text-slate-900 dark:text-slate-100 font-sans selection:bg-blue-500/30 pt-20">
+        <div className="min-h-screen bg-white dark:bg-[#020617] text-slate-900 dark:text-slate-100 font-sans selection:bg-blue-500/30 pt-20" >
             <style>{customStyles}</style>
             <script
                 type="application/ld+json"
                 dangerouslySetInnerHTML={{ __html: JSON.stringify(medicalSchema) }}
             />
+            <SchemaFAQ faqs={faqs} />
 
             {/* --- HERO SECTION --- */}
-            <section id="overview" className="relative min-h-[90vh] flex items-center overflow-hidden bg-white dark:bg-[#020617]">
+            <section id="overview" className="relative min-h-[90vh] flex items-center overflow-hidden bg-white dark:bg-[#020617]" >
                 <div className="absolute inset-0 pointer-events-none">
                     <div className="absolute top-0 right-[-10%] w-[60%] h-[60%] bg-blue-600/10 rounded-full blur-[120px] animate-pulse"></div>
                     <div className="absolute bottom-[-10%] left-[-10%] w-[50%] h-[50%] bg-teal-500/10 rounded-full blur-[120px]"></div>
@@ -190,7 +206,7 @@ export default function WisdomToothPage() {
                         </RevealOnScroll>
                     </div>
                 </div>
-            </section>
+            </section >
 
             <nav className="sticky-nav">
                 <div className="max-w-7xl mx-auto px-6 h-16 flex items-center gap-8 overflow-x-auto no-scrollbar">
@@ -394,6 +410,6 @@ export default function WisdomToothPage() {
                     </div>
                 </div>
             </section>
-        </div>
+        </div >
     );
 }

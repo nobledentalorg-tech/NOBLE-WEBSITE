@@ -14,6 +14,7 @@ import {
     Siren
 } from 'lucide-react';
 import { RevealOnScroll } from '@/components/RevealOnScroll';
+import SchemaFAQ from '@/components/SchemaFAQ';
 
 const customStyles = `
   .ios-glass {
@@ -133,6 +134,21 @@ export default function EmergencyPage() {
         }
     };
 
+    const faqs = [
+        {
+            q: "Can I just take antibiotics for tooth pain?",
+            a: "Antibiotics only reduce bacterial load temporarily; they do not cure the infection inside the tooth. Without physical treatment (RCT or Extraction), the pain will return worse."
+        },
+        {
+            q: "Do you have 24/7 support?",
+            a: "We operate extended hours. For night emergencies, please WhatsApp us immediately. We will guide you with first aid until we can see you first thing in the morning."
+        },
+        {
+            q: "How much does a root canal cost?",
+            a: "Front teeth start from ₹3,500. Molars (back teeth) range from ₹5,000 to ₹8,000 depending on the complexity and number of canals."
+        }
+    ];
+
     return (
         <div className="min-h-screen bg-white dark:bg-[#020617] text-slate-900 dark:text-slate-100 font-sans selection:bg-red-500/30 pt-20">
             <style>{customStyles}</style>
@@ -140,6 +156,7 @@ export default function EmergencyPage() {
                 type="application/ld+json"
                 dangerouslySetInnerHTML={{ __html: JSON.stringify(medicalSchema) }}
             />
+            <SchemaFAQ faqs={faqs} />
 
             {/* --- HERO SECTION --- */}
             <section id="overview" className="relative min-h-[90vh] flex items-center overflow-hidden bg-white dark:bg-[#020617]">

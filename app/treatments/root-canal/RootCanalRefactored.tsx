@@ -11,6 +11,7 @@ import {
    Info, Star, Calendar, Sparkles
 } from 'lucide-react';
 import { RevealOnScroll } from '@/components/RevealOnScroll';
+import SchemaFAQ from '@/components/SchemaFAQ';
 
 const customStyles = `
   .ios-glass {
@@ -93,6 +94,50 @@ const customStyles = `
 export default function RootCanalRefactored() {
    const [cleaningProgress, setCleaningProgress] = useState(0);
    const [activeTab, setActiveTab] = useState('overview');
+   const [activeSection, setActiveSection] = useState('overview');
+
+   const medicalSchema = {
+      "@context": "https://schema.org",
+      "@type": "MedicalProcedure",
+      "name": "Microscopic Root Canal Treatment",
+      "procedureType": "Surgical",
+      "status": "Safe",
+      "bodyLocation": "Tooth",
+      "offers": {
+         "@type": "Offer",
+         "price": "4500",
+         "priceCurrency": "INR",
+         "description": "Starting price for single sitting root canal"
+      },
+      "performer": {
+         "@type": "Dentist",
+         "name": "Dr. Dhivakaran",
+         "url": "https://nobledentalnallagandla.in/team/dr-dhivakaran"
+      }
+   };
+
+   const faqs = [
+      {
+         q: "Is microscopic root canal painful?",
+         a: "No, our Zeiss-guided precision and digital anesthesia ensure a virtually pain-free experience."
+      },
+      {
+         q: "What is the cost of RCT in Nallagandla?",
+         a: "At Noble Dental, microscopic RCT starts at ₹4,500. Transparency is our priority."
+      },
+      {
+         q: "How long does a microscopic RCT take?",
+         a: "Due to high-precision optics, most cases are completed in a single 45-60 minute session."
+      },
+      {
+         q: "Do you have a specialist Endodontist in Nallagandla?",
+         a: "Yes. Our team includes an expert Endodontist in Nallagandla who handles complex retreats and Microscopic Root Canal Nallagandla cases to ensure the best possible success rates."
+      },
+      {
+         q: "Why choose Dr. Dhivakaran for my treatment?",
+         a: "As the Best Dentist in Nallagandla, Dr. Dhivakaran uses Microscopic Root Canal Nallagandla and Swiss technology to ensure a 98% success rate in saving natural teeth."
+      }
+   ];
    const isClean = cleaningProgress >= 100;
 
    useEffect(() => {
@@ -124,6 +169,11 @@ export default function RootCanalRefactored() {
    return (
       <div className="min-h-screen bg-[#F2F2F7] dark:bg-[#000000] text-slate-900 dark:text-slate-100 font-sans transition-colors duration-500 overflow-x-hidden pt-20 selection:bg-purple-500/30">
          <style>{customStyles}</style>
+         <script
+            type="application/ld+json"
+            dangerouslySetInnerHTML={{ __html: JSON.stringify(medicalSchema) }}
+         />
+         <SchemaFAQ faqs={faqs} />
 
          {/* ================= HERO SECTION ================= */}
          <div className="relative min-h-[92vh] w-full flex items-center justify-center overflow-hidden bg-[#F2F2F7] dark:bg-[#000000]">

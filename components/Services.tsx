@@ -158,13 +158,15 @@ const cssStyles = `
 .services-wrapper .autoplay-progress-bar {
     --progress: 0;
     height: 4px;
-    width: var(--progress);
+    width: 100%;
     background-color: var(--progress-color);
     position: absolute;
     top: 0;
     left: 0;
     z-index: 30;
-    transition: width 0.1s linear;
+    transform: scaleX(var(--progress));
+    transform-origin: left;
+    transition: transform 0.1s linear;
 }
 
 .floating {
@@ -570,7 +572,8 @@ const Services: React.FC<ServicesProps> = ({ onServiceClick }) => {
             progressContent.current.textContent = `${Math.ceil(time / 1000)}s`;
         }
         if (progressBar.current) {
-            progressBar.current.style.setProperty("--progress", `${(1 - progress) * 100}%`);
+            // Use scaleX (0 to 1) instead of percentage width
+            progressBar.current.style.setProperty("--progress", `${1 - progress}`);
         }
     };
 

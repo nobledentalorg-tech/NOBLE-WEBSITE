@@ -256,16 +256,17 @@ export const treatmentsData: Record<string, TreatmentData> = {
       "Safe for Diabetics (Guided Protocol)",
       "0% EMI Options Available"
     ],
-    priceComparison: [
-      { item: "Straumann Implant (Swiss)", noblePrice: "₹ 25,000", marketPrice: "₹ 35,000+" },
-      { item: "Zirconia Crown (Monolith)", noblePrice: "₹ 8,000", marketPrice: "₹ 15,000" },
-      { item: "3D Surgical Guide", noblePrice: "Included", marketPrice: "₹ 5,000 (Extra)" }
-    ],
+
     faqs: [
       { q: "How much do dental implants cost?", a: "Implants start from ₹25,000. Basic options to premium Swiss brands available. We provide a full cost breakdown upfront." },
       { q: "Is it painful?", a: "With our 'Keyhole Guided Surgery', most patients report less pain than a simple extraction and return to work the next day." }
     ],
     keywords: ["dental implants cost nallagandla", "full mouth implants", "guided implant surgery", "best implantologist hyderabad", "fixed teeth cost"],
+    priceComparison: [
+      { item: "Straumann Implant (Swiss)", noblePrice: "₹ 25,000", marketPrice: "₹ 35,000+" },
+      { item: "Zirconia Crown (Monolith)", noblePrice: "₹ 8,000", marketPrice: "₹ 15,000" },
+      { item: "3D Surgical Guide", noblePrice: "Included", marketPrice: "₹ 5,000 (Extra)" }
+    ],
     medicalContext: {
       etiology: [
         {
@@ -395,6 +396,11 @@ export const treatmentsData: Record<string, TreatmentData> = {
       { q: "Does it work for severe gaps?", a: "Yes, modern aligners can fix complex crowding, gaps, and bite issues just like braces." }
     ],
     keywords: ["invisalign cost nallagandla", "clear aligners", "invisible braces", "teeth straightening cost", "orthodontist near me"],
+    priceComparison: [
+      { item: "HealthFlo Clear Aligners", noblePrice: "₹ 65,000", marketPrice: "₹ 80,000+" },
+      { item: "Invisalign (Official)", noblePrice: "₹ 1.5L - 3.5L", marketPrice: "₹ 1.8L - 4.5L" },
+      { item: "iTero 5D Simulation", noblePrice: "Free", marketPrice: "₹ 3,500" }
+    ],
     medicalContext: {
       etiology: [
         {
@@ -684,7 +690,12 @@ export const treatmentsData: Record<string, TreatmentData> = {
       "baby root canal treatment", "fluoride application", "chocolate teeth treatment",
       "nursing bottle caries", "thumb sucking habit breaker", "broken tooth child",
       "bacchon ka dentist", "palla doctor for kids", "best child dentist hyderabad"
-    ]
+    ],
+    priceComparison: [
+      { item: "Consultation + Cartoon Time", noblePrice: "₹ 500", marketPrice: "₹ 800" },
+      { item: "Fluoride Varnish (Annual)", noblePrice: "₹ 1,200", marketPrice: "₹ 2,500" },
+      { item: "Painless Extraction (Gel)", noblePrice: "₹ 1,500", marketPrice: "₹ 3,000" }
+    ],
   },
   "pregnancy-dental-care": {
     id: "pregnancy-dental-care",

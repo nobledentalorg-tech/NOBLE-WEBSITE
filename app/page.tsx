@@ -8,17 +8,17 @@ import Hero from '@/components/Hero';
 import { RevealOnScroll } from '@/components/RevealOnScroll';
 
 // Dynamically import components below the fold to improve LCP and TBT
-const Services = dynamic(() => import('@/components/Services'));
-const Testimonials = dynamic(() => import('@/components/Testimonials'));
-const About = dynamic(() => import('@/components/About'));
-const MissionValues = dynamic(() => import('@/components/MissionValues'));
-const Gallery = dynamic(() => import('@/components/Gallery'));
-const Doctors = dynamic(() => import('@/components/Doctors'));
-const FAQ = dynamic(() => import('@/components/FAQ'));
-const Contact = dynamic(() => import('@/components/Contact'));
-const Credentials = dynamic(() => import('@/components/Credentials'));
-const TechnologyGrid = dynamic(() => import('@/components/TechnologyGrid'));
-const NobleDifference = dynamic(() => import('@/components/NobleDifference'));
+const Services = dynamic(() => import('@/components/Services'), { ssr: false });
+const Testimonials = dynamic(() => import('@/components/Testimonials'), { ssr: false });
+const About = dynamic(() => import('@/components/About'), { ssr: false });
+const MissionValues = dynamic(() => import('@/components/MissionValues'), { ssr: false });
+const Gallery = dynamic(() => import('@/components/Gallery'), { ssr: false });
+const Doctors = dynamic(() => import('@/components/Doctors'), { ssr: false });
+const FAQ = dynamic(() => import('@/components/FAQ'), { ssr: false });
+const Contact = dynamic(() => import('@/components/Contact'), { ssr: false });
+const Credentials = dynamic(() => import('@/components/Credentials'), { ssr: false });
+const TechnologyGrid = dynamic(() => import('@/components/TechnologyGrid'), { ssr: false });
+const NobleDifference = dynamic(() => import('@/components/NobleDifference'), { ssr: false });
 
 export default function Home() {
     const offers = [

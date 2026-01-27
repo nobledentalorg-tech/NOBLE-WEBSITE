@@ -14,6 +14,7 @@ import {
     Siren, Baby, Milk, Coffee
 } from 'lucide-react';
 import { RevealOnScroll } from '@/components/RevealOnScroll';
+import SchemaFAQ from '@/components/SchemaFAQ';
 
 const customStyles = `
   .ios-glass {
@@ -105,17 +106,32 @@ export default function PregnancyPage() {
             "addressRegion": "Hyderabad"
         }
     };
+    const faqs = [
+        {
+            q: "Is dental anesthesia safe for my baby?",
+            a: "Yes. We use Lidocaine, which is classified as Category B by the FDA, meaning it is safe for pregnancy. We use the minimum effective dose."
+        },
+        {
+            q: "What if I need an X-Ray?",
+            a: "We avoid X-Rays if possible. If absolutely necessary for an emergency, we use a Digital Sensor (90% less radiation) and a double-layered Lead Apron to completely shield your abdomen/baby."
+        },
+        {
+            q: "Why do my gums bleed when I brush?",
+            a: "This is 'Pregnancy Gingivitis' caused by hormonal changes. It is NOT normal to ignore it. A professional cleaning will reduce the infection and stop the bleeding."
+        }
+    ];
 
     return (
-        <div className="min-h-screen bg-white dark:bg-[#020617] text-slate-900 dark:text-slate-100 font-sans selection:bg-pink-500/30 pt-20">
+        <div className="min-h-screen bg-white dark:bg-[#020617] text-slate-900 dark:text-slate-100 font-sans selection:bg-pink-500/30 pt-20" >
             <style>{customStyles}</style>
             <script
                 type="application/ld+json"
                 dangerouslySetInnerHTML={{ __html: JSON.stringify(medicalSchema) }}
             />
+            <SchemaFAQ faqs={faqs} />
 
             {/* --- HERO SECTION --- */}
-            <section id="overview" className="relative min-h-[90vh] flex items-center overflow-hidden bg-white dark:bg-[#020617]">
+            <section id="overview" className="relative min-h-[90vh] flex items-center overflow-hidden bg-white dark:bg-[#020617]" >
                 <div className="absolute inset-0 pointer-events-none">
                     <div className="absolute top-0 right-[-10%] w-[60%] h-[60%] bg-pink-600/5 rounded-full blur-[120px] animate-pulse"></div>
                     <div className="absolute bottom-[-10%] left-[-10%] w-[50%] h-[50%] bg-purple-500/5 rounded-full blur-[120px]"></div>
@@ -185,10 +201,10 @@ export default function PregnancyPage() {
                         </RevealOnScroll>
                     </div>
                 </div>
-            </section>
+            </section >
 
             {/* --- STICKY NAV --- */}
-            <nav className="sticky-nav">
+            < nav className="sticky-nav" >
                 <div className="max-w-7xl mx-auto px-6 h-16 flex items-center gap-8 overflow-x-auto no-scrollbar">
                     {[
                         { id: 'overview', label: 'MOM & BABY' },
@@ -210,10 +226,10 @@ export default function PregnancyPage() {
                         </a>
                     ))}
                 </div>
-            </nav>
+            </nav >
 
             {/* --- PHASE 2: THE "NOBLE TRUTH" (Anti-Gimmick) --- */}
-            <section id="truth" className="py-24 bg-slate-50 dark:bg-slate-900/50">
+            < section id="truth" className="py-24 bg-slate-50 dark:bg-slate-900/50" >
                 <div className="max-w-4xl mx-auto px-6">
                     <RevealOnScroll>
                         <div className="text-center mb-16">
@@ -283,10 +299,10 @@ export default function PregnancyPage() {
                         </RevealOnScroll>
                     </div>
                 </div>
-            </section>
+            </section >
 
             {/* --- TRIMESTER TIMELINE --- */}
-            <section id="trimester" className="py-24 bg-white dark:bg-[#020617]">
+            < section id="trimester" className="py-24 bg-white dark:bg-[#020617]" >
                 <div className="max-w-6xl mx-auto px-6">
                     <h2 className="text-3xl font-black text-slate-900 dark:text-white mb-12 text-center">Safety By Trimester</h2>
                     <div className="grid md:grid-cols-3 gap-6">
@@ -310,10 +326,10 @@ export default function PregnancyPage() {
                         ))}
                     </div>
                 </div>
-            </section>
+            </section >
 
             {/* --- PRICING SECTION --- */}
-            <section id="pricing" className="py-24 bg-slate-50 dark:bg-[#0B1120]">
+            < section id="pricing" className="py-24 bg-slate-50 dark:bg-[#0B1120]" >
                 <div className="max-w-5xl mx-auto px-6">
                     <RevealOnScroll>
                         <div className="text-center mb-16">
@@ -359,10 +375,10 @@ export default function PregnancyPage() {
                         </div>
                     </div>
                 </div>
-            </section>
+            </section >
 
             {/* --- FAQ SECTION --- */}
-            <section id="faq" className="py-24 bg-white dark:bg-[#020617]">
+            < section id="faq" className="py-24 bg-white dark:bg-[#020617]" >
                 <div className="max-w-3xl mx-auto px-6">
                     <h2 className="text-3xl font-black text-slate-900 dark:text-white mb-12 text-center">Mom&apos;s Questions</h2>
                     <div className="space-y-6">
@@ -381,7 +397,7 @@ export default function PregnancyPage() {
                         ))}
                     </div>
                 </div>
-            </section>
-        </div>
+            </section >
+        </div >
     );
 }

@@ -13,7 +13,7 @@ const inter = Inter({ subsets: ['latin'], variable: '--font-inter' });
 
 export const metadata: Metadata = {
   title: {
-    default: 'Best Dentist in Nallagandla | Noble Dental Care - Implants & RCT',
+    default: "Noble Dental Care | Nallagandla's Only Microscopic Dentistry Center",
     template: '%s'
   },
   metadataBase: new URL('https://nobledentalnallagandla.in'),
@@ -25,10 +25,14 @@ export const metadata: Metadata = {
     shortcut: '/favicon.ico',
     apple: '/apple-touch-icon.png',
   },
+  other: {
+    'apple-mobile-web-app-capable': 'yes',
+    'apple-mobile-web-app-status-bar-style': 'black-translucent',
+  },
   verification: {
     google: 'coO5jvSypAc95p3t7cWWDaTsqtjt-W2bK3ybS21ZsIc',
   },
-  description: 'Best Dental Clinic in Nallagandla & Tellapur. Dr. Dhivakaran offers painless Root Canals, Implants & Invisalign with AI-guided precision.',
+  description: 'Premium, pain-free dental care for residents of Aparna Sarovar, My Home Sayuk, and Ramky One Galaxia. Specializing in Zeiss Microscopic RCT and Digital Implants. Install our app for instant booking.',
   keywords: [
     // Urgency & Availability (High Intent)
     'Emergency dentist Nallagandla', 'Dentist open on Sunday Nallagandla', 'Late night dental clinic Hyderabad', 'Urgent tooth extraction near me',
@@ -101,21 +105,31 @@ export const metadata: Metadata = {
 };
 
 export const viewport = {
-  themeColor: '#0F172A',
+  themeColor: '#1e293b',
   width: 'device-width',
   initialScale: 1,
-  maximumScale: 1,
-  userScalable: false,
 };
 
-import { GoogleTagManager } from '@next/third-parties/google';
+import Script from 'next/script';
 
 import { SessionProvider } from 'next-auth/react';
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en" suppressHydrationWarning className="scroll-smooth">
-      <GoogleTagManager gtmId="GTM-N7LJVS7T" />
+      <Script
+        id="gtm-script"
+        strategy="lazyOnload"
+        dangerouslySetInnerHTML={{
+          __html: `
+            (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+            new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+            j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+            'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+            })(window,document,'script','dataLayer','GTM-N7LJVS7T');
+          `,
+        }}
+      />
       <body className={`${jakarta.variable} ${inter.variable} font-sans antialiased bg-slate-50 dark:bg-dark-bg text-slate-900 dark:text-white transition-colors duration-300`}>
         <SessionProvider>
           <LayoutShell>

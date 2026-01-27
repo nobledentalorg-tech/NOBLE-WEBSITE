@@ -16,6 +16,7 @@ import {
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { EffectCoverflow, Autoplay, Pagination, Navigation } from 'swiper/modules';
 import { RevealOnScroll } from '@/components/RevealOnScroll';
+import SchemaFAQ from '@/components/SchemaFAQ';
 
 import 'swiper/css';
 import 'swiper/css/effect-coverflow';
@@ -76,6 +77,45 @@ export default function DentalImplantsRefactored() {
     const [scrolled, setScrolled] = useState(false);
     const [isMenuOpen, setIsMenuOpen] = useState(false);
     const [selectedStep, setSelectedStep] = useState(0);
+
+    const medicalSchema = {
+        "@context": "https://schema.org",
+        "@type": "MedicalProcedure",
+        "name": "Guided Dental Implant Surgery",
+        "procedureType": "Surgical",
+        "status": "Safe",
+        "bodyLocation": "Jawbone",
+        "offers": {
+            "@type": "Offer",
+            "price": "22000",
+            "priceCurrency": "INR",
+            "description": "Starting price for single implant with crown"
+        },
+        "performer": {
+            "@type": "Dentist",
+            "name": "Dr. Dhivakaran",
+            "url": "https://nobledentalnallagandla.in/team/dr-dhivakaran"
+        }
+    };
+
+    const faqs = [
+        {
+            q: "What is the Dental Implants Cost in Nallagandla?",
+            a: "The Tooth Implant Cost Hyderabad patients find varies. At Noble Dental, our Dental Implants in Nallagandla start at ₹22k, including a high-end crown. We believe in providing the best value Near Aparna Sarovar / Citizens Hospital through premium Swiss engineering."
+        },
+        {
+            q: "Why choose Dr. Dhivakaran for Full Mouth Dental Implants?",
+            a: "As the Best Dentist in Nallagandla, Dr. Dhivakaran specializes in complex Full Mouth Dental Implants cases using Immediate Loading Implants and All-on-4 Dental Implants where patients can walk out with teeth in 72 hours."
+        },
+        {
+            q: "Do you offer Zygomatic Implants Hyderabad?",
+            a: "Yes. For patients with zero bone volume, we provide advanced Zygomatic Implants Hyderabad and Basal Implants Hyderabad. These bypass the need for months of bone grafting, offering a faster Missing Tooth Replacement."
+        },
+        {
+            q: "Titanium vs Zirconia Implants: Which is better?",
+            a: "Titanium is the gold standard for bone fusion, while Zirconia is preferred for esthetic zones or metal-free preferences. Our team at this Dental Clinic in Nallagandla will guide you based on your biological needs."
+        }
+    ];
 
     useEffect(() => {
         const handleScroll = () => setScrolled(window.scrollY > 50);
@@ -172,6 +212,11 @@ export default function DentalImplantsRefactored() {
     return (
         <div className="bg-white dark:bg-[#020617] min-h-screen font-sans selection:bg-teal-500/30 selection:text-teal-900 overflow-x-hidden">
             <style dangerouslySetInnerHTML={{ __html: customStyles }} />
+            <script
+                type="application/ld+json"
+                dangerouslySetInnerHTML={{ __html: JSON.stringify(medicalSchema) }}
+            />
+            <SchemaFAQ faqs={faqs} />
 
             {/* ================= HERO SECTION ================= */}
             <section id="overview" className="relative min-h-[90vh] flex flex-col pt-32 overflow-hidden">
