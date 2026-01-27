@@ -244,21 +244,22 @@ export default function RootCanalRefactored() {
 
                   <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
                      {symptoms.map((sym, i) => (
-                        <div
-                           key={i}
-                           onMouseEnter={() => setActiveSymptom(i)}
-                           onMouseLeave={() => setActiveSymptom(null)}
-                           className={`p-8 rounded-[2rem] border transition-all duration-300 cursor-default flex flex-col items-center text-center ${activeSymptom === i
-                              ? 'bg-white dark:bg-[#151b2b] border-purple-500 shadow-xl scale-105 z-10'
-                              : 'bg-white/50 dark:bg-white/5 border-transparent hover:border-slate-200 dark:hover:border-white/10'
-                              }`}
-                        >
-                           <div className={`w-16 h-16 rounded-2xl flex items-center justify-center mb-6 ${sym.bg} ${sym.color}`}>
-                              <sym.icon size={32} />
+                        <RevealOnScroll key={i} delay={i * 100}>
+                           <div
+                              onMouseEnter={() => setActiveSymptom(i)}
+                              onMouseLeave={() => setActiveSymptom(null)}
+                              className={`p-8 rounded-[2rem] border transition-all duration-300 cursor-default flex flex-col items-center text-center ${activeSymptom === i
+                                 ? 'bg-white dark:bg-[#151b2b] border-purple-500 shadow-xl scale-105 z-10'
+                                 : 'bg-white/50 dark:bg-white/5 border-transparent hover:border-slate-200 dark:hover:border-white/10'
+                                 }`}
+                           >
+                              <div className={`w-16 h-16 rounded-2xl flex items-center justify-center mb-6 ${sym.bg} ${sym.color}`}>
+                                 <sym.icon size={32} />
+                              </div>
+                              <h3 className="text-lg font-bold text-slate-900 dark:text-white mb-3">{sym.title}</h3>
+                              <p className="text-sm text-slate-600 dark:text-slate-400 leading-relaxed font-medium">{sym.desc}</p>
                            </div>
-                           <h3 className="text-lg font-bold text-slate-900 dark:text-white mb-3">{sym.title}</h3>
-                           <p className="text-sm text-slate-600 dark:text-slate-400 leading-relaxed font-medium">{sym.desc}</p>
-                        </div>
+                        </RevealOnScroll>
                      ))}
                   </div>
 
@@ -299,17 +300,19 @@ export default function RootCanalRefactored() {
                            <div className="absolute left-[19px] top-4 bottom-4 w-0.5 bg-slate-200 dark:bg-white/10"></div>
 
                            {workflow.map((step, i) => (
-                              <div key={i} className="relative flex gap-6 items-start group">
-                                 <div className="w-10 h-10 rounded-full bg-white dark:bg-[#151b2b] border-2 border-slate-200 dark:border-white/10 flex items-center justify-center text-xs font-black text-slate-400 group-hover:border-purple-500 group-hover:text-purple-500 transition-colors z-10 shrink-0">
-                                    {step.step}
+                              <RevealOnScroll key={i} delay={i * 100}>
+                                 <div className="relative flex gap-6 items-start group">
+                                    <div className="w-10 h-10 rounded-full bg-white dark:bg-[#151b2b] border-2 border-slate-200 dark:border-white/10 flex items-center justify-center text-xs font-black text-slate-400 group-hover:border-purple-500 group-hover:text-purple-500 transition-colors z-10 shrink-0">
+                                       {step.step}
+                                    </div>
+                                    <div className="p-5 rounded-2xl bg-slate-50 dark:bg-[#151b2b] border border-slate-100 dark:border-white/5 w-full group-hover:shadow-lg transition-all">
+                                       <h3 className="font-bold text-slate-900 dark:text-white mb-1 flex items-center gap-2">
+                                          <step.icon size={16} className="text-purple-500" /> {step.title}
+                                       </h3>
+                                       <p className="text-sm text-slate-600 dark:text-slate-400">{step.desc}</p>
+                                    </div>
                                  </div>
-                                 <div className="p-5 rounded-2xl bg-slate-50 dark:bg-[#151b2b] border border-slate-100 dark:border-white/5 w-full group-hover:shadow-lg transition-all">
-                                    <h3 className="font-bold text-slate-900 dark:text-white mb-1 flex items-center gap-2">
-                                       <step.icon size={16} className="text-purple-500" /> {step.title}
-                                    </h3>
-                                    <p className="text-sm text-slate-600 dark:text-slate-400">{step.desc}</p>
-                                 </div>
-                              </div>
+                              </RevealOnScroll>
                            ))}
                         </div>
                      </div>
@@ -363,42 +366,48 @@ export default function RootCanalRefactored() {
                   </div>
 
                   <div className="grid md:grid-cols-3 gap-8">
-                     <div className="p-8 bg-white/5 border border-white/10 rounded-3xl hover:bg-white/10 transition-colors">
-                        <div className="text-purple-400 font-bold uppercase tracking-widest text-xs mb-4">Anterior Teeth</div>
-                        <div className="text-4xl font-black mb-2">₹4,500</div>
-                        <p className="text-slate-400 text-sm mb-8">Front teeth & premolars. Single canal systems.</p>
-                        <ul className="space-y-3 text-sm text-slate-300 mb-8">
-                           <li className="flex gap-3"><CheckCircle2 size={16} className="text-purple-500" /> Digital Anaesthesia</li>
-                           <li className="flex gap-3"><CheckCircle2 size={16} className="text-purple-500" /> Rotary Shaping</li>
-                           <li className="flex gap-3"><CheckCircle2 size={16} className="text-purple-500" /> Laser Disinfection</li>
-                        </ul>
-                        <button className="w-full py-3 rounded-xl border border-white/20 hover:bg-white hover:text-slate-900 transition-all font-bold text-sm">Book Consult</button>
-                     </div>
+                     <RevealOnScroll delay={100} className="md:contents">
+                        <div className="p-8 bg-white/5 border border-white/10 rounded-3xl hover:bg-white/10 transition-colors">
+                           <div className="text-purple-400 font-bold uppercase tracking-widest text-xs mb-4">Anterior Teeth</div>
+                           <div className="text-4xl font-black mb-2">₹4,500</div>
+                           <p className="text-slate-400 text-sm mb-8">Front teeth & premolars. Single canal systems.</p>
+                           <ul className="space-y-3 text-sm text-slate-300 mb-8">
+                              <li className="flex gap-3"><CheckCircle2 size={16} className="text-purple-500" /> Digital Anaesthesia</li>
+                              <li className="flex gap-3"><CheckCircle2 size={16} className="text-purple-500" /> Rotary Shaping</li>
+                              <li className="flex gap-3"><CheckCircle2 size={16} className="text-purple-500" /> Laser Disinfection</li>
+                           </ul>
+                           <button className="w-full py-3 rounded-xl border border-white/20 hover:bg-white hover:text-slate-900 transition-all font-bold text-sm">Book Consult</button>
+                        </div>
+                     </RevealOnScroll>
 
-                     <div className="p-8 bg-gradient-to-b from-purple-900/50 to-white/5 border border-purple-500/50 rounded-3xl relative transform scale-105 shadow-2xl">
-                        <div className="absolute top-0 right-0 bg-purple-500 text-white text-[10px] font-bold px-3 py-1 rounded-bl-xl rounded-tr-xl uppercase">Most Common</div>
-                        <div className="text-white font-bold uppercase tracking-widest text-xs mb-4">Molar Teeth</div>
-                        <div className="text-4xl font-black mb-2">₹6,000</div>
-                        <p className="text-purple-200 text-sm mb-8">Back teeth (Molars). Multiple curved canals.</p>
-                        <ul className="space-y-3 text-sm text-slate-200 mb-8">
-                           <li className="flex gap-3"><CheckCircle2 size={16} className="text-green-400" /> Magnification Access</li>
-                           <li className="flex gap-3"><CheckCircle2 size={16} className="text-green-400" /> MB2 Canal Search</li>
-                           <li className="flex gap-3"><CheckCircle2 size={16} className="text-green-400" /> Bioceramic Seal</li>
-                        </ul>
-                        <button className="w-full py-3 rounded-xl bg-purple-600 hover:bg-purple-500 transition-all font-bold text-sm shadow-lg">Select Plan</button>
-                     </div>
+                     <RevealOnScroll className="md:contents">
+                        <div className="p-8 bg-gradient-to-b from-purple-900/50 to-white/5 border border-purple-500/50 rounded-3xl relative transform scale-105 shadow-2xl">
+                           <div className="absolute top-0 right-0 bg-purple-500 text-white text-[10px] font-bold px-3 py-1 rounded-bl-xl rounded-tr-xl uppercase">Most Common</div>
+                           <div className="text-white font-bold uppercase tracking-widest text-xs mb-4">Molar Teeth</div>
+                           <div className="text-4xl font-black mb-2">₹6,000</div>
+                           <p className="text-purple-200 text-sm mb-8">Back teeth (Molars). Multiple curved canals.</p>
+                           <ul className="space-y-3 text-sm text-slate-200 mb-8">
+                              <li className="flex gap-3"><CheckCircle2 size={16} className="text-green-400" /> Magnification Access</li>
+                              <li className="flex gap-3"><CheckCircle2 size={16} className="text-green-400" /> MB2 Canal Search</li>
+                              <li className="flex gap-3"><CheckCircle2 size={16} className="text-green-400" /> Bioceramic Seal</li>
+                           </ul>
+                           <button className="w-full py-3 rounded-xl bg-purple-600 hover:bg-purple-500 transition-all font-bold text-sm shadow-lg">Select Plan</button>
+                        </div>
+                     </RevealOnScroll>
 
-                     <div className="p-8 bg-white/5 border border-white/10 rounded-3xl hover:bg-white/10 transition-colors">
-                        <div className="text-blue-400 font-bold uppercase tracking-widest text-xs mb-4">Re-Treatment</div>
-                        <div className="text-4xl font-black mb-2">₹8,500</div>
-                        <p className="text-slate-400 text-sm mb-8">Redoing failed root canals from other clinics.</p>
-                        <ul className="space-y-3 text-sm text-slate-300 mb-8">
-                           <li className="flex gap-3"><CheckCircle2 size={16} className="text-blue-500" /> GP Removal</li>
-                           <li className="flex gap-3"><CheckCircle2 size={16} className="text-blue-500" /> Missed Canal Locating</li>
-                           <li className="flex gap-3"><CheckCircle2 size={16} className="text-blue-500" /> MTA Repair</li>
-                        </ul>
-                        <button className="w-full py-3 rounded-xl border border-white/20 hover:bg-white hover:text-slate-900 transition-all font-bold text-sm">Book Consult</button>
-                     </div>
+                     <RevealOnScroll delay={200} className="md:contents">
+                        <div className="p-8 bg-white/5 border border-white/10 rounded-3xl hover:bg-white/10 transition-colors">
+                           <div className="text-blue-400 font-bold uppercase tracking-widest text-xs mb-4">Re-Treatment</div>
+                           <div className="text-4xl font-black mb-2">₹8,500</div>
+                           <p className="text-slate-400 text-sm mb-8">Redoing failed root canals from other clinics.</p>
+                           <ul className="space-y-3 text-sm text-slate-300 mb-8">
+                              <li className="flex gap-3"><CheckCircle2 size={16} className="text-blue-500" /> GP Removal</li>
+                              <li className="flex gap-3"><CheckCircle2 size={16} className="text-blue-500" /> Missed Canal Locating</li>
+                              <li className="flex gap-3"><CheckCircle2 size={16} className="text-blue-500" /> MTA Repair</li>
+                           </ul>
+                           <button className="w-full py-3 rounded-xl border border-white/20 hover:bg-white hover:text-slate-900 transition-all font-bold text-sm">Book Consult</button>
+                        </div>
+                     </RevealOnScroll>
                   </div>
                </RevealOnScroll>
             </div>
@@ -413,27 +422,31 @@ export default function RootCanalRefactored() {
                </div>
 
                <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
-                  <div className="flex gap-6 items-center p-6 bg-white dark:bg-[#151b2b] rounded-[2rem] border border-slate-200 dark:border-white/5 shadow-sm hover:shadow-xl transition-all">
-                     <div className="w-24 h-24 rounded-full overflow-hidden shrink-0 border-2 border-purple-500">
-                        <Image src="/images/dhivakaran.webp" alt="Endodontist" width={100} height={100} className="w-full h-full object-cover" />
+                  <RevealOnScroll className="md:contents">
+                     <div className="flex gap-6 items-center p-6 bg-white dark:bg-[#151b2b] rounded-[2rem] border border-slate-200 dark:border-white/5 shadow-sm hover:shadow-xl transition-all">
+                        <div className="w-24 h-24 rounded-full overflow-hidden shrink-0 border-2 border-purple-500">
+                           <Image src="/images/dhivakaran.webp" alt="Endodontist" width={100} height={100} className="w-full h-full object-cover" />
+                        </div>
+                        <div>
+                           <h3 className="text-xl font-bold text-slate-900 dark:text-white">Senior Endodontist</h3>
+                           <p className="text-xs font-black text-purple-600 uppercase tracking-widest mb-2">Root Canal Specialist</p>
+                           <p className="text-sm text-slate-500 dark:text-slate-400">3200+ RCTs completed. Specialist in calcified canals and re-treatment cases.</p>
+                        </div>
                      </div>
-                     <div>
-                        <h3 className="text-xl font-bold text-slate-900 dark:text-white">Senior Endodontist</h3>
-                        <p className="text-xs font-black text-purple-600 uppercase tracking-widest mb-2">Root Canal Specialist</p>
-                        <p className="text-sm text-slate-500 dark:text-slate-400">3200+ RCTs completed. Specialist in calcified canals and re-treatment cases.</p>
-                     </div>
-                  </div>
+                  </RevealOnScroll>
 
-                  <div className="flex gap-6 items-center p-6 bg-white dark:bg-[#151b2b] rounded-[2rem] border border-slate-200 dark:border-white/5 shadow-sm hover:shadow-xl transition-all">
-                     <div className="w-24 h-24 rounded-full overflow-hidden shrink-0 border-2 border-blue-500">
-                        <Image src="/images/roger.webp" alt="Restorative Dentist" width={100} height={100} className="w-full h-full object-cover" />
+                  <RevealOnScroll delay={100} className="md:contents">
+                     <div className="flex gap-6 items-center p-6 bg-white dark:bg-[#151b2b] rounded-[2rem] border border-slate-200 dark:border-white/5 shadow-sm hover:shadow-xl transition-all">
+                        <div className="w-24 h-24 rounded-full overflow-hidden shrink-0 border-2 border-blue-500">
+                           <Image src="/images/roger.webp" alt="Restorative Dentist" width={100} height={100} className="w-full h-full object-cover" />
+                        </div>
+                        <div>
+                           <h3 className="text-xl font-bold text-slate-900 dark:text-white">Prosthodontist</h3>
+                           <p className="text-xs font-black text-blue-600 uppercase tracking-widest mb-2">Crown Specialist</p>
+                           <p className="text-sm text-slate-500 dark:text-slate-400">Expert in Post & Core build-ups and same-day ceramic crown bonding.</p>
+                        </div>
                      </div>
-                     <div>
-                        <h3 className="text-xl font-bold text-slate-900 dark:text-white">Prosthodontist</h3>
-                        <p className="text-xs font-black text-blue-600 uppercase tracking-widest mb-2">Crown Specialist</p>
-                        <p className="text-sm text-slate-500 dark:text-slate-400">Expert in Post & Core build-ups and same-day ceramic crown bonding.</p>
-                     </div>
-                  </div>
+                  </RevealOnScroll>
                </div>
 
                {/* Internal SEO Linking: The Restoration Journey */}

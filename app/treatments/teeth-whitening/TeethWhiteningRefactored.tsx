@@ -13,6 +13,7 @@ import { Navigation, Pagination, Autoplay } from 'swiper/modules';
 import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
+import { RevealOnScroll } from '@/components/RevealOnScroll';
 
 // --- ICONS & ASSETS ---
 const HERO_IMAGE = "/assets/images/treatments/whitening-hyderabad.webp"; // Ensure this exists from data
@@ -113,7 +114,7 @@ const InteractiveWhitener = () => {
     const [isDragging, setIsDragging] = useState(false);
 
     const handleMove = (e: React.MouseEvent | React.TouchEvent) => {
-        if (!process.browser) return;
+        // if (!process.browser) return; // Removed process.browser check for Next.js 13+ comp
         if (!containerRef.current) return;
 
         const rect = containerRef.current.getBoundingClientRect();
@@ -228,65 +229,50 @@ export default function TeethWhiteningRefactored() {
 
                 <div className="container mx-auto px-6 relative z-10 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
                     <div className="space-y-8">
-                        <motion.div
-                            initial={{ opacity: 0, y: 20 }}
-                            animate={{ opacity: 1, y: 0 }}
-                            className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-yellow-400/10 border border-yellow-400/20 text-yellow-400 text-xs font-bold uppercase tracking-widest"
-                        >
-                            <Sparkles size={14} />
-                            <span>Cosmetic Excellence</span>
-                        </motion.div>
-
-                        <motion.h1
-                            initial={{ opacity: 0, y: 20 }}
-                            animate={{ opacity: 1, y: 0 }}
-                            transition={{ delay: 0.1 }}
-                            className="text-5xl md:text-7xl font-bold leading-tight"
-                        >
-                            Your Smile <br />
-                            <span className="text-transparent bg-clip-text bg-gradient-to-r from-yellow-200 to-white">
-                                8 Shades Whiter.
-                            </span>
-                        </motion.h1>
-
-                        <motion.p
-                            initial={{ opacity: 0, y: 20 }}
-                            animate={{ opacity: 1, y: 0 }}
-                            transition={{ delay: 0.2 }}
-                            className="text-xl text-slate-300 max-w-lg leading-relaxed"
-                        >
-                            Stop hiding your teeth in photos. Using <strong>Philips Zoom</strong>, we erase years of coffee and tea stains in a single 45-minute session.
-                        </motion.p>
-
-                        <motion.div
-                            initial={{ opacity: 0, y: 20 }}
-                            animate={{ opacity: 1, y: 0 }}
-                            transition={{ delay: 0.3 }}
-                            className="flex flex-wrap gap-4"
-                        >
-                            <Link href="#book" className="px-8 py-4 bg-white text-slate-900 rounded-full font-bold hover:bg-yellow-50 transition-colors flex items-center gap-2">
-                                Book Whitening Session <ArrowRight size={18} />
-                            </Link>
-                            <button onClick={() => document.getElementById('price')?.scrollIntoView({ behavior: 'smooth' })} className="px-8 py-4 border border-white/20 hover:bg-white/10 rounded-full font-bold transition-colors">
-                                Check Pricing
-                            </button>
-                        </motion.div>
-
-                        <div className="flex items-center gap-8 pt-8 border-t border-white/10">
-                            <div>
-                                <div className="text-3xl font-bold text-yellow-400">45</div>
-                                <div className="text-xs text-slate-400 uppercase tracking-widest">Minutes</div>
+                        <RevealOnScroll>
+                            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-yellow-400/10 border border-yellow-400/20 text-yellow-400 text-xs font-bold uppercase tracking-widest mb-6">
+                                <Sparkles size={14} />
+                                <span>Cosmetic Excellence</span>
                             </div>
-                            <div>
-                                <div className="text-3xl font-bold text-yellow-400">100%</div>
-                                <div className="text-xs text-slate-400 uppercase tracking-widest">Enamel Safe</div>
+
+                            <h1 className="text-5xl md:text-7xl font-bold leading-tight mb-6">
+                                Your Smile <br />
+                                <span className="text-transparent bg-clip-text bg-gradient-to-r from-yellow-200 to-white">
+                                    8 Shades Whiter.
+                                </span>
+                            </h1>
+
+                            <p className="text-xl text-slate-300 max-w-lg leading-relaxed mb-8">
+                                Stop hiding your teeth in photos. Using <strong>Philips Zoom</strong>, we erase years of coffee and tea stains in a single 45-minute session.
+                            </p>
+
+                            <div className="flex flex-wrap gap-4">
+                                <Link href="#book" className="px-8 py-4 bg-white text-slate-900 rounded-full font-bold hover:bg-yellow-50 transition-colors flex items-center gap-2">
+                                    Book Whitening Session <ArrowRight size={18} />
+                                </Link>
+                                <button onClick={() => document.getElementById('price')?.scrollIntoView({ behavior: 'smooth' })} className="px-8 py-4 border border-white/20 hover:bg-white/10 rounded-full font-bold transition-colors">
+                                    Check Pricing
+                                </button>
                             </div>
-                        </div>
+
+                            <div className="flex items-center gap-8 pt-8 border-t border-white/10 mt-8">
+                                <div>
+                                    <div className="text-3xl font-bold text-yellow-400">45</div>
+                                    <div className="text-xs text-slate-400 uppercase tracking-widest">Minutes</div>
+                                </div>
+                                <div>
+                                    <div className="text-3xl font-bold text-yellow-400">100%</div>
+                                    <div className="text-xs text-slate-400 uppercase tracking-widest">Enamel Safe</div>
+                                </div>
+                            </div>
+                        </RevealOnScroll>
                     </div>
 
                     {/* Right Side: Interactive Component */}
-                    <div className="hidden lg:block">
-                        <InteractiveWhitener />
+                    <div className="hidden lg:block relative z-20">
+                        <RevealOnScroll delay={200}>
+                            <InteractiveWhitener />
+                        </RevealOnScroll>
                     </div>
                 </div>
             </section>
@@ -298,25 +284,27 @@ export default function TeethWhiteningRefactored() {
       */}
             <section className="py-24 bg-white">
                 <div className="container mx-auto px-6 max-w-4xl text-center">
-                    <h2 className="text-3xl md:text-5xl font-bold text-slate-900 mb-8">
-                        Is your toothpaste <span className="text-red-500">lying</span> to you?
-                    </h2>
-                    <div className="prose prose-lg mx-auto text-slate-600 leading-relaxed">
-                        <p>
-                            We’ve all seen the commercials. “Whitens teeth in 2 weeks!” So you scrub. And you scrub.
-                            But your teeth stay yellow. Why?
-                        </p>
-                        <p>
-                            <strong>Because the stain is INSIDE the tooth.</strong>
-                        </p>
-                        <p>
-                            Most whitening toothpastes are just “sandpaper” for your teeth. They scratch off surface dirt, but they can’t touch the deep pigments absorbed into your enamel rods.
-                            Even worse, scrubbing too hard wears down your white enamel, revealing specifically the <em>yellow</em> layer (dentin) underneath. You are literally brushing your teeth yellow.
-                        </p>
-                        <p className="font-bold text-slate-900 text-xl border-l-4 border-yellow-400 pl-6 italic">
-                            "True whitening requires a chemical reaction (Oxidation) to release oxygen into the enamel and lift deep stains safely. That is what we do."
-                        </p>
-                    </div>
+                    <RevealOnScroll>
+                        <h2 className="text-3xl md:text-5xl font-bold text-slate-900 mb-8">
+                            Is your toothpaste <span className="text-red-500">lying</span> to you?
+                        </h2>
+                        <div className="prose prose-lg mx-auto text-slate-600 leading-relaxed">
+                            <p>
+                                We’ve all seen the commercials. “Whitens teeth in 2 weeks!” So you scrub. And you scrub.
+                                But your teeth stay yellow. Why?
+                            </p>
+                            <p>
+                                <strong>Because the stain is INSIDE the tooth.</strong>
+                            </p>
+                            <p>
+                                Most whitening toothpastes are just “sandpaper” for your teeth. They scratch off surface dirt, but they can’t touch the deep pigments absorbed into your enamel rods.
+                                Even worse, scrubbing too hard wears down your white enamel, revealing specifically the <em>yellow</em> layer (dentin) underneath. You are literally brushing your teeth yellow.
+                            </p>
+                            <p className="font-bold text-slate-900 text-xl border-l-4 border-yellow-400 pl-6 italic bg-yellow-50 p-4 rounded-r-xl my-8">
+                                "True whitening requires a chemical reaction (Oxidation) to release oxygen into the enamel and lift deep stains safely. That is what we do."
+                            </p>
+                        </div>
+                    </RevealOnScroll>
                 </div>
             </section>
 
@@ -327,22 +315,24 @@ export default function TeethWhiteningRefactored() {
       */}
             <section className="py-24 bg-slate-50">
                 <div className="container mx-auto px-6">
-                    <div className="text-center mb-16">
-                        <div className="text-yellow-600 font-bold uppercase tracking-widest mb-2">Diagnosis</div>
-                        <h2 className="text-4xl font-bold text-slate-900">Why are my teeth yellow?</h2>
-                    </div>
+                    <RevealOnScroll>
+                        <div className="text-center mb-16">
+                            <div className="text-yellow-600 font-bold uppercase tracking-widest mb-2">Diagnosis</div>
+                            <h2 className="text-4xl font-bold text-slate-900">Why are my teeth yellow?</h2>
+                        </div>
+                    </RevealOnScroll>
 
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-                        {SYMPTOMS.map((s) => (
-                            <motion.div
-                                key={s.id}
-                                whileHover={{ y: -5 }}
-                                className={`p-8 rounded-3xl border ${s.color} transition-shadow hover:shadow-xl bg-white`}
-                            >
-                                <div className="mb-4">{s.icon}</div>
-                                <h3 className="text-xl font-bold mb-2 text-slate-900">{s.title}</h3>
-                                <p className="text-sm opacity-90">{s.desc}</p>
-                            </motion.div>
+                        {SYMPTOMS.map((s, idx) => (
+                            <RevealOnScroll key={s.id} delay={idx * 100}>
+                                <div
+                                    className={`p-8 rounded-3xl border ${s.color} transition-shadow hover:shadow-xl bg-white`}
+                                >
+                                    <div className="mb-4">{s.icon}</div>
+                                    <h3 className="text-xl font-bold mb-2 text-slate-900">{s.title}</h3>
+                                    <p className="text-sm opacity-90">{s.desc}</p>
+                                </div>
+                            </RevealOnScroll>
                         ))}
                     </div>
                 </div>
@@ -357,21 +347,23 @@ export default function TeethWhiteningRefactored() {
                 <div className="container mx-auto px-6">
                     <div className="flex flex-col md:flex-row gap-16 items-start">
                         <div className="md:w-1/2 md:sticky md:top-24">
-                            <h2 className="text-4xl md:text-5xl font-bold text-slate-900 mb-6 leading-tight">
-                                Just sit back and relax.
-                            </h2>
-                            <p className="text-lg text-slate-600 mb-8">
-                                The entire procedure takes less than an hour. Many of our patients listen to podcasts or take a quick nap while the light does the work.
-                            </p>
-
-                            <div className="bg-slate-900 text-white p-8 rounded-3xl">
-                                <h3 className="font-bold text-xl mb-4 flex items-center gap-2">
-                                    <Shield className="text-yellow-400" /> Safety First
-                                </h3>
-                                <p className="text-slate-300 text-sm leading-relaxed">
-                                    We don't just "paint" your teeth. We use a specialized <strong>Gingival Barrier</strong> that hardens over your gums to protect them. This ensures the whitening gel only touches your enamel, preventing gum burns common in salon kits.
+                            <RevealOnScroll>
+                                <h2 className="text-4xl md:text-5xl font-bold text-slate-900 mb-6 leading-tight">
+                                    Just sit back and relax.
+                                </h2>
+                                <p className="text-lg text-slate-600 mb-8">
+                                    The entire procedure takes less than an hour. Many of our patients listen to podcasts or take a quick nap while the light does the work.
                                 </p>
-                            </div>
+
+                                <div className="bg-slate-900 text-white p-8 rounded-3xl shadow-xl">
+                                    <h3 className="font-bold text-xl mb-4 flex items-center gap-2">
+                                        <Shield className="text-yellow-400" /> Safety First
+                                    </h3>
+                                    <p className="text-slate-300 text-sm leading-relaxed">
+                                        We don't just "paint" your teeth. We use a specialized <strong>Gingival Barrier</strong> that hardens over your gums to protect them. This ensures the whitening gel only touches your enamel, preventing gum burns common in salon kits.
+                                    </p>
+                                </div>
+                            </RevealOnScroll>
                         </div>
 
                         <div className="md:w-1/2 relative space-y-12">
@@ -385,18 +377,20 @@ export default function TeethWhiteningRefactored() {
                                 { title: "Light Cycle 2", desc: "We apply fresh gel and repeat for maximum lift.", time: "15 Mins" },
                                 { title: "Reveal", desc: "Everything is washed off. You see your new shade instantly.", time: "5 Mins" }
                             ].map((step, idx) => (
-                                <div key={idx} className="relative flex gap-8 group">
-                                    <div className="w-16 h-16 shrink-0 rounded-full bg-white border-2 border-slate-200 flex items-center justify-center font-bold text-slate-400 group-hover:border-yellow-400 group-hover:text-yellow-500 transition-colors z-10">
-                                        {idx + 1}
+                                <RevealOnScroll key={idx} delay={idx * 100}>
+                                    <div className="relative flex gap-8 group">
+                                        <div className="w-16 h-16 shrink-0 rounded-full bg-white border-2 border-slate-200 flex items-center justify-center font-bold text-slate-400 group-hover:border-yellow-400 group-hover:text-yellow-500 transition-colors z-10 shadow-sm">
+                                            {idx + 1}
+                                        </div>
+                                        <div className="pt-2">
+                                            <h3 className="text-2xl font-bold text-slate-900 mb-2">{step.title}</h3>
+                                            <p className="text-slate-600">{step.desc}</p>
+                                            <span className="inline-block mt-2 text-xs font-bold text-slate-400 bg-slate-100 px-2 py-1 rounded">
+                                                {step.time}
+                                            </span>
+                                        </div>
                                     </div>
-                                    <div className="pt-2">
-                                        <h3 className="text-2xl font-bold text-slate-900 mb-2">{step.title}</h3>
-                                        <p className="text-slate-600">{step.desc}</p>
-                                        <span className="inline-block mt-2 text-xs font-bold text-slate-400 bg-slate-100 px-2 py-1 rounded">
-                                            {step.time}
-                                        </span>
-                                    </div>
-                                </div>
+                                </RevealOnScroll>
                             ))}
                         </div>
                     </div>
@@ -410,52 +404,60 @@ export default function TeethWhiteningRefactored() {
       */}
             <section id="price" className="py-24 bg-slate-50">
                 <div className="container mx-auto px-6 max-w-5xl">
-                    <div className="text-center mb-16">
-                        <h2 className="text-4xl font-bold text-slate-900 mb-4">Transparent Pricing</h2>
-                        <p className="text-slate-500">Why "Cheaper" is not better when it comes to Chemistry.</p>
-                    </div>
+                    <RevealOnScroll>
+                        <div className="text-center mb-16">
+                            <h2 className="text-4xl font-bold text-slate-900 mb-4">Transparent Pricing</h2>
+                            <p className="text-slate-500">Why "Cheaper" is not better when it comes to Chemistry.</p>
+                        </div>
+                    </RevealOnScroll>
 
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-0">
                         {/* 1. Home Kits */}
-                        <div className="bg-white p-8 rounded-3xl md:rounded-r-none border border-r-0 border-slate-200 opacity-70 scale-95">
-                            <div className="text-slate-400 font-bold uppercase tracking-wider mb-2">Home Kits</div>
-                            <div className="text-2xl font-bold text-slate-800 mb-6">₹ 1,500+</div>
-                            <ul className="space-y-4 text-sm text-slate-500">
-                                <li className="flex gap-2"><XCircle size={16} className="text-red-400" /> Week peroxide%</li>
-                                <li className="flex gap-2"><XCircle size={16} className="text-red-400" /> Irritates gums</li>
-                                <li className="flex gap-2"><XCircle size={16} className="text-red-400" /> Takes 30 days</li>
-                            </ul>
-                        </div>
+                        <RevealOnScroll delay={100} className="md:contents">
+                            <div className="bg-white p-8 rounded-3xl md:rounded-r-none border border-r-0 border-slate-200 opacity-70 scale-95">
+                                <div className="text-slate-400 font-bold uppercase tracking-wider mb-2">Home Kits</div>
+                                <div className="text-2xl font-bold text-slate-800 mb-6">₹ 1,500+</div>
+                                <ul className="space-y-4 text-sm text-slate-500">
+                                    <li className="flex gap-2"><XCircle size={16} className="text-red-400" /> Week peroxide%</li>
+                                    <li className="flex gap-2"><XCircle size={16} className="text-red-400" /> Irritates gums</li>
+                                    <li className="flex gap-2"><XCircle size={16} className="text-red-400" /> Takes 30 days</li>
+                                </ul>
+                            </div>
+                        </RevealOnScroll>
 
                         {/* 2. NOBLE (Highlight) */}
-                        <div className="bg-slate-900 text-white p-10 rounded-3xl shadow-2xl relative z-10 transform md:-translate-y-4">
-                            <div className="absolute top-0 right-0 bg-yellow-400 text-black text-xs font-bold px-3 py-1 rounded-bl-xl rounded-tr-2xl">RECOMMENDED</div>
-                            <div className="text-yellow-400 font-bold uppercase tracking-wider mb-2">Noble Medical Whitening</div>
-                            <div className="text-4xl font-bold mb-2">₹ 12,000</div>
-                            <div className="text-sm text-slate-400 mb-8">*Prices vary by brand (Pola/Zoom)</div>
+                        <RevealOnScroll className="md:contents">
+                            <div className="bg-slate-900 text-white p-10 rounded-3xl shadow-2xl relative z-10 transform md:-translate-y-4 border border-yellow-500/20">
+                                <div className="absolute top-0 right-0 bg-yellow-400 text-black text-xs font-bold px-3 py-1 rounded-bl-xl rounded-tr-2xl">RECOMMENDED</div>
+                                <div className="text-yellow-400 font-bold uppercase tracking-wider mb-2">Noble Medical Whitening</div>
+                                <div className="text-4xl font-bold mb-2">₹ 12,000</div>
+                                <div className="text-sm text-slate-400 mb-8">*Prices vary by brand (Pola/Zoom)</div>
 
-                            <ul className="space-y-4 font-medium mb-8">
-                                <li className="flex gap-3"><CheckCircle2 className="text-yellow-400" /> <span>8 Shades Lighter (Guaranteed)</span></li>
-                                <li className="flex gap-3"><CheckCircle2 className="text-yellow-400" /> <span>Gum Protection Barrier</span></li>
-                                <li className="flex gap-3"><CheckCircle2 className="text-yellow-400" /> <span>Zero Sensitivity Protocol</span></li>
-                                <li className="flex gap-3"><CheckCircle2 className="text-yellow-400" /> <span>1 Hour Single Visit</span></li>
-                            </ul>
+                                <ul className="space-y-4 font-medium mb-8">
+                                    <li className="flex gap-3"><CheckCircle2 className="text-yellow-400" /> <span>8 Shades Lighter (Guaranteed)</span></li>
+                                    <li className="flex gap-3"><CheckCircle2 className="text-yellow-400" /> <span>Gum Protection Barrier</span></li>
+                                    <li className="flex gap-3"><CheckCircle2 className="text-yellow-400" /> <span>Zero Sensitivity Protocol</span></li>
+                                    <li className="flex gap-3"><CheckCircle2 className="text-yellow-400" /> <span>1 Hour Single Visit</span></li>
+                                </ul>
 
-                            <Link href="#book" className="block w-full text-center py-4 bg-yellow-400 hover:bg-yellow-500 text-black font-bold rounded-xl transition-colors">
-                                Book Appointment
-                            </Link>
-                        </div>
+                                <Link href="#book" className="block w-full text-center py-4 bg-yellow-400 hover:bg-yellow-500 text-black font-bold rounded-xl transition-colors">
+                                    Book Appointment
+                                </Link>
+                            </div>
+                        </RevealOnScroll>
 
                         {/* 3. Salons */}
-                        <div className="bg-white p-8 rounded-3xl md:rounded-l-none border border-l-0 border-slate-200 opacity-70 scale-95">
-                            <div className="text-slate-400 font-bold uppercase tracking-wider mb-2">Salon / Spa</div>
-                            <div className="text-2xl font-bold text-slate-800 mb-6">₹ 5,000+</div>
-                            <ul className="space-y-4 text-sm text-slate-500">
-                                <li className="flex gap-2"><AlertCircle size={16} className="text-amber-500" /> No Doctor Present</li>
-                                <li className="flex gap-2"><XCircle size={16} className="text-red-400" /> Often painful</li>
-                                <li className="flex gap-2"><CheckCircle2 size={16} className="text-slate-400" /> Moderate results</li>
-                            </ul>
-                        </div>
+                        <RevealOnScroll delay={200} className="md:contents">
+                            <div className="bg-white p-8 rounded-3xl md:rounded-l-none border border-l-0 border-slate-200 opacity-70 scale-95">
+                                <div className="text-slate-400 font-bold uppercase tracking-wider mb-2">Salon / Spa</div>
+                                <div className="text-2xl font-bold text-slate-800 mb-6">₹ 5,000+</div>
+                                <ul className="space-y-4 text-sm text-slate-500">
+                                    <li className="flex gap-2"><AlertCircle size={16} className="text-amber-500" /> No Doctor Present</li>
+                                    <li className="flex gap-2"><XCircle size={16} className="text-red-400" /> Often painful</li>
+                                    <li className="flex gap-2"><CheckCircle2 size={16} className="text-slate-400" /> Moderate results</li>
+                                </ul>
+                            </div>
+                        </RevealOnScroll>
                     </div>
                 </div>
             </section>
@@ -467,27 +469,29 @@ export default function TeethWhiteningRefactored() {
       */}
             <section className="py-24 bg-white">
                 <div className="container mx-auto px-6 max-w-4xl">
-                    <div className="flex flex-col md:flex-row gap-12 items-center">
-                        <div className="relative w-64 h-64 shrink-0 rounded-full overflow-hidden border-4 border-slate-100 shadow-xl">
-                            <Image
-                                src="/assets/images/doctors/dr-dhivakaran.webp" // Check if this exists, else generic
-                                alt="Dr. Dhivakaran"
-                                fill
-                                className="object-cover"
-                            />
-                        </div>
-                        <div>
-                            <h2 className="text-3xl font-bold text-slate-900 mb-4">Meet Your Expert</h2>
-                            <div className="text-xl font-bold text-yellow-600 mb-6">Dr. Dhivakaran</div>
-                            <p className="text-slate-600 leading-relaxed italic mb-6">
-                                "I don't believe in 'Hollywood White' veneers for everyone. Sometimes, all you need is to unlock the natural brightness of your own enamel. My approach is conservative: clean the canvas before we paint on it."
-                            </p>
-                            <div className="flex gap-4">
-                                <div className="px-4 py-2 bg-slate-100 rounded-lg text-sm font-bold text-slate-700">MDS - Conservative Dentistry</div>
-                                <div className="px-4 py-2 bg-slate-100 rounded-lg text-sm font-bold text-slate-700">14+ Years Exp</div>
+                    <RevealOnScroll>
+                        <div className="flex flex-col md:flex-row gap-12 items-center">
+                            <div className="relative w-64 h-64 shrink-0 rounded-full overflow-hidden border-4 border-slate-100 shadow-xl">
+                                <Image
+                                    src="/assets/images/doctors/dr-dhivakaran.webp" // Check if this exists, else generic
+                                    alt="Dr. Dhivakaran"
+                                    fill
+                                    className="object-cover"
+                                />
+                            </div>
+                            <div>
+                                <h2 className="text-3xl font-bold text-slate-900 mb-4">Meet Your Expert</h2>
+                                <div className="text-xl font-bold text-yellow-600 mb-6">Dr. Dhivakaran</div>
+                                <p className="text-slate-600 leading-relaxed italic mb-6">
+                                    "I don't believe in 'Hollywood White' veneers for everyone. Sometimes, all you need is to unlock the natural brightness of your own enamel. My approach is conservative: clean the canvas before we paint on it."
+                                </p>
+                                <div className="flex gap-4">
+                                    <div className="px-4 py-2 bg-slate-100 rounded-lg text-sm font-bold text-slate-700">MDS - Conservative Dentistry</div>
+                                    <div className="px-4 py-2 bg-slate-100 rounded-lg text-sm font-bold text-slate-700">14+ Years Exp</div>
+                                </div>
                             </div>
                         </div>
-                    </div>
+                    </RevealOnScroll>
                 </div>
             </section>
 
@@ -498,13 +502,17 @@ export default function TeethWhiteningRefactored() {
       */}
             <section className="py-24 bg-slate-50">
                 <div className="container mx-auto px-6 max-w-3xl">
-                    <h2 className="text-3xl font-bold text-center mb-12">Expert Answers</h2>
+                    <RevealOnScroll>
+                        <h2 className="text-3xl font-bold text-center mb-12">Expert Answers</h2>
+                    </RevealOnScroll>
                     <div className="space-y-4">
                         {FAQS.map((faq, i) => (
-                            <div key={i} className="bg-white rounded-2xl p-6 shadow-sm border border-black/5">
-                                <h3 className="font-bold text-slate-900 mb-2">{faq.q}</h3>
-                                <p className="text-slate-600">{faq.a}</p>
-                            </div>
+                            <RevealOnScroll key={i} delay={i * 50}>
+                                <div className="bg-white rounded-2xl p-6 shadow-sm border border-black/5 hover:border-yellow-400/50 transition-colors">
+                                    <h3 className="font-bold text-slate-900 mb-2">{faq.q}</h3>
+                                    <p className="text-slate-600">{faq.a}</p>
+                                </div>
+                            </RevealOnScroll>
                         ))}
                     </div>
                 </div>
@@ -517,16 +525,18 @@ export default function TeethWhiteningRefactored() {
       */}
             <section id="book" className="py-24 bg-slate-900 text-white text-center">
                 <div className="container mx-auto px-6">
-                    <h2 className="text-4xl md:text-5xl font-bold mb-8">Ready to shine?</h2>
-                    <p className="text-xl text-slate-400 mb-12 max-w-2xl mx-auto">
-                        No filters needed. Book your 45-minute transformation today.
-                    </p>
-                    <Link href="/book-appointment" className="inline-block px-12 py-5 bg-yellow-400 hover:bg-yellow-500 text-black font-extrabold text-xl rounded-full transition-transform hover:scale-105">
-                        Book Whitening Now
-                    </Link>
-                    <p className="mt-8 text-sm text-slate-500">
-                        100% Satisfaction Guarantee • No Hidden Checks
-                    </p>
+                    <RevealOnScroll>
+                        <h2 className="text-4xl md:text-5xl font-bold mb-8">Ready to shine?</h2>
+                        <p className="text-xl text-slate-400 mb-12 max-w-2xl mx-auto">
+                            No filters needed. Book your 45-minute transformation today.
+                        </p>
+                        <Link href="/book-appointment" className="inline-block px-12 py-5 bg-yellow-400 hover:bg-yellow-500 text-black font-extrabold text-xl rounded-full transition-transform hover:scale-105 shadow-xl shadow-yellow-400/20">
+                            Book Whitening Now
+                        </Link>
+                        <p className="mt-8 text-sm text-slate-500">
+                            100% Satisfaction Guarantee • No Hidden Checks
+                        </p>
+                    </RevealOnScroll>
                 </div>
             </section>
         </div>
