@@ -11,6 +11,16 @@ interface HeroProps {
 
 const Hero: React.FC<HeroProps> = ({ onBookClick }) => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
+  const videoRef = useRef<HTMLVideoElement>(null);
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      if (videoRef.current) {
+        videoRef.current.play().catch(() => { });
+      }
+    }, 2500);
+    return () => clearTimeout(timer);
+  }, []);
 
   useEffect(() => {
     const canvas = canvasRef.current;
@@ -21,7 +31,7 @@ const Hero: React.FC<HeroProps> = ({ onBookClick }) => {
     let width = canvas.width = canvas.offsetWidth * window.devicePixelRatio;
     let height = canvas.height = canvas.offsetHeight * window.devicePixelRatio;
 
-    const particles = Array.from({ length: 90 }, () => ({
+    const particles = Array.from({ length: 40 }, () => ({
       x: Math.random() * width,
       y: Math.random() * height,
       size: Math.random() * 2 + 0.5,
@@ -152,8 +162,11 @@ const Hero: React.FC<HeroProps> = ({ onBookClick }) => {
             <div className="adidas-card">
               <div className="card-head">
                 <video
+                  ref={videoRef}
                   className="surgical-video"
-                  autoPlay loop muted playsInline
+                  loop muted playsInline
+                  preload="none"
+                  poster="/assets/images/treatments/whitening-hyderabad.webp"
                   src="https://videos.pexels.com/video-files/3195394/3195394-hd_1920_1080_25fps.mp4"
                 />
                 <Image
@@ -173,7 +186,6 @@ const Hero: React.FC<HeroProps> = ({ onBookClick }) => {
                   width={300}
                   height={300}
                   priority={true} // [SEO] LCP Optimization
-                  unoptimized // External S3 bucket not in allowed patterns list yet? It is, but safer to add just in case of dimension issues
                 />
 
                 <span className="nmd">ITI</span>

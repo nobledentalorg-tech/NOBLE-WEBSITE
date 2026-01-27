@@ -7,7 +7,7 @@ const nextConfig = {
   // basePath: '/dental-clinic', // UNCOMMENT if deploying to GitHub Pages subdirectory 
 
   images: {
-    unoptimized: true,
+    unoptimized: false,
     remotePatterns: [
       { protocol: 'https', hostname: 'images.unsplash.com' },
       { protocol: 'https', hostname: 'dentcare-website-s3-bucket-01.s3.eu-north-1.amazonaws.com' },

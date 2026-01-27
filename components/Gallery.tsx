@@ -218,33 +218,41 @@ export default function Gallery() {
   };
 
   // --- AUDIO LOGIC ---
-  useEffect(() => {
+  // [OPTIMIZATION] Lazy load audio context only on user interaction to prevent 3.5MB download on page load
+  const initAudio = () => {
     if (!audioRef.current) {
-      audioRef.current = new Audio(playlist[0].audio);
+      audioRef.current = new Audio(playlist[currentTrackIndex].audio);
       audioRef.current.volume = 0.5;
-    }
-    const audio = audioRef.current;
 
-    const updateProgress = () => {
-      if (audio.duration) {
-        setBarWidth(`${(audio.currentTime / audio.duration) * 100}%`);
-        setCurrentTime(formatTime(audio.currentTime));
-        setDuration(formatTime(audio.duration));
+      const updateProgress = () => {
+        if (audioRef.current && audioRef.current.duration) {
+          setBarWidth(`${(audioRef.current.currentTime / audioRef.current.duration) * 100}%`);
+          setCurrentTime(formatTime(audioRef.current.currentTime));
+          setDuration(formatTime(audioRef.current.duration));
+        }
+      };
+
+      const handleEnded = () => handleNext();
+
+      audioRef.current.addEventListener('timeupdate', updateProgress);
+      audioRef.current.addEventListener('loadedmetadata', updateProgress);
+      audioRef.current.addEventListener('ended', handleEnded);
+
+      // We attach the cleanup listener to the instance itself if needed, or handle via ref in useEffect return
+      // But since we are inside a function, simple listeners are fine.
+      // Ideally we should track if listeners are added. 
+    }
+  };
+
+  useEffect(() => {
+    // Cleanup on unmount
+    return () => {
+      if (audioRef.current) {
+        audioRef.current.pause();
+        audioRef.current.src = "";
+        // Browsers handle garbage collection of the audio element
       }
     };
-
-    const handleEnded = () => handleNext();
-
-    audio.addEventListener('timeupdate', updateProgress);
-    audio.addEventListener('loadedmetadata', updateProgress);
-    audio.addEventListener('ended', handleEnded);
-
-    return () => {
-      audio.removeEventListener('timeupdate', updateProgress);
-      audio.removeEventListener('loadedmetadata', updateProgress);
-      audio.removeEventListener('ended', handleEnded);
-    };
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   useEffect(() => {
@@ -263,14 +271,20 @@ export default function Gallery() {
   }, [currentTrackIndex]);
 
   const togglePlay = () => {
-    if (!audioRef.current) return;
-    if (isTimerPlaying) {
-      audioRef.current.pause();
-      setIsTimerPlaying(false);
-    } else {
-      audioRef.current.play();
-      setIsTimerPlaying(true);
-    }
+    if (!audioRef.current) initAudio();
+
+    // Small timeout to ensure listeners are bound and standard "play" promise handling
+    setTimeout(() => {
+      if (!audioRef.current) return;
+
+      if (isTimerPlaying) {
+        audioRef.current.pause();
+        setIsTimerPlaying(false);
+      } else {
+        audioRef.current.play().catch(e => console.error("Audio playback failed:", e));
+        setIsTimerPlaying(true);
+      }
+    }, 0);
   };
 
   const toggleMute = () => {
