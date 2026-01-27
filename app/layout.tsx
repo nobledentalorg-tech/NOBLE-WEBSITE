@@ -5,6 +5,7 @@ import JsonLd from '@/components/JsonLd';
 import UIProtector from '@/components/UIProtector';
 import FloatingCTA from '@/components/FloatingCTA';
 import { LocalSeoSchema } from '@/components/LocalSeoSchema';
+import ReviewSchema from '@/components/ReviewSchema';
 import type { Metadata } from 'next';
 
 const jakarta = Plus_Jakarta_Sans({ subsets: ['latin'], variable: '--font-jakarta' });
@@ -123,6 +124,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         </SessionProvider>
         <JsonLd />
         <LocalSeoSchema />
+        <ReviewSchema />
         <UIProtector />
         <FloatingCTA />
       </body>

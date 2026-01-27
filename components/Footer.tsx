@@ -62,11 +62,11 @@ const Footer: React.FC<FooterProps> = ({ onBookClick }) => {
             <ul className="space-y-4 text-sm text-slate-400">
               <li className="flex items-start gap-3">
                 <MapPin size={18} className="text-blue-500 mt-0.5" />
-                <span>Nallagandla Water Tank Road,<br />Opp. Citizens Hospital,<br />Hyderabad 500019</span>
+                <span>1st floor - ICA Clinic Plot no. 151/2,<br />HUDA layout water tank road,<br />Above Travancore Ayurvedha,<br />Nallagandla - 500019</span>
               </li>
               <li className="flex items-center gap-3">
                 <Phone size={18} className="text-blue-500" />
-                <a href="tel:+918074512305" className="hover:text-white">+91 80745 12305</a>
+                <a href="tel:+918610425342" className="hover:text-white">+91 86104 25342</a>
               </li>
               <li className="flex items-center gap-3">
                 <Mail size={18} className="text-blue-500" />

@@ -23,7 +23,7 @@ const FloatingCTA = () => {
     if (!isVisible) return null;
 
     return (
-        <div className="fixed bottom-6 right-6 z-50 flex flex-col gap-3 animate-in slide-in-from-bottom-5 duration-500">
+        <div className="fixed bottom-32 right-6 z-50 flex flex-col gap-3 animate-in slide-in-from-bottom-5 duration-500">
             {/* Call Button */}
             <a
                 href={`tel:+${phoneNumber}`}

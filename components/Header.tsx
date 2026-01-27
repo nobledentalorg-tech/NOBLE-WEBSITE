@@ -5,7 +5,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { usePathname } from 'next/navigation';
 import { useTheme } from 'next-themes';
-import { Menu, X, Sun, Moon, CalendarCheck, ShoppingBag, Activity, Globe, ShieldCheck, Sparkles, Heart, Zap, ChevronDown, Phone } from 'lucide-react';
+import { Menu, X, Sun, Moon, CalendarCheck, ShoppingBag, Activity, Globe, ShieldCheck, Sparkles, Heart, Zap, ChevronDown } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 
 interface HeaderProps {
@@ -155,7 +155,7 @@ const Header: React.FC<HeaderProps> = ({ onBookClick }) => {
               Home
             </Link>
             {/* Treatments Mega-Menu */}
-            <div className="relative group/mega">
+            <div className="group/mega">
               <Link
                 href="/treatments"
                 className={`relative px-4 py-2.5 text-[12px] font-bold uppercase tracking-wider transition-all duration-300 rounded-full flex items-center gap-1.5 ${isActive('/treatments') ? 'text-white bg-blue-600 shadow-md' : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white'
@@ -257,10 +257,7 @@ const Header: React.FC<HeaderProps> = ({ onBookClick }) => {
 
           {/* Action Buttons */}
           <div className="flex items-center gap-2 md:gap-4">
-            <a href="tel:+918074512305" className="hidden lg:flex items-center gap-2 text-sm font-bold text-slate-700 dark:text-slate-200 hover:text-blue-600 dark:hover:text-cyan-400 transition-colors mr-2">
-              <Phone size={18} />
-              <span>+91 80745 12305</span>
-            </a>
+
             <button
               onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
               className="w-10 h-10 md:w-11 md:h-11 rounded-2xl flex items-center justify-center bg-slate-100 dark:bg-white/5 text-slate-600 dark:text-white transition-all hover:bg-slate-200 dark:hover:bg-white/10"

@@ -516,7 +516,7 @@ export default function InvisalignRefactored() {
                             {[
                                 {
                                     q: "What is the Invisalign Cost in Nallagandla?",
-                                    a: "The **Invisalign Cost in Nallagandla** typically ranges from ₹1.5L to ₹3L globally. However, at our **Dental Clinic in Nallagandla**, we offer **Clear Aligners** starting from ₹65k, providing the same high-end results by the **Best Orthodontist in Nallagandla**."
+                                    a: "At **Noble Dental Care**, we offer a transparent **Invisalign Package** starting at **₹1,45,000** (Full Comprehensive). We also provide **Clear Aligners (In-House)** starting from **₹65,000**. Every case includes a **Free 3D Scan (Worth ₹3000)** to visualize your future smile before you pay."
                                 },
                                 {
                                     q: "How do Invisible Braces Hyderabad compare to traditional braces?",

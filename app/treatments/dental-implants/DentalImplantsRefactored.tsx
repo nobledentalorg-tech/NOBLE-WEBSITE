@@ -56,6 +56,19 @@ const customStyles = `
     background-size: 200% 200%;
     animation: gradient-x 15s ease infinite;
   }
+  
+  .sticky-nav {
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    backdrop-filter: blur(20px);
+    background: rgba(255, 255, 255, 0.82);
+    border-bottom: 1px solid rgba(0,0,0,0.05);
+  }
+  .dark .sticky-nav {
+    background: rgba(2, 6, 23, 0.82);
+    border-bottom: 1px solid rgba(255,255,255,0.05);
+  }
 `;
 
 export default function DentalImplantsRefactored() {
@@ -161,7 +174,7 @@ export default function DentalImplantsRefactored() {
             <style dangerouslySetInnerHTML={{ __html: customStyles }} />
 
             {/* ================= HERO SECTION ================= */}
-            <header className="relative min-h-[90vh] flex flex-col pt-32 overflow-hidden">
+            <section id="overview" className="relative min-h-[90vh] flex flex-col pt-32 overflow-hidden">
                 {/* Dynamic Background */}
                 <div className="absolute inset-0 z-0">
                     <div className="absolute inset-0 bg-gradient-to-br from-slate-50 to-white dark:from-[#050912] dark:to-[#020617]"></div>
@@ -170,24 +183,7 @@ export default function DentalImplantsRefactored() {
                     <div className="absolute inset-0 bg-noise opacity-30"></div>
                 </div>
 
-                {/* Desktop Sticky Nav */}
-                <nav className={`fixed top-0 left-0 right-0 z-[100] transition-all duration-500 ${scrolled ? 'py-4 bg-white/80 dark:bg-[#020617]/80 backdrop-blur-xl shadow-lg border-b border-white/10' : 'py-8'}`}>
-                    <div className="max-w-7xl mx-auto px-6 flex justify-between items-center">
-                        <Link href="/" className="flex items-center gap-3">
-                            <div className="w-10 h-10 bg-teal-500 rounded-xl flex items-center justify-center shadow-lg shadow-teal-500/30">
-                                <Shield className="text-white" size={20} />
-                            </div>
-                            <span className="text-xl font-black text-slate-900 dark:text-white tracking-tighter uppercase">Noble Dental</span>
-                        </Link>
 
-                        <div className="hidden lg:flex items-center gap-10">
-                            {['Diagnostic', 'Wolf\'s Law', 'Precision', 'Cost'].map((item) => (
-                                <Link key={item} href={`#${item.toLowerCase().replace("'", "")}`} className="text-[10px] font-black uppercase tracking-[0.2em] text-slate-500 hover:text-teal-500 dark:text-slate-400 dark:hover:text-teal-400 transition-colors">{item}</Link>
-                            ))}
-                            <Link href="/contact" className="px-6 py-3 bg-slate-900 dark:bg-white text-white dark:text-slate-900 rounded-full text-xs font-black uppercase tracking-widest hover:scale-105 transition-transform">Book Evaluation</Link>
-                        </div>
-                    </div>
-                </nav>
 
                 <div className="max-w-7xl mx-auto px-6 relative z-10 w-full mt-12 grid lg:grid-cols-2 gap-20 items-center">
                     <RevealOnScroll>
@@ -257,7 +253,31 @@ export default function DentalImplantsRefactored() {
                         </RevealOnScroll>
                     </div>
                 </div>
-            </header>
+            </section>
+
+            {/* --- STICKY NAV --- */}
+            <nav className="sticky-nav">
+                <div className="max-w-7xl mx-auto px-6 h-16 flex items-center gap-8 overflow-x-auto no-scrollbar">
+                    {[
+                        { id: 'overview', label: 'Overview' },
+                        { id: 'truth', label: 'The Truth' },
+                        { id: 'process', label: 'Process' },
+                        { id: 'pricing', label: 'Pricing' },
+                        { id: 'faq', label: 'FAQ' }
+                    ].map((tab) => (
+                        <a
+                            key={tab.id}
+                            href={`#${tab.id}`}
+                            className={`text-[10px] font-black uppercase tracking-[0.2em] whitespace-nowrap transition-all duration-300 px-4 py-2 rounded-full ${activeTab === tab.id
+                                ? 'bg-teal-600 text-white'
+                                : 'text-slate-400 hover:text-slate-900 dark:hover:text-white'
+                                }`}
+                        >
+                            {tab.label}
+                        </a>
+                    ))}
+                </div>
+            </nav>
 
             {/* ================= SECTION 1: THE NOBLE TRUTH ================= */}
             <section id="truth" className="py-32 relative overflow-hidden bg-white dark:bg-[#020617]">

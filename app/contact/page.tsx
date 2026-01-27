@@ -43,8 +43,8 @@ export default function ContactPage() {
                 <h3 className="font-bold text-slate-900 dark:text-white mb-2">Phone</h3>
                 <p className="text-sm text-slate-500 dark:text-slate-400 mb-4">Mon-Sat from 9am to 9pm</p>
                 <div className="flex flex-col gap-1">
-                  <a href="tel:+918610425342" className="text-blue-600 dark:text-blue-400 font-bold hover:underline">+91 861-042-5342</a>
-                  <a href="tel:+918074512305" className="text-sm text-slate-500 hover:text-blue-600 font-medium">+91 807-451-2305</a>
+                  <a href="tel:+918610425342" className="text-blue-600 dark:text-blue-400 font-bold hover:underline text-lg">+91 861-042-5342</a>
+                  <span className="text-xs text-slate-400">Direct Appointment Line</span>
                 </div>
               </div>
 
@@ -62,9 +62,10 @@ export default function ContactPage() {
                 <MapPin className="text-red-500 mt-1 shrink-0" />
                 <div>
                   <h3 className="font-bold text-slate-900 dark:text-white text-lg">Noble Dental Care</h3>
-                  <p className="text-slate-500 dark:text-slate-400 leading-relaxed">
-                    Nallagandla Water Tank Road (Kanchi Gachibowli Rd),<br />
-                    Opp. Citizens Specialty Hospital,<br />
+                  <p className="text-slate-500 dark:text-slate-400 leading-relaxed text-sm">
+                    1st floor - ICA Clinic Plot no. 151/2,<br />
+                    HUDA layout water tank road Nallagandla,<br />
+                    Above Travancore Ayurvedha,<br />
                     Hyderabad 500019
                   </p>
                 </div>
@@ -72,7 +73,7 @@ export default function ContactPage() {
 
               {/* GOOGLE MAP EMBED */}
               <div className="w-full h-[300px] md:h-[400px] rounded-3xl overflow-hidden border border-slate-200 dark:border-white/10 shadow-lg relative bg-slate-100 dark:bg-white/5">
-                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15220.076864112347!2d78.3081889!3d17.4738964!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bcb936d705f0d7b%3A0x3f1aca1c9cebf1ae!2sNoble%20Dental%20Care%20%7C%20Multispeciality%20Dental%20clinic%20in%20Nallagandla!5e0!3m2!1sen!2sin!4v1714400000000!5m2!1sen!2sin" width="100%" height="100%" style={{ border: 0 }} allowFullScreen={true} loading="lazy" referrerPolicy="no-referrer-when-downgrade"></iframe>
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3805.703464807516!2d78.30561397462881!3d17.473901500308084!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bcb936d705f0d7b%3A0x3f1aca1c9cebf1ae!2sNoble%20Dental%20Care%20%7C%20Multispeciality%20Dental%20clinic%20in%20Nallagandla!5e0!3m2!1sen!2sin!4v1769543688405!5m2!1sen!2sin" width="100%" height="100%" style={{ border: 0 }} allowFullScreen={true} loading="lazy" referrerPolicy="no-referrer-when-downgrade"></iframe>
               </div>
 
               {/* PROXIMITY & NINJA SEO SIGNALS */}

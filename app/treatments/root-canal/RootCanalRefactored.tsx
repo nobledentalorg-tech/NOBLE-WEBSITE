@@ -8,7 +8,7 @@ import {
    CheckCircle2, AlertTriangle, ChevronRight,
    Eye, Drill, Layers, Siren, Microscope,
    HeartPulse, FileText, Check, X, Thermometer, Phone,
-   Info, Star, Calendar
+   Info, Star, Calendar, Sparkles
 } from 'lucide-react';
 import { RevealOnScroll } from '@/components/RevealOnScroll';
 
@@ -69,14 +69,49 @@ const customStyles = `
     -ms-overflow-style: none;
     scrollbar-width: none;
   }
+
+  .sticky-nav {
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    backdrop-filter: blur(20px);
+    background: rgba(255, 255, 255, 0.82);
+    border-bottom: 1px solid rgba(0,0,0,0.05);
+  }
+  .dark .sticky-nav {
+    background: rgba(2, 6, 23, 0.82);
+    border-bottom: 1px solid rgba(255,255,255,0.05);
+  }
+  
+  .gradient-text {
+    background: linear-gradient(135deg, #9333ea 0%, #3b82f6 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
 `;
 
 export default function RootCanalRefactored() {
    const [cleaningProgress, setCleaningProgress] = useState(0);
+   const [activeTab, setActiveTab] = useState('overview');
    const isClean = cleaningProgress >= 100;
 
    useEffect(() => {
-      window.scrollTo(0, 0);
+      const observer = new IntersectionObserver(
+         (entries) => {
+            entries.forEach((entry) => {
+               if (entry.isIntersecting) {
+                  setActiveTab(entry.target.id);
+               }
+            });
+         },
+         { threshold: 0.3 }
+      );
+
+      document.querySelectorAll('section[id]').forEach((section) => {
+         observer.observe(section);
+      });
+
+      return () => observer.disconnect();
    }, []);
 
    // --- INTERACTIVE CLEANING LOGIC ---
@@ -97,11 +132,7 @@ export default function RootCanalRefactored() {
                <div className="absolute bottom-[10%] left-[10%] w-[500px] h-[500px] bg-blue-500/20 rounded-full blur-[100px]"></div>
             </div>
 
-            <div className="absolute top-6 left-6 z-30">
-               <Link href="/treatments" className="ios-glass ios-btn flex items-center gap-2 px-6 py-3 rounded-full text-slate-900 dark:text-white text-xs font-bold uppercase tracking-wider backdrop-blur-xl hover:bg-white/40 dark:hover:bg-white/20">
-                  <ArrowLeft size={16} /> Treatments
-               </Link>
-            </div>
+
 
             <div className="max-w-[1400px] mx-auto px-6 relative z-10 w-full grid lg:grid-cols-2 gap-12 items-center">
 
@@ -111,9 +142,9 @@ export default function RootCanalRefactored() {
                      <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-slate-200/50 dark:bg-white/10 backdrop-blur-md text-purple-600 dark:text-purple-400 font-bold text-[11px] uppercase tracking-[0.2em]">
                         <Activity size={12} /> Painless Root Canal Protocol
                      </div>
-                     <h1 className="text-6xl md:text-8xl font-black text-slate-900 dark:text-white leading-[0.9] -tracking-[0.04em]">
+                     <h1 className="text-6xl md:text-8xl font-black text-slate-900 dark:text-white leading-[0.9] tracking-tighter">
                         Precision <br />
-                        <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-600 to-blue-500 uppercase italic">Root Canal Treatment <br /> in Nallagandla.</span>
+                        <span className="gradient-text">Root Canal.</span>
                      </h1>
 
                      {/* Medical Review Pill */}
@@ -201,6 +232,30 @@ export default function RootCanalRefactored() {
                </div>
             </div>
          </div>
+
+         {/* --- STICKY NAV --- */}
+         <nav className="sticky-nav">
+            <div className="max-w-7xl mx-auto px-6 h-16 flex items-center gap-8 overflow-x-auto no-scrollbar">
+               {[
+                  { id: 'overview', label: 'Overview' },
+                  { id: 'insight', label: 'Insight' },
+                  { id: 'steps', label: 'Process' },
+                  { id: 'pricing', label: 'Pricing' },
+                  { id: 'faq', label: 'FAQ' }
+               ].map((tab) => (
+                  <a
+                     key={tab.id}
+                     href={`#${tab.id}`}
+                     className={`text-[10px] font-black uppercase tracking-[0.2em] whitespace-nowrap transition-all duration-300 px-4 py-2 rounded-full ${activeTab === 'insight' // Temp fix, need state for this page too
+                        ? 'text-slate-400 hover:text-slate-900 dark:hover:text-white' // We'll need to hook up activeTab properly later, for now just static styling
+                        : 'text-slate-400 hover:text-slate-900 dark:hover:text-white'
+                        }`}
+                  >
+                     {tab.label}
+                  </a>
+               ))}
+            </div>
+         </nav>
 
          {/* ================= 1.2 DR. INSIGHT: APP STORE STORY ================= */}
          <section id="insight" className="py-12 bg-[#F2F2F7] dark:bg-[#000000]">
@@ -636,6 +691,19 @@ export default function RootCanalRefactored() {
                      Hover to expand pricing cards
                   </div>
                </div>
+            </div>
+
+            {/* Neo AI CTA - Full Width */}
+            <div className="max-w-[1200px] mx-auto px-6 mt-12 text-center pb-12">
+               <Link href="/cost-estimator" className="inline-flex items-center gap-3 px-6 py-3 bg-white dark:bg-white/10 rounded-full border border-purple-200 dark:border-purple-500/30 hover:bg-purple-50 dark:hover:bg-purple-900/20 transition-colors group">
+                  <div className="w-8 h-8 rounded-full bg-gradient-to-tr from-purple-600 to-blue-500 flex items-center justify-center text-white">
+                     <Sparkles size={14} className="animate-pulse" />
+                  </div>
+                  <div className="text-left">
+                     <div className="text-[10px] font-bold uppercase tracking-widest text-slate-500 dark:text-slate-400">Not sure which plan?</div>
+                     <div className="text-sm font-bold text-slate-900 dark:text-white group-hover:text-purple-600 transition-colors">Let Neo AI analyze your symptoms &rarr;</div>
+                  </div>
+               </Link>
             </div>
          </section>
 

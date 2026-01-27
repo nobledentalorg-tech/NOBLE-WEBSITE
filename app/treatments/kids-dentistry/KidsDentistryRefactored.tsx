@@ -96,12 +96,12 @@ export default function KidsDentistryRefactored() {
                 <div className="max-w-7xl mx-auto px-6 relative z-10 grid lg:grid-cols-2 gap-12 items-center">
                     <RevealOnScroll>
                         <div className="space-y-8">
-                            <div className="inline-flex items-center gap-2 px-3 py-1 bg-blue-50 dark:bg-blue-900/30 rounded-full text-[10px] font-black uppercase tracking-widest text-blue-600 dark:text-blue-400 border border-blue-100 dark:border-blue-500/20">
-                                <Baby size={12} /> The &quot;No-Tears&quot; Protocol
+                            <div className="inline-flex items-center gap-2 px-3 py-1 bg-orange-100 dark:bg-orange-900/30 rounded-full text-[10px] font-black uppercase tracking-widest text-orange-600 dark:text-orange-400 border border-orange-200 dark:border-orange-500/20">
+                                <Sparkles size={12} /> Little Smiles Program
                             </div>
                             <h1 className="text-6xl md:text-8xl font-black text-slate-900 dark:text-white leading-[0.9] tracking-tighter uppercase italic">
-                                Kids <br />
-                                <span className="gradient-text">Dentistry.</span>
+                                Magic <br />
+                                <span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-400 to-pink-500">Smiles.</span>
                             </h1>
                             <p className="text-xl text-slate-600 dark:text-slate-400 font-medium leading-relaxed max-w-lg">
                                 Welcome to the best **Kids Dentistry Nallagandla** offers at **Noble Dental Care Hyderabad**. Located **Near Aparna Sarovar / Citizens Hospital**, **Dr. Dhivakaran** specializes as a **Painless Kids Dentist** for your child&apos;s developing smile.

@@ -124,7 +124,70 @@ export default function NeighborhoodGuide() {
                             </div>
                         </div>
                         <div className="flex-1 w-full h-[300px] bg-slate-200 rounded-3xl overflow-hidden relative shadow-2xl">
-                            <iframe src="https://www.google.com/maps/embed?pb=!1m28!1m12!1m3!1d1902.9363717282717!2d78.312155610899!3d17.48135299446714!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!4m13!3e0!4m5!1s0x3bcb93005a39779b%3A0x6b80267710037341!2sAparna%20Neo%20Mall!3m2!1d17.4811!2d78.3129!4m5!1s0x3bcb936d705f0d7b%3A0x3f1aca1c9cebf1ae!2sNoble%20Dental%20Care!3m2!1d17.4816!2d78.3183!5e0!3m2!1sen!2sin!4v1700000000000!5m2!1sen!2sin" width="100%" height="100%" loading="lazy" style={{ border: 0 }}></iframe>
+                            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3805.703464807516!2d78.30561397462881!3d17.473901500308084!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bcb936d705f0d7b%3A0x3f1aca1c9cebf1ae!2sNoble%20Dental%20Care%20%7C%20Multispeciality%20Dental%20clinic%20in%20Nallagandla!5e0!3m2!1sen!2sin!4v1769543688405!5m2!1sen!2sin" width="100%" height="100%" loading="lazy" style={{ border: 0 }}></iframe>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            {/* 2.1 EXCLUSIVE: Aparna Sarovar Zenith Residents */}
+            <section className="py-16 px-6 bg-emerald-50 dark:bg-emerald-900/10 border-b border-emerald-100 dark:border-emerald-800/20">
+                <div className="max-w-6xl mx-auto flex flex-col md:flex-row-reverse gap-12 items-center">
+                    <div className="flex-1">
+                        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-100 dark:bg-emerald-900/30 text-emerald-700 dark:text-emerald-400 text-[10px] font-black uppercase tracking-widest mb-4">
+                            <Building2 size={12} /> Exclusively for Residents
+                        </div>
+                        <h2 className="text-3xl md:text-5xl font-black text-emerald-950 dark:text-emerald-50 mb-6">
+                            Best Dentist for <br /> <span className="text-emerald-600">Aparna Sarovar Zenith.</span>
+                        </h2>
+                        <p className="text-lg text-emerald-800/70 dark:text-emerald-200/70 mb-8 leading-relaxed">
+                            We know you value convenience. Noble Dental Care is the closest premium dental clinic to the Zenith main gate.
+                            Skip the Gachibowli traffic. Your <strong>5-minute commute</strong> means you can schedule appointments before work or after dropping kids at school.
+                        </p>
+                        <ul className="space-y-4 mb-8">
+                            <li className="flex items-center gap-3">
+                                <div className="w-6 h-6 rounded-full bg-emerald-200 flex items-center justify-center text-emerald-700"><MapPin size={12} /></div>
+                                <span className="font-bold text-emerald-900 dark:text-emerald-100">Directly Opposite Citizens Hospital Road</span>
+                            </li>
+                            <li className="flex items-center gap-3">
+                                <div className="w-6 h-6 rounded-full bg-emerald-200 flex items-center justify-center text-emerald-700"><Clock size={12} /></div>
+                                <span className="font-bold text-emerald-900 dark:text-emerald-100">Open until 10:15 PM for IT Professionals</span>
+                            </li>
+                        </ul>
+                        <Link href="/contact" className="inline-block px-8 py-4 bg-emerald-600 text-white rounded-2xl font-bold hover:shadow-xl hover:shadow-emerald-500/20 hover:scale-105 transition-all">
+                            Book Resident Slot
+                        </Link>
+                    </div>
+                    <div className="flex-1 relative aspect-square md:aspect-[4/3] rounded-3xl overflow-hidden shadow-2xl border-4 border-white dark:border-emerald-900/50">
+                        {/* Placeholder for Zenith Image - Using a generic luxury apartment image */}
+                        <img src="https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?auto=format&fit=crop&q=80&w=1000" alt="Aparna Sarovar Zenith View" className="w-full h-full object-cover" />
+                        <div className="absolute inset-0 bg-gradient-to-t from-emerald-900/80 to-transparent flex items-end p-8">
+                            <p className="text-white font-bold text-xl">Just 5 Minutes Away.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            {/* 2.2 PARENT FOCUS: Manthan International School */}
+            <section className="py-16 px-6 bg-amber-50 dark:bg-amber-900/5">
+                <div className="max-w-4xl mx-auto text-center">
+                    <div className="w-16 h-16 bg-amber-100 rounded-full flex items-center justify-center mx-auto mb-6 text-amber-600">
+                        <School size={32} />
+                    </div>
+                    <h2 className="text-3xl md:text-4xl font-black text-slate-900 dark:text-white mb-6">
+                        Parents of <span className="text-amber-500">Manthan International?</span>
+                    </h2>
+                    <p className="text-lg text-slate-600 dark:text-slate-400 mb-8 leading-relaxed">
+                        Beat the <strong>3:30 PM School-Run Traffic</strong>. Avoid the detour to Gachibowli.
+                        Noble Dental Care is perfectly situated on the Tellapur-Nallagandla corridor.
+                        Pick up your child and hop in for a <strong>Preventive Fluoride Check</strong> on your way home.
+                    </p>
+                    <div className="flex flex-wrap justify-center gap-4">
+                        <div className="px-6 py-3 bg-white dark:bg-white/5 rounded-full border border-amber-200 font-bold text-amber-700 dark:text-amber-400 shadow-sm text-sm">
+                            ⚡ Zero Wait Time 3:30 - 4:30 PM
+                        </div>
+                        <div className="px-6 py-3 bg-white dark:bg-white/5 rounded-full border border-amber-200 font-bold text-amber-700 dark:text-amber-400 shadow-sm text-sm">
+                            🅿️ Valet Parking for School Buses/Vans
                         </div>
                     </div>
                 </div>
