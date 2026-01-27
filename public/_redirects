@@ -27,7 +27,7 @@
 
 # Catch-All for other specialities or old folders
 /specialities/*  /treatments  301
-/blog/*          /            301
+
 
 # Missing Asset Redirects
 /favicon.ico               /assets/images/treatments/whitening-hyderabad.webp   301
