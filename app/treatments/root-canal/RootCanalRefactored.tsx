@@ -561,7 +561,7 @@ export default function RootCanalRefactored() {
                </div>
                <h2 className="text-3xl font-bold text-slate-900 dark:text-white mb-4 tracking-tight">In Pain Right Now?</h2>
                <p className="text-slate-500 dark:text-slate-400 mb-8 max-w-xl mx-auto">
-                  We keep "Rapid Relief" slots open every morning. Don't wait until it swells.
+                  We keep &quot;Rapid Relief&quot; slots open every morning. Don&apos;t wait until it swells.
                </p>
                <div className="flex gap-4 justify-center">
                   <button className="ios-btn px-8 py-3 bg-red-500 text-white rounded-full font-bold text-sm shadow-lg shadow-red-500/30">
