@@ -888,6 +888,63 @@ export default function DentalImplantsRefactored() {
                         </div>
                     </RevealOnScroll>
                 </div>
+                {/* ================= METRO ARBITRAGE TABLE ================= */}
+                <div className="max-w-5xl mx-auto px-6 pb-32">
+                    <div className="bg-slate-900 text-white rounded-[2.5rem] p-8 md:p-12 shadow-2xl overflow-hidden relative border border-slate-800">
+                        <div className="absolute top-0 right-0 w-64 h-64 bg-teal-500/10 rounded-full blur-3xl -mr-32 -mt-32"></div>
+
+                        <div className="relative z-10">
+                            <div className="text-center mb-12">
+                                <div className="inline-flex items-center gap-2 px-3 py-1 bg-white/10 rounded-full text-[10px] font-black uppercase tracking-widest text-teal-400 mb-4 border border-white/10">
+                                    <TrendingDown size={12} /> Smart Economics
+                                </div>
+                                <h3 className="text-3xl font-black mb-4">The Nallagandla Advantage</h3>
+                                <p className="text-slate-400 text-sm max-w-xl mx-auto">
+                                    We own our building and operate efficiently. This allows us to pass significant savings to you compared to clinics in high-rent zones like Jubilee Hills or Gachibowli.
+                                </p>
+                            </div>
+
+                            <div className="overflow-x-auto">
+                                <table className="w-full text-left border-collapse">
+                                    <thead>
+                                        <tr className="border-b border-white/10">
+                                            <th className="py-4 pl-4 text-xs font-black uppercase tracking-widest text-slate-500">Treatment</th>
+                                            <th className="py-4 text-xs font-black uppercase tracking-widest text-red-400">Corporate / City Price</th>
+                                            <th className="py-4 text-xs font-black uppercase tracking-widest text-teal-400">Noble Dental Price</th>
+                                            <th className="py-4 pr-4 text-xs font-black uppercase tracking-widest text-white text-right">Your Savings</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody className="text-sm font-medium">
+                                        <tr className="border-b border-white/5 hover:bg-white/5 transition-colors">
+                                            <td className="py-4 pl-4 text-slate-300">Single Titanium Implant + Crown</td>
+                                            <td className="py-4 text-red-300 blur-[0.5px] hover:blur-none transition-all">₹35,000 - ₹50,000</td>
+                                            <td className="py-4 text-teal-300 font-bold">₹22,000 - ₹28,000</td>
+                                            <td className="py-4 pr-4 text-right text-white font-bold">~ ₹18,000 / tooth</td>
+                                        </tr>
+                                        <tr className="border-b border-white/5 hover:bg-white/5 transition-colors">
+                                            <td className="py-4 pl-4 text-slate-300">Straumann (Swiss) Elite Implant</td>
+                                            <td className="py-4 text-red-300 blur-[0.5px] hover:blur-none transition-all">₹65,000 - ₹85,000</td>
+                                            <td className="py-4 text-teal-300 font-bold">₹52,000</td>
+                                            <td className="py-4 pr-4 text-right text-white font-bold">~ ₹28,000 / tooth</td>
+                                        </tr>
+                                        <tr className="hover:bg-white/5 transition-colors">
+                                            <td className="py-4 pl-4 text-slate-300">Full Mouth Rehab (All-on-6)</td>
+                                            <td className="py-4 text-red-300 blur-[0.5px] hover:blur-none transition-all">₹4.5L - ₹6.5L</td>
+                                            <td className="py-4 text-teal-300 font-bold">₹3.2L - ₹4.5L</td>
+                                            <td className="py-4 pr-4 text-right text-white font-bold">~ ₹1.5 Lakhs</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+
+                            <div className="mt-8 flex justify-center">
+                                <Link href="/contact" className="px-8 py-3 bg-teal-500 hover:bg-teal-400 text-slate-900 rounded-xl font-black uppercase text-xs tracking-widest transition-colors flex items-center gap-2">
+                                    Get a Second Opinion <ArrowRight size={14} />
+                                </Link>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
 
             {/* ================= FAQ ACCORDION ================= */}

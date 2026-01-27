@@ -5,6 +5,7 @@ import Link from 'next/link';
 import dynamic from 'next/dynamic';
 import { Zap, Sparkles, Heart, Calendar, Megaphone, Activity, Bot, Shield } from 'lucide-react';
 import Hero from '@/components/Hero';
+import { RevealOnScroll } from '@/components/RevealOnScroll';
 
 // Dynamically import components below the fold to improve LCP and TBT
 const Services = dynamic(() => import('@/components/Services'));

@@ -301,7 +301,7 @@ export default function TeethWhiteningRefactored() {
                                 Even worse, scrubbing too hard wears down your white enamel, revealing specifically the <em>yellow</em> layer (dentin) underneath. You are literally brushing your teeth yellow.
                             </p>
                             <p className="font-bold text-slate-900 text-xl border-l-4 border-yellow-400 pl-6 italic bg-yellow-50 p-4 rounded-r-xl my-8">
-                                "True whitening requires a chemical reaction (Oxidation) to release oxygen into the enamel and lift deep stains safely. That is what we do."
+                                &quot;True whitening requires a chemical reaction (Oxidation) to release oxygen into the enamel and lift deep stains safely. That is what we do.&quot;
                             </p>
                         </div>
                     </RevealOnScroll>
@@ -360,7 +360,7 @@ export default function TeethWhiteningRefactored() {
                                         <Shield className="text-yellow-400" /> Safety First
                                     </h3>
                                     <p className="text-slate-300 text-sm leading-relaxed">
-                                        We don't just "paint" your teeth. We use a specialized <strong>Gingival Barrier</strong> that hardens over your gums to protect them. This ensures the whitening gel only touches your enamel, preventing gum burns common in salon kits.
+                                        We don&apos;t just &quot;paint&quot; your teeth. We use a specialized <strong>Gingival Barrier</strong> that hardens over your gums to protect them. This ensures the whitening gel only touches your enamel, preventing gum burns common in salon kits.
                                     </p>
                                 </div>
                             </RevealOnScroll>
@@ -407,7 +407,7 @@ export default function TeethWhiteningRefactored() {
                     <RevealOnScroll>
                         <div className="text-center mb-16">
                             <h2 className="text-4xl font-bold text-slate-900 mb-4">Transparent Pricing</h2>
-                            <p className="text-slate-500">Why "Cheaper" is not better when it comes to Chemistry.</p>
+                            <p className="text-slate-500">Why &quot;Cheaper&quot; is not better when it comes to Chemistry.</p>
                         </div>
                     </RevealOnScroll>
 
@@ -483,7 +483,7 @@ export default function TeethWhiteningRefactored() {
                                 <h2 className="text-3xl font-bold text-slate-900 mb-4">Meet Your Expert</h2>
                                 <div className="text-xl font-bold text-yellow-600 mb-6">Dr. Dhivakaran</div>
                                 <p className="text-slate-600 leading-relaxed italic mb-6">
-                                    "I don't believe in 'Hollywood White' veneers for everyone. Sometimes, all you need is to unlock the natural brightness of your own enamel. My approach is conservative: clean the canvas before we paint on it."
+                                    &quot;I don&apos;t believe in &apos;Hollywood White&apos; veneers for everyone. Sometimes, all you need is to unlock the natural brightness of your own enamel. My approach is conservative: clean the canvas before we paint on it.&quot;
                                 </p>
                                 <div className="flex gap-4">
                                     <div className="px-4 py-2 bg-slate-100 rounded-lg text-sm font-bold text-slate-700">MDS - Conservative Dentistry</div>

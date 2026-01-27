@@ -17,8 +17,9 @@ export default function EmergencyPage() {
                     <div className="inline-flex items-center gap-2 px-4 py-2 bg-red-100 dark:bg-red-900/30 text-red-700 dark:text-red-400 rounded-full text-xs font-black uppercase tracking-widest mb-8 border border-red-200 dark:border-red-800">
                         <AlertTriangle size={14} /> Priority Triage Active
                     </div>
-                    <h1 className="text-5xl md:text-7xl font-black text-slate-900 dark:text-white mb-6 leading-tight">
-                        In Pain? <span className="text-red-600">Don&apos;t Wait.</span>
+                    <h1 className="text-4xl md:text-6xl font-black text-slate-900 dark:text-white mb-6 leading-tight">
+                        Emergency Dentist <br className="hidden md:block" />
+                        <span className="text-red-600">Nallagandla</span>
                     </h1>
                     <p className="text-xl text-slate-600 dark:text-slate-300 font-medium leading-relaxed max-w-2xl mx-auto mb-10">
                         We keep <strong>2 Emergency Slots</strong> open every day for acute pain cases.
@@ -91,6 +92,32 @@ export default function EmergencyPage() {
                                 </div>
                             </div>
                         </div>
+                    </div>
+                </div>
+            </section>
+
+            {/* 3. VOICE SEARCH FAQ (Street Names) */}
+            <section className="py-20 px-6 max-w-4xl mx-auto">
+                <div className="text-center mb-12">
+                    <h2 className="text-3xl font-black text-slate-900 dark:text-white mb-4">Quick Answers</h2>
+                    <p className="text-slate-500">Common questions we get on the emergency line.</p>
+                </div>
+                <div className="grid md:grid-cols-2 gap-6">
+                    <div className="p-6 bg-white dark:bg-[#0B1019] rounded-2xl border border-slate-100 dark:border-white/5 shadow-sm">
+                        <h3 className="font-bold text-lg text-slate-900 dark:text-white mb-2">How much does an emergency visit cost?</h3>
+                        <p className="text-sm text-slate-600 dark:text-slate-400">Consultation is ₹500. X-Rays (if needed) are ₹300. We will give you a full estimate before starting any procedure.</p>
+                    </div>
+                    <div className="p-6 bg-white dark:bg-[#0B1019] rounded-2xl border border-slate-100 dark:border-white/5 shadow-sm">
+                        <h3 className="font-bold text-lg text-slate-900 dark:text-white mb-2">Are you open on Sundays?</h3>
+                        <p className="text-sm text-slate-600 dark:text-slate-400">Yes, we have emergency slots available on Sundays by appointment only. Please call ahead.</p>
+                    </div>
+                    <div className="p-6 bg-white dark:bg-[#0B1019] rounded-2xl border border-slate-100 dark:border-white/5 shadow-sm">
+                        <h3 className="font-bold text-lg text-slate-900 dark:text-white mb-2">Do you do painless extractions?</h3>
+                        <p className="text-sm text-slate-600 dark:text-slate-400">Yes. We use digital anaesthesia (The Wand) for near-zero pain during injection and removal.</p>
+                    </div>
+                    <div className="p-6 bg-white dark:bg-[#0B1019] rounded-2xl border border-slate-100 dark:border-white/5 shadow-sm">
+                        <h3 className="font-bold text-lg text-slate-900 dark:text-white mb-2">Can I save my broken tooth?</h3>
+                        <p className="text-sm text-slate-600 dark:text-slate-400">Often yes, if treated within 1-2 hours. Put the broken piece in milk and come to the clinic immediately.</p>
                     </div>
                 </div>
             </section>
