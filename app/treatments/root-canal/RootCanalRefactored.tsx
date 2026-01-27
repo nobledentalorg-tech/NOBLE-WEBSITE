@@ -137,8 +137,8 @@ export default function RootCanalRefactored() {
                         <button onClick={() => document.getElementById('pricing')?.scrollIntoView({ behavior: 'smooth' })} className="ios-btn px-8 py-4 bg-slate-900 dark:bg-white text-white dark:text-black rounded-full font-bold text-sm tracking-wide shadow-2xl shadow-purple-500/20 hover:shadow-purple-500/40 flex items-center gap-2">
                            View Pricing
                         </button>
-                        <button onClick={() => document.getElementById('etiology')?.scrollIntoView({ behavior: 'smooth' })} className="ios-btn px-8 py-4 bg-white dark:bg-[#1C1C1E] text-slate-900 dark:text-white rounded-full font-bold text-sm tracking-wide shadow-lg hover:bg-slate-50 dark:hover:bg-slate-800 flex items-center gap-2">
-                           Learn More
+                        <button onClick={() => document.getElementById('insight')?.scrollIntoView({ behavior: 'smooth' })} className="ios-btn px-8 py-4 bg-white dark:bg-[#1C1C1E] text-slate-900 dark:text-white rounded-full font-bold text-sm tracking-wide shadow-lg hover:bg-slate-50 dark:hover:bg-slate-800 flex items-center gap-2">
+                           Medical Insight
                         </button>
                      </div>
                   </RevealOnScroll>
@@ -202,6 +202,47 @@ export default function RootCanalRefactored() {
             </div>
          </div>
 
+         {/* ================= 1.2 DR. INSIGHT: APP STORE STORY ================= */}
+         <section id="insight" className="py-12 bg-[#F2F2F7] dark:bg-[#000000]">
+            <div className="max-w-4xl mx-auto px-6">
+               <RevealOnScroll>
+                  <div className="ios-glass rounded-[2.5rem] overflow-hidden shadow-2xl relative group">
+                     <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent z-10"></div>
+                     <div className="relative h-[500px] w-full">
+                        <Image
+                           src="/assets/images/treatments/noble-dental-reception.png"
+                           alt="Modern Endodontics"
+                           fill
+                           className="object-cover transition-transform duration-1000 group-hover:scale-110"
+                        />
+                     </div>
+                     <div className="absolute bottom-0 left-0 w-full p-8 md:p-12 z-20">
+                        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-500 text-white font-bold text-[10px] uppercase tracking-widest mb-4">
+                           Editor&apos;s choice
+                        </div>
+                        <h2 className="text-4xl md:text-5xl font-black text-white mb-6 leading-tight tracking-tight">
+                           The Myth of <br /> &quot;Instant&quot; Pain.
+                        </h2>
+                        <div className="space-y-4 max-w-2xl">
+                           <p className="text-white/90 text-lg leading-relaxed italic">
+                              &quot;The #1 fear patients have isn&apos;t the infection—it&apos;s the treatment itself. At Noble Dental, we use Swiss Rotary technology and computer-controlled anesthesia to make Root Canal therapy completely &apos;Ouchless&apos;. In 2024, an RCT should be as routine as a filling.&quot;
+                           </p>
+                           <div className="flex items-center gap-3 pt-4">
+                              <div className="w-12 h-12 rounded-full border-2 border-white/30 overflow-hidden">
+                                 <Image src="https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?auto=format&fit=crop&q=80&w=100" alt="Dr. Dhivakaran" width={48} height={48} />
+                              </div>
+                              <div>
+                                 <p className="text-white font-bold text-sm">Dr. Dhivakaran, CMD</p>
+                                 <p className="text-white/60 text-xs">Chief Clinical Director</p>
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+               </RevealOnScroll>
+            </div>
+         </section>
+
          {/* ================= 2. ETIOLOGY: BENTO GRID WIDGETS ================= */}
          <section id="etiology" className="py-24 bg-[#F2F2F7] dark:bg-[#000000]">
             <div className="max-w-[1200px] mx-auto px-6">
@@ -228,13 +269,12 @@ export default function RootCanalRefactored() {
                            </div>
                            <h3 className="text-3xl font-bold text-slate-900 dark:text-white mb-4 tracking-tight">Deep Decay</h3>
                            <p className="text-slate-500 dark:text-slate-400 leading-relaxed text-lg">
-                              The most common culprit. Bacteria penetrate enamel and dentin, reaching the pulp chamber where nerves reside. This causes irreversible inflammation.
+                              The most common culprit. Bacteria penetrate enamel and dentin, reaching the pulp chamber where nerves reside. This causes irreversible inflammation and excruciating toothache, especially at night.
                            </p>
                         </div>
                         <div className="mt-8 relative h-40 w-full bg-slate-50 dark:bg-black/50 rounded-3xl overflow-hidden border border-slate-100 dark:border-white/5">
                            <Image src="/assets/images/treatments/root-canal-decay.jpg" alt="Decay" fill className="object-cover opacity-80 group-hover:scale-105 transition-transform duration-700" />
-                           {/* Fallback pattern if image fails */}
-                           <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-20"></div>
+                           <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
                         </div>
                      </div>
 
@@ -430,7 +470,7 @@ export default function RootCanalRefactored() {
 
          {/* ================= 5. NOBLE PROTOCOL: APP STORE STORY ================= */}
          <section id="protocol" className="py-24 bg-[#F2F2F7] dark:bg-[#000000]">
-            <div className="max-w-[900px] mx-auto px-6">
+            <div className="max-w-[1000px] mx-auto px-6">
                <div className="text-center mb-20">
                   <p className="text-purple-600 dark:text-purple-400 font-bold uppercase tracking-widest text-xs mb-2">The Workflow</p>
                   <h2 className="text-4xl md:text-5xl font-black text-slate-900 dark:text-white tracking-tight">45 Minutes. <br /> Zero Pain.</h2>
@@ -443,7 +483,7 @@ export default function RootCanalRefactored() {
                   {[
                      { step: "01", title: "Ouchless Injection", desc: "Computer-controlled local anesthesia (Lignocaine 2%) ensures you feel absolutely nothing but a scratch.", icon: Activity },
                      { step: "02", title: "Isolation", desc: "Rubber dam application shields your tooth from saliva and bacteria. A critical step often skipped elsewhere.", icon: ShieldCheck },
-                     { step: "03", title: "Rotary Cleaning", desc: "Swiss NiTi files navigate curved roots silently, removing infection without the scraping sound of manual files.", icon: Zap },
+                     { step: "03", title: "Rotary Cleaning", desc: "Swiss NiTi files (EdgeEndo/Dentsply) navigate curved roots silently, removing infection without the scraping sound of manual files.", icon: Zap, image: "/assets/images/treatments/rotary-handpiece.png" },
                      { step: "04", title: "3D Obturation", desc: "Bioceramic sealers flow into every micro-channel, creating a hermetic seal that promotes bone healing.", icon: CheckCircle2 }
                   ].map((item, i) => (
                      <div key={i} className={`flex flex-col md:flex-row gap-8 items-center ${i % 2 !== 0 ? 'md:flex-row-reverse' : ''}`}>
@@ -453,16 +493,60 @@ export default function RootCanalRefactored() {
                         </div>
 
                         {/* Card */}
-                        <div className="bg-white dark:bg-[#1C1C1E] p-8 rounded-[2rem] shadow-sm hover:shadow-xl transition-shadow duration-300 flex-1 w-full border border-slate-100 dark:border-white/5">
+                        <div className="bg-white dark:bg-[#1C1C1E] p-8 rounded-[2rem] shadow-sm hover:shadow-xl transition-shadow duration-300 flex-1 w-full border border-slate-100 dark:border-white/5 overflow-hidden">
                            <div className="text-xs font-bold text-slate-400 uppercase tracking-wider mb-2">Step {item.step}</div>
                            <h3 className="text-2xl font-bold text-slate-900 dark:text-white mb-3 tracking-tight">{item.title}</h3>
-                           <p className="text-slate-500 dark:text-slate-400 leading-relaxed text-sm">{item.desc}</p>
+                           <p className="text-slate-500 dark:text-slate-400 leading-relaxed text-sm mb-4">{item.desc}</p>
+                           {item.image && (
+                              <div className="relative h-48 w-full rounded-2xl overflow-hidden bg-slate-100 dark:bg-black/50">
+                                 <Image src={item.image} alt={item.title} fill className="object-contain p-4 group-hover:scale-105 transition-transform" />
+                              </div>
+                           )}
                         </div>
 
                         {/* Empty flexible space for the other side */}
                         <div className="flex-1 hidden md:block"></div>
                      </div>
                   ))}
+               </div>
+
+               {/* DECISION MATRIX - RESTORED */}
+               <div className="mt-24 RevealOnScroll">
+                  <div className="ios-glass p-8 md:p-12 rounded-[2.5rem] border border-slate-200 dark:border-white/5">
+                     <div className="flex items-center gap-3 mb-8">
+                        <FileText className="text-purple-500" />
+                        <h3 className="text-2xl font-bold text-slate-900 dark:text-white tracking-tight">Clinical Decision Matrix</h3>
+                     </div>
+                     <div className="overflow-x-auto hide-scrollbar">
+                        <table className="w-full text-left">
+                           <thead>
+                              <tr className="border-b border-slate-200 dark:border-white/10">
+                                 <th className="pb-4 font-bold text-slate-400 text-[10px] uppercase tracking-widest">Protocol Type</th>
+                                 <th className="pb-4 font-bold text-slate-400 text-[10px] uppercase tracking-widest">When it&apos;s chosen</th>
+                                 <th className="pb-4 font-bold text-slate-400 text-[10px] uppercase tracking-widest">Noble Advantage</th>
+                              </tr>
+                           </thead>
+                           <tbody className="divide-y divide-slate-100 dark:divide-white/5">
+                              <tr>
+                                 <td className="py-6">
+                                    <p className="font-bold text-slate-900 dark:text-white">Single-Visit RCT</p>
+                                    <p className="text-[10px] font-bold text-emerald-500 uppercase tracking-wide">Vital Pulp</p>
+                                 </td>
+                                 <td className="py-6 text-sm text-slate-500 dark:text-slate-400">Irreversible pulpitis in vital teeth without peri-apical infection.</td>
+                                 <td className="py-6 text-sm font-medium text-slate-900 dark:text-white">45-min precision using dedicated Endo-Motor.</td>
+                              </tr>
+                              <tr>
+                                 <td className="py-6">
+                                    <p className="font-bold text-slate-900 dark:text-white">Multi-Visit RCT</p>
+                                    <p className="text-[10px] font-bold text-orange-500 uppercase tracking-wide">Pus/Abscess</p>
+                                 </td>
+                                 <td className="py-6 text-sm text-slate-500 dark:text-slate-400">Severely infected teeth, pus discharge, or failing old RCTs.</td>
+                                 <td className="py-6 text-sm font-medium text-slate-900 dark:text-white">Inter-appointment Calcium Hydroxide medication.</td>
+                              </tr>
+                           </tbody>
+                        </table>
+                     </div>
+                  </div>
                </div>
             </div>
          </section>
