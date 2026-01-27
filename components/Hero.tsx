@@ -100,7 +100,7 @@ const Hero: React.FC<HeroProps> = ({ onBookClick }) => {
         <div className="grid lg:grid-cols-2 gap-16 items-center">
 
           {/* Left Text Block */}
-          <div className="flex flex-col items-start space-y-8 animate-fade-in-up">
+          <div className="flex flex-col items-start space-y-8">
             <div className="inline-flex items-center gap-2 px-4 py-2 bg-blue-50 dark:bg-blue-900/20 rounded-full border border-blue-100 dark:border-blue-800">
               <span className="w-2 h-2 rounded-full bg-red-500 animate-pulse"></span>
               <span className="text-[10px] font-black text-slate-600 dark:text-blue-400 uppercase tracking-widest">
@@ -158,7 +158,7 @@ const Hero: React.FC<HeroProps> = ({ onBookClick }) => {
           </div>
 
           {/* Right: The "Adidas-Style" Clinical Card */}
-          <div className="relative flex justify-center lg:justify-end animate-fade-in-up" style={{ animationDelay: '200ms' }}>
+          <div className="relative flex justify-center lg:justify-end">
             <div className="adidas-card">
               <div className="card-head">
                 <video
@@ -186,6 +186,7 @@ const Hero: React.FC<HeroProps> = ({ onBookClick }) => {
                   width={300}
                   height={300}
                   priority={true} // [SEO] LCP Optimization
+                  unoptimized
                 />
 
                 <span className="nmd">ITI</span>
