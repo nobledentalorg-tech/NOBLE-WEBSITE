@@ -257,7 +257,7 @@ export default function DentalImplantsRefactored() {
                                     </div>
                                     <div>
                                         <div className="text-[10px] font-black uppercase text-teal-600 dark:text-teal-400 tracking-widest">Medically Reviewed By</div>
-                                        <div className="text-sm font-bold text-slate-900 dark:text-white group-hover:underline">Dr. Dhivakaran, BDS</div>
+                                        <div className="text-sm font-bold text-slate-900 dark:text-white group-hover:underline">Dr. Dhivakaran, CMD</div>
                                     </div>
                                 </Link>
                                 <div className="h-8 w-px bg-slate-100 dark:bg-white/10 hidden sm:block"></div>

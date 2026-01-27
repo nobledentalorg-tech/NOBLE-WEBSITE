@@ -7,21 +7,67 @@ import {
    ArrowLeft, Activity, Zap, ShieldCheck, Clock,
    CheckCircle2, AlertTriangle, ChevronRight,
    Eye, Drill, Layers, Siren, Microscope,
-   HeartPulse, FileText, Check, X, Thermometer, Phone
+   HeartPulse, FileText, Check, X, Thermometer, Phone,
+   Info, Star, Calendar
 } from 'lucide-react';
 import { RevealOnScroll } from '@/components/RevealOnScroll';
 
 const customStyles = `
-  .rc-swiper .swiper-pagination-bullet { background: #8b5cf6; opacity: 0.5; }
-  .rc-swiper .swiper-pagination-bullet-active { background: #7c3aed; opacity: 1; width: 24px; border-radius: 4px; }
-  .bg-noise { background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='https://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.03'/%3E%3C/svg%3E"); }
-  
-  @keyframes pulse-ring {
-    0% { transform: scale(0.33); opacity: 1; }
-    80%, 100% { transform: scale(1); opacity: 0; }
+  .ios-glass {
+    background: rgba(255, 255, 255, 0.75);
+    backdrop-filter: blur(20px) saturate(180%);
+    -webkit-backdrop-filter: blur(20px) saturate(180%);
+    border: 1px solid rgba(255, 255, 255, 0.5);
   }
-  .animate-pulse-ring {
-    animation: pulse-ring 3s cubic-bezier(0.215, 0.61, 0.355, 1) infinite;
+  .dark .ios-glass {
+    background: rgba(15, 20, 32, 0.75);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+  }
+  
+  .ios-card-hover {
+    transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1), box-shadow 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+  }
+  .ios-card-hover:hover {
+    transform: scale(1.02);
+    box-shadow: 0 20px 40px -10px rgba(0,0,0,0.15);
+  }
+
+  .ios-btn {
+    transition: all 0.2s cubic-bezier(0.25, 1, 0.5, 1);
+  }
+  .ios-btn:active {
+    transform: scale(0.95);
+    opacity: 0.8;
+  }
+
+  /* Wallet Stack Effect */
+  .wallet-card {
+    transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+    box-shadow: 0 -5px 20px rgba(0,0,0,0.1);
+  }
+  .wallet-stack:hover .wallet-card {
+    transform: translateY(-40px) scale(0.98);
+  }
+  .wallet-stack:hover .wallet-card:hover {
+    transform: translateY(-60px) scale(1) !important;
+    z-index: 50;
+  }
+
+  /* Activity Ring Animation */
+  @keyframes fill-ring {
+    from { stroke-dasharray: 0, 100; }
+    to { stroke-dasharray: 100, 100; }
+  }
+  .animate-ring {
+    animation: fill-ring 1.5s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+  }
+
+  .hide-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+  .hide-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
   }
 `;
 
@@ -41,60 +87,58 @@ export default function RootCanalRefactored() {
    };
 
    return (
-      <div className="min-h-screen bg-slate-50 dark:bg-[#020617] text-slate-900 dark:text-slate-200 font-sans transition-colors duration-500 overflow-x-hidden pt-20 bg-noise">
+      <div className="min-h-screen bg-[#F2F2F7] dark:bg-[#000000] text-slate-900 dark:text-slate-100 font-sans transition-colors duration-500 overflow-x-hidden pt-20 selection:bg-purple-500/30">
          <style>{customStyles}</style>
 
-         {/* ================= HERO SECTION (PRESERVED) ================= */}
-         <div className="relative min-h-[90vh] w-full flex items-center justify-center overflow-hidden bg-gradient-to-b from-white to-purple-50 dark:from-[#020617] dark:to-[#0f0720] transition-colors">
-            {/* Dynamic Background */}
+         {/* ================= HERO SECTION ================= */}
+         <div className="relative min-h-[92vh] w-full flex items-center justify-center overflow-hidden bg-[#F2F2F7] dark:bg-[#000000]">
             <div className="absolute inset-0 overflow-hidden pointer-events-none">
-               <div className="absolute top-[-20%] right-[-10%] w-[800px] h-[800px] bg-purple-500/10 rounded-full blur-[120px] animate-pulse duration-[4000ms]"></div>
-               <div className="absolute bottom-[-10%] left-[-20%] w-[600px] h-[600px] bg-blue-600/10 rounded-full blur-[150px]"></div>
-               <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-20 mix-blend-overlay"></div>
+               <div className="absolute top-[10%] right-[10%] w-[500px] h-[500px] bg-purple-500/20 rounded-full blur-[100px] animate-pulse"></div>
+               <div className="absolute bottom-[10%] left-[10%] w-[500px] h-[500px] bg-blue-500/20 rounded-full blur-[100px]"></div>
             </div>
 
             <div className="absolute top-6 left-6 z-30">
-               <Link href="/treatments" className="flex items-center gap-2 px-5 py-2.5 rounded-full bg-white/50 dark:bg-white/5 backdrop-blur-md border border-slate-200 dark:border-white/10 text-slate-900 dark:text-white hover:bg-white hover:shadow-md dark:hover:bg-white/10 transition-all text-[10px] font-bold uppercase tracking-widest group">
-                  <ArrowLeft size={14} className="group-hover:-translate-x-1 transition-transform" /> Back to Catalog
+               <Link href="/treatments" className="ios-glass ios-btn flex items-center gap-2 px-6 py-3 rounded-full text-slate-900 dark:text-white text-xs font-bold uppercase tracking-wider backdrop-blur-xl hover:bg-white/40 dark:hover:bg-white/20">
+                  <ArrowLeft size={16} /> Treatments
                </Link>
             </div>
 
-            <div className="max-w-[1600px] mx-auto px-6 relative z-10 w-full grid lg:grid-cols-2 gap-16 items-center">
+            <div className="max-w-[1400px] mx-auto px-6 relative z-10 w-full grid lg:grid-cols-2 gap-12 items-center">
 
                {/* Left: Content */}
-               <div className="space-y-10 order-2 lg:order-1">
+               <div className="space-y-8 order-2 lg:order-1">
                   <RevealOnScroll>
-                     <div className="inline-flex items-center gap-3 px-4 py-2 rounded-full bg-purple-100 dark:bg-purple-900/30 border border-purple-200 dark:border-purple-500/30 text-purple-700 dark:text-purple-400 font-bold text-[10px] uppercase tracking-[0.3em] mb-8 shadow-lg shadow-purple-500/10">
-                        <Activity size={14} /> Precision Root Canal Treatment
+                     <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-slate-200/50 dark:bg-white/10 backdrop-blur-md text-purple-600 dark:text-purple-400 font-bold text-[11px] uppercase tracking-[0.2em]">
+                        <Activity size={12} /> Root Canal Therapy
                      </div>
-                     <h1 className="text-5xl md:text-7xl lg:text-[5rem] font-black text-slate-900 dark:text-white leading-[0.9] tracking-tighter">
-                        Single-Visit <br /> <span className="text-purple-600">Protocols.</span>
+                     <h1 className="text-6xl md:text-8xl font-black text-slate-900 dark:text-white leading-[0.9] -tracking-[0.04em]">
+                        Save your <br />
+                        <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-600 to-blue-500">Natural Tooth.</span>
                      </h1>
 
-                     {/* Medical Review Tag */}
-                     <div className="flex flex-wrap items-center gap-4 my-8 border-y border-slate-100 dark:border-white/5 py-4">
-                        <Link href="/team/dr-dhivakaran" className="flex items-center gap-3 group">
-                           <div className="w-10 h-10 rounded-full bg-slate-200 dark:bg-white/10 overflow-hidden relative border border-purple-500/30">
+                     {/* Medical Review Pill */}
+                     <div className="flex items-center gap-4 py-6">
+                        <Link href="/team/dr-dhivakaran" className="ios-glass ios-btn flex items-center gap-3 p-2 pr-6 rounded-full group hover:bg-white/50 dark:hover:bg-white/10">
+                           <div className="w-10 h-10 rounded-full bg-slate-200 dark:bg-slate-800 overflow-hidden relative">
                               <Image src="https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?auto=format&fit=crop&q=80&w=100" alt="Dr. Dhivakaran" fill className="object-cover" />
                            </div>
-                           <div>
-                              <div className="text-[10px] font-black uppercase text-purple-600 dark:text-purple-400 tracking-widest">Medically Reviewed By</div>
-                              <div className="text-sm font-bold text-slate-900 dark:text-white group-hover:underline">Dr. Dhivakaran, CMD</div>
+                           <div className="text-left">
+                              <div className="text-[10px] uppercase text-purple-600 dark:text-purple-400 font-bold tracking-wider">Reviewer</div>
+                              <div className="text-xs font-bold text-slate-900 dark:text-white">Dr. Dhivakaran, CMD</div>
                            </div>
                         </Link>
                      </div>
 
-                     <p className="text-lg md:text-xl text-slate-600 dark:text-slate-300 font-medium leading-relaxed max-w-lg border-l-4 border-purple-500 pl-6 my-10">
-                        Advanced Digital Endodontics. <br />
-                        Cleaning infection silently and quickly with <strong className="text-purple-600 dark:text-purple-400">Swiss Rotary Technology</strong>.
+                     <p className="text-xl md:text-2xl text-slate-500 dark:text-slate-400 font-medium leading-normal max-w-lg -tracking-[0.02em]">
+                        Advanced Digital Endodontics with <span className="text-purple-600 dark:text-purple-400 font-semibold">Swiss Rotary Technology</span>. Painless. Precise. Preserved.
                      </p>
 
-                     <div className="flex flex-wrap gap-5">
-                        <button onClick={() => document.getElementById('pricing')?.scrollIntoView({ behavior: 'smooth' })} className="px-10 py-5 bg-purple-600 dark:bg-purple-600 text-white rounded-full font-black uppercase tracking-widest text-xs shadow-xl shadow-purple-500/30 hover:bg-purple-700 hover:scale-105 transition-all flex items-center gap-3">
-                           <Zap size={18} /> Check Pricing
+                     <div className="flex flex-wrap gap-4 pt-4">
+                        <button onClick={() => document.getElementById('pricing')?.scrollIntoView({ behavior: 'smooth' })} className="ios-btn px-8 py-4 bg-slate-900 dark:bg-white text-white dark:text-black rounded-full font-bold text-sm tracking-wide shadow-2xl shadow-purple-500/20 hover:shadow-purple-500/40 flex items-center gap-2">
+                           View Pricing
                         </button>
-                        <button onClick={() => document.getElementById('protocol')?.scrollIntoView({ behavior: 'smooth' })} className="px-10 py-5 bg-white dark:bg-white/5 border border-slate-200 dark:border-white/10 text-slate-900 dark:text-white rounded-full font-bold uppercase tracking-widest text-xs transition-all flex items-center gap-3 hover:bg-slate-50 dark:hover:bg-white/10 hover:shadow-lg">
-                           <Eye size={16} /> See Workflow
+                        <button onClick={() => document.getElementById('etiology')?.scrollIntoView({ behavior: 'smooth' })} className="ios-btn px-8 py-4 bg-white dark:bg-[#1C1C1E] text-slate-900 dark:text-white rounded-full font-bold text-sm tracking-wide shadow-lg hover:bg-slate-50 dark:hover:bg-slate-800 flex items-center gap-2">
+                           Learn More
                         </button>
                      </div>
                   </RevealOnScroll>
@@ -102,506 +146,406 @@ export default function RootCanalRefactored() {
 
                {/* Right: INTERACTIVE "INFECTION WIPER" */}
                <div className="order-1 lg:order-2 flex justify-center relative">
-                  <div className="absolute -inset-10 bg-purple-500/20 blur-3xl rounded-full pointer-events-none"></div>
+                  <div className="relative w-full max-w-[360px] aspect-[3/5] bg-white dark:bg-[#1C1C1E] rounded-[3rem] shadow-[0_40px_80px_-20px_rgba(0,0,0,0.15)] dark:shadow-none border-[6px] border-slate-100 dark:border-slate-800 overflow-hidden group select-none cursor-crosshair ios-card-hover">
+                     {/* Dynamic Island Stylization */}
+                     <div className="absolute top-6 left-1/2 -translate-x-1/2 w-24 h-7 bg-black rounded-full z-50"></div>
 
-                  <div
-                     className="relative w-full max-w-[350px] h-[500px] bg-slate-50 dark:bg-[#0f1420] rounded-[3rem] border border-slate-200 dark:border-white/10 overflow-hidden shadow-2xl group select-none cursor-crosshair"
-                     onMouseMove={handleScrub}
-                     onTouchMove={handleScrub}
-                  >
-                     <div className="absolute inset-0 bg-white dark:bg-[#0f1420] flex items-center justify-center">
+                     <div className="absolute inset-0 bg-white dark:bg-[#1C1C1E] flex items-center justify-center pointer-events-none">
                         {/* THE TOOTH */}
-                        <div className="relative w-72 h-full py-10">
+                        <div className="relative w-64 h-full py-20 pointer-events-auto" onMouseMove={handleScrub} onTouchMove={handleScrub}>
+                           <div className="absolute top-4 left-0 w-full text-center z-10 pointer-events-none">
+                              <p className="text-[10px] font-bold uppercase tracking-widest text-slate-400">Interactive Demo</p>
+                              <p className="text-xs font-semibold text-slate-900 dark:text-white mt-1">Rub to Disinfect</p>
+                           </div>
+
                            <svg viewBox="0 0 200 400" className="w-full h-full drop-shadow-2xl">
-                              {/* Tooth Outline */}
                               <path d="M50,50 Q100,20 150,50 Q180,100 170,180 L140,380 Q100,400 60,380 L30,180 Q20,100 50,50"
-                                 fill="none" stroke="#94a3b8" strokeWidth="4" className="dark:stroke-slate-600" />
-
-                              {/* Inner Chamber */}
+                                 fill="none" stroke="#94a3b8" strokeWidth="4" className="dark:stroke-slate-700" />
                               <path d="M50,50 Q100,20 150,50 Q180,100 170,180 L140,380 Q100,400 60,380 L30,180 Q20,100 50,50"
-                                 fill="#f1f5f9" className="dark:fill-[#1e293b]" opacity="0.5" />
-
-                              {/* Root Canal Space (Mask for Infection) */}
+                                 fill="#F2F2F7" className="dark:fill-[#2C2C2E]" opacity="0.5" />
                               <mask id="canalMask">
                                  <path d="M85,80 L75,350 Q100,370 125,350 L115,80 Q100,90 85,80" fill="white" />
                               </mask>
-
-                              {/* 1. The Infection (Red) - Opacity controlled by progress */}
+                              {/* Infection */}
                               <g mask="url(#canalMask)" style={{ opacity: 1 - (cleaningProgress / 100) }}>
-                                 <rect x="0" y="0" width="200" height="400" fill="#ef4444" />
-                                 {/* Bacteria Dots */}
-                                 {[...Array(25)].map((_, i) => (
-                                    <circle key={i} cx={70 + Math.random() * 60} cy={100 + Math.random() * 250} r={2 + Math.random() * 5} fill="#7f1d1d" className="animate-pulse" style={{ animationDelay: `${Math.random()}s` }} />
+                                 <rect x="0" y="0" width="200" height="400" fill="#ff3b30" />
+                                 {[...Array(20)].map((_, i) => (
+                                    <circle key={i} cx={70 + Math.random() * 60} cy={100 + Math.random() * 250} r={3} fill="#990000" />
                                  ))}
                               </g>
-
-                              {/* 2. The Clean Canal (Blue/White) - Revealed as infection fades */}
+                              {/* Clean */}
                               <g mask="url(#canalMask)" style={{ opacity: cleaningProgress / 100 }}>
-                                 <rect x="0" y="0" width="200" height="400" fill="#dbeafe" className="dark:fill-blue-900" />
-                                 <path d="M100,80 L100,350" stroke="#3b82f6" strokeWidth="3" strokeDasharray="6 6" />
-
-                                 {/* Sparkles when clean */}
-                                 {isClean && [...Array(5)].map((_, i) => (
-                                    <circle key={i} cx={80 + Math.random() * 40} cy={100 + Math.random() * 200} r={2} fill="white" className="animate-ping" style={{ animationDelay: `${Math.random()}s` }} />
-                                 ))}
+                                 <rect x="0" y="0" width="200" height="400" fill="#34C759" className="dark:fill-blue-500" />
+                                 <path d="M100,80 L100,350" stroke="white" strokeWidth="3" strokeDasharray="4 4" opacity="0.5" />
                               </g>
                            </svg>
-
-                           {/* Rotary File Animation (Only visible when cleaning) */}
-                           {cleaningProgress > 0 && cleaningProgress < 100 && (
-                              <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-3 h-40 bg-gradient-to-b from-slate-300 to-slate-500 animate-spin origin-top rounded-full blur-[1px] opacity-80 mix-blend-overlay pointer-events-none"></div>
-                           )}
                         </div>
                      </div>
 
-                     {/* UI Overlay */}
-                     <div className="absolute bottom-0 w-full p-8 bg-white/90 dark:bg-[#0f1420]/90 backdrop-blur-xl border-t border-slate-200 dark:border-white/10">
-                        <div className="flex justify-between text-[10px] font-black uppercase tracking-widest mb-3">
-                           <span className={isClean ? "text-emerald-500 flex items-center gap-2" : "text-rose-500 flex items-center gap-2"}>
-                              {isClean ? <><CheckCircle2 size={12} /> Canal Sterile</> : <><AlertTriangle size={12} className="animate-bounce" /> Infection Detected</>}
-                           </span>
-                           <span className="dark:text-white">{Math.round(cleaningProgress)}% Cleaned</span>
-                        </div>
-                        <div className="w-full h-3 bg-slate-200 dark:bg-white/10 rounded-full overflow-hidden shadow-inner">
-                           <div
-                              className={`h-full transition-all duration-100 ${isClean ? 'bg-gradient-to-r from-emerald-400 to-emerald-600' : 'bg-gradient-to-r from-rose-500 to-purple-600'}`}
-                              style={{ width: `${cleaningProgress}%` }}
-                           ></div>
-                        </div>
-                        {!isClean && (
-                           <p className="text-[10px] text-center mt-4 text-slate-400 font-bold uppercase tracking-widest animate-pulse">
-                              Scrub to remove infection
-                           </p>
-                        )}
-                        {isClean && (
-                           <div className="mt-4 text-center">
-                              <button onClick={() => document.getElementById('protocol')?.scrollIntoView({ behavior: 'smooth' })} className="px-6 py-2 bg-emerald-500 text-white rounded-full text-xs font-bold uppercase tracking-widest shadow-lg shadow-emerald-500/20">Proceed to Sealing</button>
+                     {/* iOS Status Bar Bottom */}
+                     <div className="absolute bottom-0 w-full p-6 bg-white/80 dark:bg-[#1C1C1E]/80 backdrop-blur-xl border-t border-slate-100 dark:border-white/5">
+                        <div className="flex items-center justify-between mb-3">
+                           <div className="flex items-center gap-2">
+                              <span className={`w-2 h-2 rounded-full ${isClean ? 'bg-green-500' : 'bg-red-500 animate-pulse'}`}></span>
+                              <span className="text-[10px] font-bold uppercase tracking-wide text-slate-500 dark:text-slate-400">
+                                 {isClean ? 'Sterilized' : 'Infection Detected'}
+                              </span>
                            </div>
-                        )}
-                     </div>
-                  </div>
-               </div>
-            </div>
-         </div>
-
-         {/* ================= TABLE OF CONTENTS (JUMP LINKS) ================= */}
-         <div className="bg-white dark:bg-[#0b101b] border-b border-slate-100 dark:border-white/5 sticky top-0 z-40 shadow-sm backdrop-blur-md bg-opacity-90 dark:bg-opacity-90">
-            <div className="max-w-7xl mx-auto px-6 py-4">
-               <div className="flex items-center gap-4 overflow-x-auto pb-2 md:pb-0 scrollbar-hide">
-                  <span className="text-[10px] font-black uppercase tracking-widest text-slate-400 shrink-0">Jump To:</span>
-                  <div className="flex gap-2">
-                     {[
-                        { id: 'insight', label: 'Dr. Insight' },
-                        { id: 'etiology', label: 'Etiology' },
-                        { id: 'symptoms', label: 'Symptoms' },
-                        { id: 'safety', label: 'Safety Protocol' },
-                        { id: 'protocol', label: 'Noble Process' },
-                        { id: 'pricing', label: 'Pricing' },
-                        { id: 'faq', label: 'FAQs' }
-                     ].map((link) => (
-                        <button
-                           key={link.id}
-                           onClick={() => document.getElementById(link.id)?.scrollIntoView({ behavior: 'smooth' })}
-                           className="px-4 py-2 rounded-full bg-slate-50 dark:bg-white/5 border border-slate-200 dark:border-white/10 text-xs font-bold text-slate-700 dark:text-slate-300 hover:bg-purple-100 dark:hover:bg-purple-900/40 hover:text-purple-700 dark:hover:text-purple-300 transition-colors whitespace-nowrap"
-                        >
-                           {link.label}
-                        </button>
-                     ))}
-                  </div>
-               </div>
-            </div>
-         </div>
-
-         {/* ================= 1. DR. DHIVAKARAN'S INSIGHT ================= */}
-         <section id="insight" className="py-24 bg-white dark:bg-[#0b101b]">
-            <div className="max-w-4xl mx-auto px-6">
-               <RevealOnScroll>
-                  <div className="bg-purple-50 dark:bg-white/5 rounded-[3rem] p-12 border border-purple-100 dark:border-white/10 relative overflow-hidden">
-                     <div className="absolute top-0 right-0 p-8 opacity-10 text-purple-600">
-                        <Activity size={120} />
-                     </div>
-
-                     <h2 className="text-3xl font-black text-slate-900 dark:text-white mb-8">Dr. Dhivakaran&apos;s Insight: <span className="text-purple-600">The Myth of Pain</span></h2>
-
-                     <div className="prose prose-lg dark:prose-invert text-slate-600 dark:text-slate-300 leading-relaxed">
-                        <p className="text-xl italic font-medium text-slate-800 dark:text-white mb-6">
-                           &quot;I would rather give birth than have a Root Canal.&quot;
-                        </p>
-                        <p className="mb-6">
-                           I hear this fear all the time. And I understand why. Traditional root canals used to be painful because doctors worked with slow, manual tools.
-                        </p>
-                        <p className="mb-6">
-                           But at Noble Dental, we use <strong className="text-purple-600 dark:text-purple-400">Swiss Rotary Technology</strong>. Imagine trying to cut a tree with a hand saw vs. a laser cutter. That is the difference. Our flexible titanium instruments clean infection silently and quickly, often in a single sitting.
-                        </p>
-                        <div className="bg-white dark:bg-[#0f1420] p-6 rounded-2xl border border-purple-100 dark:border-white/10 mt-8">
-                           <h4 className="font-bold text-slate-900 dark:text-white mb-2 flex items-center gap-2">
-                              <ShieldCheck size={18} className="text-emerald-500" /> The CMD Standard
-                           </h4>
-                           <p className="text-sm">
-                              Dr. Dhivakaran (Chief Medical Director) follows a strict &quot;Biological Safety&quot; protocol. We do not treat teeth blindly. We treat the whole patient. Whether you are a busy IT professional from Tellapur or a senior citizen from Aparna Sarovar, our goal is to save your natural tooth using Biomimetic Principles.
-                           </p>
+                           <span className="text-xs font-mono font-bold text-slate-900 dark:text-white">{Math.round(cleaningProgress)}%</span>
+                        </div>
+                        <div className="w-full h-1.5 bg-slate-200 dark:bg-slate-700 rounded-full overflow-hidden">
+                           <div className={`h-full transition-all duration-200 ${isClean ? 'bg-green-500' : 'bg-red-500'}`} style={{ width: `${cleaningProgress}%` }}></div>
                         </div>
                      </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+
+         {/* ================= 2. ETIOLOGY: BENTO GRID WIDGETS ================= */}
+         <section id="etiology" className="py-24 bg-[#F2F2F7] dark:bg-[#000000]">
+            <div className="max-w-[1200px] mx-auto px-6">
+               <RevealOnScroll>
+                  <div className="flex flex-col md:flex-row justify-between items-end mb-16 gap-6">
+                     <div>
+                        <h2 className="text-4xl font-black text-slate-900 dark:text-white tracking-tight">The Root Cause.</h2>
+                        <p className="text-slate-500 dark:text-slate-400 mt-2 text-lg">Why is this happening to you?</p>
+                     </div>
+                     <Link href="/contact" className="ios-btn px-6 py-2 bg-slate-200 dark:bg-white/10 rounded-full text-xs font-bold uppercase tracking-wider hover:bg-slate-300 dark:hover:bg-white/20 transition-colors">
+                        Book Checkup
+                     </Link>
+                  </div>
+
+                  {/* BENTO GRID */}
+                  <div className="grid grid-cols-1 md:grid-cols-4 md:grid-rows-2 gap-6 h-auto md:h-[600px]">
+
+                     {/* Large Widget: Deep Caries */}
+                     <div className="md:col-span-2 md:row-span-2 bg-white dark:bg-[#1C1C1E] rounded-[2.5rem] p-10 flex flex-col justify-between shadow-sm hover:shadow-xl transition-shadow duration-500 group overflow-hidden relative border border-slate-100 dark:border-black">
+                        <div className="absolute inset-0 bg-gradient-to-br from-purple-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                        <div className="relative z-10">
+                           <div className="w-14 h-14 bg-purple-100 dark:bg-purple-900/30 text-purple-600 dark:text-purple-400 rounded-full flex items-center justify-center mb-6">
+                              <Drill size={28} />
+                           </div>
+                           <h3 className="text-3xl font-bold text-slate-900 dark:text-white mb-4 tracking-tight">Deep Decay</h3>
+                           <p className="text-slate-500 dark:text-slate-400 leading-relaxed text-lg">
+                              The most common culprit. Bacteria penetrate enamel and dentin, reaching the pulp chamber where nerves reside. This causes irreversible inflammation.
+                           </p>
+                        </div>
+                        <div className="mt-8 relative h-40 w-full bg-slate-50 dark:bg-black/50 rounded-3xl overflow-hidden border border-slate-100 dark:border-white/5">
+                           <Image src="/assets/images/treatments/root-canal-decay.jpg" alt="Decay" fill className="object-cover opacity-80 group-hover:scale-105 transition-transform duration-700" />
+                           {/* Fallback pattern if image fails */}
+                           <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-20"></div>
+                        </div>
+                     </div>
+
+                     {/* Medium Widget: Trauma */}
+                     <div className="md:col-span-2 bg-slate-900 dark:bg-[#2C2C2E] rounded-[2.5rem] p-8 text-white flex items-center justify-between shadow-sm relative overflow-hidden group">
+                        <div className="absolute inset-0 bg-gradient-to-r from-blue-600 to-purple-600 opacity-20 group-hover:opacity-30 transition-opacity"></div>
+                        <div className="relative z-10 max-w-[60%]">
+                           <div className="flex items-center gap-2 mb-2 text-blue-300 font-bold uppercase text-xs tracking-widest">
+                              <AlertTriangle size={12} /> External Injury
+                           </div>
+                           <h3 className="text-2xl font-bold mb-2 tracking-tight">Trauma</h3>
+                           <p className="text-slate-300 text-sm">Sports injuries or falls can sever blood supply, causing silent nerve death years later.</p>
+                        </div>
+                        <div className="relative z-10 w-24 h-24 bg-white/10 rounded-full flex items-center justify-center backdrop-blur-md">
+                           <Activity size={40} className="text-blue-400" />
+                        </div>
+                     </div>
+
+                     {/* Small Widget: Cracks */}
+                     <div className="col-span-1 bg-white dark:bg-[#1C1C1E] rounded-[2.5rem] p-8 flex flex-col justify-center items-center text-center shadow-sm border border-slate-100 dark:border-black ios-card-hover">
+                        <div className="w-12 h-12 bg-emerald-100 dark:bg-emerald-900/30 text-emerald-600 rounded-2xl flex items-center justify-center mb-4 rotate-3 group-hover:rotate-0 transition-transform">
+                           <Layers size={24} />
+                        </div>
+                        <h3 className="font-bold text-slate-900 dark:text-white">Cracked Tooth</h3>
+                        <p className="text-xs text-slate-400 mt-2">Stress & Bruxism</p>
+                     </div>
+
+                     {/* Small Widget: Gum Issues */}
+                     <div className="col-span-1 bg-white dark:bg-[#1C1C1E] rounded-[2.5rem] p-8 flex flex-col justify-center items-center text-center shadow-sm border border-slate-100 dark:border-black ios-card-hover">
+                        <div className="w-12 h-12 bg-rose-100 dark:bg-rose-900/30 text-rose-600 rounded-full flex items-center justify-center mb-4">
+                           <Thermometer size={24} />
+                        </div>
+                        <h3 className="font-bold text-slate-900 dark:text-white">Infection</h3>
+                        <p className="text-xs text-slate-400 mt-2">Retrograde Spread</p>
+                     </div>
+
                   </div>
                </RevealOnScroll>
             </div>
          </section>
 
-         {/* ================= 2. ETIOLOGY: ROOT CAUSE ANALYSIS ================= */}
-         <section id="etiology" className="py-24 bg-slate-50 dark:bg-[#0f1420]">
-            <div className="max-w-7xl mx-auto px-6">
-               <RevealOnScroll>
-                  <div className="text-center mb-16">
-                     <div className="text-purple-600 dark:text-purple-400 font-bold uppercase tracking-widest text-xs mb-4">Etiology</div>
-                     <h2 className="text-4xl font-black text-slate-900 dark:text-white">Why is this happening to me?</h2>
-                     <p className="text-slate-500 dark:text-slate-400 mt-4 max-w-2xl mx-auto">
-                        To understand the cure, you must understand the cause. The Pulp-Dentin Complex is the living core of your tooth. When bacteria breach this fortress, inflammation begins.
+         {/* ================= 3. SYMPTOMS: NOTALIFICATIONS STACK ================= */}
+         <section id="symptoms" className="py-24 bg-white dark:bg-[#1C1C1E]">
+            <div className="max-w-[1000px] mx-auto px-6">
+               <div className="text-center mb-16">
+                  <h2 className="text-4xl font-black text-slate-900 dark:text-white tracking-tight">Symptoms</h2>
+                  <p className="text-slate-500 dark:text-slate-400 mt-2">Signs that demand attention.</p>
+               </div>
+
+               <div className="grid md:grid-cols-2 gap-16">
+                  {/* PHONE MOCKUP FOR SUBJECTIVE */}
+                  <div className="relative">
+                     <div className="bg-[#F2F2F7] dark:bg-black rounded-[3rem] p-6 border-[8px] border-slate-200 dark:border-slate-800 h-[500px] overflow-hidden relative shadow-2xl">
+                        <div className="absolute top-0 left-0 w-full h-32 bg-gradient-to-b from-slate-200/50 to-transparent z-10 pointer-events-none"></div>
+
+                        <div className="space-y-4 mt-8">
+                           {/* Notification 1 */}
+                           <div className="ios-glass p-4 rounded-2xl flex gap-4 items-start shadow-sm transform hover:scale-105 transition-transform cursor-default">
+                              <div className="w-10 h-10 rounded-xl bg-red-500 flex items-center justify-center text-white shrink-0">
+                                 <Activity size={20} />
+                              </div>
+                              <div className="flex-1">
+                                 <div className="flex justify-between items-center mb-1">
+                                    <span className="font-bold text-xs text-slate-900 dark:text-white">Pain Alert</span>
+                                    <span className="text-[10px] text-slate-400">Now</span>
+                                 </div>
+                                 <h4 className="font-bold text-sm text-slate-900 dark:text-white">Nocturnal Pain</h4>
+                                 <p className="text-xs text-slate-500 leading-snug">Waking up at night with throbbing pain? This is a classic sign of pulpitis.</p>
+                              </div>
+                           </div>
+
+                           {/* Notification 2 */}
+                           <div className="ios-glass p-4 rounded-2xl flex gap-4 items-start shadow-sm transform hover:scale-105 transition-transform cursor-default opacity-90">
+                              <div className="w-10 h-10 rounded-xl bg-orange-500 flex items-center justify-center text-white shrink-0">
+                                 <Thermometer size={20} />
+                              </div>
+                              <div className="flex-1">
+                                 <div className="flex justify-between items-center mb-1">
+                                    <span className="font-bold text-xs text-slate-900 dark:text-white">Sensitivity</span>
+                                    <span className="text-[10px] text-slate-400">2m ago</span>
+                                 </div>
+                                 <h4 className="font-bold text-sm text-slate-900 dark:text-white">Lingering Cold/Hot</h4>
+                                 <p className="text-xs text-slate-500 leading-snug">Pain that lingers for 10+ seconds after drinking hot coffee or cold water.</p>
+                              </div>
+                           </div>
+
+                           {/* Notification 3 */}
+                           <div className="ios-glass p-4 rounded-2xl flex gap-4 items-start shadow-sm transform hover:scale-105 transition-transform cursor-default opacity-80">
+                              <div className="w-10 h-10 rounded-xl bg-blue-500 flex items-center justify-center text-white shrink-0">
+                                 <Info size={20} />
+                              </div>
+                              <div className="flex-1">
+                                 <div className="flex justify-between items-center mb-1">
+                                    <span className="font-bold text-xs text-slate-900 dark:text-white">Referred Pain</span>
+                                    <span className="text-[10px] text-slate-400">1h ago</span>
+                                 </div>
+                                 <h4 className="font-bold text-sm text-slate-900 dark:text-white">Radiating Ache</h4>
+                                 <p className="text-xs text-slate-500 leading-snug">Pain spreading to your ear, jaw, or head.</p>
+                              </div>
+                           </div>
+                        </div>
+                        <div className="absolute bottom-8 left-0 w-full text-center text-xs font-bold text-slate-400">Subjective Symptoms</div>
+                     </div>
+                  </div>
+
+                  {/* CONTROL CENTER FOR OBJECTIVE */}
+                  <div className="space-y-6 flex flex-col justify-center">
+                     <div className="bg-slate-50 dark:bg-[#2C2C2E] p-8 rounded-3xl border border-slate-100 dark:border-black">
+                        <h3 className="text-xl font-bold text-slate-900 dark:text-white mb-6 flex items-center gap-3">
+                           <Microscope className="text-purple-500" /> Clinical Signs
+                        </h3>
+                        <div className="grid gap-4">
+                           <div className="flex items-center justify-between p-4 bg-white dark:bg-black/20 rounded-2xl">
+                              <span className="font-medium text-slate-700 dark:text-slate-300">TTP (Percussion)</span>
+                              <span className="px-3 py-1 bg-red-100 dark:bg-red-900/30 text-red-600 rounded-full text-xs font-bold">Positive</span>
+                           </div>
+                           <div className="flex items-center justify-between p-4 bg-white dark:bg-black/20 rounded-2xl">
+                              <span className="font-medium text-slate-700 dark:text-slate-300">Swelling / Pus</span>
+                              <span className="px-3 py-1 bg-orange-100 dark:bg-orange-900/30 text-orange-600 rounded-full text-xs font-bold">Visible</span>
+                           </div>
+                           <div className="flex items-center justify-between p-4 bg-white dark:bg-black/20 rounded-2xl">
+                              <span className="font-medium text-slate-700 dark:text-slate-300">Discoloration</span>
+                              <span className="px-3 py-1 bg-slate-100 dark:bg-slate-800 text-slate-600 rounded-full text-xs font-bold">Darkening</span>
+                           </div>
+                        </div>
+                     </div>
+                     <p className="text-sm text-slate-500 dark:text-slate-400 pl-4">
+                        *These are objective signs we look for during your examination using digital RVG X-Rays.
                      </p>
                   </div>
-
-                  <div className="grid md:grid-cols-3 gap-6">
-                     {[
-                        { title: "Deep Caries (Decay)", desc: "The most common cause. Bacteria penetrate the enamel and dentin, reaching the pulp.", icon: Drill },
-                        { title: "Trauma / Concussion", desc: "A fall or sports injury can sever the blood supply, causing slow nerve death (Calcification) years later.", icon: AlertTriangle },
-                        { title: "Cracked Tooth Syndrome", desc: "Frequent in Nallagandla’s high-stress population. Clenching your jaw (Bruxism) causes micro-cracks.", icon: Layers },
-                        { title: "Retrograde Periodontitis", desc: "A gum infection that travels up from the root tip into the nerve.", icon: Activity },
-                        { title: "Iatrogenic Factors", desc: "Thermal trauma from deep fillings done elsewhere without adequate cooling.", icon: Thermometer },
-                     ].map((item, idx) => (
-                        <div key={idx} className="bg-white dark:bg-[#151b2b] p-8 rounded-3xl border border-slate-100 dark:border-white/5 hover:border-purple-500/30 transition-all hover:shadow-xl group">
-                           <div className="w-12 h-12 bg-purple-50 dark:bg-purple-900/20 rounded-xl flex items-center justify-center text-purple-600 mb-6 group-hover:scale-110 transition-transform">
-                              <item.icon size={24} />
-                           </div>
-                           <h3 className="font-bold text-lg text-slate-900 dark:text-white mb-3">{item.title}</h3>
-                           <p className="text-slate-500 text-sm leading-relaxed">{item.desc}</p>
-                        </div>
-                     ))}
-                  </div>
-               </RevealOnScroll>
-            </div>
-         </section>
-
-         {/* ================= 3. SIGNS & SYMPTOMS ================= */}
-         <section id="symptoms" className="py-24 bg-white dark:bg-[#0b101b]">
-            <div className="max-w-7xl mx-auto px-6">
-               <RevealOnScroll>
-                  <div className="text-center mb-16">
-                     <h2 className="text-4xl font-black text-slate-900 dark:text-white mb-4">Signs & Symptoms</h2>
-                     <p className="text-slate-500 dark:text-slate-400">How do we know it&apos;s irreversible?</p>
-                  </div>
-
-                  <div className="grid lg:grid-cols-2 gap-12">
-                     {/* Subjective */}
-                     <div className="bg-purple-50 dark:bg-purple-900/10 p-10 rounded-[2.5rem] border border-purple-100 dark:border-white/5">
-                        <h3 className="text-2xl font-black text-purple-900 dark:text-purple-300 mb-8 flex items-center gap-3">
-                           <Eye size={24} /> Subjective (What YOU Feel)
-                        </h3>
-                        <ul className="space-y-6">
-                           {[
-                              { title: "Nocturnal Pain", desc: "Does the pain wake you up at night? This throbbing pain is the hallmark of Irreversible Pulpitis." },
-                              { title: "Lingering Thermal Sensitivity", desc: "Sharp pain to hot coffee or cold water that lasts for more than 10 seconds." },
-                              { title: "Referred Pain", desc: "Pain that radiates to your ear, jaw, or head, often making it hard to pinpoint which tooth is hurting." }
-                           ].map((item, i) => (
-                              <li key={i} className="flex gap-4">
-                                 <div className="w-6 h-6 rounded-full bg-purple-200 dark:bg-purple-800 text-purple-700 dark:text-purple-200 flex items-center justify-center font-bold text-xs shrink-0 mt-1">{i + 1}</div>
-                                 <div className="text-slate-700 dark:text-slate-300">
-                                    <strong className="block text-slate-900 dark:text-white">{item.title}</strong>
-                                    <span className="text-sm opacity-80">{item.desc}</span>
-                                 </div>
-                              </li>
-                           ))}
-                        </ul>
-                     </div>
-
-                     {/* Objective */}
-                     <div className="bg-slate-50 dark:bg-white/5 p-10 rounded-[2.5rem] border border-slate-100 dark:border-white/5">
-                        <h3 className="text-2xl font-black text-slate-900 dark:text-white mb-8 flex items-center gap-3">
-                           <Microscope size={24} /> Objective (What WE See)
-                        </h3>
-                        <ul className="space-y-6">
-                           {[
-                              { title: "Tenderness on Percussion", desc: "Sharp pain when we gently tap the tooth." },
-                              { title: "Sinus Tract", desc: "A small pimple or boil on the gums that releases a salty taste (pus)." },
-                              { title: "Discoloration", desc: "The tooth turning grey or dark." }
-                           ].map((item, i) => (
-                              <li key={i} className="flex gap-4">
-                                 <div className="w-6 h-6 rounded-full bg-slate-200 dark:bg-slate-700 text-slate-700 dark:text-slate-300 flex items-center justify-center font-bold text-xs shrink-0 mt-1">{i + 1}</div>
-                                 <div className="text-slate-700 dark:text-slate-300">
-                                    <strong className="block text-slate-900 dark:text-white">{item.title}</strong>
-                                    <span className="text-sm opacity-80">{item.desc}</span>
-                                 </div>
-                              </li>
-                           ))}
-                        </ul>
-                     </div>
-                  </div>
-               </RevealOnScroll>
-            </div>
-         </section>
-
-         {/* ================= 4. SAFETY PROTOCOL ================= */}
-         <section id="safety" className="py-24 bg-slate-900 text-white relative overflow-hidden">
-            <div className="absolute inset-0 bg-gradient-to-br from-purple-900/20 to-blue-900/20"></div>
-            <div className="max-w-7xl mx-auto px-6 relative z-10">
-               <RevealOnScroll>
-                  <div className="flex flex-col md:flex-row gap-16 items-center">
-                     <div className="md:w-1/2">
-                        <div className="inline-flex items-center gap-2 px-3 py-1 bg-emerald-500/20 border border-emerald-500/30 rounded-full text-emerald-400 text-xs font-bold uppercase tracking-widest mb-6">
-                           <HeartPulse size={14} /> Safety First
-                        </div>
-                        <h2 className="text-4xl font-black mb-6 leading-tight">We check YOU <br /> before we check your tooth.</h2>
-                        <p className="text-slate-400 text-lg mb-8">
-                           Unlike standard clinics, Noble Dental functions with hospital-grade protocols. Before administering anesthesia, we evaluate your systemic health.
-                        </p>
-                        <div className="grid grid-cols-1 gap-4">
-                           <div className="bg-white/5 p-4 rounded-xl border border-white/10 flex items-center gap-4">
-                              <Activity className="text-emerald-400 shrink-0" />
-                              <div>
-                                 <div className="font-bold">Diabetes Monitoring</div>
-                                 <div className="text-xs text-slate-400">We monitor blood sugar levels as uncontrolled diabetes can delay healing.</div>
-                              </div>
-                           </div>
-                           <div className="bg-white/5 p-4 rounded-xl border border-white/10 flex items-center gap-4">
-                              <HeartPulse className="text-rose-400 shrink-0" />
-                              <div>
-                                 <div className="font-bold">Hypertension (BP)</div>
-                                 <div className="text-xs text-slate-400">We check BP in-chair. High stress + anesthesia can spike BP, so we use adrenaline-free solutions if needed.</div>
-                              </div>
-                           </div>
-                        </div>
-                     </div>
-                     <div className="md:w-1/2 grid grid-cols-2 gap-4">
-                        <div className="bg-white/10 backdrop-blur-md p-6 rounded-2xl border border-white/10 text-center">
-                           <div className="text-3xl font-black mb-2 text-purple-400">100%</div>
-                           <div className="text-xs uppercase tracking-widest opacity-70">Drug Allergy Screening</div>
-                        </div>
-                        <div className="bg-white/10 backdrop-blur-md p-6 rounded-2xl border border-white/10 text-center">
-                           <div className="text-3xl font-black mb-2 text-blue-400">Zero</div>
-                           <div className="text-xs uppercase tracking-widest opacity-70">Adrenaline Risk</div>
-                        </div>
-                        <div className="bg-white/10 backdrop-blur-md p-6 rounded-2xl border border-white/10 text-center col-span-2">
-                           <div className="text-xl font-bold mb-2">Cardiac Status</div>
-                           <div className="text-xs opacity-70">Prophylactic antibiotics for heart conditions if required.</div>
-                        </div>
-                     </div>
-                  </div>
-               </RevealOnScroll>
-            </div>
-         </section>
-
-         {/* ================= 5. CLINICAL PROCESS (NOBLE PROTOCOL) ================= */}
-         <section id="protocol" className="py-24 bg-slate-50 dark:bg-[#0f1420]">
-            <div className="max-w-5xl mx-auto px-6">
-               <RevealOnScroll>
-                  <div className="text-center mb-16">
-                     <h2 className="text-4xl font-black text-slate-900 dark:text-white mb-4">The Noble Protocol</h2>
-                     <p className="text-slate-600 dark:text-slate-400">Advanced Digital Endodontics in 45 Minutes.</p>
-                  </div>
-
-                  {/* Feature Table */}
-                  <div className="grid grid-cols-3 gap-4 mb-16 text-center text-sm border-b border-slate-200 dark:border-white/10 pb-12">
-                     <div>
-                        <div className="font-bold text-slate-900 dark:text-white mb-1">Noble Dental Standard</div>
-                        <div className="text-emerald-500 font-bold flex justify-center items-center gap-1"><CheckCircle2 size={14} /> Strict AAE Protocols</div>
-                     </div>
-                     <div>
-                        <div className="font-bold text-slate-900 dark:text-white mb-1">Precision</div>
-                        <div className="text-purple-600 font-bold flex justify-center items-center gap-1"><CheckCircle2 size={14} /> Digital RVG & Rotary</div>
-                     </div>
-                     <div>
-                        <div className="font-bold text-slate-900 dark:text-white mb-1">Success Rate</div>
-                        <div className="text-blue-600 font-bold flex justify-center items-center gap-1"><CheckCircle2 size={14} /> 98% Retention</div>
-                     </div>
-                  </div>
-
-                  <div className="grid lg:grid-cols-2 gap-12 items-center">
-                     <div className="space-y-8 relative order-2 lg:order-1">
-                        <div className="absolute left-[27px] top-4 bottom-4 w-0.5 bg-slate-200 dark:bg-white/10 -z-10"></div>
-                        {[
-                           { step: "1", title: "Pain Management (The \"Ouchless\" Injection)", desc: "We use computer-controlled delivery or fine-gauge needles with Lignocaine 2%. You will feel a scratch, then nothing." },
-                           { step: "2", title: "Isolation & Preparation (Rotary Tech)", desc: "We isolate the tooth to prevent saliva contamination. Instead of manual filing, we use Swiss NiTi Rotary Files. These flexible titanium needles navigate curved roots effortlessly." },
-                           { step: "3", title: "Laser & Chemical Disinfection", desc: "We use Sodium Hypochlorite (activated by Ultrasonic energy) to dissolve organic debris and kill 99.9% of bacteria deep in the dentinal tubules." },
-                           { step: "4", title: "Bio-Seal (3D Obturation)", desc: "We seal the empty space with Bioceramic Sealers and Gutta Percha. This bioactive material promotes bone healing and ensures a hermetic seal." }
-                        ].map((item, i) => (
-                           <div key={i} className="flex gap-8 items-start">
-                              <div className="w-14 h-14 rounded-full bg-white dark:bg-[#151b2b] border-2 border-slate-200 dark:border-white/10 flex items-center justify-center font-black text-xl text-slate-300 dark:text-slate-700 shrink-0">
-                                 {item.step}
-                              </div>
-                              <div className="bg-white dark:bg-[#151b2b] p-6 rounded-2xl border border-slate-100 dark:border-white/5 w-full shadow-sm">
-                                 <h3 className="text-xl font-bold text-slate-900 dark:text-white mb-2">{item.title}</h3>
-                                 <p className="text-slate-600 dark:text-slate-400 text-sm leading-relaxed">{item.desc}</p>
-                              </div>
-                           </div>
-                        ))}
-                     </div>
-
-                     <div className="relative rounded-3xl overflow-hidden shadow-2xl border border-slate-200 dark:border-white/10 h-[600px] order-1 lg:order-2 group">
-                        <Image
-                           src="/assets/images/treatments/rotary-handpiece.png"
-                           alt="Swiss Rotary Handpiece"
-                           fill
-                           className="object-cover transition-transform duration-700 group-hover:scale-105"
-                        />
-                        <div className="absolute inset-0 bg-gradient-to-t from-slate-900/90 via-transparent to-transparent"></div>
-                        <div className="absolute bottom-0 w-full p-8 text-white">
-                           <div className="inline-flex items-center gap-2 px-3 py-1 bg-purple-500/20 border border-purple-500/30 rounded-full text-purple-300 text-xs font-bold uppercase tracking-widest mb-3 backdrop-blur-md">
-                              <Zap size={12} /> Advanced Endodontics
-                           </div>
-                           <div className="font-bold text-2xl mb-2">Swiss Rotary Technology</div>
-                           <div className="text-sm text-slate-300 leading-relaxed">
-                              Flexible titanium files that clean infection silently and precisely, preventing the pain associated with traditional manual files.
-                           </div>
-                        </div>
-                     </div>
-                  </div>
-               </RevealOnScroll>
-            </div>
-         </section>
-
-         {/* ================= 6. SINGLE VS MULTI VISIT MATRIX ================= */}
-         <section className="py-24 bg-white dark:bg-[#0b101b]">
-            <div className="max-w-5xl mx-auto px-6">
-               <RevealOnScroll>
-                  <h2 className="text-3xl font-black text-slate-900 dark:text-white mb-8 text-center">Single vs. Multi-Visit Decision Matrix</h2>
-                  <div className="overflow-x-auto">
-                     <table className="w-full text-left border-collapse">
-                        <thead>
-                           <tr className="bg-purple-50 dark:bg-purple-900/20 text-purple-900 dark:text-purple-100">
-                              <th className="p-4 rounded-tl-2xl">Condition</th>
-                              <th className="p-4">Protocol</th>
-                              <th className="p-4 rounded-tr-2xl">Reasoning</th>
-                           </tr>
-                        </thead>
-                        <tbody className="bg-white dark:bg-[#151b2b] divide-y divide-slate-100 dark:divide-white/5">
-                           <tr>
-                              <td className="p-4 font-bold text-slate-900 dark:text-white">Vital Pulp (Sensitivity)</td>
-                              <td className="p-4"><span className="px-3 py-1 bg-emerald-100 dark:bg-emerald-900/30 text-emerald-700 dark:text-emerald-400 rounded-full text-xs font-bold uppercase">Single Visit</span></td>
-                              <td className="p-4 text-sm text-slate-600 dark:text-slate-400">The safest option. Prevents re-infection.</td>
-                           </tr>
-                           <tr>
-                              <td className="p-4 font-bold text-slate-900 dark:text-white">Fractured Tooth</td>
-                              <td className="p-4"><span className="px-3 py-1 bg-emerald-100 dark:bg-emerald-900/30 text-emerald-700 dark:text-emerald-400 rounded-full text-xs font-bold uppercase">Single Visit</span></td>
-                              <td className="p-4 text-sm text-slate-600 dark:text-slate-400">Immediate sealing protects the root.</td>
-                           </tr>
-                           <tr>
-                              <td className="p-4 font-bold text-slate-900 dark:text-white">Acute Abscess (Pus)</td>
-                              <td className="p-4"><span className="px-3 py-1 bg-rose-100 dark:bg-rose-900/30 text-rose-700 dark:text-rose-400 rounded-full text-xs font-bold uppercase">Multi-Visit</span></td>
-                              <td className="p-4 text-sm text-slate-600 dark:text-slate-400">We must drain the pus and place medicine for 3-7 days.</td>
-                           </tr>
-                           <tr>
-                              <td className="p-4 font-bold text-slate-900 dark:text-white">Weeping Canal</td>
-                              <td className="p-4"><span className="px-3 py-1 bg-rose-100 dark:bg-rose-900/30 text-rose-700 dark:text-rose-400 rounded-full text-xs font-bold uppercase">Multi-Visit</span></td>
-                              <td className="p-4 text-sm text-slate-600 dark:text-slate-400">If fluid/blood is oozing, we cannot seal. We wait for dryness.</td>
-                           </tr>
-                        </tbody>
-                     </table>
-                  </div>
-               </RevealOnScroll>
-            </div>
-         </section>
-
-         {/* ================= 7. RECOVERY ================= */}
-         <section className="py-24 bg-slate-50 dark:bg-[#0f1420]">
-            <div className="max-w-5xl mx-auto px-6">
-               <RevealOnScroll>
-                  <div className="grid md:grid-cols-2 gap-12">
-                     <div className="bg-white dark:bg-[#151b2b] p-10 rounded-[2.5rem] border border-slate-100 dark:border-white/5">
-                        <h3 className="text-xl font-black text-slate-900 dark:text-white mb-6 flex items-center gap-2">
-                           <Activity className="text-emerald-500" /> Recovery & Pain Management
-                        </h3>
-                        <p className="mb-4 text-sm font-bold text-slate-700 dark:text-slate-300">We practice &quot;Pre-Emptive Analgesia.&quot;</p>
-                        <ul className="space-y-4 text-sm text-slate-600 dark:text-slate-400">
-                           <li className="flex gap-3 items-start"><Check size={16} className="text-emerald-500 shrink-0 mt-1" /> <span>You receive pain relief prescriptions <strong>before</strong> anesthesia wears off.</span></li>
-                           <li className="flex gap-3 items-start"><AlertTriangle size={16} className="text-amber-500 shrink-0 mt-1" /> <span>Never take painkillers on an empty stomach.</span></li>
-                           <li className="flex gap-3 items-start"><ShieldCheck size={16} className="text-blue-500 shrink-0 mt-1" /> <span>Targeted Antibiotics only if required (Diabetes/Cardiac).</span></li>
-                        </ul>
-                     </div>
-                     <div className="bg-white dark:bg-[#151b2b] p-10 rounded-[2.5rem] border border-slate-100 dark:border-white/5">
-                        <h3 className="text-xl font-black text-slate-900 dark:text-white mb-6 flex items-center gap-2">
-                           <Layers className="text-purple-500" /> The Crown Necessity
-                        </h3>
-                        <p className="text-slate-600 dark:text-slate-400 mb-6 text-sm leading-relaxed">
-                           A root canal tooth is brittle because it has lost its hydration supply. It is like a dry twig. You must place a Crown (Cap) to act as a &quot;Helmet&quot; and prevent the tooth from shattering under bite pressure.
-                        </p>
-                        <Link href="/treatments/crowns" className="text-purple-600 font-bold text-sm hover:underline">See Crown Options &rarr;</Link>
-                     </div>
-                  </div>
-               </RevealOnScroll>
-            </div>
-         </section>
-
-         {/* ================= 8. PRICING ================= */}
-         <section id="pricing" className="py-24 bg-slate-900 text-white">
-            <div className="max-w-7xl mx-auto px-6">
-               <RevealOnScroll>
-                  <div className="text-center mb-16">
-                     <h2 className="text-4xl font-black mb-4">Transparent Pricing</h2>
-                     <p className="text-slate-400">Nallagandla Market Rates. Premium digital care at honest neighborhood prices.</p>
-                  </div>
-
-                  <div className="grid lg:grid-cols-2 gap-12 items-center">
-                     <div className="relative rounded-3xl overflow-hidden shadow-2xl h-[500px] border border-white/10 order-2 lg:order-1 group">
-                        <Image
-                           src="/assets/images/treatments/noble-dental-reception.png"
-                           alt="Noble Dental Reception Area"
-                           fill
-                           className="object-cover transition-transform duration-700 group-hover:scale-105"
-                        />
-                        <div className="absolute inset-0 bg-gradient-to-t from-slate-900/90 via-transparent to-transparent"></div>
-                        <div className="absolute bottom-0 w-full p-8">
-                           <div className="inline-flex items-center gap-2 px-3 py-1 bg-emerald-500/20 border border-emerald-500/30 rounded-full text-emerald-400 text-xs font-bold uppercase tracking-widest mb-3 backdrop-blur-md">
-                              <ShieldCheck size={12} /> Premium Facility
-                           </div>
-                           <div className="font-bold text-xl mb-1">Noble Dental Care, Nallagandla</div>
-                           <div className="text-xs text-slate-400 opacity-80">Experience 5-star comfort with hospital-grade sterilization.</div>
-                        </div>
-                     </div>
-
-                     <div className="order-1 lg:order-2">
-                        <div className="bg-white/5 rounded-3xl overflow-hidden border border-white/10">
-                           {[
-                              { name: "Consultation", cost: "₹300 - ₹500", detail: "Includes Medical History Check & Digital X-Ray" },
-                              { name: "Anterior RCT", cost: "₹4,500", detail: "Front Teeth / Premolars (Single Canal)" },
-                              { name: "Molar RCT", cost: "₹6,000", detail: "Back Teeth (Multi-Rooted / Rotary Tech)" },
-                              { name: "Re-Treatment", cost: "₹8,500+", detail: "Correcting failed RCTs from other clinics" },
-                              { name: "Metal-Ceramic Crown", cost: "₹3,500+", detail: "5-Year Warranty" },
-                              { name: "Zirconia Crown", cost: "₹8,000+", detail: "Metal-Free / 15-Year Warranty (Recommended)" },
-                           ].map((item, i) => (
-                              <div key={i} className="flex flex-col md:flex-row justify-between items-center p-6 border-b border-white/5 last:border-0 hover:bg-white/5 transition-colors">
-                                 <div className="text-center md:text-left mb-2 md:mb-0">
-                                    <div className="font-bold text-lg">{item.name}</div>
-                                    <div className="text-xs text-slate-400">{item.detail}</div>
-                                 </div>
-                                 <div className="font-black text-xl text-emerald-400">{item.cost}</div>
-                              </div>
-                           ))}
-                        </div>
-                        <p className="text-center lg:text-left text-xs text-slate-500 mt-6 pl-2">Disclaimer: Final price is determined after X-Ray analysis based on root complexity.</p>
-                     </div>
-                  </div>
-               </RevealOnScroll>
-            </div>
-         </section>
-
-         {/* ================= 9. FAQ ================= */}
-         <section className="py-24 bg-slate-50 dark:bg-[#0b101b]">
-            <div className="max-w-3xl mx-auto px-6">
-               <div className="text-center mb-12">
-                  <h2 className="text-3xl font-black text-slate-900 dark:text-white">Patient FAQs</h2>
                </div>
-               <div className="space-y-4">
+            </div>
+         </section>
+
+         {/* ================= 4. SAFETY: HEALTH APP ACTIVITY RINGS ================= */}
+         <section id="safety" className="py-24 bg-black text-white relative overflow-hidden">
+            {/* Mesh Gradient Background */}
+            <div className="absolute inset-0 bg-[#000000]">
+               <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-emerald-900/20 rounded-full blur-[120px]"></div>
+               <div className="absolute bottom-0 left-0 w-[600px] h-[600px] bg-blue-900/20 rounded-full blur-[120px]"></div>
+            </div>
+
+            <div className="max-w-[1000px] mx-auto px-6 relative z-10">
+               <RevealOnScroll>
+                  <div className="flex flex-col md:flex-row items-center gap-12">
+                     <div className="md:w-1/2">
+                        <h2 className="text-5xl font-black mb-6 tracking-tight">Systems <br /><span className="text-emerald-500">Check.</span></h2>
+                        <p className="text-lg text-slate-400 mb-8 leading-relaxed">
+                           We treat the patient, not just the tooth. Our safety protocols mirror hospital standards, checking your systemic health before any procedure.
+                        </p>
+                        <div className="flex gap-4">
+                           <div className="flex flex-col gap-1">
+                              <span className="text-3xl font-black text-white">0%</span>
+                              <span className="text-xs uppercase tracking-widest text-slate-500">Adrenaline Risk</span>
+                           </div>
+                           <div className="w-px bg-slate-800 h-12"></div>
+                           <div className="flex flex-col gap-1">
+                              <span className="text-3xl font-black text-white">100%</span>
+                              <span className="text-xs uppercase tracking-widest text-slate-500">Allergy Screened</span>
+                           </div>
+                        </div>
+                     </div>
+
+                     {/* RINGS VISUALIZATION using SVGs */}
+                     <div className="md:w-1/2 flex justify-center scale-110">
+                        <div className="relative w-64 h-64">
+                           {/* Outer Ring - Diabetes */}
+                           <svg className="absolute inset-0 w-full h-full -rotate-90">
+                              <circle cx="128" cy="128" r="120" stroke="#1c1c1e" strokeWidth="20" fill="none" />
+                              <circle cx="128" cy="128" r="120" stroke="#EF4444" strokeWidth="20" fill="none" strokeDasharray="628" strokeDashoffset="100" strokeLinecap="round" className="animate-[fill-ring_1.5s_ease-out_forwards]" />
+                           </svg>
+                           {/* Middle Ring - BP */}
+                           <svg className="absolute inset-0 w-full h-full -rotate-90 scale-75">
+                              <circle cx="128" cy="128" r="120" stroke="#1c1c1e" strokeWidth="20" fill="none" />
+                              <circle cx="128" cy="128" r="120" stroke="#34D399" strokeWidth="20" fill="none" strokeDasharray="628" strokeDashoffset="150" strokeLinecap="round" className="animate-[fill-ring_1.5s_ease-out_0.3s_forwards]" />
+                           </svg>
+                           {/* Inner Ring - Cardiac */}
+                           <svg className="absolute inset-0 w-full h-full -rotate-90 scale-50">
+                              <circle cx="128" cy="128" r="120" stroke="#1c1c1e" strokeWidth="20" fill="none" />
+                              <circle cx="128" cy="128" r="120" stroke="#3B82F6" strokeWidth="20" fill="none" strokeDasharray="628" strokeDashoffset="50" strokeLinecap="round" className="animate-[fill-ring_1.5s_ease-out_0.6s_forwards]" />
+                           </svg>
+
+                           {/* Legends floating */}
+                           <div className="absolute -right-12 top-0 bg-white/10 backdrop-blur-md px-3 py-1 rounded-full text-[10px] font-bold text-red-400">Diabetes</div>
+                           <div className="absolute -left-12 bottom-12 bg-white/10 backdrop-blur-md px-3 py-1 rounded-full text-[10px] font-bold text-emerald-400">Hypertension</div>
+                           <div className="absolute -right-4 bottom-0 bg-white/10 backdrop-blur-md px-3 py-1 rounded-full text-[10px] font-bold text-blue-400">Cardiac</div>
+                        </div>
+                     </div>
+                  </div>
+               </RevealOnScroll>
+            </div>
+         </section>
+
+         {/* ================= 5. NOBLE PROTOCOL: APP STORE STORY ================= */}
+         <section id="protocol" className="py-24 bg-[#F2F2F7] dark:bg-[#000000]">
+            <div className="max-w-[900px] mx-auto px-6">
+               <div className="text-center mb-20">
+                  <p className="text-purple-600 dark:text-purple-400 font-bold uppercase tracking-widest text-xs mb-2">The Workflow</p>
+                  <h2 className="text-4xl md:text-5xl font-black text-slate-900 dark:text-white tracking-tight">45 Minutes. <br /> Zero Pain.</h2>
+               </div>
+
+               <div className="space-y-12 relative">
+                  {/* Vertical Line */}
+                  <div className="absolute left-[24px] md:left-1/2 top-0 bottom-0 w-0.5 bg-slate-200 dark:bg-white/10 -z-10 md:-translate-x-1/2"></div>
+
                   {[
-                     { q: "Is it safe for Heart Patients or Diabetics?", a: "Yes. In fact, removing the infection is crucial for your heart and blood sugar control. We coordinate with your cardiologist/physician if blood thinners need to be adjusted." },
-                     { q: "What happens if I delay treatment?", a: "The infection will spread to the bone, causing a cyst. In severe cases, it can spread to the neck spaces (Ludwig’s Angina), which is a life-threatening emergency." },
-                     { q: "Can I drive back home after the procedure?", a: "Yes. Local anesthesia only numbs the tooth. You will be fully alert and can drive or return to work immediately." },
-                     { q: "Why check Vitals before the procedure?", a: "Your safety is paramount. We evaluate your blood pressure and sugar levels (if diabetic) to ensure you can tolerate the procedure safely." }
-                  ].map((faq, i) => (
-                     <details key={i} className="group bg-white dark:bg-[#151b2b] rounded-2xl border border-slate-200 dark:border-white/5 overflow-hidden transition-all duration-300 open:shadow-lg">
-                        <summary className="flex items-center justify-between p-6 font-bold text-slate-900 dark:text-white cursor-pointer hover:bg-slate-50 dark:hover:bg-white/5">
-                           {faq.q}
-                           <ChevronRight className="transition-transform group-open:rotate-90" />
+                     { step: "01", title: "Ouchless Injection", desc: "Computer-controlled local anesthesia (Lignocaine 2%) ensures you feel absolutely nothing but a scratch.", icon: Activity },
+                     { step: "02", title: "Isolation", desc: "Rubber dam application shields your tooth from saliva and bacteria. A critical step often skipped elsewhere.", icon: ShieldCheck },
+                     { step: "03", title: "Rotary Cleaning", desc: "Swiss NiTi files navigate curved roots silently, removing infection without the scraping sound of manual files.", icon: Zap },
+                     { step: "04", title: "3D Obturation", desc: "Bioceramic sealers flow into every micro-channel, creating a hermetic seal that promotes bone healing.", icon: CheckCircle2 }
+                  ].map((item, i) => (
+                     <div key={i} className={`flex flex-col md:flex-row gap-8 items-center ${i % 2 !== 0 ? 'md:flex-row-reverse' : ''}`}>
+                        {/* Icon Marker */}
+                        <div className="w-12 h-12 rounded-full bg-white dark:bg-[#1C1C1E] border-4 border-[#F2F2F7] dark:border-black shadow-lg flex items-center justify-center relative z-10 shrink-0">
+                           <item.icon size={20} className="text-slate-900 dark:text-white" />
+                        </div>
+
+                        {/* Card */}
+                        <div className="bg-white dark:bg-[#1C1C1E] p-8 rounded-[2rem] shadow-sm hover:shadow-xl transition-shadow duration-300 flex-1 w-full border border-slate-100 dark:border-white/5">
+                           <div className="text-xs font-bold text-slate-400 uppercase tracking-wider mb-2">Step {item.step}</div>
+                           <h3 className="text-2xl font-bold text-slate-900 dark:text-white mb-3 tracking-tight">{item.title}</h3>
+                           <p className="text-slate-500 dark:text-slate-400 leading-relaxed text-sm">{item.desc}</p>
+                        </div>
+
+                        {/* Empty flexible space for the other side */}
+                        <div className="flex-1 hidden md:block"></div>
+                     </div>
+                  ))}
+               </div>
+            </div>
+         </section>
+
+         {/* ================= 6. PRICING: WALLET PASSES ================= */}
+         <section id="pricing" className="py-24 bg-[#F2F2F7] dark:bg-[#000000] overflow-hidden">
+            <div className="max-w-[1200px] mx-auto px-6 grid md:grid-cols-2 gap-16 items-start">
+               <div>
+                  <h2 className="text-5xl font-black text-slate-900 dark:text-white tracking-tight mb-6">Simple <br /> Pricing.</h2>
+                  <p className="text-lg text-slate-500 dark:text-slate-400 mb-8 leading-relaxed">
+                     No hidden costs. Just honest, Nallagandla market-standard rates for premium digital care.
+                  </p>
+
+                  {/* Glassmorphism Feature List */}
+                  <div className="space-y-4">
+                     <div className="flex items-center gap-4 p-4 rounded-2xl bg-white/50 dark:bg-white/5">
+                        <CheckCircle2 className="text-emerald-500" />
+                        <span className="font-bold text-slate-700 dark:text-slate-300">No Hidden Consumable Charges</span>
+                     </div>
+                     <div className="flex items-center gap-4 p-4 rounded-2xl bg-white/50 dark:bg-white/5">
+                        <ShieldCheck className="text-purple-500" />
+                        <span className="font-bold text-slate-700 dark:text-slate-300">15-Year Warranty on Zirconia</span>
+                     </div>
+                     <div className="flex items-center gap-4 p-4 rounded-2xl bg-white/50 dark:bg-white/5">
+                        <Calendar className="text-blue-500" />
+                        <span className="font-bold text-slate-700 dark:text-slate-300">0% Interest EMI Available</span>
+                     </div>
+                  </div>
+               </div>
+
+               {/* WALLET STACK */}
+               <div className="relative h-[600px] flex items-center justify-center wallet-stack perspective-[1000px]">
+                  {[
+                     { name: "Consultation", price: "₹300", color: "bg-blue-500", top: "top-0", z: "z-10" },
+                     { name: "Root Canal (Anterior)", price: "₹4,500", color: "bg-purple-600", top: "top-16", z: "z-20" },
+                     { name: "Root Canal (Molar)", price: "₹6,000", color: "bg-slate-900", top: "top-32", z: "z-30" },
+                     { name: "Zirconia Crown", price: "₹8,000", sub: "15yr Warranty", color: "bg-emerald-600", top: "top-48", z: "z-40" }
+                  ].map((card, i) => (
+                     <div
+                        key={i}
+                        className={`absolute w-80 h-48 rounded-3xl p-6 text-white shadow-2xl wallet-card cursor-pointer group ${card.color} ${card.top} ${card.z} left-1/2 -translate-x-1/2`}
+                     >
+                        <div className="flex justify-between items-start mb-8">
+                           <div className="text-sm font-medium opacity-80">Noble Pass</div>
+                           <Activity size={20} className="opacity-80" />
+                        </div>
+                        <div className="flex justify-between items-end">
+                           <div>
+                              <div className="text-2xl font-bold tracking-tight">{card.name}</div>
+                              {card.sub && <div className="text-xs opacity-70 mt-1">{card.sub}</div>}
+                           </div>
+                           <div className="text-2xl font-bold">{card.price}</div>
+                        </div>
+                        {/* Shimmer effect */}
+                        <div className="absolute inset-0 bg-gradient-to-tr from-white/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity rounded-3xl pointer-events-none"></div>
+                     </div>
+                  ))}
+                  <div className="absolute bottom-10 text-xs text-slate-400 text-center w-full">
+                     Hover to expand pricing cards
+                  </div>
+               </div>
+            </div>
+         </section>
+
+         {/* ================= 7. FAQ: SETTINGS MENU STYLE ================= */}
+         <section id="faq" className="py-24 bg-white dark:bg-[#1C1C1E]">
+            <div className="max-w-[700px] mx-auto px-6">
+               <h2 className="text-3xl font-black text-center mb-12 text-slate-900 dark:text-white tracking-tight">Common Questions</h2>
+
+               <div className="bg-[#F2F2F7] dark:bg-black rounded-2xl overflow-hidden divide-y divide-slate-300 dark:divide-slate-800 border border-slate-200 dark:border-slate-800">
+                  {[
+                     { q: "Is it safe for Heart Patients?", a: "Yes. We coordinate with your cardiologist to adjust blood thinners if needed. Antibiotic prophylaxis is provided." },
+                     { q: "Can I drive back home?", a: "Absolutely. Local anesthesia only numbs the tooth area. You are fully alert." },
+                     { q: "What if I delay treatment?", a: "Infection spreads to the bone (Cyst) and eventually to neck spaces (Ludwig's Angina), becoming a life-threatening emergency." },
+                     { q: "Is it painful?", a: "No. With pre-emptive analgesia and computer-controlled injections, you will likely sleep through the procedure." }
+                  ].map((item, i) => (
+                     <details key={i} className="group bg-white dark:bg-[#1C1C1E] open:bg-slate-50 dark:open:bg-[#2C2C2E] transition-colors cursor-pointer">
+                        <summary className="flex items-center justify-between p-5 text-slate-900 dark:text-white font-semibold select-none list-none">
+                           <span>{item.q}</span>
+                           <ChevronRight size={16} className="text-slate-400 group-open:rotate-90 transition-transform" />
                         </summary>
-                        <div className="px-6 pb-6 text-sm text-slate-600 dark:text-slate-400 leading-relaxed">
-                           {faq.a}
+                        <div className="px-5 pb-5 pt-0 text-sm text-slate-500 dark:text-slate-400 leading-relaxed">
+                           {item.a}
                         </div>
                      </details>
                   ))}
@@ -610,20 +554,24 @@ export default function RootCanalRefactored() {
          </section>
 
          {/* ================= CTA FOOTER ================= */}
-         <div className="max-w-5xl mx-auto px-6 py-20 text-center">
-            <h2 className="text-3xl font-bold text-slate-900 dark:text-white mb-6">Still in Pain?</h2>
-            <p className="text-slate-600 dark:text-slate-400 mb-10 text-lg">
-               Use our <strong className="text-purple-600">&quot;Rapid Relief&quot; Slot</strong>. Priority Appointments available before 10 AM.
-            </p>
-            <div className="flex flex-col sm:flex-row justify-center gap-4">
-               <button className="px-10 py-5 bg-purple-600 hover:bg-purple-500 text-white rounded-full font-black uppercase text-xs tracking-widest hover:scale-105 transition-transform flex items-center gap-2 justify-center shadow-xl">
-                  <Siren size={18} /> Book Emergency
-               </button>
-               <button className="px-10 py-5 bg-transparent border border-slate-300 dark:border-white/20 text-slate-900 dark:text-white rounded-full font-black uppercase text-xs tracking-widest hover:bg-slate-100 dark:hover:bg-white/5 transition-all flex items-center gap-2 justify-center">
-                  <Phone size={18} /> Call Dr. Dhivakaran
-               </button>
+         <div className="py-20 bg-[#F2F2F7] dark:bg-black border-t border-slate-200 dark:border-slate-800">
+            <div className="max-w-4xl mx-auto px-6 text-center">
+               <div className="w-20 h-20 bg-purple-100 dark:bg-purple-900/30 rounded-full flex items-center justify-center mx-auto mb-6 text-purple-600 dark:text-purple-400">
+                  <Siren size={32} />
+               </div>
+               <h2 className="text-3xl font-bold text-slate-900 dark:text-white mb-4 tracking-tight">In Pain Right Now?</h2>
+               <p className="text-slate-500 dark:text-slate-400 mb-8 max-w-xl mx-auto">
+                  We keep "Rapid Relief" slots open every morning. Don't wait until it swells.
+               </p>
+               <div className="flex gap-4 justify-center">
+                  <button className="ios-btn px-8 py-3 bg-red-500 text-white rounded-full font-bold text-sm shadow-lg shadow-red-500/30">
+                     Book Emergency Slot
+                  </button>
+                  <button className="ios-btn px-8 py-3 bg-white dark:bg-[#1C1C1E] text-slate-900 dark:text-white border border-slate-200 dark:border-white/10 rounded-full font-bold text-sm">
+                     Call Reception
+                  </button>
+               </div>
             </div>
-            <p className="mt-8 text-sm text-slate-400">Opp. Citizens Hospital, Nallagandla.</p>
          </div>
 
       </div>

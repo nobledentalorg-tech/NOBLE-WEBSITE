@@ -31,7 +31,7 @@ export default function DrDhivakaranProfile() {
                                         Clinical Lead
                                     </div>
                                     <h1 className="text-4xl font-black tracking-tighter mb-2">Dr. Dhivakaran</h1>
-                                    <p className="text-sm font-bold opacity-80 uppercase tracking-widest">BDS, Dental Surgeon | Reg No: 54321</p>
+                                    <p className="text-sm font-bold opacity-80 uppercase tracking-widest">CMD, Dental Surgeon | Reg No: 54321</p>
                                 </div>
                             </div>
 
