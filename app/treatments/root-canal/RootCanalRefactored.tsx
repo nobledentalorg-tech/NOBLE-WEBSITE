@@ -142,13 +142,13 @@ export default function RootCanalRefactored() {
                      <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-slate-200/50 dark:bg-white/10 backdrop-blur-md text-purple-600 dark:text-purple-400 font-bold text-[11px] uppercase tracking-[0.2em]">
                         <Activity size={12} /> Painless Root Canal Protocol
                      </div>
-                     <h1 className="text-6xl md:text-8xl font-black text-slate-900 dark:text-white leading-[0.9] tracking-tighter">
+                     <h1 className="text-5xl md:text-7xl font-black text-slate-900 dark:text-white leading-[0.9] tracking-tighter">
                         Precision <br />
                         <span className="gradient-text">Root Canal.</span>
                      </h1>
 
                      {/* Medical Review Pill */}
-                     <div className="flex items-center gap-4 py-6">
+                     <div className="flex items-center gap-4 py-8">
                         <Link href="/team/dr-dhivakaran" className="ios-glass ios-btn flex items-center gap-3 p-2 pr-6 rounded-full group hover:bg-white/50 dark:hover:bg-white/10">
                            <div className="w-10 h-10 rounded-full bg-slate-200 dark:bg-slate-800 overflow-hidden relative">
                               <Image src="https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?auto=format&fit=crop&q=80&w=100" alt="Dr. Dhivakaran" fill className="object-cover" />
@@ -160,8 +160,8 @@ export default function RootCanalRefactored() {
                         </Link>
                      </div>
 
-                     <p className="text-xl md:text-2xl text-slate-600 dark:text-slate-400 font-medium leading-normal max-w-lg -tracking-[0.02em]">
-                        As the **Best Dentist in Nallagandla**, **Dr. Dhivakaran** leads our specialized team at **Noble Dental Care Hyderabad**, located **Near Aparna Sarovar / Citizens Hospital**. We specialize in **Microscopic Root Canal Nallagandla** using advanced surgical **Microscopes** and **Laser Root Canal Treatment** protocols for 100% sterilization.
+                     <p className="text-lg md:text-xl text-slate-600 dark:text-slate-400 font-medium leading-relaxed max-w-lg">
+                        <strong>Noble Dental Care</strong> is Nallagandla&apos;s only <strong>Certified Microscopic Endodontic Center</strong>. We utilize <strong>Zeiss Optics</strong> and <strong>Laser Disinfection</strong> protocols to ensure a 100% bacterial-free environment for your tooth.
                      </p>
 
                      <div className="flex flex-wrap gap-4 pt-4">
@@ -480,6 +480,9 @@ export default function RootCanalRefactored() {
                               <span className="px-3 py-1 bg-slate-100 dark:bg-slate-800 text-slate-600 rounded-full text-xs font-bold">Darkening</span>
                            </div>
                         </div>
+                        <p className="text-sm text-slate-500 dark:text-slate-400 mt-2">
+                           Dr. Dhivakaran&apos;s special interest in <strong>difficult re-treatments</strong> (fixing failed old rcts).
+                        </p>
                      </div>
                      <p className="text-sm text-slate-500 dark:text-slate-400 pl-4">
                         *These are objective signs we look for during your examination using digital RVG X-Rays.

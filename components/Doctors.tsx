@@ -252,9 +252,12 @@ const Doctors: React.FC = () => {
                 <button className="flex-1 py-5 bg-blue-600 text-white rounded-2xl font-black uppercase tracking-widest text-[11px] shadow-2xl shadow-blue-500/40 hover:bg-blue-700 hover:-translate-y-1 transition-all">
                   Schedule Consult
                 </button>
-                <button className="flex-1 py-5 bg-slate-100 dark:bg-white/5 text-slate-900 dark:text-white rounded-2xl font-black uppercase tracking-widest text-[11px] hover:bg-slate-200 dark:hover:bg-white/10 transition-all">
+                <Link
+                  href="/case-studies"
+                  className="flex-1 py-5 bg-slate-100 dark:bg-white/5 text-slate-900 dark:text-white rounded-2xl font-black uppercase tracking-widest text-[11px] hover:bg-slate-200 dark:hover:bg-white/10 transition-all text-center"
+                >
                   View Case Study
-                </button>
+                </Link>
               </div>
             </div>
           </div>

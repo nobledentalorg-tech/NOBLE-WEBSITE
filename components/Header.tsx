@@ -141,7 +141,7 @@ const Header: React.FC<HeaderProps> = ({ onBookClick }) => {
             </div>
             <div className="flex flex-col border-l-2 border-slate-200 dark:border-white/10 pl-3">
               <span className="text-lg md:text-xl font-black tracking-tight text-slate-900 dark:text-white leading-none">NOBLE <span className="text-blue-600 dark:text-cyan-400">DENTAL</span></span>
-              <span className="text-[9px] font-black tracking-[0.3em] text-slate-500 dark:text-slate-400 uppercase">Neighborhood Care</span>
+              <span className="text-[9px] font-black tracking-[0.3em] text-slate-500 dark:text-slate-400 uppercase">MULTISPECIALITY DENTAL CARE</span>
             </div>
           </Link>
 

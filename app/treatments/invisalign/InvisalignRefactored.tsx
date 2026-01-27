@@ -195,7 +195,9 @@ export default function InvisalignRefactored() {
                                     <span className="text-blue-600">Invisible Braces Hyderabad.</span>
                                 </h2>
                                 <p className="text-lg text-slate-600 dark:text-slate-400 mb-8 leading-relaxed">
-                                    Why waste money on brand names when the same clinical results can be engineered at our **Dental Clinic in Nallagandla**? We provide **Deepak Clear™ Aligners**—manufactured and processed by the **Best Orthodontist in Nallagandla**, **Dr. Deepak**, to global standards under the mentorship of **Dr. Dhivakaran**.
+                                    Why waste money on expensive brand names when the same clinical results can be engineered at our **Dental Clinic in Nallagandla**? We provide **Noble In-House Aligners**—manufactured and processed by the **Best Orthodontist in Nallagandla**, **Dr. Deepak**, to global standards under the mentorship of **Dr. Dhivakaran** delivered at an economic cost.
+                                    <br /><br />
+                                    <span className="text-xs text-slate-500 italic">Disclaimer: The designs are made in trays. The technical work, tooth simulations, and transferring them to the tray matters—not the brand.</span>
                                 </p>
                                 <div className="space-y-6">
                                     {[
@@ -447,7 +449,7 @@ export default function InvisalignRefactored() {
                         <div className="grid md:grid-cols-3 gap-8 items-stretch">
                             {[
                                 {
-                                    tier: "Deepak Clear™",
+                                    tier: "Noble In-House Production",
                                     label: "LOCAL EXPERT PRODUCTION",
                                     price: "₹65,000",
                                     best: "Minor to Moderate Crowding",

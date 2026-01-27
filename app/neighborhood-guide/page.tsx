@@ -2,6 +2,7 @@
 import React from 'react';
 import { MapPin, School, Building2, Navigation, Clock, Moon, Star } from 'lucide-react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { Metadata } from 'next';
 
 export const metadata: Metadata = {
@@ -160,7 +161,12 @@ export default function NeighborhoodGuide() {
                     </div>
                     <div className="flex-1 relative aspect-square md:aspect-[4/3] rounded-3xl overflow-hidden shadow-2xl border-4 border-white dark:border-emerald-900/50">
                         {/* Placeholder for Zenith Image - Using a generic luxury apartment image */}
-                        <img src="https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?auto=format&fit=crop&q=80&w=1000" alt="Aparna Sarovar Zenith View" className="w-full h-full object-cover" />
+                        <Image
+                            src="https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?auto=format&fit=crop&q=80&w=1000"
+                            alt="Aparna Sarovar Zenith View"
+                            fill
+                            className="object-cover"
+                        />
                         <div className="absolute inset-0 bg-gradient-to-t from-emerald-900/80 to-transparent flex items-end p-8">
                             <p className="text-white font-bold text-xl">Just 5 Minutes Away.</p>
                         </div>
