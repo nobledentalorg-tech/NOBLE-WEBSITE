@@ -129,14 +129,15 @@ const Header: React.FC<HeaderProps> = ({ onBookClick }) => {
 
           {/* Logo */}
           <Link href="/" className="flex items-center gap-3 group z-50">
-            <div className="relative w-10 md:w-12 h-10 transition-all duration-500 group-hover:scale-110">
+            <div className="relative transition-all duration-500 group-hover:scale-110">
               {/* Note: Ensure this image exists in your /public/images folder */}
               <Image
                 src="/images/dentalcare.nallagandla.png"
                 alt="Noble Dental"
-                width={48}
-                height={40}
-                className="w-full h-full object-contain filter drop-shadow-md"
+                width={128}
+                height={102}
+                className="w-[50px] h-auto object-contain filter drop-shadow-md"
+                unoptimized={true}
               />
             </div>
             <div className="flex flex-col border-l-2 border-slate-200 dark:border-white/10 pl-3">
