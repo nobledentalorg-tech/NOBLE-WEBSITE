@@ -1,6 +1,6 @@
 "use client";
 
-import { Partytown } from '@builder.io/partytown/react';
+import { Partytown } from '@qwik.dev/partytown/react';
 
 export default function GoogleTagManager() {
     return (

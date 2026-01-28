@@ -114,7 +114,7 @@ export const viewport = {
 };
 
 import Script from 'next/script';
-import { Partytown } from '@builder.io/partytown/react';
+import { Partytown } from '@qwik.dev/partytown/react';
 
 
 
