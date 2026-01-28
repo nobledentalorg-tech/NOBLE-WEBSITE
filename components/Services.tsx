@@ -3,7 +3,7 @@
 import React, { useRef, useState, useEffect, useMemo } from 'react';
 import { useRouter } from 'next/navigation';
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { EffectCoverflow, Autoplay, Pagination, Navigation, Keyboard } from 'swiper/modules';
+import { EffectCoverflow, Autoplay, Pagination, Navigation, Keyboard, Virtual } from 'swiper/modules';
 import {
     Activity, Zap, Smile, Users, Search, Filter, Sparkles,
     Shield, Microscope, HeartPulse, ScanLine
@@ -646,12 +646,13 @@ const Services: React.FC<ServicesProps> = ({ onServiceClick }) => {
             {filteredServices.length > 0 ? (
                 <Swiper
                     ref={swiperRef}
-                    modules={[EffectCoverflow, Autoplay, Pagination, Navigation, Keyboard]}
+                    modules={[EffectCoverflow, Autoplay, Pagination, Navigation, Keyboard, Virtual]}
                     effect="coverflow"
                     grabCursor={true}
                     centeredSlides={true}
                     slidesPerView={1}
                     speed={1000}
+                    virtual
                     coverflowEffect={{
                         rotate: 50,
                         stretch: 0,
@@ -674,8 +675,8 @@ const Services: React.FC<ServicesProps> = ({ onServiceClick }) => {
                     onSlideChange={handleSlideChange}
                     className="w-full h-full swiper"
                 >
-                    {filteredServices.map((service) => (
-                        <SwiperSlide key={service.id} className="slide">
+                    {filteredServices.slice(0, 20).map((service, index) => (
+                        <SwiperSlide key={service.id} virtualIndex={index} className="slide">
                             <div
                                 className="card"
                                 style={{ background: service.bg, "--color": service.accent } as React.CSSProperties}
