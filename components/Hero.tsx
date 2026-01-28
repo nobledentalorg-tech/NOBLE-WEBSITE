@@ -20,10 +20,14 @@ const Hero: React.FC<HeroProps> = ({ onBookClick }) => {
     const context = canvas.getContext('2d');
     if (!context) return;
 
-    let width = canvas.width = canvas.offsetWidth * window.devicePixelRatio;
-    let height = canvas.height = canvas.offsetHeight * window.devicePixelRatio;
+    // Optimization: Cap pixel ratio to save GPU/CPU on hi-res screens
+    const dpr = Math.min(window.devicePixelRatio || 1, 2);
 
-    const particles = Array.from({ length: 40 }, () => ({
+    let width = canvas.width = canvas.offsetWidth * dpr;
+    let height = canvas.height = canvas.offsetHeight * dpr;
+
+    // Optimization: Reduce particle count from 40 to 25
+    const particles = Array.from({ length: 25 }, () => ({
       x: Math.random() * width,
       y: Math.random() * height,
       size: Math.random() * 2 + 0.5,
@@ -68,15 +72,19 @@ const Hero: React.FC<HeroProps> = ({ onBookClick }) => {
       animationFrameId = requestAnimationFrame(draw);
     }
 
-    draw();
+    // Optimization: Delay start to allow LCP to paint first
+    const startTimeout = setTimeout(() => {
+      draw();
+    }, 1500);
 
     const handleResize = () => {
-      width = canvas.width = canvas.offsetWidth * window.devicePixelRatio;
-      height = canvas.height = canvas.offsetHeight * window.devicePixelRatio;
+      width = canvas.width = canvas.offsetWidth * dpr;
+      height = canvas.height = canvas.offsetHeight * dpr;
     };
 
     window.addEventListener('resize', handleResize);
     return () => {
+      clearTimeout(startTimeout);
       window.removeEventListener('resize', handleResize);
       cancelAnimationFrame(animationFrameId);
     };
