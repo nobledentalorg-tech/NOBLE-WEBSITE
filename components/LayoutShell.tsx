@@ -20,6 +20,14 @@ const ChatWidget = dynamic(() => import('@/components/ChatWidget'), {
  */
 export default function LayoutShell({ children }: { children: React.ReactNode }) {
     const [isBookingOpen, setIsBookingOpen] = useState(false);
+    const [isChatDelayed, setIsChatDelayed] = useState(false);
+
+    // Defer ChatWidget by 4 seconds to allow LCP to finish first (Performance 100)
+    React.useEffect(() => {
+        const timer = setTimeout(() => setIsChatDelayed(true), 4000);
+        return () => clearTimeout(timer);
+    }, []);
+
     const openBooking = () => setIsBookingOpen(true);
 
     return (
@@ -31,8 +39,10 @@ export default function LayoutShell({ children }: { children: React.ReactNode })
 
             <Footer onBookClick={openBooking} />
 
-            {/* Global Widgets */}
-            <ChatWidget onBookClick={openBooking} />
+            <Footer onBookClick={openBooking} />
+
+            {/* Global Widgets: Deferred to 4s to prioritize LCP */}
+            {isChatDelayed && <ChatWidget onBookClick={openBooking} />}
             <BookingModal isOpen={isBookingOpen} onClose={() => setIsBookingOpen(false)} />
         </Providers>
     );

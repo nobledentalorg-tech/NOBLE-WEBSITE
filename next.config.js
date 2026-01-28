@@ -8,61 +8,62 @@ const nextConfig = {
 
   images: {
     unoptimized: false,
+    remotePatterns: [
       // { protocol: 'https', hostname: 'images.unsplash.com' },
       { protocol: 'https', hostname: 'dentcare-website-s3-bucket-01.s3.eu-north-1.amazonaws.com' },
-{ protocol: 'https', hostname: 'upload.wikimedia.org' },
-{ protocol: 'https', hostname: 'raw.githubusercontent.com' },
-{ protocol: 'https', hostname: 'placehold.co' },
+      { protocol: 'https', hostname: 'upload.wikimedia.org' },
+      { protocol: 'https', hostname: 'raw.githubusercontent.com' },
+      { protocol: 'https', hostname: 'placehold.co' },
     ],
   },
-eslint: {
-  // Warning: This allows production builds to successfully complete even if
-  // your project has ESLint errors.
-  ignoreDuringBuilds: false,
+  eslint: {
+    // Warning: This allows production builds to successfully complete even if
+    // your project has ESLint errors.
+    ignoreDuringBuilds: false,
   },
   async headers() {
-  return [
-    {
-      source: '/:path*',
-      headers: [
-        {
+    return [
+      {
+        source: '/:path*',
+        headers: [
+          {
 
-          key: 'Content-Security-Policy',
-          value: "default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://www.googletagmanager.com https://*.partytown.js; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com data:; img-src 'self' data: https: blob: https://*.google-analytics.com https://www.googletagmanager.com; media-src 'self' https://videos.pexels.com; connect-src 'self' https://www.google-analytics.com https://region1.google-analytics.com https://*.google-analytics.com https://www.googletagmanager.com https://*.partytown.js https://kkcqngvjrsujwdftjoro.supabase.co; worker-src 'self' blob:;",
-        },
-        { key: 'X-XSS-Protection', value: '1; mode=block' },
-        { key: 'X-Frame-Options', value: 'DENY' },
-        { key: 'X-Content-Type-Options', value: 'nosniff' },
-        { key: 'Referrer-Policy', value: 'strict-origin-when-cross-origin' },
-        { key: 'Strict-Transport-Security', value: 'max-age=63072000; includeSubDomains; preload' },
-      ],
-    },
-  ];
-},
+            key: 'Content-Security-Policy',
+            value: "default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://www.googletagmanager.com https://*.partytown.js; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com data:; img-src 'self' data: https: blob: https://*.google-analytics.com https://www.googletagmanager.com; media-src 'self' https://videos.pexels.com; connect-src 'self' https://www.google-analytics.com https://region1.google-analytics.com https://*.google-analytics.com https://www.googletagmanager.com https://*.partytown.js https://kkcqngvjrsujwdftjoro.supabase.co; worker-src 'self' blob:;",
+          },
+          { key: 'X-XSS-Protection', value: '1; mode=block' },
+          { key: 'X-Frame-Options', value: 'DENY' },
+          { key: 'X-Content-Type-Options', value: 'nosniff' },
+          { key: 'Referrer-Policy', value: 'strict-origin-when-cross-origin' },
+          { key: 'Strict-Transport-Security', value: 'max-age=63072000; includeSubDomains; preload' },
+        ],
+      },
+    ];
+  },
   async redirects() {
-  return [
-    {
-      source: '/products/shy-nm-foaming-toothpaste.html',
-      destination: '/treatments',
-      permanent: true,
-    },
-    {
-      source: '/products/enafix-toothpaste.html',
-      destination: '/treatments',
-      permanent: true,
-    },
-    {
-      source: '/products/amflor-toothpaste.html',
-      destination: '/treatments',
-      permanent: true,
-    },
-    {
-      source: '/products/stolin-gum-paint.html',
-      destination: '/treatments',
-      permanent: true,
-    },
-  ];
-},
+    return [
+      {
+        source: '/products/shy-nm-foaming-toothpaste.html',
+        destination: '/treatments',
+        permanent: true,
+      },
+      {
+        source: '/products/enafix-toothpaste.html',
+        destination: '/treatments',
+        permanent: true,
+      },
+      {
+        source: '/products/amflor-toothpaste.html',
+        destination: '/treatments',
+        permanent: true,
+      },
+      {
+        source: '/products/stolin-gum-paint.html',
+        destination: '/treatments',
+        permanent: true,
+      },
+    ];
+  },
 };
 
 const withPWA = require('next-pwa')({

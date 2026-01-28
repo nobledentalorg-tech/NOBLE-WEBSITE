@@ -3,6 +3,7 @@ import Google from "next-auth/providers/google"
 import { SupabaseAdapter } from "@auth/supabase-adapter"
 
 export const { handlers, auth, signIn, signOut } = NextAuth({
+    secret: process.env.NEXTAUTH_SECRET || process.env.AUTH_SECRET,
     providers: [
         Google({
             clientId: process.env.AUTH_GOOGLE_ID,

@@ -168,6 +168,8 @@ const Hero: React.FC<HeroProps> = ({ onBookClick }) => {
                   preload="none"
                   poster="/assets/images/treatments/whitening-hyderabad.webp"
                   src="https://videos.pexels.com/video-files/3195394/3195394-hd_1920_1080_25fps.mp4"
+                  // @ts-ignore
+                  fetchPriority="high"
                 >
                   <track kind="captions" src="" label="English" default />
                 </video>
@@ -176,7 +178,7 @@ const Hero: React.FC<HeroProps> = ({ onBookClick }) => {
                   alt="Logo"
                   width={60}
                   height={60}
-                  className="logo"
+                  className="logo w-[60px] h-[60px]"
                 />
                 <h2>ITI_SLActive <span className="light">TITANIUM</span></h2>
                 <p className="subtitle">Swiss Grade Implant</p>
