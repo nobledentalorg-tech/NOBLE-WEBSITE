@@ -4,12 +4,12 @@ import type { NextRequest } from 'next/server';
 export function middleware(request: NextRequest) {
     const nonce = Buffer.from(crypto.randomUUID()).toString('base64');
 
-    // Strict CSP Policy
-    // 1. strict-dynamic: Allows scripts signed with the nonce to load other scripts (e.g., GTM loading analytics)
-    // 2. require-trusted-types-for 'script': Mitigates DOM XSS
+    // Relaxed CSP Policy to restore functionality
+    // - strict-dynamic removed to allow Next.js hydration scripts
+    // - unsafe-inline allowed for scripts and styles
     const cspHeader = `
     default-src 'self';
-    script-src 'self' 'nonce-${nonce}' 'strict-dynamic' 'unsafe-eval' https:;
+    script-src 'self' 'unsafe-inline' 'unsafe-eval' https:;
     style-src 'self' 'unsafe-inline' https://fonts.googleapis.com;
     img-src 'self' blob: data: https://nobledentalnallagandla.in https://nobledentalcare.netlify.app https://www.google.com https://www.googletagmanager.com https://*.google-analytics.com https://maps.gstatic.com https://maps.googleapis.com https://upload.wikimedia.org https://*.vercel.app https://placehold.co;
     font-src 'self' https://fonts.gstatic.com data:;
@@ -20,7 +20,6 @@ export function middleware(request: NextRequest) {
     base-uri 'self';
     form-action 'self';
     frame-ancestors 'none';
-    require-trusted-types-for 'script';
   `.replace(/\s{2,}/g, ' ').trim();
 
     const requestHeaders = new Headers(request.headers);
