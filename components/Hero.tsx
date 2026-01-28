@@ -137,7 +137,7 @@ const Hero: React.FC<HeroProps> = ({ onBookClick }) => {
                   priority
                 />
                 <Image
-                  src="/images/google-play-store-download-button-in-white-colors-and-outlined-design-free-png.png"
+                  src="/images/google-play-store-download-button-in-white-color.webp"
                   alt="Get it on Google Play"
                   width={115}
                   height={40}
