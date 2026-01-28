@@ -105,48 +105,6 @@ export default function Home() {
                 <TechnologyGrid />
             </RevealOnScroll>
 
-            {/* SUPERLATIVE SEO SECTION: 'Rated Best' */}
-            <RevealOnScroll>
-                <section className="py-20 bg-slate-50 dark:bg-[#0F172A]">
-                    <div className="max-w-7xl mx-auto px-6">
-                        <div className="text-center mb-12">
-                            <h2 className="text-3xl font-black text-slate-900 dark:text-white mb-4">
-                                Why Noble is Rated the <span className="text-blue-600">Best Dentist</span> in Nallagandla
-                            </h2>
-                            <p className="text-slate-500 max-w-2xl mx-auto">
-                                We don&apos;t just claim to be the best; our patients say it for us. With a focus on <strong className="text-slate-700 dark:text-slate-300">Pain-Free Precision</strong> and <strong className="text-slate-700 dark:text-slate-300">Affordable Quality Care</strong>, we are the Rating #1 <strong className="text-blue-600">Family Dentist near Nallagandla</strong> & Tellapur.
-                            </p>
-                        </div>
-
-                        <div className="grid md:grid-cols-3 gap-8">
-                            <div className="bg-white dark:bg-white/5 p-8 rounded-3xl border border-slate-100 dark:border-white/10 shadow-sm relative overflow-hidden group hover:shadow-xl transition-all">
-                                <div className="absolute top-0 right-0 p-4 opacity-10"><Sparkles size={60} /></div>
-                                <h3 className="font-bold text-lg text-slate-900 dark:text-white mb-3 flex items-center gap-2">⭐ 5-Star Rated Trust</h3>
-                                <p className="text-sm text-slate-500 leading-relaxed">
-                                    &quot;I was afraid of dentists, but Dr. Dhivakaran made it painless.&quot;<br />
-                                    Rated 4.9/5 by 500+ residents of Aparna Sarovar & Tellapur on Google.
-                                </p>
-                            </div>
-
-                            <div className="bg-white dark:bg-white/5 p-8 rounded-3xl border border-slate-100 dark:border-white/10 shadow-sm relative overflow-hidden group hover:shadow-xl transition-all">
-                                <div className="absolute top-0 right-0 p-4 opacity-10"><Heart size={60} /></div>
-                                <h3 className="font-bold text-lg text-slate-900 dark:text-white mb-3 flex items-center gap-2">💎 Cheap & Best Value</h3>
-                                <p className="text-sm text-slate-500 leading-relaxed">
-                                    Global Technology at Indian Prices. We offer <strong>Transparent Pricing</strong> and <strong>0% EMI</strong>, making us the most accessible clinic near you.
-                                </p>
-                            </div>
-
-                            <div className="bg-white dark:bg-white/5 p-8 rounded-3xl border border-slate-100 dark:border-white/10 shadow-sm relative overflow-hidden group hover:shadow-xl transition-all">
-                                <div className="absolute top-0 right-0 p-4 opacity-10"><Shield size={60} /></div>
-                                <h3 className="font-bold text-lg text-slate-900 dark:text-white mb-3 flex items-center gap-2">🏥 Hospital-Grade Safety</h3>
-                                <p className="text-sm text-slate-500 leading-relaxed">
-                                    We use Class-B Autoclaves and 8-step sterilization, ensuring 100% safety for every patient.
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                </section>
-            </RevealOnScroll>
 
             {/* 4. The Rest of the Sections */}
             <RevealOnScroll><About /></RevealOnScroll>
