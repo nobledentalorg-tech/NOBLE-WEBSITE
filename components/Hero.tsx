@@ -23,21 +23,32 @@ const Hero: React.FC<HeroProps> = ({ onBookClick }) => {
     // Optimization: Cap pixel ratio to save GPU/CPU on hi-res screens
     const dpr = Math.min(window.devicePixelRatio || 1, 2);
 
-    let width = canvas.width = canvas.offsetWidth * dpr;
-    let height = canvas.height = canvas.offsetHeight * dpr;
-
-    // Optimization: Reduce particle count from 40 to 25
-    const particles = Array.from({ length: 25 }, () => ({
-      x: Math.random() * width,
-      y: Math.random() * height,
-      size: Math.random() * 2 + 0.5,
-      speedX: (Math.random() - 0.5) * 0.4,
-      speedY: (Math.random() - 0.5) * 0.4,
-      orbit: Math.random() * 120 + 40,
-      angle: Math.random() * Math.PI * 2
-    }));
-
+    let width = 0;
+    let height = 0;
+    let particles: any[] = [];
     let animationFrameId: number;
+
+    const initCanvas = () => {
+      // prevent forced reflow by reading layout inside rAF
+      requestAnimationFrame(() => {
+        if (!canvas) return;
+        width = canvas.width = canvas.offsetWidth * dpr;
+        height = canvas.height = canvas.offsetHeight * dpr;
+
+        // Optimization: Reduce particle count from 40 to 25
+        particles = Array.from({ length: 25 }, () => ({
+          x: Math.random() * width,
+          y: Math.random() * height,
+          size: Math.random() * 2 + 0.5,
+          speedX: (Math.random() - 0.5) * 0.4,
+          speedY: (Math.random() - 0.5) * 0.4,
+          orbit: Math.random() * 120 + 40,
+          angle: Math.random() * Math.PI * 2
+        }));
+
+        draw();
+      });
+    };
 
     function draw() {
       if (!context || !canvas) return;
@@ -74,12 +85,16 @@ const Hero: React.FC<HeroProps> = ({ onBookClick }) => {
 
     // Optimization: Delay start to allow LCP to paint first
     const startTimeout = setTimeout(() => {
-      draw();
+      initCanvas();
     }, 1500);
 
     const handleResize = () => {
-      width = canvas.width = canvas.offsetWidth * dpr;
-      height = canvas.height = canvas.offsetHeight * dpr;
+      requestAnimationFrame(() => {
+        // Re-read dimensions on resize (forced reflow is acceptable here as it is user-initiated)
+        if (!canvas) return;
+        width = canvas.width = canvas.offsetWidth * dpr;
+        height = canvas.height = canvas.offsetHeight * dpr;
+      });
     };
 
     window.addEventListener('resize', handleResize);

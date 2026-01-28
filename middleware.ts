@@ -1,0 +1,63 @@
+import { NextResponse } from 'next/server';
+import type { NextRequest } from 'next/server';
+
+export function middleware(request: NextRequest) {
+    const nonce = Buffer.from(crypto.randomUUID()).toString('base64');
+
+    // Strict CSP Policy
+    // 1. strict-dynamic: Allows scripts signed with the nonce to load other scripts (e.g., GTM loading analytics)
+    // 2. require-trusted-types-for 'script': Mitigates DOM XSS
+    const cspHeader = `
+    default-src 'self';
+    script-src 'self' 'nonce-${nonce}' 'strict-dynamic' 'unsafe-eval' https:;
+    style-src 'self' 'unsafe-inline' https://fonts.googleapis.com;
+    img-src 'self' blob: data: https://nobledentalnallagandla.in https://nobledentalcare.netlify.app https://www.google.com https://www.googletagmanager.com https://*.google-analytics.com https://maps.gstatic.com https://maps.googleapis.com https://upload.wikimedia.org https://*.vercel.app https://placehold.co;
+    font-src 'self' https://fonts.gstatic.com data:;
+    media-src 'self';
+    frame-src 'self' https://www.google.com https://www.gstatic.com https://maps.google.com;
+    connect-src 'self' https://www.google-analytics.com https://region1.google-analytics.com https://*.google-analytics.com https://www.googletagmanager.com https://*.partytown.js https://kkcqngvjrsujwdftjoro.supabase.co https://*.vercel.app;
+    worker-src 'self' blob:;
+    base-uri 'self';
+    form-action 'self';
+    frame-ancestors 'none';
+    require-trusted-types-for 'script';
+  `.replace(/\s{2,}/g, ' ').trim();
+
+    const requestHeaders = new Headers(request.headers);
+    requestHeaders.set('x-nonce', nonce);
+    requestHeaders.set('Content-Security-Policy', cspHeader);
+
+    const response = NextResponse.next({
+        request: {
+            headers: requestHeaders,
+        },
+    });
+
+    response.headers.set('Content-Security-Policy', cspHeader);
+    response.headers.set('X-Content-Type-Options', 'nosniff');
+    response.headers.set('X-Frame-Options', 'DENY');
+    response.headers.set('Referrer-Policy', 'strict-origin-when-cross-origin');
+    response.headers.set('Strict-Transport-Security', 'max-age=63072000; includeSubDomains; preload');
+    response.headers.set('Permissions-Policy', 'camera=(), microphone=(), geolocation=()');
+
+    return response;
+}
+
+export const config = {
+    matcher: [
+        /*
+         * Match all request paths except for the ones starting with:
+         * - api (API routes)
+         * - _next/static (static files)
+         * - _next/image (image optimization files)
+         * - favicon.ico (favicon file)
+         */
+        {
+            source: '/((?!api|_next/static|_next/image|favicon.ico).*)',
+            missing: [
+                { type: 'header', key: 'next-router-prefetch' },
+                { type: 'header', key: 'purpose', value: 'prefetch' },
+            ],
+        },
+    ],
+};

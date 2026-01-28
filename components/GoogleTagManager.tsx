@@ -9,6 +9,7 @@ export default function GoogleTagManager() {
             {/* eslint-disable-next-line @next/next/next-script-for-ga */}
             <script
                 type="text/partytown"
+                title="Google Tag Manager"
                 dangerouslySetInnerHTML={{
                     __html: `
             (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
