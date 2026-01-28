@@ -176,6 +176,7 @@ const Hero: React.FC<HeroProps> = ({ onBookClick }) => {
                   alt="Clinical Background"
                   fill
                   className="surgical-video object-cover"
+                  sizes="(max-width: 768px) 100vw, 500px"
                   priority
                 />
                 <Image
@@ -184,6 +185,8 @@ const Hero: React.FC<HeroProps> = ({ onBookClick }) => {
                   width={1479}
                   height={1178}
                   className="logo w-[60px] h-auto object-contain"
+                  sizes="60px"
+                  quality={75}
                   priority
                 />
                 <h2>ITI_SLActive <span className="light">TITANIUM</span></h2>

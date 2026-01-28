@@ -1,5 +1,8 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  experimental: {
+    // Other experimental features can go here if needed
+  },
   // output: 'export',
 
   // CHANGE THIS to your actual repo name (e.g. '/my-site')

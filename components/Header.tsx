@@ -136,6 +136,8 @@ const Header: React.FC<HeaderProps> = ({ onBookClick }) => {
                 width={1479}
                 height={1178}
                 className="w-[50px] h-auto object-contain filter drop-shadow-md"
+                sizes="50px"
+                quality={75}
                 priority
               />
             </div>
