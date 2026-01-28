@@ -17,6 +17,12 @@ export const metadata: Metadata = {
   }
 };
 
+import AuthWrapper from '@/components/AuthWrapper';
+
 export default function NeoPage() {
-  return <NeoCompanionClient />;
+  return (
+    <AuthWrapper>
+      <NeoCompanionClient />
+    </AuthWrapper>
+  );
 }
