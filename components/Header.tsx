@@ -136,7 +136,7 @@ const Header: React.FC<HeaderProps> = ({ onBookClick }) => {
                 alt="Noble Dental"
                 width={128}
                 height={102}
-                className="w-[50px] h-auto object-contain filter drop-shadow-md"
+                className="max-w-[50px] w-auto h-auto object-contain filter drop-shadow-md"
                 unoptimized={true}
               />
             </div>

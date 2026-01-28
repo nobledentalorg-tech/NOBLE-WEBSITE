@@ -14,6 +14,8 @@ const nextConfig = {
       { protocol: 'https', hostname: 'upload.wikimedia.org' },
       { protocol: 'https', hostname: 'raw.githubusercontent.com' },
       { protocol: 'https', hostname: 'placehold.co' },
+      { protocol: 'https', hostname: 'nobledentalcare.netlify.app' },
+      { protocol: 'https', hostname: 'nobledentalnallagandla.in' },
     ],
   },
   eslint: {
