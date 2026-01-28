@@ -133,7 +133,7 @@ const Doctors: React.FC = () => {
                     {doc.specialty}
                   </p>
 
-                  <Link href={`/team/${doc.id || doc.name.toLowerCase().replace('dr. ', '').replace(' ', '-')}`} className="mt-auto pt-6 border-t border-slate-50 dark:border-white/5 flex items-center justify-between text-[10px] font-black uppercase tracking-widest text-blue-600 dark:text-cyan-400">
+                  <Link href={`/team/${doc.id || doc.name.toLowerCase().replace('dr. ', '').replace(' ', '-')}`} aria-label={`View Clinical Profile of ${doc.name}`} className="mt-auto pt-6 border-t border-slate-50 dark:border-white/5 flex items-center justify-between text-[10px] font-black uppercase tracking-widest text-blue-600 dark:text-cyan-400">
                     View Clinical Profile
                     <ArrowRight size={14} className="group-hover:translate-x-1 transition-transform" />
                   </Link>

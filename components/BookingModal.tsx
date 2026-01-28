@@ -198,7 +198,7 @@ const BookingModal: React.FC<BookingModalProps> = ({ isOpen, onClose }) => {
                            <label className="text-[10px] font-black uppercase tracking-widest text-slate-400 ml-1">Specialist</label>
                            <div className="relative group">
                               <Stethoscope size={16} className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400 group-focus-within:text-blue-500 transition-colors" />
-                              <select name="doctor" onChange={handleChange} className="w-full bg-white dark:bg-[#0f1420] border-2 border-slate-100 dark:border-slate-800 rounded-xl py-3.5 pl-11 pr-4 text-sm font-bold text-slate-900 dark:text-white outline-none focus:border-blue-500 transition-colors appearance-none cursor-pointer">
+                              <select name="doctor" aria-label="Select Doctor" onChange={handleChange} className="w-full bg-white dark:bg-[#0f1420] border-2 border-slate-100 dark:border-slate-800 rounded-xl py-3.5 pl-11 pr-4 text-sm font-bold text-slate-900 dark:text-white outline-none focus:border-blue-500 transition-colors appearance-none cursor-pointer">
                                  <option>Dr. Dhivakaran (Implantologist)</option>
                                  <option>Dr. Roger Ronaldo (Surgeon)</option>
                                  <option>Dr. Deepak (Orthodontist)</option>

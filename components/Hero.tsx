@@ -237,8 +237,8 @@ const Hero: React.FC<HeroProps> = ({ onBookClick }) => {
                 <CheckCircle2 size={24} />
               </div>
               <div>
-                <p className="text-[10px] font-black text-slate-400 uppercase tracking-widest">Surgery Success</p>
-                <p className="text-lg font-bold text-slate-900 dark:text-white">99.8% Verified</p>
+                <p className="text-[10px] font-black text-slate-500 dark:text-slate-400 uppercase tracking-widest">Surgery Success</p>
+                <p className="text-lg font-black text-slate-900 dark:text-white">99.8% Verified</p>
               </div>
             </div>
           </div>

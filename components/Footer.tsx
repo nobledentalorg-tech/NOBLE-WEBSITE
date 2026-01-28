@@ -18,9 +18,9 @@ const Footer: React.FC<FooterProps> = ({ onBookClick }) => {
           <div className="space-y-6">
             <div className="flex flex-col border-l-2 border-white/20 pl-4">
               <span className="text-2xl font-black tracking-tight leading-none">NOBLE <span className="text-blue-500">DENTAL</span></span>
-              <span className="text-[10px] font-black tracking-[0.3em] text-slate-400 uppercase">Care</span>
+              <span className="text-[10px] font-black tracking-[0.3em] text-slate-300 uppercase">Care</span>
             </div>
-            <p className="text-slate-400 text-sm leading-relaxed">
+            <p className="text-slate-300 text-sm leading-relaxed">
               Dr. Dhivakaran&apos;s Owner-Operated Cluster.<br />
               Trusted family dentistry with advanced surgical protocols and microscopic precision in Nallagandla.
             </p>
@@ -29,7 +29,7 @@ const Footer: React.FC<FooterProps> = ({ onBookClick }) => {
           {/* Treatments Hub */}
           <div>
             <h3 className="text-lg font-bold mb-6 text-blue-400">Treatments</h3>
-            <ul className="space-y-3 text-sm text-slate-400">
+            <ul className="space-y-3 text-sm text-slate-300">
               <li><Link href="/treatments/dental-implants" className="hover:text-blue-400 transition-colors">Dental Implants</Link></li>
               <li><Link href="/treatments/root-canal" className="hover:text-blue-400 transition-colors">Microscopic RCT</Link></li>
               <li><Link href="/treatments/invisalign" className="hover:text-blue-400 transition-colors">Invisalign (Clear Aligners)</Link></li>
@@ -59,7 +59,7 @@ const Footer: React.FC<FooterProps> = ({ onBookClick }) => {
           {/* Contact */}
           <div>
             <h3 className="text-lg font-bold mb-6">Contact</h3>
-            <ul className="space-y-4 text-sm text-slate-400">
+            <ul className="space-y-4 text-sm text-slate-300">
               <li className="flex items-start gap-3">
                 <MapPin size={18} className="text-blue-500 mt-0.5" />
                 <span>1st floor - ICA Clinic Plot no. 151/2,<br />HUDA layout water tank road,<br />Above Travancore Ayurvedha,<br />Nallagandla - 500019</span>
