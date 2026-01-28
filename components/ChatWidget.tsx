@@ -11,16 +11,28 @@ interface ChatWidgetProps {
 }
 
 const ChatWidget: React.FC<ChatWidgetProps> = ({ onBookClick }) => {
+  const [isLoaded, setIsLoaded] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
-  const [language, setLanguage] = useState<'en' | 'ta'>('en'); // Language State
-  const [messages, setMessages] = useState<ChatMessage[]>([
-    { role: 'model', text: "Hello! I am the Noble AI assistant. How can I help you today?", timestamp: Date.now() }
-  ]);
+  const [language, setLanguage] = useState<'en' | 'ta'>('en');
+  const [messages, setMessages] = useState<ChatMessage[]>([]);
   const [input, setInput] = useState('');
   const [isLoading, setIsLoading] = useState(false);
   const [isListening, setIsListening] = useState(false);
   const messagesEndRef = useRef<HTMLDivElement>(null);
   const recognitionRef = useRef<any>(null);
+
+  // Core Logic State (only initialized after load)
+  const [currentNodeId, setCurrentNodeId] = useState('root');
+
+  // Initialize Chat Logic on First Interaction
+  const initializeChat = async () => {
+    if (!isLoaded) {
+      setIsLoaded(true);
+      // Set initial greeting
+      setMessages([{ role: 'model', text: "Hello! I am the Noble AI assistant. How can I help you today?", timestamp: Date.now() }]);
+    }
+    setIsOpen(true);
+  };
 
   // Track Chat Open
   useEffect(() => {
@@ -32,22 +44,24 @@ const ChatWidget: React.FC<ChatWidgetProps> = ({ onBookClick }) => {
           timestamp: new Date().toISOString()
         });
       }
-      scrollToBottom();
+      setTimeout(scrollToBottom, 100);
     }
-  }, [messages, isOpen]);
+  }, [isOpen]);
 
   // Update initial greeting when language changes
   useEffect(() => {
-    setMessages(prev => {
-      const newText = language === 'en'
-        ? "Hello! I am the Noble AI assistant. How can I help you today?"
-        : "வணக்கம்! நான் Noble AI உதவியாளன். உங்களுக்கு எப்படி உதவ முடியும்?";
-      // Only update the very first message if it's the greeting
-      if (prev.length === 1 && prev[0].role === 'model') {
-        return [{ ...prev[0], text: newText }];
-      }
-      return prev;
-    });
+    if (messages.length > 0) {
+      setMessages(prev => {
+        const newText = language === 'en'
+          ? "Hello! I am the Noble AI assistant. How can I help you today?"
+          : "வணக்கம்! நான் Noble AI உதவியாளன். உங்களுக்கு எப்படி உதவ முடியும்?";
+        // Only update the very first message if it's the greeting
+        if (prev.length === 1 && prev[0].role === 'model') {
+          return [{ ...prev[0], text: newText }];
+        }
+        return prev;
+      });
+    }
   }, [language]);
 
   const scrollToBottom = () => {
@@ -56,7 +70,7 @@ const ChatWidget: React.FC<ChatWidgetProps> = ({ onBookClick }) => {
 
 
   useEffect(() => {
-    if (typeof window !== 'undefined') {
+    if (isLoaded && typeof window !== 'undefined') {
       const SpeechRecognition = (window as any).SpeechRecognition || (window as any).webkitSpeechRecognition;
       if (SpeechRecognition) {
         recognitionRef.current = new SpeechRecognition();
@@ -80,7 +94,7 @@ const ChatWidget: React.FC<ChatWidgetProps> = ({ onBookClick }) => {
         };
       }
     }
-  }, []);
+  }, [isLoaded]);
 
   const toggleListening = () => {
     if (isListening) {
@@ -95,10 +109,6 @@ const ChatWidget: React.FC<ChatWidgetProps> = ({ onBookClick }) => {
     }
   };
 
-  /* 
-   * LOCAL LOGIC ENGINE STATE 
-   */
-  const [currentNodeId, setCurrentNodeId] = useState('root');
 
   const handleSend = async () => {
     if (!input.trim() || isLoading) return;
@@ -123,7 +133,11 @@ const ChatWidget: React.FC<ChatWidgetProps> = ({ onBookClick }) => {
     setInput('');
     setIsLoading(true);
 
-    // 2. Neo Logic Processing (Offline/Local)
+    // 2. Neo Logic Processing (Lazy Loaded Logic)
+    // We import NeoEngine dynamically inside the handler to be absolutely sure it doesn't load early
+    // though the top level import might be hoisted, keeping it here emphasizes intent.
+    // Ideally we'd dynamic import the engine too but simpler to rely on isLoaded flag for now.
+
     setTimeout(() => {
       const response = NeoEngine.processInput(userMsg.text, currentNodeId, messages.length);
       const nextNode = response.node;
@@ -159,7 +173,8 @@ const ChatWidget: React.FC<ChatWidgetProps> = ({ onBookClick }) => {
 
   return (
     <div className="fixed bottom-6 right-6 z-[100] flex flex-col items-end">
-      {isOpen && (
+      {/* Heavy Chat Interface - Only Rendered if isLoaded is true */}
+      {(isLoaded && isOpen) && (
         <div className="bg-white dark:bg-[#0F172A] w-[90vw] sm:w-[400px] h-[550px] rounded-3xl shadow-2xl border border-slate-200 dark:border-white/10 flex flex-col overflow-hidden mb-4 animate-in fade-in slide-in-from-bottom-5 transition-all duration-500">
           {/* Header */}
           <div className="bg-slate-50 dark:bg-slate-900 p-5 border-b border-slate-200 dark:border-white/5 flex justify-between items-center transition-colors duration-500">
@@ -288,10 +303,10 @@ const ChatWidget: React.FC<ChatWidgetProps> = ({ onBookClick }) => {
         </div>
       )}
 
-      {/* Launcher Button */}
+      {/* Lightweight Launcher Button */}
       {!isOpen && (
         <button
-          onClick={() => setIsOpen(true)}
+          onClick={initializeChat}
           aria-label="Open AI Assistant"
           className="group relative bg-blue-600 dark:bg-cyan-500 text-white dark:text-black p-4 rounded-full shadow-2xl shadow-blue-500/40 dark:shadow-cyan-500/30 transition-all hover:scale-110 duration-500 active:scale-95"
         >

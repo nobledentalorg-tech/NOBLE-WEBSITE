@@ -6,6 +6,7 @@ import Footer from '@/components/Footer';
 import dynamic from 'next/dynamic';
 import BookingModal from '@/components/BookingModal';
 import { Providers } from '@/app/providers';
+import RegisterSW from '@/components/RegisterSW';
 
 const ChatWidget = dynamic(() => import('@/components/ChatWidget'), {
     ssr: false,
@@ -23,6 +24,7 @@ export default function LayoutShell({ children }: { children: React.ReactNode })
 
     return (
         <Providers>
+            <RegisterSW />
             <Header onBookClick={openBooking} />
 
             <main>{children}</main>

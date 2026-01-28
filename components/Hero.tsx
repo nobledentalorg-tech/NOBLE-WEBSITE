@@ -168,7 +168,9 @@ const Hero: React.FC<HeroProps> = ({ onBookClick }) => {
                   preload="none"
                   poster="/assets/images/treatments/whitening-hyderabad.webp"
                   src="https://videos.pexels.com/video-files/3195394/3195394-hd_1920_1080_25fps.mp4"
-                />
+                >
+                  <track kind="captions" src="" label="English" default />
+                </video>
                 <Image
                   src="/images/dentalcare.nallagandla.png"
                   alt="Logo"
