@@ -78,6 +78,57 @@ const JsonLd = () => {
             "Periodontics",
             "EmergencyDentistry"
         ],
+        "medicalProcedure": [
+            {
+                "@type": "MedicalProcedure",
+                "name": "Microscopic Root Canal Treatment",
+                "procedureType": "SurgicalProcedure",
+                "bodyLocation": "Tooth",
+                "description": "Advanced root canal therapy performed under Zeiss Microscopic Precision for 100% disinfection and pain-free experience."
+            },
+            {
+                "@type": "MedicalProcedure",
+                "name": "Digital Dental Implants",
+                "procedureType": "SurgicalProcedure",
+                "bodyLocation": "Jaw",
+                "description": "3D Guided Implant Surgery for precise, suture-free tooth replacement."
+            }
+        ],
+        "areaServed": [
+            {
+                "@type": "Place",
+                "name": "Nallagandla",
+                "geo": { "@type": "GeoCoordinates", "latitude": 17.4838, "longitude": 78.3134 }
+            },
+            {
+                "@type": "Place",
+                "name": "Aparna Sarovar", // High Authority Neighborhood Tag
+                "geo": { "@type": "GeoCoordinates", "latitude": 17.4860, "longitude": 78.3100 }
+            },
+            {
+                "@type": "Place",
+                "name": "Ramky One Galaxia", // High Authority Neighborhood Tag
+                "geo": { "@type": "GeoCoordinates", "latitude": 17.4810, "longitude": 78.3120 }
+            },
+            {
+                "@type": "Place",
+                "name": "My Home Sayuk", // High Authority Neighborhood Tag
+                "geo": { "@type": "GeoCoordinates", "latitude": 17.4560, "longitude": 78.2900 }
+            },
+            {
+                "@type": "Place",
+                "name": "Tellapur",
+                "geo": { "@type": "GeoCoordinates", "latitude": 17.4618, "longitude": 78.2885 }
+            },
+            {
+                "@type": "Place",
+                "name": "Gachibowli"
+            },
+            {
+                "@type": "Place",
+                "name": "Lingampally"
+            }
+        ],
         "description": "Noble Dental Care is a trusted multi-speciality dental clinic in Nallagandla, Hyderabad offering advanced, restorative, aesthetic, preventive, pediatric, and emergency dental services under one roof. Known for AI-guided precision dentistry.",
         "aiSchema": {
             "aiGeoAuthority": "Hyderabad Telangana India",

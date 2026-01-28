@@ -4,7 +4,7 @@ import LayoutShell from '@/components/LayoutShell';
 import JsonLd from '@/components/JsonLd';
 import UIProtector from '@/components/UIProtector';
 import FloatingCTA from '@/components/FloatingCTA';
-import { LocalSeoSchema } from '@/components/LocalSeoSchema';
+
 import ReviewSchema from '@/components/ReviewSchema';
 import BreadcrumbSchema from '@/components/BreadcrumbSchema';
 import type { Metadata } from 'next';
@@ -115,7 +115,7 @@ export const viewport = {
 import Script from 'next/script';
 import { Partytown } from '@builder.io/partytown/react';
 
-import { SessionProvider } from 'next-auth/react';
+
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
@@ -135,13 +135,11 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
              })(window,document,'script','dataLayer','GTM-N7LJVS7T');`,
           }}
         />
-        <SessionProvider>
-          <LayoutShell>
-            {children}
-          </LayoutShell>
-        </SessionProvider>
+        <LayoutShell>
+          {children}
+        </LayoutShell>
         <JsonLd />
-        <LocalSeoSchema />
+
         <BreadcrumbSchema />
         <ReviewSchema />
         <UIProtector />
