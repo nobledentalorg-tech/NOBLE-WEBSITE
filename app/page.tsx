@@ -36,7 +36,7 @@ export default function Home() {
             {/* 2. News Ticker */}
             <div className="w-full bg-slate-900 py-6 relative z-20 overflow-hidden border-y border-white/5">
                 <div className="relative flex items-center">
-                    <div className="absolute left-6 z-30 bg-blue-700 text-white px-4 py-1.5 rounded-xl text-[10px] font-black uppercase tracking-[0.2em] flex items-center gap-2 shadow-2xl shadow-blue-500/40">
+                    <div className="absolute left-6 z-30 bg-[#003366] text-white px-4 py-1.5 rounded-xl text-[10px] font-black uppercase tracking-[0.2em] flex items-center gap-2 shadow-2xl shadow-blue-500/40">
                         <Megaphone size={14} fill="currentColor" /> Live Offers
                     </div>
 
