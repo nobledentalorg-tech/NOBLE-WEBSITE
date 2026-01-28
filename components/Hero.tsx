@@ -194,7 +194,7 @@ const Hero: React.FC<HeroProps> = ({ onBookClick }) => {
 
               <div className="card-body">
                 <section>
-                  <h3>Straumann ITI <span className="badge bg-blue-700 text-white opacity-100">New</span></h3>
+                  <h3>Straumann ITI <span className="badge bg-blue-900 text-white opacity-100 font-black">New</span></h3>
                   <p>Swiss-engineered SLActive® surface technology ensures 50% faster biological bone healing.</p>
                 </section>
 
@@ -224,7 +224,7 @@ const Hero: React.FC<HeroProps> = ({ onBookClick }) => {
                     <div className="dot bg-slate-800 border border-slate-600 shadow-inner" title="Roxolid"></div>
                   </div>
 
-                  <div className="price-badge bg-slate-900 text-white opacity-100">
+                  <div className="price-badge bg-slate-900 text-white opacity-100 font-black">
                     <span id="amount">₹ 25,000</span>
                   </div>
                 </section>

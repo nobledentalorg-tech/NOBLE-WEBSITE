@@ -3,9 +3,15 @@
 import React, { useState } from 'react';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
-import ChatWidget from '@/components/ChatWidget';
+import dynamic from 'next/dynamic';
 import BookingModal from '@/components/BookingModal';
 import { Providers } from '@/app/providers';
+
+const ChatWidget = dynamic(() => import('@/components/ChatWidget'), {
+    ssr: false,
+    loading: () => null
+});
+
 
 /*
  * LayoutShell: Handles the Client-Side State (Booking Modal, etc.)
