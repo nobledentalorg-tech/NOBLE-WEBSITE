@@ -151,7 +151,7 @@ const Header: React.FC<HeaderProps> = ({ onBookClick }) => {
           <nav className="hidden xl:flex items-center flex-nowrap gap-1 bg-slate-100/50 dark:bg-white/5 p-1 rounded-full border border-slate-200/50 dark:border-white/10 backdrop-blur-md">
             <Link
               href="/"
-              className={`relative px-4 py-2.5 text-[12px] font-bold uppercase tracking-wider transition-all duration-300 rounded-full ${isActive('/') ? 'text-white bg-blue-600 shadow-md' : 'text-slate-700 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white'
+              className={`relative px-3 py-2 text-[11px] font-bold uppercase tracking-wider whitespace-nowrap transition-all duration-300 rounded-full ${isActive('/') ? 'text-white bg-blue-600 shadow-md' : 'text-slate-700 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white'
                 }`}
             >
               Home
@@ -160,10 +160,10 @@ const Header: React.FC<HeaderProps> = ({ onBookClick }) => {
             <div className="group/mega">
               <Link
                 href="/treatments"
-                className={`relative px-4 py-2.5 text-[12px] font-bold uppercase tracking-wider transition-all duration-300 rounded-full flex items-center gap-1.5 ${isActive('/treatments') ? 'text-white bg-blue-600 shadow-md' : 'text-slate-700 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white'
+                className={`relative px-3 py-2 text-[11px] font-bold uppercase tracking-wider whitespace-nowrap transition-all duration-300 rounded-full flex items-center gap-1 ${isActive('/treatments') ? 'text-white bg-blue-600 shadow-md' : 'text-slate-700 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white'
                   }`}
               >
-                Treatments <ChevronDown size={14} className="group-hover/mega:rotate-180 transition-transform duration-300" />
+                Treatments <ChevronDown size={13} className="group-hover/mega:rotate-180 transition-transform duration-300" />
               </Link>
 
               {/* Mega Menu Panel */}
@@ -208,49 +208,49 @@ const Header: React.FC<HeaderProps> = ({ onBookClick }) => {
             </div>
             <Link
               href="/patient-safety"
-              className={`relative px-4 py-2.5 text-[12px] font-bold uppercase tracking-wider transition-all duration-300 rounded-full ${isActive('/patient-safety') ? 'text-white bg-blue-600 shadow-md' : 'text-slate-700 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white'
+              className={`relative px-3 py-2 text-[11px] font-bold uppercase tracking-wider whitespace-nowrap transition-all duration-300 rounded-full ${isActive('/patient-safety') ? 'text-white bg-blue-600 shadow-md' : 'text-slate-700 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white'
                 }`}
             >
               Patient Safety
             </Link>
             <Link
               href="/team"
-              className={`relative px-4 py-2.5 text-[12px] font-bold uppercase tracking-wider transition-all duration-300 rounded-full ${isActive('/team') ? 'text-white bg-blue-600 shadow-md' : 'text-slate-700 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white'
+              className={`relative px-3 py-2 text-[11px] font-bold uppercase tracking-wider whitespace-nowrap transition-all duration-300 rounded-full ${isActive('/team') ? 'text-white bg-blue-600 shadow-md' : 'text-slate-700 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white'
                 }`}
             >
               Our Team
             </Link>
             <Link
               href="/insurance"
-              className={`px-4 py-2.5 text-[12px] font-black uppercase tracking-wider rounded-full flex items-center gap-2 transition-all ${isActive('/insurance') ? 'bg-indigo-600 text-white shadow-lg' : 'text-indigo-600 dark:text-indigo-400 hover:bg-indigo-50 dark:hover:bg-indigo-900/20'
+              className={`px-3 py-2 text-[11px] font-black uppercase tracking-wider whitespace-nowrap rounded-full flex items-center gap-1.5 transition-all ${isActive('/insurance') ? 'bg-indigo-600 text-white shadow-lg' : 'text-indigo-600 dark:text-indigo-400 hover:bg-indigo-50 dark:hover:bg-indigo-900/20'
                 }`}
             >
-              <ShieldCheck size={14} /> Insurance
+              <ShieldCheck size={13} /> Insurance
             </Link>
             <Link
               href="/healthflo-ai"
-              className={`px-4 py-2.5 text-[12px] font-black uppercase tracking-wider rounded-full flex items-center gap-2 transition-all ${isActive('/healthflo-ai') ? 'bg-blue-600 text-white' : 'text-blue-600 dark:text-cyan-400'
+              className={`px-3 py-2 text-[11px] font-black uppercase tracking-wider whitespace-nowrap rounded-full flex items-center gap-1.5 transition-all ${isActive('/healthflo-ai') ? 'bg-blue-600 text-white' : 'text-blue-600 dark:text-cyan-400'
                 }`}
             >
-              <Activity size={14} /> AI OS
+              <Activity size={13} /> AI OS
             </Link>
             <Link
               href="/international"
-              className={`px-4 py-2.5 text-[12px] font-black uppercase tracking-wider rounded-full flex items-center gap-2 transition-all ${isActive('/international') ? 'bg-amber-100 text-amber-700' : 'text-amber-600 dark:text-amber-500'
+              className={`px-3 py-2 text-[11px] font-black uppercase tracking-wider whitespace-nowrap rounded-full flex items-center gap-1.5 transition-all ${isActive('/international') ? 'bg-amber-100 text-amber-700' : 'text-amber-600 dark:text-amber-500'
                 }`}
             >
-              <Globe size={14} /> Global Care
+              <Globe size={13} /> Global Care
             </Link>
             <Link
               href="/case-studies"
-              className={`px-4 py-2.5 text-[12px] font-bold uppercase tracking-wider rounded-full transition-all ${isActive('/case-studies') ? 'bg-purple-100 text-purple-700' : 'text-slate-700 dark:text-slate-400 hover:text-purple-600'
+              className={`px-3 py-2 text-[11px] font-bold uppercase tracking-wider whitespace-nowrap rounded-full transition-all ${isActive('/case-studies') ? 'bg-purple-100 text-purple-700' : 'text-slate-700 dark:text-slate-400 hover:text-purple-600'
                 }`}
             >
               Cases
             </Link>
             <Link
               href="/blog"
-              className={`px-4 py-2.5 text-[12px] font-bold uppercase tracking-wider rounded-full transition-all ${isActive('/blog') ? 'bg-pink-100 text-pink-700' : 'text-slate-700 dark:text-slate-400 hover:text-pink-600'
+              className={`px-3 py-2 text-[11px] font-bold uppercase tracking-wider whitespace-nowrap rounded-full transition-all ${isActive('/blog') ? 'bg-pink-100 text-pink-700' : 'text-slate-700 dark:text-slate-400 hover:text-pink-600'
                 }`}
             >
               Blog
