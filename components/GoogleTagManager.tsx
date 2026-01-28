@@ -6,6 +6,7 @@ export default function GoogleTagManager() {
     return (
         <>
             <Partytown debug={false} forward={['dataLayer.push']} />
+            {/* eslint-disable-next-line @next/next/next-script-for-ga */}
             <script
                 type="text/partytown"
                 dangerouslySetInnerHTML={{

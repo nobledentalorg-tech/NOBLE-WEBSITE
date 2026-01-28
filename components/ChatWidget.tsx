@@ -50,18 +50,20 @@ const ChatWidget: React.FC<ChatWidgetProps> = ({ onBookClick }) => {
 
   // Update initial greeting when language changes
   useEffect(() => {
-    if (messages.length > 0) {
-      setMessages(prev => {
+    setMessages(prev => {
+      // Only update if we have exactly one message (the greeting)
+      if (prev.length > 0) {
         const newText = language === 'en'
           ? "Hello! I am the Noble AI assistant. How can I help you today?"
           : "வணக்கம்! நான் Noble AI உதவியாளன். உங்களுக்கு எப்படி உதவ முடியும்?";
+
         // Only update the very first message if it's the greeting
         if (prev.length === 1 && prev[0].role === 'model') {
           return [{ ...prev[0], text: newText }];
         }
-        return prev;
-      });
-    }
+      }
+      return prev;
+    });
   }, [language]);
 
   const scrollToBottom = () => {
