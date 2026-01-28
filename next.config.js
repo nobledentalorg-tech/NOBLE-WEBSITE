@@ -35,43 +35,45 @@ const nextConfig = {
     return [
       {
         source: '/(.*)',
-        key: 'Content-Security-Policy',
-        value: "default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://www.googletagmanager.com https://www.google-analytics.com https://*.partytown.js https://maps.googleapis.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com data:; img-src 'self' blob: data: https://nobledentalnallagandla.in https://nobledentalcare.netlify.app https://www.google.com https://www.googletagmanager.com https://*.google-analytics.com https://maps.gstatic.com https://maps.googleapis.com https://upload.wikimedia.org; media-src 'self'; frame-src 'self' https://www.google.com https://www.gstatic.com https://maps.google.com; connect-src 'self' https://www.google-analytics.com https://region1.google-analytics.com https://*.google-analytics.com https://www.googletagmanager.com https://*.partytown.js https://kkcqngvjrsujwdftjoro.supabase.co; worker-src 'self' blob:;",
-      },
-      { key: 'Cross-Origin-Opener-Policy', value: 'same-origin' },
-      { key: 'X-Content-Type-Options', value: 'nosniff' },
-      { key: 'X-Frame-Options', value: 'DENY' },
-      { key: 'Referrer-Policy', value: 'strict-origin-when-cross-origin' },
-      { key: 'Strict-Transport-Security', value: 'max-age=63072000; includeSubDomains; preload' },
-      { key: 'Permissions-Policy', value: 'camera=(), microphone=(), geolocation=()' },
-    ],
-      },
+        headers: [
+          {
+            key: 'Content-Security-Policy',
+            value: "default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://www.googletagmanager.com https://www.google-analytics.com https://*.partytown.js https://maps.googleapis.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com data:; img-src 'self' blob: data: https://nobledentalnallagandla.in https://nobledentalcare.netlify.app https://www.google.com https://www.googletagmanager.com https://*.google-analytics.com https://maps.gstatic.com https://maps.googleapis.com https://upload.wikimedia.org; media-src 'self'; frame-src 'self' https://www.google.com https://www.gstatic.com https://maps.google.com; connect-src 'self' https://www.google-analytics.com https://region1.google-analytics.com https://*.google-analytics.com https://www.googletagmanager.com https://*.partytown.js https://kkcqngvjrsujwdftjoro.supabase.co; worker-src 'self' blob:;",
+          },
+          { key: 'Cross-Origin-Opener-Policy', value: 'same-origin' },
+          { key: 'X-Content-Type-Options', value: 'nosniff' },
+          { key: 'X-Frame-Options', value: 'DENY' },
+          { key: 'Referrer-Policy', value: 'strict-origin-when-cross-origin' },
+          { key: 'Strict-Transport-Security', value: 'max-age=63072000; includeSubDomains; preload' },
+          { key: 'Permissions-Policy', value: 'camera=(), microphone=(), geolocation=()' }
+        ]
+      }
     ];
   },
   async redirects() {
-  return [
-    {
-      source: '/products/shy-nm-foaming-toothpaste.html',
-      destination: '/treatments',
-      permanent: true,
-    },
-    {
-      source: '/products/enafix-toothpaste.html',
-      destination: '/treatments',
-      permanent: true,
-    },
-    {
-      source: '/products/amflor-toothpaste.html',
-      destination: '/treatments',
-      permanent: true,
-    },
-    {
-      source: '/products/stolin-gum-paint.html',
-      destination: '/treatments',
-      permanent: true,
-    },
-  ];
-},
+    return [
+      {
+        source: '/products/shy-nm-foaming-toothpaste.html',
+        destination: '/treatments',
+        permanent: true,
+      },
+      {
+        source: '/products/enafix-toothpaste.html',
+        destination: '/treatments',
+        permanent: true,
+      },
+      {
+        source: '/products/amflor-toothpaste.html',
+        destination: '/treatments',
+        permanent: true,
+      },
+      {
+        source: '/products/stolin-gum-paint.html',
+        destination: '/treatments',
+        permanent: true,
+      },
+    ];
+  },
 };
 
 const withPWA = require('next-pwa')({
