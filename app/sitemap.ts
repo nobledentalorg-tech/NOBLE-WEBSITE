@@ -17,6 +17,9 @@ export default function sitemap(): MetadataRoute.Sitemap {
         '/treatments', // Main treatments listing page
         '/blog',
         '/case-studies',
+        '/residents/aparna-sarovar',
+        '/medical-tourism',
+        '/neighborhood-guide',
     ].map((route) => ({
         url: `${BASE_URL}${route}`,
         lastModified: new Date(),

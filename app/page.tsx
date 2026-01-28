@@ -50,7 +50,7 @@ export default function Home() {
                                             <div className="w-10 h-10 rounded-xl bg-white/5 flex items-center justify-center text-blue-500 border border-white/10">
                                                 <offer.icon size={20} />
                                             </div>
-                                            <span className="text-lg font-black tracking-tight text-white uppercase opacity-90">
+                                            <span className="text-lg font-black tracking-tight text-white uppercase opacity-100">
                                                 {offer.text}
                                             </span>
                                             <div className="w-2 h-2 rounded-full bg-blue-600"></div>
