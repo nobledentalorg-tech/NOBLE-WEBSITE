@@ -179,6 +179,7 @@ const Hero: React.FC<HeroProps> = ({ onBookClick }) => {
                   width={60}
                   height={60}
                   className="logo w-[60px] h-[60px]"
+                  unoptimized={true}
                 />
                 <h2>ITI_SLActive <span className="light">TITANIUM</span></h2>
                 <p className="subtitle">Swiss Grade Implant</p>
@@ -191,6 +192,7 @@ const Hero: React.FC<HeroProps> = ({ onBookClick }) => {
                   height={300}
                   priority={true}
                   fetchPriority="high" // [SEO] LCP Optimization
+                  unoptimized={true}
                 />
 
                 <span className="nmd">ITI</span>
@@ -198,7 +200,7 @@ const Hero: React.FC<HeroProps> = ({ onBookClick }) => {
 
               <div className="card-body">
                 <section>
-                  <h3>Straumann ITI <span className="badge bg-blue-900 text-white opacity-100 font-black">New</span></h3>
+                  <h3>Straumann ITI <span className="badge bg-blue-950 text-white opacity-100 font-black">New</span></h3>
                   <p>Swiss-engineered SLActive® surface technology ensures 50% faster biological bone healing.</p>
                 </section>
 

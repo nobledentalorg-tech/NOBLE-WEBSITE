@@ -41,7 +41,7 @@ export default function Home() {
                     </div>
 
                     {/* Marquee Animation */}
-                    <div className="flex whitespace-nowrap overflow-hidden mask-gradient-x">
+                    <div className="flex whitespace-nowrap overflow-hidden">
                         <div className="flex gap-20 items-center animate-scroll pl-[200px]">
                             {[...Array(2)].map((_, groupIdx) => (
                                 <React.Fragment key={groupIdx}>
