@@ -20,7 +20,7 @@ const Footer: React.FC<FooterProps> = ({ onBookClick }) => {
               <span className="text-2xl font-black tracking-tight leading-none">NOBLE <span className="text-blue-500">DENTAL</span></span>
               <span className="text-[10px] font-black tracking-[0.3em] text-slate-300 uppercase">Care</span>
             </div>
-            <p className="text-slate-300 text-sm leading-relaxed">
+            <p className="text-slate-200 text-sm leading-relaxed">
               Dr. Dhivakaran&apos;s Owner-Operated Cluster.<br />
               Trusted family dentistry with advanced surgical protocols and microscopic precision in Nallagandla.
             </p>
@@ -80,9 +80,9 @@ const Footer: React.FC<FooterProps> = ({ onBookClick }) => {
             <h3 className="text-lg font-bold mb-6">Connect</h3>
             <div className="flex gap-4 mb-8">
               <div className="flex gap-4 mb-8">
-                <a href="https://www.instagram.com/noble.dentalorg/" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center hover:bg-blue-600 transition-all" aria-label="Follow us on Instagram"><Instagram size={18} /></a>
-                <a href="https://www.facebook.com/profile.php?id=100087590145815" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center hover:bg-blue-600 transition-all" aria-label="Follow us on Facebook"><Facebook size={18} /></a>
-                <a href="https://x.com/NobleDenta67864" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center hover:bg-blue-600 transition-all" aria-label="Follow us on X (Twitter)"><Twitter size={18} /></a>
+                <a href="https://www.instagram.com/noble.dentalorg/" target="_blank" rel="noopener noreferrer" className="w-12 h-12 rounded-full bg-white/5 flex items-center justify-center hover:bg-blue-600 transition-all" aria-label="Follow us on Instagram"><Instagram size={20} /></a>
+                <a href="https://www.facebook.com/profile.php?id=100087590145815" target="_blank" rel="noopener noreferrer" className="w-12 h-12 rounded-full bg-white/5 flex items-center justify-center hover:bg-blue-600 transition-all" aria-label="Follow us on Facebook"><Facebook size={20} /></a>
+                <a href="https://x.com/NobleDenta67864" target="_blank" rel="noopener noreferrer" className="w-12 h-12 rounded-full bg-white/5 flex items-center justify-center hover:bg-blue-600 transition-all" aria-label="Follow us on X (Twitter)"><Twitter size={20} /></a>
               </div>
             </div>
 
@@ -104,17 +104,17 @@ const Footer: React.FC<FooterProps> = ({ onBookClick }) => {
         </div>
 
         <div className="pt-8 border-t border-white/10 mb-8">
-          <p className="text-[10px] text-slate-600 dark:text-slate-500 mb-4 text-justify">
-            <strong>Medical Disclaimer:</strong> The information provided on this website is for educational purposes only and does not constitute medical advice. Results may vary based on individual oral health conditions. All clinical procedures are performed by registered dental practitioners under strict sterilization protocols.
+          <p className="text-[10px] text-slate-400 mb-4 text-justify">
+            <strong>Medical Disclaimer:</strong> Information is for educational purposes and not a substitute for professional medical advice. All clinical procedures are performed by registered dental practitioners under strict sterilization protocols.
           </p>
           <div className="flex justify-between items-center">
-            <p className="text-xs text-slate-400">© 2024 Noble Dental Care.</p>
-            <p className="text-xs text-slate-400 font-mono">DCI Reg: A-4521 (Dr. Dhivakaran)</p>
+            <p className="text-xs text-slate-300">© 2024 Noble Dental Care.</p>
+            <p className="text-xs text-slate-300 font-mono">DCI Reg: 23853 (Dr. Dhivakaran)</p>
           </div>
 
-          <div className="flex gap-6 text-xs text-slate-500 mt-4">
-            <Link href="/" className="hover:text-white">Privacy Policy</Link>
-            <Link href="/" className="hover:text-white">Terms of Service</Link>
+          <div className="flex gap-6 text-xs text-slate-400 mt-4">
+            <Link href="/privacy" className="hover:text-white underline underline-offset-4">Privacy Policy</Link>
+            <Link href="/terms" className="hover:text-white underline underline-offset-4">Terms of Service</Link>
           </div>
         </div>
       </div>

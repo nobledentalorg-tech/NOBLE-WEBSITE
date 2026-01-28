@@ -19,8 +19,6 @@ import 'swiper/css/navigation';
 
 // --- STYLES (Kept exactly as you had them) ---
 const cssStyles = `
-@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
-
 .services-wrapper {
     font-family: "Poppins", sans-serif;
     transition: background-color 0.8s ease;
@@ -695,6 +693,7 @@ const Services: React.FC<ServicesProps> = ({ onServiceClick }) => {
                                             width={380}
                                             height={380}
                                             className="w-[380px] h-[380px] object-cover rounded-full"
+                                            sizes="(max-width: 768px) 100vw, 380px"
                                             style={{
                                                 border: '8px solid rgba(255,255,255,0.1)',
                                                 boxShadow: '0 0 50px rgba(0,0,0,0.3)'
@@ -708,7 +707,7 @@ const Services: React.FC<ServicesProps> = ({ onServiceClick }) => {
 
                                 <div className="card-content">
                                     <div className="card-sub-title">{service.subTitle}</div>
-                                    <h2 className="card-title" data-text={service.title}>{service.title}</h2>
+                                    <h3 className="card-title" data-text={service.title}>{service.title}</h3>
                                     <p className="card-description">
                                         {service.description}
                                     </p>

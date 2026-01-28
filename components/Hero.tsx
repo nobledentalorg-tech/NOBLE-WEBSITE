@@ -103,7 +103,7 @@ const Hero: React.FC<HeroProps> = ({ onBookClick }) => {
           <div className="flex flex-col items-start space-y-8">
             <div className="inline-flex items-center gap-2 px-4 py-2 bg-blue-50 dark:bg-blue-900/20 rounded-full border border-blue-100 dark:border-blue-800">
               <span className="w-2 h-2 rounded-full bg-red-500 animate-pulse"></span>
-              <span className="text-[10px] font-black text-slate-600 dark:text-blue-400 uppercase tracking-widest">
+              <span className="text-[10px] font-black text-slate-700 dark:text-cyan-400 uppercase tracking-widest">
                 Heart of Nallagandla (Opp. Citizens)
               </span>
             </div>
@@ -113,9 +113,9 @@ const Hero: React.FC<HeroProps> = ({ onBookClick }) => {
               Trusted Family Dentist.
             </h1>
 
-            <p className="text-xl text-slate-500 dark:text-slate-400 max-w-xl leading-relaxed">
-              At **Noble Dental Care**, we specialize in high-precision surgery and advanced endodontics.
-              <br /><span className="text-slate-700 dark:text-slate-300 font-medium">Trusted neighborhood care that feels like home. Pain-free treatments for your parents, your kids, and you.</span>
+            <p className="text-[13px] md:text-sm text-slate-700 dark:text-slate-300 leading-relaxed font-bold uppercase tracking-tight max-w-lg mb-8 opacity-0 animate-fade-in [animation-delay:600ms]">
+              Dr. Dhivakaran&apos;s Owner-Operated Clinic.<br className="hidden md:block" />
+              Trusted family dentistry with advanced surgical care and microscopic precision in Nallagandla.
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4 w-full flex-wrap">
@@ -134,7 +134,7 @@ const Hero: React.FC<HeroProps> = ({ onBookClick }) => {
 
             {/* App Store Logos */}
             <div className="store-badges">
-              <a href="#" className="store-link">
+              <a href="#" className="store-link py-1 py-1 min-h-[48px] flex items-center" aria-label="Get it on Google Play">
                 <Image
                   src="https://upload.wikimedia.org/wikipedia/commons/7/78/Google_Play_Store_badge_EN.svg"
                   alt="Google Play"
@@ -144,7 +144,7 @@ const Hero: React.FC<HeroProps> = ({ onBookClick }) => {
                   unoptimized
                 />
               </a>
-              <a href="#" className="store-link">
+              <a href="#" className="store-link py-1 min-h-[48px] flex items-center" aria-label="Download on the App Store">
                 <Image
                   src="https://upload.wikimedia.org/wikipedia/commons/3/3c/Download_on_the_App_Store_Badge.svg"
                   alt="App Store"
@@ -176,10 +176,10 @@ const Hero: React.FC<HeroProps> = ({ onBookClick }) => {
                 <Image
                   src="/images/dentalcare.nallagandla.png"
                   alt="Logo"
-                  width={60}
-                  height={60}
-                  className="logo w-[60px] h-[60px]"
-                  unoptimized={true}
+                  width={1479}
+                  height={1178}
+                  className="logo w-[60px] h-auto object-contain"
+                  priority
                 />
                 <h2>ITI_SLActive <span className="light">TITANIUM</span></h2>
                 <p className="subtitle">Swiss Grade Implant</p>
@@ -191,8 +191,9 @@ const Hero: React.FC<HeroProps> = ({ onBookClick }) => {
                   width={300}
                   height={300}
                   priority={true}
+                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 440px"
                   fetchPriority="high" // [SEO] LCP Optimization
-                  unoptimized={true}
+                  unoptimized={false}
                 />
 
                 <span className="nmd">ITI</span>
@@ -200,7 +201,7 @@ const Hero: React.FC<HeroProps> = ({ onBookClick }) => {
 
               <div className="card-body">
                 <section>
-                  <h3>Straumann ITI <span className="badge bg-blue-950 text-white opacity-100 font-black">New</span></h3>
+                  <h3>Straumann ITI <span className="badge bg-blue-600 text-white opacity-100 font-black">New</span></h3>
                   <p>Swiss-engineered SLActive® surface technology ensures 50% faster biological bone healing.</p>
                 </section>
 
@@ -230,7 +231,7 @@ const Hero: React.FC<HeroProps> = ({ onBookClick }) => {
                     <div className="dot bg-slate-800 border border-slate-600 shadow-inner" title="Roxolid"></div>
                   </div>
 
-                  <div className="price-badge bg-slate-900 text-white opacity-100 font-black">
+                  <div className="price-badge bg-blue-600 text-white opacity-100 font-black">
                     <span id="amount">₹ 25,000</span>
                   </div>
                 </section>

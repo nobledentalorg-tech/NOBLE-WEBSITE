@@ -135,8 +135,8 @@ const Header: React.FC<HeaderProps> = ({ onBookClick }) => {
                 alt="Noble Dental"
                 width={1479}
                 height={1178}
-                className="max-w-[50px] w-auto h-auto object-contain filter drop-shadow-md"
-                unoptimized={true}
+                className="w-[50px] h-auto object-contain filter drop-shadow-md"
+                priority
               />
             </div>
             <div className="flex flex-col border-l-2 border-slate-200 dark:border-white/10 pl-3">
@@ -184,7 +184,7 @@ const Header: React.FC<HeaderProps> = ({ onBookClick }) => {
                             <li key={lIdx}>
                               <Link
                                 href={link.href}
-                                className="text-[11px] font-medium text-slate-700 dark:text-slate-400 hover:text-blue-600 dark:hover:text-cyan-400 transition-colors flex items-center gap-2 group/item"
+                                className="text-[11px] font-medium text-slate-700 dark:text-slate-400 hover:text-blue-600 dark:hover:text-cyan-400 transition-colors flex items-center gap-2 group/item py-2"
                               >
                                 <span className="w-1 h-1 rounded-full bg-slate-400 dark:bg-slate-700 group-hover/item:bg-blue-600 transition-colors" />
                                 {link.name}
@@ -260,7 +260,7 @@ const Header: React.FC<HeaderProps> = ({ onBookClick }) => {
 
             <button
               onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
-              className="w-10 h-10 md:w-11 md:h-11 rounded-2xl flex items-center justify-center bg-slate-100 dark:bg-white/5 text-slate-600 dark:text-white transition-all hover:bg-slate-200 dark:hover:bg-white/10"
+              className="w-12 h-12 rounded-2xl flex items-center justify-center bg-slate-100 dark:bg-white/5 text-slate-600 dark:text-white transition-all hover:bg-slate-200 dark:hover:bg-white/10"
               aria-label="Toggle Theme"
             >
               {mounted && (theme === 'dark' ? <Sun size={20} /> : <Moon size={20} />)}
@@ -337,7 +337,7 @@ const Header: React.FC<HeaderProps> = ({ onBookClick }) => {
                                       key={lIdx}
                                       href={link.href}
                                       onClick={() => setIsMobileMenuOpen(false)}
-                                      className="text-xs font-bold text-slate-500 dark:text-slate-400"
+                                      className="text-[13px] font-bold text-slate-500 dark:text-slate-400 py-3 block"
                                     >
                                       {link.name}
                                     </Link>

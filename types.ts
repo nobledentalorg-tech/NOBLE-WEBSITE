@@ -9,6 +9,7 @@ export interface Doctor {
   success: string;
   aligners: boolean;
   bio?: string;
+  dciReg?: string;
 }
 
 export interface Testimonial {

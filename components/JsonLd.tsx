@@ -3,7 +3,7 @@ import React from 'react';
 const JsonLd = () => {
     const structuredData = {
         "@context": "https://schema.org",
-        "@type": ["MedicalBusiness", "Dentist", "LocalBusiness"],
+        "@type": ["MedicalBusiness", "Dentist", "LocalBusiness", "Organization"],
         "name": "Noble Dental Care",
         "alternateName": ["Noble Dental Clinic", "NDC Nallagandla", "Noble Dental Care Hyderabad"],
         "image": "https://nobledentalnallagandla.in/assets/og-image.jpg",
@@ -22,8 +22,8 @@ const JsonLd = () => {
         "priceRange": "₹₹",
         "address": {
             "@type": "PostalAddress",
-            "streetAddress": "Nallagandla Main Road, Opp. Citizens Hospital",
-            "addressLocality": "Serilingampally, Hyderabad",
+            "streetAddress": "1st floor - ICA Clinic Plot no. 151/2, HUDA layout water tank road, Above Travancore Ayurvedha",
+            "addressLocality": "Nallagandla, Serilingampally, Hyderabad",
             "addressRegion": "Telangana",
             "postalCode": "500019",
             "addressCountry": "IN"
@@ -156,6 +156,11 @@ const JsonLd = () => {
                             "https://www.linkedin.com/in/dr-dhivakaran/",
                             "https://scholar.google.com/citations?user=DR_DHIVAKARAN"
                         ],
+                        "identifier": {
+                            "@type": "PropertyValue",
+                            "name": "DCI Registration Number",
+                            "value": "23853"
+                        },
                         "knowsAbout": [
                             "CBCT-guided dental implant surgery",
                             "Platelet-Rich Fibrin therapy",

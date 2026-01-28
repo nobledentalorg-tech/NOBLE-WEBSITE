@@ -19,7 +19,8 @@ const Doctors: React.FC = () => {
       cases: '25k+',
       success: '98%',
       aligners: false,
-      bio: 'Dr. Dhivakaran is a pioneer in the field of Dentistry (11+ Years) and a published author in "Triumph\'s Complete Review of Dentistry". He served at SIIMS Hospital during the COVID crisis and holds multiple WHO certifications. Beyond clinical practice, he drives digital health innovation as the Director of HealthFlo, collaborating with hospitals across India to revolutionize patient care.'
+      bio: 'Dr. Dhivakaran is a pioneer in the field of Dentistry (11+ Years) and a published author in "Triumph\'s Complete Review of Dentistry". He served at SIIMS Hospital during the COVID crisis and holds multiple WHO certifications. Beyond clinical practice, he drives digital health innovation as the Director of HealthFlo, collaborating with hospitals across India to revolutionize patient care.',
+      dciReg: '23853'
     },
     {
       id: 'roger',
@@ -31,7 +32,8 @@ const Doctors: React.FC = () => {
       cases: '15k+',
       success: '99%',
       aligners: false,
-      bio: 'Dr. Roger is a renowned Maxillofacial Surgeon, founder of "Dr. Rogers Dental" (Krishnagiri), and a contributor to the best-selling book "Triumph\'s Complete Review of Dentistry". Specializing in complex trauma, full-mouth rehabilitation, and zygomatic implants, he brings hospital-grade surgical precision to Noble Dental.'
+      bio: 'Dr. Roger is a renowned Maxillofacial Surgeon, founder of "Dr. Rogers Dental" (Krishnagiri), and a contributor to the best-selling book "Triumph\'s Complete Review of Dentistry". Specializing in complex trauma, full-mouth rehabilitation, and zygomatic implants, he brings hospital-grade surgical precision to Noble Dental.',
+      dciReg: '20304'
     },
     {
       id: 'deepak',
@@ -55,7 +57,8 @@ const Doctors: React.FC = () => {
       cases: '2k+',
       success: '97%',
       aligners: false,
-      bio: 'Dr. Thikvijay is a rare dual-specialist in Dental & Facial Aesthetics. Formerly with Dr. Kamakshi Memorial Hospitals, he now bridges the gap between dentistry and cosmetology. His "Total Face" approach at "Glow Up & Smile Up" integrates Digital Smile Design with dermal therapies (Skin/Hair), ensuring your smile harmonizes perfectly with your facial features.'
+      bio: 'Dr. Thikvijay is a rare dual-specialist in Dental & Facial Aesthetics. Formerly with Dr. Kamakshi Memorial Hospitals, he now bridges the gap between dentistry and cosmetology. His "Total Face" approach at "Glow Up & Smile Up" integrates Digital Smile Design with dermal therapies (Skin/Hair), ensuring your smile harmonizes perfectly with your facial features.',
+      dciReg: '212445'
     }
   ];
 
@@ -179,6 +182,7 @@ const Doctors: React.FC = () => {
               <a
                 href="https://play.google.com/store/books/details/Triumph_s_Complete_Review_of_Dentistry?id=ZTjvDwAAQBAJ&hl=en_US"
                 target="_blank"
+                rel="noopener noreferrer"
                 className="px-6 py-3 bg-white/5 hover:bg-white/10 text-white rounded-xl font-bold uppercase tracking-widest text-[9px] flex items-center justify-center gap-2 border border-white/10 transition-all"
               >
                 Preview the Book <ExternalLink size={12} />
@@ -225,7 +229,14 @@ const Doctors: React.FC = () => {
               <div className="hidden lg:block mb-8">
                 <span className="text-blue-600 dark:text-cyan-400 font-black text-[10px] uppercase tracking-[0.4em] mb-3 block">Faculty Member</span>
                 <h3 className="text-5xl font-black text-slate-900 dark:text-white leading-[0.9] tracking-tighter mb-4">{selectedDoctor.name}</h3>
-                <p className="text-xs font-black uppercase text-slate-400 tracking-widest">{selectedDoctor.role}</p>
+                <div className="flex items-center gap-3">
+                  <p className="text-xs font-black uppercase text-slate-400 tracking-widest">{selectedDoctor.role}</p>
+                  {selectedDoctor.dciReg && (
+                    <span className="text-[10px] font-mono text-blue-600 dark:text-cyan-400 bg-blue-50 dark:bg-blue-900/30 px-2 py-0.5 rounded border border-blue-100 dark:border-blue-800/50">
+                      DCI: {selectedDoctor.dciReg}
+                    </span>
+                  )}
+                </div>
               </div>
 
               <div className="grid grid-cols-2 gap-4 mb-10">
