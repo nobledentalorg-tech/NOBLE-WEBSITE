@@ -77,7 +77,7 @@ export const treatmentsData: Record<string, TreatmentData> = {
       headline: "I would rather give birth than have a Root Canal.",
       subheadline: "The Myth of Root Canal Pain: Why You Are Scared (And Why You Shouldn't Be).",
       body: "I hear this all the time. And I understand why. Traditional root canals used to be painful because doctors worked blindly.\n\nBut at Noble Dental, we use **Microscopes**. Imagine trying to thread a needle in the dark vs. doing it with a spotlight. That is the difference.",
-      videoUrl: "https://videos.pexels.com/video-files/3195394/3195394-hd_1920_1080_25fps.mp4" // Placeholder
+
     },
     category: "Endodontics",
     heroImage: "/assets/images/treatments/root-canal-hyderabad.webp",
@@ -591,7 +591,7 @@ export const treatmentsData: Record<string, TreatmentData> = {
       headline: "Stop Holding Your Child Down.",
       subheadline: "Why 'Forcing' treatment creates a lifetime of phobia.",
       body: "I see parents physically restraining crying children in the dental chair. **This is trauma, not treatment.**\n\nWe do things differently. We use 'Happy Air' (Conscious Sedation). Your child breathes sweet oxygen, watches cartoons, and *giggles* while we work. They won't even remember the injection. Let's make the dentist their friend, not their nightmare.",
-      videoUrl: "https://videos.pexels.com/video-files/3205803/3205803-hd_1920_1080_25fps.mp4" // Kids Dentist Placeholder
+
     },
     category: "Pediatrics",
     heroImage: "/assets/images/treatments/pediatric-hyderabad.webp",

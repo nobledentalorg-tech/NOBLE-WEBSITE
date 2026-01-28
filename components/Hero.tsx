@@ -11,16 +11,8 @@ interface HeroProps {
 
 const Hero: React.FC<HeroProps> = ({ onBookClick }) => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
-  const videoRef = useRef<HTMLVideoElement>(null);
 
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      if (videoRef.current) {
-        videoRef.current.play().catch(() => { });
-      }
-    }, 2500);
-    return () => clearTimeout(timer);
-  }, []);
+
 
   useEffect(() => {
     const canvas = canvasRef.current;
@@ -179,18 +171,13 @@ const Hero: React.FC<HeroProps> = ({ onBookClick }) => {
           <div className="relative flex justify-center lg:justify-end">
             <div className="adidas-card">
               <div className="card-head">
-                <video
-                  ref={videoRef}
-                  className="surgical-video"
-                  loop muted playsInline
-                  preload="none"
-                  poster="/assets/images/treatments/whitening-hyderabad.webp"
-                  src="https://videos.pexels.com/video-files/3195394/3195394-hd_1920_1080_25fps.mp4"
-                  // @ts-ignore
-                  fetchPriority="high"
-                >
-                  <track kind="captions" src="" label="English" default />
-                </video>
+                <Image
+                  src="/assets/images/treatments/whitening-hyderabad.webp"
+                  alt="Clinical Background"
+                  fill
+                  className="surgical-video object-cover"
+                  priority
+                />
                 <Image
                   src="/images/dentalcare.nallagandla.png"
                   alt="Logo"
