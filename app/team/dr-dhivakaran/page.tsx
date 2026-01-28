@@ -27,7 +27,7 @@ export default function DrDhivakaranProfile() {
                                 />
                                 <div className="absolute inset-0 bg-gradient-to-t from-slate-900/60 to-transparent"></div>
                                 <div className="absolute bottom-8 left-8 right-8 text-white">
-                                    <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-600 text-[10px] font-black uppercase tracking-widest mb-4">
+                                    <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-600 text-xs font-black uppercase tracking-widest mb-4">
                                         Clinical Lead
                                     </div>
                                     <h1 className="text-4xl font-black tracking-tighter mb-2">Dr. Dhivakaran</h1>
@@ -39,11 +39,11 @@ export default function DrDhivakaranProfile() {
                             <div className="absolute -bottom-6 right-12 left-12 grid grid-cols-2 gap-4">
                                 <div className="bg-white dark:bg-slate-900 p-6 rounded-3xl shadow-xl border border-slate-100 dark:border-white/5 text-center">
                                     <div className="text-2xl font-black text-blue-600">11+</div>
-                                    <div className="text-[10px] font-black uppercase tracking-widest text-slate-400">Years Exp</div>
+                                    <div className="text-xs font-black uppercase tracking-widest text-slate-400">Years Exp</div>
                                 </div>
                                 <div className="bg-white dark:bg-slate-900 p-6 rounded-3xl shadow-xl border border-slate-100 dark:border-white/5 text-center">
                                     <div className="text-2xl font-black text-green-500">25k+</div>
-                                    <div className="text-[10px] font-black uppercase tracking-widest text-slate-400">Cases</div>
+                                    <div className="text-xs font-black uppercase tracking-widest text-slate-400">Cases</div>
                                 </div>
                             </div>
                         </div>

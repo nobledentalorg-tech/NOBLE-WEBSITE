@@ -135,7 +135,7 @@ export default function BracesRefactored() {
                     {/* Left: Text Content */}
                     <div className="space-y-8 order-2 lg:order-1">
                         <RevealOnScroll>
-                            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-100 dark:bg-blue-500/10 border border-blue-200 dark:border-blue-500/20 text-blue-700 dark:text-blue-300 font-bold text-[10px] uppercase tracking-[0.3em] mb-6 animate-fade-in">
+                            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-100 dark:bg-blue-500/10 border border-blue-200 dark:border-blue-500/20 text-blue-700 dark:text-blue-300 font-bold text-xs uppercase tracking-[0.3em] mb-6 animate-fade-in">
                                 <Cpu size={12} /> ISO 9001:2015 • Damon Certified
                             </div>
                             <h1 className="text-5xl md:text-7xl font-black text-slate-900 dark:text-white leading-[0.95] tracking-tighter mb-6">
@@ -241,7 +241,7 @@ export default function BracesRefactored() {
                             </div>
 
                             {/* Floating Tech Badge */}
-                            <div className="absolute top-4 right-4 bg-white/80 dark:bg-slate-800/80 backdrop-blur-md px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-widest text-blue-700 dark:text-blue-300 border border-blue-600/20 shadow-lg">
+                            <div className="absolute top-4 right-4 bg-white/80 dark:bg-slate-800/80 backdrop-blur-md px-3 py-1 rounded-full text-xs font-bold uppercase tracking-widest text-blue-700 dark:text-blue-300 border border-blue-600/20 shadow-lg">
                                 AI Simulation Active
                             </div>
                         </div>
@@ -564,7 +564,7 @@ export default function BracesRefactored() {
                                     <div className="relative z-10">
                                         <div className="flex justify-between items-start mb-4">
                                             <div className="text-sm font-bold text-slate-700 dark:text-slate-400 uppercase tracking-wider">{plan.type}</div>
-                                            {i === 2 && <span className="bg-blue-600 text-white text-[10px] font-bold px-2 py-1 rounded-full animate-pulse">Recommended</span>}
+                                            {i === 2 && <span className="bg-blue-600 text-white text-xs font-bold px-2 py-1 rounded-full animate-pulse">Recommended</span>}
                                         </div>
 
                                         <div className="text-3xl font-black text-slate-900 dark:text-white mb-1">{plan.noble}</div>
@@ -573,7 +573,7 @@ export default function BracesRefactored() {
                                         </div>
 
                                         <div className="p-4 bg-slate-50 dark:bg-white/5 rounded-2xl mb-6">
-                                            <div className="text-[10px] uppercase text-slate-600 dark:text-slate-400 mb-1">Market Price</div>
+                                            <div className="text-xs uppercase text-slate-600 dark:text-slate-400 mb-1">Market Price</div>
                                             <div className="text-sm font-bold text-slate-700 dark:text-slate-500 line-through decoration-red-400">{plan.market}</div>
                                         </div>
 
@@ -618,7 +618,7 @@ export default function BracesRefactored() {
                     {/* FAQ Verification Footer (Trust Signal) */}
                     <div className="mt-12 pt-6 border-t border-slate-100 dark:border-white/5 flex items-center justify-center gap-3 text-slate-600 dark:text-slate-400">
                         <ShieldCheck size={16} className="text-emerald-500" />
-                        <p className="text-[10px] font-bold uppercase tracking-widest text-center">
+                        <p className="text-xs font-bold uppercase tracking-widest text-center">
                             Orthodontic protocols are verified by Noble Dental&apos;s senior clinical team to ensure alignment with 2026 dental standards.
                         </p>
                     </div>

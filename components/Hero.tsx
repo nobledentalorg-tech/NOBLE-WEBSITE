@@ -103,7 +103,7 @@ const Hero: React.FC<HeroProps> = ({ onBookClick }) => {
           <div className="flex flex-col items-start space-y-8">
             <div className="inline-flex items-center gap-2 px-4 py-2 bg-blue-50 dark:bg-blue-900/20 rounded-full border border-blue-100 dark:border-blue-800">
               <span className="w-2 h-2 rounded-full bg-red-500 animate-pulse"></span>
-              <span className="text-[10px] font-black text-slate-700 dark:text-cyan-400 uppercase tracking-widest">
+              <span className="text-xs font-black text-slate-700 dark:text-cyan-400 uppercase tracking-widest">
                 Heart of Nallagandla (Opp. Citizens)
               </span>
             </div>
@@ -133,26 +133,12 @@ const Hero: React.FC<HeroProps> = ({ onBookClick }) => {
             </div>
 
             {/* App Store Logos */}
-            <div className="store-badges">
-              <a href="#" className="store-link py-1 py-1 min-h-[48px] flex items-center" aria-label="Get it on Google Play">
-                <Image
-                  src="https://upload.wikimedia.org/wikipedia/commons/7/78/Google_Play_Store_badge_EN.svg"
-                  alt="Google Play"
-                  className="store-badge"
-                  width={135}
-                  height={40}
-                  unoptimized
-                />
+            <div className="flex flex-wrap gap-4 mt-8 relative z-30">
+              <a href="https://play.google.com/store/apps/details?id=com.noble_dental_care" target="_blank" rel="noopener noreferrer" className="store-link py-1 min-h-[48px] flex items-center" aria-label="Get it on Google Play">
+                <svg viewBox="0 0 512 512" width="135" height="40" className="store-badge"><path fill="#000" d="M0 0h512v512H0z" /><path fill="#fff" d="M129 119a22 22 0 0 0-5 15v245a22 22 0 0 0 5 15l135-135-135-140zm29-15 146 84 45 44-45 44-146 84a22 22 0 0 1-24 0l120-128-120-128a22 22 0 0 1 24 0zm207 131-48-28-51 50 51 50 48-28a22 22 0 0 0 0-44zm-76-44L183 91a22 22 0 0 0-25 0l131 140zm0 131-131 140a22 22 0 0 0 25 0l106-100z" /></svg>
               </a>
               <a href="#" className="store-link py-1 min-h-[48px] flex items-center" aria-label="Download on the App Store">
-                <Image
-                  src="https://upload.wikimedia.org/wikipedia/commons/3/3c/Download_on_the_App_Store_Badge.svg"
-                  alt="App Store"
-                  className="store-badge"
-                  width={120}
-                  height={40}
-                  unoptimized
-                />
+                <svg viewBox="0 0 512 512" width="120" height="40" className="store-badge"><path fill="#000" d="M0 0h512v512H0z" /><path fill="#fff" d="M185 244c0-34 28-51 29-51-16-23-40-26-49-27-21-2-41 12-52 12s-28-12-45-12c-23 0-44 13-55 33-24 41-6 102 17 136 11 16 25 35 41 34 16-1 22-11 42-11s25 10 42 11c17 0 29-17 39-33 12-18 17-35 17-36s-32-13-32-48zm-34-118c10-12 16-28 14-45-15 1-33 10-44 23-10 11-17 28-15 44 17 1 35-10 45-22z" /></svg>
               </a>
             </div>
           </div>
@@ -244,7 +230,7 @@ const Hero: React.FC<HeroProps> = ({ onBookClick }) => {
                 <CheckCircle2 size={24} />
               </div>
               <div>
-                <p className="text-[10px] font-black text-slate-500 dark:text-slate-400 uppercase tracking-widest">Surgery Success</p>
+                <p className="text-xs font-black text-slate-500 dark:text-slate-400 uppercase tracking-widest">Surgery Success</p>
                 <p className="text-lg font-black text-slate-900 dark:text-white">99.8% Verified</p>
               </div>
             </div>

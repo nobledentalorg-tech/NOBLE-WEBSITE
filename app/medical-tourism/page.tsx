@@ -77,7 +77,7 @@ export default function MedicalTourismPage() {
                                 </tbody>
                             </table>
                         </div>
-                        <p className="text-[10px] text-slate-400 mt-4 italic">*Prices based on average quotes from high-end tier clinics in Indiranagar/Bandra (2024).</p>
+                        <p className="text-xs text-slate-400 mt-4 italic">*Prices based on average quotes from high-end tier clinics in Indiranagar/Bandra (2024).</p>
                     </div>
                 </div>
             </section>

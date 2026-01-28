@@ -135,7 +135,7 @@ export default function VeneersRefactored() {
                     {/* Left: Content */}
                     <div className="space-y-8 order-2 lg:order-1">
                         <RevealOnScroll>
-                            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-amber-100 dark:bg-amber-500/10 border border-amber-200 dark:border-amber-500/20 text-amber-700 dark:text-amber-400 font-bold text-[10px] uppercase tracking-[0.3em] mb-6 animate-fade-in">
+                            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-amber-100 dark:bg-amber-500/10 border border-amber-200 dark:border-amber-500/20 text-amber-700 dark:text-amber-400 font-bold text-xs uppercase tracking-[0.3em] mb-6 animate-fade-in">
                                 <Diamond size={12} /> Digital Smile Design
                             </div>
                             <h1 className="text-5xl md:text-8xl font-black text-slate-900 dark:text-white leading-[0.9] tracking-tighter mb-6">
@@ -206,7 +206,7 @@ export default function VeneersRefactored() {
                             </div>
 
                             {/* Badge */}
-                            <div className="absolute top-4 right-4 bg-white/80 dark:bg-slate-800/80 backdrop-blur-md px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-widest text-slate-900 dark:text-white border border-slate-200 dark:border-white/20 shadow-lg flex items-center gap-2">
+                            <div className="absolute top-4 right-4 bg-white/80 dark:bg-slate-800/80 backdrop-blur-md px-3 py-1 rounded-full text-xs font-bold uppercase tracking-widest text-slate-900 dark:text-white border border-slate-200 dark:border-white/20 shadow-lg flex items-center gap-2">
                                 <Palette size={12} /> Shade Selector
                             </div>
                         </div>
@@ -265,7 +265,7 @@ export default function VeneersRefactored() {
                                     </div>
                                     <h3 className="font-bold text-lg text-slate-900 dark:text-white mb-2">{style.title}</h3>
                                     <p className="text-xs text-slate-500 dark:text-slate-400 leading-relaxed mb-4">{style.desc}</p>
-                                    <div className="inline-block px-3 py-1 rounded-full bg-slate-100 dark:bg-white/5 text-[10px] font-bold uppercase tracking-wide text-slate-500">
+                                    <div className="inline-block px-3 py-1 rounded-full bg-slate-100 dark:bg-white/5 text-xs font-bold uppercase tracking-wide text-slate-500">
                                         Best for: {style.suit}
                                     </div>
                                 </button>
@@ -280,7 +280,7 @@ export default function VeneersRefactored() {
                 <div className="max-w-7xl mx-auto px-6">
                     <div className="grid md:grid-cols-2 gap-16 items-center">
                         <div>
-                            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-amber-600/20 border border-amber-500/30 text-amber-400 font-bold text-[10px] uppercase tracking-[0.3em] mb-6">
+                            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-amber-600/20 border border-amber-500/30 text-amber-400 font-bold text-xs uppercase tracking-[0.3em] mb-6">
                                 <Layers size={12} /> The Protocol
                             </div>
                             <h2 className="text-4xl font-bold mb-6">The &quot;Mock-Up&quot; Guarantee.</h2>

@@ -109,7 +109,7 @@ const TreatmentsRefactored = () => {
             <div className="flex flex-col xl:flex-row gap-12 justify-between xl:items-end border-b border-slate-200 dark:border-white/5 pb-12">
               <div className="max-w-4xl">
                 {/* System Status Bar */}
-                <div className="flex flex-wrap items-center gap-4 mb-8 text-[10px] font-bold uppercase tracking-[0.15em] text-slate-500 dark:text-slate-400">
+                <div className="flex flex-wrap items-center gap-4 mb-8 text-xs font-bold uppercase tracking-[0.15em] text-slate-500 dark:text-slate-400">
                   <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-600 dark:text-emerald-400 shadow-sm backdrop-blur-sm">
                     <span className="relative flex h-2 w-2">
                       <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
@@ -159,7 +159,7 @@ const TreatmentsRefactored = () => {
                         <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12"></path></svg>
                       </button>
                     )}
-                    <div className="hidden sm:block px-2 py-1 rounded-md bg-slate-100 dark:bg-white/5 text-[10px] font-bold text-slate-400 border border-slate-200 dark:border-white/5">CTRL+K</div>
+                    <div className="hidden sm:block px-2 py-1 rounded-md bg-slate-100 dark:bg-white/5 text-xs font-bold text-slate-400 border border-slate-200 dark:border-white/5">CTRL+K</div>
                   </div>
                 </div>
 
@@ -173,7 +173,7 @@ const TreatmentsRefactored = () => {
                           key={cat}
                           onClick={() => setFilter(cat)}
                           className={`
-                                group relative px-4 py-2 rounded-xl text-[11px] font-bold transition-all duration-300 border
+                                group relative px-4 py-2 rounded-xl text-xs font-bold transition-all duration-300 border
                                 ${filter === cat
                               ? 'bg-slate-900 dark:bg-white text-white dark:text-slate-900 border-transparent shadow-lg shadow-slate-900/20 transform scale-105 z-10'
                               : 'bg-white dark:bg-[#0f1420] text-slate-600 dark:text-slate-300 border-slate-200 dark:border-slate-800 hover:border-blue-500/50 hover:text-blue-600 dark:hover:text-blue-400'
@@ -182,7 +182,7 @@ const TreatmentsRefactored = () => {
                         >
                           <span className="flex items-center gap-2">
                             {cat}
-                            <span className={`px-1.5 py-0.5 rounded-md text-[9px] ${filter === cat ? 'bg-white/20 text-white dark:text-slate-900' : 'bg-slate-100 dark:bg-white/5 text-slate-400'}`}>
+                            <span className={`px-1.5 py-0.5 rounded-md text-xs ${filter === cat ? 'bg-white/20 text-white dark:text-slate-900' : 'bg-slate-100 dark:bg-white/5 text-slate-400'}`}>
                               {count}
                             </span>
                           </span>
@@ -270,13 +270,13 @@ const TreatmentsRefactored = () => {
                       <div className="absolute top-4 left-4 z-10">
                         <div className="flex items-center gap-1.5 px-2 py-1 bg-white/90 dark:bg-black/60 backdrop-blur-md rounded-md border border-white/20 shadow-sm">
                           <div className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></div>
-                          <span className="text-[9px] font-bold uppercase tracking-wider text-slate-700 dark:text-slate-200">Active</span>
+                          <span className="text-xs font-bold uppercase tracking-wider text-slate-700 dark:text-slate-200">Active</span>
                         </div>
                       </div>
 
                       {/* Category Tag */}
                       <div className="absolute bottom-3 left-4 z-10">
-                        <span className="text-[10px] font-black uppercase tracking-widest text-white/90 drop-shadow-md flex items-center gap-2">
+                        <span className="text-xs font-black uppercase tracking-widest text-white/90 drop-shadow-md flex items-center gap-2">
                           <span className="w-4 h-[1px] bg-blue-400"></span> {item.category}
                         </span>
                       </div>
@@ -287,7 +287,7 @@ const TreatmentsRefactored = () => {
                       {/* ID & Title */}
                       <div className="mb-4">
                         <div className="flex justify-between items-start mb-2">
-                          <div className="text-[10px] font-mono font-medium text-blue-500 dark:text-blue-400">
+                          <div className="text-xs font-mono font-medium text-blue-500 dark:text-blue-400">
                             IDX-{String(idx + 101).padStart(3, '0')}
                           </div>
                           {viewMode === 'list' && (
@@ -310,14 +310,14 @@ const TreatmentsRefactored = () => {
                       {(viewMode === 'grid') && (
                         <div className="mt-auto grid grid-cols-2 gap-px bg-slate-100 dark:bg-slate-800 border border-slate-100 dark:border-slate-800 rounded-xl overflow-hidden shadow-inner">
                           <div className="bg-slate-50 dark:bg-[#131825] p-3 flex flex-col gap-1 group/stat transition-colors hover:bg-white dark:hover:bg-[#1a2030]">
-                            <span className="text-[9px] font-bold uppercase text-slate-400 tracking-wider">Success Rate</span>
+                            <span className="text-xs font-bold uppercase text-slate-400 tracking-wider">Success Rate</span>
                             <div className="flex items-center gap-1.5 text-blue-600 dark:text-blue-400">
                               <Activity size={12} className="group-hover/stat:animate-pulse" />
                               <span className="text-xs font-black">{item.stats?.[2]?.value || '99%'}</span>
                             </div>
                           </div>
                           <div className="bg-slate-50 dark:bg-[#131825] p-3 flex flex-col gap-1 group/stat transition-colors hover:bg-white dark:hover:bg-[#1a2030]">
-                            <span className="text-[9px] font-bold uppercase text-slate-400 tracking-wider">Avg. Time</span>
+                            <span className="text-xs font-bold uppercase text-slate-400 tracking-wider">Avg. Time</span>
                             <div className="flex items-center gap-1.5 text-slate-700 dark:text-slate-300">
                               <Clock size={12} />
                               <span className="text-xs font-black">{item.duration || '60m'}</span>
@@ -328,7 +328,7 @@ const TreatmentsRefactored = () => {
 
                       {/* Footer / Action Area */}
                       <div className={`pt-4 flex items-center justify-between opacity-60 group-hover:opacity-100 transition-opacity ${viewMode === 'grid' ? 'mt-5 border-t border-slate-100 dark:border-white/5' : 'mt-0'}`}>
-                        <span className="text-[10px] font-bold text-slate-400 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors flex items-center gap-2 uppercase tracking-widest">
+                        <span className="text-xs font-bold text-slate-400 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors flex items-center gap-2 uppercase tracking-widest">
                           Access Protocol <ChevronRight size={12} />
                         </span>
                         {viewMode === 'grid' && <Sparkles size={12} className="text-blue-500" />}
@@ -366,14 +366,14 @@ const TreatmentsRefactored = () => {
             <div className="flex flex-col sm:flex-row items-center gap-8 md:gap-16">
               <div className="text-center md:text-left group/stat cursor-default">
                 <div className="text-4xl md:text-6xl font-black text-transparent bg-clip-text bg-gradient-to-b from-white to-slate-500 tracking-tighter group-hover/stat:to-blue-400 transition-all">99.8%</div>
-                <div className="flex items-center justify-center md:justify-start gap-2 text-[10px] font-bold uppercase text-slate-500 tracking-[0.2em] mt-3">
+                <div className="flex items-center justify-center md:justify-start gap-2 text-xs font-bold uppercase text-slate-500 tracking-[0.2em] mt-3">
                   <div className="w-1.5 h-1.5 rounded-full bg-emerald-500"></div> Safety Compliance
                 </div>
               </div>
               <div className="h-px w-24 sm:h-24 sm:w-px bg-gradient-to-b from-transparent via-white/10 to-transparent"></div>
               <div className="text-center md:text-left group/stat cursor-default">
                 <div className="text-4xl md:text-6xl font-black text-transparent bg-clip-text bg-gradient-to-b from-white to-slate-500 tracking-tighter group-hover/stat:to-blue-400 transition-all">24/7</div>
-                <div className="flex items-center justify-center md:justify-start gap-2 text-[10px] font-bold uppercase text-slate-500 tracking-[0.2em] mt-3">
+                <div className="flex items-center justify-center md:justify-start gap-2 text-xs font-bold uppercase text-slate-500 tracking-[0.2em] mt-3">
                   <Zap size={10} className="text-yellow-400 fill-yellow-400" /> Clinical Triage
                 </div>
               </div>

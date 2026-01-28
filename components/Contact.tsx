@@ -75,7 +75,7 @@ const Contact = () => {
                     {/* Contact Links */}
                     <div className="lg:col-span-5 space-y-12">
                         <RevealOnScroll>
-                            <div className="inline-flex items-center gap-3 px-4 py-2 rounded-full bg-blue-500/10 border border-blue-500/20 text-blue-600 dark:text-cyan-400 font-black text-[10px] uppercase tracking-[0.3em] mb-4">
+                            <div className="inline-flex items-center gap-3 px-4 py-2 rounded-full bg-blue-500/10 border border-blue-500/20 text-blue-600 dark:text-cyan-400 font-black text-xs uppercase tracking-[0.3em] mb-4">
                                 <Sparkles size={14} /> Connect With Us
                             </div>
                             <h2 className="text-5xl md:text-7xl font-black text-slate-900 dark:text-white leading-[0.9] tracking-tighter mb-8">
@@ -94,7 +94,7 @@ const Contact = () => {
                                         <MessageCircle size={32} />
                                     </div>
                                     <div className="ml-6 flex-1">
-                                        <h3 className="text-[10px] font-black text-slate-400 uppercase tracking-widest mb-1">Instant Messaging</h3>
+                                        <h3 className="text-xs font-black text-slate-400 uppercase tracking-widest mb-1">Instant Messaging</h3>
                                         <p className="text-2xl font-black text-slate-900 dark:text-white group-hover:text-green-600 transition-colors">Chat on WhatsApp</p>
                                     </div>
                                     <ArrowRight size={24} className="text-slate-300 group-hover:translate-x-2 transition-transform" />
@@ -106,9 +106,9 @@ const Contact = () => {
                                     <div className="w-12 h-12 rounded-xl bg-blue-50 dark:bg-blue-900/20 flex items-center justify-center text-blue-600 mb-6 group-hover:rotate-12 transition-transform">
                                         <Phone size={24} />
                                     </div>
-                                    <h3 className="text-[9px] font-black text-slate-400 uppercase tracking-widest mb-1">Call Clinic</h3>
+                                    <h3 className="text-xs font-black text-slate-400 uppercase tracking-widest mb-1">Call Clinic</h3>
                                     <p className="text-lg font-black text-slate-900 dark:text-white group-hover:text-blue-600 transition-colors mb-2">+91 86104 25342</p>
-                                    <div className="inline-block px-3 py-1 bg-green-50 dark:bg-green-900/20 text-green-700 dark:text-green-400 text-[9px] font-bold uppercase tracking-wide rounded-md">
+                                    <div className="inline-block px-3 py-1 bg-green-50 dark:bg-green-900/20 text-green-700 dark:text-green-400 text-xs font-bold uppercase tracking-wide rounded-md">
                                         Easy Access via ORR (Exit 19)
                                     </div>
                                 </a>
@@ -119,7 +119,7 @@ const Contact = () => {
                                     <div className="w-12 h-12 rounded-xl bg-indigo-50 dark:bg-indigo-900/20 flex items-center justify-center text-indigo-600 mb-6">
                                         <MapPin size={24} />
                                     </div>
-                                    <h3 className="text-[9px] font-black text-slate-400 uppercase tracking-widest mb-1">Nallagandla</h3>
+                                    <h3 className="text-xs font-black text-slate-400 uppercase tracking-widest mb-1">Nallagandla</h3>
                                     <p className="text-sm font-bold text-slate-700 dark:text-slate-300 leading-tight mb-4">ICA Clinic Building, Main Road.</p>
 
                                     {/* [Trusted Local Signal] Lazy Loaded Map */}
@@ -150,28 +150,28 @@ const Contact = () => {
                                     <div className="relative z-10">
                                         <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between mb-12 gap-4">
                                             <h3 className="text-3xl font-black text-slate-900 dark:text-white tracking-tight">Reserve clinical time.</h3>
-                                            <div className="px-4 py-1.5 bg-green-500/10 text-green-600 dark:text-green-400 text-[10px] font-black uppercase tracking-widest rounded-full border border-green-500/20 animate-pulse">Accepting Patients</div>
+                                            <div className="px-4 py-1.5 bg-green-500/10 text-green-600 dark:text-green-400 text-xs font-black uppercase tracking-widest rounded-full border border-green-500/20 animate-pulse">Accepting Patients</div>
                                         </div>
 
                                         <form onSubmit={handleSubmit} className="space-y-8">
                                             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                                                 {/* Inputs */}
                                                 <div className="space-y-2">
-                                                    <label htmlFor="name" className="text-[10px] font-black uppercase text-slate-400 tracking-[0.2em]">Patient Name</label>
+                                                    <label htmlFor="name" className="text-xs font-black uppercase text-slate-400 tracking-[0.2em]">Patient Name</label>
                                                     <div className="relative group">
                                                         <User size={18} className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400" />
                                                         <input type="text" id="name" name="name" required onChange={handleChange} className="w-full bg-slate-50 dark:bg-white/5 border border-slate-200 dark:border-white/10 rounded-2xl py-5 pl-12 pr-4 font-bold" placeholder="Full Name" />
                                                     </div>
                                                 </div>
                                                 <div className="space-y-2">
-                                                    <label htmlFor="phone" className="text-[10px] font-black uppercase text-slate-400 tracking-[0.2em]">Phone</label>
+                                                    <label htmlFor="phone" className="text-xs font-black uppercase text-slate-400 tracking-[0.2em]">Phone</label>
                                                     <div className="relative group">
                                                         <Phone size={18} className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400" />
                                                         <input type="tel" id="phone" name="phone" required onChange={handleChange} className="w-full bg-slate-50 dark:bg-white/5 border border-slate-200 dark:border-white/10 rounded-2xl py-5 pl-12 pr-4 font-bold" placeholder="+91..." />
                                                     </div>
                                                 </div>
                                                 <div className="space-y-2">
-                                                    <label htmlFor="doctor" className="text-[10px] font-black uppercase text-slate-400 tracking-[0.2em]">Specialist</label>
+                                                    <label htmlFor="doctor" className="text-xs font-black uppercase text-slate-400 tracking-[0.2em]">Specialist</label>
                                                     <div className="relative">
                                                         <Stethoscope size={18} className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400" />
                                                         <select id="doctor" name="doctor" onChange={handleChange} className="w-full bg-slate-50 dark:bg-white/5 border border-slate-200 dark:border-white/10 rounded-2xl py-5 pl-12 font-bold appearance-none">
@@ -182,7 +182,7 @@ const Contact = () => {
                                                     </div>
                                                 </div>
                                                 <div className="space-y-2">
-                                                    <label htmlFor="service" className="text-[10px] font-black uppercase text-slate-400 tracking-[0.2em]">Service</label>
+                                                    <label htmlFor="service" className="text-xs font-black uppercase text-slate-400 tracking-[0.2em]">Service</label>
                                                     <div className="relative">
                                                         <Sparkles size={18} className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400" />
                                                         <select id="service" name="service" onChange={handleChange} className="w-full bg-slate-50 dark:bg-white/5 border border-slate-200 dark:border-white/10 rounded-2xl py-5 pl-12 font-bold appearance-none">
@@ -195,7 +195,7 @@ const Contact = () => {
                                             </div>
 
                                             <div className="space-y-2">
-                                                <label htmlFor="notes" className="text-[10px] font-black uppercase text-slate-400 tracking-[0.2em]">Triage Notes</label>
+                                                <label htmlFor="notes" className="text-xs font-black uppercase text-slate-400 tracking-[0.2em]">Triage Notes</label>
                                                 <div className="relative">
                                                     <FileText size={18} className="absolute left-4 top-6 text-slate-400" />
                                                     <textarea id="notes" name="notes" rows={2} onChange={handleChange} className="w-full bg-slate-50 dark:bg-white/5 border border-slate-200 dark:border-white/10 rounded-[2rem] py-5 pl-12 pr-4 font-bold resize-none" placeholder="Briefly describe your pain..."></textarea>

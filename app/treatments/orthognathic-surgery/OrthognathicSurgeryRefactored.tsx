@@ -100,7 +100,7 @@ export default function OrthognathicSurgeryRefactored() {
                 <div className="max-w-7xl mx-auto px-6 relative z-10 grid lg:grid-cols-2 gap-12 items-center">
                     <RevealOnScroll>
                         <div className="space-y-8">
-                            <div className="inline-flex items-center gap-2 px-3 py-1 bg-amber-50 dark:bg-amber-900/30 rounded-full text-[10px] font-black uppercase tracking-widest text-amber-600 dark:text-amber-400 border border-amber-100 dark:border-amber-500/20">
+                            <div className="inline-flex items-center gap-2 px-3 py-1 bg-amber-50 dark:bg-amber-900/30 rounded-full text-xs font-black uppercase tracking-widest text-amber-600 dark:text-amber-400 border border-amber-100 dark:border-amber-500/20">
                                 <Scissors size={12} /> Maxillofacial Precision
                             </div>
                             <h1 className="text-6xl md:text-8xl font-black text-slate-900 dark:text-white leading-[0.9] tracking-tighter uppercase">
@@ -116,7 +116,7 @@ export default function OrthognathicSurgeryRefactored() {
                                     <Calendar size={18} /> Schedule Facial Analysis
                                 </button>
                                 <div className="flex items-center gap-4 px-6 border-l border-slate-200 dark:border-white/10">
-                                    <div className="text-[10px] uppercase font-black text-slate-400 tracking-widest leading-none">
+                                    <div className="text-xs uppercase font-black text-slate-400 tracking-widest leading-none">
                                         Virtual Surgical <br /> Planning (VSP)
                                     </div>
                                     <div className="w-12 h-12 rounded-full bg-blue-50 dark:bg-blue-900/30 flex items-center justify-center text-blue-600">
@@ -147,7 +147,7 @@ export default function OrthognathicSurgeryRefactored() {
                                     </div>
                                     <div>
                                         <div className="text-sm font-black text-slate-900 dark:text-white uppercase tracking-tighter">OMS Certified</div>
-                                        <div className="text-[10px] uppercase font-bold text-slate-400 tracking-widest leading-none">Diplomate Focus</div>
+                                        <div className="text-xs uppercase font-bold text-slate-400 tracking-widest leading-none">Diplomate Focus</div>
                                     </div>
                                 </div>
                             </div>
@@ -169,7 +169,7 @@ export default function OrthognathicSurgeryRefactored() {
                         <a
                             key={tab.id}
                             href={`#${tab.id}`}
-                            className={`text-[10px] font-black uppercase tracking-[0.2em] whitespace-nowrap transition-all duration-300 px-4 py-2 rounded-full ${activeTab === tab.id
+                            className={`text-xs font-black uppercase tracking-[0.2em] whitespace-nowrap transition-all duration-300 px-4 py-2 rounded-full ${activeTab === tab.id
                                 ? 'bg-blue-600 text-white'
                                 : 'text-slate-400 hover:text-slate-900 dark:hover:text-white'
                                 }`}
@@ -186,7 +186,7 @@ export default function OrthognathicSurgeryRefactored() {
                     <RevealOnScroll>
                         <div className="grid lg:grid-cols-2 gap-20 items-center">
                             <div className="space-y-12">
-                                <div className="inline-flex items-center gap-2 px-3 py-1 bg-blue-100 dark:bg-blue-900/30 rounded-full text-[10px] font-black uppercase tracking-widest text-blue-600 dark:text-blue-400">
+                                <div className="inline-flex items-center gap-2 px-3 py-1 bg-blue-100 dark:bg-blue-900/30 rounded-full text-xs font-black uppercase tracking-widest text-blue-600 dark:text-blue-400">
                                     <Activity size={12} /> Functional Harmony
                                 </div>
                                 <h2 className="text-5xl font-black text-slate-900 dark:text-white tracking-tighter leading-none">
@@ -221,7 +221,7 @@ export default function OrthognathicSurgeryRefactored() {
                                     </div>
                                     <h3 className="text-3xl font-black text-slate-900 dark:text-white mb-6 uppercase tracking-tight italic">The Golden Ratio</h3>
                                     <p className="text-lg text-slate-500 italic">&quot;We don&apos;t &apos;move&apos; bones arbitrarily. We calculate the exact millimetric shift required to align your profile with the phi ratio: 1.618.&quot;</p>
-                                    <div className="mt-8 text-[10px] font-black text-blue-600 tracking-widest uppercase">— Dr. Dhivakaran</div>
+                                    <div className="mt-8 text-xs font-black text-blue-600 tracking-widest uppercase">— Dr. Dhivakaran</div>
                                 </div>
                             </div>
                         </div>
@@ -271,7 +271,7 @@ export default function OrthognathicSurgeryRefactored() {
                                 { title: "Distraction Osteogenesis", desc: "Slowly 'growing' bone to correct severe congenital facial asymmetries.", tag: "BONE REGEN" }
                             ].map((item, i) => (
                                 <div key={i} className="group p-10 ios-glass rounded-[3rem] border border-white/5 bg-white/5 flex flex-col md:flex-row gap-12 items-center hover:bg-blue-600/20 transition-all duration-500">
-                                    <div className="text-[10px] font-black tracking-[0.3em] text-blue-500 border border-blue-500/30 px-4 py-2 rounded-full uppercase shrink-0">{item.tag}</div>
+                                    <div className="text-xs font-black tracking-[0.3em] text-blue-500 border border-blue-500/30 px-4 py-2 rounded-full uppercase shrink-0">{item.tag}</div>
                                     <div className="flex-1">
                                         <h4 className="text-3xl font-black tracking-tighter mb-2 group-hover:text-blue-100 italic transition-colors italic uppercase">{item.title}</h4>
                                         <p className="text-slate-400 group-hover:text-white transition-colors">{item.desc}</p>
@@ -293,7 +293,7 @@ export default function OrthognathicSurgeryRefactored() {
                                 <Image src="/assets/images/treatments/orthognathic-hyderabad.webp" alt="Orthognathic Recovery" fill className="object-cover brightness-75" />
                                 <div className="absolute inset-0 bg-gradient-to-t from-slate-900/80 to-transparent" />
                                 <div className="absolute bottom-12 left-12 right-12 space-y-4">
-                                    <div className="text-[10px] font-black uppercase tracking-widest text-blue-400">Post-Op Blueprint</div>
+                                    <div className="text-xs font-black uppercase tracking-widest text-blue-400">Post-Op Blueprint</div>
                                     <h3 className="text-4xl font-black text-white italic tracking-tighter italic uppercase">The Healing Phase.</h3>
                                 </div>
                             </div>
@@ -379,7 +379,7 @@ export default function OrthognathicSurgeryRefactored() {
                                 Clinic Direct Line
                             </a>
                         </div>
-                        <p className="mt-12 text-slate-500 font-black text-[10px] uppercase tracking-[0.3em]">
+                        <p className="mt-12 text-slate-500 font-black text-xs uppercase tracking-[0.3em]">
                             Citations: AAOMS White Paper | Journal of Oral & Maxillofacial Surgery (2024)
                         </p>
                     </RevealOnScroll>

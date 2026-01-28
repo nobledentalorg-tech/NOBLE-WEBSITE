@@ -48,7 +48,7 @@ export default function EmergencyTraumaRefactored() {
             <style>{customStyles}</style>
 
             {/* --- EMERGENCY HOTLINE --- */}
-            <div className="hotline-banner py-3 px-6 text-center text-white text-[10px] font-black uppercase tracking-[0.3em] sticky top-20 z-[60] shadow-xl">
+            <div className="hotline-banner py-3 px-6 text-center text-white text-xs font-black uppercase tracking-[0.3em] sticky top-20 z-[60] shadow-xl">
                 Dental Emergency? Call <a href="tel:+918610425342" className="underline decoration-2 underline-offset-4">+91 86104 25342</a> Immediately
             </div>
 
@@ -62,7 +62,7 @@ export default function EmergencyTraumaRefactored() {
                 <div className="max-w-7xl mx-auto px-6 relative z-10 grid lg:grid-cols-2 gap-12 items-center">
                     <RevealOnScroll>
                         <div className="space-y-8 text-center lg:text-left">
-                            <div className="inline-flex items-center gap-2 px-3 py-1 bg-red-50 dark:bg-red-900/30 rounded-full text-[10px] font-black uppercase tracking-widest text-red-600 dark:text-red-400 border border-red-100 dark:border-red-500/20">
+                            <div className="inline-flex items-center gap-2 px-3 py-1 bg-red-50 dark:bg-red-900/30 rounded-full text-xs font-black uppercase tracking-widest text-red-600 dark:text-red-400 border border-red-100 dark:border-red-500/20">
                                 <Siren size={12} className="animate-pulse" /> The Golden Hour
                             </div>
                             <h1 className="text-6xl md:text-8xl font-black text-slate-900 dark:text-white leading-[0.9] tracking-tighter uppercase">
@@ -103,7 +103,7 @@ export default function EmergencyTraumaRefactored() {
                                     </div>
                                     <div>
                                         <div className="text-sm font-black text-slate-900 dark:text-white uppercase tracking-tighter">60-Minute Window</div>
-                                        <div className="text-[10px] uppercase font-bold text-slate-400 tracking-widest">To Save Knocked-Out Tooth</div>
+                                        <div className="text-xs uppercase font-bold text-slate-400 tracking-widest">To Save Knocked-Out Tooth</div>
                                     </div>
                                 </div>
                             </div>
@@ -117,7 +117,7 @@ export default function EmergencyTraumaRefactored() {
                 <div className="max-w-7xl mx-auto px-6">
                     <div className="text-center mb-16 space-y-4">
                         <h2 className="text-4xl font-black text-slate-900 dark:text-white uppercase tracking-tighter italic">Emergency Triage Guide</h2>
-                        <p className="text-slate-500 font-bold uppercase tracking-[0.2em] text-[10px]">What to do right now.</p>
+                        <p className="text-slate-500 font-bold uppercase tracking-[0.2em] text-xs">What to do right now.</p>
                     </div>
 
                     <div className="grid md:grid-cols-3 gap-6">
@@ -146,7 +146,7 @@ export default function EmergencyTraumaRefactored() {
                                     <div className="w-14 h-14 bg-red-600 rounded-[1.5rem] flex items-center justify-center text-white shadow-xl shadow-red-500/20">
                                         <item.icon size={28} />
                                     </div>
-                                    <div className="px-3 py-1 bg-red-100 dark:bg-red-900/30 rounded-full text-[10px] font-black uppercase tracking-widest text-red-600 dark:text-red-400">
+                                    <div className="px-3 py-1 bg-red-100 dark:bg-red-900/30 rounded-full text-xs font-black uppercase tracking-widest text-red-600 dark:text-red-400">
                                         {item.action}
                                     </div>
                                 </div>
@@ -192,7 +192,7 @@ export default function EmergencyTraumaRefactored() {
                         </div>
                         <h3 className="text-3xl font-black text-white mb-6 uppercase tracking-tight italic">Zero Wait Policy</h3>
                         <p className="text-lg text-slate-400 italic">&quot;Dental emergencies don&apos;t have business hours. If you are experiencing acute trauma or uncontrolled swelling, you skip the queue. Your health is the only priority.&quot;</p>
-                        <div className="mt-8 text-[10px] font-black text-red-500 tracking-widest uppercase">— Dr. Dhivakaran</div>
+                        <div className="mt-8 text-xs font-black text-red-500 tracking-widest uppercase">— Dr. Dhivakaran</div>
                     </div>
                 </div>
             </section>
@@ -247,7 +247,7 @@ export default function EmergencyTraumaRefactored() {
                                 <Phone size={24} fill="currentColor" /> Call Hotline Now
                             </a>
                         </div>
-                        <p className="mt-12 text-red-200 font-black text-[10px] uppercase tracking-[0.3em]">
+                        <p className="mt-12 text-red-200 font-black text-xs uppercase tracking-[0.3em]">
                             24/7 Support for Trauma & Acute Facial Swelling
                         </p>
                     </RevealOnScroll>

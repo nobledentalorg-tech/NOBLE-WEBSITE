@@ -96,7 +96,7 @@ export default function CrownsBridgesRefactored() {
                 <div className="max-w-7xl mx-auto px-6 relative z-10 grid lg:grid-cols-2 gap-12 items-center">
                     <RevealOnScroll>
                         <div className="space-y-8">
-                            <div className="inline-flex items-center gap-2 px-3 py-1 bg-amber-50 dark:bg-amber-900/30 rounded-full text-[10px] font-black uppercase tracking-widest text-amber-600 dark:text-amber-400 border border-amber-100 dark:border-amber-500/20">
+                            <div className="inline-flex items-center gap-2 px-3 py-1 bg-amber-50 dark:bg-amber-900/30 rounded-full text-xs font-black uppercase tracking-widest text-amber-600 dark:text-amber-400 border border-amber-100 dark:border-amber-500/20">
                                 <Crown size={12} /> Zirconia Excellence v4.2
                             </div>
                             <h1 className="text-6xl md:text-8xl font-black text-slate-900 dark:text-white leading-[0.9] tracking-tighter">
@@ -112,7 +112,7 @@ export default function CrownsBridgesRefactored() {
                                     <Calendar size={18} /> Book Shade Analysis
                                 </button>
                                 <div className="flex items-center gap-4 px-6 border-l border-slate-200 dark:border-white/10">
-                                    <div className="text-[10px] uppercase font-black text-slate-400 tracking-widest leading-none">
+                                    <div className="text-xs uppercase font-black text-slate-400 tracking-widest leading-none">
                                         Digital Lab <br /> 48-Hour Delivery
                                     </div>
                                     <div className="w-12 h-12 rounded-full bg-blue-50 dark:bg-blue-900/30 flex items-center justify-center text-blue-600">
@@ -142,7 +142,7 @@ export default function CrownsBridgesRefactored() {
                                     </div>
                                     <div>
                                         <div className="text-sm font-black text-slate-900 dark:text-white">15-Year Warranty</div>
-                                        <div className="text-[10px] uppercase font-bold text-slate-400">Biological Integration</div>
+                                        <div className="text-xs uppercase font-bold text-slate-400">Biological Integration</div>
                                     </div>
                                 </div>
                             </div>
@@ -165,7 +165,7 @@ export default function CrownsBridgesRefactored() {
                         <a
                             key={tab.id}
                             href={`#${tab.id}`}
-                            className={`text-[10px] font-black uppercase tracking-[0.2em] whitespace-nowrap transition-all duration-300 px-4 py-2 rounded-full ${activeTab === tab.id
+                            className={`text-xs font-black uppercase tracking-[0.2em] whitespace-nowrap transition-all duration-300 px-4 py-2 rounded-full ${activeTab === tab.id
                                 ? 'bg-blue-600 text-white'
                                 : 'text-slate-400 hover:text-slate-900 dark:hover:text-white'
                                 }`}
@@ -182,7 +182,7 @@ export default function CrownsBridgesRefactored() {
                     <RevealOnScroll>
                         <div className="grid lg:grid-cols-2 gap-20 items-center">
                             <div className="space-y-12">
-                                <div className="inline-flex items-center gap-2 px-3 py-1 bg-red-100 dark:bg-red-900/30 rounded-full text-[10px] font-black uppercase tracking-widest text-red-600 dark:text-red-400">
+                                <div className="inline-flex items-center gap-2 px-3 py-1 bg-red-100 dark:bg-red-900/30 rounded-full text-xs font-black uppercase tracking-widest text-red-600 dark:text-red-400">
                                     <AlertCircle size={12} /> The &quot;Noble Truth&quot;
                                 </div>
                                 <h2 className="text-5xl font-black text-slate-900 dark:text-white tracking-tighter leading-none">
@@ -267,7 +267,7 @@ export default function CrownsBridgesRefactored() {
                                 />
                                 <div className="absolute inset-0 bg-blue-900/40 mix-blend-multiply opacity-0 group-hover:opacity-100 transition-opacity" />
                                 <div className="absolute bottom-8 left-8 right-8 p-6 ios-glass rounded-3xl">
-                                    <div className="text-[10px] font-black uppercase tracking-widest text-blue-600 mb-2 font-black">PRECISION METRICS</div>
+                                    <div className="text-xs font-black uppercase tracking-widest text-blue-600 mb-2 font-black">PRECISION METRICS</div>
                                     <div className="text-sm font-bold text-slate-900 dark:text-white">Margin Gap: &lt;5 Microns <br /> (Seals out bacteria 100%)</div>
                                 </div>
                             </div>
@@ -293,10 +293,10 @@ export default function CrownsBridgesRefactored() {
                                 <table className="w-full text-left border-collapse">
                                     <thead>
                                         <tr className="bg-slate-900 text-white">
-                                            <th className="px-10 py-8 text-[10px] font-black uppercase tracking-widest">Material Type</th>
-                                            <th className="px-10 py-8 text-[10px] font-black uppercase tracking-widest">Strength (MPa)</th>
-                                            <th className="px-10 py-8 text-[10px] font-black uppercase tracking-widest">Best For</th>
-                                            <th className="px-10 py-8 text-[10px] font-black uppercase tracking-widest">Noble Choice</th>
+                                            <th className="px-10 py-8 text-xs font-black uppercase tracking-widest">Material Type</th>
+                                            <th className="px-10 py-8 text-xs font-black uppercase tracking-widest">Strength (MPa)</th>
+                                            <th className="px-10 py-8 text-xs font-black uppercase tracking-widest">Best For</th>
+                                            <th className="px-10 py-8 text-xs font-black uppercase tracking-widest">Noble Choice</th>
                                         </tr>
                                     </thead>
                                     <tbody className="divide-y divide-slate-200 dark:divide-white/5">
@@ -317,7 +317,7 @@ export default function CrownsBridgesRefactored() {
                                                     <p className="text-sm text-slate-500 dark:text-slate-400 font-medium">{row.best}</p>
                                                 </td>
                                                 <td className="px-10 py-8">
-                                                    <div className={`text-[10px] font-black px-4 py-2 rounded-full inline-block ${row.rating > 4 ? 'bg-blue-600 text-white' : 'bg-red-500 text-white'}`}>
+                                                    <div className={`text-xs font-black px-4 py-2 rounded-full inline-block ${row.rating > 4 ? 'bg-blue-600 text-white' : 'bg-red-500 text-white'}`}>
                                                         {row.noble}
                                                     </div>
                                                 </td>
@@ -349,7 +349,7 @@ export default function CrownsBridgesRefactored() {
                             </div>
 
                             <div className="space-y-8">
-                                <div className="inline-flex items-center gap-2 px-3 py-1 bg-teal-50 dark:bg-teal-900/20 rounded-full text-[10px] font-black uppercase tracking-widest text-teal-600 dark:text-teal-400">
+                                <div className="inline-flex items-center gap-2 px-3 py-1 bg-teal-50 dark:bg-teal-900/20 rounded-full text-xs font-black uppercase tracking-widest text-teal-600 dark:text-teal-400">
                                     <Stethoscope size={12} /> The Medical Protocol
                                 </div>
                                 <h2 className="text-4xl font-black text-slate-900 dark:text-white tracking-tighter leading-none">
@@ -388,7 +388,7 @@ export default function CrownsBridgesRefactored() {
                 <div className="max-w-7xl mx-auto px-6 relative z-10">
                     <RevealOnScroll>
                         <div className="text-center mb-20">
-                            <div className="inline-flex items-center gap-2 px-3 py-1 bg-white/10 rounded-full text-[10px] font-black uppercase tracking-widest text-blue-400 mb-6 border border-white/10">
+                            <div className="inline-flex items-center gap-2 px-3 py-1 bg-white/10 rounded-full text-xs font-black uppercase tracking-widest text-blue-400 mb-6 border border-white/10">
                                 <Award size={12} /> Noble Standard Menu
                             </div>
                             <h2 className="text-5xl md:text-7xl font-black tracking-tighter mb-4">Transparent Fees.</h2>
@@ -415,7 +415,7 @@ export default function CrownsBridgesRefactored() {
                                     </div>
                                 </div>
                             </div>
-                            <p className="mt-8 text-center text-[10px] text-slate-500 font-bold uppercase tracking-widest">
+                            <p className="mt-8 text-center text-xs text-slate-500 font-bold uppercase tracking-widest">
                                 * Prices include Digital Scans & Shade Selection. Zero hidden lab charges.
                             </p>
                         </div>
@@ -474,7 +474,7 @@ export default function CrownsBridgesRefactored() {
                                 Clinic Direct Line
                             </a>
                         </div>
-                        <p className="mt-12 text-slate-500 font-black text-[10px] uppercase tracking-[0.3em]">
+                        <p className="mt-12 text-slate-500 font-black text-xs uppercase tracking-[0.3em]">
                             Citations: GPT-9 Prosthodontic Glossary | J. Prosthet. Dent (2023)
                         </p>
                     </RevealOnScroll>

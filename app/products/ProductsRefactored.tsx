@@ -150,12 +150,12 @@ export default function ProductsRefactored() {
             <header className="mb-12 flex justify-between items-end">
                <div>
                   <h1 className="text-4xl font-black text-slate-900 dark:text-white tracking-tighter">Pharmacy Kit.</h1>
-                  <p className="text-[10px] font-black text-blue-600 uppercase tracking-[0.4em] mt-1">Group Pharma Official Link</p>
+                  <p className="text-xs font-black text-blue-600 uppercase tracking-[0.4em] mt-1">Group Pharma Official Link</p>
                </div>
                <div className="flex gap-4">
                   <button onClick={() => setIsCartOpen(true)} className="relative p-4 bg-white dark:bg-white/5 rounded-2xl shadow-sm border border-slate-200 dark:border-white/10 text-slate-900 dark:text-white hover:bg-slate-50 transition-colors">
                      <ShoppingBag size={24} />
-                     {cart.length > 0 && <span className="absolute -top-1 -right-1 w-6 h-6 bg-blue-600 text-white rounded-full flex items-center justify-center text-[10px] font-bold animate-pulse">{cart.length}</span>}
+                     {cart.length > 0 && <span className="absolute -top-1 -right-1 w-6 h-6 bg-blue-600 text-white rounded-full flex items-center justify-center text-xs font-bold animate-pulse">{cart.length}</span>}
                   </button>
                </div>
             </header>
@@ -171,7 +171,7 @@ export default function ProductsRefactored() {
                </div>
                <div className="flex overflow-x-auto gap-2 no-scrollbar">
                   {['All', 'Dental', 'Wellness', 'Preventive', 'Ortho'].map(cat => (
-                     <button key={cat} onClick={() => setActiveCategory(cat)} className={`px-8 py-3 rounded-full text-[10px] font-black uppercase tracking-widest border transition-all whitespace-nowrap ${activeCategory === cat ? 'bg-blue-600 text-white border-blue-600 shadow-xl' : 'bg-white dark:bg-white/5 text-slate-500 border-slate-200 dark:border-white/10 hover:border-blue-500'}`}>{cat}</button>
+                     <button key={cat} onClick={() => setActiveCategory(cat)} className={`px-8 py-3 rounded-full text-xs font-black uppercase tracking-widest border transition-all whitespace-nowrap ${activeCategory === cat ? 'bg-blue-600 text-white border-blue-600 shadow-xl' : 'bg-white dark:bg-white/5 text-slate-500 border-slate-200 dark:border-white/10 hover:border-blue-500'}`}>{cat}</button>
                   ))}
                </div>
             </div>
@@ -196,14 +196,14 @@ export default function ProductsRefactored() {
                         </div>
 
                         <div className="p-8 pt-6 flex flex-col flex-1">
-                           <span className="text-[10px] font-black text-blue-600 dark:text-cyan-400 uppercase tracking-widest mb-1">{product.brand}</span>
+                           <span className="text-xs font-black text-blue-600 dark:text-cyan-400 uppercase tracking-widest mb-1">{product.brand}</span>
                            <h2 className="text-xl font-bold text-slate-900 dark:text-white mb-2 leading-tight">{product.name}</h2>
                            <p className="text-xs text-slate-500 dark:text-slate-400 mb-8 line-clamp-2">{product.subText}</p>
 
                            <div className="mt-auto flex items-center justify-between">
                               <div>
                                  <div className="text-2xl font-black dark:text-white">₹{product.clinicPrice}</div>
-                                 <p className="text-[9px] font-bold text-green-500 uppercase">Save ₹{product.saving}</p>
+                                 <p className="text-xs font-bold text-green-500 uppercase">Save ₹{product.saving}</p>
                               </div>
                               <div className="flex gap-2">
                                  <button onClick={(e) => { e.stopPropagation(); setSelectedProduct(product); }} className="w-10 h-10 bg-slate-100 dark:bg-white/5 text-slate-600 dark:text-white rounded-xl flex items-center justify-center transition-all hover:bg-slate-200">
@@ -253,8 +253,8 @@ export default function ProductsRefactored() {
 
                      <header className="mb-12">
                         <div className="flex flex-wrap gap-2 mb-6">
-                           <span className="px-4 py-1.5 bg-blue-600 text-white rounded-full text-[10px] font-black uppercase tracking-widest">{selectedProduct.category}</span>
-                           <span className="px-4 py-1.5 bg-slate-100 dark:bg-white/5 text-slate-600 dark:text-slate-400 rounded-full text-[10px] font-black uppercase tracking-widest">{selectedProduct.brand}</span>
+                           <span className="px-4 py-1.5 bg-blue-600 text-white rounded-full text-xs font-black uppercase tracking-widest">{selectedProduct.category}</span>
+                           <span className="px-4 py-1.5 bg-slate-100 dark:bg-white/5 text-slate-600 dark:text-slate-400 rounded-full text-xs font-black uppercase tracking-widest">{selectedProduct.brand}</span>
                         </div>
                         <h2 className="text-4xl sm:text-5xl font-black text-slate-900 dark:text-white leading-[0.9] tracking-tighter mb-4">{selectedProduct.name}</h2>
                         <p className="text-lg text-slate-500 dark:text-slate-400 font-medium italic">{selectedProduct.subText}</p>
@@ -262,7 +262,7 @@ export default function ProductsRefactored() {
 
                      <div className="grid md:grid-cols-2 gap-10 mb-12">
                         <section>
-                           <h4 className="text-[10px] font-black uppercase text-blue-600 dark:text-cyan-400 tracking-[0.2em] mb-4 flex items-center gap-2"><HelpCircle size={14} /> Clinical Indications</h4>
+                           <h4 className="text-xs font-black uppercase text-blue-600 dark:text-cyan-400 tracking-[0.2em] mb-4 flex items-center gap-2"><HelpCircle size={14} /> Clinical Indications</h4>
                            <ul className="space-y-3">
                               {selectedProduct.indications.map((ind, i) => (
                                  <li key={i} className="flex items-center gap-3 text-sm font-bold text-slate-700 dark:text-slate-200">
@@ -272,7 +272,7 @@ export default function ProductsRefactored() {
                            </ul>
                         </section>
                         <section>
-                           <h4 className="text-[10px] font-black uppercase text-blue-600 dark:text-cyan-400 tracking-[0.2em] mb-4 flex items-center gap-2"><ListChecks size={14} /> How to Use</h4>
+                           <h4 className="text-xs font-black uppercase text-blue-600 dark:text-cyan-400 tracking-[0.2em] mb-4 flex items-center gap-2"><ListChecks size={14} /> How to Use</h4>
                            <ul className="space-y-3">
                               {selectedProduct.usage.map((step, i) => (
                                  <li key={i} className="flex items-start gap-3 text-sm font-medium text-slate-600 dark:text-slate-400 leading-snug">
@@ -285,14 +285,14 @@ export default function ProductsRefactored() {
 
                      {/* Actions */}
                      <div className="flex flex-col sm:flex-row gap-4">
-                        <button onClick={() => { addToCart(selectedProduct); setSelectedProduct(null); }} className="flex-[2] py-5 bg-blue-600 text-white rounded-2xl font-black uppercase tracking-widest text-[11px] shadow-2xl shadow-blue-500/40 hover:bg-blue-700 active:scale-95 transition-all flex items-center justify-center gap-3">
+                        <button onClick={() => { addToCart(selectedProduct); setSelectedProduct(null); }} className="flex-[2] py-5 bg-blue-600 text-white rounded-2xl font-black uppercase tracking-widest text-xs shadow-2xl shadow-blue-500/40 hover:bg-blue-700 active:scale-95 transition-all flex items-center justify-center gap-3">
                            Add to Prescription Cart <ArrowRight size={18} />
                         </button>
-                        <button onClick={() => setIsBookingModalOpen(true)} className="flex-1 py-5 bg-slate-100 dark:bg-white/5 text-slate-900 dark:text-white rounded-2xl font-black uppercase tracking-widest text-[11px] hover:bg-slate-200 dark:hover:bg-white/10 transition-all flex items-center justify-center gap-3">
+                        <button onClick={() => setIsBookingModalOpen(true)} className="flex-1 py-5 bg-slate-100 dark:bg-white/5 text-slate-900 dark:text-white rounded-2xl font-black uppercase tracking-widest text-xs hover:bg-slate-200 dark:hover:bg-white/10 transition-all flex items-center justify-center gap-3">
                            <Phone size={16} /> Free Tele-Consult
                         </button>
                      </div>
-                     <p className="mt-8 text-center text-[10px] font-bold uppercase text-slate-400 tracking-[0.3em]">Official Group Pharma Clinical Product</p>
+                     <p className="mt-8 text-center text-xs font-bold uppercase text-slate-400 tracking-[0.3em]">Official Group Pharma Clinical Product</p>
                   </div>
                </div>
             </div>
@@ -306,7 +306,7 @@ export default function ProductsRefactored() {
                   <header className="p-8 border-b border-slate-100 dark:border-white/5 flex justify-between items-center bg-slate-50 dark:bg-black/20">
                      <div>
                         <h3 className="text-2xl font-black text-slate-900 dark:text-white tracking-tight">Prescription Cart.</h3>
-                        <p className="text-[10px] font-bold text-slate-400 uppercase tracking-widest mt-1">{cart.length} Diagnostic Items</p>
+                        <p className="text-xs font-bold text-slate-400 uppercase tracking-widest mt-1">{cart.length} Diagnostic Items</p>
                      </div>
                      <button onClick={() => setIsCartOpen(false)} className="p-3 text-slate-400 hover:text-slate-900 dark:hover:text-white transition-colors"><X size={24} /></button>
                   </header>
@@ -326,7 +326,7 @@ export default function ProductsRefactored() {
                               </div>
                               <div className="flex-1">
                                  <h4 className="font-bold text-slate-900 dark:text-white text-sm line-clamp-1">{item.name}</h4>
-                                 <p className="text-[10px] text-slate-400 uppercase tracking-widest mb-3">{item.brand}</p>
+                                 <p className="text-xs text-slate-400 uppercase tracking-widest mb-3">{item.brand}</p>
                                  <div className="flex items-center justify-between">
                                     <div className="flex items-center bg-white dark:bg-black/40 rounded-lg border border-slate-200 dark:border-white/10 px-2 py-1 gap-4">
                                        <button onClick={() => updateQuantity(item.id, -1)} className="text-slate-400 hover:text-blue-600 transition-colors"><Minus size={14} /></button>
@@ -349,10 +349,10 @@ export default function ProductsRefactored() {
                            <span className="text-3xl font-black text-slate-900 dark:text-white tracking-tighter">₹{totalCart}</span>
                         </div>
                         <div className="space-y-4">
-                           <button className="w-full py-5 bg-blue-600 text-white rounded-2xl font-black uppercase tracking-widest text-[11px] shadow-2xl shadow-blue-500/40 hover:scale-[1.02] active:scale-95 transition-all">
+                           <button className="w-full py-5 bg-blue-600 text-white rounded-2xl font-black uppercase tracking-widest text-xs shadow-2xl shadow-blue-500/40 hover:scale-[1.02] active:scale-95 transition-all">
                               Finalize Prescription Order
                            </button>
-                           <p className="text-[9px] text-center text-slate-400 font-bold uppercase tracking-widest flex items-center justify-center gap-2">
+                           <p className="text-xs text-center text-slate-400 font-bold uppercase tracking-widest flex items-center justify-center gap-2">
                               <Lock size={10} /> Secure Checkout Protected by Healthflo OS
                            </p>
                         </div>

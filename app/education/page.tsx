@@ -81,7 +81,7 @@ export default function EducationPage() {
                                         fill
                                         className="object-cover group-hover:scale-105 transition-transform duration-700"
                                     />
-                                    <div className="absolute top-4 left-4 bg-black/60 backdrop-blur-md text-white px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider border border-white/20">
+                                    <div className="absolute top-4 left-4 bg-black/60 backdrop-blur-md text-white px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider border border-white/20">
                                         {article.category}
                                     </div>
                                 </div>

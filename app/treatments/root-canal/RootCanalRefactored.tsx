@@ -189,7 +189,7 @@ export default function RootCanalRefactored() {
                {/* Left: Content */}
                <div className="space-y-8 order-2 lg:order-1">
                   <RevealOnScroll>
-                     <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-slate-200/50 dark:bg-white/10 backdrop-blur-md text-purple-600 dark:text-purple-400 font-bold text-[11px] uppercase tracking-[0.2em]">
+                     <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-slate-200/50 dark:bg-white/10 backdrop-blur-md text-purple-600 dark:text-purple-400 font-bold text-xs uppercase tracking-[0.2em]">
                         <Activity size={12} /> Painless Root Canal Protocol
                      </div>
                      <h1 className="text-5xl md:text-7xl font-black text-slate-900 dark:text-white leading-[0.9] tracking-tighter">
@@ -204,7 +204,7 @@ export default function RootCanalRefactored() {
                               <Image src="https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?auto=format&fit=crop&q=80&w=100" alt="Dr. Dhivakaran" fill className="object-cover" />
                            </div>
                            <div className="text-left">
-                              <div className="text-[10px] uppercase text-purple-600 dark:text-purple-400 font-bold tracking-wider">Reviewer</div>
+                              <div className="text-xs uppercase text-purple-600 dark:text-purple-400 font-bold tracking-wider">Reviewer</div>
                               <div className="text-xs font-bold text-slate-900 dark:text-white">Dr. Dhivakaran, CMD</div>
                            </div>
                         </Link>
@@ -235,7 +235,7 @@ export default function RootCanalRefactored() {
                         {/* THE TOOTH */}
                         <div className="relative w-64 h-full py-20 pointer-events-auto" onMouseMove={handleScrub} onTouchMove={handleScrub}>
                            <div className="absolute top-4 left-0 w-full text-center z-10 pointer-events-none">
-                              <p className="text-[10px] font-bold uppercase tracking-widest text-slate-400">Interactive Demo</p>
+                              <p className="text-xs font-bold uppercase tracking-widest text-slate-400">Interactive Demo</p>
                               <p className="text-xs font-semibold text-slate-900 dark:text-white mt-1">Rub to Disinfect</p>
                            </div>
 
@@ -268,7 +268,7 @@ export default function RootCanalRefactored() {
                         <div className="flex items-center justify-between mb-3">
                            <div className="flex items-center gap-2">
                               <span className={`w-2 h-2 rounded-full ${isClean ? 'bg-green-500' : 'bg-red-500 animate-pulse'}`}></span>
-                              <span className="text-[10px] font-bold uppercase tracking-wide text-slate-500 dark:text-slate-400">
+                              <span className="text-xs font-bold uppercase tracking-wide text-slate-500 dark:text-slate-400">
                                  {isClean ? 'Sterilized' : 'Infection Detected'}
                               </span>
                            </div>
@@ -296,7 +296,7 @@ export default function RootCanalRefactored() {
                   <a
                      key={tab.id}
                      href={`#${tab.id}`}
-                     className={`text-[10px] font-black uppercase tracking-[0.2em] whitespace-nowrap transition-all duration-300 px-4 py-2 rounded-full ${activeTab === 'insight' // Temp fix, need state for this page too
+                     className={`text-xs font-black uppercase tracking-[0.2em] whitespace-nowrap transition-all duration-300 px-4 py-2 rounded-full ${activeTab === 'insight' // Temp fix, need state for this page too
                         ? 'text-slate-400 hover:text-slate-900 dark:hover:text-white' // We'll need to hook up activeTab properly later, for now just static styling
                         : 'text-slate-400 hover:text-slate-900 dark:hover:text-white'
                         }`}
@@ -322,7 +322,7 @@ export default function RootCanalRefactored() {
                         />
                      </div>
                      <div className="absolute bottom-0 left-0 w-full p-8 md:p-12 z-20">
-                        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-500 text-white font-bold text-[10px] uppercase tracking-widest mb-4">
+                        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-500 text-white font-bold text-xs uppercase tracking-widest mb-4">
                            Editor&apos;s choice
                         </div>
                         <h2 className="text-4xl md:text-5xl font-black text-white mb-6 leading-tight tracking-tight">
@@ -338,7 +338,7 @@ export default function RootCanalRefactored() {
                               </div>
                               <div>
                                  <p className="text-white font-bold text-sm">Dr. Dhivakaran, CMD</p>
-                                 <p className="text-white/60 text-[10px] uppercase tracking-widest font-black">Best Dentist in Nallagandla</p>
+                                 <p className="text-white/60 text-xs uppercase tracking-widest font-black">Best Dentist in Nallagandla</p>
                               </div>
                            </div>
                         </div>
@@ -429,7 +429,7 @@ export default function RootCanalRefactored() {
                            <Layers size={24} />
                         </div>
                         <h4 className="font-bold text-slate-900 dark:text-white mb-2">Cracked Teeth</h4>
-                        <p className="text-[10px] text-slate-500 dark:text-slate-400 leading-relaxed">Micro-cracks allowing bacterial ingress into the pulp chamber.</p>
+                        <p className="text-xs text-slate-500 dark:text-slate-400 leading-relaxed">Micro-cracks allowing bacterial ingress into the pulp chamber.</p>
                      </div>
 
                      {/* Small Widget: Retreatment */}
@@ -438,7 +438,7 @@ export default function RootCanalRefactored() {
                            <HeartPulse size={24} />
                         </div>
                         <h4 className="font-bold text-slate-900 dark:text-white mb-2">Retreatment</h4>
-                        <p className="text-[10px] text-slate-500 dark:text-slate-400 leading-relaxed">Fixing failed root canals from other clinics where canals weren&apos;t fully cleaned.</p>
+                        <p className="text-xs text-slate-500 dark:text-slate-400 leading-relaxed">Fixing failed root canals from other clinics where canals weren&apos;t fully cleaned.</p>
                      </div>
 
                   </div>
@@ -469,7 +469,7 @@ export default function RootCanalRefactored() {
                               <div className="flex-1">
                                  <div className="flex justify-between items-center mb-1">
                                     <span className="font-bold text-xs text-slate-900 dark:text-white">Pain Alert</span>
-                                    <span className="text-[10px] text-slate-400">Now</span>
+                                    <span className="text-xs text-slate-400">Now</span>
                                  </div>
                                  <h4 className="font-bold text-sm text-slate-900 dark:text-white">Nocturnal Pain</h4>
                                  <p className="text-xs text-slate-500 leading-snug">Waking up at night with throbbing pain? This is a classic sign of pulpitis.</p>
@@ -484,7 +484,7 @@ export default function RootCanalRefactored() {
                               <div className="flex-1">
                                  <div className="flex justify-between items-center mb-1">
                                     <span className="font-bold text-xs text-slate-900 dark:text-white">Sensitivity</span>
-                                    <span className="text-[10px] text-slate-400">2m ago</span>
+                                    <span className="text-xs text-slate-400">2m ago</span>
                                  </div>
                                  <h4 className="font-bold text-sm text-slate-900 dark:text-white">Lingering Cold/Hot</h4>
                                  <p className="text-xs text-slate-500 leading-snug">Pain that lingers for 10+ seconds after drinking hot coffee or cold water.</p>
@@ -499,7 +499,7 @@ export default function RootCanalRefactored() {
                               <div className="flex-1">
                                  <div className="flex justify-between items-center mb-1">
                                     <span className="font-bold text-xs text-slate-900 dark:text-white">Referred Pain</span>
-                                    <span className="text-[10px] text-slate-400">1h ago</span>
+                                    <span className="text-xs text-slate-400">1h ago</span>
                                  </div>
                                  <h4 className="font-bold text-sm text-slate-900 dark:text-white">Radiating Ache</h4>
                                  <p className="text-xs text-slate-500 leading-snug">Pain spreading to your ear, jaw, or head.</p>
@@ -591,9 +591,9 @@ export default function RootCanalRefactored() {
                            </svg>
 
                            {/* Legends floating */}
-                           <div className="absolute -right-12 top-0 bg-white/10 backdrop-blur-md px-3 py-1 rounded-full text-[10px] font-bold text-red-400">Diabetes</div>
-                           <div className="absolute -left-12 bottom-12 bg-white/10 backdrop-blur-md px-3 py-1 rounded-full text-[10px] font-bold text-emerald-400">Hypertension</div>
-                           <div className="absolute -right-4 bottom-0 bg-white/10 backdrop-blur-md px-3 py-1 rounded-full text-[10px] font-bold text-blue-400">Cardiac</div>
+                           <div className="absolute -right-12 top-0 bg-white/10 backdrop-blur-md px-3 py-1 rounded-full text-xs font-bold text-red-400">Diabetes</div>
+                           <div className="absolute -left-12 bottom-12 bg-white/10 backdrop-blur-md px-3 py-1 rounded-full text-xs font-bold text-emerald-400">Hypertension</div>
+                           <div className="absolute -right-4 bottom-0 bg-white/10 backdrop-blur-md px-3 py-1 rounded-full text-xs font-bold text-blue-400">Cardiac</div>
                         </div>
                      </div>
                   </div>
@@ -654,16 +654,16 @@ export default function RootCanalRefactored() {
                         <table className="w-full text-left">
                            <thead>
                               <tr className="border-b border-slate-200 dark:border-white/10">
-                                 <th className="pb-4 font-bold text-slate-400 text-[10px] uppercase tracking-widest">Protocol Type</th>
-                                 <th className="pb-4 font-bold text-slate-400 text-[10px] uppercase tracking-widest">When it&apos;s chosen</th>
-                                 <th className="pb-4 font-bold text-slate-400 text-[10px] uppercase tracking-widest">Noble Advantage</th>
+                                 <th className="pb-4 font-bold text-slate-400 text-xs uppercase tracking-widest">Protocol Type</th>
+                                 <th className="pb-4 font-bold text-slate-400 text-xs uppercase tracking-widest">When it&apos;s chosen</th>
+                                 <th className="pb-4 font-bold text-slate-400 text-xs uppercase tracking-widest">Noble Advantage</th>
                               </tr>
                            </thead>
                            <tbody className="divide-y divide-slate-100 dark:divide-white/5">
                               <tr>
                                  <td className="py-6">
                                     <p className="font-bold text-slate-900 dark:text-white">Single-Visit RCT</p>
-                                    <p className="text-[10px] font-bold text-emerald-500 uppercase tracking-wide">Vital Pulp</p>
+                                    <p className="text-xs font-bold text-emerald-500 uppercase tracking-wide">Vital Pulp</p>
                                  </td>
                                  <td className="py-6 text-sm text-slate-500 dark:text-slate-400">Irreversible pulpitis in vital teeth without peri-apical infection. Our **Endodontist in Nallagandla** performs this in 45 mins.</td>
                                  <td className="py-6 text-sm font-medium text-slate-900 dark:text-white">45-min precision using dedicated Endo-Motor and **Laser Root Canal Treatment** disinfection.</td>
@@ -671,7 +671,7 @@ export default function RootCanalRefactored() {
                               <tr>
                                  <td className="py-6">
                                     <p className="font-bold text-slate-900 dark:text-white">Multi-Visit RCT</p>
-                                    <p className="text-[10px] font-bold text-orange-500 uppercase tracking-wide">Pus/Abscess</p>
+                                    <p className="text-xs font-bold text-orange-500 uppercase tracking-wide">Pus/Abscess</p>
                                  </td>
                                  <td className="py-6 text-sm text-slate-500 dark:text-slate-400">Severely infected teeth, pus discharge, or failing old RCTs. Best managed by a specialist **Endodontist in Nallagandla**.</td>
                                  <td className="py-6 text-sm font-medium text-slate-900 dark:text-white">Inter-appointment Calcium Hydroxide medication with microscopic verification.</td>
@@ -688,7 +688,7 @@ export default function RootCanalRefactored() {
          <section id="pricing" className="py-24 bg-[#F2F2F7] dark:bg-[#000000] overflow-hidden">
             <div className="max-w-[1200px] mx-auto px-6 grid md:grid-cols-2 gap-16 items-start">
                <div>
-                  <div className="inline-flex items-center gap-2 px-3 py-1 bg-purple-100 dark:bg-purple-900/30 text-purple-600 rounded-full text-[10px] font-black uppercase tracking-widest mb-6 border border-purple-200">
+                  <div className="inline-flex items-center gap-2 px-3 py-1 bg-purple-100 dark:bg-purple-900/30 text-purple-600 rounded-full text-xs font-black uppercase tracking-widest mb-6 border border-purple-200">
                      Root Canal Cost in Hyderabad
                   </div>
                   <h2 className="text-5xl font-black text-slate-900 dark:text-white tracking-tight mb-6 italic uppercase">Transparent <br /> Investment.</h2>
@@ -753,7 +753,7 @@ export default function RootCanalRefactored() {
                      <Sparkles size={14} className="animate-pulse" />
                   </div>
                   <div className="text-left">
-                     <div className="text-[10px] font-bold uppercase tracking-widest text-slate-500 dark:text-slate-400">Not sure which plan?</div>
+                     <div className="text-xs font-bold uppercase tracking-widest text-slate-500 dark:text-slate-400">Not sure which plan?</div>
                      <div className="text-sm font-bold text-slate-900 dark:text-white group-hover:text-purple-600 transition-colors">Let Neo AI analyze your symptoms &rarr;</div>
                   </div>
                </Link>
@@ -805,7 +805,7 @@ export default function RootCanalRefactored() {
                      Call Noble Dental Care
                   </button>
                </div>
-               <p className="mt-8 text-[10px] text-slate-400 uppercase tracking-widest font-bold">Noble Dental Care Hyderabad | Your Neighborhood Expert</p>
+               <p className="mt-8 text-xs text-slate-400 uppercase tracking-widest font-bold">Noble Dental Care Hyderabad | Your Neighborhood Expert</p>
             </div>
          </div>
 

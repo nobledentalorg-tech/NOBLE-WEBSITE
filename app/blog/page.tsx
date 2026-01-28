@@ -127,7 +127,7 @@ export default async function BlogIndex() {
                                                     <div className="mb-2 p-3 rounded-full bg-blue-500/10 text-blue-500">
                                                         <FileText size={24} />
                                                     </div>
-                                                    <span className="text-[10px] font-bold uppercase tracking-widest">{post.category}</span>
+                                                    <span className="text-xs font-bold uppercase tracking-widest">{post.category}</span>
                                                 </div>
                                             )}
                                         </div>

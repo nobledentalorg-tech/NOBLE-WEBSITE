@@ -118,7 +118,7 @@ export default function ExtractionRefactored() {
                 <div className="max-w-7xl mx-auto px-6 relative z-10 grid lg:grid-cols-2 gap-12 items-center">
                     <RevealOnScroll>
                         <div className="space-y-8">
-                            <div className="inline-flex items-center gap-2 px-3 py-1 bg-blue-50 dark:bg-blue-900/30 rounded-full text-[10px] font-black uppercase tracking-widest text-blue-600 dark:text-blue-400 border border-blue-100 dark:border-blue-500/20">
+                            <div className="inline-flex items-center gap-2 px-3 py-1 bg-blue-50 dark:bg-blue-900/30 rounded-full text-xs font-black uppercase tracking-widest text-blue-600 dark:text-blue-400 border border-blue-100 dark:border-blue-500/20">
                                 <Shield size={12} /> Bone-Preserving Protocol v4.2
                             </div>
                             <h1 className="text-6xl md:text-8xl font-black text-slate-900 dark:text-white leading-[0.9] tracking-tighter">
@@ -134,7 +134,7 @@ export default function ExtractionRefactored() {
                                     <Calendar size={18} /> Book Painless Consultation
                                 </button>
                                 <div className="flex items-center gap-4 px-6 border-l border-slate-200 dark:border-white/10">
-                                    <div className="text-[10px] uppercase font-black text-slate-400 tracking-widest leading-none">
+                                    <div className="text-xs uppercase font-black text-slate-400 tracking-widest leading-none">
                                         94% Less <br /> Post-Op Swelling
                                     </div>
                                     <div className="w-12 h-12 rounded-full bg-blue-50 dark:bg-blue-900/30 flex items-center justify-center text-blue-600">
@@ -155,7 +155,7 @@ export default function ExtractionRefactored() {
                                     height={800}
                                     className="w-full h-auto object-cover hover:scale-105 transition-transform duration-1000 grayscale-[0.2] hover:grayscale-0"
                                 />
-                                <div className="absolute top-8 left-8 bg-blue-600 text-white text-[10px] font-black px-4 py-2 rounded-full shadow-xl">
+                                <div className="absolute top-8 left-8 bg-blue-600 text-white text-xs font-black px-4 py-2 rounded-full shadow-xl">
                                     MICROSURGICAL
                                 </div>
                             </div>
@@ -167,7 +167,7 @@ export default function ExtractionRefactored() {
                                     </div>
                                     <div>
                                         <div className="text-sm font-black text-slate-900 dark:text-white">Socket Recovery</div>
-                                        <div className="text-[10px] uppercase font-bold text-slate-400">Zero Bone Destruction</div>
+                                        <div className="text-xs uppercase font-bold text-slate-400">Zero Bone Destruction</div>
                                     </div>
                                 </div>
                             </div>
@@ -190,7 +190,7 @@ export default function ExtractionRefactored() {
                         <a
                             key={item.id}
                             href={`#${item.id}`}
-                            className={`text-[10px] font-black uppercase tracking-[0.2em] whitespace-nowrap transition-all duration-300 px-4 py-2 rounded-full ${activeSection === item.id
+                            className={`text-xs font-black uppercase tracking-[0.2em] whitespace-nowrap transition-all duration-300 px-4 py-2 rounded-full ${activeSection === item.id
                                 ? 'bg-blue-600 text-white'
                                 : 'text-slate-400 hover:text-slate-900 dark:hover:text-white'
                                 }`}
@@ -207,7 +207,7 @@ export default function ExtractionRefactored() {
                     <RevealOnScroll>
                         <div className="grid lg:grid-cols-2 gap-20 items-center">
                             <div className="ios-glass p-12 rounded-[3.5rem] bg-blue-50/50 dark:bg-blue-900/10">
-                                <div className="inline-flex items-center gap-2 px-3 py-1 bg-blue-100 dark:bg-blue-800/30 rounded-full text-[10px] font-black uppercase tracking-widest text-blue-600 dark:text-blue-400 mb-6">
+                                <div className="inline-flex items-center gap-2 px-3 py-1 bg-blue-100 dark:bg-blue-800/30 rounded-full text-xs font-black uppercase tracking-widest text-blue-600 dark:text-blue-400 mb-6">
                                     <Info size={12} /> Surgical Philosophy
                                 </div>
                                 <h2 className="text-4xl md:text-5xl font-black text-slate-900 dark:text-white mb-8 tracking-tighter leading-tight">
@@ -245,11 +245,11 @@ export default function ExtractionRefactored() {
                                 <div className="grid grid-cols-2 gap-4">
                                     <div className="p-6 bg-slate-50 dark:bg-white/5 rounded-3xl border border-slate-100 dark:border-white/10 text-center">
                                         <div className="text-2xl font-black text-blue-600 mb-1">94%</div>
-                                        <div className="text-[10px] uppercase font-bold text-slate-400">Less Swelling</div>
+                                        <div className="text-xs uppercase font-bold text-slate-400">Less Swelling</div>
                                     </div>
                                     <div className="p-6 bg-slate-50 dark:bg-white/5 rounded-3xl border border-slate-100 dark:border-white/10 text-center">
                                         <div className="text-2xl font-black text-blue-600 mb-1">50%</div>
-                                        <div className="text-[10px] uppercase font-bold text-slate-400">Faster Healing</div>
+                                        <div className="text-xs uppercase font-bold text-slate-400">Faster Healing</div>
                                     </div>
                                 </div>
                             </div>
@@ -263,7 +263,7 @@ export default function ExtractionRefactored() {
                 <div className="max-w-7xl mx-auto px-6">
                     <RevealOnScroll>
                         <div className="text-center mb-20 max-w-3xl mx-auto">
-                            <div className="inline-flex items-center gap-2 px-3 py-1 bg-red-100 dark:bg-red-900/30 rounded-full text-[10px] font-black uppercase tracking-widest text-red-600 dark:text-red-400 mb-6">
+                            <div className="inline-flex items-center gap-2 px-3 py-1 bg-red-100 dark:bg-red-900/30 rounded-full text-xs font-black uppercase tracking-widest text-red-600 dark:text-red-400 mb-6">
                                 <AlertCircle size={12} /> Clinical Indications
                             </div>
                             <h2 className="text-4xl md:text-5xl font-black text-slate-900 dark:text-white mb-6 tracking-tighter leading-[0.9]">
@@ -299,7 +299,7 @@ export default function ExtractionRefactored() {
                     <RevealOnScroll>
                         <div className="grid lg:grid-cols-2 gap-20 items-center">
                             <div className="space-y-8">
-                                <div className="inline-flex items-center gap-2 px-3 py-1 bg-teal-50 dark:bg-teal-900/20 rounded-full text-[10px] font-black uppercase tracking-widest text-teal-600 dark:text-teal-400">
+                                <div className="inline-flex items-center gap-2 px-3 py-1 bg-teal-50 dark:bg-teal-900/20 rounded-full text-xs font-black uppercase tracking-widest text-teal-600 dark:text-teal-400">
                                     <Microscope size={12} /> Biology over Brute Force
                                 </div>
                                 <h2 className="text-5xl font-black text-slate-900 dark:text-white tracking-tighter leading-none">
@@ -315,7 +315,7 @@ export default function ExtractionRefactored() {
                                         { title: "4. PRF Therapy & Grafting", desc: "Packing site with **Bone Grafts after Extraction** and **PRF Therapy in Dentistry** to prevent shrinkage." }
                                     ].map((step, i) => (
                                         <div key={i} className="flex gap-4 group">
-                                            <div className="w-8 h-8 rounded-full bg-slate-100 dark:bg-white/5 flex items-center justify-center font-black text-[10px] text-slate-400 group-hover:bg-blue-600 group-hover:text-white transition-colors">
+                                            <div className="w-8 h-8 rounded-full bg-slate-100 dark:bg-white/5 flex items-center justify-center font-black text-xs text-slate-400 group-hover:bg-blue-600 group-hover:text-white transition-colors">
                                                 0{i + 1}
                                             </div>
                                             <div>
@@ -337,7 +337,7 @@ export default function ExtractionRefactored() {
                                     />
                                     <div className="absolute inset-0 bg-gradient-to-t from-blue-900/80 via-transparent to-transparent flex items-end p-12">
                                         <div>
-                                            <div className="text-[10px] font-black text-blue-400 uppercase tracking-widest mb-2">ULTRASONIC PIEZOSURGERY</div>
+                                            <div className="text-xs font-black text-blue-400 uppercase tracking-widest mb-2">ULTRASONIC PIEZOSURGERY</div>
                                             <h4 className="text-2xl font-black text-white leading-tight">Vibrating bone away <br /> instead of hammering.</h4>
                                         </div>
                                     </div>
@@ -392,7 +392,7 @@ export default function ExtractionRefactored() {
                                 <p className="text-slate-400 text-sm leading-relaxed mb-8">
                                     Chief Medical Director **Dr. Dhivakaran** ensures every surgical procedure at **Noble Dental Care Hyderabad** follows strict international sterilization and pre-op vitals protocols.
                                 </p>
-                                <button className="px-8 py-3 bg-white text-slate-900 rounded-full font-black text-[10px] uppercase tracking-widest hover:scale-105 transition-transform">
+                                <button className="px-8 py-3 bg-white text-slate-900 rounded-full font-black text-xs uppercase tracking-widest hover:scale-105 transition-transform">
                                     Request Safety Protocol PDF
                                 </button>
                             </div>
@@ -417,9 +417,9 @@ export default function ExtractionRefactored() {
                                 <table className="w-full text-left border-collapse">
                                     <thead>
                                         <tr className="bg-slate-900 text-white">
-                                            <th className="px-10 py-8 text-[10px] font-black uppercase tracking-widest">Condition</th>
-                                            <th className="px-10 py-8 text-[10px] font-black uppercase tracking-widest">Recommendation</th>
-                                            <th className="px-10 py-8 text-[10px] font-black uppercase tracking-widest">The &quot;Why&quot;</th>
+                                            <th className="px-10 py-8 text-xs font-black uppercase tracking-widest">Condition</th>
+                                            <th className="px-10 py-8 text-xs font-black uppercase tracking-widest">Recommendation</th>
+                                            <th className="px-10 py-8 text-xs font-black uppercase tracking-widest">The &quot;Why&quot;</th>
                                         </tr>
                                     </thead>
                                     <tbody className="divide-y divide-slate-200 dark:divide-white/5">
@@ -456,7 +456,7 @@ export default function ExtractionRefactored() {
                 <div className="max-w-7xl mx-auto px-6 relative">
                     <RevealOnScroll>
                         <div className="text-center mb-20">
-                            <div className="inline-flex items-center gap-2 px-3 py-1 bg-amber-50 dark:bg-amber-900/30 rounded-full text-[10px] font-black uppercase tracking-widest text-amber-600 dark:text-amber-400 mb-6 border border-amber-100 dark:border-amber-500/20">
+                            <div className="inline-flex items-center gap-2 px-3 py-1 bg-amber-50 dark:bg-amber-900/30 rounded-full text-xs font-black uppercase tracking-widest text-amber-600 dark:text-amber-400 mb-6 border border-amber-100 dark:border-amber-500/20">
                                 <Award size={12} /> Market Transparency
                             </div>
                             <h2 className="text-4xl md:text-5xl font-black text-slate-900 dark:text-white tracking-tighter mb-4">Nallagandla Pricing.</h2>

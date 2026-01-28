@@ -609,7 +609,7 @@ const Services: React.FC<ServicesProps> = ({ onServiceClick }) => {
 
             {/* Search & Filter Header (Overlay) */}
             <div className="absolute top-0 pt-6 lg:pt-8 w-full z-20 flex flex-col items-center pointer-events-none px-4">
-                <h3 className="text-white/60 font-bold tracking-widest text-[10px] lg:text-xs uppercase mb-3">Our Expertise</h3>
+                <h3 className="text-white/60 font-bold tracking-widest text-xs lg:text-xs uppercase mb-3">Our Expertise</h3>
 
                 <div className="pointer-events-auto relative w-full max-w-sm lg:max-w-md mb-3 lg:mb-4">
                     <input
@@ -630,7 +630,7 @@ const Services: React.FC<ServicesProps> = ({ onServiceClick }) => {
                         <button
                             key={cat}
                             onClick={() => setActiveFilter(cat)}
-                            className={`px-3 py-1 lg:px-4 lg:py-1.5 rounded-full text-[10px] lg:text-xs font-bold uppercase tracking-wider transition-all border ${activeFilter === cat
+                            className={`px-3 py-1 lg:px-4 lg:py-1.5 rounded-full text-xs lg:text-xs font-bold uppercase tracking-wider transition-all border ${activeFilter === cat
                                 ? 'bg-blue-50 dark:bg-blue-900/30 text-blue-700 dark:text-blue-300 border-blue-100 dark:border-blue-500/20 scale-105 shadow-md'
                                 : 'bg-transparent text-white/70 border-white/20 hover:bg-white/10 hover:border-white/40'
                                 }`}

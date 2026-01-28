@@ -72,7 +72,7 @@ const BookingModal: React.FC<BookingModalProps> = ({ isOpen, onClose }) => {
                <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-20"></div>
 
                <div className="relative z-10">
-                  <div className="inline-flex items-center gap-2 px-3 py-1 bg-white/10 rounded-full text-[10px] font-black uppercase tracking-widest mb-8 border border-white/10">
+                  <div className="inline-flex items-center gap-2 px-3 py-1 bg-white/10 rounded-full text-xs font-black uppercase tracking-widest mb-8 border border-white/10">
                      <span className="w-1.5 h-1.5 rounded-full bg-blue-400 animate-pulse"></span> Noble Dental Care
                   </div>
 
@@ -97,7 +97,7 @@ const BookingModal: React.FC<BookingModalProps> = ({ isOpen, onClose }) => {
                </div>
 
                <div className="relative z-10">
-                  <a href="#" className="flex items-center justify-center gap-3 bg-blue-600 text-white py-4 rounded-xl font-black uppercase text-[10px] tracking-widest shadow-xl shadow-blue-900/50 hover:bg-blue-500 transition-all group">
+                  <a href="#" className="flex items-center justify-center gap-3 bg-blue-600 text-white py-4 rounded-xl font-black uppercase text-xs tracking-widest shadow-xl shadow-blue-900/50 hover:bg-blue-500 transition-all group">
                      <Download size={16} className="group-hover:-translate-y-0.5 transition-transform" /> Download App
                   </a>
                </div>
@@ -148,7 +148,7 @@ const BookingModal: React.FC<BookingModalProps> = ({ isOpen, onClose }) => {
                               <Phone size={18} />
                            </div>
                            <div>
-                              <div className="text-[9px] font-black uppercase tracking-widest text-slate-700 dark:text-slate-400">Emergency</div>
+                              <div className="text-xs font-black uppercase tracking-widest text-slate-700 dark:text-slate-400">Emergency</div>
                               <div className="text-sm font-bold text-slate-900 dark:text-white group-hover:text-blue-600 transition-colors">Call Now</div>
                            </div>
                         </a>
@@ -170,7 +170,7 @@ const BookingModal: React.FC<BookingModalProps> = ({ isOpen, onClose }) => {
                               <MessageCircle size={18} />
                            </div>
                            <div>
-                              <div className="text-[9px] font-black uppercase tracking-widest text-slate-700 dark:text-slate-400">Quick Chat</div>
+                              <div className="text-xs font-black uppercase tracking-widest text-slate-700 dark:text-slate-400">Quick Chat</div>
                               <div className="text-sm font-bold text-slate-900 dark:text-white group-hover:text-green-600 transition-colors">WhatsApp</div>
                            </div>
                         </a>
@@ -179,14 +179,14 @@ const BookingModal: React.FC<BookingModalProps> = ({ isOpen, onClose }) => {
                      <form onSubmit={handleSubmit} className="space-y-5">
                         <div className="grid md:grid-cols-2 gap-5">
                            <div className="space-y-1.5">
-                              <label htmlFor="modal-name" className="text-[10px] font-black uppercase tracking-widest text-slate-700 dark:text-slate-400 ml-1">Your Name</label>
+                              <label htmlFor="modal-name" className="text-xs font-black uppercase tracking-widest text-slate-700 dark:text-slate-400 ml-1">Your Name</label>
                               <div className="relative group">
                                  <User size={16} className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400 group-focus-within:text-blue-500 transition-colors" />
                                  <input type="text" id="modal-name" name="name" required autoComplete="name" onChange={handleChange} className="w-full bg-white dark:bg-[#0f1420] border-2 border-slate-100 dark:border-slate-800 rounded-xl py-3.5 pl-11 pr-4 text-sm font-bold text-slate-900 dark:text-white outline-none focus:border-blue-500 transition-colors" placeholder="Full Name" />
                               </div>
                            </div>
                            <div className="space-y-1.5">
-                              <label htmlFor="modal-phone" className="text-[10px] font-black uppercase tracking-widest text-slate-700 dark:text-slate-400 ml-1">Phone Number</label>
+                              <label htmlFor="modal-phone" className="text-xs font-black uppercase tracking-widest text-slate-700 dark:text-slate-400 ml-1">Phone Number</label>
                               <div className="relative group">
                                  <Phone size={16} className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400 group-focus-within:text-blue-500 transition-colors" />
                                  <input type="tel" id="modal-phone" name="phone" required autoComplete="tel" onChange={handleChange} className="w-full bg-white dark:bg-[#0f1420] border-2 border-slate-100 dark:border-slate-800 rounded-xl py-3.5 pl-11 pr-4 text-sm font-bold text-slate-900 dark:text-white outline-none focus:border-blue-500 transition-colors" placeholder="+91 00000 00000" />
@@ -195,7 +195,7 @@ const BookingModal: React.FC<BookingModalProps> = ({ isOpen, onClose }) => {
                         </div>
 
                         <div className="space-y-1.5">
-                           <label htmlFor="modal-doctor" className="text-[10px] font-black uppercase tracking-widest text-slate-700 dark:text-slate-400 ml-1">Specialist</label>
+                           <label htmlFor="modal-doctor" className="text-xs font-black uppercase tracking-widest text-slate-700 dark:text-slate-400 ml-1">Specialist</label>
                            <div className="relative group">
                               <Stethoscope size={16} className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400 group-focus-within:text-blue-500 transition-colors" />
                               <select id="modal-doctor" name="doctor" aria-label="Select Doctor" onChange={handleChange} className="w-full bg-white dark:bg-[#0f1420] border-2 border-slate-100 dark:border-slate-800 rounded-xl py-3.5 pl-11 pr-4 text-sm font-bold text-slate-900 dark:text-white outline-none focus:border-blue-500 transition-colors appearance-none cursor-pointer">
@@ -210,7 +210,7 @@ const BookingModal: React.FC<BookingModalProps> = ({ isOpen, onClose }) => {
                         </div>
 
                         <div className="space-y-1.5">
-                           <label htmlFor="modal-notes" className="text-[10px] font-black uppercase tracking-widest text-slate-700 dark:text-slate-400 ml-1">Notes</label>
+                           <label htmlFor="modal-notes" className="text-xs font-black uppercase tracking-widest text-slate-700 dark:text-slate-400 ml-1">Notes</label>
                            <div className="relative group">
                               <FileText size={16} className="absolute left-4 top-4 text-slate-400 group-focus-within:text-blue-500 transition-colors" />
                               <textarea id="modal-notes" name="notes" rows={3} onChange={handleChange} className="w-full bg-white dark:bg-[#0f1420] border-2 border-slate-100 dark:border-slate-800 rounded-xl py-3.5 pl-11 pr-4 text-sm font-bold text-slate-900 dark:text-white outline-none focus:border-blue-500 transition-colors resize-none" placeholder="Describe symptoms..."></textarea>

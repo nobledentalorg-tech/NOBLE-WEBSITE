@@ -95,7 +95,7 @@ export default function ToothFillingsRefactored() {
                 <div className="max-w-7xl mx-auto px-6 relative z-10 grid lg:grid-cols-2 gap-12 items-center">
                     <RevealOnScroll>
                         <div className="space-y-8">
-                            <div className="inline-flex items-center gap-2 px-3 py-1 bg-blue-50 dark:bg-blue-900/30 rounded-full text-[10px] font-black uppercase tracking-widest text-blue-600 dark:text-blue-400 border border-blue-100 dark:border-blue-500/20">
+                            <div className="inline-flex items-center gap-2 px-3 py-1 bg-blue-50 dark:bg-blue-900/30 rounded-full text-xs font-black uppercase tracking-widest text-blue-600 dark:text-blue-400 border border-blue-100 dark:border-blue-500/20">
                                 <Microscope size={12} /> Biomimetic Protocol v6.0
                             </div>
                             <h1 className="text-6xl md:text-8xl font-black text-slate-900 dark:text-white leading-[0.9] tracking-tighter">
@@ -111,7 +111,7 @@ export default function ToothFillingsRefactored() {
                                     <Calendar size={18} /> Instant Cavity Check
                                 </button>
                                 <div className="flex items-center gap-4 px-6 border-l border-slate-200 dark:border-white/10">
-                                    <div className="text-[10px] uppercase font-black text-slate-400 tracking-widest leading-none">
+                                    <div className="text-xs uppercase font-black text-slate-400 tracking-widest leading-none">
                                         100% Mercury Free <br /> BPA Non-Toxic
                                     </div>
                                     <div className="w-12 h-12 rounded-full bg-blue-50 dark:bg-blue-900/30 flex items-center justify-center text-blue-600">
@@ -141,7 +141,7 @@ export default function ToothFillingsRefactored() {
                                     </div>
                                     <div>
                                         <div className="text-sm font-black text-slate-900 dark:text-white">7th Gen Adhesive</div>
-                                        <div className="text-[10px] uppercase font-bold text-slate-400">Zero Micro-Leakage</div>
+                                        <div className="text-xs uppercase font-bold text-slate-400">Zero Micro-Leakage</div>
                                     </div>
                                 </div>
                             </div>
@@ -164,7 +164,7 @@ export default function ToothFillingsRefactored() {
                         <a
                             key={tab.id}
                             href={`#${tab.id}`}
-                            className={`text-[10px] font-black uppercase tracking-[0.2em] whitespace-nowrap transition-all duration-300 px-4 py-2 rounded-full ${activeTab === tab.id
+                            className={`text-xs font-black uppercase tracking-[0.2em] whitespace-nowrap transition-all duration-300 px-4 py-2 rounded-full ${activeTab === tab.id
                                 ? 'bg-blue-600 text-white'
                                 : 'text-slate-400 hover:text-slate-900 dark:hover:text-white'
                                 }`}
@@ -181,7 +181,7 @@ export default function ToothFillingsRefactored() {
                     <RevealOnScroll>
                         <div className="grid lg:grid-cols-2 gap-20 items-center">
                             <div className="space-y-12">
-                                <div className="inline-flex items-center gap-2 px-3 py-1 bg-red-100 dark:bg-red-900/30 rounded-full text-[10px] font-black uppercase tracking-widest text-red-600 dark:text-red-400">
+                                <div className="inline-flex items-center gap-2 px-3 py-1 bg-red-100 dark:bg-red-900/30 rounded-full text-xs font-black uppercase tracking-widest text-red-600 dark:text-red-400">
                                     <AlertCircle size={12} /> The Anti-Gimmick
                                 </div>
                                 <h2 className="text-5xl font-black text-slate-900 dark:text-white tracking-tighter leading-none">
@@ -218,7 +218,7 @@ export default function ToothFillingsRefactored() {
                                     </div>
                                     <h3 className="text-3xl font-black text-slate-900 dark:text-white mb-6 tracking-tight">The &quot;No-Compromise&quot; Guarantee</h3>
                                     <p className="text-lg text-slate-500 italic">&quot;I will never perform a composite restoration without absolute moisture control. Your tooth&apos;s life depends on that 7th-gen bond.&quot;</p>
-                                    <div className="mt-8 text-[10px] font-black text-blue-600 tracking-widest uppercase">— Dr. Dhivakaran</div>
+                                    <div className="mt-8 text-xs font-black text-blue-600 tracking-widest uppercase">— Dr. Dhivakaran</div>
                                 </div>
                             </div>
                         </div>
@@ -263,7 +263,7 @@ export default function ToothFillingsRefactored() {
 
                 <div className="max-w-7xl mx-auto px-6 relative z-10 grid lg:grid-cols-2 gap-20 items-center">
                     <div className="space-y-8">
-                        <div className="inline-flex items-center gap-2 px-3 py-1 bg-white/10 rounded-full text-[10px] font-black uppercase tracking-widest text-blue-400 border border-white/10">
+                        <div className="inline-flex items-center gap-2 px-3 py-1 bg-white/10 rounded-full text-xs font-black uppercase tracking-widest text-blue-400 border border-white/10">
                             <Shield size={12} /> The Gold Standard
                         </div>
                         <h2 className="text-5xl font-black tracking-tighter leading-tight">
@@ -300,7 +300,7 @@ export default function ToothFillingsRefactored() {
                         <div className="absolute inset-0 bg-gradient-to-t from-slate-900 via-transparent to-transparent" />
                         <div className="absolute bottom-6 left-6 flex items-center gap-2">
                             <div className="w-3 h-3 bg-blue-500 rounded-full animate-ping" />
-                            <span className="text-[10px] font-black uppercase tracking-widest">Live Moisture Control Active</span>
+                            <span className="text-xs font-black uppercase tracking-widest">Live Moisture Control Active</span>
                         </div>
                     </div>
                 </div>
@@ -351,7 +351,7 @@ export default function ToothFillingsRefactored() {
                         <div className="max-w-4xl mx-auto bg-white dark:bg-slate-900 rounded-[3rem] shadow-2xl overflow-hidden border border-slate-100 dark:border-white/5">
                             <div className="grid md:grid-cols-2">
                                 <div className="p-12 border-b md:border-b-0 md:border-r border-slate-100 dark:border-white/5">
-                                    <div className="text-[10px] font-black uppercase tracking-widest text-slate-400 mb-8">Service Menu</div>
+                                    <div className="text-xs font-black uppercase tracking-widest text-slate-400 mb-8">Service Menu</div>
                                     <div className="space-y-8">
                                         {[
                                             { item: "Nano-Composite (Small)", price: "₹1,500" },
@@ -387,7 +387,7 @@ export default function ToothFillingsRefactored() {
                                 </div>
                             </div>
                         </div>
-                        <p className="mt-8 text-center text-[10px] text-slate-400 font-bold uppercase tracking-widest">
+                        <p className="mt-8 text-center text-xs text-slate-400 font-bold uppercase tracking-widest">
                             * Fees are medical-standard. Life of restoration: 10-15 Years with Regular GBT Prophylaxis.
                         </p>
                     </RevealOnScroll>
@@ -449,7 +449,7 @@ export default function ToothFillingsRefactored() {
                                 Clinic Direct Line
                             </a>
                         </div>
-                        <p className="mt-12 text-slate-500 font-black text-[10px] uppercase tracking-[0.3em]">
+                        <p className="mt-12 text-slate-500 font-black text-xs uppercase tracking-[0.3em]">
                             Citations: Minamata Convention on Mercury | Journal of Operative Dentistry (2024)
                         </p>
                     </RevealOnScroll>

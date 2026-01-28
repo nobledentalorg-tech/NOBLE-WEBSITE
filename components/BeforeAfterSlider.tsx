@@ -67,7 +67,7 @@ const BeforeAfterSlider: React.FC<BeforeAfterSliderProps> = ({
                 priority
             />
 
-            <div className="absolute top-4 right-4 bg-black/50 backdrop-blur-md px-2 py-1 rounded text-[10px] font-bold text-white uppercase tracking-widest border border-white/20">
+            <div className="absolute top-4 right-4 bg-black/50 backdrop-blur-md px-2 py-1 rounded text-xs font-bold text-white uppercase tracking-widest border border-white/20">
                 After
             </div>
 
@@ -83,7 +83,7 @@ const BeforeAfterSlider: React.FC<BeforeAfterSliderProps> = ({
                     className="object-cover"
                     priority
                 />
-                <div className="absolute top-4 left-4 bg-black/50 backdrop-blur-md px-2 py-1 rounded text-[10px] font-bold text-white uppercase tracking-widest border border-white/20">
+                <div className="absolute top-4 left-4 bg-black/50 backdrop-blur-md px-2 py-1 rounded text-xs font-bold text-white uppercase tracking-widest border border-white/20">
                     Before
                 </div>
             </div>

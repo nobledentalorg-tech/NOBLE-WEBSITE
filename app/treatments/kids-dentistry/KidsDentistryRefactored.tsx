@@ -96,7 +96,7 @@ export default function KidsDentistryRefactored() {
                 <div className="max-w-7xl mx-auto px-6 relative z-10 grid lg:grid-cols-2 gap-12 items-center">
                     <RevealOnScroll>
                         <div className="space-y-8">
-                            <div className="inline-flex items-center gap-2 px-3 py-1 bg-orange-100 dark:bg-orange-900/30 rounded-full text-[10px] font-black uppercase tracking-widest text-orange-600 dark:text-orange-400 border border-orange-200 dark:border-orange-500/20">
+                            <div className="inline-flex items-center gap-2 px-3 py-1 bg-orange-100 dark:bg-orange-900/30 rounded-full text-xs font-black uppercase tracking-widest text-orange-600 dark:text-orange-400 border border-orange-200 dark:border-orange-500/20">
                                 <Sparkles size={12} /> Little Smiles Program
                             </div>
                             <h1 className="text-6xl md:text-8xl font-black text-slate-900 dark:text-white leading-[0.9] tracking-tighter uppercase italic">
@@ -112,7 +112,7 @@ export default function KidsDentistryRefactored() {
                                     <Calendar size={18} /> Book a &quot;Happy Visit&quot;
                                 </button>
                                 <div className="flex items-center gap-4 px-6 border-l border-slate-200 dark:border-white/10">
-                                    <div className="text-[10px] uppercase font-black text-slate-400 tracking-widest leading-none">
+                                    <div className="text-xs uppercase font-black text-slate-400 tracking-widest leading-none">
                                         Zero Anxiety <br /> Nitrous Certified
                                     </div>
                                     <div className="w-12 h-12 rounded-full bg-blue-50 dark:bg-blue-900/30 flex items-center justify-center text-blue-600">
@@ -142,7 +142,7 @@ export default function KidsDentistryRefactored() {
                                     </div>
                                     <div>
                                         <div className="text-sm font-black text-slate-900 dark:text-white">AAPD Standards</div>
-                                        <div className="text-[10px] uppercase font-bold text-slate-400">International protocol</div>
+                                        <div className="text-xs uppercase font-bold text-slate-400">International protocol</div>
                                     </div>
                                 </div>
                             </div>
@@ -165,7 +165,7 @@ export default function KidsDentistryRefactored() {
                         <a
                             key={tab.id}
                             href={`#${tab.id}`}
-                            className={`text-[10px] font-black uppercase tracking-[0.2em] whitespace-nowrap transition-all duration-300 px-4 py-2 rounded-full ${activeTab === tab.id
+                            className={`text-xs font-black uppercase tracking-[0.2em] whitespace-nowrap transition-all duration-300 px-4 py-2 rounded-full ${activeTab === tab.id
                                 ? 'bg-blue-600 text-white'
                                 : 'text-slate-400 hover:text-slate-900 dark:hover:text-white'
                                 }`}
@@ -182,7 +182,7 @@ export default function KidsDentistryRefactored() {
                     <RevealOnScroll>
                         <div className="grid lg:grid-cols-2 gap-20 items-center">
                             <div className="space-y-12">
-                                <div className="inline-flex items-center gap-2 px-3 py-1 bg-blue-100 dark:bg-blue-800/30 rounded-full text-[10px] font-black uppercase tracking-widest text-blue-600 dark:text-blue-400">
+                                <div className="inline-flex items-center gap-2 px-3 py-1 bg-blue-100 dark:bg-blue-800/30 rounded-full text-xs font-black uppercase tracking-widest text-blue-600 dark:text-blue-400">
                                     <Info size={12} /> The &quot;Noble Truth&quot;
                                 </div>
                                 <h2 className="text-5xl font-black text-slate-900 dark:text-white tracking-tighter leading-none uppercase italic">
@@ -252,7 +252,7 @@ export default function KidsDentistryRefactored() {
                                     </div>
                                 </div>
                                 <div className="absolute bottom-6 left-6 right-6 p-4 ios-glass rounded-2xl">
-                                    <div className="text-[10px] font-black uppercase tracking-widest text-slate-400 mb-1">LIVE DEMO</div>
+                                    <div className="text-xs font-black uppercase tracking-widest text-slate-400 mb-1">LIVE DEMO</div>
                                     <div className="text-sm font-bold text-slate-900 dark:text-white">Watch how &quot;Happy Air&quot; relaxes your child in 2 minutes.</div>
                                 </div>
                             </div>
@@ -309,7 +309,7 @@ export default function KidsDentistryRefactored() {
                                         fill
                                         className="object-cover grayscale-[0.5] group-hover:grayscale-0 transition-all duration-1000"
                                     />
-                                    <div className="absolute top-4 right-4 bg-teal-500 text-white text-[10px] font-black px-4 py-2 rounded-full shadow-lg">
+                                    <div className="absolute top-4 right-4 bg-teal-500 text-white text-xs font-black px-4 py-2 rounded-full shadow-lg">
                                         BEST FOR TODDLERS
                                     </div>
                                 </div>
@@ -317,11 +317,11 @@ export default function KidsDentistryRefactored() {
                                 <div className="space-y-4 text-slate-600 dark:text-slate-400">
                                     <p className="font-bold flex items-center gap-2"><div className="w-2 h-2 rounded-full bg-blue-600" /> **Fluoride Treatment** Nallagandla</p>
                                     <p className="text-sm">Our **Kids Dentistry Nallagandla** specialists apply a drop of SDF to stop decay instantly. It is the gold standard for **Pediatric Dentist Nallagandla** cases.</p>
-                                    <div className="grid grid-cols-2 gap-4 pt-4 text-[10px] font-black uppercase tracking-widest">
+                                    <div className="grid grid-cols-2 gap-4 pt-4 text-xs font-black uppercase tracking-widest">
                                         <div className="flex items-center gap-2 text-blue-600"><CheckCircle2 size={16} /> Pain Level: Zero</div>
                                         <div className="flex items-center gap-2 text-blue-600"><CheckCircle2 size={16} /> No Needle. No Drill.</div>
                                     </div>
-                                    <p className="text-[10px] text-slate-400 mt-4 leading-relaxed">Note: It turns the cavity spot black (a sign it is working), but saves the tooth from extraction.</p>
+                                    <p className="text-xs text-slate-400 mt-4 leading-relaxed">Note: It turns the cavity spot black (a sign it is working), but saves the tooth from extraction.</p>
                                 </div>
                             </div>
 
@@ -333,7 +333,7 @@ export default function KidsDentistryRefactored() {
                                         fill
                                         className="object-cover grayscale-[0.5] group-hover:grayscale-0 transition-all duration-1000"
                                     />
-                                    <div className="absolute top-4 right-4 bg-blue-600 text-white text-[10px] font-black px-4 py-2 rounded-full shadow-lg">
+                                    <div className="absolute top-4 right-4 bg-blue-600 text-white text-xs font-black px-4 py-2 rounded-full shadow-lg">
                                         DEEP CAVITY CARE
                                     </div>
                                 </div>
@@ -365,9 +365,9 @@ export default function KidsDentistryRefactored() {
                                 <table className="w-full text-left border-collapse">
                                     <thead>
                                         <tr className="bg-slate-900 text-white">
-                                            <th className="px-10 py-8 text-[10px] font-black uppercase tracking-widest">Condition</th>
-                                            <th className="px-10 py-8 text-[10px] font-black uppercase tracking-widest">Our Protocol</th>
-                                            <th className="px-10 py-8 text-[10px] font-black uppercase tracking-widest">Why?</th>
+                                            <th className="px-10 py-8 text-xs font-black uppercase tracking-widest">Condition</th>
+                                            <th className="px-10 py-8 text-xs font-black uppercase tracking-widest">Our Protocol</th>
+                                            <th className="px-10 py-8 text-xs font-black uppercase tracking-widest">Why?</th>
                                         </tr>
                                     </thead>
                                     <tbody className="divide-y divide-slate-200 dark:divide-white/5">
@@ -409,7 +409,7 @@ export default function KidsDentistryRefactored() {
 
                     <RevealOnScroll>
                         <div className="text-center mb-20 relative z-10">
-                            <div className="inline-flex items-center gap-2 px-3 py-1 bg-amber-50 dark:bg-amber-900/30 rounded-full text-[10px] font-black uppercase tracking-widest text-amber-600 dark:text-amber-400 mb-6 border border-amber-100 dark:border-amber-500/20 shadow-sm">
+                            <div className="inline-flex items-center gap-2 px-3 py-1 bg-amber-50 dark:bg-amber-900/30 rounded-full text-xs font-black uppercase tracking-widest text-amber-600 dark:text-amber-400 mb-6 border border-amber-100 dark:border-amber-500/20 shadow-sm">
                                 <Award size={12} /> Nallagandla Kids Menu
                             </div>
                             <h2 className="text-5xl md:text-7xl font-black text-slate-900 dark:text-white tracking-tighter leading-none mb-6 uppercase italic">
@@ -496,7 +496,7 @@ export default function KidsDentistryRefactored() {
                                 Call Direct Line
                             </a>
                         </div>
-                        <p className="mt-12 text-slate-500 font-black text-[10px] uppercase tracking-[0.3em]">
+                        <p className="mt-12 text-slate-500 font-black text-xs uppercase tracking-[0.3em]">
                             📍 Noble Dental Nallagandla (Opp. Citizens Hospital)
                         </p>
                     </RevealOnScroll>

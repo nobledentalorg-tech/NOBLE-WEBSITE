@@ -324,7 +324,7 @@ export default function Gallery() {
       <div className="max-w-7xl mx-auto px-6 mb-20">
         <RevealOnScroll>
           <div className="flex flex-col items-center text-center">
-            <div className="inline-flex items-center gap-2 text-blue-600 dark:text-cyan-400 font-bold tracking-[0.3em] text-[10px] uppercase mb-4">
+            <div className="inline-flex items-center gap-2 text-blue-600 dark:text-cyan-400 font-bold tracking-[0.3em] text-xs uppercase mb-4">
               <Sparkles size={16} /> Dental Intelligence
             </div>
             <h2 className="text-4xl md:text-7xl font-black text-slate-900 dark:text-white mb-6 tracking-tighter leading-[0.85]">
@@ -359,7 +359,7 @@ export default function Gallery() {
               </AnimatePresence>
 
               <div className="absolute bottom-10 left-10 z-20">
-                <span className={`px-4 py-1.5 text-white text-[9px] font-black uppercase tracking-widest rounded-full mb-4 inline-block shadow-lg ${currentTrack.type === 'audio' ? 'bg-blue-600' : 'bg-green-600'}`}>
+                <span className={`px-4 py-1.5 text-white text-xs font-black uppercase tracking-widest rounded-full mb-4 inline-block shadow-lg ${currentTrack.type === 'audio' ? 'bg-blue-600' : 'bg-green-600'}`}>
                   {currentTrack.type === 'audio' ? 'Podcast' : 'Visual Guide'}
                 </span>
               </div>
@@ -391,7 +391,7 @@ export default function Gallery() {
                           <div className="text-xs font-bold text-slate-400">0{idx + 1}</div>
                           <div className="flex-1">
                             <div className={`font-bold text-sm ${idx === currentTrackIndex ? 'text-blue-600 dark:text-blue-400' : 'text-slate-900 dark:text-white'}`}>{track.name}</div>
-                            <div className="text-[10px] text-slate-500">{track.category}</div>
+                            <div className="text-xs text-slate-500">{track.category}</div>
                           </div>
                           {idx === currentTrackIndex && <Activity size={14} className="text-blue-500 animate-pulse" />}
                         </div>
@@ -418,7 +418,7 @@ export default function Gallery() {
                   )}
                   <div className="flex gap-2">
                     {currentTrack.tags.map(t => (
-                      <span key={t} className="text-[10px] font-bold text-slate-700 dark:text-slate-200 border border-slate-200 dark:border-white/10 px-2 py-1 rounded-md uppercase tracking-wider">{t}</span>
+                      <span key={t} className="text-xs font-bold text-slate-700 dark:text-slate-200 border border-slate-200 dark:border-white/10 px-2 py-1 rounded-md uppercase tracking-wider">{t}</span>
                     ))}
                   </div>
                 </div>
@@ -429,7 +429,7 @@ export default function Gallery() {
               <div className="mt-6 pt-6 border-t border-slate-100 dark:border-white/5">
 
                 {/* Seekable Progress Bar */}
-                <div className="flex justify-between text-[10px] font-bold text-slate-400 mb-2 font-mono">
+                <div className="flex justify-between text-xs font-bold text-slate-400 mb-2 font-mono">
                   <span>{currentTime}</span>
                   <span>{duration}</span>
                 </div>

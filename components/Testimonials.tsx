@@ -71,7 +71,7 @@ const Testimonials = () => {
               </div>
               <div>
                 <div className="font-bold text-slate-900 dark:text-white text-sm">{review.name}</div>
-                <div className="text-[10px] text-slate-400 uppercase tracking-wider flex items-center gap-2">
+                <div className="text-xs text-slate-400 uppercase tracking-wider flex items-center gap-2">
                   {review.location} <span className="w-1 h-1 rounded-full bg-slate-300"></span> {review.treatment}
                 </div>
               </div>

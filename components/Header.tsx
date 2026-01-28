@@ -141,7 +141,7 @@ const Header: React.FC<HeaderProps> = ({ onBookClick }) => {
             </div>
             <div className="flex flex-col border-l-2 border-slate-200 dark:border-white/10 pl-3">
               <span className="text-lg md:text-xl font-black tracking-tight text-slate-900 dark:text-white leading-none">NOBLE <span className="text-blue-600 dark:text-cyan-400">DENTAL</span></span>
-              <span className="text-[9px] font-black tracking-[0.3em] text-slate-700 dark:text-slate-400 uppercase">MULTISPECIALITY DENTAL CARE</span>
+              <span className="text-xs font-black tracking-[0.3em] text-slate-700 dark:text-slate-400 uppercase">MULTISPECIALITY DENTAL CARE</span>
             </div>
           </Link>
 
@@ -176,7 +176,7 @@ const Header: React.FC<HeaderProps> = ({ onBookClick }) => {
                           </div>
                           <div>
                             <h4 className="text-[13px] font-black uppercase tracking-wider text-slate-900 dark:text-white">{cat.title}</h4>
-                            <p className="text-[10px] text-slate-700 dark:text-slate-400 font-bold uppercase tracking-tighter">{cat.description}</p>
+                            <p className="text-xs text-slate-700 dark:text-slate-400 font-bold uppercase tracking-tighter">{cat.description}</p>
                           </div>
                         </div>
                         <ul className="space-y-2 pl-1.5 border-l border-slate-100 dark:border-white/5 ml-5">
@@ -184,7 +184,7 @@ const Header: React.FC<HeaderProps> = ({ onBookClick }) => {
                             <li key={lIdx}>
                               <Link
                                 href={link.href}
-                                className="text-[11px] font-medium text-slate-700 dark:text-slate-400 hover:text-blue-600 dark:hover:text-cyan-400 transition-colors flex items-center gap-2 group/item py-2"
+                                className="text-xs font-medium text-slate-700 dark:text-slate-400 hover:text-blue-600 dark:hover:text-cyan-400 transition-colors flex items-center gap-2 group/item py-2"
                               >
                                 <span className="w-1 h-1 rounded-full bg-slate-400 dark:bg-slate-700 group-hover/item:bg-blue-600 transition-colors" />
                                 {link.name}
@@ -198,8 +198,8 @@ const Header: React.FC<HeaderProps> = ({ onBookClick }) => {
 
                   {/* Bottom Strip */}
                   <div className="mt-8 pt-6 border-t border-slate-100 dark:border-white/5 flex items-center justify-between">
-                    <p className="text-[10px] text-slate-600 dark:text-slate-400 font-medium">✨ Powered by Dr. Dhivakaran&apos;s Advanced Protocols</p>
-                    <Link href="/treatments" className="text-[10px] font-black text-blue-600 dark:text-cyan-400 hover:underline uppercase tracking-widest">View All 40+ Protocols</Link>
+                    <p className="text-xs text-slate-600 dark:text-slate-400 font-medium">✨ Powered by Dr. Dhivakaran&apos;s Advanced Protocols</p>
+                    <Link href="/treatments" className="text-xs font-black text-blue-600 dark:text-cyan-400 hover:underline uppercase tracking-widest">View All 40+ Protocols</Link>
                   </div>
                 </div>
               </div>
@@ -268,7 +268,7 @@ const Header: React.FC<HeaderProps> = ({ onBookClick }) => {
 
             <button
               onClick={onBookClick}
-              className="hidden sm:flex h-12 items-center gap-2 rounded-2xl bg-blue-600 px-7 text-[11px] font-black uppercase tracking-[0.2em] text-white shadow-xl hover:-translate-y-1 transition-all"
+              className="hidden sm:flex h-12 items-center gap-2 rounded-2xl bg-blue-600 px-7 text-xs font-black uppercase tracking-[0.2em] text-white shadow-xl hover:-translate-y-1 transition-all"
             >
               <CalendarCheck size={18} /> Book Now
             </button>

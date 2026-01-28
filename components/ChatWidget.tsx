@@ -186,7 +186,7 @@ const ChatWidget: React.FC<ChatWidgetProps> = ({ onBookClick }) => {
                 <h3 className="font-bold text-slate-900 dark:text-white text-sm transition-colors duration-500">Noble Dental AI</h3>
 
                 {/* Book Link - NEW TRACKED ACTION */}
-                <button onClick={handleBookClick} className="flex items-center gap-1 text-[10px] text-blue-600 dark:text-cyan-400 font-black uppercase tracking-wider hover:underline mt-0.5">
+                <button onClick={handleBookClick} className="flex items-center gap-1 text-xs text-blue-600 dark:text-cyan-400 font-black uppercase tracking-wider hover:underline mt-0.5">
                   Book Appointment <ExternalLink size={10} />
                 </button>
               </div>
@@ -225,7 +225,7 @@ const ChatWidget: React.FC<ChatWidgetProps> = ({ onBookClick }) => {
                         <div key={pIdx} className="p-3 bg-slate-100 dark:bg-black/20 rounded-lg border border-slate-200 dark:border-white/10 text-xs">
                           <div className="font-bold text-blue-600 dark:text-cyan-400 mb-1">{p.title}</div>
                           <div className="text-slate-600 dark:text-slate-400 leading-tight mb-2">{p.description}</div>
-                          <div className="font-medium text-[10px] uppercase tracking-wider text-slate-500">{p.action}</div>
+                          <div className="font-medium text-xs uppercase tracking-wider text-slate-500">{p.action}</div>
                         </div>
                       ))}
                     </div>
@@ -233,7 +233,7 @@ const ChatWidget: React.FC<ChatWidgetProps> = ({ onBookClick }) => {
 
                   {msg.sources && msg.sources.length > 0 && (
                     <div className="mt-4 pt-3 border-t border-slate-100 dark:border-white/10 space-y-2">
-                      <p className="text-[10px] font-black uppercase text-slate-400 tracking-widest mb-2">Sources:</p>
+                      <p className="text-xs font-black uppercase text-slate-400 tracking-widest mb-2">Sources:</p>
                       <div className="flex flex-wrap gap-2">
                         {msg.sources.map((source, sIdx) => (
                           <a
@@ -241,7 +241,7 @@ const ChatWidget: React.FC<ChatWidgetProps> = ({ onBookClick }) => {
                             href={source.uri}
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="inline-flex items-center gap-1.5 px-2 py-1 bg-slate-100 dark:bg-white/5 hover:bg-slate-200 dark:hover:bg-white/10 rounded-md text-[10px] font-bold text-blue-600 dark:text-cyan-400 transition-all border border-slate-200 dark:border-white/5"
+                            className="inline-flex items-center gap-1.5 px-2 py-1 bg-slate-100 dark:bg-white/5 hover:bg-slate-200 dark:hover:bg-white/10 rounded-md text-xs font-bold text-blue-600 dark:text-cyan-400 transition-all border border-slate-200 dark:border-white/5"
                           >
                             <span className="truncate max-w-[120px]">{source.title}</span>
                             <ExternalLink size={10} />
@@ -251,13 +251,13 @@ const ChatWidget: React.FC<ChatWidgetProps> = ({ onBookClick }) => {
                     </div>
                   )}
                 </div>
-                <span className="text-[9px] text-slate-400 mt-1 px-2 font-medium">
+                <span className="text-xs text-slate-400 mt-1 px-2 font-medium">
                   {new Date(msg.timestamp).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}
                 </span>
               </div>
             ))}
             {isLoading && (
-              <div className="flex items-center gap-2 text-[10px] font-bold text-slate-400 uppercase tracking-widest pl-2">
+              <div className="flex items-center gap-2 text-xs font-bold text-slate-400 uppercase tracking-widest pl-2">
                 <span className="flex h-1.5 w-1.5 rounded-full bg-blue-500 animate-bounce"></span>
                 Processing...
               </div>

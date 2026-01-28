@@ -98,7 +98,7 @@ export default function InvisalignRefactored() {
                 <div className="max-w-7xl mx-auto px-6 relative z-10 grid lg:grid-cols-2 gap-12 items-center">
                     <RevealOnScroll>
                         <div className="space-y-8">
-                            <div className="inline-flex items-center gap-2 px-3 py-1 bg-blue-50 dark:bg-blue-900/30 rounded-full text-[10px] font-bold uppercase tracking-widest text-blue-600 dark:text-blue-400 border border-blue-100 dark:border-blue-500/20">
+                            <div className="inline-flex items-center gap-2 px-3 py-1 bg-blue-50 dark:bg-blue-900/30 rounded-full text-xs font-bold uppercase tracking-widest text-blue-600 dark:text-blue-400 border border-blue-100 dark:border-blue-500/20">
                                 <Cpu size={12} /> Orthodontic Engineering v4.2
                             </div>
                             <h1 className="text-6xl md:text-8xl font-black text-slate-900 dark:text-white leading-[0.9] tracking-tighter uppercase italic">
@@ -121,7 +121,7 @@ export default function InvisalignRefactored() {
                                             </div>
                                         ))}
                                     </div>
-                                    <div className="text-[10px] uppercase font-black text-slate-600 dark:text-slate-400 tracking-widest leading-none">
+                                    <div className="text-xs uppercase font-black text-slate-600 dark:text-slate-400 tracking-widest leading-none">
                                         450+ Smiles <br /> Engineered
                                     </div>
                                 </div>
@@ -141,7 +141,7 @@ export default function InvisalignRefactored() {
                                         height={600}
                                         className="w-full h-auto object-contain hover:scale-110 transition-transform duration-1000"
                                     />
-                                    <div className="absolute top-8 right-8 bg-blue-500 text-white text-[10px] font-black px-4 py-2 rounded-full shadow-xl">
+                                    <div className="absolute top-8 right-8 bg-blue-500 text-white text-xs font-black px-4 py-2 rounded-full shadow-xl">
                                         COMPLEX CASE
                                     </div>
                                 </div>
@@ -165,7 +165,7 @@ export default function InvisalignRefactored() {
                         <a
                             key={item.id}
                             href={`#${item.id}`}
-                            className={`text-[10px] font-black uppercase tracking-[0.2em] whitespace-nowrap transition-all duration-300 px-4 py-2 rounded-full ${activeSection === item.id
+                            className={`text-xs font-black uppercase tracking-[0.2em] whitespace-nowrap transition-all duration-300 px-4 py-2 rounded-full ${activeSection === item.id
                                 ? 'bg-blue-600 text-white'
                                 : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white'
                                 }`}
@@ -174,7 +174,7 @@ export default function InvisalignRefactored() {
                         </a>
                     ))}
                     <div className="ml-auto hidden md:block">
-                        <button className="ios-btn px-5 py-2 bg-slate-900 dark:bg-white dark:text-slate-900 rounded-full text-[10px] font-black uppercase tracking-widest hover:scale-105 transition-transform">
+                        <button className="ios-btn px-5 py-2 bg-slate-900 dark:bg-white dark:text-slate-900 rounded-full text-xs font-black uppercase tracking-widest hover:scale-105 transition-transform">
                             Book Scan
                         </button>
                     </div>
@@ -187,7 +187,7 @@ export default function InvisalignRefactored() {
                     <RevealOnScroll>
                         <div className="grid lg:grid-cols-2 gap-20 items-center">
                             <div>
-                                <div className="inline-flex items-center gap-2 px-3 py-1 bg-red-50 dark:bg-red-900/20 rounded-full text-[10px] font-black uppercase tracking-widest text-red-600 dark:text-red-400 mb-6 border border-red-100 dark:border-red-500/10">
+                                <div className="inline-flex items-center gap-2 px-3 py-1 bg-red-50 dark:bg-red-900/20 rounded-full text-xs font-black uppercase tracking-widest text-red-600 dark:text-red-400 mb-6 border border-red-100 dark:border-red-500/10">
                                     <Shield size={12} /> Anti-Gimmick Protocol
                                 </div>
                                 <h2 className="text-4xl md:text-5xl font-black text-slate-900 dark:text-white mb-8 tracking-tighter leading-tight text-balance uppercase italic">
@@ -279,7 +279,7 @@ export default function InvisalignRefactored() {
                                     <div className="w-12 h-12 bg-blue-50 dark:bg-blue-900/20 text-blue-600 dark:text-blue-400 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
                                         <item.icon size={24} />
                                     </div>
-                                    <div className="text-[10px] font-black text-blue-700 dark:text-blue-400 tracking-widest mb-2 uppercase">{item.label}</div>
+                                    <div className="text-xs font-black text-blue-700 dark:text-blue-400 tracking-widest mb-2 uppercase">{item.label}</div>
                                     <h3 className="text-xl font-bold text-slate-900 dark:text-white mb-4">{item.title}</h3>
                                     <p className="text-sm text-slate-700 dark:text-slate-400 leading-relaxed">{item.desc}</p>
                                 </div>
@@ -317,7 +317,7 @@ export default function InvisalignRefactored() {
                         <div className="flex flex-col lg:flex-row gap-20">
                             <div className="lg:w-1/3">
                                 <div className="sticky top-32 space-y-8">
-                                    <div className="inline-flex items-center gap-2 px-3 py-1 bg-emerald-50 dark:bg-emerald-900/20 rounded-full text-[10px] font-black uppercase tracking-widest text-emerald-600 dark:text-emerald-400 mb-6 border border-emerald-100 dark:border-emerald-500/10">
+                                    <div className="inline-flex items-center gap-2 px-3 py-1 bg-emerald-50 dark:bg-emerald-900/20 rounded-full text-xs font-black uppercase tracking-widest text-emerald-600 dark:text-emerald-400 mb-6 border border-emerald-100 dark:border-emerald-500/10">
                                         <Microscope size={12} /> Scientific Rigor
                                     </div>
                                     <h2 className="text-4xl font-black text-slate-900 dark:text-white tracking-tighter leading-[0.9]">
@@ -331,7 +331,7 @@ export default function InvisalignRefactored() {
                                             <div className="w-10 h-10 rounded-full bg-blue-100 dark:bg-blue-600 text-blue-600 dark:text-white flex items-center justify-center font-black">!</div>
                                             <h4 className="font-bold text-slate-900 dark:text-white leading-tight">Clinical Notice</h4>
                                         </div>
-                                        <p className="text-[10px] uppercase font-bold text-slate-600 dark:text-slate-400 tracking-widest leading-relaxed">
+                                        <p className="text-xs uppercase font-bold text-slate-600 dark:text-slate-400 tracking-widest leading-relaxed">
                                             DIY brands often cause irreversible bone loss. Our doctor-led protocols ensure your roots remain 100% healthy.
                                         </p>
                                     </div>
@@ -387,7 +387,7 @@ export default function InvisalignRefactored() {
                 <div className="max-w-7xl mx-auto px-6 relative z-10 grid lg:grid-cols-2 gap-20 items-center">
                     <RevealOnScroll>
                         <div className="space-y-8">
-                            <div className="inline-flex items-center gap-2 px-3 py-1 bg-white/10 rounded-full text-[10px] font-black uppercase tracking-widest text-blue-400 border border-white/10">
+                            <div className="inline-flex items-center gap-2 px-3 py-1 bg-white/10 rounded-full text-xs font-black uppercase tracking-widest text-blue-400 border border-white/10">
                                 <Zap size={12} fill="currentColor" /> Zero Gag Reflex
                             </div>
                             <h2 className="text-5xl md:text-6xl font-black tracking-tighter leading-[0.9]">
@@ -407,8 +407,8 @@ export default function InvisalignRefactored() {
                                 ].map((stat, i) => (
                                     <div key={i} className="space-y-1">
                                         <div className="text-2xl font-black text-blue-400">{stat.value}</div>
-                                        <div className="text-[10px] font-black uppercase tracking-widest text-white">{stat.label}</div>
-                                        <p className="text-[10px] text-slate-400 uppercase tracking-tighter font-bold">{stat.desc}</p>
+                                        <div className="text-xs font-black uppercase tracking-widest text-white">{stat.label}</div>
+                                        <p className="text-xs text-slate-400 uppercase tracking-tighter font-bold">{stat.desc}</p>
                                     </div>
                                 ))}
                             </div>
@@ -439,7 +439,7 @@ export default function InvisalignRefactored() {
                 <div className="max-w-7xl mx-auto px-6 relative">
                     <RevealOnScroll>
                         <div className="text-center mb-20">
-                            <div className="inline-flex items-center gap-2 px-3 py-1 bg-blue-50 dark:bg-blue-900/30 rounded-full text-[10px] font-black uppercase tracking-widest text-blue-600 dark:text-blue-400 mb-6 border border-blue-100 dark:border-blue-500/20">
+                            <div className="inline-flex items-center gap-2 px-3 py-1 bg-blue-50 dark:bg-blue-900/30 rounded-full text-xs font-black uppercase tracking-widest text-blue-600 dark:text-blue-400 mb-6 border border-blue-100 dark:border-blue-500/20">
                                 Invisalign Cost in Nallagandla
                             </div>
                             <h2 className="text-4xl md:text-5xl font-black text-slate-900 dark:text-white tracking-tighter mb-4 uppercase italic">Honest Engineering Fees.</h2>
@@ -479,23 +479,23 @@ export default function InvisalignRefactored() {
                             ].map((plan, i) => (
                                 <div key={i} className={`p-10 rounded-[3rem] border border-slate-200 dark:border-white/5 flex flex-col ios-card-hover ${plan.color}`}>
                                     <div className="flex justify-between items-start mb-6">
-                                        <div className={`text-[10px] font-black tracking-widest uppercase ${plan.popular ? 'text-blue-100' : 'text-blue-700'}`}>{plan.label}</div>
-                                        {plan.popular && <div className="bg-white text-blue-600 text-[10px] font-black px-3 py-1 rounded-full">{plan.highlight}</div>}
+                                        <div className={`text-xs font-black tracking-widest uppercase ${plan.popular ? 'text-blue-100' : 'text-blue-700'}`}>{plan.label}</div>
+                                        {plan.popular && <div className="bg-white text-blue-600 text-xs font-black px-3 py-1 rounded-full">{plan.highlight}</div>}
                                     </div>
                                     <h3 className="text-3xl font-black mb-1 shrink-0">{plan.tier}</h3>
                                     <div className={`text-4xl font-black mb-6 ${plan.popular ? 'text-white' : 'text-blue-600'}`}>
                                         <span className="text-lg font-bold">from </span> {plan.price}
                                     </div>
-                                    <div className={`font-bold text-[10px] uppercase tracking-widest mb-8 p-3 rounded-2xl ${plan.popular ? 'bg-white/10' : 'bg-slate-100 dark:bg-white/5 text-slate-700'}`}>{plan.best}</div>
+                                    <div className={`font-bold text-xs uppercase tracking-widest mb-8 p-3 rounded-2xl ${plan.popular ? 'bg-white/10' : 'bg-slate-100 dark:bg-white/5 text-slate-700'}`}>{plan.best}</div>
                                     <p className={`text-sm mb-10 leading-relaxed grow ${plan.popular ? 'text-blue-50' : 'text-slate-700'}`}>{plan.desc}</p>
                                     <div className="mt-auto space-y-4">
-                                        <div className={`flex items-center gap-3 text-[10px] font-black uppercase tracking-widest ${plan.popular ? 'text-blue-50' : 'text-slate-600 dark:text-slate-400'}`}>
+                                        <div className={`flex items-center gap-3 text-xs font-black uppercase tracking-widest ${plan.popular ? 'text-blue-50' : 'text-slate-600 dark:text-slate-400'}`}>
                                             <CheckCircle2 size={14} /> 3D iTero Scan Included
                                         </div>
-                                        <div className={`flex items-center gap-3 text-[10px] font-black uppercase tracking-widest ${plan.popular ? 'text-blue-50' : 'text-slate-600 dark:text-slate-400'}`}>
+                                        <div className={`flex items-center gap-3 text-xs font-black uppercase tracking-widest ${plan.popular ? 'text-blue-50' : 'text-slate-600 dark:text-slate-400'}`}>
                                             <CheckCircle2 size={14} /> Global Quality Warranty
                                         </div>
-                                        <button className={`ios-btn w-full py-4 rounded-2xl font-black uppercase text-[10px] tracking-widest transition-all ${plan.popular ? 'bg-white text-blue-600' : 'bg-slate-900 text-white dark:bg-blue-600'}`}>
+                                        <button className={`ios-btn w-full py-4 rounded-2xl font-black uppercase text-xs tracking-widest transition-all ${plan.popular ? 'bg-white text-blue-600' : 'bg-slate-900 text-white dark:bg-blue-600'}`}>
                                             Compare Candidacy
                                         </button>
                                     </div>
@@ -549,7 +549,7 @@ export default function InvisalignRefactored() {
                 <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-20 pointer-events-none"></div>
                 <div className="max-w-5xl mx-auto px-6 relative z-10 text-center text-white">
                     <RevealOnScroll>
-                        <div className="inline-flex items-center gap-2 px-4 py-2 bg-white/10 rounded-full text-[10px] font-black uppercase tracking-widest mb-10 border border-white/20">
+                        <div className="inline-flex items-center gap-2 px-4 py-2 bg-white/10 rounded-full text-xs font-black uppercase tracking-widest mb-10 border border-white/20">
                             <Smile size={14} /> Design Your Smile
                         </div>
                         <h2 className="text-5xl md:text-7xl font-black tracking-tighter mb-10 leading-[0.9]">
@@ -572,7 +572,7 @@ export default function InvisalignRefactored() {
                 <div className="max-w-7xl mx-auto px-6 text-center">
                     <div className="flex items-center justify-center gap-3 text-slate-400">
                         <ShieldCheck size={16} className="text-blue-500" />
-                        <p className="text-[10px] font-bold uppercase tracking-widest">
+                        <p className="text-xs font-bold uppercase tracking-widest">
                             Clinically Verified v4.2 | Dr. Dhivakaran & Dr. Deepak
                         </p>
                     </div>

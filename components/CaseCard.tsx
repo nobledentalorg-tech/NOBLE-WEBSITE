@@ -23,13 +23,13 @@ const CaseCard: React.FC<CaseCardProps> = ({ data, onClick }) => {
                         <h4 className="font-bold text-sm text-slate-900 dark:text-white flex items-center gap-1">
                             {data.title} <BadgeCheck size={14} className="text-blue-500 fill-blue-500/20" />
                         </h4>
-                        <div className="text-[10px] text-slate-500 uppercase tracking-wide">
+                        <div className="text-xs text-slate-500 uppercase tracking-wide">
                             {data.patientProfile.age} • {data.patientProfile.gender}
                         </div>
                     </div>
                 </div>
                 {/* Difficulty Badge */}
-                <span className={`text-[10px] font-bold px-2 py-1 rounded-full uppercase tracking-wider ${data.difficulty === 'Complex' ? 'bg-purple-100 text-purple-600 dark:bg-purple-900/30 dark:text-purple-400' :
+                <span className={`text-xs font-bold px-2 py-1 rounded-full uppercase tracking-wider ${data.difficulty === 'Complex' ? 'bg-purple-100 text-purple-600 dark:bg-purple-900/30 dark:text-purple-400' :
                         data.difficulty === 'Intermediate' ? 'bg-blue-100 text-blue-600 dark:bg-blue-900/30 dark:text-blue-400' :
                             'bg-green-100 text-green-600 dark:bg-green-900/30 dark:text-green-400'
                     }`}>
@@ -78,14 +78,14 @@ const CaseCard: React.FC<CaseCardProps> = ({ data, onClick }) => {
                 {data.tags && (
                     <div className="flex flex-wrap gap-2 mt-4 pt-4 border-t border-slate-50 dark:border-white/5">
                         {data.tags.map(tag => (
-                            <span key={tag} className="text-[10px] text-slate-400 hover:text-blue-500 cursor-pointer">#{tag}</span>
+                            <span key={tag} className="text-xs text-slate-400 hover:text-blue-500 cursor-pointer">#{tag}</span>
                         ))}
                     </div>
                 )}
             </div>
 
             <div className="px-5 pb-4">
-                <p className="text-[9px] text-slate-300 text-center">
+                <p className="text-xs text-slate-300 text-center">
                     *Photos displayed with written consent. Results may vary.
                 </p>
             </div>

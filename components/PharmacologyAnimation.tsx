@@ -43,7 +43,7 @@ export const PharmacologyAnimation: React.FC<AnimationProps> = ({ type }) => {
         ))}
         
         <div className="absolute top-4 left-4">
-           <p className="text-[10px] font-black uppercase text-blue-400 tracking-widest">Remineralization Flux ACTIVE</p>
+           <p className="text-xs font-black uppercase text-blue-400 tracking-widest">Remineralization Flux ACTIVE</p>
         </div>
       </div>
     );
@@ -75,7 +75,7 @@ export const PharmacologyAnimation: React.FC<AnimationProps> = ({ type }) => {
         </div>
         
         <div className="absolute inset-0 flex flex-col items-center justify-center pointer-events-none">
-           <p className="text-[10px] font-black uppercase text-cyan-400 tracking-[0.3em] bg-black/80 px-4 py-2 rounded-full border border-cyan-500/30">HCA Layer Forming</p>
+           <p className="text-xs font-black uppercase text-cyan-400 tracking-[0.3em] bg-black/80 px-4 py-2 rounded-full border border-cyan-500/30">HCA Layer Forming</p>
         </div>
       </div>
     );
@@ -119,7 +119,7 @@ export const PharmacologyAnimation: React.FC<AnimationProps> = ({ type }) => {
         ))}
 
         <div className="absolute bottom-4 right-4">
-           <p className="text-[10px] font-black uppercase text-rose-400 tracking-widest">Protein Synthesis INHIBITED</p>
+           <p className="text-xs font-black uppercase text-rose-400 tracking-widest">Protein Synthesis INHIBITED</p>
         </div>
       </div>
     );

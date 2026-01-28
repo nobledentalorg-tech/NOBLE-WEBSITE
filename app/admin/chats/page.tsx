@@ -70,7 +70,7 @@ export default function AdminChatsPage() {
                                     <div className="font-semibold text-sm">{chat.users?.name || chat.users?.email || 'Unknown User'}</div>
                                 </div>
                                 <div className="text-xs text-slate-500 truncate font-mono">{chat.title}</div>
-                                <div className="text-[10px] text-slate-400 mt-1">{format(new Date(chat.created_at), 'MMM d, h:mm a')}</div>
+                                <div className="text-xs text-slate-400 mt-1">{format(new Date(chat.created_at), 'MMM d, h:mm a')}</div>
                             </div>
                         ))
                     )}
@@ -92,7 +92,7 @@ export default function AdminChatsPage() {
                                         ? 'bg-blue-600 text-white rounded-tr-sm'
                                         : 'bg-white dark:bg-slate-700 text-slate-800 dark:text-slate-200 rounded-tl-sm'
                                         }`}>
-                                        <div className="text-[10px] opacity-70 mb-1 uppercase tracking-wider font-bold">{msg.role}</div>
+                                        <div className="text-xs opacity-70 mb-1 uppercase tracking-wider font-bold">{msg.role}</div>
                                         <div className="whitespace-pre-wrap">{msg.content}</div>
                                     </div>
                                 </div>

@@ -18,7 +18,7 @@ const Footer: React.FC<FooterProps> = ({ onBookClick }) => {
           <div className="space-y-6">
             <div className="flex flex-col border-l-2 border-white/20 pl-4">
               <span className="text-2xl font-black tracking-tight leading-none">NOBLE <span className="text-blue-500">DENTAL</span></span>
-              <span className="text-[10px] font-black tracking-[0.3em] text-slate-300 uppercase">Care</span>
+              <span className="text-xs font-black tracking-[0.3em] text-slate-300 uppercase">Care</span>
             </div>
             <p className="text-slate-200 text-sm leading-relaxed">
               Dr. Dhivakaran&apos;s Owner-Operated Cluster.<br />
@@ -87,8 +87,8 @@ const Footer: React.FC<FooterProps> = ({ onBookClick }) => {
             </div>
 
             <div className="pt-6 border-t border-white/10 space-y-3">
-              <h4 className="text-[10px] font-bold uppercase tracking-widest text-slate-300 flex items-center gap-2"><School size={12} /> Student Friendly</h4>
-              <p className="text-[10px] text-slate-400 leading-relaxed">
+              <h4 className="text-xs font-bold uppercase tracking-widest text-slate-300 flex items-center gap-2"><School size={12} /> Student Friendly</h4>
+              <p className="text-xs text-slate-400 leading-relaxed">
                 Easy access for <strong>Epistemo Global</strong>, <strong>Manthan International</strong>, and <strong>Sadhana Infinity</strong> students.
               </p>
             </div>
@@ -97,14 +97,14 @@ const Footer: React.FC<FooterProps> = ({ onBookClick }) => {
 
         {/* SEO Footer Block */}
         <div className="pt-8 border-t border-white/10 mb-8">
-          <h4 className="text-[10px] font-bold uppercase tracking-widest text-blue-500 mb-3 flex items-center gap-2"><Navigation size={12} /> Serving Nallagandla Neighbors</h4>
-          <p className="text-[10px] text-slate-400 leading-relaxed font-medium">
+          <h4 className="text-xs font-bold uppercase tracking-widest text-blue-500 mb-3 flex items-center gap-2"><Navigation size={12} /> Serving Nallagandla Neighbors</h4>
+          <p className="text-xs text-slate-400 leading-relaxed font-medium">
             Aparna Sarovar Zenith • Aparna Neo Mall • My Home Tridasa (Rise) • Ramky One Galaxia • My Home Sayuk • Rajapushpa Imperia • Aliens Space Station • Vertex Kingston Park • Citizens Hospital • Ratnadeep Supermarket • Vijaya Diagnostic • BHEL Hyderabad • Gopanpally • Serilingampally • Tellapur-Nallagandla Road
           </p>
         </div>
 
         <div className="pt-8 border-t border-white/10 mb-8">
-          <p className="text-[10px] text-slate-400 mb-4 text-justify">
+          <p className="text-xs text-slate-400 mb-4 text-justify">
             <strong>Medical Disclaimer:</strong> Information is for educational purposes and not a substitute for professional medical advice. All clinical procedures are performed by registered dental practitioners under strict sterilization protocols.
           </p>
           <div className="flex justify-between items-center">

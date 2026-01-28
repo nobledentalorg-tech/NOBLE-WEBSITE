@@ -205,16 +205,16 @@ export default function NeoCompanionClient() {
                     {session ? (
                         <div className="flex items-center gap-2 px-3 py-1 rounded-full bg-white/5 border border-white/10">
                             <Image src={session.user?.image || ''} alt="User" width={20} height={20} className="w-5 h-5 rounded-full" />
-                            <span className="font-gemini text-[10px] uppercase text-zinc-400 cursor-pointer hover:text-red-400" onClick={() => signOut()}>Sign Out</span>
+                            <span className="font-gemini text-xs uppercase text-zinc-400 cursor-pointer hover:text-red-400" onClick={() => signOut()}>Sign Out</span>
                         </div>
                     ) : (
                         <div onClick={() => signIn('google')} className="flex items-center gap-2 px-3 py-1 rounded-full bg-blue-500/10 border border-blue-500/20 cursor-pointer hover:bg-blue-500/20 transition-all">
-                            <span className="font-gemini text-[10px] font-bold text-blue-400 uppercase tracking-widest">Sign In</span>
+                            <span className="font-gemini text-xs font-bold text-blue-400 uppercase tracking-widest">Sign In</span>
                         </div>
                     )}
                     <div className="flex items-center gap-2 px-3 py-1 rounded-full bg-red-500/10 border border-red-500/20">
                         <div className="w-1.5 h-1.5 rounded-full bg-red-500 animate-pulse"></div>
-                        <span className="text-[10px] font-bold text-red-500 uppercase tracking-widest">Neo Online</span>
+                        <span className="text-xs font-bold text-red-500 uppercase tracking-widest">Neo Online</span>
                     </div>
                 </div>
             </nav>

@@ -135,7 +135,7 @@ export default function NeighborhoodGuide() {
             <section className="py-16 px-6 bg-emerald-50 dark:bg-emerald-900/10 border-b border-emerald-100 dark:border-emerald-800/20">
                 <div className="max-w-6xl mx-auto flex flex-col md:flex-row-reverse gap-12 items-center">
                     <div className="flex-1">
-                        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-100 dark:bg-emerald-900/30 text-emerald-700 dark:text-emerald-400 text-[10px] font-black uppercase tracking-widest mb-4">
+                        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-100 dark:bg-emerald-900/30 text-emerald-700 dark:text-emerald-400 text-xs font-black uppercase tracking-widest mb-4">
                             <Building2 size={12} /> Exclusively for Residents
                         </div>
                         <h2 className="text-3xl md:text-5xl font-black text-emerald-950 dark:text-emerald-50 mb-6">

@@ -116,7 +116,7 @@ export default function TreatmentPage({ params }: { params: { slug: string } }) 
         <div className="max-w-7xl mx-auto px-6 relative z-10 w-full">
           <RevealOnScroll>
             <div className="space-y-6 max-w-4xl">
-              <div className="inline-flex items-center gap-2 px-3 py-1 bg-white/10 backdrop-blur-md rounded-full text-[10px] font-black uppercase tracking-widest text-white border border-white/20">
+              <div className="inline-flex items-center gap-2 px-3 py-1 bg-white/10 backdrop-blur-md rounded-full text-xs font-black uppercase tracking-widest text-white border border-white/20">
                 <Activity size={12} className="text-blue-400" /> Clinical Protocol
               </div>
               <h1 className="text-5xl md:text-8xl font-black text-white leading-[0.9] tracking-tighter uppercase italic">
@@ -130,7 +130,7 @@ export default function TreatmentPage({ params }: { params: { slug: string } }) 
                   Book Procedure
                 </button>
                 <div className="flex items-center gap-4 px-6 border-l border-white/20">
-                  <div className="text-[10px] uppercase font-black text-slate-400 tracking-widest leading-none">
+                  <div className="text-xs uppercase font-black text-slate-400 tracking-widest leading-none">
                     System Category <br />
                     <span className="text-white uppercase">{t.category}</span>
                   </div>
@@ -154,7 +154,7 @@ export default function TreatmentPage({ params }: { params: { slug: string } }) 
                       <Icon size={24} />
                     </div>
                     <div>
-                      <div className="text-[10px] font-black text-slate-400 uppercase tracking-widest leading-none mb-1">{stat.label}</div>
+                      <div className="text-xs font-black text-slate-400 uppercase tracking-widest leading-none mb-1">{stat.label}</div>
                       <div className="text-2xl font-black text-slate-900 dark:text-white uppercase tracking-tighter italic">{stat.value}</div>
                     </div>
                   </div>
@@ -226,14 +226,14 @@ export default function TreatmentPage({ params }: { params: { slug: string } }) 
                       <ShieldCheck size={24} />
                     </div>
                     <div>
-                      <div className="text-[10px] font-black text-blue-400 uppercase tracking-widest">Quality Assurance</div>
+                      <div className="text-xs font-black text-blue-400 uppercase tracking-widest">Quality Assurance</div>
                       <div className="font-bold">ADA Compliant Protocol</div>
                     </div>
                   </div>
                   <p className="text-slate-400 text-sm leading-relaxed mb-6">
                     We adhere to the highest clinical standards. Every instrument is sterilized using Class-B autoclaves, and every procedure is digitally logged in our AI HealthOS.
                   </p>
-                  <button className="w-full py-4 bg-white/10 hover:bg-white/20 text-white rounded-full font-bold uppercase tracking-widest text-[10px] border border-white/10 transition-all">
+                  <button className="w-full py-4 bg-white/10 hover:bg-white/20 text-white rounded-full font-bold uppercase tracking-widest text-xs border border-white/10 transition-all">
                     View Safety Standards
                   </button>
                 </div>

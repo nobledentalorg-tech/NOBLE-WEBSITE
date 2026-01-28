@@ -146,7 +146,7 @@ export default function WisdomToothPage() {
                 <div className="max-w-7xl mx-auto px-6 relative z-10 grid lg:grid-cols-2 gap-12 items-center">
                     <RevealOnScroll>
                         <div className="space-y-8">
-                            <div className="inline-flex items-center gap-2 px-3 py-1 bg-blue-50 dark:bg-blue-900/30 rounded-full text-[10px] font-black uppercase tracking-widest text-blue-600 dark:text-blue-400 border border-blue-100 dark:border-blue-500/20">
+                            <div className="inline-flex items-center gap-2 px-3 py-1 bg-blue-50 dark:bg-blue-900/30 rounded-full text-xs font-black uppercase tracking-widest text-blue-600 dark:text-blue-400 border border-blue-100 dark:border-blue-500/20">
                                 <Shield size={12} /> Oral Maxillofacial Surgery
                             </div>
                             <h1 className="text-5xl md:text-7xl font-black text-slate-900 dark:text-white leading-[0.9] tracking-tighter">
@@ -160,7 +160,7 @@ export default function WisdomToothPage() {
                                         <Image src="https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?auto=format&fit=crop&q=80&w=100" alt="Dr. Dhivakaran" fill className="object-cover" />
                                     </div>
                                     <div className="text-left">
-                                        <div className="text-[10px] uppercase text-blue-600 dark:text-blue-400 font-bold tracking-wider">Reviewed By</div>
+                                        <div className="text-xs uppercase text-blue-600 dark:text-blue-400 font-bold tracking-wider">Reviewed By</div>
                                         <div className="text-xs font-bold text-slate-900 dark:text-white">Dr. Dhivakaran, MDS (Maxillofacial)</div>
                                     </div>
                                 </Link>
@@ -175,7 +175,7 @@ export default function WisdomToothPage() {
                                     <Calendar size={18} /> Schedule Assessment
                                 </button>
                                 <div className="flex items-center gap-4 px-6 border-l border-slate-200 dark:border-white/10">
-                                    <div className="text-[10px] uppercase font-black text-slate-400 tracking-widest leading-none">
+                                    <div className="text-xs uppercase font-black text-slate-400 tracking-widest leading-none">
                                         Recovery <br /> Time
                                     </div>
                                     <div className="text-2xl font-black text-blue-600 dark:text-white">
@@ -221,7 +221,7 @@ export default function WisdomToothPage() {
                         <a
                             key={item.id}
                             href={`#${item.id}`}
-                            className={`text-[10px] font-black uppercase tracking-[0.2em] whitespace-nowrap transition-all duration-300 px-4 py-2 rounded-full ${activeSection === item.id
+                            className={`text-xs font-black uppercase tracking-[0.2em] whitespace-nowrap transition-all duration-300 px-4 py-2 rounded-full ${activeSection === item.id
                                 ? 'bg-blue-600 text-white'
                                 : 'text-slate-400 hover:text-slate-900 dark:hover:text-white'
                                 }`}
@@ -307,7 +307,7 @@ export default function WisdomToothPage() {
                 <div className="max-w-6xl mx-auto px-6">
                     <div className="grid lg:grid-cols-2 gap-16 items-center">
                         <div>
-                            <div className="inline-block px-4 py-2 bg-purple-50 dark:bg-purple-900/20 text-purple-600 dark:text-purple-400 text-[10px] font-black uppercase tracking-widest rounded-full mb-6">Advanced Protocol</div>
+                            <div className="inline-block px-4 py-2 bg-purple-50 dark:bg-purple-900/20 text-purple-600 dark:text-purple-400 text-xs font-black uppercase tracking-widest rounded-full mb-6">Advanced Protocol</div>
                             <h2 className="text-4xl md:text-5xl font-black text-slate-900 dark:text-white mb-8 leading-tight">
                                 Fear the Pain? <br />
                                 <span className="text-slate-300 dark:text-slate-700">Don&apos;t be.</span>

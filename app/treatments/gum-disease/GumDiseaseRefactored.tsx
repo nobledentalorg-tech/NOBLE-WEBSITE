@@ -104,7 +104,7 @@ export default function GumDiseaseRefactored() {
                 <div className="max-w-7xl mx-auto px-6 relative z-10 grid lg:grid-cols-2 gap-12 items-center">
                     <RevealOnScroll>
                         <div className="space-y-8">
-                            <div className="inline-flex items-center gap-2 px-3 py-1 bg-red-50 dark:bg-red-900/30 rounded-full text-[10px] font-black uppercase tracking-widest text-red-600 dark:text-red-400 border border-red-100 dark:border-red-500/20">
+                            <div className="inline-flex items-center gap-2 px-3 py-1 bg-red-50 dark:bg-red-900/30 rounded-full text-xs font-black uppercase tracking-widest text-red-600 dark:text-red-400 border border-red-100 dark:border-red-500/20">
                                 <AlertCircle size={12} /> The Oral-Systemic Link
                             </div>
                             <h1 className="text-6xl md:text-8xl font-black text-slate-900 dark:text-white leading-[0.9] tracking-tighter uppercase italic">
@@ -120,7 +120,7 @@ export default function GumDiseaseRefactored() {
                                     <Heart size={18} /> Book Gum Audit
                                 </button>
                                 <div className="flex items-center gap-4 px-6 border-l border-slate-200 dark:border-white/10">
-                                    <div className="text-[10px] uppercase font-black text-slate-600 dark:text-slate-400 tracking-widest leading-none">
+                                    <div className="text-xs uppercase font-black text-slate-600 dark:text-slate-400 tracking-widest leading-none">
                                         EMS Airflow® <br /> GBT Protocol
                                     </div>
                                     <div className="w-12 h-12 rounded-full bg-blue-50 dark:bg-blue-900/30 flex items-center justify-center text-blue-600">
@@ -150,7 +150,7 @@ export default function GumDiseaseRefactored() {
                                     </div>
                                     <div>
                                         <div className="text-sm font-black text-slate-900 dark:text-white uppercase tracking-tighter">Systemic Risk</div>
-                                        <div className="text-[10px] uppercase font-bold text-slate-600 dark:text-slate-400 tracking-widest">Cardiac + Diabetic Link</div>
+                                        <div className="text-xs uppercase font-bold text-slate-600 dark:text-slate-400 tracking-widest">Cardiac + Diabetic Link</div>
                                     </div>
                                 </div>
                             </div>
@@ -173,7 +173,7 @@ export default function GumDiseaseRefactored() {
                         <a
                             key={tab.id}
                             href={`#${tab.id}`}
-                            className={`text-[10px] font-black uppercase tracking-[0.2em] whitespace-nowrap transition-all duration-300 px-4 py-2 rounded-full ${activeTab === tab.id
+                            className={`text-xs font-black uppercase tracking-[0.2em] whitespace-nowrap transition-all duration-300 px-4 py-2 rounded-full ${activeTab === tab.id
                                 ? 'bg-red-600 text-white'
                                 : 'text-slate-400 hover:text-slate-900 dark:hover:text-white'
                                 }`}
@@ -190,7 +190,7 @@ export default function GumDiseaseRefactored() {
                     <RevealOnScroll>
                         <div className="grid lg:grid-cols-2 gap-20 items-center">
                             <div className="space-y-12">
-                                <div className="inline-flex items-center gap-2 px-3 py-1 bg-red-100 dark:bg-red-900/30 rounded-full text-[10px] font-black uppercase tracking-widest text-red-600 dark:text-red-400">
+                                <div className="inline-flex items-center gap-2 px-3 py-1 bg-red-100 dark:bg-red-900/30 rounded-full text-xs font-black uppercase tracking-widest text-red-600 dark:text-red-400">
                                     <Activity size={12} /> Clinical Reality
                                 </div>
                                 <h2 className="text-5xl font-black text-slate-900 dark:text-white tracking-tighter leading-none uppercase italic">
@@ -227,7 +227,7 @@ export default function GumDiseaseRefactored() {
                                     </div>
                                     <h3 className="text-3xl font-black text-slate-900 dark:text-white mb-6 tracking-tight uppercase">Medical Refusal</h3>
                                     <p className="text-lg text-slate-500 italic">&quot;I refuse to call a simple polish a &apos;cleaning&apos;. If your gum thickness is &lt; 3mm, we perform a medical-grade prophylaxis, not just a cosmetic one.&quot;</p>
-                                    <div className="mt-8 text-[10px] font-black text-red-600 tracking-widest uppercase">— Dr. Dhivakaran</div>
+                                    <div className="mt-8 text-xs font-black text-red-600 tracking-widest uppercase">— Dr. Dhivakaran</div>
                                 </div>
                             </div>
                         </div>
@@ -282,7 +282,7 @@ export default function GumDiseaseRefactored() {
                                 />
                                 <div className="absolute inset-0 bg-blue-600/20 mix-blend-overlay" />
                                 <div className="absolute bottom-10 left-10 p-6 ios-glass rounded-3xl backdrop-blur-3xl">
-                                    <div className="text-[10px] font-black uppercase tracking-widest text-blue-400 mb-2">SWISS TECHNOLOGY</div>
+                                    <div className="text-xs font-black uppercase tracking-widest text-blue-400 mb-2">SWISS TECHNOLOGY</div>
                                     <div className="text-sm font-bold">EMS AirFlow® Guided <br /> Biofilm Therapy</div>
                                 </div>
                             </div>
@@ -305,7 +305,7 @@ export default function GumDiseaseRefactored() {
                                         <div key={i} className="flex gap-6 items-center border-b border-white/10 pb-4">
                                             <span className="text-blue-600">{s.step}</span>
                                             <span className="text-white shrink-0">{s.label}</span>
-                                            <span className="text-[10px] text-slate-500 normal-case font-medium ml-auto text-right">{s.desc}</span>
+                                            <span className="text-xs text-slate-500 normal-case font-medium ml-auto text-right">{s.desc}</span>
                                         </div>
                                     ))}
                                 </div>
@@ -335,11 +335,11 @@ export default function GumDiseaseRefactored() {
                                 { stage: "STAGE 3", name: "Advanced Disease", symptoms: "Loose teeth + pus + bone loss.", action: "Laser Surgery / Grafting", color: "bg-red-500" }
                             ].map((m, i) => (
                                 <div key={i} className="p-8 ios-glass rounded-[2.5rem] border border-slate-100 dark:border-white/5 space-y-4 ios-card-hover group">
-                                    <div className={`text-[10px] font-black text-white px-3 py-1 rounded-full w-fit ${m.color}`}>{m.stage}</div>
+                                    <div className={`text-xs font-black text-white px-3 py-1 rounded-full w-fit ${m.color}`}>{m.stage}</div>
                                     <h4 className="text-2xl font-black text-slate-900 dark:text-white uppercase tracking-tighter italic">{m.name}</h4>
                                     <p className="text-xs text-slate-700 dark:text-slate-300 font-bold uppercase tracking-widest h-12">{m.symptoms}</p>
                                     <div className="pt-4 border-t border-slate-100 dark:border-white/10 w-full text-center">
-                                        <span className="text-[10px] font-black text-blue-600 uppercase tracking-widest">Medical Action: <br /> {m.action}</span>
+                                        <span className="text-xs font-black text-blue-600 uppercase tracking-widest">Medical Action: <br /> {m.action}</span>
                                     </div>
                                 </div>
                             ))}
@@ -358,7 +358,7 @@ export default function GumDiseaseRefactored() {
 
                         <div className="grid lg:grid-cols-2 gap-12 max-w-5xl mx-auto">
                             <div className="p-12 ios-glass rounded-[4rem] border border-white/10 bg-white/5 text-left">
-                                <div className="text-[10px] font-black uppercase tracking-widest text-slate-600 dark:text-slate-500 mb-8">Basic Maintenance</div>
+                                <div className="text-xs font-black uppercase tracking-widest text-slate-600 dark:text-slate-500 mb-8">Basic Maintenance</div>
                                 <div className="space-y-6">
                                     {[
                                         { item: "Guided Biofilm Therapy (Swiss)", price: "₹2,500" },
@@ -378,7 +378,7 @@ export default function GumDiseaseRefactored() {
                                 <div className="absolute top-0 right-0 p-4">
                                     <Scan size={48} className="text-red-500 opacity-20" />
                                 </div>
-                                <div className="text-[10px] font-black uppercase tracking-widest text-red-400 mb-8">Advanced Periodontics</div>
+                                <div className="text-xs font-black uppercase tracking-widest text-red-400 mb-8">Advanced Periodontics</div>
                                 <div className="space-y-6">
                                     {[
                                         { item: "Laser Gingivectomy (Per Arch)", price: "₹8,500" },
@@ -394,7 +394,7 @@ export default function GumDiseaseRefactored() {
                                 </div>
                             </div>
                         </div>
-                        <p className="mt-12 text-slate-400 dark:text-slate-500 font-bold uppercase tracking-[0.3em] text-[10px]">
+                        <p className="mt-12 text-slate-400 dark:text-slate-500 font-bold uppercase tracking-[0.3em] text-xs">
                             * GBT pricing includes disclosure dye + heated water treatment. Life is priority.
                         </p>
                     </RevealOnScroll>
@@ -456,7 +456,7 @@ export default function GumDiseaseRefactored() {
                                 Clinic Direct Line
                             </a>
                         </div>
-                        <p className="mt-12 text-slate-500 font-black text-[10px] uppercase tracking-[0.3em]">
+                        <p className="mt-12 text-slate-500 font-black text-xs uppercase tracking-[0.3em]">
                             Citations: American Academy of Periodontology | WHO Oral Health Report (2023)
                         </p>
                     </RevealOnScroll>

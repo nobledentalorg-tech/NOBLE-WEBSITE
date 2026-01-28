@@ -233,7 +233,7 @@ export default function DentalImplantsRefactored() {
                 <div className="max-w-7xl mx-auto px-6 relative z-10 w-full mt-12 grid lg:grid-cols-2 gap-20 items-center">
                     <RevealOnScroll>
                         <div>
-                            <div className="inline-flex items-center gap-2 px-3 py-1 bg-teal-50 dark:bg-teal-900/30 rounded-full text-[10px] font-black uppercase tracking-widest text-teal-600 dark:text-teal-400 mb-6 border border-teal-200 dark:border-teal-500/30">
+                            <div className="inline-flex items-center gap-2 px-3 py-1 bg-teal-50 dark:bg-teal-900/30 rounded-full text-xs font-black uppercase tracking-widest text-teal-600 dark:text-teal-400 mb-6 border border-teal-200 dark:border-teal-500/30">
                                 <Activity size={12} /> Medical Review v4.2 · 2026 Protocols
                             </div>
                             <h1 className="text-6xl md:text-7xl lg:text-8xl font-black text-slate-900 dark:text-white mb-8 tracking-tighter leading-[0.9]">
@@ -275,7 +275,7 @@ export default function DentalImplantsRefactored() {
                             <div className="relative group">
                                 <div className="absolute -inset-1 bg-gradient-to-r from-teal-500 to-blue-500 rounded-[2.5rem] blur opacity-25 group-hover:opacity-50 transition duration-1000 group-hover:duration-200"></div>
                                 <div className="relative bg-white dark:bg-[#0B1019] rounded-[2.5rem] p-8 border border-white/10 overflow-hidden shadow-2xl">
-                                    <div className="absolute top-4 right-6 text-[10px] font-black uppercase text-teal-500 tracking-widest bg-teal-500/10 px-3 py-1 rounded-full">3D Exploded View</div>
+                                    <div className="absolute top-4 right-6 text-xs font-black uppercase text-teal-500 tracking-widest bg-teal-500/10 px-3 py-1 rounded-full">3D Exploded View</div>
                                     <Image
                                         src="/assets/images/treatments/dental-implant-model.png"
                                         alt="Implant Model Exploded View"
@@ -313,7 +313,7 @@ export default function DentalImplantsRefactored() {
                         <a
                             key={tab.id}
                             href={`#${tab.id}`}
-                            className={`text-[10px] font-black uppercase tracking-[0.2em] whitespace-nowrap transition-all duration-300 px-4 py-2 rounded-full ${activeTab === tab.id
+                            className={`text-xs font-black uppercase tracking-[0.2em] whitespace-nowrap transition-all duration-300 px-4 py-2 rounded-full ${activeTab === tab.id
                                 ? 'bg-teal-600 text-white'
                                 : 'text-slate-400 hover:text-slate-900 dark:hover:text-white'
                                 }`}
@@ -330,7 +330,7 @@ export default function DentalImplantsRefactored() {
                     <RevealOnScroll>
                         <div className="grid lg:grid-cols-2 gap-20 items-center">
                             <div>
-                                <div className="inline-flex items-center gap-2 px-3 py-1 bg-teal-50 dark:bg-teal-900/30 rounded-full text-[10px] font-black uppercase tracking-widest text-teal-600 dark:text-teal-400 mb-6 border border-teal-200 dark:border-teal-500/30">
+                                <div className="inline-flex items-center gap-2 px-3 py-1 bg-teal-50 dark:bg-teal-900/30 rounded-full text-xs font-black uppercase tracking-widest text-teal-600 dark:text-teal-400 mb-6 border border-teal-200 dark:border-teal-500/30">
                                     <Microscope size={12} /> Medical Authority v4.2
                                 </div>
                                 <h2 className="text-4xl md:text-5xl font-black text-slate-900 dark:text-white mb-8 tracking-tight leading-tight uppercase italic">
@@ -366,7 +366,7 @@ export default function DentalImplantsRefactored() {
                                 <div className="relative bg-slate-900 rounded-[3rem] p-10 border border-white/10 overflow-hidden shadow-2xl">
                                     <div className="flex justify-between items-start mb-12">
                                         <div>
-                                            <div className="text-[10px] font-black text-teal-400 uppercase tracking-widest mb-1">Osstell Clinical ID</div>
+                                            <div className="text-xs font-black text-teal-400 uppercase tracking-widest mb-1">Osstell Clinical ID</div>
                                             <div className="text-2xl font-black text-white">ISQ METER 900</div>
                                         </div>
                                         <div className="p-3 bg-teal-500/20 text-teal-400 rounded-2xl">
@@ -424,7 +424,7 @@ export default function DentalImplantsRefactored() {
                                         <div className="p-3 bg-red-50 dark:bg-red-900/20 text-red-500 rounded-2xl">
                                             <Activity size={24} />
                                         </div>
-                                        <span className="text-[10px] font-black uppercase tracking-[0.3em] text-red-500">Biological Drift</span>
+                                        <span className="text-xs font-black uppercase tracking-[0.3em] text-red-500">Biological Drift</span>
                                     </div>
                                     <h3 className="text-3xl font-black text-slate-900 dark:text-white mb-6 tracking-tight">Facial Atrophy.</h3>
                                     <p className="text-slate-600 dark:text-slate-300 leading-relaxed max-w-sm">
@@ -435,7 +435,7 @@ export default function DentalImplantsRefactored() {
                                     <div className="flex justify-between items-end">
                                         <div>
                                             <div className="text-4xl font-black text-red-500">-40%</div>
-                                            <div className="text-[10px] font-bold text-slate-400 uppercase tracking-widest mt-1">Bone Loss (3 Years)</div>
+                                            <div className="text-xs font-bold text-slate-400 uppercase tracking-widest mt-1">Bone Loss (3 Years)</div>
                                         </div>
                                         <div className="w-12 h-12 rounded-full bg-slate-900 dark:bg-white text-white dark:text-slate-900 flex items-center justify-center hover:scale-110 transition-transform cursor-pointer">
                                             <ArrowRight size={20} />
@@ -480,7 +480,7 @@ export default function DentalImplantsRefactored() {
                             {/* BENTO 5: THE BONE SIMULATOR (LARGE) */}
                             <div className="md:col-span-2 p-10 bg-slate-100 dark:bg-white/5 rounded-[3rem] border border-slate-200 dark:border-white/10 shadow-inner flex flex-col justify-center gap-10">
                                 <div className="flex justify-between items-center">
-                                    <h4 className="text-[10px] font-black uppercase tracking-widest text-slate-400">Atrophy Simulator</h4>
+                                    <h4 className="text-xs font-black uppercase tracking-widest text-slate-400">Atrophy Simulator</h4>
                                     <div className="flex gap-2">
                                         <span className="w-2 h-2 rounded-full bg-red-500 animate-pulse"></span>
                                         <span className="text-[8px] font-black text-slate-500 uppercase tracking-widest">Bone Loss</span>
@@ -489,7 +489,7 @@ export default function DentalImplantsRefactored() {
 
                                 <div className="space-y-8">
                                     <div className="space-y-3">
-                                        <div className="flex justify-between text-[10px] font-bold uppercase tracking-widest text-slate-500">
+                                        <div className="flex justify-between text-xs font-bold uppercase tracking-widest text-slate-500">
                                             <span>Conventional Bridge (10 yrs)</span>
                                             <span className="text-red-500">40% Atrophy</span>
                                         </div>
@@ -499,7 +499,7 @@ export default function DentalImplantsRefactored() {
                                     </div>
 
                                     <div className="space-y-3">
-                                        <div className="flex justify-between text-[10px] font-bold uppercase tracking-widest text-teal-600">
+                                        <div className="flex justify-between text-xs font-bold uppercase tracking-widest text-teal-600">
                                             <span>Noble Dental Implant (10 yrs)</span>
                                             <span>0.5% Stability</span>
                                         </div>
@@ -509,7 +509,7 @@ export default function DentalImplantsRefactored() {
                                     </div>
                                 </div>
 
-                                <p className="text-[10px] font-bold text-slate-400 text-center uppercase tracking-[0.2em]">Implants preserve bone biological volume.</p>
+                                <p className="text-xs font-bold text-slate-400 text-center uppercase tracking-[0.2em]">Implants preserve bone biological volume.</p>
                             </div>
                         </div>
                     </RevealOnScroll>
@@ -544,7 +544,7 @@ export default function DentalImplantsRefactored() {
                             </div>
 
                             <div className="order-1 lg:order-2 space-y-8">
-                                <div className="inline-flex items-center gap-2 px-3 py-1 bg-amber-50 dark:bg-amber-900/30 rounded-full text-[10px] font-black uppercase tracking-widest text-amber-600 dark:text-amber-400 border border-amber-200 dark:border-amber-500/30">
+                                <div className="inline-flex items-center gap-2 px-3 py-1 bg-amber-50 dark:bg-amber-900/30 rounded-full text-xs font-black uppercase tracking-widest text-amber-600 dark:text-amber-400 border border-amber-200 dark:border-amber-500/30">
                                     <Shield size={12} /> Clinical Risk Mitigation
                                 </div>
                                 <h2 className="text-4xl md:text-5xl font-black text-slate-900 dark:text-white tracking-tight leading-tight">
@@ -558,7 +558,7 @@ export default function DentalImplantsRefactored() {
                                     <div className="flex items-center gap-6">
                                         <div>
                                             <div className="text-3xl font-black text-slate-900 dark:text-white">99.2%</div>
-                                            <div className="text-[10px] font-bold text-slate-400 uppercase tracking-widest mt-1">First-Year Success</div>
+                                            <div className="text-xs font-bold text-slate-400 uppercase tracking-widest mt-1">First-Year Success</div>
                                         </div>
                                         <div className="w-px h-12 bg-slate-100 dark:bg-white/10"></div>
                                         <div className="flex -space-x-3">
@@ -567,7 +567,7 @@ export default function DentalImplantsRefactored() {
                                                     <Image src={`https://i.pravatar.cc/100?img=${i + 10}`} alt="User" fill />
                                                 </div>
                                             ))}
-                                            <div className="w-10 h-10 rounded-full border-2 border-white dark:border-[#020617] bg-teal-500 text-white flex items-center justify-center text-[10px] font-bold">+18k</div>
+                                            <div className="w-10 h-10 rounded-full border-2 border-white dark:border-[#020617] bg-teal-500 text-white flex items-center justify-center text-xs font-bold">+18k</div>
                                         </div>
                                     </div>
                                 </div>
@@ -596,7 +596,7 @@ export default function DentalImplantsRefactored() {
                                     <div className={`w-14 h-14 rounded-2xl flex items-center justify-center mb-8 transition-all ${selectedStep === i ? 'bg-teal-500 text-white' : 'bg-slate-100 dark:bg-white/5 text-slate-400'}`}>
                                         <step.icon size={24} />
                                     </div>
-                                    <div className="text-[10px] font-black text-teal-600 dark:text-teal-400 uppercase tracking-widest mb-4">Phase 0{i + 1}</div>
+                                    <div className="text-xs font-black text-teal-600 dark:text-teal-400 uppercase tracking-widest mb-4">Phase 0{i + 1}</div>
                                     <h3 className="text-2xl font-black text-slate-900 dark:text-white mb-4 tracking-tight">{step.title}</h3>
                                     <p className="text-sm text-slate-500 dark:text-slate-400 leading-relaxed font-medium">{step.desc}</p>
                                 </div>
@@ -617,7 +617,7 @@ export default function DentalImplantsRefactored() {
 
                         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
                             <article className="p-8 rounded-[2.5rem] bg-slate-50 dark:bg-[#151b2b] border border-slate-200 dark:border-white/5 group">
-                                <div className="text-[10px] font-black uppercase tracking-widest text-teal-600 dark:text-teal-400 mb-4">Case 01 · Single Molar</div>
+                                <div className="text-xs font-black uppercase tracking-widest text-teal-600 dark:text-teal-400 mb-4">Case 01 · Single Molar</div>
                                 <h3 className="text-xl font-bold text-slate-900 dark:text-white mb-4">Immediate placement after extraction</h3>
                                 <div className="space-y-4 text-sm text-slate-600 dark:text-slate-400 mb-6">
                                     <div className="flex justify-between border-b border-slate-100 dark:border-white/5 pb-2">
@@ -639,7 +639,7 @@ export default function DentalImplantsRefactored() {
                             </article>
 
                             <article className="p-8 rounded-[2.5rem] bg-slate-50 dark:bg-[#151b2b] border border-slate-200 dark:border-white/5 group">
-                                <div className="text-[10px] font-black uppercase tracking-widest text-blue-600 dark:text-blue-400 mb-4">Case 02 · Full Mouth</div>
+                                <div className="text-xs font-black uppercase tracking-widest text-blue-600 dark:text-blue-400 mb-4">Case 02 · Full Mouth</div>
                                 <h3 className="text-xl font-bold text-slate-900 dark:text-white mb-4">**Full Mouth Dental Implants** Rehab</h3>
                                 <div className="space-y-4 text-sm text-slate-600 dark:text-slate-400 mb-6">
                                     <div className="flex justify-between border-b border-slate-100 dark:border-white/5 pb-2">
@@ -661,7 +661,7 @@ export default function DentalImplantsRefactored() {
                             </article>
 
                             <article className="p-8 rounded-[2.5rem] bg-slate-50 dark:bg-[#151b2b] border border-slate-200 dark:border-white/5 group">
-                                <div className="text-[10px] font-black uppercase tracking-widest text-purple-600 dark:text-purple-400 mb-4">Case 03 · Front Tooth</div>
+                                <div className="text-xs font-black uppercase tracking-widest text-purple-600 dark:text-purple-400 mb-4">Case 03 · Front Tooth</div>
                                 <h3 className="text-xl font-bold text-slate-900 dark:text-white mb-4">Esthetic Zone Implant</h3>
                                 <div className="space-y-4 text-sm text-slate-600 dark:text-slate-400 mb-6">
                                     <div className="flex justify-between border-b border-slate-100 dark:border-white/5 pb-2">
@@ -691,7 +691,7 @@ export default function DentalImplantsRefactored() {
                 <div className="max-w-7xl mx-auto px-6">
                     <RevealOnScroll>
                         <div className="text-center mb-20">
-                            <div className="inline-flex items-center gap-2 px-3 py-1 bg-teal-50 dark:bg-teal-900/30 text-teal-600 rounded-full text-[10px] font-black uppercase tracking-widest mb-4">
+                            <div className="inline-flex items-center gap-2 px-3 py-1 bg-teal-50 dark:bg-teal-900/30 text-teal-600 rounded-full text-xs font-black uppercase tracking-widest mb-4">
                                 Tooth Implant Cost Hyderabad
                             </div>
                             <h2 className="text-4xl font-black text-slate-900 dark:text-white mb-6 uppercase italic">Select Your Foundation.</h2>
@@ -728,7 +728,7 @@ export default function DentalImplantsRefactored() {
 
                                     <div className="mb-8 pt-6 border-t border-slate-100 dark:border-white/5">
                                         <div className="flex justify-between items-end">
-                                            <span className="text-[10px] font-bold text-slate-400 uppercase tracking-widest">Noble Price</span>
+                                            <span className="text-xs font-bold text-slate-400 uppercase tracking-widest">Noble Price</span>
                                             <div className="text-right">
                                                 <span className="block text-xs line-through text-slate-400 decoration-red-400">{item.market}</span>
                                                 <span className="text-2xl font-black text-teal-600 dark:text-teal-400">{item.noble}</span>
@@ -753,7 +753,7 @@ export default function DentalImplantsRefactored() {
 
                     <div className="relative z-10">
                         <div className="text-center mb-12">
-                            <div className="inline-flex items-center gap-2 px-3 py-1 bg-white/10 rounded-full text-[10px] font-black uppercase tracking-widest text-teal-400 mb-4 border border-white/10">
+                            <div className="inline-flex items-center gap-2 px-3 py-1 bg-white/10 rounded-full text-xs font-black uppercase tracking-widest text-teal-400 mb-4 border border-white/10">
                                 <TrendingDown size={12} /> The Nallagandla Advantage
                             </div>
                             <h3 className="text-3xl font-black mb-4 uppercase italic">Noble Dental Clinic in Nallagandla</h3>
@@ -803,7 +803,7 @@ export default function DentalImplantsRefactored() {
                 <RevealOnScroll>
                     <div className="text-center mb-20">
                         <h2 className="text-3xl font-black text-slate-900 dark:text-white mb-4">Clinical Q&A</h2>
-                        <p className="text-slate-500 text-[10px] font-black uppercase tracking-[0.2em]">Reviewed by Senior Implantology Team</p>
+                        <p className="text-slate-500 text-xs font-black uppercase tracking-[0.2em]">Reviewed by Senior Implantology Team</p>
                     </div>
 
                     <div className="space-y-4">
@@ -830,7 +830,7 @@ export default function DentalImplantsRefactored() {
                     {/* FAQ Verification Footer */}
                     <div className="mt-8 pt-6 border-t border-slate-100 dark:border-white/5 flex items-center justify-center gap-3 text-slate-400">
                         <ShieldCheck size={16} className="text-emerald-500" />
-                        <p className="text-[10px] font-black uppercase tracking-widest text-center px-4">
+                        <p className="text-xs font-black uppercase tracking-widest text-center px-4">
                             All clinical protocols are verified by Noble Dental&apos;s medical board for 2026 safety standards.
                         </p>
                     </div>
@@ -879,7 +879,7 @@ export default function DentalImplantsRefactored() {
                         </a>
                     </div>
 
-                    <div className="mt-16 text-center text-[10px] font-black uppercase tracking-[0.3em] text-slate-500">
+                    <div className="mt-16 text-center text-xs font-black uppercase tracking-[0.3em] text-slate-500">
                         Scientifically Backed · ITI Standards · FDA Cleared Surfaces
                     </div>
                 </div>

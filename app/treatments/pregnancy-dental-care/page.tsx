@@ -140,7 +140,7 @@ export default function PregnancyPage() {
                 <div className="max-w-7xl mx-auto px-6 relative z-10 grid lg:grid-cols-2 gap-12 items-center">
                     <RevealOnScroll>
                         <div className="space-y-8">
-                            <div className="inline-flex items-center gap-2 px-3 py-1 bg-pink-50 dark:bg-pink-900/30 rounded-full text-[10px] font-black uppercase tracking-widest text-pink-600 dark:text-pink-400 border border-pink-100 dark:border-pink-500/20">
+                            <div className="inline-flex items-center gap-2 px-3 py-1 bg-pink-50 dark:bg-pink-900/30 rounded-full text-xs font-black uppercase tracking-widest text-pink-600 dark:text-pink-400 border border-pink-100 dark:border-pink-500/20">
                                 <Baby size={12} /> Prenatal Oral Wellness
                             </div>
                             <h1 className="text-5xl md:text-7xl font-black text-slate-900 dark:text-white leading-[0.9] tracking-tighter">
@@ -155,7 +155,7 @@ export default function PregnancyPage() {
                                         <Image src="https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?auto=format&fit=crop&q=80&w=100" alt="Dr. Dhivakaran" fill className="object-cover" />
                                     </div>
                                     <div className="text-left">
-                                        <div className="text-[10px] uppercase text-pink-600 dark:text-pink-400 font-bold tracking-wider">Approved By</div>
+                                        <div className="text-xs uppercase text-pink-600 dark:text-pink-400 font-bold tracking-wider">Approved By</div>
                                         <div className="text-xs font-bold text-slate-900 dark:text-white">Dr. Dhivakaran, MDS</div>
                                     </div>
                                 </Link>
@@ -170,7 +170,7 @@ export default function PregnancyPage() {
                                     <Calendar size={18} /> Book Safe Checkup
                                 </button>
                                 <div className="flex items-center gap-4 px-6 border-l border-slate-200 dark:border-white/10">
-                                    <div className="text-[10px] uppercase font-black text-slate-400 tracking-widest leading-none">
+                                    <div className="text-xs uppercase font-black text-slate-400 tracking-widest leading-none">
                                         Safety <br /> Protocol
                                     </div>
                                     <div className="text-2xl font-black text-pink-600 dark:text-white">
@@ -217,7 +217,7 @@ export default function PregnancyPage() {
                         <a
                             key={item.id}
                             href={`#${item.id}`}
-                            className={`text-[10px] font-black uppercase tracking-[0.2em] whitespace-nowrap transition-all duration-300 px-4 py-2 rounded-full ${activeSection === item.id
+                            className={`text-xs font-black uppercase tracking-[0.2em] whitespace-nowrap transition-all duration-300 px-4 py-2 rounded-full ${activeSection === item.id
                                 ? 'bg-pink-600 text-white'
                                 : 'text-slate-400 hover:text-slate-900 dark:hover:text-white'
                                 }`}
@@ -316,7 +316,7 @@ export default function PregnancyPage() {
                                     <div className="w-14 h-14 bg-white dark:bg-white/10 rounded-2xl flex items-center justify-center text-slate-900 dark:text-white">
                                         <item.icon size={28} />
                                     </div>
-                                    <span className={`text-[10px] font-black uppercase tracking-widest px-3 py-1 rounded-full border ${item.color} border-current bg-transparent`}>{item.status}</span>
+                                    <span className={`text-xs font-black uppercase tracking-widest px-3 py-1 rounded-full border ${item.color} border-current bg-transparent`}>{item.status}</span>
                                 </div>
 
                                 <h3 className="text-xl font-bold mb-1">{item.title}</h3>
@@ -333,7 +333,7 @@ export default function PregnancyPage() {
                 <div className="max-w-5xl mx-auto px-6">
                     <RevealOnScroll>
                         <div className="text-center mb-16">
-                            <div className="inline-block px-4 py-2 bg-pink-100 dark:bg-pink-900/30 text-pink-700 dark:text-pink-400 text-[10px] font-black uppercase tracking-widest rounded-full mb-4">Transparent Pricing</div>
+                            <div className="inline-block px-4 py-2 bg-pink-100 dark:bg-pink-900/30 text-pink-700 dark:text-pink-400 text-xs font-black uppercase tracking-widest rounded-full mb-4">Transparent Pricing</div>
                             <h2 className="text-3xl font-black text-slate-900 dark:text-white mb-4">Invest In Safety</h2>
                             <p className="text-slate-600 dark:text-slate-400">Strict medical protocols. No hidden costs.</p>
                         </div>
@@ -353,7 +353,7 @@ export default function PregnancyPage() {
 
                         {/* CLEANING */}
                         <div className="p-8 bg-pink-600 text-white rounded-3xl border border-pink-500 shadow-2xl relative transform md:-translate-y-4">
-                            <div className="absolute top-0 center bg-pink-800 text-[10px] font-bold uppercase px-3 py-1 rounded-b-lg">Most Recommended</div>
+                            <div className="absolute top-0 center bg-pink-800 text-xs font-bold uppercase px-3 py-1 rounded-b-lg">Most Recommended</div>
                             <h3 className="text-xl font-bold text-white mb-4">Perio-Prevention</h3>
                             <div className="text-3xl font-black text-white mb-6">₹2,500 <span className="text-sm font-medium text-pink-200">/session</span></div>
                             <p className="text-sm text-pink-100 mb-6">Deep cleaning to remove bacteria that cause pregnancy gingivitis.</p>

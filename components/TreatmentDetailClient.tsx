@@ -44,7 +44,7 @@ export default function TreatmentDetailClient({ treatment }: Props) {
                 <div className="max-w-7xl mx-auto px-6 relative z-10 w-full grid lg:grid-cols-2 gap-16 items-center">
                     <div className="space-y-8 order-2 lg:order-1">
                         <RevealOnScroll>
-                            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-100 dark:bg-blue-500/10 border border-blue-200 dark:border-blue-500/20 text-blue-600 dark:text-blue-400 font-bold text-[10px] uppercase tracking-[0.3em] mb-6">
+                            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-100 dark:bg-blue-500/10 border border-blue-200 dark:border-blue-500/20 text-blue-600 dark:text-blue-400 font-bold text-xs uppercase tracking-[0.3em] mb-6">
                                 <Sparkles size={12} /> {treatment.category} Protocol
                             </div>
                             <h1 className="text-5xl md:text-8xl font-black text-slate-900 dark:text-white leading-[0.9] tracking-tighter">
@@ -92,11 +92,11 @@ export default function TreatmentDetailClient({ treatment }: Props) {
                                     />
                                 </div>
                                 <div>
-                                    <div className="text-[10px] font-bold uppercase tracking-widest text-slate-500 mb-0.5">Medically Reviewed By</div>
+                                    <div className="text-xs font-bold uppercase tracking-widest text-slate-500 mb-0.5">Medically Reviewed By</div>
                                     <div className="font-bold text-slate-900 dark:text-white text-sm flex items-center gap-2">
-                                        Dr. Dhivakaran <span className="text-blue-500 text-[10px] bg-blue-50 dark:bg-blue-900/20 px-1.5 py-0.5 rounded border border-blue-100 dark:border-blue-800">CMD</span>
+                                        Dr. Dhivakaran <span className="text-blue-500 text-xs bg-blue-50 dark:bg-blue-900/20 px-1.5 py-0.5 rounded border border-blue-100 dark:border-blue-800">CMD</span>
                                     </div>
-                                    <div className="text-[10px] text-slate-400">January 2026</div>
+                                    <div className="text-xs text-slate-400">January 2026</div>
                                 </div>
                             </div>
                         </RevealOnScroll>
@@ -219,7 +219,7 @@ export default function TreatmentDetailClient({ treatment }: Props) {
                                                 <p className="text-slate-600 dark:text-slate-400 text-sm leading-relaxed mb-3">
                                                     {step.description}
                                                 </p>
-                                                <div className="inline-flex items-center gap-1.5 text-[10px] font-bold uppercase tracking-widest text-green-600 bg-green-50 dark:bg-green-900/10 px-2 py-1 rounded">
+                                                <div className="inline-flex items-center gap-1.5 text-xs font-bold uppercase tracking-widest text-green-600 bg-green-50 dark:bg-green-900/10 px-2 py-1 rounded">
                                                     <Smile size={12} /> Pain Level: {step.painLevel}
                                                 </div>
                                             </div>
@@ -295,7 +295,7 @@ export default function TreatmentDetailClient({ treatment }: Props) {
                             </h4>
                             <ul className="space-y-2">
                                 {treatment.citations.map((cite, i) => (
-                                    <li key={i} className="text-[10px] md:text-xs text-slate-500 italic">
+                                    <li key={i} className="text-xs md:text-xs text-slate-500 italic">
                                         {cite}
                                     </li>
                                 ))}
