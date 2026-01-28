@@ -179,12 +179,14 @@ const ChatWidget: React.FC<ChatWidgetProps> = ({ onBookClick }) => {
             <div className="flex items-center gap-2">
               <button
                 onClick={() => setLanguage(prev => prev === 'en' ? 'ta' : 'en')}
+                aria-label="Toggle Language"
                 className="px-2 py-1 text-xs font-bold border border-slate-200 dark:border-white/10 rounded-md hover:bg-slate-100 dark:hover:bg-white/5 transition-colors"
               >
                 {language === 'en' ? 'தமிழ்' : 'ENG'}
               </button>
               <button
                 onClick={() => setIsOpen(false)}
+                aria-label="Close Chat"
                 className="p-2 text-slate-400 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-white/5 rounded-full transition-all duration-300"
               >
                 <X size={20} />
@@ -263,6 +265,7 @@ const ChatWidget: React.FC<ChatWidgetProps> = ({ onBookClick }) => {
                 />
                 <button
                   onClick={toggleListening}
+                  aria-label={isListening ? "Stop Listening" : "Start Listening"}
                   className={`absolute right-2 top-1/2 -translate-y-1/2 p-1.5 rounded-lg transition-all ${isListening ? 'bg-red-500 text-white animate-pulse' : 'text-slate-400 hover:text-blue-600'
                     }`}
                 >
@@ -272,6 +275,7 @@ const ChatWidget: React.FC<ChatWidgetProps> = ({ onBookClick }) => {
               <button
                 onClick={handleSend}
                 disabled={isLoading || !input.trim()}
+                aria-label="Send Message"
                 className={`p-3 rounded-xl transition-all duration-300 ${input.trim()
                   ? 'bg-blue-600 text-white shadow-lg shadow-blue-500/30 hover:bg-blue-700'
                   : 'bg-slate-100 dark:bg-white/5 text-slate-300 dark:text-slate-600 cursor-not-allowed'
@@ -288,6 +292,7 @@ const ChatWidget: React.FC<ChatWidgetProps> = ({ onBookClick }) => {
       {!isOpen && (
         <button
           onClick={() => setIsOpen(true)}
+          aria-label="Open AI Assistant"
           className="group relative bg-blue-600 dark:bg-cyan-500 text-white dark:text-black p-4 rounded-full shadow-2xl shadow-blue-500/40 dark:shadow-cyan-500/30 transition-all hover:scale-110 duration-500 active:scale-95"
         >
           <div className="absolute -top-1 -right-1 flex h-4 w-4">
