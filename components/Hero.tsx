@@ -194,7 +194,7 @@ const Hero: React.FC<HeroProps> = ({ onBookClick }) => {
 
               <div className="card-body">
                 <section>
-                  <h3>Straumann ITI <span className="badge">New</span></h3>
+                  <h3>Straumann ITI <span className="badge bg-blue-700 text-white opacity-100">New</span></h3>
                   <p>Swiss-engineered SLActive® surface technology ensures 50% faster biological bone healing.</p>
                 </section>
 
@@ -206,7 +206,7 @@ const Hero: React.FC<HeroProps> = ({ onBookClick }) => {
                 </section>
 
                 <section>
-                  <span className="size-label">Implant System</span>
+                  <span className="size-label text-slate-700 dark:text-slate-300 font-bold">Implant System</span>
                   <div className="number-options">
                     <span>Noble</span>
                     <span>Zimmer</span>
@@ -217,14 +217,14 @@ const Hero: React.FC<HeroProps> = ({ onBookClick }) => {
                 </section>
 
                 <section className="relative">
-                  <span className="colours-label">Material Grade</span>
+                  <span className="colours-label text-slate-700 dark:text-slate-300 font-bold">Material Grade</span>
                   <div className="colorway">
                     <div className="dot bg-slate-300" title="Titanium G5"></div>
                     <div className="dot bg-white border border-slate-200" title="Zirconia"></div>
                     <div className="dot bg-slate-800 border border-slate-600 shadow-inner" title="Roxolid"></div>
                   </div>
 
-                  <div className="price-badge">
+                  <div className="price-badge bg-slate-900 text-white opacity-100">
                     <span id="amount">₹ 25,000</span>
                   </div>
                 </section>
