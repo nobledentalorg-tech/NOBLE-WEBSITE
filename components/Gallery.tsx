@@ -444,22 +444,22 @@ export default function Gallery() {
                 {/* Buttons */}
                 <div className="flex items-center justify-between">
                   <div className="flex items-center gap-2">
-                    <button onClick={toggleMute} className="text-slate-300 hover:text-slate-500 transition-colors p-2">
+                    <button onClick={toggleMute} className="text-slate-300 hover:text-slate-500 transition-colors p-2" aria-label={isMuted ? "Unmute" : "Mute"}>
                       {isMuted ? <VolumeX size={18} /> : <Volume2 size={18} />}
                     </button>
                   </div>
 
                   <div className="flex items-center gap-6 md:gap-8">
-                    <button onClick={handlePrev} className="text-slate-400 hover:text-blue-600 transition-colors transform hover:-translate-x-1"><SkipBack size={24} /></button>
-                    <button onClick={togglePlay} className="w-14 h-14 rounded-full bg-blue-600 flex items-center justify-center text-white shadow-xl hover:scale-110 active:scale-95 transition-all">
+                    <button onClick={handlePrev} className="text-slate-400 hover:text-blue-600 transition-colors transform hover:-translate-x-1" aria-label="Previous Track"><SkipBack size={24} /></button>
+                    <button onClick={togglePlay} className="w-14 h-14 rounded-full bg-blue-600 flex items-center justify-center text-white shadow-xl hover:scale-110 active:scale-95 transition-all" aria-label={isTimerPlaying ? "Pause" : "Play"}>
                       {isTimerPlaying ? <Pause size={24} fill="currentColor" /> : <Play size={24} fill="currentColor" className="ml-1" />}
                     </button>
-                    <button onClick={handleNext} className="text-slate-400 hover:text-blue-600 transition-colors transform hover:translate-x-1"><SkipForward size={24} /></button>
+                    <button onClick={handleNext} className="text-slate-400 hover:text-blue-600 transition-colors transform hover:translate-x-1" aria-label="Next Track"><SkipForward size={24} /></button>
                   </div>
 
                   <div className="flex items-center gap-4">
-                    <button className="text-slate-300 hover:text-red-500 transition-colors hover:scale-110"><Heart size={18} /></button>
-                    <button className="text-slate-300 hover:text-blue-500 transition-colors hover:scale-110"><Share2 size={18} /></button>
+                    <button className="text-slate-300 hover:text-red-500 transition-colors hover:scale-110" aria-label="Like Track"><Heart size={18} /></button>
+                    <button className="text-slate-300 hover:text-blue-500 transition-colors hover:scale-110" aria-label="Share Track"><Share2 size={18} /></button>
                   </div>
                 </div>
               </div>

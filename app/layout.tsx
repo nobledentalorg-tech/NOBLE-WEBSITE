@@ -6,6 +6,7 @@ import UIProtector from '@/components/UIProtector';
 import FloatingCTA from '@/components/FloatingCTA';
 import { LocalSeoSchema } from '@/components/LocalSeoSchema';
 import ReviewSchema from '@/components/ReviewSchema';
+import BreadcrumbSchema from '@/components/BreadcrumbSchema';
 import type { Metadata } from 'next';
 
 const jakarta = Plus_Jakarta_Sans({ subsets: ['latin'], variable: '--font-jakarta' });
@@ -111,26 +112,28 @@ export const viewport = {
 };
 
 import Script from 'next/script';
+import { Partytown } from '@builder.io/partytown/react';
 
 import { SessionProvider } from 'next-auth/react';
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en" suppressHydrationWarning className="scroll-smooth">
-      <Script
-        id="gtm-script"
-        strategy="lazyOnload"
-        dangerouslySetInnerHTML={{
-          __html: `
-            (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-            new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-            j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-            'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-            })(window,document,'script','dataLayer','GTM-N7LJVS7T');
-          `,
-        }}
-      />
+      <head>
+        <Partytown debug={true} forward={['dataLayer.push']} />
+      </head>
       <body className={`${jakarta.variable} ${inter.variable} font-sans antialiased bg-slate-50 dark:bg-dark-bg text-slate-900 dark:text-white transition-colors duration-300`}>
+        {/* Google Tag Manager - Offloaded to Worker */}
+        <script
+          type="text/partytown"
+          dangerouslySetInnerHTML={{
+            __html: `(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+             new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+             j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+             'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+             })(window,document,'script','dataLayer','GTM-N7LJVS7T');`,
+          }}
+        />
         <SessionProvider>
           <LayoutShell>
             {children}
@@ -138,6 +141,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         </SessionProvider>
         <JsonLd />
         <LocalSeoSchema />
+        <BreadcrumbSchema />
         <ReviewSchema />
         <UIProtector />
         <FloatingCTA />

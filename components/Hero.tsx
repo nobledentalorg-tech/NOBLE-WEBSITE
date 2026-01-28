@@ -185,7 +185,8 @@ const Hero: React.FC<HeroProps> = ({ onBookClick }) => {
                   alt="Swiss Implant System"
                   width={300}
                   height={300}
-                  priority={true} // [SEO] LCP Optimization
+                  priority={true}
+                  fetchPriority="high" // [SEO] LCP Optimization
                 />
 
                 <span className="nmd">ITI</span>

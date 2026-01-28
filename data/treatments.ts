@@ -719,6 +719,124 @@ export const treatmentsData: Record<string, TreatmentData> = {
     faqs: [{ q: "Are X-rays safe?", a: "Yes, with lead-shielding and digital sensors, radiation is negligible." }],
     keywords: ["pregnant", "mom", "baby", "gums", "bleeding", "safety"]
   },
+  "laser-gum-contouring": {
+    id: "laser-gum-contouring",
+    title: "Laser Gum Treatment (LANAP)",
+    subtitle: "No-cut, no-sew laser gum therapy.",
+    storyHook: {
+      headline: "Stop Scrubbing Your Gums Away.",
+      subheadline: "Why aggressive brushing makes gum disease worse.",
+      body: "Bleeding gums are NOT normal. It is a sign of active infection eating away your jawbone.\n\nTraditional surgery involves cutting the gums and stitching them back (Painful!). We use **Biolase Lasers (LANAP)** to vaporize bacteria *without* touching healthy tissue. It’s like a magic eraser for infection."
+    },
+    category: "Periodontics",
+    heroImage: "/assets/images/treatments/laser-gum-hyderabad.webp",
+    description: "Treat gum disease and dark pigmentation with advanced diode lasers. Minimally invasive & bloodless.",
+    longDescription: "Periodontitis (Gum Disease) is the #1 cause of tooth loss in adults, not cavities. Our Laser Assisted New Attachment Procedure (LANAP) triggers actual bone regeneration. We also perform Cosmetic Gum Depigmentation to turn dark/black gums into a healthy pink coral color in just one sitting.",
+    stats: [
+      { label: "Pain", value: "None", icon: "Smile" },
+      { label: "Healing", value: "24 Hrs", icon: "Clock" },
+      { label: "Tech", value: "Diode Laser", icon: "Zap" }
+    ],
+    process: [
+      { title: "Bacterial Scan", desc: "Checking pocket depth with a probe." },
+      { title: "Laser Vaporization", desc: "The laser selectively kills bad bacteria." },
+      { title: "Calculus Removal", desc: "Ultrasonic cleaning of root surfaces." },
+      { title: "Clot Formation", desc: "Natural sealing of the gums without stitches." }
+    ],
+    benefits: [
+      "No Scalpels or Sutures",
+      "Treats Loose Teeth",
+      "Removes Black Pigmentation",
+      "Safe for Diabetics",
+      "Faster Healing than Flap Surgery"
+    ],
+    faqs: [
+      { q: "Can laser treat loose teeth?", a: "Yes! LANAP promotes bone regeneration, often tightening loose teeth and saving them from extraction." },
+      { q: "Is gum depigmentation permanent?", a: "Yes, removing the melanin layer (dark spots) usually gives permanent pink results, though smoking can cause recurrence." }
+    ],
+    keywords: ["laser gum treatment cost", "bleeding gums cure", "lanap hyderabad", "gum depigmentation cost", "laser dentist nallagandla"],
+    priceComparison: [
+      { item: "Laser Gum Therapy (Full Mouth)", noblePrice: "₹ 15,000", marketPrice: "₹ 25,000" },
+      { item: "Cosmetic Depigmentation", noblePrice: "₹ 3,000 / Arch", marketPrice: "₹ 8,000" },
+      { item: "Traditional Flap Surgery", noblePrice: "Not Done", marketPrice: "₹ 20,000 (Painful)" }
+    ],
+    medicalContext: {
+      etiology: [
+        {
+          cause: "Plaque Biofilm",
+          medicalTerm: "Porphyromonas gingivalis",
+          description: "Sticky bacteria harden into tartar, pushing gums away from the teeth (Recession)."
+        },
+        {
+          cause: "Smoking",
+          medicalTerm: "Vasoconstriction",
+          description: "Tobacco masks bleeding, allowing gum disease to progress silently until teeth fall out."
+        }
+      ],
+      investigations: [
+        { name: "Periodontal Charting", purpose: "Measuring pocket depth (mm) around every tooth." },
+        { name: "OPG X-Ray", purpose: "Checking bone levels to see how much support remains." }
+      ],
+      prevention: [
+        "Water Flosser (Robo-Floss) daily.",
+        "Professional cleaning every 6 months."
+      ]
+    },
+    procedureDetailed: [
+      {
+        step: "Pocket Measurement",
+        description: "We map the infection severity using a detailed 6-point chart per tooth.",
+        duration: "15 Mins",
+        painLevel: "None"
+      },
+      {
+        step: "Laser Decontamination",
+        description: "The laser fiber enters the gum pocket and kills 99.9% of bacteria instantly.",
+        duration: "20 Mins",
+        painLevel: "None"
+      },
+      {
+        step: "Deep Cleaning",
+        description: "Ultrasonic instruments remove hard tartar deposits from the roots.",
+        duration: "20 Mins",
+        painLevel: "Mild"
+      },
+      {
+        step: "Biostimulation",
+        description: "Low-level laser therapy is used to accelerate healing and reduce growing pain.",
+        duration: "5 Mins",
+        painLevel: "None"
+      }
+    ],
+    postOp: {
+      immediate: [
+        "Do not brush the treated area for 24 hours.",
+        "Rinse gently with warm salt water."
+      ],
+      diet: [
+        "Soft foods only (Eggs, Pasta, Yogurt) for 3 days.",
+        "Avoid spicy or very hot foods."
+      ],
+      warningSigns: [
+        "Excessive bleeding that doesn't stop with pressure."
+      ]
+    },
+    citations: [
+      "AAP (American Academy of Periodontology) Guidelines",
+      "Journal of Periodontology: 'LANAP vs Flap Surgery'"
+    ],
+    recommendedProducts: [
+      {
+        id: "hexidine",
+        name: "Chlorhexidine Gluconate",
+        image: "https://images.unsplash.com/photo-1585435557343-3b092031a831?auto=format&fit=crop&q=80&w=400",
+        subText: "The 'Gold Standard' gum healer.",
+        purpose: "Antiseptic",
+        usage: "Rinse 10ml twice daily for 2 weeks.",
+        isPrescription: true
+      }
+    ]
+  },
   "tooth-extraction": {
     id: "tooth-extraction",
     title: "Atraumatic Extraction",
