@@ -120,7 +120,7 @@ export default function GumDiseaseRefactored() {
                                     <Heart size={18} /> Book Gum Audit
                                 </button>
                                 <div className="flex items-center gap-4 px-6 border-l border-slate-200 dark:border-white/10">
-                                    <div className="text-[10px] uppercase font-black text-slate-400 tracking-widest leading-none">
+                                    <div className="text-[10px] uppercase font-black text-slate-600 dark:text-slate-400 tracking-widest leading-none">
                                         EMS Airflow® <br /> GBT Protocol
                                     </div>
                                     <div className="w-12 h-12 rounded-full bg-blue-50 dark:bg-blue-900/30 flex items-center justify-center text-blue-600">
@@ -150,7 +150,7 @@ export default function GumDiseaseRefactored() {
                                     </div>
                                     <div>
                                         <div className="text-sm font-black text-slate-900 dark:text-white uppercase tracking-tighter">Systemic Risk</div>
-                                        <div className="text-[10px] uppercase font-bold text-slate-400 tracking-widest">Cardiac + Diabetic Link</div>
+                                        <div className="text-[10px] uppercase font-bold text-slate-600 dark:text-slate-400 tracking-widest">Cardiac + Diabetic Link</div>
                                     </div>
                                 </div>
                             </div>
@@ -213,7 +213,7 @@ export default function GumDiseaseRefactored() {
                                             </div>
                                             <div>
                                                 <h4 className="font-black text-slate-900 dark:text-white uppercase tracking-tight text-sm mb-1">{item.title}</h4>
-                                                <p className="text-xs text-slate-500 dark:text-slate-400">{item.desc}</p>
+                                                <p className="text-xs text-slate-700 dark:text-slate-300">{item.desc}</p>
                                             </div>
                                         </div>
                                     ))}
@@ -244,7 +244,7 @@ export default function GumDiseaseRefactored() {
                                 Best Gum Specialist <br />
                                 <span className="text-red-600">in Nallagandla.</span>
                             </h2>
-                            <p className="text-xl text-slate-500">As the **Best Gum Specialist in Nallagandla**, **Dr. Dhivakaran** ensures your **Bleeding Gums Treatment** is linked to your overall systemic health.</p>
+                            <p className="text-xl text-slate-700 dark:text-slate-300">As the **Best Gum Specialist in Nallagandla**, **Dr. Dhivakaran** ensures your **Bleeding Gums Treatment** is linked to your overall systemic health.</p>
                         </div>
 
                         <div className="grid lg:grid-cols-3 gap-8">
@@ -324,7 +324,7 @@ export default function GumDiseaseRefactored() {
                                 Gum Severity <br />
                                 <span className="text-red-500 italic underline decoration-blue-500 decoration-4">Diagnostic Matrix.</span>
                             </h2>
-                            <p className="text-lg text-slate-500">Self-diagnose your gum health status.</p>
+                            <p className="text-lg text-slate-700 dark:text-slate-300">Self-diagnose your gum health status.</p>
                         </div>
 
                         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-4">
@@ -337,7 +337,7 @@ export default function GumDiseaseRefactored() {
                                 <div key={i} className="p-8 ios-glass rounded-[2.5rem] border border-slate-100 dark:border-white/5 space-y-4 ios-card-hover group">
                                     <div className={`text-[10px] font-black text-white px-3 py-1 rounded-full w-fit ${m.color}`}>{m.stage}</div>
                                     <h4 className="text-2xl font-black text-slate-900 dark:text-white uppercase tracking-tighter italic">{m.name}</h4>
-                                    <p className="text-xs text-slate-500 font-bold uppercase tracking-widest h-12">{m.symptoms}</p>
+                                    <p className="text-xs text-slate-700 dark:text-slate-300 font-bold uppercase tracking-widest h-12">{m.symptoms}</p>
                                     <div className="pt-4 border-t border-slate-100 dark:border-white/10 w-full text-center">
                                         <span className="text-[10px] font-black text-blue-600 uppercase tracking-widest">Medical Action: <br /> {m.action}</span>
                                     </div>
@@ -358,7 +358,7 @@ export default function GumDiseaseRefactored() {
 
                         <div className="grid lg:grid-cols-2 gap-12 max-w-5xl mx-auto">
                             <div className="p-12 ios-glass rounded-[4rem] border border-white/10 bg-white/5 text-left">
-                                <div className="text-[10px] font-black uppercase tracking-widest text-slate-500 mb-8">Basic Maintenance</div>
+                                <div className="text-[10px] font-black uppercase tracking-widest text-slate-600 dark:text-slate-500 mb-8">Basic Maintenance</div>
                                 <div className="space-y-6">
                                     {[
                                         { item: "Guided Biofilm Therapy (Swiss)", price: "₹2,500" },
@@ -394,7 +394,7 @@ export default function GumDiseaseRefactored() {
                                 </div>
                             </div>
                         </div>
-                        <p className="mt-12 text-slate-500 font-bold uppercase tracking-[0.3em] text-[10px]">
+                        <p className="mt-12 text-slate-400 dark:text-slate-500 font-bold uppercase tracking-[0.3em] text-[10px]">
                             * GBT pricing includes disclosure dye + heated water treatment. Life is priority.
                         </p>
                     </RevealOnScroll>

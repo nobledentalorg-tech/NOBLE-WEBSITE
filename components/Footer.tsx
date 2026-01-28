@@ -44,7 +44,7 @@ const Footer: React.FC<FooterProps> = ({ onBookClick }) => {
           {/* SEO Quick Links */}
           <div>
             <h3 className="text-lg font-bold mb-6 text-white/90">Quick Links</h3>
-            <ul className="space-y-3 text-sm text-slate-500 font-medium">
+            <ul className="space-y-3 text-sm text-slate-400 font-medium">
               <li><Link href="/treatments/gum-disease" className="hover:text-blue-400 transition-colors">• Gum Disease Treatment</Link></li>
               <li><Link href="/treatments/oral-medicine" className="hover:text-blue-400 transition-colors">• Oral Diagnosis</Link></li>
               <li><Link href="/treatments/tmj-disorders" className="hover:text-blue-400 transition-colors">• TMJ Disorder</Link></li>
@@ -108,8 +108,8 @@ const Footer: React.FC<FooterProps> = ({ onBookClick }) => {
             <strong>Medical Disclaimer:</strong> The information provided on this website is for educational purposes only and does not constitute medical advice. Results may vary based on individual oral health conditions. All clinical procedures are performed by registered dental practitioners under strict sterilization protocols.
           </p>
           <div className="flex justify-between items-center">
-            <p className="text-xs text-slate-500">© 2024 Noble Dental Care.</p>
-            <p className="text-xs text-slate-600 font-mono">DCI Reg: A-4521 (Dr. Dhivakaran)</p>
+            <p className="text-xs text-slate-400">© 2024 Noble Dental Care.</p>
+            <p className="text-xs text-slate-400 font-mono">DCI Reg: A-4521 (Dr. Dhivakaran)</p>
           </div>
 
           <div className="flex gap-6 text-xs text-slate-500 mt-4">

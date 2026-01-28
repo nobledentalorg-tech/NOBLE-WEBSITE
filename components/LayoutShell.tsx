@@ -7,6 +7,7 @@ import dynamic from 'next/dynamic';
 import BookingModal from '@/components/BookingModal';
 import { Providers } from '@/app/providers';
 import RegisterSW from '@/components/RegisterSW';
+import { Partytown } from '@builder.io/partytown/react';
 
 const ChatWidget = dynamic(() => import('@/components/ChatWidget'), {
     ssr: false,
@@ -39,11 +40,22 @@ export default function LayoutShell({ children }: { children: React.ReactNode })
 
             <Footer onBookClick={openBooking} />
 
-            <Footer onBookClick={openBooking} />
-
             {/* Global Widgets: Deferred to 4s to prioritize LCP */}
             {isChatDelayed && <ChatWidget onBookClick={openBooking} />}
             <BookingModal isOpen={isBookingOpen} onClose={() => setIsBookingOpen(false)} />
+
+            {/* Partytown & GTM - Moved to bottom to maximize TBT score */}
+            <Partytown debug={false} forward={['dataLayer.push']} />
+            <script
+                type="text/partytown"
+                dangerouslySetInnerHTML={{
+                    __html: `(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+                    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+                    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+                    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+                    })(window,document,'script','dataLayer','GTM-N7LJVS7T');`,
+                }}
+            />
         </Providers>
     );
 }

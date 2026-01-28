@@ -176,7 +176,7 @@ const TreatmentsRefactored = () => {
                                 group relative px-4 py-2 rounded-xl text-[11px] font-bold transition-all duration-300 border
                                 ${filter === cat
                               ? 'bg-slate-900 dark:bg-white text-white dark:text-slate-900 border-transparent shadow-lg shadow-slate-900/20 transform scale-105 z-10'
-                              : 'bg-white dark:bg-[#0f1420] text-slate-500 dark:text-slate-400 border-slate-200 dark:border-slate-800 hover:border-blue-500/50 hover:text-blue-600 dark:hover:text-blue-400'
+                              : 'bg-white dark:bg-[#0f1420] text-slate-600 dark:text-slate-300 border-slate-200 dark:border-slate-800 hover:border-blue-500/50 hover:text-blue-600 dark:hover:text-blue-400'
                             }
                               `}
                         >

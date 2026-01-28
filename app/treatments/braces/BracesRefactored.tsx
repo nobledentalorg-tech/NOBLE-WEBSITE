@@ -135,7 +135,7 @@ export default function BracesRefactored() {
                     {/* Left: Text Content */}
                     <div className="space-y-8 order-2 lg:order-1">
                         <RevealOnScroll>
-                            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-100 dark:bg-blue-500/10 border border-blue-200 dark:border-blue-500/20 text-blue-600 dark:text-blue-400 font-bold text-[10px] uppercase tracking-[0.3em] mb-6 animate-fade-in">
+                            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-100 dark:bg-blue-500/10 border border-blue-200 dark:border-blue-500/20 text-blue-700 dark:text-blue-300 font-bold text-[10px] uppercase tracking-[0.3em] mb-6 animate-fade-in">
                                 <Cpu size={12} /> ISO 9001:2015 • Damon Certified
                             </div>
                             <h1 className="text-5xl md:text-7xl font-black text-slate-900 dark:text-white leading-[0.95] tracking-tighter mb-6">
@@ -157,15 +157,15 @@ export default function BracesRefactored() {
                             <div className="flex gap-8 pt-8 border-t border-slate-200 dark:border-white/10 mt-8">
                                 <div>
                                     <div className="text-2xl font-black text-slate-900 dark:text-white">650+</div>
-                                    <div className="text-xs font-bold text-slate-500 uppercase tracking-wider">Smiles Aligned</div>
+                                    <div className="text-xs font-bold text-slate-700 dark:text-slate-400 uppercase tracking-wider">Smiles Aligned</div>
                                 </div>
                                 <div>
                                     <div className="text-2xl font-black text-slate-900 dark:text-white">12-24 mo</div>
-                                    <div className="text-xs font-bold text-slate-500 uppercase tracking-wider">Avg. Time</div>
+                                    <div className="text-xs font-bold text-slate-700 dark:text-slate-400 uppercase tracking-wider">Avg. Time</div>
                                 </div>
                                 <div>
                                     <div className="text-2xl font-black text-slate-900 dark:text-white">Zero</div>
-                                    <div className="text-xs font-bold text-slate-500 uppercase tracking-wider">Extractions*</div>
+                                    <div className="text-xs font-bold text-slate-700 dark:text-slate-400 uppercase tracking-wider">Extractions*</div>
                                 </div>
                             </div>
                         </RevealOnScroll>
@@ -235,13 +235,13 @@ export default function BracesRefactored() {
                                     }}
                                     className="w-full h-2 bg-slate-200 dark:bg-slate-700 rounded-lg appearance-none cursor-pointer accent-blue-500"
                                 />
-                                <div className="text-center mt-4 text-xs text-slate-500">
+                                <div className="text-center mt-4 text-xs text-slate-700">
                                     Drag slider to simulate movement
                                 </div>
                             </div>
 
                             {/* Floating Tech Badge */}
-                            <div className="absolute top-4 right-4 bg-white/80 dark:bg-slate-800/80 backdrop-blur-md px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-widest text-blue-500 border border-blue-500/20 shadow-lg">
+                            <div className="absolute top-4 right-4 bg-white/80 dark:bg-slate-800/80 backdrop-blur-md px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-widest text-blue-700 dark:text-blue-300 border border-blue-600/20 shadow-lg">
                                 AI Simulation Active
                             </div>
                         </div>
@@ -265,7 +265,7 @@ export default function BracesRefactored() {
                         <a
                             key={link.id}
                             href={`#${link.id}`}
-                            className={`text-xs font-bold uppercase tracking-widest whitespace-nowrap transition-colors ${activeSection === link.id ? 'text-blue-600 dark:text-blue-400' : 'text-slate-500 hover:text-slate-900 dark:hover:text-white'}`}
+                            className={`text-xs font-bold uppercase tracking-widest whitespace-nowrap transition-colors ${activeSection === link.id ? 'text-blue-600 dark:text-blue-400' : 'text-slate-700 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white'}`}
                         >
                             {link.label}
                         </a>
@@ -291,18 +291,18 @@ export default function BracesRefactored() {
                                     <Baby size={24} />
                                 </div>
                                 <h3 className="text-xl font-bold text-slate-900 dark:text-white mb-2">Age 7–11</h3>
-                                <p className="text-xs font-bold text-blue-500 uppercase tracking-widest mb-4">Interceptive Phase</p>
+                                <p className="text-xs font-bold text-blue-700 dark:text-blue-400 uppercase tracking-widest mb-4">Interceptive Phase</p>
                                 <p className="text-slate-600 dark:text-slate-400 text-sm leading-relaxed">
                                     Early screening lets us guide jaw growth, expand arches and make room for permanent teeth. Best time to correct habits like thumb sucking.
                                 </p>
                             </div>
 
-                            <div className="p-8 bg-white dark:bg-[#151b2b] rounded-[2rem] border border-blue-500 shadow-xl scale-105 relative z-10">
+                            <div className="p-8 bg-white dark:bg-[#151b2b] rounded-[2rem] border border-blue-600 shadow-xl scale-105 relative z-10">
                                 <div className="w-12 h-12 bg-blue-600 text-white rounded-xl flex items-center justify-center mb-6">
                                     <School size={24} />
                                 </div>
                                 <h3 className="text-xl font-bold text-slate-900 dark:text-white mb-2">Age 12–17</h3>
-                                <p className="text-xs font-bold text-blue-500 uppercase tracking-widest mb-4">Growth Spurt Advantage</p>
+                                <p className="text-xs font-bold text-blue-700 dark:text-blue-400 uppercase tracking-widest mb-4">Growth Spurt Advantage</p>
                                 <p className="text-slate-600 dark:text-slate-400 text-sm leading-relaxed">
                                     Whether you&apos;re a teenager or an adult, we have the right solution for you.
                                 </p>
@@ -313,7 +313,7 @@ export default function BracesRefactored() {
                                     <User size={24} />
                                 </div>
                                 <h3 className="text-xl font-bold text-slate-900 dark:text-white mb-2">Adults 18+</h3>
-                                <p className="text-xs font-bold text-purple-500 uppercase tracking-widest mb-4">Adult Orthodontics</p>
+                                <p className="text-xs font-bold text-purple-700 dark:text-purple-400 uppercase tracking-widest mb-4">Adult Orthodontics</p>
                                 <p className="text-slate-600 dark:text-slate-400 text-sm leading-relaxed">
                                     We coordinate periodontal care, restorative dentistry and braces to align teeth safely at any age using invisible ceramic options.
                                 </p>
@@ -373,16 +373,16 @@ export default function BracesRefactored() {
                                     </div>
                                     <div>
                                         <h4 className="font-bold text-slate-900 dark:text-white">Records & Scans</h4>
-                                        <p className="text-sm text-slate-500 dark:text-slate-400">Full mouth X-rays, cephalograms, and iTero 3D scans build your baseline dataset.</p>
+                                        <p className="text-sm text-slate-700 dark:text-slate-400">Full mouth X-rays, cephalograms, and iTero 3D scans build your baseline dataset.</p>
                                     </div>
                                 </div>
                                 <div className="flex gap-4">
                                     <div className="w-12 h-12 bg-white dark:bg-white/5 rounded-xl flex items-center justify-center shrink-0 shadow-sm">
-                                        <BrainCircuit size={24} className="text-purple-500" />
+                                        <BrainCircuit size={24} className="text-purple-600" />
                                     </div>
                                     <div>
                                         <h4 className="font-bold text-slate-900 dark:text-white">Mock Analysis</h4>
-                                        <p className="text-sm text-slate-500 dark:text-slate-400">We simulate tooth movement digitally and evaluate airway harmony.</p>
+                                        <p className="text-sm text-slate-700 dark:text-slate-400">We simulate tooth movement digitally and evaluate airway harmony.</p>
                                     </div>
                                 </div>
                                 <div className="flex gap-4">
@@ -391,7 +391,7 @@ export default function BracesRefactored() {
                                     </div>
                                     <div>
                                         <h4 className="font-bold text-slate-900 dark:text-white">3D Simulation</h4>
-                                        <p className="text-sm text-slate-500 dark:text-slate-400">See your finished smile on video before we even start.</p>
+                                        <p className="text-sm text-slate-700 dark:text-slate-400">See your finished smile on video before we even start.</p>
                                     </div>
                                 </div>
                             </div>
@@ -481,13 +481,13 @@ export default function BracesRefactored() {
                         <div className="flex gap-4 mb-8">
                             <button
                                 onClick={() => setFoodCategory('avoid')}
-                                className={`px-6 py-3 rounded-full text-sm font-bold transition-all ${foodCategory === 'avoid' ? 'bg-red-500 text-white shadow-lg shadow-red-500/30' : 'bg-slate-100 dark:bg-white/10 text-slate-500 hover:bg-slate-200 dark:hover:bg-white/20'}`}
+                                className={`px-6 py-3 rounded-full text-sm font-bold transition-all ${foodCategory === 'avoid' ? 'bg-red-500 text-white shadow-lg shadow-red-500/30' : 'bg-slate-100 dark:bg-white/10 text-slate-700 hover:bg-slate-200 dark:hover:bg-white/20'}`}
                             >
                                 🚫 Danger Zone
                             </button>
                             <button
                                 onClick={() => setFoodCategory('safe')}
-                                className={`px-6 py-3 rounded-full text-sm font-bold transition-all ${foodCategory === 'safe' ? 'bg-green-500 text-white shadow-lg shadow-green-500/30' : 'bg-slate-100 dark:bg-white/10 text-slate-500 hover:bg-slate-200 dark:hover:bg-white/20'}`}
+                                className={`px-6 py-3 rounded-full text-sm font-bold transition-all ${foodCategory === 'safe' ? 'bg-green-500 text-white shadow-lg shadow-green-500/30' : 'bg-slate-100 dark:bg-white/10 text-slate-700 hover:bg-slate-200 dark:hover:bg-white/20'}`}
                             >
                                 ✅ Safe Zone
                             </button>
@@ -501,7 +501,7 @@ export default function BracesRefactored() {
                                     </div>
                                     <div>
                                         <div className="font-bold text-slate-900 dark:text-white text-sm">{item.name}</div>
-                                        <div className="text-xs text-slate-500">{item.desc}</div>
+                                        <div className="text-xs text-slate-700 dark:text-slate-400">{item.desc}</div>
                                     </div>
                                 </div>
                             ))}
@@ -563,7 +563,7 @@ export default function BracesRefactored() {
                                 <div key={i} className="relative group bg-white dark:bg-[#0B1019] rounded-[2.5rem] border border-slate-200 dark:border-white/5 p-8 hover:border-blue-500/50 transition-all duration-300 hover:-translate-y-2 overflow-hidden shadow-xl hover:shadow-2xl dark:shadow-none">
                                     <div className="relative z-10">
                                         <div className="flex justify-between items-start mb-4">
-                                            <div className="text-sm font-bold text-slate-500 dark:text-slate-400 uppercase tracking-wider">{plan.type}</div>
+                                            <div className="text-sm font-bold text-slate-700 dark:text-slate-400 uppercase tracking-wider">{plan.type}</div>
                                             {i === 2 && <span className="bg-blue-600 text-white text-[10px] font-bold px-2 py-1 rounded-full animate-pulse">Recommended</span>}
                                         </div>
 
@@ -573,8 +573,8 @@ export default function BracesRefactored() {
                                         </div>
 
                                         <div className="p-4 bg-slate-50 dark:bg-white/5 rounded-2xl mb-6">
-                                            <div className="text-[10px] uppercase text-slate-400 mb-1">Market Price</div>
-                                            <div className="text-sm font-bold text-slate-500 line-through decoration-red-400">{plan.market}</div>
+                                            <div className="text-[10px] uppercase text-slate-600 dark:text-slate-400 mb-1">Market Price</div>
+                                            <div className="text-sm font-bold text-slate-700 dark:text-slate-500 line-through decoration-red-400">{plan.market}</div>
                                         </div>
 
                                         <p className="text-sm text-slate-600 dark:text-slate-400 leading-relaxed mb-6 border-l-2 border-blue-500/20 pl-3">
@@ -616,7 +616,7 @@ export default function BracesRefactored() {
                     </div>
 
                     {/* FAQ Verification Footer (Trust Signal) */}
-                    <div className="mt-12 pt-6 border-t border-slate-100 dark:border-white/5 flex items-center justify-center gap-3 text-slate-400">
+                    <div className="mt-12 pt-6 border-t border-slate-100 dark:border-white/5 flex items-center justify-center gap-3 text-slate-600 dark:text-slate-400">
                         <ShieldCheck size={16} className="text-emerald-500" />
                         <p className="text-[10px] font-bold uppercase tracking-widest text-center">
                             Orthodontic protocols are verified by Noble Dental&apos;s senior clinical team to ensure alignment with 2026 dental standards.

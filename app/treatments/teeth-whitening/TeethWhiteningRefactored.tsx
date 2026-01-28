@@ -134,7 +134,7 @@ const InteractiveWhitener = () => {
         <div className="w-full max-w-md mx-auto bg-white rounded-3xl p-6 shadow-2xl border border-slate-100">
             <div className="text-center mb-4">
                 <h3 className="font-bold text-slate-800">Slide to Whiten</h3>
-                <p className="text-xs text-slate-400">See the difference 8 shades make</p>
+                <p className="text-xs text-slate-600 dark:text-slate-400">See the difference 8 shades make</p>
             </div>
 
             <div
@@ -183,18 +183,18 @@ const InteractiveWhitener = () => {
                     className="absolute top-0 bottom-0 w-1 bg-white cursor-ew-resize z-20"
                     style={{ left: `${100 - brightness}%` }}
                 >
-                    <div className="absolute top-1/2 -translate-y-1/2 -translate-x-1/2 w-8 h-8 bg-white rounded-full shadow-lg flex items-center justify-center text-slate-400">
+                    <div className="absolute top-1/2 -translate-y-1/2 -translate-x-1/2 w-8 h-8 bg-white rounded-full shadow-lg flex items-center justify-center text-slate-600">
                         <ArrowRight size={14} className={brightness > 50 ? "rotate-180" : ""} />
                     </div>
                 </div>
             </div>
 
-            <div className="mt-4 flex justify-between text-xs font-bold text-slate-400 uppercase tracking-widest">
+            <div className="mt-4 flex justify-between text-xs font-bold text-slate-600 dark:text-slate-400 uppercase tracking-widest">
                 <span>Yellow (A3)</span>
                 <span>White (B1)</span>
             </div>
 
-            <p className="mt-4 text-center text-sm text-slate-500">
+            <p className="mt-4 text-center text-sm text-slate-700 dark:text-slate-300">
                 Dragging cleans the stains. <br />
                 <span className="text-red-500 font-bold">Zoom Whitening</span> does this in 45 mins.
             </p>
@@ -288,7 +288,7 @@ export default function TeethWhiteningRefactored() {
                         <h2 className="text-3xl md:text-5xl font-bold text-slate-900 mb-8">
                             Is your toothpaste <span className="text-red-500">lying</span> to you?
                         </h2>
-                        <div className="prose prose-lg mx-auto text-slate-600 leading-relaxed">
+                        <div className="prose prose-lg mx-auto text-slate-700 dark:text-slate-300 leading-relaxed">
                             <p>
                                 We’ve all seen the commercials. &quot;Whitens teeth in 2 weeks!&quot; So you scrub. And you scrub.
                                 But your teeth stay yellow. Why?
@@ -330,7 +330,7 @@ export default function TeethWhiteningRefactored() {
                                 >
                                     <div className="mb-4">{s.icon}</div>
                                     <h3 className="text-xl font-bold mb-2 text-slate-900">{s.title}</h3>
-                                    <p className="text-sm opacity-90">{s.desc}</p>
+                                    <p className="text-sm text-slate-700">{s.desc}</p>
                                 </div>
                             </RevealOnScroll>
                         ))}
@@ -351,7 +351,7 @@ export default function TeethWhiteningRefactored() {
                                 <h2 className="text-4xl md:text-5xl font-bold text-slate-900 mb-6 leading-tight">
                                     Just sit back and relax.
                                 </h2>
-                                <p className="text-lg text-slate-600 mb-8">
+                                <p className="text-lg text-slate-700 dark:text-slate-300 mb-8">
                                     The entire procedure takes less than an hour. Many of our patients listen to podcasts or take a quick nap while the light does the work.
                                 </p>
 
@@ -379,13 +379,13 @@ export default function TeethWhiteningRefactored() {
                             ].map((step, idx) => (
                                 <RevealOnScroll key={idx} delay={idx * 100}>
                                     <div className="relative flex gap-8 group">
-                                        <div className="w-16 h-16 shrink-0 rounded-full bg-white border-2 border-slate-200 flex items-center justify-center font-bold text-slate-400 group-hover:border-yellow-400 group-hover:text-yellow-500 transition-colors z-10 shadow-sm">
+                                        <div className="w-16 h-16 shrink-0 rounded-full bg-white border-2 border-slate-200 flex items-center justify-center font-bold text-slate-600 group-hover:border-yellow-400 group-hover:text-yellow-500 transition-colors z-10 shadow-sm">
                                             {idx + 1}
                                         </div>
                                         <div className="pt-2">
                                             <h3 className="text-2xl font-bold text-slate-900 mb-2">{step.title}</h3>
-                                            <p className="text-slate-600">{step.desc}</p>
-                                            <span className="inline-block mt-2 text-xs font-bold text-slate-400 bg-slate-100 px-2 py-1 rounded">
+                                            <p className="text-slate-700 dark:text-slate-300">{step.desc}</p>
+                                            <span className="inline-block mt-2 text-xs font-bold text-slate-600 bg-slate-100 px-2 py-1 rounded">
                                                 {step.time}
                                             </span>
                                         </div>
@@ -407,20 +407,20 @@ export default function TeethWhiteningRefactored() {
                     <RevealOnScroll>
                         <div className="text-center mb-16">
                             <h2 className="text-4xl font-bold text-slate-900 mb-4">Transparent Pricing</h2>
-                            <p className="text-slate-500">Why &quot;Cheaper&quot; is not better when it comes to Chemistry.</p>
+                            <p className="text-slate-700 dark:text-slate-300">Why &quot;Cheaper&quot; is not better when it comes to Chemistry.</p>
                         </div>
                     </RevealOnScroll>
 
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-0">
                         {/* 1. Home Kits */}
                         <RevealOnScroll delay={100} className="md:contents">
-                            <div className="bg-white p-8 rounded-3xl md:rounded-r-none border border-r-0 border-slate-200 opacity-70 scale-95">
-                                <div className="text-slate-400 font-bold uppercase tracking-wider mb-2">Home Kits</div>
-                                <div className="text-2xl font-bold text-slate-800 mb-6">₹ 1,500+</div>
-                                <ul className="space-y-4 text-sm text-slate-500">
-                                    <li className="flex gap-2"><XCircle size={16} className="text-red-400" /> Week peroxide%</li>
-                                    <li className="flex gap-2"><XCircle size={16} className="text-red-400" /> Irritates gums</li>
-                                    <li className="flex gap-2"><XCircle size={16} className="text-red-400" /> Takes 30 days</li>
+                            <div className="bg-white p-8 rounded-3xl md:rounded-r-none border border-r-0 border-slate-200 scale-95">
+                                <div className="text-slate-700 dark:text-slate-300 font-bold uppercase tracking-wider mb-2">Home Kits</div>
+                                <div className="text-2xl font-bold text-slate-900 dark:text-white mb-6">₹ 1,500+</div>
+                                <ul className="space-y-4 text-sm text-slate-700 dark:text-slate-400">
+                                    <li className="flex gap-2"><XCircle size={16} className="text-red-500" /> Week peroxide%</li>
+                                    <li className="flex gap-2"><XCircle size={16} className="text-red-500" /> Irritates gums</li>
+                                    <li className="flex gap-2"><XCircle size={16} className="text-red-500" /> Takes 30 days</li>
                                 </ul>
                             </div>
                         </RevealOnScroll>
@@ -448,13 +448,13 @@ export default function TeethWhiteningRefactored() {
 
                         {/* 3. Salons */}
                         <RevealOnScroll delay={200} className="md:contents">
-                            <div className="bg-white p-8 rounded-3xl md:rounded-l-none border border-l-0 border-slate-200 opacity-70 scale-95">
-                                <div className="text-slate-400 font-bold uppercase tracking-wider mb-2">Salon / Spa</div>
-                                <div className="text-2xl font-bold text-slate-800 mb-6">₹ 5,000+</div>
-                                <ul className="space-y-4 text-sm text-slate-500">
-                                    <li className="flex gap-2"><AlertCircle size={16} className="text-amber-500" /> No Doctor Present</li>
-                                    <li className="flex gap-2"><XCircle size={16} className="text-red-400" /> Often painful</li>
-                                    <li className="flex gap-2"><CheckCircle2 size={16} className="text-slate-400" /> Moderate results</li>
+                            <div className="bg-white p-8 rounded-3xl md:rounded-l-none border border-l-0 border-slate-200 scale-95">
+                                <div className="text-slate-700 dark:text-slate-300 font-bold uppercase tracking-wider mb-2">Salon / Spa</div>
+                                <div className="text-2xl font-bold text-slate-900 dark:text-white mb-6">₹ 5,000+</div>
+                                <ul className="space-y-4 text-sm text-slate-700 dark:text-slate-400">
+                                    <li className="flex gap-2"><AlertCircle size={16} className="text-amber-600" /> No Doctor Present</li>
+                                    <li className="flex gap-2"><XCircle size={16} className="text-red-500" /> Often painful</li>
+                                    <li className="flex gap-2"><CheckCircle2 size={16} className="text-slate-700 dark:text-slate-400" /> Moderate results</li>
                                 </ul>
                             </div>
                         </RevealOnScroll>
@@ -482,12 +482,12 @@ export default function TeethWhiteningRefactored() {
                             <div>
                                 <h2 className="text-3xl font-bold text-slate-900 mb-4">Meet Your Expert</h2>
                                 <div className="text-xl font-bold text-yellow-600 mb-6">Dr. Dhivakaran</div>
-                                <p className="text-slate-600 leading-relaxed italic mb-6">
+                                <p className="text-slate-700 dark:text-slate-300 leading-relaxed italic mb-6">
                                     &quot;I don&apos;t believe in &apos;Hollywood White&apos; veneers for everyone. Sometimes, all you need is to unlock the natural brightness of your own enamel. My approach is conservative: clean the canvas before we paint on it.&quot;
                                 </p>
                                 <div className="flex gap-4">
-                                    <div className="px-4 py-2 bg-slate-100 rounded-lg text-sm font-bold text-slate-700">MDS - Conservative Dentistry</div>
-                                    <div className="px-4 py-2 bg-slate-100 rounded-lg text-sm font-bold text-slate-700">14+ Years Exp</div>
+                                    <div className="px-4 py-2 bg-slate-100 rounded-lg text-sm font-bold text-slate-800">MDS - Conservative Dentistry</div>
+                                    <div className="px-4 py-2 bg-slate-100 rounded-lg text-sm font-bold text-slate-800">14+ Years Exp</div>
                                 </div>
                             </div>
                         </div>
@@ -510,7 +510,7 @@ export default function TeethWhiteningRefactored() {
                             <RevealOnScroll key={i} delay={i * 50}>
                                 <div className="bg-white rounded-2xl p-6 shadow-sm border border-black/5 hover:border-yellow-400/50 transition-colors">
                                     <h3 className="font-bold text-slate-900 mb-2">{faq.q}</h3>
-                                    <p className="text-slate-600">{faq.a}</p>
+                                    <p className="text-slate-700">{faq.a}</p>
                                 </div>
                             </RevealOnScroll>
                         ))}
@@ -533,7 +533,7 @@ export default function TeethWhiteningRefactored() {
                         <Link href="/book-appointment" className="inline-block px-12 py-5 bg-yellow-400 hover:bg-yellow-500 text-black font-extrabold text-xl rounded-full transition-transform hover:scale-105 shadow-xl shadow-yellow-400/20">
                             Book Whitening Now
                         </Link>
-                        <p className="mt-8 text-sm text-slate-500">
+                        <p className="mt-8 text-sm text-slate-400">
                             100% Satisfaction Guarantee • No Hidden Checks
                         </p>
                     </RevealOnScroll>

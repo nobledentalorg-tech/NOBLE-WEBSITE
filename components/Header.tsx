@@ -20,7 +20,6 @@ const Header: React.FC<HeaderProps> = ({ onBookClick }) => {
 
   const { theme, setTheme } = useTheme();
   const pathname = usePathname();
-
   // Prevent hydration mismatch for theme icons
   useEffect(() => {
     setMounted(true);
@@ -134,15 +133,15 @@ const Header: React.FC<HeaderProps> = ({ onBookClick }) => {
               <Image
                 src="/images/dentalcare.nallagandla.png"
                 alt="Noble Dental"
-                width={128}
-                height={102}
+                width={1479}
+                height={1178}
                 className="max-w-[50px] w-auto h-auto object-contain filter drop-shadow-md"
                 unoptimized={true}
               />
             </div>
             <div className="flex flex-col border-l-2 border-slate-200 dark:border-white/10 pl-3">
               <span className="text-lg md:text-xl font-black tracking-tight text-slate-900 dark:text-white leading-none">NOBLE <span className="text-blue-600 dark:text-cyan-400">DENTAL</span></span>
-              <span className="text-[9px] font-black tracking-[0.3em] text-slate-500 dark:text-slate-400 uppercase">MULTISPECIALITY DENTAL CARE</span>
+              <span className="text-[9px] font-black tracking-[0.3em] text-slate-700 dark:text-slate-400 uppercase">MULTISPECIALITY DENTAL CARE</span>
             </div>
           </Link>
 
@@ -150,7 +149,7 @@ const Header: React.FC<HeaderProps> = ({ onBookClick }) => {
           <nav className="hidden xl:flex items-center flex-nowrap gap-1 bg-slate-100/50 dark:bg-white/5 p-1 rounded-full border border-slate-200/50 dark:border-white/10 backdrop-blur-md">
             <Link
               href="/"
-              className={`relative px-4 py-2.5 text-[12px] font-bold uppercase tracking-wider transition-all duration-300 rounded-full ${isActive('/') ? 'text-white bg-blue-600 shadow-md' : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white'
+              className={`relative px-4 py-2.5 text-[12px] font-bold uppercase tracking-wider transition-all duration-300 rounded-full ${isActive('/') ? 'text-white bg-blue-600 shadow-md' : 'text-slate-700 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white'
                 }`}
             >
               Home
@@ -159,7 +158,7 @@ const Header: React.FC<HeaderProps> = ({ onBookClick }) => {
             <div className="group/mega">
               <Link
                 href="/treatments"
-                className={`relative px-4 py-2.5 text-[12px] font-bold uppercase tracking-wider transition-all duration-300 rounded-full flex items-center gap-1.5 ${isActive('/treatments') ? 'text-white bg-blue-600 shadow-md' : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white'
+                className={`relative px-4 py-2.5 text-[12px] font-bold uppercase tracking-wider transition-all duration-300 rounded-full flex items-center gap-1.5 ${isActive('/treatments') ? 'text-white bg-blue-600 shadow-md' : 'text-slate-700 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white'
                   }`}
               >
                 Treatments <ChevronDown size={14} className="group-hover/mega:rotate-180 transition-transform duration-300" />
@@ -177,7 +176,7 @@ const Header: React.FC<HeaderProps> = ({ onBookClick }) => {
                           </div>
                           <div>
                             <h4 className="text-[13px] font-black uppercase tracking-wider text-slate-900 dark:text-white">{cat.title}</h4>
-                            <p className="text-[10px] text-slate-500 dark:text-slate-400 font-bold uppercase tracking-tighter opacity-60">{cat.description}</p>
+                            <p className="text-[10px] text-slate-700 dark:text-slate-400 font-bold uppercase tracking-tighter">{cat.description}</p>
                           </div>
                         </div>
                         <ul className="space-y-2 pl-1.5 border-l border-slate-100 dark:border-white/5 ml-5">
@@ -185,9 +184,9 @@ const Header: React.FC<HeaderProps> = ({ onBookClick }) => {
                             <li key={lIdx}>
                               <Link
                                 href={link.href}
-                                className="text-[11px] font-medium text-slate-600 dark:text-slate-400 hover:text-blue-600 dark:hover:text-cyan-400 transition-colors flex items-center gap-2 group/item"
+                                className="text-[11px] font-medium text-slate-700 dark:text-slate-400 hover:text-blue-600 dark:hover:text-cyan-400 transition-colors flex items-center gap-2 group/item"
                               >
-                                <span className="w-1 h-1 rounded-full bg-slate-300 dark:bg-slate-700 group-hover/item:bg-blue-600 transition-colors" />
+                                <span className="w-1 h-1 rounded-full bg-slate-400 dark:bg-slate-700 group-hover/item:bg-blue-600 transition-colors" />
                                 {link.name}
                               </Link>
                             </li>
@@ -199,7 +198,7 @@ const Header: React.FC<HeaderProps> = ({ onBookClick }) => {
 
                   {/* Bottom Strip */}
                   <div className="mt-8 pt-6 border-t border-slate-100 dark:border-white/5 flex items-center justify-between">
-                    <p className="text-[10px] text-slate-400 font-medium">✨ Powered by Dr. Dhivakaran&apos;s Advanced Protocols</p>
+                    <p className="text-[10px] text-slate-600 dark:text-slate-400 font-medium">✨ Powered by Dr. Dhivakaran&apos;s Advanced Protocols</p>
                     <Link href="/treatments" className="text-[10px] font-black text-blue-600 dark:text-cyan-400 hover:underline uppercase tracking-widest">View All 40+ Protocols</Link>
                   </div>
                 </div>
@@ -207,14 +206,14 @@ const Header: React.FC<HeaderProps> = ({ onBookClick }) => {
             </div>
             <Link
               href="/patient-safety"
-              className={`relative px-4 py-2.5 text-[12px] font-bold uppercase tracking-wider transition-all duration-300 rounded-full ${isActive('/patient-safety') ? 'text-white bg-blue-600 shadow-md' : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white'
+              className={`relative px-4 py-2.5 text-[12px] font-bold uppercase tracking-wider transition-all duration-300 rounded-full ${isActive('/patient-safety') ? 'text-white bg-blue-600 shadow-md' : 'text-slate-700 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white'
                 }`}
             >
               Patient Safety
             </Link>
             <Link
               href="/team"
-              className={`relative px-4 py-2.5 text-[12px] font-bold uppercase tracking-wider transition-all duration-300 rounded-full ${isActive('/team') ? 'text-white bg-blue-600 shadow-md' : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white'
+              className={`relative px-4 py-2.5 text-[12px] font-bold uppercase tracking-wider transition-all duration-300 rounded-full ${isActive('/team') ? 'text-white bg-blue-600 shadow-md' : 'text-slate-700 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white'
                 }`}
             >
               Our Team
@@ -242,14 +241,14 @@ const Header: React.FC<HeaderProps> = ({ onBookClick }) => {
             </Link>
             <Link
               href="/case-studies"
-              className={`px-4 py-2.5 text-[12px] font-bold uppercase tracking-wider rounded-full transition-all ${isActive('/case-studies') ? 'bg-purple-100 text-purple-700' : 'text-slate-600 dark:text-slate-400 hover:text-purple-600'
+              className={`px-4 py-2.5 text-[12px] font-bold uppercase tracking-wider rounded-full transition-all ${isActive('/case-studies') ? 'bg-purple-100 text-purple-700' : 'text-slate-700 dark:text-slate-400 hover:text-purple-600'
                 }`}
             >
               Cases
             </Link>
             <Link
               href="/blog"
-              className={`px-4 py-2.5 text-[12px] font-bold uppercase tracking-wider rounded-full transition-all ${isActive('/blog') ? 'bg-pink-100 text-pink-700' : 'text-slate-600 dark:text-slate-400 hover:text-pink-600'
+              className={`px-4 py-2.5 text-[12px] font-bold uppercase tracking-wider rounded-full transition-all ${isActive('/blog') ? 'bg-pink-100 text-pink-700' : 'text-slate-700 dark:text-slate-400 hover:text-pink-600'
                 }`}
             >
               Blog

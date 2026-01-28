@@ -418,7 +418,7 @@ export default function Gallery() {
                   )}
                   <div className="flex gap-2">
                     {currentTrack.tags.map(t => (
-                      <span key={t} className="text-[10px] font-bold text-slate-500 dark:text-slate-400 border border-slate-200 dark:border-white/10 px-2 py-1 rounded-md uppercase tracking-wider">{t}</span>
+                      <span key={t} className="text-[10px] font-bold text-slate-700 dark:text-slate-200 border border-slate-200 dark:border-white/10 px-2 py-1 rounded-md uppercase tracking-wider">{t}</span>
                     ))}
                   </div>
                 </div>

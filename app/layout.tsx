@@ -120,21 +120,9 @@ import { Partytown } from '@builder.io/partytown/react';
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en" suppressHydrationWarning className="scroll-smooth">
-      <head>
-        <Partytown debug={true} forward={['dataLayer.push']} />
-      </head>
+      <head />
       <body className={`${jakarta.variable} ${inter.variable} font-sans antialiased bg-slate-50 dark:bg-dark-bg text-slate-900 dark:text-white transition-colors duration-300`}>
-        {/* Google Tag Manager - Offloaded to Worker */}
-        <script
-          type="text/partytown"
-          dangerouslySetInnerHTML={{
-            __html: `(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-             new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-             j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-             'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-             })(window,document,'script','dataLayer','GTM-N7LJVS7T');`,
-          }}
-        />
+
         <LayoutShell>
           {children}
         </LayoutShell>

@@ -615,7 +615,10 @@ const Services: React.FC<ServicesProps> = ({ onServiceClick }) => {
 
                 <div className="pointer-events-auto relative w-full max-w-sm lg:max-w-md mb-3 lg:mb-4">
                     <input
+                        id="treatment-search"
+                        name="treatment-search"
                         type="text"
+                        autoComplete="off"
                         placeholder="Search by symptom..."
                         value={searchQuery}
                         onChange={(e) => setSearchQuery(e.target.value)}
@@ -630,7 +633,7 @@ const Services: React.FC<ServicesProps> = ({ onServiceClick }) => {
                             key={cat}
                             onClick={() => setActiveFilter(cat)}
                             className={`px-3 py-1 lg:px-4 lg:py-1.5 rounded-full text-[10px] lg:text-xs font-bold uppercase tracking-wider transition-all border ${activeFilter === cat
-                                ? 'bg-white text-slate-900 border-white scale-105 shadow-md'
+                                ? 'bg-blue-50 dark:bg-blue-900/30 text-blue-700 dark:text-blue-300 border-blue-100 dark:border-blue-500/20 scale-105 shadow-md'
                                 : 'bg-transparent text-white/70 border-white/20 hover:bg-white/10 hover:border-white/40'
                                 }`}
                         >

@@ -13,8 +13,10 @@ const About = () => {
 
           {/* Text Content */}
           <div className="order-2 lg:order-1">
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-100 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400 text-xs font-bold uppercase tracking-widest mb-6">
-              <Heart size={12} fill="currentColor" /> Our Philosophy
+            <div className="inline-flex items-center gap-2">
+              <span className="px-4 py-1 bg-slate-100 dark:bg-white/5 text-slate-600 dark:text-slate-300 rounded-full text-[10px] font-black uppercase tracking-widest mb-6">
+                <Heart size={12} fill="currentColor" /> Our Philosophy
+              </span>
             </div>
             <h2 className="text-4xl md:text-5xl font-black text-slate-900 dark:text-white mb-8 leading-tight">
               Treating you like Family.<br />
