@@ -62,6 +62,24 @@ const JsonLd = () => {
                     "@type": "Offer",
                     "itemOffered": {
                         "@type": "Service",
+                        "name": "Microscopic Root Canal",
+                        "description": "Advanced root canal therapy performed under Zeiss Microscopic Precision.",
+                        "url": "https://nobledentalnallagandla.in/treatments/root-canal"
+                    }
+                },
+                {
+                    "@type": "Offer",
+                    "itemOffered": {
+                        "@type": "Service",
+                        "name": "Wisdom Tooth Surgery",
+                        "description": "Painless dental surgery for impacted wisdom teeth.",
+                        "url": "https://nobledentalnallagandla.in/treatments/wisdom-tooth-surgery"
+                    }
+                },
+                {
+                    "@type": "Offer",
+                    "itemOffered": {
+                        "@type": "Service",
                         "name": "Dental Implants",
                         "description": "3D Guided Titanium and Zirconia Implants.",
                         "url": "https://nobledentalnallagandla.in/treatments/dental-implants"
@@ -83,6 +101,96 @@ const JsonLd = () => {
                         "name": "Invisalign",
                         "description": "Clear aligners for discreet teeth straightening.",
                         "url": "https://nobledentalnallagandla.in/treatments/invisalign"
+                    }
+                },
+                {
+                    "@type": "Offer",
+                    "itemOffered": {
+                        "@type": "Service",
+                        "name": "Pediatric Dentistry",
+                        "description": "Child-friendly dental care and preventive treatments.",
+                        "url": "https://nobledentalnallagandla.in/treatments/kids-dentistry"
+                    }
+                },
+                {
+                    "@type": "Offer",
+                    "itemOffered": {
+                        "@type": "Service",
+                        "name": "Full Mouth Rehabilitation",
+                        "description": "Complete smile reconstruction using implants and crowns.",
+                        "url": "https://nobledentalnallagandla.in/treatments/full-mouth-rehab"
+                    }
+                },
+                {
+                    "@type": "Offer",
+                    "itemOffered": {
+                        "@type": "Service",
+                        "name": "Zirconia Crowns",
+                        "description": "Metal-free, high-strength aesthetic crowns.",
+                        "url": "https://nobledentalnallagandla.in/treatments/crowns-bridges"
+                    }
+                },
+                {
+                    "@type": "Offer",
+                    "itemOffered": {
+                        "@type": "Service",
+                        "name": "Ceramic Veneers",
+                        "description": "Ultra-thin shells for a flawless Hollywood smile.",
+                        "url": "https://nobledentalnallagandla.in/treatments/veneers"
+                    }
+                },
+                {
+                    "@type": "Offer",
+                    "itemOffered": {
+                        "@type": "Service",
+                        "name": "Emergency Dentistry",
+                        "description": "Immediate care for toothaches, trauma, and accidents.",
+                        "url": "https://nobledentalnallagandla.in/treatments/emergency-dentistry"
+                    }
+                },
+                {
+                    "@type": "Offer",
+                    "itemOffered": {
+                        "@type": "Service",
+                        "name": "Gum Disease Treatment",
+                        "description": "Laser-assisted periodontal therapy for healthy gums.",
+                        "url": "https://nobledentalnallagandla.in/treatments/gum-disease"
+                    }
+                },
+                {
+                    "@type": "Offer",
+                    "itemOffered": {
+                        "@type": "Service",
+                        "name": "Smile Designing",
+                        "description": "Digital Smile Design (DSD) to preview your perfect smile.",
+                        "url": "https://nobledentalnallagandla.in/treatments/smile-design"
+                    }
+                },
+                {
+                    "@type": "Offer",
+                    "itemOffered": {
+                        "@type": "Service",
+                        "name": "Prenatal Dental Care",
+                        "description": "Safe dental care specialized for expectant mothers.",
+                        "url": "https://nobledentalnallagandla.in/treatments/pregnancy-dental-care"
+                    }
+                },
+                {
+                    "@type": "Offer",
+                    "itemOffered": {
+                        "@type": "Service",
+                        "name": "Laser Dentistry",
+                        "description": "Painless soft tissue procedures using advanced lasers.",
+                        "url": "https://nobledentalnallagandla.in/treatments/laser-dentistry"
+                    }
+                },
+                {
+                    "@type": "Offer",
+                    "itemOffered": {
+                        "@type": "Service",
+                        "name": "Jaw Surgery",
+                        "description": "Orthognathic surgery for correcting functional jaw issues.",
+                        "url": "https://nobledentalnallagandla.in/treatments/orthognathic-surgery"
                     }
                 }
             ]
