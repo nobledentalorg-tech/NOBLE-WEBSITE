@@ -3,6 +3,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { ArrowLeft, Clock, FileText, ChevronRight, ShieldCheck, Cpu } from 'lucide-react';
 import type { Metadata } from 'next';
+import CrawlableReviews from '@/components/CrawlableReviews';
 
 export const metadata: Metadata = {
     title: 'Patient Education | Root Canal, Implants & Invisalign Guide',
@@ -133,6 +134,11 @@ export default function EducationPage() {
                 </div>
 
             </div>
+            {/* Verified Reviews (The Trust Loop) */}
+            <div className="mb-20 mt-20">
+                <CrawlableReviews />
+            </div>
+
         </main>
     );
 }

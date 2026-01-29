@@ -4,6 +4,7 @@ import { MapPin, School, Building2, Navigation, Clock, Moon, Star } from 'lucide
 import Link from 'next/link';
 import Image from 'next/image';
 import { Metadata } from 'next';
+import CrawlableReviews from '@/components/CrawlableReviews';
 
 export const metadata: Metadata = {
     title: 'Neighborhood Guide | Noble Dental Nallagandla',
@@ -240,6 +241,11 @@ export default function NeighborhoodGuide() {
                     </div>
                 </div>
             </section>
+
+            {/* 4. Verified Reviews (The Trust Loop) */}
+            <div className="mb-20">
+                <CrawlableReviews />
+            </div>
 
             {/* 3. Hotels (Visitors) */}
             <section className="py-16 px-6 bg-slate-900 text-white rounded-[3rem] mb-20 mx-4">

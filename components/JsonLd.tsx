@@ -30,7 +30,7 @@ const JsonLd = () => {
                     "latitude": 17.4838,
                     "longitude": 78.3134
                 },
-                "hasMap": "https://maps.app.goo.gl/xFv4bbsWewmCGgV57",
+                "hasMap": "https://maps.google.com/?cid=4547168998024540590",
                 "areaServed": [
                     { "@type": "Place", "name": "Nallagandla" },
                     { "@type": "Place", "name": "Tellapur" },

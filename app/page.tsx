@@ -20,11 +20,12 @@ const Contact = dynamic(() => import('@/components/Contact'), { ssr: false });
 const Credentials = dynamic(() => import('@/components/Credentials'), { ssr: false });
 const TechnologyGrid = dynamic(() => import('@/components/TechnologyGrid'), { ssr: false });
 const NobleDifference = dynamic(() => import('@/components/NobleDifference'), { ssr: false });
+const CrawlableReviews = dynamic(() => import('@/components/CrawlableReviews'), { ssr: false });
 
 export default function Home() {
     const offers = [
         { text: "Braces Treatment starting at ₹35,000 only!", icon: Zap },
-        { text: "Medical Grade Scaling & Tooth Cleaning at ₹1,500", icon: Sparkles },
+        { text: "Medical Grade Scaling & Tooth Cleaning at ₹1,800", icon: Sparkles },
         { text: "Certified In-house Clear Aligners at ₹950 per tray", icon: Heart },
         { text: "Limited Slots Available for Implants! Book Now.", icon: Calendar }
     ];
@@ -150,6 +151,12 @@ export default function Home() {
             <RevealOnScroll>
                 <Suspense fallback={<Skeleton className="h-[400px] w-full" />}>
                     <Testimonials />
+                </Suspense>
+            </RevealOnScroll>
+
+            <RevealOnScroll>
+                <Suspense fallback={<Skeleton className="h-[400px] w-full" />}>
+                    <CrawlableReviews />
                 </Suspense>
             </RevealOnScroll>
 
