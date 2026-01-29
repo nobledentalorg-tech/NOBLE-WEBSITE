@@ -8,6 +8,7 @@ const JsonLd = () => {
         "alternateName": ["Noble Dental Clinic", "NDC Nallagandla", "Noble Dental Care Hyderabad"],
         "@id": "https://nobledentalnallagandla.in/#organization",
         "url": "https://nobledentalnallagandla.in",
+        "identifier": "4112135491656473937",
         "telephone": "+918610425342",
         "contactPoint": [
             {
@@ -29,8 +30,8 @@ const JsonLd = () => {
         },
         "geo": {
             "@type": "GeoCoordinates",
-            "latitude": 17.4738964,
-            "longitude": 78.3081889
+            "latitude": 17.47389640,
+            "longitude": 78.30818890
         },
         "openingHoursSpecification": {
             "@type": "OpeningHoursSpecification",
@@ -46,10 +47,11 @@ const JsonLd = () => {
             "jobTitle": "Chief Dental Surgeon",
             "sameAs": "https://nobledentalnallagandla.in/about"
         },
-        "hasMap": "https://maps.app.goo.gl/pL2G57e7NndH8C739",
+        "hasMap": "https://www.google.com/maps/place/Noble+Dental+Care+%7C+Multispeciality+Dental+clinic+in+Nallagandla/@17.4739015,78.305614,17z/data=!3m1!4b1!4m6!3m5!1s0x3bcb936d705f0d7b:0x3f1aca1c9cebf1ae!8m2!3d17.4738964!4d78.3081889!16s%2Fg%2F11s9k4cgc7?entry=ttu&g_ep=EgoyMDI2MDEyNy4wIKXMDSoASAFQAw%3D%3D",
         "aggregateRating": {
             "@type": "AggregateRating",
-            "ratingValue": "5.0",
+            "ratingValue": "5",
+            "bestRating": "5",
             "reviewCount": "40"
         },
         "hasOfferCatalog": {
@@ -60,21 +62,27 @@ const JsonLd = () => {
                     "@type": "Offer",
                     "itemOffered": {
                         "@type": "Service",
-                        "name": "Note Implants"
+                        "name": "Dental Implants",
+                        "description": "3D Guided Titanium and Zirconia Implants.",
+                        "url": "https://nobledentalnallagandla.in/treatments/dental-implants"
                     }
                 },
                 {
                     "@type": "Offer",
                     "itemOffered": {
                         "@type": "Service",
-                        "name": "Teeth Whitening"
+                        "name": "Teeth Whitening",
+                        "description": "Laser-assisted whitening for immediate results.",
+                        "url": "https://nobledentalnallagandla.in/treatments/teeth-whitening"
                     }
                 },
                 {
                     "@type": "Offer",
                     "itemOffered": {
                         "@type": "Service",
-                        "name": "Invisalign"
+                        "name": "Invisalign",
+                        "description": "Clear aligners for discreet teeth straightening.",
+                        "url": "https://nobledentalnallagandla.in/treatments/invisalign"
                     }
                 }
             ]
@@ -91,9 +99,8 @@ const JsonLd = () => {
             "All-on-4 Implants"
         ],
         "sameAs": [
-            "https://maps.app.goo.gl/pL2G57e7NndH8C739",
-            "https://maps.google.com/?cid=ChIJew1fcG2TyzsRrvHrnBzKGj8",
-            "https://www.facebook.com/people/Noble-Dental-Care/61555833132386/",
+            "https://maps.app.goo.gl/xFv4bbsWewmCGgV57",
+            "https://www.facebook.com/NobleDentalCareNallagandla",
             "https://www.instagram.com/nobledentalcare/",
             "https://www.linkedin.com/in/noble-dental-200047375/",
             "https://www.youtube.com/@YoursAnatomy",
@@ -103,13 +110,10 @@ const JsonLd = () => {
             "https://www.justdial.com/Hyderabad/Noble-Dental-Care-Multispeciality-Dental-Clinic/040PXX40-XX40-230311104127-B8Q4_BZDET"
         ],
         "medicalSpecialty": [
-            "Endodontics",
-            "Implantology",
+            "Dentistry",
             "Orthodontics",
-            "CosmeticDentistry",
-            "PediatricDentistry",
-            "Periodontics",
-            "EmergencyDentistry"
+            "Endodontics",
+            "PediatricDentistry"
         ],
         "medicalProcedure": [
             {

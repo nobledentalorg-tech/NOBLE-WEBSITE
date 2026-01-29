@@ -128,16 +128,16 @@ const Contact = () => {
                                     <p className="text-sm font-bold text-slate-700 dark:text-slate-300 leading-tight mb-4">ICA Clinic Building, Main Road.</p>
 
                                     {/* [Trusted Local Signal] Lazy Loaded Map */}
-                                    <div className="w-full h-32 rounded-xl overflow-hidden shadow-inner border border-slate-200 dark:border-white/10">
+                                    <div className="w-full aspect-[4/3] rounded-xl overflow-hidden shadow-inner border border-slate-200 dark:border-white/10">
                                         <iframe
-                                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3805.323577544093!2d78.3117!3d17.4828!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMTfCsDI4JzU4LjEiTiA3OMKwMTgnNDIuMSJF!5e0!3m2!1sen!2sin!4v1629800000000!5m2!1sen!2sin"
+                                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3805.703464807516!2d78.30561397462881!3d17.473901500308084!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bcb936d705f0d7b%3A0x3f1aca1c9cebf1ae!2sNoble%20Dental%20Care%20%7C%20Multispeciality%20Dental%20clinic%20in%20Nallagandla!5e0!3m2!1sen!2sin!4v1769648241406!5m2!1sen!2sin"
                                             width="100%"
                                             height="100%"
                                             style={{ border: 0 }}
                                             allowFullScreen
                                             loading="lazy"
                                             referrerPolicy="no-referrer-when-downgrade"
-                                            title="Noble Dental Clinic Map"
+                                            title="Noble Dental Clinic Nallagandla Location"
                                         ></iframe>
                                     </div>
                                 </div>
