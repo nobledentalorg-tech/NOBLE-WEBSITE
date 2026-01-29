@@ -58,6 +58,7 @@ const JsonLd = () => {
             "All-on-4 Implants"
         ],
         "sameAs": [
+            "https://maps.app.goo.gl/pL2G57e7NndH8C739",
             "https://maps.google.com/?cid=ChIJew1fcG2TyzsRrvHrnBzKGj8",
             "https://www.facebook.com/people/Noble-Dental-Care/61555833132386/",
             "https://www.instagram.com/nobledentalcare/",
