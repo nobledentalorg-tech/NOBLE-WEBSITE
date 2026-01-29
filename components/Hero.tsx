@@ -209,7 +209,7 @@ const Hero: React.FC<HeroProps> = ({ onBookClick }) => {
                   alt="Clinical Background"
                   fill
                   className="surgical-video object-cover"
-                  sizes="(max-width: 768px) 90vw, (max-width: 1200px) 40vw, 450px"
+                  sizes="(max-width: 768px) 90vw, (max-width: 1200px) 50vw, 500px"
                   priority
                 />
                 <Image
