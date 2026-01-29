@@ -130,8 +130,8 @@ const Hero: React.FC<HeroProps> = ({ onBookClick }) => {
               <span className="sr-only">Best Dentist in Nallagandla</span>
               {isLocal ? (
                 <>
-                  The <span className="text-blue-600">#1 Choice</span> <br />
-                  for Nallagandla Families.
+                  Nallagandla&apos;s <span className="text-blue-600">Most Trusted</span> <br />
+                  Family Dental Care.
                 </>
               ) : (
                 "Trusted Family Dentist."

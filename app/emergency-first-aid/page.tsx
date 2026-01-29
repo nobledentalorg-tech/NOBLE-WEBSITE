@@ -68,7 +68,7 @@ export default function EmergencyFirstAid() {
                 <div className="bg-slate-900 text-white rounded-3xl p-8 text-center mt-8">
                     <h3 className="text-2xl font-bold mb-2">Need Immediate Help?</h3>
                     <p className="text-slate-400 mb-6">Our emergency line is active 24/7 for triage.</p>
-                    <a href="tel:8074512305" className="inline-flex items-center gap-3 bg-red-600 hover:bg-red-700 text-white font-black uppercase tracking-widest px-8 py-4 rounded-xl shadow-lg transition-transform active:scale-95">
+                    <a href="tel:+918610425342" className="inline-flex items-center gap-3 bg-red-600 hover:bg-red-700 text-white font-black uppercase tracking-widest px-8 py-4 rounded-xl shadow-lg transition-transform active:scale-95">
                         <Phone fill="currentColor" size={20} /> Call Emergency
                     </a>
                 </div>

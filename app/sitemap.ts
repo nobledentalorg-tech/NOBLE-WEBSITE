@@ -2,6 +2,7 @@ import { MetadataRoute } from 'next';
 import { treatmentsData } from '@/data/treatments';
 import { NeoBlogEngine } from '@/neo/NeoBlogEngine';
 import { dripFeedFilter } from '@/data/drip-feed';
+import { pseoLocalities, pseoServices } from '@/data/pseo';
 
 const BASE_URL = 'https://nobledentalnallagandla.in';
 
@@ -47,5 +48,25 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
     const blogRoutes = dripFeedFilter(allBlogs);
 
-    return [...staticRoutes, ...treatmentRoutes, ...blogRoutes];
+    // 4. PSEO Routes (Hubs & Leaves)
+    const pseoHubs = pseoLocalities.map((loc) => ({
+        url: `${BASE_URL}/dentist-in/${loc.slug}`,
+        lastModified: new Date(),
+        changeFrequency: 'weekly' as const,
+        priority: 0.8,
+    }));
+
+    const pseoLeaves = [];
+    for (const loc of pseoLocalities) {
+        for (const srv of pseoServices) {
+            pseoLeaves.push({
+                url: `${BASE_URL}/dentist-in/${loc.slug}/${srv.slug}`,
+                lastModified: new Date(),
+                changeFrequency: 'monthly' as const,
+                priority: 0.7,
+            });
+        }
+    }
+
+    return [...staticRoutes, ...treatmentRoutes, ...blogRoutes, ...pseoHubs, ...pseoLeaves];
 }

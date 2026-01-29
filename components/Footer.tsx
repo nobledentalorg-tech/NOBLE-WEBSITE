@@ -12,7 +12,7 @@ const Footer: React.FC<FooterProps> = ({ onBookClick }) => {
   return (
     <footer className="bg-slate-900 text-white pt-20 pb-10 rounded-t-[3rem] mt-auto relative z-10 border-t border-white/5">
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8 mb-16">
 
           {/* Brand */}
           <div className="space-y-6">
@@ -53,6 +53,20 @@ const Footer: React.FC<FooterProps> = ({ onBookClick }) => {
               <li><Link href="/treatments/wisdom-tooth-surgery" className="hover:text-blue-400 transition-colors">• Wisdom Tooth Surgery</Link></li>
               <li><Link href="/treatments/kids-dentistry" className="hover:text-blue-400 transition-colors">• Child Friendly Dentist</Link></li>
               <li><Link href="/treatments/pregnancy-dental-care" className="hover:text-blue-400 transition-colors">• Prenatal Oral Care</Link></li>
+            </ul>
+          </div>
+
+          {/* Neighborhoods (PSEO Directory) */}
+          <div>
+            <h3 className="text-lg font-bold mb-6 text-white/90">Serve Your Area</h3>
+            <ul className="space-y-3 text-sm text-slate-400 font-medium">
+              <li><Link href="/dentist-in/aparna-sarovar" className="hover:text-amber-400 transition-colors flex items-center gap-2"><MapPin size={12} className="text-amber-500" /> Aparna Zenith</Link></li>
+              <li><Link href="/dentist-in/my-home-avatar" className="hover:text-amber-400 transition-colors flex items-center gap-2"><MapPin size={12} className="text-amber-500" /> My Home Avatar</Link></li>
+              <li><Link href="/dentist-in/tellapur" className="hover:text-blue-400 transition-colors">Tellapur</Link></li>
+              <li><Link href="/dentist-in/nallagandla" className="hover:text-blue-400 transition-colors">Nallagandla</Link></li>
+              <li><Link href="/dentist-in/gachibowli" className="hover:text-blue-400 transition-colors">Gachibowli</Link></li>
+              <li><Link href="/dentist-in/kondapur" className="hover:text-blue-400 transition-colors">Kondapur</Link></li>
+              <li><Link href="/dentist-in/serilingampally" className="hover:text-blue-400 transition-colors">Serilingampally</Link></li>
             </ul>
           </div>
 
@@ -105,11 +119,9 @@ const Footer: React.FC<FooterProps> = ({ onBookClick }) => {
           <div>
             <h3 className="text-lg font-bold mb-6">Connect</h3>
             <div className="flex gap-4 mb-8">
-              <div className="flex gap-4 mb-8">
-                <a href="https://www.instagram.com/noble.dentalorg/" target="_blank" rel="noopener noreferrer" className="w-12 h-12 rounded-full bg-white/5 flex items-center justify-center hover:bg-blue-600 transition-all" aria-label="Follow us on Instagram"><Instagram size={20} /></a>
-                <a href="https://www.facebook.com/profile.php?id=100087590145815" target="_blank" rel="noopener noreferrer" className="w-12 h-12 rounded-full bg-white/5 flex items-center justify-center hover:bg-blue-600 transition-all" aria-label="Follow us on Facebook"><Facebook size={20} /></a>
-                <a href="https://x.com/NobleDenta67864" target="_blank" rel="noopener noreferrer" className="w-12 h-12 rounded-full bg-white/5 flex items-center justify-center hover:bg-blue-600 transition-all" aria-label="Follow us on X (Twitter)"><Twitter size={20} /></a>
-              </div>
+              <a href="https://www.instagram.com/noble.dentalorg/" target="_blank" rel="noopener noreferrer" className="w-12 h-12 rounded-full bg-white/5 flex items-center justify-center hover:bg-blue-600 transition-all" aria-label="Follow us on Instagram"><Instagram size={20} /></a>
+              <a href="https://www.facebook.com/profile.php?id=100087590145815" target="_blank" rel="noopener noreferrer" className="w-12 h-12 rounded-full bg-white/5 flex items-center justify-center hover:bg-blue-600 transition-all" aria-label="Follow us on Facebook"><Facebook size={20} /></a>
+              <a href="https://x.com/NobleDenta67864" target="_blank" rel="noopener noreferrer" className="w-12 h-12 rounded-full bg-white/5 flex items-center justify-center hover:bg-blue-600 transition-all" aria-label="Follow us on X (Twitter)"><Twitter size={20} /></a>
             </div>
 
             <div className="pt-6 border-t border-white/10 space-y-3">

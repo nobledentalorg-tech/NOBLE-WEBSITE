@@ -10,7 +10,6 @@ import Skeleton from '@/components/Skeleton';
 
 // Dynamically import components below the fold to improve LCP and TBT
 const Services = dynamic(() => import('@/components/Services'), { ssr: false });
-const Testimonials = dynamic(() => import('@/components/Testimonials'), { ssr: false });
 const About = dynamic(() => import('@/components/About'), { ssr: false });
 const MissionValues = dynamic(() => import('@/components/MissionValues'), { ssr: false });
 const Gallery = dynamic(() => import('@/components/Gallery'), { ssr: false });
@@ -32,7 +31,7 @@ export default function Home() {
 
     return (
         <>
-            {/* 1. Hero Section */}
+            {/* 1. Hero Section (The Hook - 3 Seconds) */}
             <Hero />
 
             {/* 2. News Ticker */}
@@ -65,13 +64,27 @@ export default function Home() {
                 </div>
             </div>
 
-            {/* 3. Healthflo AI Promo */}
+            {/* 3. The Trust Loop (Social Proof - 30 Seconds) */}
+            {/* Moved UP to capturing immediate trust */}
+            <RevealOnScroll>
+                <Suspense fallback={<Skeleton className="h-[400px] w-full" />}>
+                    <CrawlableReviews />
+                </Suspense>
+            </RevealOnScroll>
+
+            {/* 4. Core Services (What We Do) */}
+            <RevealOnScroll>
+                <Suspense fallback={<Skeleton className="h-[600px] w-full" />}>
+                    <Services />
+                </Suspense>
+            </RevealOnScroll>
+
+            {/* 5. Healthflo AI Promo (Differentiation) */}
             <RevealOnScroll>
                 <div className="max-w-7xl mx-auto px-6 py-20">
                     <Link href="/healthflo-ai" className="block group cursor-pointer">
                         <div className="bg-gradient-to-br from-blue-600 to-indigo-800 rounded-[3rem] p-10 md:p-20 text-white shadow-2xl relative overflow-hidden">
                             <div className="absolute top-0 right-0 w-80 h-80 bg-white/10 rounded-full blur-[100px] group-hover:scale-125 transition-transform duration-1000"></div>
-
                             <div className="relative z-10 grid lg:grid-cols-2 gap-12 items-center">
                                 <div>
                                     <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/20 backdrop-blur-md mb-6 border border-white/30 text-xs font-bold uppercase tracking-widest">
@@ -81,13 +94,12 @@ export default function Home() {
                                         AI Clinical <br /> Self-Check.
                                     </h2>
                                     <p className="text-xl text-blue-100 mb-10 font-medium leading-relaxed">
-                                        Experience the future of dentistry with Noble Dental&apos;s state-of-the-art technology.ze signs, calculate treatment costs, and get expert clinical guidance in seconds.
+                                        Experience the future of dentistry with Noble Dental&apos;s state-of-the-art technology. Analyze signs, calculate treatment costs, and get expert clinical guidance in seconds.
                                     </p>
                                     <button className="px-12 py-5 bg-white text-blue-600 rounded-full font-black uppercase text-xs tracking-widest shadow-2xl group-hover:translate-x-2 transition-all flex items-center gap-2">
                                         Launch Dental OS <Sparkles size={16} />
                                     </button>
                                 </div>
-
                                 <div className="hidden lg:flex justify-center">
                                     <div className="w-72 h-72 rounded-[3rem] bg-white/5 backdrop-blur-3xl border border-white/20 flex items-center justify-center relative">
                                         <Bot size={120} className="text-white/80 animate-float" />
@@ -102,25 +114,31 @@ export default function Home() {
                 </div>
             </RevealOnScroll>
 
-            {/* 3.5 Technology Grid (Countering Competitors) */}
+            {/* 6. Technology Grid (Countering Competitors) */}
             <RevealOnScroll>
                 <Suspense fallback={<Skeleton className="h-[400px] w-full" />}>
                     <TechnologyGrid />
                 </Suspense>
             </RevealOnScroll>
 
-
-            {/* 4. The Rest of the Sections */}
+            {/* 7. Gallery (Visual Proof) */}
             <RevealOnScroll className="hide-on-lite">
                 <Suspense fallback={<Skeleton className="h-[400px] w-full" />}>
-                    <About />
+                    <Gallery />
                 </Suspense>
             </RevealOnScroll>
 
-            {/* 4.5 The Noble Difference (Vs SmyleXL) */}
+            {/* 8. Doctors (Authority) */}
             <RevealOnScroll>
+                <Suspense fallback={<Skeleton className="h-[500px] w-full" />}>
+                    <Doctors />
+                </Suspense>
+            </RevealOnScroll>
+
+            {/* 9. About & Mission (Deep Dive - 3 Minutes) */}
+            <RevealOnScroll className="hide-on-lite">
                 <Suspense fallback={<Skeleton className="h-[400px] w-full" />}>
-                    <NobleDifference />
+                    <About />
                 </Suspense>
             </RevealOnScroll>
 
@@ -131,35 +149,12 @@ export default function Home() {
             </RevealOnScroll>
 
             <RevealOnScroll>
-                <Suspense fallback={<Skeleton className="h-[600px] w-full" />}>
-                    <Services />
-                </Suspense>
-            </RevealOnScroll>
-
-            <RevealOnScroll className="hide-on-lite">
                 <Suspense fallback={<Skeleton className="h-[400px] w-full" />}>
-                    <Gallery />
+                    <NobleDifference />
                 </Suspense>
             </RevealOnScroll>
 
-            <RevealOnScroll>
-                <Suspense fallback={<Skeleton className="h-[500px] w-full" />}>
-                    <Doctors />
-                </Suspense>
-            </RevealOnScroll>
-
-            <RevealOnScroll>
-                <Suspense fallback={<Skeleton className="h-[400px] w-full" />}>
-                    <Testimonials />
-                </Suspense>
-            </RevealOnScroll>
-
-            <RevealOnScroll>
-                <Suspense fallback={<Skeleton className="h-[400px] w-full" />}>
-                    <CrawlableReviews />
-                </Suspense>
-            </RevealOnScroll>
-
+            {/* 10. FAQ & Contact */}
             <RevealOnScroll>
                 <Suspense fallback={<Skeleton className="h-[400px] w-full" />}>
                     <FAQ />

@@ -50,6 +50,20 @@ export const pseoLocalities: PSEOLocality[] = [
         landmark: "near GSM Mall",
         driving_directions: "just 10 minutes from Gangaram Circle",
         coordinates: { lat: 17.4933, lng: 78.3276 }
+    },
+    {
+        slug: "aparna-sarovar",
+        name: "Aparna Sarovar",
+        landmark: "near Aparna Sarovar Zenith Gate",
+        driving_directions: "a quick 2-minute drive via the service road",
+        coordinates: { lat: 17.4750, lng: 78.3030 }
+    },
+    {
+        slug: "my-home-avatar",
+        name: "My Home Avatar",
+        landmark: "near My Home Avatar Entrance",
+        driving_directions: "via Nallagandla Main Road in 7 minutes",
+        coordinates: { lat: 17.4800, lng: 78.3100 }
     }
 ];
 

@@ -53,6 +53,24 @@ export const LOCALITY_MATRIX: Record<string, LocalityData> = {
         landmarks: ['Lingampally Railway Station', 'P. Sundarayya Bridge', 'Nallagandla Dam'],
         demographic: 'High-density family residential hub',
         metaTitleSuffix: 'Near Railway Station'
+    },
+    'aparna-sarovar': {
+        id: 'aparna-sarovar',
+        name: 'Aparna Sarovar',
+        distance: '0.4 km',
+        time: '2 mins',
+        landmarks: ['Aparna Sarovar Zenith', 'Aparna Cyber Life', 'Citizens Hospital'],
+        demographic: 'Premium Gated Community Residents',
+        metaTitleSuffix: 'Near Aparna Zenith'
+    },
+    'my-home-avatar': {
+        id: 'my-home-avatar',
+        name: 'My Home Avatar',
+        distance: '3.5 km',
+        time: '7-10 mins',
+        landmarks: ['My Home Avatar', 'Nallagandla Lake', 'Ratnadeep Supermarket'],
+        demographic: 'High Net-Worth IT Families',
+        metaTitleSuffix: 'Near My Home Avatar'
     }
 };
 
