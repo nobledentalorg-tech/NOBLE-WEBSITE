@@ -111,8 +111,8 @@ const Contact = () => {
                                     </div>
                                     <h3 className="text-xs font-black text-slate-400 uppercase tracking-widest mb-1">Call Clinic</h3>
                                     <p className="text-lg font-black text-slate-900 dark:text-white group-hover:text-blue-600 transition-colors mb-2">+91 86104 25342</p>
-                                    <div className="inline-block px-3 py-1 bg-green-50 dark:bg-green-900/20 text-green-700 dark:text-green-400 text-xs font-bold uppercase tracking-wide rounded-md">
-                                        Easy Access via ORR (Exit 19)
+                                    <div className="inline-block px-3 py-1 bg-green-50 dark:bg-green-900/20 text-green-700 dark:text-green-400 text-[10px] font-bold uppercase tracking-wide rounded-md">
+                                        Active Support
                                     </div>
                                 </a>
                             </RevealOnScroll>
@@ -128,7 +128,7 @@ const Contact = () => {
                                     <p className="text-sm font-bold text-slate-700 dark:text-slate-300 leading-tight mb-4">ICA Clinic Building, Main Road.</p>
 
                                     {/* [Trusted Local Signal] Lazy Loaded Map */}
-                                    <div className="w-full aspect-[4/3] rounded-xl overflow-hidden shadow-inner border border-slate-200 dark:border-white/10">
+                                    <div className="w-full aspect-video rounded-xl overflow-hidden shadow-inner border border-slate-200 dark:border-white/10">
                                         <iframe
                                             src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3805.703464807516!2d78.30561397462881!3d17.473901500308084!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bcb936d705f0d7b%3A0x3f1aca1c9cebf1ae!2sNoble%20Dental%20Care%20%7C%20Multispeciality%20Dental%20clinic%20in%20Nallagandla!5e0!3m2!1sen!2sin!4v1769648241406!5m2!1sen!2sin"
                                             width="100%"
@@ -207,10 +207,12 @@ const Contact = () => {
                                                 </div>
                                             </div>
 
-                                            <button type="submit" className="w-full max-w-sm mx-auto bg-slate-900 dark:bg-blue-600 text-white font-black uppercase tracking-[0.3em] py-4.5 rounded-[2rem] shadow-xl hover:-translate-y-1 transition-all flex justify-center items-center gap-3 group">
-                                                <span>Book Appointment</span>
-                                                <ArrowRight size={20} className="group-hover:translate-x-2 transition-transform" />
-                                            </button>
+                                            <div className="flex justify-center pt-4">
+                                                <button type="submit" className="w-full max-w-sm bg-slate-900 dark:bg-blue-600 text-white font-black uppercase tracking-[0.2em] h-16 rounded-2xl shadow-xl hover:-translate-y-1 hover:shadow-2xl hover:shadow-blue-500/20 active:scale-95 transition-all flex justify-center items-center gap-3 group">
+                                                    <span>Book Appointment</span>
+                                                    <ArrowRight size={20} className="group-hover:translate-x-2 transition-transform" />
+                                                </button>
+                                            </div>
                                         </form>
                                     </div>
                                 </div>
