@@ -64,11 +64,10 @@ export default function Home() {
                 </div>
             </div>
 
-            {/* 3. The Trust Loop (Social Proof - 30 Seconds) */}
-            {/* Moved UP to capturing immediate trust */}
+            {/* 3. Connect With Us (Contact) - Moved UP */}
             <RevealOnScroll>
-                <Suspense fallback={<Skeleton className="h-[400px] w-full" />}>
-                    <CrawlableReviews />
+                <Suspense fallback={<Skeleton className="h-[500px] w-full" />}>
+                    <Contact />
                 </Suspense>
             </RevealOnScroll>
 
@@ -154,16 +153,17 @@ export default function Home() {
                 </Suspense>
             </RevealOnScroll>
 
-            {/* 10. FAQ & Contact */}
+            {/* 10. FAQ & Reviews */}
             <RevealOnScroll>
                 <Suspense fallback={<Skeleton className="h-[400px] w-full" />}>
                     <FAQ />
                 </Suspense>
             </RevealOnScroll>
 
+            {/* 11. The Trust Loop (Social Proof) - Moved DOWN */}
             <RevealOnScroll>
-                <Suspense fallback={<Skeleton className="h-[500px] w-full" />}>
-                    <Contact />
+                <Suspense fallback={<Skeleton className="h-[400px] w-full" />}>
+                    <CrawlableReviews />
                 </Suspense>
             </RevealOnScroll>
 

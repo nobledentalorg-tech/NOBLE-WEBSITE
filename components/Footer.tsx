@@ -145,9 +145,14 @@ const Footer: React.FC<FooterProps> = ({ onBookClick }) => {
           <p className="text-xs text-slate-400 mb-4 text-justify">
             <strong>Medical Disclaimer:</strong> Information is for educational purposes and not a substitute for professional medical advice. All clinical procedures are performed by registered dental practitioners under strict sterilization protocols.
           </p>
-          <div className="flex justify-between items-center">
+          <div className="flex flex-col md:flex-row justify-between items-center gap-4">
             <p className="text-xs text-slate-300">© 2024 Noble Dental Care.</p>
-            <p className="text-xs text-slate-300 font-mono">DCI Reg: 23853 (Dr. Dhivakaran)</p>
+            <div className="flex items-center gap-4">
+              <p className="text-xs text-slate-300 font-mono">DCI Reg: 23853 (Dr. Dhivakaran)</p>
+              <a href="https://healthflo.org/" target="_blank" rel="noopener noreferrer" className="text-[10px] text-slate-500 hover:text-blue-400 transition-colors uppercase tracking-widest font-black flex items-center gap-1">
+                <Activity size={10} /> Powered by HealthFlo
+              </a>
+            </div>
           </div>
 
           <div className="flex gap-6 text-xs text-slate-400 mt-4">
