@@ -171,7 +171,7 @@ const CrawlableReviews = () => {
                     </div>
 
                     <a
-                        href="https://g.page/r/Cfd76839Xv4bEAE/review"
+                        href="https://g.page/r/Ca7x65wcyho_EAE/review"
                         target="_blank"
                         rel="noopener noreferrer"
                         className="mt-6 md:mt-0 inline-flex items-center gap-2 px-6 py-3 bg-white/5 hover:bg-blue-600 rounded-full text-white font-bold transition-all border border-white/10"
