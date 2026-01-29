@@ -2,6 +2,7 @@
 const nextConfig = {
   experimental: {
     // Other experimental features can go here if needed
+    // ppr: 'incremental',
   },
   // output: 'export',
 

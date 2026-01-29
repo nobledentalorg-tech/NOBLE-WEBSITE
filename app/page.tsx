@@ -1,11 +1,12 @@
 'use client';
 
-import React from 'react';
+import React, { Suspense } from 'react';
 import Link from 'next/link';
 import dynamic from 'next/dynamic';
 import { Zap, Sparkles, Heart, Calendar, Megaphone, Activity, Bot, Shield } from 'lucide-react';
 import Hero from '@/components/Hero';
 import { RevealOnScroll } from '@/components/RevealOnScroll';
+import Skeleton from '@/components/Skeleton';
 
 // Dynamically import components below the fold to improve LCP and TBT
 const Services = dynamic(() => import('@/components/Services'), { ssr: false });
@@ -102,27 +103,73 @@ export default function Home() {
 
             {/* 3.5 Technology Grid (Countering Competitors) */}
             <RevealOnScroll>
-                <TechnologyGrid />
+                <Suspense fallback={<Skeleton className="h-[400px] w-full" />}>
+                    <TechnologyGrid />
+                </Suspense>
             </RevealOnScroll>
 
 
             {/* 4. The Rest of the Sections */}
-            <RevealOnScroll><About /></RevealOnScroll>
+            <RevealOnScroll>
+                <Suspense fallback={<Skeleton className="h-[400px] w-full" />}>
+                    <About />
+                </Suspense>
+            </RevealOnScroll>
 
             {/* 4.5 The Noble Difference (Vs SmyleXL) */}
-            <RevealOnScroll><NobleDifference /></RevealOnScroll>
+            <RevealOnScroll>
+                <Suspense fallback={<Skeleton className="h-[400px] w-full" />}>
+                    <NobleDifference />
+                </Suspense>
+            </RevealOnScroll>
 
-            <RevealOnScroll><MissionValues /></RevealOnScroll>
-            <RevealOnScroll><Services /></RevealOnScroll>
-            <RevealOnScroll><Gallery /></RevealOnScroll>
-            <RevealOnScroll><Doctors /></RevealOnScroll>
-            <RevealOnScroll><Testimonials /></RevealOnScroll>
-            <RevealOnScroll><FAQ /></RevealOnScroll>
-            <RevealOnScroll><Contact /></RevealOnScroll>
+            <RevealOnScroll>
+                <Suspense fallback={<Skeleton className="h-[300px] w-full" />}>
+                    <MissionValues />
+                </Suspense>
+            </RevealOnScroll>
+
+            <RevealOnScroll>
+                <Suspense fallback={<Skeleton className="h-[600px] w-full" />}>
+                    <Services />
+                </Suspense>
+            </RevealOnScroll>
+
+            <RevealOnScroll>
+                <Suspense fallback={<Skeleton className="h-[400px] w-full" />}>
+                    <Gallery />
+                </Suspense>
+            </RevealOnScroll>
+
+            <RevealOnScroll>
+                <Suspense fallback={<Skeleton className="h-[500px] w-full" />}>
+                    <Doctors />
+                </Suspense>
+            </RevealOnScroll>
+
+            <RevealOnScroll>
+                <Suspense fallback={<Skeleton className="h-[400px] w-full" />}>
+                    <Testimonials />
+                </Suspense>
+            </RevealOnScroll>
+
+            <RevealOnScroll>
+                <Suspense fallback={<Skeleton className="h-[400px] w-full" />}>
+                    <FAQ />
+                </Suspense>
+            </RevealOnScroll>
+
+            <RevealOnScroll>
+                <Suspense fallback={<Skeleton className="h-[500px] w-full" />}>
+                    <Contact />
+                </Suspense>
+            </RevealOnScroll>
 
             <RevealOnScroll>
                 <div className="cursor-pointer">
-                    <Credentials />
+                    <Suspense fallback={<Skeleton className="h-[200px] w-full" />}>
+                        <Credentials />
+                    </Suspense>
                     <div className="text-center pb-10 -mt-10">
                         <Link href="/credentials-page" className="text-sm font-bold text-blue-600 hover:underline">
                             View All Certificates

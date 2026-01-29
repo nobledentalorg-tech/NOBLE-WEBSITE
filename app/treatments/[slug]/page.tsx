@@ -3,6 +3,7 @@ import { treatmentsData } from '@/data/treatments';
 import { notFound } from 'next/navigation';
 import Image from 'next/image';
 import Link from 'next/link';
+import { Suspense } from 'react';
 import {
   ArrowLeft, CheckCircle2, Activity, Clock,
   ShieldCheck, Sparkles, ChevronRight,
@@ -11,6 +12,7 @@ import {
   Monitor, Scissors, Waves
 } from 'lucide-react';
 import { RevealOnScroll } from '@/components/RevealOnScroll';
+import Skeleton from '@/components/Skeleton';
 
 // --- ICON MAPPER ---
 const IconMap: any = {
@@ -145,22 +147,24 @@ export default function TreatmentPage({ params }: { params: { slug: string } }) 
       <section className="relative -mt-16 z-20 pb-20">
         <div className="max-w-7xl mx-auto px-6">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {(t.stats || []).map((stat: any, i: number) => {
-              const Icon = IconMap[stat.icon] || Activity;
-              return (
-                <RevealOnScroll key={i} delay={i * 100}>
-                  <div className="p-8 ios-glass rounded-[2rem] flex items-center gap-6 border border-white/40 shadow-xl group hover:scale-[1.02] transition-all">
-                    <div className="w-14 h-14 bg-slate-900 dark:bg-white dark:text-slate-900 text-white rounded-2xl flex items-center justify-center group-hover:bg-blue-600 transition-colors">
-                      <Icon size={24} />
+            <Suspense fallback={<Skeleton className="h-[120px] w-full" />}>
+              {(t.stats || []).map((stat: any, i: number) => {
+                const Icon = IconMap[stat.icon] || Activity;
+                return (
+                  <RevealOnScroll key={i} delay={i * 100}>
+                    <div className="p-8 ios-glass rounded-[2rem] flex items-center gap-6 border border-white/40 shadow-xl group hover:scale-[1.02] transition-all">
+                      <div className="w-14 h-14 bg-slate-900 dark:bg-white dark:text-slate-900 text-white rounded-2xl flex items-center justify-center group-hover:bg-blue-600 transition-colors">
+                        <Icon size={24} />
+                      </div>
+                      <div>
+                        <div className="text-xs font-black text-slate-400 uppercase tracking-widest leading-none mb-1">{stat.label}</div>
+                        <div className="text-2xl font-black text-slate-900 dark:text-white uppercase tracking-tighter italic">{stat.value}</div>
+                      </div>
                     </div>
-                    <div>
-                      <div className="text-xs font-black text-slate-400 uppercase tracking-widest leading-none mb-1">{stat.label}</div>
-                      <div className="text-2xl font-black text-slate-900 dark:text-white uppercase tracking-tighter italic">{stat.value}</div>
-                    </div>
-                  </div>
-                </RevealOnScroll>
-              );
-            })}
+                  </RevealOnScroll>
+                );
+              })}
+            </Suspense>
           </div>
         </div>
       </section>
@@ -183,14 +187,16 @@ export default function TreatmentPage({ params }: { params: { slug: string } }) 
                 <div className="space-y-8">
                   <h3 className="text-xl font-black uppercase tracking-tighter text-slate-900 dark:text-white italic">Protocol Benefits</h3>
                   <div className="grid gap-4">
-                    {(t.benefits || []).map((benefit: string, i: number) => (
-                      <div key={i} className="flex gap-4 items-center p-4 bg-slate-50 dark:bg-white/5 rounded-2xl border border-slate-100 dark:border-white/5 transition-all hover:translate-x-2">
-                        <div className="w-6 h-6 rounded-full bg-blue-600 text-white flex items-center justify-center shrink-0">
-                          <CheckCircle2 size={14} />
+                    <Suspense fallback={<Skeleton className="h-[200px] w-full" />}>
+                      {(t.benefits || []).map((benefit: string, i: number) => (
+                        <div key={i} className="flex gap-4 items-center p-4 bg-slate-50 dark:bg-white/5 rounded-2xl border border-slate-100 dark:border-white/5 transition-all hover:translate-x-2">
+                          <div className="w-6 h-6 rounded-full bg-blue-600 text-white flex items-center justify-center shrink-0">
+                            <CheckCircle2 size={14} />
+                          </div>
+                          <span className="text-slate-700 dark:text-slate-300 font-medium">{benefit}</span>
                         </div>
-                        <span className="text-slate-700 dark:text-slate-300 font-medium">{benefit}</span>
-                      </div>
-                    ))}
+                      ))}
+                    </Suspense>
                   </div>
                 </div>
               </div>
@@ -201,20 +207,22 @@ export default function TreatmentPage({ params }: { params: { slug: string } }) 
                 <div className="p-10 ios-glass rounded-[3rem] border-2 border-dashed border-blue-200 dark:border-blue-900">
                   <h3 className="text-2xl font-black text-slate-900 dark:text-white mb-8 tracking-tighter uppercase italic">The Treatment Process</h3>
                   <div className="space-y-8">
-                    {(t.process || []).map((step: any, i: number) => (
-                      <div key={i} className="flex gap-6 relative">
-                        {i < t.process.length - 1 && (
-                          <div className="absolute left-6 top-10 bottom-0 w-px bg-slate-200 dark:bg-white/10"></div>
-                        )}
-                        <div className="w-12 h-12 bg-slate-900 dark:bg-white dark:text-slate-900 text-white rounded-full flex items-center justify-center shrink-0 font-black italic relative z-10 transition-transform hover:scale-110">
-                          {i + 1}
+                    <Suspense fallback={<Skeleton className="h-[400px] w-full" />}>
+                      {(t.process || []).map((step: any, i: number) => (
+                        <div key={i} className="flex gap-6 relative">
+                          {i < t.process.length - 1 && (
+                            <div className="absolute left-6 top-10 bottom-0 w-px bg-slate-200 dark:bg-white/10"></div>
+                          )}
+                          <div className="w-12 h-12 bg-slate-900 dark:bg-white dark:text-slate-900 text-white rounded-full flex items-center justify-center shrink-0 font-black italic relative z-10 transition-transform hover:scale-110">
+                            {i + 1}
+                          </div>
+                          <div className="pt-1">
+                            <h4 className="text-lg font-black text-slate-900 dark:text-white uppercase tracking-tight italic mb-2">{step.title}</h4>
+                            <p className="text-slate-500 dark:text-slate-400 text-sm">{step.desc}</p>
+                          </div>
                         </div>
-                        <div className="pt-1">
-                          <h4 className="text-lg font-black text-slate-900 dark:text-white uppercase tracking-tight italic mb-2">{step.title}</h4>
-                          <p className="text-slate-500 dark:text-slate-400 text-sm">{step.desc}</p>
-                        </div>
-                      </div>
-                    ))}
+                      ))}
+                    </Suspense>
                   </div>
                 </div>
               </RevealOnScroll>
@@ -253,14 +261,16 @@ export default function TreatmentPage({ params }: { params: { slug: string } }) 
                 <div className="w-20 h-1 bg-blue-600 mx-auto mt-4 rounded-full"></div>
               </div>
               <div className="space-y-6">
-                {t.faqs.map((faq: any, i: number) => (
-                  <div key={i} className="p-8 ios-glass rounded-[2rem] border border-white/40 shadow-sm transition-all hover:scale-[1.01]">
-                    <h3 className="text-lg font-bold text-slate-900 dark:text-white mb-4 flex gap-4">
-                      <span className="text-blue-600 font-black italic">Q.</span> {faq.q}
-                    </h3>
-                    <p className="text-slate-500 dark:text-slate-400 leading-relaxed pl-8 text-sm">{faq.a}</p>
-                  </div>
-                ))}
+                <Suspense fallback={<Skeleton className="h-[300px] w-full" />}>
+                  {t.faqs.map((faq: any, i: number) => (
+                    <div key={i} className="p-8 ios-glass rounded-[2rem] border border-white/40 shadow-sm transition-all hover:scale-[1.01]">
+                      <h3 className="text-lg font-bold text-slate-900 dark:text-white mb-4 flex gap-4">
+                        <span className="text-blue-600 font-black italic">Q.</span> {faq.q}
+                      </h3>
+                      <p className="text-slate-500 dark:text-slate-400 leading-relaxed pl-8 text-sm">{faq.a}</p>
+                    </div>
+                  ))}
+                </Suspense>
               </div>
             </RevealOnScroll>
           </div>
