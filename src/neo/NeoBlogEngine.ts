@@ -3,7 +3,9 @@ import { DENTAL_PHARMACOPOEIA } from './NeoPharmacology';
 import { PERMANENT_TEETH_DB, PRIMARY_TEETH_DB } from './NeoAnatomy';
 import { ORAL_PATHOLOGY_DB } from './NeoPathology';
 import { DENTAL_MATERIALS_DB } from './NeoMaterials';
+import { DENTAL_FAQ_DB } from './NeoFAQDatabase';
 import { LocalizedText } from '../types/neoSchema';
+import { applyInternalLinking } from './NeuralLinker';
 
 export interface BlogPost {
     slug: string;
@@ -193,6 +195,44 @@ If you are looking for a balance of strength and beauty, this is a strong conten
         };
     }
 
+    // --- 5. FAQ BLOGS (Micro-Questions) ---
+    static generateFAQBlog(faqId: string): BlogPost | null {
+        const faq = DENTAL_FAQ_DB[faqId];
+        if (!faq) return null;
+
+        const title = `${faq.question} | Dentist Answer`;
+
+        const content = `
+# ${faq.question}
+*Quick Dental Answer | ${this.getToday()}*
+
+## The Short Answer
+> **${faq.conciseAnswer}**
+
+## Clinical Explanation
+${faq.clinicalDetail}
+
+## Related Treatments
+* ${faq.relatedServices.join('\n* ')}
+
+## When to see a doctor?
+If you are experiencing this issue, it is best to get a professional evaluation.
+
+---
+*Answered by Dr. Dhivakaran, Noble Dental Care.*
+`;
+
+        return {
+            slug: `faq/${faq.id}`,
+            title,
+            excerpt: faq.conciseAnswer,
+            content,
+            category: 'Dental FAQ',
+            tags: [formattedCategory(faq.category), 'Q&A', 'Patient Education'],
+            date: this.getToday()
+        };
+    }
+
     /**
      * MASTER FUNCTION: Generates ALL blogs (100+ pages) at once.
      * Use this in your sitemap.xml generator.
@@ -203,31 +243,48 @@ If you are looking for a balance of strength and beauty, this is a strong conten
         // 1. Generate Drug Blogs
         Object.keys(DENTAL_PHARMACOPOEIA).forEach(id => {
             const post = this.generatePharmaBlog(id);
-            if (post) blogs.push(post);
+            if (post) blogs.push(this.enrichWithLinks(post));
         });
 
         // 2. Generate Anatomy Blogs
         Object.keys(PERMANENT_TEETH_DB).forEach(id => {
             const post = this.generateAnatomyBlog(id, false);
-            if (post) blogs.push(post);
+            if (post) blogs.push(this.enrichWithLinks(post));
         });
         Object.keys(PRIMARY_TEETH_DB).forEach(id => {
             const post = this.generateAnatomyBlog(id, true);
-            if (post) blogs.push(post);
+            if (post) blogs.push(this.enrichWithLinks(post));
         });
 
         // 3. Generate Pathology Blogs
         Object.keys(ORAL_PATHOLOGY_DB).forEach(id => {
             const post = this.generatePathologyBlog(id);
-            if (post) blogs.push(post);
+            if (post) blogs.push(this.enrichWithLinks(post));
         });
 
         // 4. Generate Material Blogs
         Object.keys(DENTAL_MATERIALS_DB).forEach(id => {
             const post = this.generateMaterialBlog(id);
-            if (post) blogs.push(post);
+            if (post) blogs.push(this.enrichWithLinks(post));
+        });
+
+        // 5. Generate FAQ Blogs [NEW]
+        Object.keys(DENTAL_FAQ_DB).forEach(id => {
+            const post = this.generateFAQBlog(id);
+            if (post) blogs.push(this.enrichWithLinks(post));
         });
 
         return blogs;
     }
+
+    private static enrichWithLinks(post: BlogPost): BlogPost {
+        return {
+            ...post,
+            content: applyInternalLinking(post.content)
+        };
+    }
+}
+
+function formattedCategory(cat: string) {
+    return cat;
 }

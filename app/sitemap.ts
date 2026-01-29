@@ -1,6 +1,7 @@
 import { MetadataRoute } from 'next';
 import { treatmentsData } from '@/data/treatments';
 import { NeoBlogEngine } from '@/neo/NeoBlogEngine';
+import { dripFeedFilter } from '@/data/drip-feed';
 
 const BASE_URL = 'https://nobledentalnallagandla.in';
 
@@ -36,12 +37,15 @@ export default function sitemap(): MetadataRoute.Sitemap {
     }));
 
     // 3. Dynamic Blog Routes (NeoEngine)
-    const blogRoutes = NeoBlogEngine.getAllAutoBlogs().map((blog) => ({
+    // [DRIP-FEED SAFEGUARD] Only expose a subset of pages daily to avoid Spam Flags
+    const allBlogs = NeoBlogEngine.getAllAutoBlogs().map((blog) => ({
         url: `${BASE_URL}/blog/${blog.slug}`,
         lastModified: new Date(blog.date),
         changeFrequency: 'monthly' as const,
         priority: 0.8,
     }));
+
+    const blogRoutes = dripFeedFilter(allBlogs);
 
     return [...staticRoutes, ...treatmentRoutes, ...blogRoutes];
 }

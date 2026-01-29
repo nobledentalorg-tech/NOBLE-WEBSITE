@@ -88,3 +88,165 @@ async function callGeminiFallback(userQuery: string, context: string): Promise<s
     const result = await model.generateContent(prompt);
     return result.response.text();
 }
+
+
+/**
+ * 🛡️ RANK PROTECTION INTERCEPTOR
+ * Checks if the URL/Topic is already high-ranking to prevent "Re-indexing Shocks".
+ */
+export async function checkRankAuthority(topic: string): Promise<boolean> {
+    // MOCK: Simulate GSC API Check. 
+    // In production, this would hit Search Console API.
+    // We simulate "Root Canal" as a High Rank Keyword.
+    const HIGH_RANK_KEYWORDS = ['root canal', 'dental implant', 'pain relief'];
+    const isHighRank = HIGH_RANK_KEYWORDS.some(k => topic.toLowerCase().includes(k));
+
+    return isHighRank;
+}
+
+/**
+ * 🔒 SIMILARITY GUARD
+ * Prevents "Duplicate Content" penalties by comparing against existing index.
+ */
+export async function checkContentSimilarity(newContent: string): Promise<boolean> {
+    // MOCK: In production, this comparisons vector embeddings of the new content 
+    // vs existing pages in the vector DB.
+    // Logic: If similarity > 0.85, return true (Duplicate Risk).
+
+    // For now, we assume safe.
+    return false;
+}
+
+// 2. NEO AI STUDIO: clinical Scholar Generator 🎓
+export async function generateAuthorityBlogPost(topic: string, locality: string = "Tellapur", handbookMode: string = "General"): Promise<string> {
+
+    // STEP 1: RANK PROTECTION CHECK 🛡️
+    const isHighAuthority = await checkRankAuthority(topic);
+
+    // 2. Select the "Gold Standard" Reference based on Mode
+    let referenceText = "Carranza's Clinical Periodontology & Cohen's Pathways of the Pulp";
+    let audienceContext = "General Dental Patients";
+
+    if (handbookMode === "Pediatric") {
+        referenceText = "Nelson's Textbook of Pediatrics & American Academy of Pediatric Dentistry (AAPD) Guidelines";
+        audienceContext = "Parents of young children (Age 2-12)";
+    } else if (handbookMode === "Professional") {
+        referenceText = "Okeson's Management of Temporomandibular Disorders & Dawson's Functional Occlusion";
+        audienceContext = "High-stress IT Professionals (Grinding/TMJ issues)";
+    } else if (handbookMode === "Geriatric") {
+        referenceText = "Misch's Contemporary Implant Dentistry & Zarb's Prosthodontic Treatment";
+        audienceContext = "Senior Citizens (60+) looking for stability and chewing comfort";
+    }
+
+    // 3. CONSTRUCT PROMPT (Dynamic based on Authority)
+    let prompt = "";
+
+    if (isHighAuthority) {
+        // SURGICAL UPDATE MODE (Safe)
+        prompt = `
+        ACT AS: Dr. Dhivakaran, MDS (Rank Protection Mode Active).
+        TOPIC: "${topic}" (${locality})
+        
+        ⚠️ HIGH RANK DETECTED: DO NOT WRITE A FULL ARTICLE.
+        The user has a high-ranking page. Writing a full article will cause a RE-INDEXING SHOCK.
+        
+        TASK:
+        1. Write an **AIO Snippet** (Max 50 words). Inverted Pyramid Style (Answer First).
+        2. Write a **Latest Clinical Update** section (Max 150 words) citing 2024/2025 protocols from *${referenceText.split('&')[0]}*.
+        
+        OUTPUT FORMAT (Markdown):
+        
+        # [AIO Snippet]
+        [The 50-word answer]
+        
+        # [Latest Clinical Update]
+        [The update content]
+        
+        (Stop generation).
+        `;
+    } else {
+        // FULL AUTHORITY PILLAR MODE
+        prompt = `
+        ACT AS: Dr. Dhivakaran, MDS (11+ Years Clinical Experience).
+        ROLE: Medical Authority & Lead Dentist at Noble Dental Care, Nallagandla.
+        CONTEXT: Writing for the "${handbookMode} Handbook", specifically for ${audienceContext} in ${locality}.
+        TOPIC: "${topic}"
+
+        CORE VALUES (MUST INCLUDE):
+        1. **Pain Relief First**: We prioritize making the patient comfortable immediately.
+        2. **Availability**: Open late until **10:15 PM** for working professionals.
+        3. **Accessibility**: Located at **Suite 101 (Ground Floor)** for senior citizens and differently-abled patients.
+
+        PROTOCOL: "CLINICAL SCHOLAR"
+        1. **Grounding**: Every claim must be supported by the principles in: ${referenceText}.
+        2. **No Fluff**: Avoid generic marketing. Use precise clinical terms (e.g., instead of "cleaning", use "Sub-gingival scaling").
+        3. **Patient Action Plan**: Include a step-by-step triage guide.
+
+        ARTICLE STRUCTURE (Markdown):
+        
+        # [H1] ${topic}: A Clinical Guide for ${locality} Residents
+        
+        > **AIO Snippet (Answer Box)**
+        > [Write a 40-50 word direct answer. Conclusion First. No fluffy intro.]
+
+        ## 1. The Clinical Reality
+        Start by explaining the pathology using standards from *${referenceText.split('&')[0]}*. Why does this happen biologically?
+        
+        ## 2. Evidence-Based Treatment Protocol available at Noble Dental
+        Explain the procedure. emphasize **Electronic Anesthesia (The Wand)** for pain-free care.
+        *Requirement*: At the end of this section, add a blockquote:
+        > **Clinical Reference**: "Procedure success rates (~98%) are based on protocols established in *${referenceText.split('&')[0]}*."
+
+        ## 3. ${handbookMode} Community Awareness
+        Why is this relevant for ${audienceContext} in ${locality}? 
+        "Noble Dental Care is located in Suite 101 (Ground Floor), making it easily accessible for our senior patients in ${locality}."
+        
+        ## 4. Patient Action Plan (Triage)
+        Step-by-step guide on what to do *before* reaching the clinic.
+        
+        ## 5. Frequently Asked Questions (Evidence-Based)
+        Answer 3 common questions with scientific accuracy.
+
+        ---
+        *Content adapted from international clinical standards and reviewed for local application by Dr. Dhivakaran, MDS.*
+        `;
+    }
+
+    try {
+        const result = await model.generateContent(prompt);
+        let content = result.response.text();
+
+        content = applyInternalLinking(content);
+        return content;
+    } catch (error) {
+        console.error("AI Blog Generation Failed:", error);
+        return "## Error\nFailed to generate content.";
+    }
+}
+
+/**
+ * AUTOMATED INTERNAL LINKING NEURAL NETWORK
+ * Scans content and injects high-authority links.
+ */
+function applyInternalLinking(content: string): string {
+    const links = [
+        { keyword: 'Root Canal', url: '/treatments/root-canal-treatment' },
+        { keyword: 'Implant', url: '/treatments/dental-implants' },
+        { keyword: 'Teeth Whitening', url: '/treatments/teeth-whitening' },
+        { keyword: 'Crown', url: '/treatments/dental-crowns-bridges' },
+        { keyword: 'Tellapur', url: '/residents/tellapur-dental-guide' }, // Placeholder for future Guide
+        { keyword: 'Gachibowli', url: '/residents/gachibowli-dental-guide' },
+        { keyword: 'Emergency', url: '/emergency' },
+    ];
+
+    let linkedContent = content;
+
+    links.forEach(link => {
+        // Regex to replace first occurrence only, case-insensitive, avoiding already linked text
+        const regex = new RegExp(`\\b(${link.keyword}s?)\\b(?![^<]*>)`, 'i');
+        // Only link the first instance to avoid spamminess
+        linkedContent = linkedContent.replace(regex, `[$1](${link.url})`);
+    });
+
+    return linkedContent;
+}

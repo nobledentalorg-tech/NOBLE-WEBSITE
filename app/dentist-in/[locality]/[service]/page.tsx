@@ -1,16 +1,17 @@
 import React from 'react';
 import { notFound } from 'next/navigation';
 import { pseoLocalities, pseoServices } from '@/data/pseo';
+import { getLocalityData } from '@/data/localityMatrix'; // NEW: Import Matrix
 import { getClinicStatus } from '@/lib/time-utils';
 import StatusBadge from '@/components/pseo/StatusBadge';
 import EmergencyFloatingCTA from '@/components/pseo/EmergencyFloatingCTA';
 import FloatingCTA from '@/components/FloatingCTA';
-import Header from '@/components/Header'; // Reusing main header
+import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import Link from 'next/link';
-import { MapPin, Phone, Clock, ShieldCheck, Star } from 'lucide-react';
+import { MapPin, Phone, Clock, ShieldCheck, Star, Navigation } from 'lucide-react';
 
-export const revalidate = 60; // ISR: Revalidate every minute for "Time-Aware" content
+export const revalidate = 60;
 
 interface PageProps {
     params: {
@@ -35,27 +36,29 @@ export async function generateStaticParams() {
 export async function generateMetadata({ params }: PageProps) {
     const locality = pseoLocalities.find((l) => l.slug === params.locality);
     const service = pseoServices.find((s) => s.slug === params.service);
+    const localityData = getLocalityData(params.locality); // Get Rich Data
 
     if (!locality || !service) return {};
 
     const status = getClinicStatus();
     const timeSensitivteTitle = status.isEmergency ? "24/7 Emergency Care" : "Open Now";
+    const landmarkText = localityData ? localityData.metaTitleSuffix : `Near ${locality.landmark}`;
 
     return {
-        title: `${service.title} in ${locality.name} | ${timeSensitivteTitle} | Noble Dental`,
-        description: `Urgent dental pain in ${locality.name}? Noble Dental provides late-night care until 10:15 PM and 24/7 on-call emergency support for ${service.title}. Located ${locality.landmark}.`,
+        title: `${service.title} in ${locality.name} ${landmarkText} | ${timeSensitivteTitle} | Noble Dental`,
+        description: `Urgent dental pain in ${locality.name}? Dr. Dhivakaran provides ${service.title} just ${localityData?.time || '10 mins'} away. Located near ${localityData?.landmarks[0] || locality.landmark}. Open until 10:15 PM.`,
     };
 }
 
 export default function PSEOPage({ params }: PageProps) {
     const locality = pseoLocalities.find((l) => l.slug === params.locality);
     const service = pseoServices.find((s) => s.slug === params.service);
+    const localityData = getLocalityData(params.locality);
 
     if (!locality || !service) {
         notFound();
     }
 
-    // Server-side status for initial render (ISR 60s freshness)
     const status = getClinicStatus();
 
     return (
@@ -73,17 +76,62 @@ export default function PSEOPage({ params }: PageProps) {
                             </div>
 
                             <h1 className="text-4xl lg:text-6xl font-black tracking-tight leading-tight">
-                                <span className="text-blue-600 block text-lg uppercase tracking-widest font-bold mb-2">
-                                    {locality.name} Dental Care
-                                </span>
-                                {service.title} <br />
-                                <span className="text-slate-400 dark:text-slate-600">in {locality.name}.</span>
+                                {(() => {
+                                    const isEmergency = service.category === 'Restorative' || service.category === 'Emergency' || service.category === 'Pediatrics';
+                                    const isCosmetic = service.category === 'Orthodontics' || service.category === 'Implantology' || service.category === 'Cosmetic';
+
+                                    if (isEmergency) {
+                                        return (
+                                            <>
+                                                <span className="text-blue-600 block text-lg uppercase tracking-widest font-bold mb-2">
+                                                    Open Now in {locality.name}
+                                                </span>
+                                                Where can I find <br /> {service.title} <br />
+                                                <span className="sr-only">Pronounced: {service.phonetic}</span>
+                                                <span className="text-slate-400 dark:text-slate-600">open now?</span>
+                                            </>
+                                        );
+                                    }
+
+                                    if (isCosmetic) {
+                                        return (
+                                            <>
+                                                <span className="text-blue-600 block text-lg uppercase tracking-widest font-bold mb-2">
+                                                    Best in {locality.name}
+                                                </span>
+                                                Who is the best <br /> {service.title} <br />
+                                                <span className="sr-only">Pronounced: {service.phonetic}</span>
+                                                <span className="text-slate-400 dark:text-slate-600">for results?</span>
+                                            </>
+                                        );
+                                    }
+
+                                    return (
+                                        <>
+                                            <span className="text-blue-600 block text-lg uppercase tracking-widest font-bold mb-2">
+                                                {locality.name} Dental Care
+                                            </span>
+                                            {service.title} <br />
+                                            <span className="sr-only">Pronounced: {service.phonetic}</span>
+                                            <span className="text-slate-400 dark:text-slate-600">in {locality.name}.</span>
+                                        </>
+                                    );
+                                })()}
                             </h1>
 
                             <p className="text-xl text-slate-600 dark:text-slate-300 font-medium max-w-2xl">
-                                {service.emergency_hook} You don&apos;t have to wait.
-                                Noble Dental Care is the **only clinic near {locality.name}** open until 10:15 PM every day.
+                                {service.emergency_hook} <br />
+                                <span className="block mt-2 text-base text-slate-500">
+                                    Trusted by <strong>{localityData?.demographic || 'families'}</strong> in {locality.name} for {service.simple_term}.
+                                </span>
                             </p>
+
+                            <div className="p-4 bg-white dark:bg-slate-800 rounded-xl shadow-sm border border-slate-100 dark:border-slate-700 max-w-md">
+                                <div className="flex items-center gap-3 text-sm font-semibold text-slate-700 dark:text-slate-200">
+                                    <Clock className="text-green-600" size={18} />
+                                    <span>Only <strong>{localityData?.time || '10 mins'} drive</strong> from {localityData?.landmarks[0] || locality.landmark}.</span>
+                                </div>
+                            </div>
 
                             <div className="flex flex-wrap gap-4 pt-4">
                                 <a href="tel:8074512305" className="px-8 py-4 bg-blue-600 text-white font-bold rounded-2xl shadow-xl shadow-blue-500/20 hover:scale-105 transition-transform flex items-center gap-3">
@@ -95,11 +143,16 @@ export default function PSEOPage({ params }: PageProps) {
                                 </Link>
                             </div>
 
-                            <div className="flex items-center gap-2 text-sm text-slate-500 mt-4">
-                                <MapPin size={16} />
-                                <span>
-                                    Located {locality.landmark} ({locality.driving_directions})
-                                </span>
+                            {/* Local Landmarks - SEO Anchor */}
+                            <div className="mt-8 pt-6 border-t border-slate-200 dark:border-slate-700">
+                                <p className="text-xs uppercase font-bold text-slate-400 mb-2">Easily Accessible From:</p>
+                                <div className="flex flex-wrap gap-2">
+                                    {localityData?.landmarks.map((mark, i) => (
+                                        <span key={i} className="inline-flex items-center gap-1 px-3 py-1 bg-slate-100 dark:bg-slate-800 rounded-full text-xs font-semibold text-slate-600 dark:text-slate-400">
+                                            <Navigation size={10} /> {mark}
+                                        </span>
+                                    ))}
+                                </div>
                             </div>
                         </div>
 
@@ -122,7 +175,7 @@ export default function PSEOPage({ params }: PageProps) {
                                             <Clock size={20} />
                                         </div>
                                         <div>
-                                            <div className="font-bold text-sm">12 Minutes from {locality.name}</div>
+                                            <div className="font-bold text-sm">{localityData?.time || '10 Mins'} from {locality.name}</div>
                                             <div className="text-xs text-slate-500">Live Traffic Estimate</div>
                                         </div>
                                     </div>

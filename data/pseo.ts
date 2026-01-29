@@ -10,6 +10,9 @@ export interface PSEOService {
     slug: string; // Matches existing /treatments slugs
     title: string; // "Emergency Root Canal"
     emergency_hook: string; // "Throbbing tooth pain?"
+    phonetic: string; // "End-o-dont-ist"
+    simple_term: string; // "Tooth Nerve Treatment"
+    category: string; // "Emergency", "Orthodontics", etc.
 }
 
 export const pseoLocalities: PSEOLocality[] = [
@@ -54,26 +57,41 @@ export const pseoServices: PSEOService[] = [
     {
         slug: "root-canal",
         title: "Emergency Root Canal",
-        emergency_hook: "Severe throbbing tooth pain keeping you awake?"
+        emergency_hook: "Severe throbbing tooth pain keeping you awake?",
+        phonetic: "End-o-dont-ics Root Cah-nal",
+        simple_term: "Tooth Nerve Treatment",
+        category: "Emergency"
     },
     {
         slug: "dental-implants",
         title: "Dental Implant Surgeon",
-        emergency_hook: "Broken tooth or loose denture needing immediate fixing?"
+        emergency_hook: "Broken tooth or loose denture needing immediate fixing?",
+        phonetic: "Im-plant-ol-o-gy",
+        simple_term: "New Fixed Teeth",
+        category: "Implantology"
     },
     {
         slug: "kids-dentistry",
         title: "Pediatric Dentist",
-        emergency_hook: "Child has a toothache or broken tooth from falling?"
+        emergency_hook: "Child has a toothache or broken tooth from falling?",
+        phonetic: "Ped-o-dont-ist",
+        simple_term: "Children's Tooth Doctor",
+        category: "Pediatrics"
     },
     {
         slug: "emergency-dentistry",
         title: "Urgent Dental Care",
-        emergency_hook: "Bleeding gums, knocked-out tooth, or extreme sensitivity?"
+        emergency_hook: "Bleeding gums, knocked-out tooth, or extreme sensitivity?",
+        phonetic: "E-mer-gen-cy Den-tist",
+        simple_term: "Urgent Tooth Pain Relief",
+        category: "Emergency"
     },
     {
         slug: "wisdom-tooth-surgery",
         title: "Wisdom Tooth Removal",
-        emergency_hook: "Swollen jaw or inability to open mouth due to pain?"
+        emergency_hook: "Swollen jaw or inability to open mouth due to pain?",
+        phonetic: "Max-ill-o-fac-ial Sur-geon",
+        simple_term: "Wisdom Tooth Extraction",
+        category: "Emergency"
     }
 ];
