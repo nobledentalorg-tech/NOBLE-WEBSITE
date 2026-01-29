@@ -118,6 +118,8 @@ import { Partytown } from '@qwik.dev/partytown/react';
 
 
 
+import SpeculationRules from '@/components/SpeculationRules';
+
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en" suppressHydrationWarning className="scroll-smooth">
@@ -129,6 +131,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           {children}
         </LayoutShell>
         <JsonLd />
+        <SpeculationRules />
 
         <BreadcrumbSchema />
         <ReviewSchema />

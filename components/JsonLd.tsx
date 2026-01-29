@@ -6,7 +6,6 @@ const JsonLd = () => {
         "@type": ["MedicalBusiness", "Dentist", "LocalBusiness", "Organization"],
         "name": "Noble Dental Care",
         "alternateName": ["Noble Dental Clinic", "NDC Nallagandla", "Noble Dental Care Hyderabad"],
-        "image": "https://nobledentalnallagandla.in/assets/og-image.jpg",
         "@id": "https://nobledentalnallagandla.in/#organization",
         "url": "https://nobledentalnallagandla.in",
         "telephone": "+918610425342",
@@ -135,7 +134,18 @@ const JsonLd = () => {
             "aiLocalIntent": "Dental Implants Near Me Nallagandla Hyderabad",
             "aiSearchRankBoost": true,
             "aiTrustLevel": "verifiedLocalClinic"
-        }
+        },
+        "potentialAction": {
+            "@type": "ScheduleAction",
+            "target": "https://nobledentalnallagandla.in/book-appointment"
+        },
+        "image": [
+            "https://nobledentalnallagandla.in/assets/og-image.jpg",
+            "https://nobledentalnallagandla.in/assets/images/treatments/root-canal-hyderabad.webp",
+            "https://nobledentalnallagandla.in/assets/images/treatments/implants-hyderabad.webp",
+            "https://nobledentalnallagandla.in/assets/images/treatments/invisalign-hyderabad.webp",
+            "https://nobledentalnallagandla.in/assets/images/treatments/pediatric-hyderabad.webp"
+        ]
     };
 
     return (

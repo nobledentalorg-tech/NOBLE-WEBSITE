@@ -20,6 +20,7 @@ export function middleware(request: NextRequest) {
     base-uri 'self';
     form-action 'self';
     frame-ancestors 'none';
+    require-trusted-types-for 'script';
   `.replace(/\s{2,}/g, ' ').trim();
 
     const requestHeaders = new Headers(request.headers);
@@ -38,6 +39,7 @@ export function middleware(request: NextRequest) {
     response.headers.set('Referrer-Policy', 'strict-origin-when-cross-origin');
     response.headers.set('Strict-Transport-Security', 'max-age=63072000; includeSubDomains; preload');
     response.headers.set('Permissions-Policy', 'camera=(), microphone=(), geolocation=()');
+    response.headers.set('Cross-Origin-Opener-Policy', 'same-origin');
 
     return response;
 }
