@@ -67,7 +67,16 @@ export async function getNeoResponse(
     }
 }
 
+import { NeoSecurityProxy } from '@/neo/NeoSecurityProxy';
+
 async function callGeminiFallback(userQuery: string, context: string): Promise<string> {
+
+    // 🛡️ SECURITY INTERCEPTION
+    if (!NeoSecurityProxy.isSafeInput(userQuery)) {
+        console.warn(`[SecurityProxy] Injection Attempt Blocked: "${userQuery}"`);
+        return NeoSecurityProxy.getLabyrinthResponse();
+    }
+
     const prompt = `
     You are Neo, Dental Assistant for Noble Dental Care (Nallagandla).
     Lead Dentist: Dr. Dhivakaran.

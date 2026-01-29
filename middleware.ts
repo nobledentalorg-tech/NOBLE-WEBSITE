@@ -7,6 +7,15 @@ export function middleware(request: NextRequest) {
     // Relaxed CSP Policy to restore functionality
     // - strict-dynamic removed to allow Next.js hydration scripts
     // - unsafe-inline allowed for scripts and styles
+
+    // --- DIGITAL MOAT: HONEYPOT TRAP ---
+    if (request.nextUrl.pathname === '/verify-access-system/') {
+        return new NextResponse(JSON.stringify({ error: 'Access Denied', reason: 'Bot Detected' }), {
+            status: 403,
+            headers: { 'Content-Type': 'application/json', 'X-Robots-Tag': 'noindex, nofollow' }
+        });
+    }
+
     const cspHeader = `
     default-src 'self';
     script-src 'self' 'unsafe-inline' 'unsafe-eval' https:;

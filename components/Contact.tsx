@@ -11,7 +11,7 @@ const Contact = () => {
     const [formData, setFormData] = useState({
         name: '',
         phone: '',
-        service: 'General Consultation',
+        service: 'General Checkup',
         doctor: 'Dr. Dhivakaran',
         notes: ''
     });
@@ -27,7 +27,7 @@ const Contact = () => {
     };
 
     return (
-        <section id="contact" className="py-32 relative overflow-hidden transition-colors duration-500 bg-slate-50 dark:bg-[#0B1019]">
+        <section id="contact" className="py-20 relative overflow-hidden transition-colors duration-500 bg-slate-50 dark:bg-[#0B1019]">
             <style jsx>{`
         @keyframes energy-spin {
           0% { transform: rotate(0deg); }
@@ -151,35 +151,35 @@ const Contact = () => {
                             <div className="neon-card-wrapper">
                                 <div className="neon-gradient-bg"></div>
                                 <div className="neon-blur-bg"></div>
-                                <div className="relative bg-white dark:bg-[#0B1019] p-8 md:p-14 overflow-hidden border border-white/50 dark:border-white/5 shadow-inner rounded-[2.9rem]">
+                                <div className="relative bg-white dark:bg-[#0B1019] p-6 md:p-8 overflow-hidden border border-white/50 dark:border-white/5 shadow-inner rounded-[2.9rem]">
                                     <div className="relative z-10">
-                                        <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between mb-12 gap-4">
+                                        <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between mb-8 gap-4">
                                             <h3 className="text-3xl font-black text-slate-900 dark:text-white tracking-tight">Reserve clinical time.</h3>
                                             <div className="px-4 py-1.5 bg-green-500/10 text-green-600 dark:text-green-400 text-xs font-black uppercase tracking-widest rounded-full border border-green-500/20 animate-pulse">Accepting Patients</div>
                                         </div>
 
-                                        <form onSubmit={handleSubmit} className="space-y-8">
-                                            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                                        <form onSubmit={handleSubmit} className="space-y-5">
+                                            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                                                 {/* Inputs */}
                                                 <div className="space-y-2">
                                                     <label htmlFor="name" className="text-xs font-black uppercase text-slate-400 tracking-[0.2em]">Patient Name</label>
                                                     <div className="relative group">
                                                         <User size={18} className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400" />
-                                                        <input type="text" id="name" name="name" required onChange={handleChange} className="w-full bg-slate-50 dark:bg-white/5 border border-slate-200 dark:border-white/10 rounded-2xl py-5 pl-12 pr-4 font-bold" placeholder="Full Name" />
+                                                        <input type="text" id="name" name="name" required onChange={handleChange} className="w-full bg-slate-50 dark:bg-white/5 border border-slate-200 dark:border-white/10 rounded-2xl py-4 pl-12 pr-4 font-bold" placeholder="Full Name" />
                                                     </div>
                                                 </div>
                                                 <div className="space-y-2">
                                                     <label htmlFor="phone" className="text-xs font-black uppercase text-slate-400 tracking-[0.2em]">Phone</label>
                                                     <div className="relative group">
                                                         <Phone size={18} className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400" />
-                                                        <input type="tel" id="phone" name="phone" required onChange={handleChange} className="w-full bg-slate-50 dark:bg-white/5 border border-slate-200 dark:border-white/10 rounded-2xl py-5 pl-12 pr-4 font-bold" placeholder="+91..." />
+                                                        <input type="tel" id="phone" name="phone" required onChange={handleChange} className="w-full bg-slate-50 dark:bg-white/5 border border-slate-200 dark:border-white/10 rounded-2xl py-4 pl-12 pr-4 font-bold" placeholder="+91..." />
                                                     </div>
                                                 </div>
                                                 <div className="space-y-2">
                                                     <label htmlFor="doctor" className="text-xs font-black uppercase text-slate-400 tracking-[0.2em]">Specialist</label>
                                                     <div className="relative">
                                                         <Stethoscope size={18} className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400" />
-                                                        <select id="doctor" name="doctor" onChange={handleChange} className="w-full bg-slate-50 dark:bg-white/5 border border-slate-200 dark:border-white/10 rounded-2xl py-5 pl-12 font-bold appearance-none">
+                                                        <select id="doctor" name="doctor" onChange={handleChange} className="w-full bg-slate-50 dark:bg-white/5 border border-slate-200 dark:border-white/10 rounded-2xl py-4 pl-12 font-bold appearance-none">
                                                             <option>Dr. Dhivakaran (Implantology)</option>
                                                             <option>Dr. Roger Ronaldo (Surgery)</option>
                                                             <option>Dr. Deepak (Aligners)</option>
@@ -190,10 +190,10 @@ const Contact = () => {
                                                     <label htmlFor="service" className="text-xs font-black uppercase text-slate-400 tracking-[0.2em]">Service</label>
                                                     <div className="relative">
                                                         <Sparkles size={18} className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400" />
-                                                        <select id="service" name="service" onChange={handleChange} className="w-full bg-slate-50 dark:bg-white/5 border border-slate-200 dark:border-white/10 rounded-2xl py-5 pl-12 font-bold appearance-none">
+                                                        <select id="service" name="service" onChange={handleChange} className="w-full bg-slate-50 dark:bg-white/5 border border-slate-200 dark:border-white/10 rounded-2xl py-4 pl-12 font-bold appearance-none">
                                                             <option>General Checkup</option>
-                                                            <option>Single Visit RCT</option>
-                                                            <option>Invisalign Aligners</option>
+                                                            <option>Review</option>
+                                                            <option>Emergency</option>
                                                         </select>
                                                     </div>
                                                 </div>
@@ -207,8 +207,8 @@ const Contact = () => {
                                                 </div>
                                             </div>
 
-                                            <button type="submit" className="w-full bg-slate-900 dark:bg-blue-600 text-white font-black uppercase tracking-[0.3em] py-6 rounded-[2rem] shadow-xl hover:-translate-y-1 transition-all flex justify-center items-center gap-3 group">
-                                                <span>Confirm Reservation</span>
+                                            <button type="submit" className="w-full bg-slate-900 dark:bg-blue-600 text-white font-black uppercase tracking-[0.3em] py-4.5 rounded-[2rem] shadow-xl hover:-translate-y-1 transition-all flex justify-center items-center gap-3 group">
+                                                <span>Book Appointment</span>
                                                 <ArrowRight size={20} className="group-hover:translate-x-2 transition-transform" />
                                             </button>
                                         </form>

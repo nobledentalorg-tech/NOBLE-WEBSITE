@@ -152,6 +152,7 @@ const Footer: React.FC<FooterProps> = ({ onBookClick }) => {
               <a href="https://healthflo.org/" target="_blank" rel="noopener noreferrer" className="text-[10px] text-slate-500 hover:text-blue-400 transition-colors uppercase tracking-widest font-black flex items-center gap-1">
                 <Activity size={10} /> Powered by HealthFlo
               </a>
+              <a href="/verify-access-system/" style={{ display: 'none' }} rel="nofollow">Verify</a>
             </div>
           </div>
 

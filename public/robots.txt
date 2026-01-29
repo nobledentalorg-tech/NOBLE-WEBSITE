@@ -1,0 +1,36 @@
+User-agent: Googlebot
+Allow: /
+Allow: /services/
+Allow: /blog/
+
+User-agent: Bingbot
+Allow: /
+Allow: /services/
+Allow: /blog/
+
+User-agent: GPTBot
+Disallow: /
+Disallow: /app/
+Disallow: /api/
+Disallow: /neo/
+Disallow: /booking/
+
+User-agent: ClaudeBot
+Disallow: /
+Disallow: /app/
+Disallow: /api/
+Disallow: /neo/
+Disallow: /booking/
+
+User-agent: CCBot
+Disallow: /
+Disallow: /app/
+Disallow: /api/
+Disallow: /neo/
+Disallow: /booking/
+
+User-agent: *
+Allow: /
+Disallow: /api/
+Disallow: /verify-access-system/
+Sitemap: https://nobledentalnallagandla.in/sitemap.xml
