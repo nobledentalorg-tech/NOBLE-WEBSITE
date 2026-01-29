@@ -67,7 +67,20 @@ const withPWA = require('@ducanh2912/next-pwa').default({
   sw: '/sw.js',
   scope: '/',
   buildExcludes: [/_headers$/, /_redirects$/],
+  importScripts: ['/sw-custom.js'], // Import our custom periodic sync logic
   runtimeCaching: [
+    {
+      // EMERGENCY ROUTES: Cache First (Mission Critical)
+      urlPattern: /^\/(emergency-first-aid|contact|offline\.html)$/i,
+      handler: 'CacheFirst',
+      options: {
+        cacheName: 'emergency-pages',
+        expiration: { maxEntries: 10, maxAgeSeconds: 365 * 24 * 60 * 60 }, // Keep for 1 year
+        cacheableResponse: {
+          statuses: [0, 200]
+        }
+      }
+    },
     {
       urlPattern: /^https:\/\/fonts\.(?:gstatic|googleapis)\.com\/.*/i,
       handler: 'CacheFirst',
@@ -98,6 +111,20 @@ const withPWA = require('@ducanh2912/next-pwa').default({
       options: {
         cacheName: 'treatment-pages',
         expiration: { maxEntries: 32, maxAgeSeconds: 24 * 60 * 60 }
+      }
+    },
+    {
+      // Background Sync for Appointments
+      urlPattern: /\/api\/book-appointment/i,
+      handler: 'NetworkOnly',
+      method: 'POST',
+      options: {
+        backgroundSync: {
+          name: 'appointment-queue',
+          options: {
+            maxRetentionTime: 24 * 60 // Retry for 24 hours
+          }
+        }
       }
     }
   ]

@@ -19,7 +19,13 @@ const ChatWidget = dynamic(() => import('@/components/ChatWidget'), {
  * LayoutShell: Handles the Client-Side State (Booking Modal, etc.)
  * This allows app/layout.tsx to remain a Server Component for SEO Metadata.
  */
-export default function LayoutShell({ children }: { children: React.ReactNode }) {
+interface LayoutShellProps {
+    children: React.ReactNode;
+    emergencyMode?: boolean;
+}
+
+export default function LayoutShell({ children, emergencyMode = false }: LayoutShellProps) {
+
     const [isBookingOpen, setIsBookingOpen] = useState(false);
     const [isChatDelayed, setIsChatDelayed] = useState(false);
 
@@ -34,7 +40,7 @@ export default function LayoutShell({ children }: { children: React.ReactNode })
     return (
         <Providers>
             <RegisterSW />
-            <Header onBookClick={openBooking} />
+            <Header onBookClick={openBooking} emergencyMode={emergencyMode} />
 
             <main>{children}</main>
 

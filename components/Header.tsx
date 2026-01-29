@@ -10,9 +10,10 @@ import { motion, AnimatePresence } from 'framer-motion';
 
 interface HeaderProps {
   onBookClick?: () => void;
+  emergencyMode?: boolean;
 }
 
-const Header: React.FC<HeaderProps> = ({ onBookClick }) => {
+const Header: React.FC<HeaderProps> = ({ onBookClick, emergencyMode = false }) => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [expandedTreatment, setExpandedTreatment] = useState(false);

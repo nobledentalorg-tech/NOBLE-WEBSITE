@@ -110,7 +110,7 @@ export default function Home() {
 
 
             {/* 4. The Rest of the Sections */}
-            <RevealOnScroll>
+            <RevealOnScroll className="hide-on-lite">
                 <Suspense fallback={<Skeleton className="h-[400px] w-full" />}>
                     <About />
                 </Suspense>
@@ -135,7 +135,7 @@ export default function Home() {
                 </Suspense>
             </RevealOnScroll>
 
-            <RevealOnScroll>
+            <RevealOnScroll className="hide-on-lite">
                 <Suspense fallback={<Skeleton className="h-[400px] w-full" />}>
                     <Gallery />
                 </Suspense>

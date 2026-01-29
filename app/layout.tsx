@@ -121,16 +121,22 @@ import SpeculationRules from '@/components/SpeculationRules';
 import { LocationProvider } from '@/context/LocationContext';
 import { headers } from 'next/headers';
 
+import { getClinicRealtimeStatus } from '@/lib/edge-config';
+import ClinicStatusBanner from '@/components/ClinicStatusBanner';
 import { Analytics } from "@vercel/analytics/next";
 import { SpeedInsights } from "@vercel/speed-insights/next";
+import AdaptiveUIProvider from '@/components/AdaptiveUIProvider';
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
   const headersList = headers();
   const isLocal = headersList.get('x-local-authority') === 'true';
+
+  // Real-Time Command Center Data (Zero Latency)
+  const status = await getClinicRealtimeStatus();
 
   return (
     <html lang="en" suppressHydrationWarning>
@@ -139,16 +145,19 @@ export default function RootLayout({
       </head>
       <body className={`${inter.className} min-h-screen bg-background font-sans antialiased overflow-x-hidden w-full selection:bg-cyan-500/30 selection:text-cyan-900 group/body`}>
         <LocationProvider isLocal={isLocal}>
-          <LayoutShell>
-            {children}
-          </LayoutShell>
-          <JsonLd />
-          <BreadcrumbSchema />
-          <ReviewSchema />
-          <UIProtector />
-          <FloatingCTA />
-          <Analytics />
-          <SpeedInsights />
+          <AdaptiveUIProvider>
+            <ClinicStatusBanner />
+            <LayoutShell emergencyMode={status.emergencyStatus}>
+              {children}
+            </LayoutShell>
+            <JsonLd />
+            <BreadcrumbSchema />
+            <ReviewSchema />
+            <UIProtector />
+            <FloatingCTA />
+            <Analytics />
+            <SpeedInsights />
+          </AdaptiveUIProvider>
         </LocationProvider>
       </body>
     </html>
