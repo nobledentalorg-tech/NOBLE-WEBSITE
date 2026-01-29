@@ -121,6 +121,9 @@ import SpeculationRules from '@/components/SpeculationRules';
 import { LocationProvider } from '@/context/LocationContext';
 import { headers } from 'next/headers';
 
+import { Analytics } from "@vercel/analytics/next";
+import { SpeedInsights } from "@vercel/speed-insights/next";
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -144,6 +147,8 @@ export default function RootLayout({
           <ReviewSchema />
           <UIProtector />
           <FloatingCTA />
+          <Analytics />
+          <SpeedInsights />
         </LocationProvider>
       </body>
     </html>

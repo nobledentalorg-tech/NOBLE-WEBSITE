@@ -46,6 +46,39 @@ const JsonLd = () => {
             "jobTitle": "Chief Dental Surgeon",
             "sameAs": "https://nobledentalnallagandla.in/about"
         },
+        "hasMap": "https://maps.app.goo.gl/pL2G57e7NndH8C739",
+        "aggregateRating": {
+            "@type": "AggregateRating",
+            "ratingValue": "5.0",
+            "reviewCount": "40"
+        },
+        "hasOfferCatalog": {
+            "@type": "OfferCatalog",
+            "name": "Dental Services",
+            "itemListElement": [
+                {
+                    "@type": "Offer",
+                    "itemOffered": {
+                        "@type": "Service",
+                        "name": "Note Implants"
+                    }
+                },
+                {
+                    "@type": "Offer",
+                    "itemOffered": {
+                        "@type": "Service",
+                        "name": "Teeth Whitening"
+                    }
+                },
+                {
+                    "@type": "Offer",
+                    "itemOffered": {
+                        "@type": "Service",
+                        "name": "Invisalign"
+                    }
+                }
+            ]
+        },
         "knowsAbout": [
             "Guided Dental Implants",
             "PRF Healing",
