@@ -20,7 +20,6 @@ export function middleware(request: NextRequest) {
     base-uri 'self';
     form-action 'self';
     frame-ancestors 'none';
-    require-trusted-types-for 'script';
   `.replace(/\s{2,}/g, ' ').trim();
 
     const requestHeaders = new Headers(request.headers);
