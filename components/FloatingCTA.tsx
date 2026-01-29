@@ -3,8 +3,8 @@
 import React, { useState, useEffect } from 'react';
 import { MessageCircle, Phone, X } from 'lucide-react';
 
-const FloatingCTA = () => {
-    const phoneNumber = "918610425342";
+const FloatingCTA = ({ context }: { context?: string }) => {
+    const phoneNumber = "918074512305";
     const [isVisible, setIsVisible] = useState(false);
 
     useEffect(() => {
@@ -19,6 +19,13 @@ const FloatingCTA = () => {
         window.addEventListener("scroll", toggleVisibility);
         return () => window.removeEventListener("scroll", toggleVisibility);
     }, []);
+
+    const baseMessage = "Hi Team, I would like to book an appointment at Noble Dental Nallagandla.";
+    const contextMessage = context
+        ? `Hi Team, I am a resident of ${context} and would like to book an appointment.`
+        : baseMessage;
+
+    const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(contextMessage)}`;
 
     if (!isVisible) return null;
 
@@ -35,7 +42,7 @@ const FloatingCTA = () => {
 
             {/* WhatsApp Button */}
             <a
-                href={`https://wa.me/${phoneNumber}`}
+                href={whatsappUrl}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="bg-[#25D366] text-white p-3 rounded-full shadow-lg hover:scale-110 transition-transform duration-300 animate-bounce hover:animate-none flex items-center justify-center border-4 border-white dark:border-[#0B1019]"

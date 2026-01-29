@@ -142,27 +142,23 @@ export async function generateAuthorityBlogPost(topic: string, locality: string 
     let prompt = "";
 
     if (isHighAuthority) {
-        // SURGICAL UPDATE MODE (Safe)
+        // SURGICAL UPDATE MODE (Safe) - UPDATED FOR AEO & SCHOLAR PROTOCOLS
         prompt = `
-        ACT AS: Dr. Dhivakaran, MDS (Rank Protection Mode Active).
-        TOPIC: "${topic}" (${locality})
-        
-        ⚠️ HIGH RANK DETECTED: DO NOT WRITE A FULL ARTICLE.
-        The user has a high-ranking page. Writing a full article will cause a RE-INDEXING SHOCK.
-        
-        TASK:
-        1. Write an **AIO Snippet** (Max 50 words). Inverted Pyramid Style (Answer First).
-        2. Write a **Latest Clinical Update** section (Max 150 words) citing 2024/2025 protocols from *${referenceText.split('&')[0]}*.
-        
-        OUTPUT FORMAT (Markdown):
-        
-        # [AIO Snippet]
-        [The 50-word answer]
-        
-        # [Latest Clinical Update]
-        [The update content]
-        
-        (Stop generation).
+            🚨 **RANK PROTECTION PROTOCOL ACTIVE** 🚨
+            This topic ("${topic}") is already ranking in Top 3. 
+            DO NOT rewrite the full article. We must preserve potential "First 200 Words" authority.
+            
+            Instead, generate ONLY these 3 additive components in JSON format:
+            1. "aioSnippet": A 45-word direct answer (Inverted Pyramid). Start with the answer. Bold keywords.
+            2. "clinicalEvidence": A section titled "Clinical Evidence & International Standards". Cite a relevant textbook (Carranza/Cohen/Misch) and a "Clinical Protocol" used at Noble Dental.
+            3. "vsoFaq": A section titled "Common Questions from the ${locality} Community". 3 Voice-Search optimized Q&A pairs (e.g., "Cost in ${locality}", "Open on Sunday?").
+
+            OUTPUT FORMAT: JSON ONLY.
+            {
+                "aioSnippet": "<div class='aio-answer'>...</div>",
+                "clinicalEvidence": "<section>...</section>",
+                "vsoFaq": "<section>...</section>"
+            }
         `;
     } else {
         // FULL AUTHORITY PILLAR MODE
@@ -214,8 +210,37 @@ export async function generateAuthorityBlogPost(topic: string, locality: string 
 
     try {
         const result = await model.generateContent(prompt);
-        let content = result.response.text();
+        const responseText = result.response.text();
 
+        // Safe Update Handling
+        if (isHighAuthority) {
+            try {
+                // Clean markdown code blocks if present
+                const cleanJson = responseText.replace(/```json/g, '').replace(/```/g, '').trim();
+                const data = JSON.parse(cleanJson);
+
+                // Construct Safe HTML
+                return `
+                    <!-- 🛡️ SAFE UPDATE: HEADER PRESERVED -->
+                    
+                    <!-- ⚡ AEO INJECTION -->
+                    ${data.aioSnippet}
+
+                    <!-- [ORIGINAL BODY PRESERVED] -->
+
+                    <!-- 🎓 SCHOLAR LINK -->
+                    ${data.clinicalEvidence}
+
+                    <!-- 🗣️ VSO INTERCEPTOR -->
+                    ${data.vsoFaq}
+                `;
+            } catch (e) {
+                console.error("JSON Parse Failed for Safe Update:", e);
+                return responseText; // Fallback to raw text
+            }
+        }
+
+        let content = responseText;
         content = applyInternalLinking(content);
         return content;
     } catch (error) {

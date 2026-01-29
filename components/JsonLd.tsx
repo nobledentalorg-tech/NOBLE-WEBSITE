@@ -30,6 +30,16 @@ const JsonLd = () => {
                     "latitude": 17.4838,
                     "longitude": 78.3134
                 },
+                "hasMap": "https://maps.app.goo.gl/xFv4bbsWewmCGgV57",
+                "areaServed": [
+                    { "@type": "Place", "name": "Nallagandla" },
+                    { "@type": "Place", "name": "Tellapur" },
+                    { "@type": "Place", "name": "Aparna Sarovar" },
+                    { "@type": "Place", "name": "Aparna Sarovar Zenith" },
+                    { "@type": "Place", "name": "My Home Mangala" },
+                    { "@type": "Place", "name": "Ramky One Galaxia" },
+                    { "@type": "Place", "name": "Vertex Panache" }
+                ],
                 "openingHoursSpecification": {
                     "@type": "OpeningHoursSpecification",
                     "dayOfWeek": [
