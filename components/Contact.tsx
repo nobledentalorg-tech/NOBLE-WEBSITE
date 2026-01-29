@@ -4,7 +4,10 @@ import React, { useState, useEffect } from 'react';
 import { Phone, MapPin, ArrowRight, MessageCircle, User, Stethoscope, FileText, Sparkles, Plus, Heart } from 'lucide-react';
 import { RevealOnScroll } from './RevealOnScroll';
 
+import { useLocation } from '@/context/LocationContext';
+
 const Contact = () => {
+    const { isLocal } = useLocation();
     const [formData, setFormData] = useState({
         name: '',
         phone: '',
@@ -119,7 +122,9 @@ const Contact = () => {
                                     <div className="w-12 h-12 rounded-xl bg-indigo-50 dark:bg-indigo-900/20 flex items-center justify-center text-indigo-600 mb-6">
                                         <MapPin size={24} />
                                     </div>
-                                    <h3 className="text-xs font-black text-slate-400 uppercase tracking-widest mb-1">Nallagandla</h3>
+                                    <h3 className="text-xs font-black text-slate-400 uppercase tracking-widest mb-1">
+                                        {isLocal ? "Your Neighborhood Clinic" : "Nallagandla"}
+                                    </h3>
                                     <p className="text-sm font-bold text-slate-700 dark:text-slate-300 leading-tight mb-4">ICA Clinic Building, Main Road.</p>
 
                                     {/* [Trusted Local Signal] Lazy Loaded Map */}

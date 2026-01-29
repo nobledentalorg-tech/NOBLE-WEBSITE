@@ -26,11 +26,24 @@ export function middleware(request: NextRequest) {
     requestHeaders.set('x-nonce', nonce);
     requestHeaders.set('Content-Security-Policy', cspHeader);
 
+    // --- JET ENGINE 3: EDGE PERSONALIZATION ---
+    // Detect if user is from our specific service area
+    const city = request.geo?.city?.toLowerCase() || '';
+    const isLocal = ['hyderabad', 'serilingampalle', 'nallagandla'].includes(city);
+
+    if (isLocal) {
+        requestHeaders.set('x-local-authority', 'true');
+    }
+
     const response = NextResponse.next({
         request: {
             headers: requestHeaders,
         },
     });
+
+    if (isLocal) {
+        response.cookies.set('user-location', city, { httpOnly: false, maxAge: 60 * 60 * 24 * 30 }); // 30 days
+    }
 
     response.headers.set('Content-Security-Policy', cspHeader);
     response.headers.set('X-Content-Type-Options', 'nosniff');
@@ -51,13 +64,8 @@ export const config = {
          * - _next/static (static files)
          * - _next/image (image optimization files)
          * - favicon.ico (favicon file)
+         * - Common static assets (svg, png, jpg, etc.)
          */
-        {
-            source: '/((?!api|_next/static|_next/image|favicon.ico).*)',
-            missing: [
-                { type: 'header', key: 'next-router-prefetch' },
-                { type: 'header', key: 'purpose', value: 'prefetch' },
-            ],
-        },
+        '/((?!api|_next/static|_next/image|favicon.ico|.*\\.(?:svg|png|jpg|jpeg|gif|webp)$).*)',
     ],
 };

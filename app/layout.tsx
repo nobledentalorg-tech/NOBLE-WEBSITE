@@ -116,29 +116,36 @@ export const viewport = {
 import Script from 'next/script';
 import { Partytown } from '@qwik.dev/partytown/react';
 
-
-
 import SpeculationRules from '@/components/SpeculationRules';
 
-export default function RootLayout({ children }: { children: React.ReactNode }) {
+import { LocationProvider } from '@/context/LocationContext';
+import { headers } from 'next/headers';
+
+export default function RootLayout({
+  children,
+}: Readonly<{
+  children: React.ReactNode;
+}>) {
+  const headersList = headers();
+  const isLocal = headersList.get('x-local-authority') === 'true';
+
   return (
-    <html lang="en" suppressHydrationWarning className="scroll-smooth">
+    <html lang="en" suppressHydrationWarning>
       <head>
-      </head>
-      <body className={`${jakarta.variable} ${inter.variable} ${poppins.variable} font-sans antialiased bg-slate-50 dark:bg-dark-bg text-slate-900 dark:text-white transition-colors duration-300`}>
-
-        <LayoutShell>
-          {children}
-        </LayoutShell>
-        <JsonLd />
         <SpeculationRules />
-
-        <BreadcrumbSchema />
-        <ReviewSchema />
-        <UIProtector />
-        <FloatingCTA />
+      </head>
+      <body className={`${inter.className} min-h-screen bg-background font-sans antialiased overflow-x-hidden w-full selection:bg-cyan-500/30 selection:text-cyan-900 group/body`}>
+        <LocationProvider isLocal={isLocal}>
+          <LayoutShell>
+            {children}
+          </LayoutShell>
+          <JsonLd />
+          <BreadcrumbSchema />
+          <ReviewSchema />
+          <UIProtector />
+          <FloatingCTA />
+        </LocationProvider>
       </body>
     </html>
   );
 }
-

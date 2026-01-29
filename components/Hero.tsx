@@ -5,11 +5,14 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { Phone, Star, CheckCircle2, Bot } from 'lucide-react';
 
+import { useLocation } from '@/context/LocationContext';
+
 interface HeroProps {
   onBookClick?: () => void;
 }
 
 const Hero: React.FC<HeroProps> = ({ onBookClick }) => {
+  const { isLocal } = useLocation();
   const canvasRef = useRef<HTMLCanvasElement>(null);
 
 
@@ -125,7 +128,14 @@ const Hero: React.FC<HeroProps> = ({ onBookClick }) => {
 
             <h1 className="text-5xl md:text-[5.5rem] font-black text-slate-900 dark:text-white leading-[0.85] tracking-tighter">
               <span className="sr-only">Best Dentist in Nallagandla</span>
-              Trusted Family Dentist.
+              {isLocal ? (
+                <>
+                  The <span className="text-blue-600">#1 Choice</span> <br />
+                  for Nallagandla Families.
+                </>
+              ) : (
+                "Trusted Family Dentist."
+              )}
             </h1>
 
             <p className="text-[13px] md:text-sm text-slate-700 dark:text-slate-300 leading-relaxed font-bold uppercase tracking-tight max-w-lg mb-8 opacity-0 animate-fade-in [animation-delay:600ms]">
