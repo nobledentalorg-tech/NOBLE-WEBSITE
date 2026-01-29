@@ -92,7 +92,7 @@ const Contact = () => {
 
                         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                             <RevealOnScroll delay={100} className="sm:col-span-2">
-                                <a href="https://wa.me/918610425342" target="_blank" rel="noopener noreferrer" className="group flex items-center p-8 rounded-[2.5rem] bg-white dark:bg-[#151b2b] border border-slate-100 dark:border-white/5 hover:border-green-500/50 shadow-sm hover:shadow-2xl hover:shadow-green-500/10 transition-all duration-500">
+                                <a href="https://wa.me/918610425342" target="_blank" rel="noopener noreferrer" className="group flex items-center p-6 rounded-[2.5rem] bg-white dark:bg-[#151b2b] border border-slate-100 dark:border-white/5 hover:border-green-500/50 shadow-sm hover:shadow-2xl hover:shadow-green-500/10 transition-all duration-500">
                                     <div className="w-16 h-16 rounded-2xl bg-green-50 dark:bg-green-900/20 flex items-center justify-center text-green-600 shadow-inner group-hover:scale-110 transition-transform">
                                         <MessageCircle size={32} />
                                     </div>
@@ -105,7 +105,7 @@ const Contact = () => {
                             </RevealOnScroll>
 
                             <RevealOnScroll delay={200}>
-                                <a href="tel:+918610425342" className="group block p-8 rounded-[2rem] bg-white dark:bg-[#151b2b] border border-slate-100 dark:border-white/5 hover:border-blue-500/50 shadow-sm hover:shadow-2xl transition-all duration-500">
+                                <a href="tel:+918610425342" className="group block p-6 rounded-[2rem] bg-white dark:bg-[#151b2b] border border-slate-100 dark:border-white/5 hover:border-blue-500/50 shadow-sm hover:shadow-2xl transition-all duration-500">
                                     <div className="w-12 h-12 rounded-xl bg-blue-50 dark:bg-blue-900/20 flex items-center justify-center text-blue-600 mb-6 group-hover:rotate-12 transition-transform">
                                         <Phone size={24} />
                                     </div>
@@ -118,7 +118,7 @@ const Contact = () => {
                             </RevealOnScroll>
 
                             <RevealOnScroll delay={300}>
-                                <div className="group block p-8 rounded-[2rem] bg-white dark:bg-[#151b2b] border border-slate-100 dark:border-white/5 hover:border-indigo-500/50 shadow-sm hover:shadow-2xl transition-all duration-500">
+                                <div className="group block p-6 rounded-[2rem] bg-white dark:bg-[#151b2b] border border-slate-100 dark:border-white/5 hover:border-indigo-500/50 shadow-sm hover:shadow-2xl transition-all duration-500">
                                     <div className="w-12 h-12 rounded-xl bg-indigo-50 dark:bg-indigo-900/20 flex items-center justify-center text-indigo-600 mb-6">
                                         <MapPin size={24} />
                                     </div>
@@ -207,7 +207,7 @@ const Contact = () => {
                                                 </div>
                                             </div>
 
-                                            <button type="submit" className="w-full bg-slate-900 dark:bg-blue-600 text-white font-black uppercase tracking-[0.3em] py-4.5 rounded-[2rem] shadow-xl hover:-translate-y-1 transition-all flex justify-center items-center gap-3 group">
+                                            <button type="submit" className="w-full max-w-sm mx-auto bg-slate-900 dark:bg-blue-600 text-white font-black uppercase tracking-[0.3em] py-4.5 rounded-[2rem] shadow-xl hover:-translate-y-1 transition-all flex justify-center items-center gap-3 group">
                                                 <span>Book Appointment</span>
                                                 <ArrowRight size={20} className="group-hover:translate-x-2 transition-transform" />
                                             </button>
