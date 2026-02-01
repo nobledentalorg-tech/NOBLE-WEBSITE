@@ -17,7 +17,6 @@ model NeoMemory {
   createdAt  DateTime? @default(now()) @db.Timestamptz(6)
   updatedAt  DateTime? @default(now()) @updatedAt @db.Timestamptz(6)
 
-  @@index([query])
   @@index([query], map: "idx_neomemory_query")
 }
 

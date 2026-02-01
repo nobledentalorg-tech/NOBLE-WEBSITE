@@ -195,7 +195,7 @@ export default function NeoCompanionClient() {
             <div className="absolute inset-0 cinematic-bg pointer-events-none z-0"></div>
 
             {/* Navbar */}
-            <nav className="absolute top-0 w-full p-6 z-50 flex justify-between items-center">
+            <nav className="absolute top-0 w-full p-6 z-[200] flex justify-between items-center">
                 <div onClick={() => router.back()} className="flex items-center gap-2 cursor-pointer opacity-70 hover:opacity-100 transition-opacity">
                     <div className="p-2 rounded-full bg-white/5 border border-white/10"><ArrowLeft size={16} /></div>
                     <span className="text-xs font-bold uppercase tracking-widest">Back</span>
