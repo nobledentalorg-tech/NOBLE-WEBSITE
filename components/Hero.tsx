@@ -126,7 +126,7 @@ const Hero: React.FC<HeroProps> = ({ onBookClick }) => {
               </span>
             </div>
 
-            <h1 className="text-5xl md:text-[5.5rem] font-black text-slate-900 dark:text-white leading-[0.85] tracking-tighter">
+            <h1 className="text-5xl md:text-[5rem] font-medium text-slate-900 dark:text-white leading-[1.1] tracking-tighter">
               <span className="sr-only">Best Dentist in Nallagandla</span>
               {isLocal ? (
                 <>
@@ -134,13 +134,13 @@ const Hero: React.FC<HeroProps> = ({ onBookClick }) => {
                   Family Dental Care.
                 </>
               ) : (
-                "Trusted Family Dentist."
+                "Nallagandla's Most Trusted Family Dental Care."
               )}
             </h1>
 
             <p className="text-[13px] md:text-sm text-slate-700 dark:text-slate-300 leading-relaxed font-bold uppercase tracking-tight max-w-lg mb-8 opacity-0 animate-fade-in [animation-delay:600ms]">
               Dr. Dhivakaran&apos;s Owner-Operated Clinic.<br className="hidden md:block" />
-              Trusted family dentistry with advanced surgical care and microscopic precision in Nallagandla.
+              Trusted family dentistry with advanced clinical care and microscopic precision in Nallagandla.
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4 w-full flex-wrap">

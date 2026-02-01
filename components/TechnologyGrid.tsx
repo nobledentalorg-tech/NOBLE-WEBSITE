@@ -52,8 +52,8 @@ const TechnologyGrid = () => {
                     <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-indigo-100 dark:bg-indigo-900/30 text-indigo-600 dark:text-indigo-400 text-xs font-bold uppercase tracking-widest mb-4">
                         <Microscope size={12} /> Clinical Excellence
                     </div>
-                    <h2 className="text-3xl md:text-5xl font-black text-slate-900 dark:text-white mb-6">
-                        Not just a Clinic. <br /> <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-indigo-600">A Technology Hub.</span>
+                    <h2 className="text-3xl md:text-5xl font-medium text-slate-900 dark:text-white mb-6">
+                        Leading Dental Technology <br /> <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-indigo-600">& Advanced Clinical Care.</span>
                     </h2>
                     <p className="text-slate-600 dark:text-slate-400 text-lg">
                         While others rely on traditional methods, we invest in the world&apos;s best diagnostic and treatment technology. Precision means less pain and faster recovery for you.
