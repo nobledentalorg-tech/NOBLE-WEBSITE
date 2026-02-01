@@ -1,6 +1,6 @@
 import NextAuth from "next-auth"
 import Google from "next-auth/providers/google"
-import { SupabaseAdapter } from "@auth/supabase-adapter"
+// import { SupabaseAdapter } from "@auth/supabase-adapter"
 
 export const { handlers, auth, signIn, signOut } = NextAuth({
     secret: process.env.NEXTAUTH_SECRET || process.env.AUTH_SECRET,
@@ -10,18 +10,23 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
             clientSecret: process.env.AUTH_GOOGLE_SECRET,
         }),
     ],
-    // Prevent build-time error if env vars are missing
-    adapter: (process.env.NEXT_PUBLIC_SUPABASE_URL && process.env.SUPABASE_SERVICE_ROLE_KEY)
-        ? SupabaseAdapter({
-            url: process.env.NEXT_PUBLIC_SUPABASE_URL,
-            secret: process.env.SUPABASE_SERVICE_ROLE_KEY,
-        })
-        : undefined,
+    // Use JWT strategy instead of database adapter for local dev
+    session: {
+        strategy: "jwt",
+        maxAge: 30 * 24 * 60 * 60, // 30 days
+        updateAge: 24 * 60 * 60,   // 24 hours
+    },
+    // Temporarily disabled - requires NextAuth database schema
+    // adapter: (process.env.NEXT_PUBLIC_SUPABASE_URL && process.env.SUPABASE_SERVICE_ROLE_KEY)
+    //     ? SupabaseAdapter({
+    //         url: process.env.NEXT_PUBLIC_SUPABASE_URL,
+    //         secret: process.env.SUPABASE_SERVICE_ROLE_KEY,
+    //     })
+    //     : undefined,
     callbacks: {
-        session({ session, user }) {
-            if (session.user) {
-                session.user.id = user.id
-                // Add other custom fields if needed
+        session({ session, token }) {
+            if (session.user && token.sub) {
+                session.user.id = token.sub
             }
             return session
         },

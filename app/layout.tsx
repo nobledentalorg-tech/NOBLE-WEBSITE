@@ -4,6 +4,7 @@ import LayoutShell from '@/components/LayoutShell';
 import JsonLd from '@/components/JsonLd';
 import UIProtector from '@/components/UIProtector';
 import FloatingCTA from '@/components/FloatingCTA';
+import { Providers } from '@/app/providers';
 
 import ReviewSchema from '@/components/ReviewSchema';
 import BreadcrumbSchema from '@/components/BreadcrumbSchema';
@@ -145,19 +146,21 @@ export default async function RootLayout({
       </head>
       <body className={`${inter.className} min-h-screen bg-background font-sans antialiased overflow-x-hidden w-full selection:bg-cyan-500/30 selection:text-cyan-900 group/body`}>
         <LocationProvider isLocal={isLocal}>
-          <AdaptiveUIProvider>
-            <ClinicStatusBanner />
-            <LayoutShell emergencyMode={status.emergencyStatus}>
-              {children}
-            </LayoutShell>
-            <JsonLd />
-            <BreadcrumbSchema />
-            <ReviewSchema />
-            <UIProtector />
-            <FloatingCTA />
-            <Analytics />
-            <SpeedInsights />
-          </AdaptiveUIProvider>
+          <Providers>
+            <AdaptiveUIProvider>
+              <ClinicStatusBanner />
+              <LayoutShell emergencyMode={status.emergencyStatus}>
+                {children}
+              </LayoutShell>
+              <JsonLd />
+              <BreadcrumbSchema />
+              <ReviewSchema />
+              <UIProtector />
+              <FloatingCTA />
+              <Analytics />
+              <SpeedInsights />
+            </AdaptiveUIProvider>
+          </Providers>
         </LocationProvider>
       </body>
     </html>

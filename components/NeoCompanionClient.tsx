@@ -10,8 +10,10 @@ import {
 
 // ✅ IMPORT THE SERVER ACTION (The Secure Way)
 import { getNeoResponse } from '@/app/actions';
+import { loadChatHistory, saveMessage } from '@/app/actions/chat-history';
 import { ChatMessage } from '@/types';
 import { useSession, signIn, signOut } from 'next-auth/react';
+import { detectUserLanguage, type SupportedLanguage } from '@/lib/language-detector';
 
 export default function NeoCompanionClient() {
     const router = useRouter();
@@ -21,6 +23,7 @@ export default function NeoCompanionClient() {
     const [input, setInput] = useState('');
     const [isLoading, setIsLoading] = useState(false);
     const [isListening, setIsListening] = useState(false);
+    const [currentLanguage, setCurrentLanguage] = useState<SupportedLanguage>(() => detectUserLanguage());
 
     // AI State Logic
     const [currentNodeId, setCurrentNodeId] = useState('root');
@@ -30,33 +33,28 @@ export default function NeoCompanionClient() {
     const messagesEndRef = useRef<HTMLDivElement>(null);
     const recognitionRef = useRef<any>(null);
 
-    // -- DB Sync State --
-    const [currentChatId, setCurrentChatId] = useState<string | null>(null);
-
     const fullIntroText = session?.user?.name
         ? `Hi ${session.user.name.split(' ')[0]}. I am Neo, your Virtual Dental Consultant.`
         : "Hi. I am Neo, your Virtual Dental Consultant.";
 
-    // -- DB Sync Logic --
-    const saveMessageToDb = async (role: 'user' | 'model', content: string) => {
-        if (!session?.user) return; // Only save if logged in
+    // Load chat history when user signs in
+    useEffect(() => {
+        if (session) {
+            loadHistory()
+        }
+    }, [session]);
 
+    const loadHistory = async () => {
         try {
-            const res = await fetch('/api/chat/save', {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({
-                    chatId: currentChatId,
-                    role,
-                    content
-                })
-            });
-            const data = await res.json();
-            if (data.chatId && !currentChatId) {
-                setCurrentChatId(data.chatId);
+            const history = await loadChatHistory()
+            setMessages(history)
+
+            // Set language from last message if available
+            if (history.length > 0 && history[history.length - 1].language) {
+                setCurrentLanguage(history[history.length - 1].language)
             }
         } catch (error) {
-            console.error("Failed to save message:", error);
+            console.error('Failed to load chat history:', error)
         }
     };
 
@@ -112,13 +110,18 @@ export default function NeoCompanionClient() {
         setShowMenu(false);
 
         // A. Optimistic UI Update (Show user message immediately)
-        const userMsg: ChatMessage = { role: 'user', text: textToSend, timestamp: Date.now() };
+        const userMsg: ChatMessage = {
+            role: 'user',
+            text: textToSend,
+            timestamp: Date.now(),
+            language: currentLanguage
+        };
         setMessages(prev => [...prev, userMsg]);
         setInput('');
         setIsLoading(true);
 
-        // Save User Msg to DB
-        saveMessageToDb('user', textToSend);
+        // Save User Msg to DB with language tag
+        saveMessage('user', textToSend, currentLanguage).catch(console.error);
 
         try {
             // -- Mock Patient Context (For Demo) --
@@ -126,7 +129,7 @@ export default function NeoCompanionClient() {
             const patientContext = {
                 age: 28,
                 isPregnant: textToSend.toLowerCase().includes('pregnant') || messages.some(m => m.text.toLowerCase().includes('pregnant')),
-                medicalHistory: ['asthma'],
+                medicalHistory: [], // Removed hardcoded 'asthma'
                 trimester: 'Second' as any
             };
 
@@ -136,19 +139,21 @@ export default function NeoCompanionClient() {
             const nextNode = neoResponse.node;
             setCurrentNodeId(nextNode.id);
 
-            // C. Construct AI Response
+            // C. Construct AI Response (use current language or default to English)
+            const responseText = nextNode.text[currentLanguage] || nextNode.text.en;
             const aiResponse: ChatMessage = {
                 role: 'model',
-                text: nextNode.text.en,
+                text: responseText,
                 timestamp: Date.now(),
+                language: currentLanguage,
                 possibilities: nextNode.possibilities,
                 urgency: neoResponse.urgency
             };
 
             setMessages(prev => [...prev, aiResponse]);
 
-            // Save AI Msg to DB
-            saveMessageToDb('model', nextNode.text.en);
+            // Save AI Msg to DB with language tag
+            saveMessage('model', responseText, currentLanguage).catch(console.error);
 
         } catch (error) {
             console.error("Neo Error:", error);
@@ -159,7 +164,7 @@ export default function NeoCompanionClient() {
 
     // Quick Actions Config
     const quickActions = [
-        { label: "Cost Estimate", query: "How much does a root canal cost?", icon: Sparkles, color: "text-amber-400", bg: "bg-amber-500/10" },
+        { label: "Cost Estimate", query: "How much does dental treatment cost?", icon: Sparkles, color: "text-amber-400", bg: "bg-amber-500/10" },
         { label: "Tooth Pain", query: "I have severe tooth pain", icon: Flame, color: "text-red-400", bg: "bg-red-500/10" },
         { label: "Book Visit", query: "Book an appointment", icon: Calendar, color: "text-emerald-400", bg: "bg-emerald-500/10" },
         { label: "Post-Op Guide", query: "Care instructions after extraction", icon: FileText, color: "text-blue-400", bg: "bg-blue-500/10" },
@@ -169,7 +174,8 @@ export default function NeoCompanionClient() {
         <div className="relative min-h-[100dvh] bg-slate-50 dark:bg-[#020202] text-slate-900 dark:text-slate-200 font-sans overflow-hidden transition-colors duration-300">
 
             {/* Styles Injection */}
-            <style>{`
+            <style dangerouslySetInnerHTML={{
+                __html: `
         @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;700&display=swap');
         .font-gemini { font-family: 'Outfit', sans-serif; }
         .cinematic-bg {
@@ -189,7 +195,7 @@ export default function NeoCompanionClient() {
         .typing-dot:nth-child(2) { animation-delay: -0.16s; }
         @keyframes typing { 0%, 80%, 100% { transform: scale(0); opacity: 0.5; } 40% { transform: scale(1); opacity: 1; } }
         .no-scrollbar::-webkit-scrollbar { display: none; }
-      `}</style>
+      ` }} />
 
             {/* Backgrounds */}
             <div className="absolute inset-0 cinematic-bg pointer-events-none z-0"></div>
@@ -201,17 +207,21 @@ export default function NeoCompanionClient() {
                     <span className="text-xs font-bold uppercase tracking-widest">Back</span>
                 </div>
                 <div className="flex items-center gap-3">
-                    {/* Auth Button */}
-                    {session ? (
+                    {/* User Profile / Sign Out (If Signed In) */}
+                    {session && (
                         <div className="flex items-center gap-2 px-3 py-1 rounded-full bg-white/5 border border-white/10">
-                            <Image src={session.user?.image || ''} alt="User" width={20} height={20} className="w-5 h-5 rounded-full" />
+                            {session.user?.image ? (
+                                <Image src={session.user.image} alt="User" width={20} height={20} className="w-5 h-5 rounded-full" />
+                            ) : (
+                                <div className="w-5 h-5 rounded-full bg-zinc-800 flex items-center justify-center text-[10px] text-zinc-500 font-bold">
+                                    {session.user?.name?.charAt(0) || 'U'}
+                                </div>
+                            )}
                             <span className="font-gemini text-xs uppercase text-zinc-400 cursor-pointer hover:text-red-400" onClick={() => signOut()}>Sign Out</span>
                         </div>
-                    ) : (
-                        <div onClick={() => signIn('google')} className="flex items-center gap-2 px-3 py-1 rounded-full bg-blue-500/10 border border-blue-500/20 cursor-pointer hover:bg-blue-500/20 transition-all">
-                            <span className="font-gemini text-xs font-bold text-blue-400 uppercase tracking-widest">Sign In</span>
-                        </div>
                     )}
+
+                    {/* Neo Status Indicator (Always Visible) */}
                     <div className="flex items-center gap-2 px-3 py-1 rounded-full bg-red-500/10 border border-red-500/20">
                         <div className="w-1.5 h-1.5 rounded-full bg-red-500 animate-pulse"></div>
                         <span className="text-xs font-bold text-red-500 uppercase tracking-widest">Neo Online</span>
@@ -222,7 +232,26 @@ export default function NeoCompanionClient() {
             {/* Main Content */}
             <main className="relative z-20 w-full h-[100dvh] flex flex-col items-center justify-center pt-20 pb-28 px-4">
 
-                {messages.length === 0 ? (
+                {!session ? (
+                    /* SIGN-IN REQUIRED STATE */
+                    <div className="text-center flex flex-col items-center max-w-2xl w-full animate-in fade-in zoom-in duration-700">
+                        <div className="w-24 h-24 mb-8 rounded-full bg-gradient-to-b from-zinc-800 to-black flex items-center justify-center border border-white/10 shadow-[0_0_40px_rgba(220,38,38,0.2)]">
+                            <Flame size={32} className="text-red-500" />
+                        </div>
+                        <h1 className="font-gemini text-4xl md:text-5xl font-medium mb-4 tracking-tight">Neo AI</h1>
+                        <p className="text-zinc-400 mb-6">Instant provisional diagnosis & cost estimates.</p>
+                        <div className="glass-panel p-6 rounded-2xl mb-8 border border-yellow-500/20 bg-yellow-500/5">
+                            <p className="text-sm text-zinc-300 mb-4">🔒 <strong>Sign in required</strong> to access Neo AI chat.</p>
+                            <p className="text-xs text-zinc-500">Your conversations are securely saved and help us provide personalized care.</p>
+                        </div>
+                        <button
+                            onClick={() => signIn('google')}
+                            className="flex items-center gap-3 px-6 py-3 rounded-full bg-blue-500 hover:bg-blue-600 text-white font-bold uppercase tracking-widest transition-all shadow-lg hover:shadow-blue-500/50"
+                        >
+                            <span>Sign In with Google</span>
+                        </button>
+                    </div>
+                ) : messages.length === 0 ? (
                     /* HERO STATE */
                     <div className="text-center flex flex-col items-center max-w-2xl w-full animate-in fade-in zoom-in duration-700">
                         <div className="w-24 h-24 mb-8 rounded-full bg-gradient-to-b from-zinc-800 to-black flex items-center justify-center border border-white/10 shadow-[0_0_40px_rgba(220,38,38,0.2)]">
@@ -282,52 +311,55 @@ export default function NeoCompanionClient() {
                     </div>
                 )}
 
-                {/* INPUT BAR */}
-                <div className="fixed bottom-6 w-full max-w-2xl px-4 z-40">
-                    <div className="glass-panel p-2 rounded-full flex items-center shadow-xl">
-                        <button onClick={() => setShowMenu(!showMenu)} className="p-3 rounded-full hover:bg-black/5 text-zinc-400 transition-colors"><Plus size={20} /></button>
-                        <input
-                            value={input}
-                            onChange={(e) => setInput(e.target.value)}
-                            onKeyDown={(e) => e.key === 'Enter' && handleSend()}
-                            placeholder="Ask Neo..."
-                            className="flex-1 bg-transparent border-none outline-none px-2 font-gemini text-base"
-                        />
-                        <button onClick={toggleListening} className={`p-3 rounded-full transition-colors ${isListening ? 'text-red-500 animate-pulse' : 'text-zinc-400 hover:text-red-500'}`}>
-                            {isListening ? <MicOff size={18} /> : <Mic size={18} />}
-                        </button>
-                        <button onClick={() => handleSend()} disabled={!input.trim()} className={`p-3 rounded-full transition-all ${input.trim() ? 'bg-red-600 text-white' : 'bg-zinc-200 dark:bg-zinc-800 text-zinc-400'}`}>
-                            <Send size={16} />
-                        </button>
-                    </div>
-
-                    {/* Optional Share Results Link - Only shown when there are messages */}
-                    {messages.length >= 2 && (
-                        <a
-                            href="https://wa.me/918610425342?text=Hi%20Dr.%20Dhivakaran,%20I%20just%20finished%20a%20Neo%20AI%20consultation%20and%20would%20like%20to%20share%20the%20results%20for%20confirmation."
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="mt-3 text-center text-xs text-zinc-500 hover:text-green-600 dark:hover:text-green-400 transition-colors flex items-center justify-center gap-2 group"
-                        >
-                            <MessageCircle size={12} className="opacity-60 group-hover:opacity-100" />
-                            <span>Share results with Dr. Dhivakaran for validation</span>
-                        </a>
-                    )}
-
-                    {/* Pop-up Quick Menu inside INPUT BAR area for consistency with logic */}
-                    {showMenu && (
-                        <div className="absolute bottom-full left-4 mb-4 glass-panel rounded-2xl p-2 animate-in slide-in-from-bottom-4 fade-in zoom-in duration-300 flex flex-col gap-1 min-w-[240px] border border-black/5">
-                            {quickActions.map((action, i) => (
-                                <button key={i} onClick={() => handleSend(action.query)} className="flex items-center gap-3 px-4 py-3 hover:bg-black/5 rounded-xl text-left transition-colors group">
-                                    <action.icon size={16} className={`${action.color}`} />
-                                    <span className="font-gemini text-sm font-medium text-zinc-500 group-hover:text-zinc-900 dark:group-hover:text-white">{action.label}</span>
-                                </button>
-                            ))}
+                {/* INPUT BAR - Only shown when signed in */}
+                {session && (
+                    <div className="fixed bottom-6 w-full max-w-2xl px-4 z-40">
+                        <div className="glass-panel p-2 rounded-full flex items-center shadow-xl">
+                            <button onClick={() => setShowMenu(!showMenu)} className="p-3 rounded-full hover:bg-black/5 text-zinc-400 transition-colors"><Plus size={20} /></button>
+                            <input
+                                value={input}
+                                onChange={(e) => setInput(e.target.value)}
+                                onKeyDown={(e) => e.key === 'Enter' && handleSend()}
+                                placeholder="Ask Neo..."
+                                className="flex-1 bg-transparent border-none outline-none px-2 font-gemini text-base"
+                            />
+                            <button onClick={toggleListening} className={`p-3 rounded-full transition-colors ${isListening ? 'text-red-500 animate-pulse' : 'text-zinc-400 hover:text-red-500'}`}>
+                                {isListening ? <MicOff size={18} /> : <Mic size={18} />}
+                            </button>
+                            <button onClick={() => handleSend()} disabled={!input.trim()} className={`p-3 rounded-full transition-all ${input.trim() ? 'bg-red-600 text-white' : 'bg-zinc-200 dark:bg-zinc-800 text-zinc-400'}`}>
+                                <Send size={16} />
+                            </button>
                         </div>
-                    )}
-                </div>
+
+                        {/* Optional Share Results Link - Only shown when there are messages */}
+                        {messages.length >= 2 && (
+                            <a
+                                href="https://wa.me/918610425342?text=Hi%20Dr.%20Dhivakaran,%20I%20just%20finished%20a%20Neo%20AI%20consultation%20and%20would%20like%20to%20share%20the%20results%20for%20confirmation."
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="mt-3 text-center text-xs text-zinc-500 hover:text-green-600 dark:hover:text-green-400 transition-colors flex items-center justify-center gap-2 group"
+                            >
+                                <MessageCircle size={12} className="opacity-60 group-hover:opacity-100" />
+                                <span>Share results with Dr. Dhivakaran for validation</span>
+                            </a>
+                        )}
+                    </div>
+                )}
+
+                {/* Pop-up Quick Menu inside INPUT BAR area for consistency with logic */}
+                {showMenu && (
+                    <div className="absolute bottom-full left-4 mb-4 glass-panel rounded-2xl p-2 animate-in slide-in-from-bottom-4 fade-in zoom-in duration-300 flex flex-col gap-1 min-w-[240px] border border-black/5">
+                        {quickActions.map((action, i) => (
+                            <button key={i} onClick={() => handleSend(action.query)} className="flex items-center gap-3 px-4 py-3 hover:bg-black/5 rounded-xl text-left transition-colors group">
+                                <action.icon size={16} className={`${action.color}`} />
+                                <span className="font-gemini text-sm font-medium text-zinc-500 group-hover:text-zinc-900 dark:group-hover:text-white">{action.label}</span>
+                            </button>
+                        ))}
+                    </div>
+                )}
 
             </main>
         </div>
     );
 }
+

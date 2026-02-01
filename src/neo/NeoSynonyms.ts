@@ -164,6 +164,12 @@ export const CLINICAL_SYNONYMS: Record<string, string[]> = {
     ],
     'emergency': [
         'dying', 'cannot breathe', 'severe', 'worst', 'help me', 'urgent', 'udane', 'ippove', 'turant', 'jaldi'
+    ],
+    'lead_doctor': [
+        'dhivakaran', 'dhiva', 'divakaran', 'divakar', 'doctor', 'dr', 'who is the boss', 'who is in charge', 'who treats here', 'chief doctor'
+    ],
+    'clinic_info': [
+        'noble dental care', 'about the clinic', 'where is it', 'location', 'nallagandla', 'tellapur'
     ]
 };
 

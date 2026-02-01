@@ -201,7 +201,7 @@ export const treatmentsData: Record<string, TreatmentData> = {
       { q: "Do I need antibiotics?", a: "Antibiotics are prescribed based on the **severity of infection** and your **systemic health** (e.g., Diabetes/Cardiac issues). We follow strict medical guidelines to avoid overuse." },
       { q: "Why check Vitals before procedure?", a: "Your safety is paramount. We evaluate your blood pressure and sugar levels (if diabetic) to ensure you can tolerate the procedure safely." }
     ],
-    keywords: ["microscopic root canal", "painless rct nallagandla", "single sitting root canal", "endodontist near me", "root canal cost"],
+    keywords: ["root canal treatment price", "RCT", "tooth pain", "tooth ache", "painless RCT", "laser root canal", "endodontist nallagandla", "tooth pain treatment", "swollen face", "tooth swelling", "nerve treatment", "dead tooth", "dental pain", "rct cost"],
     recommendedProducts: [
       {
         id: "ketorol-dt",
@@ -261,7 +261,7 @@ export const treatmentsData: Record<string, TreatmentData> = {
       { q: "How much do dental implants cost?", a: "Implants start from ₹25,000. Basic options to premium Swiss brands available. We provide a full cost breakdown upfront." },
       { q: "Is it painful?", a: "With our 'Keyhole Guided Surgery', most patients report less pain than a simple extraction and return to work the next day." }
     ],
-    keywords: ["dental implants cost nallagandla", "full mouth implants", "guided implant surgery", "best implantologist hyderabad", "fixed teeth cost"],
+    keywords: ["dental implants cost nallagandla", "full mouth implants", "guided implant surgery", "best implantologist", "fixed teeth cost"],
     priceComparison: [
       { item: "Straumann Implant (Swiss)", noblePrice: "₹ 25,000", marketPrice: "₹ 35,000+" },
       { item: "Zirconia Crown (Monolith)", noblePrice: "₹ 8,000", marketPrice: "₹ 15,000" },
@@ -717,7 +717,7 @@ export const treatmentsData: Record<string, TreatmentData> = {
     ],
     benefits: ["Prevents Preterm Risks", "Safe Diagnostics", "Comfort Seating", "Customized Home-Care"],
     faqs: [{ q: "Are X-rays safe?", a: "Yes, with lead-shielding and digital sensors, radiation is negligible." }],
-    keywords: ["pregnant", "mom", "baby", "gums", "bleeding", "safety"]
+    keywords: ["pregnant", "mom", "baby", "safety", "maternity", "pregnancy safety", "expecting"]
   },
   "laser-gum-contouring": {
     id: "laser-gum-contouring",
@@ -754,7 +754,7 @@ export const treatmentsData: Record<string, TreatmentData> = {
       { q: "Can laser treat loose teeth?", a: "Yes! LANAP promotes bone regeneration, often tightening loose teeth and saving them from extraction." },
       { q: "Is gum depigmentation permanent?", a: "Yes, removing the melanin layer (dark spots) usually gives permanent pink results, though smoking can cause recurrence." }
     ],
-    keywords: ["laser gum treatment cost", "bleeding gums cure", "lanap hyderabad", "gum depigmentation cost", "laser dentist nallagandla"],
+    keywords: ["laser gum treatment cost", "bleeding gums", "swollen gums", "gum bleeding", "lanap", "gum depigmentation cost", "laser dentist nallagandla", "periodontal", "gum surgery", "black gums", "laser depigmentation", "gum healing"],
     priceComparison: [
       { item: "Laser Gum Therapy (Full Mouth)", noblePrice: "₹ 15,000", marketPrice: "₹ 25,000" },
       { item: "Cosmetic Depigmentation", noblePrice: "₹ 3,000 / Arch", marketPrice: "₹ 8,000" },
@@ -1371,7 +1371,7 @@ export const treatmentsData: Record<string, TreatmentData> = {
     ],
     benefits: ["Improves facial aesthetics", "Tailored to each patient"],
     faqs: [{ "q": "Is the procedure painful?", "a": "We use advanced numbing techniques." }, { "q": "How many visits?", "a": "Usually 1-2 visits." }],
-    keywords: ["smile design", "cosmetic", "veneers", "crowns", "Hyderabad", "celebrity smile", "CEO makeovers"]
+    keywords: ["smile design", "cosmetic", "veneers", "crowns", "celebrity smile", "CEO makeovers"]
   },
   "dentures": {
     id: "dentures",
@@ -1393,7 +1393,7 @@ export const treatmentsData: Record<string, TreatmentData> = {
     ],
     benefits: ["Affordable solution", "Restores chewing ability"],
     faqs: [{ "q": "Is the procedure painful?", "a": "We use advanced numbing techniques." }, { "q": "How many visits?", "a": "Usually 1-2 visits." }],
-    keywords: ["dentures", "missing teeth", "removable", "prosthesis", "Hyderabad"]
+    keywords: ["dentures", "missing teeth", "removable", "prosthesis"]
   },
   "preventive-dentistry": {
     id: "preventive-dentistry",
@@ -1415,7 +1415,7 @@ export const treatmentsData: Record<string, TreatmentData> = {
     ],
     benefits: ["Prevents cavities", "Reduces treatment needs"],
     faqs: [{ "q": "Is the procedure painful?", "a": "We use advanced numbing techniques." }, { "q": "How many visits?", "a": "Usually 1-2 visits." }],
-    keywords: ["preventive", "fluoride", "sealants", "oral hygiene", "Hyderabad"]
+    keywords: ["preventive", "fluoride", "sealants", "oral hygiene"]
   },
   "oral-prophylaxis": {
     id: "oral-prophylaxis",
@@ -1437,7 +1437,7 @@ export const treatmentsData: Record<string, TreatmentData> = {
     ],
     benefits: ["Removes plaque and tartar", "Prevents gum disease"],
     faqs: [{ "q": "Is the procedure painful?", "a": "We use advanced numbing techniques." }, { "q": "How many visits?", "a": "Usually 1-2 visits." }],
-    keywords: ["oral prophylaxis", "cleaning", "scaling", "Hyderabad"]
+    keywords: ["oral prophylaxis", "cleaning", "scaling"]
   },
   "wisdom-tooth-surgery": {
     id: "wisdom-tooth-surgery",
@@ -1459,7 +1459,7 @@ export const treatmentsData: Record<string, TreatmentData> = {
     ],
     benefits: ["Reduces swelling and pain", "Prevents misalignment"],
     faqs: [{ "q": "Is the procedure painful?", "a": "We use advanced numbing techniques." }, { "q": "How many visits?", "a": "Usually 1-2 visits." }],
-    keywords: ["wisdom tooth", "extraction", "oral surgery", "Hyderabad"]
+    keywords: ["wisdom tooth", "extraction", "oral surgery"]
   },
   "gum-disease": {
     id: "gum-disease",
@@ -1481,7 +1481,7 @@ export const treatmentsData: Record<string, TreatmentData> = {
     ],
     benefits: ["Stops gum bleeding", "Prevents bone loss"],
     faqs: [{ "q": "Is the procedure painful?", "a": "We use advanced numbing techniques." }, { "q": "How many visits?", "a": "Usually 1-2 visits." }],
-    keywords: ["gum disease", "periodontitis", "bleeding gums", "scaling", "Hyderabad"]
+    keywords: ["gum disease", "periodontitis", "bleeding gums", "scaling"]
   },
   "scaling-polishing": {
     id: "scaling-polishing",
@@ -1503,7 +1503,7 @@ export const treatmentsData: Record<string, TreatmentData> = {
     ],
     benefits: ["Freshens breath", "Prevents tartar buildup"],
     faqs: [{ "q": "Is the procedure painful?", "a": "We use advanced numbing techniques." }, { "q": "How many visits?", "a": "Usually 1-2 visits." }],
-    keywords: ["scaling", "polishing", "teeth cleaning", "Hyderabad"]
+    keywords: ["scaling", "polishing", "teeth cleaning", "Guided Biofilm Therapy", "EMS Airflow", "dental cleanup", "gum health", "gum bleeding", "stains", "stain removal", "scaling whitening", "smile cleaning", "cleaning cost", "scaling price"]
   },
   "dental-fillings": {
     id: "dental-fillings",
@@ -1591,7 +1591,7 @@ export const treatmentsData: Record<string, TreatmentData> = {
       "Journal of Dental Research: 'Longevity of Posterior Composite Restorations'",
       "ADA Guidelines on Caries Management"
     ],
-    keywords: ["dental fillings", "composite", "cavity treatment", "Hyderabad"]
+    keywords: ["dental fillings", "composite", "cavity treatment", "tooth hole", "cavity", "filling", "tooth filling", "composite filling", "tooth decay", "painless filling"]
   },
   "cosmetic-bonding": {
     id: "cosmetic-bonding",
@@ -1613,7 +1613,7 @@ export const treatmentsData: Record<string, TreatmentData> = {
     ],
     benefits: ["Quick and affordable", "Natural aesthetics"],
     faqs: [{ "q": "Is the procedure painful?", "a": "We use advanced numbing techniques." }, { "q": "How many visits?", "a": "Usually 1-2 visits." }],
-    keywords: ["cosmetic bonding", "chipped teeth", "smile design", "Hyderabad"]
+    keywords: ["cosmetic bonding", "chipped teeth", "smile design"]
   },
   "full-mouth-rehab": {
     id: "full-mouth-rehab",
@@ -1635,7 +1635,7 @@ export const treatmentsData: Record<string, TreatmentData> = {
     ],
     benefits: ["Complete smile makeover", "Restores chewing ability"],
     faqs: [{ "q": "Is the procedure painful?", "a": "We use advanced numbing techniques." }, { "q": "How many visits?", "a": "Usually 1-2 visits." }],
-    keywords: ["full mouth rehabilitation", "implants", "crowns", "Hyderabad"]
+    keywords: ["full mouth rehabilitation", "implants", "crowns"]
   },
   "cosmetic-dentistry": {
     id: "cosmetic-dentistry",
@@ -1657,7 +1657,7 @@ export const treatmentsData: Record<string, TreatmentData> = {
     ],
     benefits: ["Improves smile confidence", "Customized treatment plans"],
     faqs: [{ "q": "Is the procedure painful?", "a": "We use advanced numbing techniques." }, { "q": "How many visits?", "a": "Usually 1-2 visits." }],
-    keywords: ["cosmetic dentistry", "smile design", "veneers", "whitening", "Hyderabad"]
+    keywords: ["cosmetic dentistry", "smile design", "veneers", "whitening"]
   },
   "orthognathic-surgery": {
     id: "orthognathic-surgery",
@@ -1679,7 +1679,7 @@ export const treatmentsData: Record<string, TreatmentData> = {
     ],
     benefits: ["Improves chewing & breathing", "Enhances facial aesthetics"],
     faqs: [{ "q": "Is the procedure painful?", "a": "We use advanced numbing techniques." }, { "q": "How many visits?", "a": "Usually 1-2 visits." }],
-    keywords: ["orthognathic surgery", "jaw surgery", "facial correction", "Hyderabad"]
+    keywords: ["orthognathic surgery", "jaw surgery", "facial correction"]
   },
   "maxillofacial-surgery": {
     id: "maxillofacial-surgery",
@@ -1701,7 +1701,7 @@ export const treatmentsData: Record<string, TreatmentData> = {
     ],
     benefits: ["Expert trauma management", "Restores function & aesthetics"],
     faqs: [{ "q": "Is the procedure painful?", "a": "We use advanced numbing techniques." }, { "q": "How many visits?", "a": "Usually 1-2 visits." }],
-    keywords: ["maxillofacial surgery", "trauma", "jaw fracture", "Hyderabad"]
+    keywords: ["maxillofacial surgery", "trauma", "jaw fracture"]
   },
   "dental-tourism": {
     id: "dental-tourism",
@@ -1723,7 +1723,7 @@ export const treatmentsData: Record<string, TreatmentData> = {
     ],
     benefits: ["Cost-effective treatments", "World-class facilities"],
     faqs: [{ "q": "Is the procedure painful?", "a": "We use advanced numbing techniques." }, { "q": "How many visits?", "a": "Usually 1-2 visits." }],
-    keywords: ["dental tourism", "international patients", "affordable dentistry", "Hyderabad"]
+    keywords: ["dental tourism", "international patients", "affordable dentistry"]
   },
   "tmj-disorders": {
     id: "tmj-disorders",
@@ -1745,7 +1745,7 @@ export const treatmentsData: Record<string, TreatmentData> = {
     ],
     benefits: ["Pain management", "Bite correction therapy"],
     faqs: [{ "q": "Is the procedure painful?", "a": "We use advanced numbing techniques." }, { "q": "How many visits?", "a": "Usually 1-2 visits." }],
-    keywords: ["TMJ disorders", "jaw pain", "clicking jaw", "Hyderabad"]
+    keywords: ["TMJ disorders", "jaw pain", "clicking jaw"]
   },
   "oral-cancer-screening": {
     id: "oral-cancer-screening",
@@ -1767,7 +1767,7 @@ export const treatmentsData: Record<string, TreatmentData> = {
     ],
     benefits: ["Detects early changes", "Life-saving diagnosis"],
     faqs: [{ "q": "Is the procedure painful?", "a": "We use advanced numbing techniques." }, { "q": "How many visits?", "a": "Usually 1-2 visits." }],
-    keywords: ["oral cancer screening", "early detection", "mouth lesions", "Hyderabad"]
+    keywords: ["oral cancer screening", "early detection", "mouth lesions"]
   },
   "sedation-dentistry": {
     id: "sedation-dentistry",
@@ -1789,7 +1789,7 @@ export const treatmentsData: Record<string, TreatmentData> = {
     ],
     benefits: ["Anxiety-free treatment", "Safe for complex cases"],
     faqs: [{ "q": "Is the procedure painful?", "a": "We use advanced numbing techniques." }, { "q": "How many visits?", "a": "Usually 1-2 visits." }],
-    keywords: ["sedation dentistry", "painless dental", "anxiety free", "Hyderabad"]
+    keywords: ["sedation dentistry", "painless dental", "anxiety free"]
   },
   "laser-dentistry": {
     id: "laser-dentistry",
@@ -1811,7 +1811,7 @@ export const treatmentsData: Record<string, TreatmentData> = {
     ],
     benefits: ["Minimal bleeding", "Faster healing"],
     faqs: [{ "q": "Is the procedure painful?", "a": "We use advanced numbing techniques." }, { "q": "How many visits?", "a": "Usually 1-2 visits." }],
-    keywords: ["laser dentistry", "painless treatment", "gum surgery", "Hyderabad"]
+    keywords: ["laser dentistry", "painless treatment", "gum surgery"]
   },
   "emergency-trauma": {
     id: "emergency-trauma",
@@ -1833,7 +1833,7 @@ export const treatmentsData: Record<string, TreatmentData> = {
     ],
     benefits: ["Immediate pain relief", "Expert trauma care"],
     faqs: [{ "q": "Is the procedure painful?", "a": "We use advanced numbing techniques." }, { "q": "How many visits?", "a": "Usually 1-2 visits." }],
-    keywords: ["emergency dentistry", "urgent dental care", "24x7", "Hyderabad"]
+    keywords: ["emergency dentistry", "urgent dental care", "24x7", "accident", "broken tooth", "lost tooth", "tooth injury", "urgent care", "emergency contact", "dental trauma", "tooth pain 24x7"]
   },
   "pediatric-pulp": {
     id: "pediatric-pulp",
@@ -1855,7 +1855,7 @@ export const treatmentsData: Record<string, TreatmentData> = {
     ],
     benefits: ["Saves baby teeth", "Prevents misalignment"],
     faqs: [{ "q": "Is the procedure painful?", "a": "We use advanced numbing techniques." }, { "q": "How many visits?", "a": "Usually 1-2 visits." }],
-    keywords: ["pediatric pulp therapy", "pulpotomy", "pulpectomy", "kids dentistry", "Hyderabad"]
+    keywords: ["pediatric pulp therapy", "pulpotomy", "pulpectomy", "kids dentistry"]
   },
   "fluoride-therapy": {
     id: "fluoride-therapy",
@@ -1877,7 +1877,7 @@ export const treatmentsData: Record<string, TreatmentData> = {
     ],
     benefits: ["Strengthens enamel", "Prevents early decay"],
     faqs: [{ "q": "Is the procedure painful?", "a": "We use advanced numbing techniques." }, { "q": "How many visits?", "a": "Usually 1-2 visits." }],
-    keywords: ["fluoride therapy", "cavity prevention", "kids dentistry", "Hyderabad"]
+    keywords: ["fluoride therapy", "cavity prevention", "kids dentistry"]
   },
   "dental-sealants": {
     id: "dental-sealants",
@@ -1899,7 +1899,7 @@ export const treatmentsData: Record<string, TreatmentData> = {
     ],
     benefits: ["Shields deep grooves from decay", "Quick & painless for kids"],
     faqs: [{ "q": "Is the procedure painful?", "a": "We use advanced numbing techniques." }, { "q": "How many visits?", "a": "Usually 1-2 visits." }],
-    keywords: ["dental sealants", "cavity prevention", "kids teeth", "Hyderabad"]
+    keywords: ["dental sealants", "cavity prevention", "kids teeth"]
   },
   "space-maintainers": {
     id: "space-maintainers",
@@ -1921,7 +1921,7 @@ export const treatmentsData: Record<string, TreatmentData> = {
     ],
     benefits: ["Prevents crooked permanent teeth", "Helps proper jaw development"],
     faqs: [{ "q": "Is the procedure painful?", "a": "We use advanced numbing techniques." }, { "q": "How many visits?", "a": "Usually 1-2 visits." }],
-    keywords: ["space maintainers", "kids dentistry", "early orthodontics", "Hyderabad"]
+    keywords: ["space maintainers", "kids dentistry", "early orthodontics"]
   },
   "habit-breaking": {
     id: "habit-breaking",
@@ -1943,7 +1943,7 @@ export const treatmentsData: Record<string, TreatmentData> = {
     ],
     benefits: ["Prevents open bite", "Supports normal growth"],
     faqs: [{ "q": "Is the procedure painful?", "a": "We use advanced numbing techniques." }, { "q": "How many visits?", "a": "Usually 1-2 visits." }],
-    keywords: ["habit breaking appliances", "thumb sucking", "tongue thrust", "kids", "Hyderabad"]
+    keywords: ["habit breaking appliances", "thumb sucking", "tongue thrust", "kids"]
   },
   "mouthguards": {
     id: "mouthguards",
@@ -1965,7 +1965,7 @@ export const treatmentsData: Record<string, TreatmentData> = {
     ],
     benefits: ["Protects from fractures", "Essential for athletes"],
     faqs: [{ "q": "Is the procedure painful?", "a": "We use advanced numbing techniques." }, { "q": "How many visits?", "a": "Usually 1-2 visits." }],
-    keywords: ["sports dentistry", "mouthguards", "injury prevention", "Hyderabad"]
+    keywords: ["sports dentistry", "mouthguards", "injury prevention"]
   },
   "night-guards": {
     id: "night-guards",
@@ -1987,7 +1987,7 @@ export const treatmentsData: Record<string, TreatmentData> = {
     ],
     benefits: ["Reduces jaw strain", "Protects enamel from wear"],
     faqs: [{ "q": "Is the procedure painful?", "a": "We use advanced numbing techniques." }, { "q": "How many visits?", "a": "Usually 1-2 visits." }],
-    keywords: ["night guards", "bruxism", "teeth grinding", "Hyderabad"]
+    keywords: ["night guards", "bruxism", "teeth grinding"]
   },
   "sleep-apnea": {
     id: "sleep-apnea",
@@ -2009,7 +2009,7 @@ export const treatmentsData: Record<string, TreatmentData> = {
     ],
     benefits: ["Improves sleep quality", "Non-invasive therapy"],
     faqs: [{ "q": "Is the procedure painful?", "a": "We use advanced numbing techniques." }, { "q": "How many visits?", "a": "Usually 1-2 visits." }],
-    keywords: ["sleep apnea", "dental appliances", "snoring treatment", "Hyderabad"]
+    keywords: ["sleep apnea", "dental appliances", "snoring treatment"]
   },
   "dental-checkups": {
     id: "dental-checkups",
@@ -2031,7 +2031,7 @@ export const treatmentsData: Record<string, TreatmentData> = {
     ],
     benefits: ["Detects problems early", "Maintains lifelong oral health"],
     faqs: [{ "q": "Is the procedure painful?", "a": "We use advanced numbing techniques." }, { "q": "How many visits?", "a": "Usually 1-2 visits." }],
-    keywords: ["dental checkup", "routine dental exam", "preventive dentistry", "Hyderabad"]
+    keywords: ["dental checkup", "routine dental exam", "preventive dentistry"]
   },
   "digital-dentistry": {
     id: "digital-dentistry",
@@ -2053,7 +2053,7 @@ export const treatmentsData: Record<string, TreatmentData> = {
     ],
     benefits: ["Precision & accuracy", "Faster turnaround"],
     faqs: [{ "q": "Is the procedure painful?", "a": "We use advanced numbing techniques." }, { "q": "How many visits?", "a": "Usually 1-2 visits." }],
-    keywords: ["digital dentistry", "3D scans", "CAD CAM crowns", "Hyderabad"]
+    keywords: ["digital dentistry", "3D scans", "CAD CAM crowns"]
   },
   "intraoral-scans": {
     id: "intraoral-scans",
@@ -2075,7 +2075,7 @@ export const treatmentsData: Record<string, TreatmentData> = {
     ],
     benefits: ["High precision models", "No gag reflex"],
     faqs: [{ "q": "Is the procedure painful?", "a": "We use advanced numbing techniques." }, { "q": "How many visits?", "a": "Usually 1-2 visits." }],
-    keywords: ["intraoral scans", "3D dental scan", "digital impressions", "Hyderabad"]
+    keywords: ["intraoral scans", "3D dental scan", "digital impressions"]
   },
   "fluoride-treatment": {
     id: "fluoride-treatment",
@@ -2097,7 +2097,7 @@ export const treatmentsData: Record<string, TreatmentData> = {
     ],
     benefits: ["Protects against decay", "Safe & effective for all ages"],
     faqs: [{ "q": "Is the procedure painful?", "a": "We use advanced numbing techniques." }, { "q": "How many visits?", "a": "Usually 1-2 visits." }],
-    keywords: ["fluoride treatment", "cavity prevention", "tooth sensitivity", "Hyderabad"],
+    keywords: ["fluoride treatment", "cavity prevention", "tooth sensitivity"],
     recommendedProducts: [
       {
         id: "shy-nm-foam",
@@ -2139,7 +2139,7 @@ export const treatmentsData: Record<string, TreatmentData> = {
     ],
     benefits: ["Reduces sugar-related decay", "Improves gum healing"],
     faqs: [{ "q": "Is the procedure painful?", "a": "We use advanced numbing techniques." }, { "q": "How many visits?", "a": "Usually 1-2 visits." }],
-    keywords: ["nutritional counseling", "oral health diet", "preventive dentistry", "Hyderabad"]
+    keywords: ["nutritional counseling", "oral health diet", "preventive dentistry"]
   },
   "tobacco-cessation": {
     id: "tobacco-cessation",
@@ -2161,7 +2161,7 @@ export const treatmentsData: Record<string, TreatmentData> = {
     ],
     benefits: ["Reduces oral cancer risk", "Improves gum health"],
     faqs: [{ "q": "Is the procedure painful?", "a": "We use advanced numbing techniques." }, { "q": "How many visits?", "a": "Usually 1-2 visits." }],
-    keywords: ["tobacco cessation", "quit smoking", "oral cancer prevention", "Hyderabad"]
+    keywords: ["tobacco cessation", "quit smoking", "oral cancer prevention"]
   },
   "pediatric-preventive": {
     id: "pediatric-preventive",
@@ -2183,7 +2183,7 @@ export const treatmentsData: Record<string, TreatmentData> = {
     ],
     benefits: ["Fluoride, sealants & regular exams", "Builds healthy oral habits"],
     faqs: [{ "q": "Is the procedure painful?", "a": "We use advanced numbing techniques." }, { "q": "How many visits?", "a": "Usually 1-2 visits." }],
-    keywords: ["pediatric preventive care", "kids dentistry", "cavity prevention", "Hyderabad"]
+    keywords: ["pediatric preventive care", "kids dentistry", "cavity prevention"]
   },
   "pediatric-pulp-therapy": {
     id: "pediatric-pulp-therapy",
@@ -2205,7 +2205,7 @@ export const treatmentsData: Record<string, TreatmentData> = {
     ],
     benefits: ["Preserves baby teeth till natural shedding", "Relieves pain & infection"],
     faqs: [{ "q": "Is the procedure painful?", "a": "We use advanced numbing techniques." }, { "q": "How many visits?", "a": "Usually 1-2 visits." }],
-    keywords: ["pediatric pulp therapy", "kids root canal", "pulpotomy", "Hyderabad"]
+    keywords: ["pediatric pulp therapy", "kids root canal", "pulpotomy"]
   },
   "interceptive-ortho": {
     id: "interceptive-ortho",
@@ -2227,7 +2227,7 @@ export const treatmentsData: Record<string, TreatmentData> = {
     ],
     benefits: ["Prevents severe misalignment", "Improves jaw growth"],
     faqs: [{ "q": "Is the procedure painful?", "a": "We use advanced numbing techniques." }, { "q": "How many visits?", "a": "Usually 1-2 visits." }],
-    keywords: ["interceptive orthodontics", "early braces", "kids orthodontics", "Hyderabad"]
+    keywords: ["interceptive orthodontics", "early braces", "kids orthodontics"]
   },
   "myofunctional-therapy": {
     id: "myofunctional-therapy",
@@ -2249,7 +2249,7 @@ export const treatmentsData: Record<string, TreatmentData> = {
     ],
     benefits: ["Corrects tongue thrusting", "Enhances orthodontic results"],
     faqs: [{ "q": "Is the procedure painful?", "a": "We use advanced numbing techniques." }, { "q": "How many visits?", "a": "Usually 1-2 visits." }],
-    keywords: ["myofunctional therapy", "oral habits", "kids orthodontics", "Hyderabad"]
+    keywords: ["myofunctional therapy", "oral habits", "kids orthodontics"]
   },
   "early-childhood-caries": {
     id: "early-childhood-caries",
@@ -2271,7 +2271,7 @@ export const treatmentsData: Record<string, TreatmentData> = {
     ],
     benefits: ["Restores baby teeth", "Prevents long-term damage"],
     faqs: [{ "q": "Is the procedure painful?", "a": "We use advanced numbing techniques." }, { "q": "How many visits?", "a": "Usually 1-2 visits." }],
-    keywords: ["early childhood caries", "ECC treatment", "baby teeth cavities", "Hyderabad"]
+    keywords: ["early childhood caries", "ECC treatment", "baby teeth cavities"]
   },
   "pediatric-crowns": {
     id: "pediatric-crowns",
@@ -2293,7 +2293,7 @@ export const treatmentsData: Record<string, TreatmentData> = {
     ],
     benefits: ["Protects treated baby teeth", "Restores chewing & aesthetics"],
     faqs: [{ "q": "Is the procedure painful?", "a": "We use advanced numbing techniques." }, { "q": "How many visits?", "a": "Usually 1-2 visits." }],
-    keywords: ["pediatric crowns", "stainless steel crowns", "baby teeth restoration", "Hyderabad"]
+    keywords: ["pediatric crowns", "stainless steel crowns", "baby teeth restoration"]
   },
   "habit-appliances": {
     id: "habit-appliances",
@@ -2315,7 +2315,7 @@ export const treatmentsData: Record<string, TreatmentData> = {
     ],
     benefits: ["Prevents open bite", "Improves speech & bite"],
     faqs: [{ "q": "Is the procedure painful?", "a": "We use advanced numbing techniques." }, { "q": "How many visits?", "a": "Usually 1-2 visits." }],
-    keywords: ["habit breaking appliances", "thumb sucking", "tongue thrusting", "Hyderabad"]
+    keywords: ["habit breaking appliances", "thumb sucking", "tongue thrusting"]
   },
   "pulpotomy": {
     id: "pulpotomy",
@@ -2337,7 +2337,7 @@ export const treatmentsData: Record<string, TreatmentData> = {
     ],
     benefits: ["Preserves tooth structure", "Quick relief for kids"],
     faqs: [{ "q": "Is the procedure painful?", "a": "We use advanced numbing techniques." }, { "q": "How many visits?", "a": "Usually 1-2 visits." }],
-    keywords: ["pulpotomy", "pediatric root canal", "baby tooth pain relief", "Hyderabad"]
+    keywords: ["pulpotomy", "pediatric root canal", "baby tooth pain relief"]
   },
   "pulpectomy": {
     id: "pulpectomy",
@@ -2359,7 +2359,7 @@ export const treatmentsData: Record<string, TreatmentData> = {
     ],
     benefits: ["Treats severe infection", "Prevents abscess & swelling"],
     faqs: [{ "q": "Is the procedure painful?", "a": "We use advanced numbing techniques." }, { "q": "How many visits?", "a": "Usually 1-2 visits." }],
-    keywords: ["pulpectomy", "pediatric dentistry", "infected baby teeth", "Hyderabad"]
+    keywords: ["pulpectomy", "pediatric dentistry", "infected baby teeth"]
   },
   "pediatric-extractions": {
     id: "pediatric-extractions",
@@ -2381,7 +2381,7 @@ export const treatmentsData: Record<string, TreatmentData> = {
     ],
     benefits: ["Used only when necessary", "Ensures permanent teeth alignment"],
     faqs: [{ "q": "Is the procedure painful?", "a": "We use advanced numbing techniques." }, { "q": "How many visits?", "a": "Usually 1-2 visits." }],
-    keywords: ["pediatric extractions", "kids tooth removal", "safe extraction", "Hyderabad"]
+    keywords: ["pediatric extractions", "kids tooth removal", "safe extraction"]
   },
   "smile-designing": {
     id: "smile-designing",
@@ -2403,7 +2403,7 @@ export const treatmentsData: Record<string, TreatmentData> = {
     ],
     benefits: ["Try-on digital smile before treatment", "Personalized aesthetics"],
     faqs: [{ "q": "Is the procedure painful?", "a": "We use advanced numbing techniques." }, { "q": "How many visits?", "a": "Usually 1-2 visits." }],
-    keywords: ["smile designing", "digital smile design", "cosmetic dentistry", "Hyderabad"]
+    keywords: ["smile designing", "digital smile design", "cosmetic dentistry"]
   },
   "gum-depigmentation": {
     id: "gum-depigmentation",
@@ -2425,7 +2425,7 @@ export const treatmentsData: Record<string, TreatmentData> = {
     ],
     benefits: ["Safe & minimally invasive", "Improves smile aesthetics"],
     faqs: [{ "q": "Is the procedure painful?", "a": "We use advanced numbing techniques." }, { "q": "How many visits?", "a": "Usually 1-2 visits." }],
-    keywords: ["gum depigmentation", "pink gums", "laser gum lightening", "Hyderabad"]
+    keywords: ["gum depigmentation", "pink gums", "laser gum lightening"]
   },
   "crown-lengthening": {
     id: "crown-lengthening",
@@ -2447,7 +2447,7 @@ export const treatmentsData: Record<string, TreatmentData> = {
     ],
     benefits: ["Improves tooth visibility", "Essential for some restorations"],
     faqs: [{ "q": "Is the procedure painful?", "a": "We use advanced numbing techniques." }, { "q": "How many visits?", "a": "Usually 1-2 visits." }],
-    keywords: ["crown lengthening", "gummy smile correction", "periodontal surgery", "Hyderabad"]
+    keywords: ["crown lengthening", "gummy smile correction", "periodontal surgery"]
   },
   "ridge-augmentation": {
     id: "ridge-augmentation",
@@ -2469,7 +2469,7 @@ export const treatmentsData: Record<string, TreatmentData> = {
     ],
     benefits: ["Improves implant stability", "Restores natural jawline"],
     faqs: [{ "q": "Is the procedure painful?", "a": "We use advanced numbing techniques." }, { "q": "How many visits?", "a": "Usually 1-2 visits." }],
-    keywords: ["ridge augmentation", "bone graft", "dental implants", "Hyderabad"]
+    keywords: ["ridge augmentation", "bone graft", "dental implants"]
   },
   "sinus-lift": {
     id: "sinus-lift",
@@ -2491,7 +2491,7 @@ export const treatmentsData: Record<string, TreatmentData> = {
     ],
     benefits: ["Restores bone near sinus", "Increases implant success"],
     faqs: [{ "q": "Is the procedure painful?", "a": "We use advanced numbing techniques." }, { "q": "How many visits?", "a": "Usually 1-2 visits." }],
-    keywords: ["sinus lift", "bone graft", "dental implant surgery", "Hyderabad"]
+    keywords: ["sinus lift", "bone graft", "dental implant surgery"]
   },
   "bone-grafting": {
     id: "bone-grafting",
@@ -2513,7 +2513,7 @@ export const treatmentsData: Record<string, TreatmentData> = {
     ],
     benefits: ["Restores lost bone volume", "Improves oral function"],
     faqs: [{ "q": "Is the procedure painful?", "a": "We use advanced numbing techniques." }, { "q": "How many visits?", "a": "Usually 1-2 visits." }],
-    keywords: ["bone grafting", "jawbone regeneration", "implant support", "Hyderabad"]
+    keywords: ["bone grafting", "jawbone regeneration", "implant support"]
   },
   "apicoectomy": {
     id: "apicoectomy",
@@ -2535,7 +2535,7 @@ export const treatmentsData: Record<string, TreatmentData> = {
     ],
     benefits: ["Saves tooth after failed RCT", "Minimally invasive procedure"],
     faqs: [{ "q": "Is the procedure painful?", "a": "We use advanced numbing techniques." }, { "q": "How many visits?", "a": "Usually 1-2 visits." }],
-    keywords: ["apicoectomy", "root end surgery", "failed root canal", "Hyderabad"]
+    keywords: ["apicoectomy", "root end surgery", "failed root canal"]
   },
   "cleft-care": {
     id: "cleft-care",
@@ -2557,7 +2557,7 @@ export const treatmentsData: Record<string, TreatmentData> = {
     ],
     benefits: ["Restores function & aesthetics", "Improves speech development"],
     faqs: [{ "q": "Is the procedure painful?", "a": "We use advanced numbing techniques." }, { "q": "How many visits?", "a": "Usually 1-2 visits." }],
-    keywords: ["cleft lip", "cleft palate", "pediatric oral surgery", "Hyderabad"]
+    keywords: ["cleft lip", "cleft palate", "pediatric oral surgery"]
   },
   "tmj-therapy": {
     id: "tmj-therapy",
@@ -2579,7 +2579,7 @@ export const treatmentsData: Record<string, TreatmentData> = {
     ],
     benefits: ["Splints & physiotherapy", "Botox & advanced pain relief"],
     faqs: [{ "q": "Is the procedure painful?", "a": "We use advanced numbing techniques." }, { "q": "How many visits?", "a": "Usually 1-2 visits." }],
-    keywords: ["tmj treatment", "tmd therapy", "jaw pain", "clicking jaw", "Hyderabad"]
+    keywords: ["tmj treatment", "tmd therapy", "jaw pain", "clicking jaw"]
   },
   "sports-mouthguards": {
     id: "sports-mouthguards",
@@ -2601,7 +2601,7 @@ export const treatmentsData: Record<string, TreatmentData> = {
     ],
     benefits: ["Custom-fit comfort", "Prevents tooth & jaw injuries"],
     faqs: [{ "q": "Is the procedure painful?", "a": "We use advanced numbing techniques." }, { "q": "How many visits?", "a": "Usually 1-2 visits." }],
-    keywords: ["sports mouthguards", "dental trauma prevention", "Hyderabad"]
+    keywords: ["sports mouthguards", "dental trauma prevention"]
   },
   "oral-biopsy": {
     id: "oral-biopsy",
@@ -2623,7 +2623,7 @@ export const treatmentsData: Record<string, TreatmentData> = {
     ],
     benefits: ["Accurate diagnosis", "Early treatment planning"],
     faqs: [{ "q": "Is the procedure painful?", "a": "We use advanced numbing techniques." }, { "q": "How many visits?", "a": "Usually 1-2 visits." }],
-    keywords: ["oral biopsy", "suspicious lesions", "cancer testing", "Hyderabad"]
+    keywords: ["oral biopsy", "suspicious lesions", "cancer testing"]
   },
   "frenectomy": {
     id: "frenectomy",
@@ -2645,7 +2645,7 @@ export const treatmentsData: Record<string, TreatmentData> = {
     ],
     benefits: ["Improves speech & feeding", "Minimally invasive with laser"],
     faqs: [{ "q": "Is the procedure painful?", "a": "We use advanced numbing techniques." }, { "q": "How many visits?", "a": "Usually 1-2 visits." }],
-    keywords: ["frenectomy", "tongue tie", "lip tie", "speech difficulty", "Hyderabad"]
+    keywords: ["frenectomy", "tongue tie", "lip tie", "speech difficulty"]
   },
   "retainers": {
     id: "retainers",
@@ -2667,7 +2667,7 @@ export const treatmentsData: Record<string, TreatmentData> = {
     ],
     benefits: ["Prevents teeth shifting", "Available as clear or fixed types"],
     faqs: [{ "q": "Is the procedure painful?", "a": "We use advanced numbing techniques." }, { "q": "How many visits?", "a": "Usually 1-2 visits." }],
-    keywords: ["orthodontic retainers", "braces retention", "clear retainers", "Hyderabad"]
+    keywords: ["orthodontic retainers", "braces retention", "clear retainers"]
   },
   "dental-jewellery": {
     id: "dental-jewellery",
@@ -2689,7 +2689,7 @@ export const treatmentsData: Record<string, TreatmentData> = {
     ],
     benefits: ["Non-invasive cosmetic option", "Easily removable"],
     faqs: [{ "q": "Is the procedure painful?", "a": "We use advanced numbing techniques." }, { "q": "How many visits?", "a": "Usually 1-2 visits." }],
-    keywords: ["dental jewellery", "tooth gems", "cosmetic dentistry", "Hyderabad"]
+    keywords: ["dental jewellery", "tooth gems", "cosmetic dentistry"]
   },
   "preventive-sealants": {
     id: "preventive-sealants",
@@ -2711,7 +2711,7 @@ export const treatmentsData: Record<string, TreatmentData> = {
     ],
     benefits: ["Especially for kidsΓÇÖ molars", "Long-term cavity protection"],
     faqs: [{ "q": "Is the procedure painful?", "a": "We use advanced numbing techniques." }, { "q": "How many visits?", "a": "Usually 1-2 visits." }],
-    keywords: ["dental sealants", "cavity prevention", "kids dentistry", "Hyderabad"]
+    keywords: ["dental sealants", "cavity prevention", "kids dentistry"]
   },
   "oral-hygiene-instruction": {
     id: "oral-hygiene-instruction",
@@ -2733,7 +2733,7 @@ export const treatmentsData: Record<string, TreatmentData> = {
     ],
     benefits: ["Proper brushing techniques", "Prevents gum disease"],
     faqs: [{ "q": "Is the procedure painful?", "a": "We use advanced numbing techniques." }, { "q": "How many visits?", "a": "Usually 1-2 visits." }],
-    keywords: ["oral hygiene instruction", "brushing techniques", "flossing", "Hyderabad"]
+    keywords: ["oral hygiene instruction", "brushing techniques", "flossing"]
   },
   "preventive-programs": {
     id: "preventive-programs",
@@ -2755,7 +2755,7 @@ export const treatmentsData: Record<string, TreatmentData> = {
     ],
     benefits: ["Customized oral care schedules", "Early detection saves costs"],
     faqs: [{ "q": "Is the procedure painful?", "a": "We use advanced numbing techniques." }, { "q": "How many visits?", "a": "Usually 1-2 visits." }],
-    keywords: ["preventive dentistry programs", "checkups", "kids oral health", "Hyderabad"]
+    keywords: ["preventive dentistry programs", "checkups", "kids oral health"]
   },
   "digital-xrays": {
     id: "digital-xrays",
@@ -2777,7 +2777,7 @@ export const treatmentsData: Record<string, TreatmentData> = {
     ],
     benefits: ["Safe & accurate", "Instant digital results"],
     faqs: [{ "q": "Is the procedure painful?", "a": "We use advanced numbing techniques." }, { "q": "How many visits?", "a": "Usually 1-2 visits." }],
-    keywords: ["digital dental x-rays", "low radiation imaging", "Hyderabad"]
+    keywords: ["digital dental x-rays", "low radiation imaging"]
   },
   "dental-cleaning": {
     id: "dental-cleaning",
@@ -2799,7 +2799,7 @@ export const treatmentsData: Record<string, TreatmentData> = {
     ],
     benefits: ["Removes tartar & stains", "Fresh breath & healthier gums"],
     faqs: [{ "q": "Is the procedure painful?", "a": "We use advanced numbing techniques." }, { "q": "How many visits?", "a": "Usually 1-2 visits." }],
-    keywords: ["dental cleaning", "scaling", "polishing", "plaque removal", "Hyderabad"]
+    keywords: ["dental cleaning", "scaling", "polishing", "plaque removal"]
   },
   "oral-hygiene": {
     id: "oral-hygiene",
@@ -2821,7 +2821,7 @@ export const treatmentsData: Record<string, TreatmentData> = {
     ],
     benefits: ["Prevents gum disease & cavities", "Personalized oral hygiene advice"],
     faqs: [{ "q": "Is the procedure painful?", "a": "We use advanced numbing techniques." }, { "q": "How many visits?", "a": "Usually 1-2 visits." }],
-    keywords: ["oral hygiene", "brushing technique", "flossing", "Hyderabad"]
+    keywords: ["oral hygiene", "brushing technique", "flossing"]
   },
   "geriatric-dentistry": {
     id: "geriatric-dentistry",
@@ -2843,7 +2843,7 @@ export const treatmentsData: Record<string, TreatmentData> = {
     ],
     benefits: ["Comfortable treatment approach", "Focus on function & comfort"],
     faqs: [{ "q": "Is the procedure painful?", "a": "We use advanced numbing techniques." }, { "q": "How many visits?", "a": "Usually 1-2 visits." }],
-    keywords: ["geriatric dentistry", "senior care", "elderly dental treatment", "Hyderabad"]
+    keywords: ["geriatric dentistry", "senior care", "elderly dental treatment"]
   },
   "oral-medicine": {
     id: "oral-medicine",
@@ -2865,7 +2865,7 @@ export const treatmentsData: Record<string, TreatmentData> = {
     ],
     benefits: ["Identifies mouth diseases early", "Guides proper treatment"],
     faqs: [{ "q": "Is the procedure painful?", "a": "We use advanced numbing techniques." }, { "q": "How many visits?", "a": "Usually 1-2 visits." }],
-    keywords: ["oral medicine", "oral lesions", "dental diagnosis", "Hyderabad"]
+    keywords: ["oral medicine", "oral lesions", "dental diagnosis"]
   },
   "maxillofacial-prosthetics": {
     id: "maxillofacial-prosthetics",
@@ -2887,7 +2887,7 @@ export const treatmentsData: Record<string, TreatmentData> = {
     ],
     benefits: ["Restores function & appearance", "Improves speech & chewing"],
     faqs: [{ "q": "Is the procedure painful?", "a": "We use advanced numbing techniques." }, { "q": "How many visits?", "a": "Usually 1-2 visits." }],
-    keywords: ["maxillofacial prosthetics", "prosthodontics", "oral rehabilitation", "Hyderabad"]
+    keywords: ["maxillofacial prosthetics", "prosthodontics", "oral rehabilitation"]
   },
 
   "pre-ortho": {
@@ -2910,7 +2910,7 @@ export const treatmentsData: Record<string, TreatmentData> = {
     ],
     benefits: ["Prevents severe misalignment", "Reduces need for future braces"],
     faqs: [{ "q": "Is the procedure painful?", "a": "We use advanced numbing techniques." }, { "q": "How many visits?", "a": "Usually 1-2 visits." }],
-    keywords: ["pre orthodontic guidance", "interceptive orthodontics", "kids braces", "Hyderabad"]
+    keywords: ["pre orthodontic guidance", "interceptive orthodontics", "kids braces"]
   },
   "tongue-cleaning": {
     id: "tongue-cleaning",
@@ -2932,7 +2932,7 @@ export const treatmentsData: Record<string, TreatmentData> = {
     ],
     benefits: ["Improves breath freshness", "Removes harmful bacteria"],
     faqs: [{ "q": "Is the procedure painful?", "a": "We use advanced numbing techniques." }, { "q": "How many visits?", "a": "Usually 1-2 visits." }],
-    keywords: ["tongue cleaning", "oral hygiene", "bad breath", "Hyderabad"]
+    keywords: ["tongue cleaning", "oral hygiene", "bad breath"]
   },
   "smoking-cessation": {
     id: "smoking-cessation",
@@ -2954,7 +2954,7 @@ export const treatmentsData: Record<string, TreatmentData> = {
     ],
     benefits: ["Prevents oral cancer risk", "Improves overall oral health"],
     faqs: [{ "q": "Is the procedure painful?", "a": "We use advanced numbing techniques." }, { "q": "How many visits?", "a": "Usually 1-2 visits." }],
-    keywords: ["smoking cessation counseling", "quit tobacco", "oral cancer prevention", "Hyderabad"]
+    keywords: ["smoking cessation counseling", "quit tobacco", "oral cancer prevention"]
   },
   "pediatric-emergency": {
     id: "pediatric-emergency",
@@ -2976,6 +2976,6 @@ export const treatmentsData: Record<string, TreatmentData> = {
     ],
     benefits: ["Handles trauma & sudden pain", "Gentle approach for children"],
     faqs: [{ "q": "Is the procedure painful?", "a": "We use advanced numbing techniques." }, { "q": "How many visits?", "a": "Usually 1-2 visits." }],
-    keywords: ["kids dental emergency", "pediatric emergency care", "tooth injury", "Hyderabad"]
+    keywords: ["kids dental emergency", "pediatric emergency care", "tooth injury"]
   },
 };

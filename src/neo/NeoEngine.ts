@@ -11,6 +11,7 @@ import { ConfidenceCalculator } from './ConfidenceCalculator';
 import { RiskAssessor } from './RiskAssessor';
 import { normalizeClinicalInput } from './NeoSynonyms';
 import { AuthorityHelper } from './NeoAuthority';
+import { NeoTime } from './NeoTime';
 
 // Specialist Module Imports
 import { RADIOLOGY_DB, RadiologyHelper } from './NeoRadiology';
@@ -41,6 +42,10 @@ export class NeoEngine {
         if (intent === 'availability') return this.wrap(this.handleAvailability());
         if (intent === 'care') return this.wrap(this.handleCare(cleanInput));
         if (intent === 'greeting') return this.wrap(NEO_KNOWLEDGE_GRAPH['root']);
+
+        // 🚀 NEW: DIRECT CLINIC/DOCTOR ROUTING (Anti-Fallback logic)
+        if (cleanInput.includes('lead_doctor')) return this.wrap(NEO_KNOWLEDGE_GRAPH['doctor_info']);
+        if (cleanInput.includes('clinic_info')) return this.wrap(NEO_KNOWLEDGE_GRAPH['clinic_meta']);
 
         // --- NEW: SPECIALIST KNOWLEDGE LAYER ---
         const specialistNode = this.findSpecialistKnowledge(cleanInput);
@@ -290,23 +295,25 @@ export class NeoEngine {
     private static handleCost(input: string): ClinicalNode {
         const lower = input.toLowerCase();
 
-        // Improved multi-match for TARIFF_DB
+        // 1. Detect Specific Treatment
         const item = TARIFF_DB.find(t =>
             lower.includes(t.id) ||
-            (t.id === 'rct' && lower.includes("root canal")) ||
+            (t.id === 'rct' && (lower.includes("root canal") || lower.includes("rct") || lower.includes("nerve"))) ||
             (t.id === 'implant' && lower.includes("implant")) ||
             (t.id === 'veneer' && lower.includes("veneer")) ||
-            (t.id === 'invisalign' && lower.includes("aligner")) ||
+            (t.id === 'invisalign' && (lower.includes("aligner") || lower.includes("braces"))) ||
             (t.id === 'whitening' && lower.includes("whiten"))
         );
 
+        // 2. Return Specific Price if found
         if (item) {
             return {
                 id: 'cost_response',
                 type: 'info',
                 text: {
                     en: `The estimated cost for **${item.name.en}** starts at ${item.price.currency} ${item.price.min}${item.price.max ? ' - ' + item.price.max : ''}. \n\n*Note: This is a provisional estimate. Final cost depends on clinical examination.*`,
-                    ta: `${item.name.ta || item.name.en} விலை ${item.price.min} முதல் தொடங்குகிறது.`
+                    ta: `${item.name.ta || item.name.en} விலை ${item.price.min} முதல் தொடங்குகிறது.`,
+                    te: `${item.name.en} ఖరీదు ${item.price.min} నుండి ప్రారంభమవుతుంది.`
                 },
                 possibilities: [{
                     title: `Plan ${item.name.en}`,
@@ -317,13 +324,22 @@ export class NeoEngine {
                 }]
             };
         }
+
+        // 3. Fallback: Ask which treatment (Interactive Question)
         return {
-            id: 'cost_unknown',
-            type: 'info',
+            id: 'cost_clarification',
+            type: 'question',
             text: {
-                en: "I can estimate costs for Root Canals, Implants, Veneers, Aligners, and Whitening. Which treatment would you like to know about?",
-                ta: "எந்த சிகிச்சையின் விலை உங்களுக்கு வேண்டும்?"
-            }
+                en: "I can provide cost estimates for our most common treatments. Which one are you interested in?",
+                ta: "எந்த சிகிச்சையின் விலை உங்களுக்கு வேண்டும்?",
+                te: "మీకు ఏ చికిత్స ఖరీదు వివరాలు కావాలి?"
+            },
+            options: [
+                { label: { en: "Root Canal (RCT)", ta: "வேர் சிகிச்சை", te: "రూట్ కెనాల్" }, nextId: 'assess_pulpitis', keywords: ['rct', 'root canal'] },
+                { label: { en: "Dental Implant", ta: "இம்பிளான்ட்", te: "ఇంప్లాంట్" }, nextId: 'missing_tooth', keywords: ['implant'] },
+                { label: { en: "Braces / Aligners", ta: "பல் வரிசை", te: "క్లిప్పులు" }, nextId: 'cosmetic', keywords: ['braces', 'aligner', 'invisalign'] },
+                { label: { en: "Teeth Whitening", ta: "வெண்மையாக்குதல்", te: "వైట్నింగ్" }, nextId: 'assess_whitening', keywords: ['whitening'] }
+            ]
         };
     }
 
@@ -343,13 +359,15 @@ export class NeoEngine {
     }
 
     private static handleAvailability(): ClinicalNode {
-        const isOpen = ROSTER_DB.isOpenNow();
+        const isOpen = NeoTime.isOpenNow();
+        const currentTime = NeoTime.getCurrentTimeStr();
+
         return {
             id: 'availability_response',
             type: 'info',
             text: {
-                en: isOpen ? "✅ Yes, Dr. Dhivakaran is currently available." : "🕒 The clinic is currently closed. We open at 11:00 AM.",
-                ta: isOpen ? "✅ ஆம், டாக்டர் இப்போது இருக்கிறார்." : "🕒 கிளினிக் இப்போது மூடப்பட்டுள்ளது."
+                en: `Current Time: ${currentTime}. ${isOpen ? "✅ Yes, Dr. Dhivakaran is currently available at Noble Dental Care." : "🕒 The clinic is currently closed. We open at 11:00 AM."}`,
+                ta: `தற்போதைய நேரம்: ${currentTime}. ${isOpen ? "✅ ஆம், டாக்டர் இப்போது இருக்கிறார்." : "🕒 கிளினிக் இப்போது மூடப்பட்டுள்ளது."}`
             }
         };
     }

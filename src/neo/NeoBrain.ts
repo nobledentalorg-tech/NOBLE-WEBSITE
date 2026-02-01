@@ -24,6 +24,7 @@ export class NeoBrain {
         userInput: string,
         patientContext: PatientContext,
         geminiCaller: (query: string, context: string) => Promise<string>,
+        proactiveVerifier?: (query: string, answer: string) => Promise<boolean>,
         currentStateId: string = 'root',
         historyLength: number = 0
     ): Promise<NeoResponse> {
@@ -64,15 +65,44 @@ export class NeoBrain {
         }
 
         // ==================================================
+        // TIER 1.5: KNOWLEDGE VAULT (The Authority)
+        // ==================================================
+        const { NeoVaultHelper } = await import('./NeoVault');
+        const vaultMatch = NeoVaultHelper.findEntry(userInput);
+        if (vaultMatch) {
+            const vaultAnswer = NeoVaultHelper.getResponse(vaultMatch, 'en'); // Fallback to EN for processing
+            return {
+                node: {
+                    id: `vault_${vaultMatch.id}`,
+                    type: 'info',
+                    text: vaultMatch.content as any, // Multi-lang support
+                    possibilities: []
+                },
+                confidenceScore: 95,
+                urgency: 'low'
+            };
+        }
+
+        // ==================================================
         // TIER 2: CLINICAL ENGINE (The Specialist)
         // ==================================================
 
         // Use the clinical engine to try and find a match in the specialty DBs or Graph
         const neoResponse = NeoEngine.processInput(userInput, currentStateId, historyLength);
 
-        // If NeoEngine found a HIGH confidence clinical match, we use it!
+        // If NeoEngine found a HIGH confidence clinical match, we double-check or return!
         if (neoResponse.node.id !== 'fallback' && neoResponse.confidenceScore > 90) {
-            return neoResponse;
+            // TIER 2.5: PROACTIVE AUDIT (The Clinical Proctor)
+            if (proactiveVerifier) {
+                const isRelevant = await proactiveVerifier(userInput, neoResponse.node.text.en);
+                if (isRelevant) {
+                    return neoResponse;
+                }
+                console.log("[NeoBrain] Proactive Audit REJECTED the match. Falling back to Gemini.");
+                // We don't return here, we fall through to Gemini Fallback (Tier 3)
+            } else {
+                return neoResponse;
+            }
         }
 
         // ==================================================
@@ -96,7 +126,7 @@ export class NeoBrain {
             - Pregnancy: ${patientContext.isPregnant ? 'Yes, ' + (patientContext.trimester || 'unknown') + ' trimester' : 'No'}
             
             Clinic Knowledge:
-            - Lead: Dr. Dhivakaran.
+            - Lead: Dr. Dhivakaran (Pioneer in Dentistry, 11+ Years experience, Contributor to 'Triumph's Complete Review of Dentistry', Director of HealthFlo).
             - Location: Nallagandla, Hyderabad.
         `;
 
@@ -119,7 +149,25 @@ export class NeoBrain {
                 urgency: neoResponse.urgency || 'low'
             };
         } catch (error) {
-            return neoResponse; // Fallback to whatever NeoEngine found if Gemini fails
+            console.error("Gemini Error:", error);
+            // If Gemini fails, we check if we have a halfway decent answer from NeoEngine
+            if (neoResponse.node.id !== 'fallback') {
+                return neoResponse;
+            }
+
+            // If even NeoEngine is at 'fallback', we give a more "intelligent" AI-is-thinking-but-failed message
+            return {
+                node: {
+                    id: 'ai_warmup_fallback',
+                    type: 'info',
+                    text: {
+                        en: "I'm having a bit of trouble connecting to my clinical intelligence unit right now. While I warm up, could you tell me more about your specific symptoms?",
+                        ta: "தற்போது என்னால் இணைக்க முடியவில்லை. உங்கள் அறிகுறிகளை பற்றி சொல்லுங்கள்."
+                    }
+                },
+                confidenceScore: 50,
+                urgency: 'low'
+            };
         }
     }
 

@@ -1,5 +1,5 @@
-import { auth } from "@/src/auth"
-import { getSupabaseClient } from "@/src/lib/supabase"
+import { auth } from "@/auth"
+import { getSupabaseClient } from "@/lib/supabase"
 import { NextResponse } from "next/server"
 
 // Check for specific admin emails (hardcoded for now, can be moved to DB role later)

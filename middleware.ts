@@ -2,7 +2,7 @@ import { NextResponse } from 'next/server';
 import type { NextRequest } from 'next/server';
 
 export function middleware(request: NextRequest) {
-    const nonce = Buffer.from(crypto.randomUUID()).toString('base64');
+    const nonce = crypto.randomUUID();
 
     // Relaxed CSP Policy to restore functionality
     // - strict-dynamic removed to allow Next.js hydration scripts

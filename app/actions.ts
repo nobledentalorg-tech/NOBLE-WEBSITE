@@ -4,12 +4,11 @@ import { NeoEngine } from '@/neo/NeoEngine';
 import { NeoBrain, PatientContext } from '@/neo/NeoBrain';
 import { NeoResponse } from '@/types/neoSchema';
 import { GoogleGenerativeAI } from '@google/generative-ai';
-import { PrismaClient } from '@prisma/client';
+import { prisma } from '@/lib/prisma';
 
 // 1. Setup
 // We use a global variable to prevent multiple Prisma instances in development
-const prisma = new PrismaClient();
-const genAI = new GoogleGenerativeAI(process.env.GOOGLE_API_KEY || '');
+const genAI = new GoogleGenerativeAI((process.env.GOOGLE_API_KEY || '').trim().replace(/^['"]|['"]$/g, ''));
 const model = genAI.getGenerativeModel({ model: 'gemini-1.5-flash' });
 
 // ✅ NEW: Interface for History
@@ -38,25 +37,40 @@ export async function getNeoResponse(
             input,
             context,
             async (q, ctx) => await callGeminiFallback(q, ctx),
+            async (q, a) => {
+                const normalizedQ = q.toLowerCase().trim();
+                // 1. Check verified memory first
+                const existing = await prisma.neoMemory.findFirst({
+                    where: { query: normalizedQ, answer: a, isVerified: true }
+                });
+                if (existing) return true;
+
+                // 2. Ask Gemini to verify
+                const approved = await callGeminiVerifier(q, a);
+
+                // 3. Cache the approval
+                if (approved) {
+                    await prisma.neoMemory.create({
+                        data: { query: normalizedQ, answer: a, isVerified: true }
+                    }).catch(() => { });
+                }
+                return approved;
+            },
             currentStateId,
             history.length
         );
 
-        // LAYER 2: MEMORY (Save verified answers if needed)
-        const normalizedQuery = input.toLowerCase().trim();
-        // Skip saving safety interceptions or very short answers
+        // LAYER 2: MEMORY (Save fallback answers for auditing)
         if (hybridResponse.node.id === 'hybrid_gemini' && hybridResponse.node.text.en.length > 20) {
             try {
                 await prisma.neoMemory.create({
                     data: {
-                        query: normalizedQuery,
+                        query: input.toLowerCase().trim(),
                         answer: hybridResponse.node.text.en,
                         isVerified: false
                     }
-                });
-            } catch (saveError) {
-                // Ignore uniqueness errors
-            }
+                }).catch(() => { });
+            } catch (e) { }
         }
 
         return hybridResponse;
@@ -87,15 +101,45 @@ async function callGeminiFallback(userQuery: string, context: string): Promise<s
     CURRENT USER QUERY: "${userQuery}"
     
     Rules:
-    1. Answer only dental/clinic questions.
+    1. Primarily answer dental/clinic questions. If the user asks general questions (e.g. general knowledge, greetings), answer briefly then gently pivot back to dental health.
     2. Use the previous conversation to understand context (e.g. if they say "How much is it?", check what "it" refers to).
     3. Max 3 sentences. Professional & Warm.
     4. No specific prescriptions.
     5. If unsure about specific Noble Dental prices, say "Costs vary, please visit for an estimate."
     `;
 
-    const result = await model.generateContent(prompt);
-    return result.response.text();
+    console.log("[Gemini] Calling for query:", userQuery);
+    try {
+        const result = await model.generateContent(prompt);
+        const responseText = result.response.text();
+        console.log("[Gemini] Response received:", responseText.length, "chars");
+        return responseText;
+    } catch (genError: any) {
+        console.error("[Gemini] Generation failed:", genError.message || genError);
+        throw genError;
+    }
+}
+
+async function callGeminiVerifier(query: string, answer: string): Promise<boolean> {
+    const prompt = `
+        As a clinical proctor for Noble Dental Care, evaluate if the following response is RELEVANT and CORRECT for the user's question.
+        
+        USER QUESTION: "${query}"
+        PROPOSED RESPONSE: "${answer}"
+        
+        Is this response relevant? Answer ONLY "YES" or "NO".
+    `;
+
+    try {
+        console.log("[Verifier] Checking relevance for:", query.substring(0, 30));
+        const result = await model.generateContent(prompt);
+        const text = result.response.text().toUpperCase();
+        const isApproved = text.includes('YES');
+        console.log("[Verifier] Approved:", isApproved);
+        return isApproved;
+    } catch (e) {
+        return true; // Safety fallback
+    }
 }
 
 

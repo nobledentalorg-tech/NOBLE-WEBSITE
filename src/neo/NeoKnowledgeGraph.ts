@@ -681,6 +681,36 @@ export const NEO_KNOWLEDGE_GRAPH: Record<string, ClinicalNode> = {
             action: "Book Crown Fitting",
             relatedSlug: "root-canal"
         }]
+    },
+    // --- CLINIC & DOCTOR META ---
+    doctor_info: {
+        id: 'doctor_info',
+        type: 'info',
+        text: {
+            en: "Dr. Dhivakaran is a pioneer in the field of Dentistry (11+ Years). He is a contributor to the academic book 'Triumph's Complete Review of Dentistry' and serves as the Director of HealthFlo.",
+            ta: "டாக்டர் திவாகரன் 11 ஆண்டுகளுக்கும் மேலான அனுபவம் கொண்ட பல் மருத்துவ முன்னோடி. இவர் 'Triumph's Complete Review of Dentistry' புத்தகத்தின் பங்களிப்பாளர் மற்றும் HealthFlo-ன் இயக்குனர்."
+        },
+        possibilities: [{
+            title: "Meet Dr. Dhivakaran",
+            description: "Specialist in Zeiss Microscopic RCT and Digital Implants.",
+            likelihood: 'High',
+            action: "View Doctor Profile",
+            relatedSlug: "about"
+        }]
+    },
+    clinic_meta: {
+        id: 'clinic_meta',
+        type: 'info',
+        text: {
+            en: "Noble Dental Care Nallagandla is a premium multispecialty center specializing in Microscopic Dentistry. We are located near Citizen Hospital, serving Nallagandla, Tellapur, and Gachibowli.",
+            ta: "Noble Dental Care நல்லகண்ட்லாவில் உள்ள ஒரு உயர்தர பல் மருத்துவமனை. இது சிட்டிசன் மருத்துவமனை அருகில் அமைந்துள்ளது."
+        },
+        possibilities: [{
+            title: "Visit Clinic",
+            description: "Premium dental care with advanced AI and Microscopic technology.",
+            likelihood: 'High',
+            action: "Get Directions",
+            relatedSlug: "contact"
+        }]
     }
 };
- 
