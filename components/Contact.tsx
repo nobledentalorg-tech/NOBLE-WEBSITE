@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
-import { Phone, MapPin, ArrowRight, MessageCircle, User, Stethoscope, FileText, Sparkles, Plus, Heart } from 'lucide-react';
+import { Phone, MapPin, ArrowRight, MessageCircle, User, Stethoscope, FileText, Sparkles, Plus, Heart, Navigation } from 'lucide-react';
 import { RevealOnScroll } from './RevealOnScroll';
 
 import { useLocation } from '@/context/LocationContext';

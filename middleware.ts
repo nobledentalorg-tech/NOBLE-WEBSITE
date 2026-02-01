@@ -24,7 +24,7 @@ export function middleware(request: NextRequest) {
     font-src 'self' https://fonts.gstatic.com data:;
     media-src 'self';
     frame-src 'self' https://www.google.com https://www.gstatic.com https://maps.google.com;
-    connect-src 'self' https://www.google-analytics.com https://region1.google-analytics.com https://*.google-analytics.com https://www.googletagmanager.com https://*.partytown.js https://kkcqngvjrsujwdftjoro.supabase.co https://*.vercel.app;
+    connect-src 'self' https://www.google-analytics.com https://region1.google-analytics.com https://*.google-analytics.com https://www.googletagmanager.com https://*.partytown.js https://kkcqngvjrsujwdftjoro.supabase.co https://*.vercel.app https://generativeai.googleapis.com;
     worker-src 'self' blob:;
     base-uri 'self';
     form-action 'self';

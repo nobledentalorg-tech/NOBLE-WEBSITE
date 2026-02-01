@@ -2,9 +2,8 @@
 
 import React, { useState, useRef, useEffect } from 'react';
 import { Send, X, Bot, MessageSquare, ExternalLink, Mic, MicOff } from 'lucide-react';
-// import { sendMessageToAssistant } from '@/services/geminiService'; // Deprecated
-import { NeoEngine } from '@/src/neo/NeoEngine';
-import { ChatMessage } from '@/types'; // Updated import
+import { getNeoResponse } from '@/app/actions';
+import { ChatMessage } from '@/types';
 
 interface ChatWidgetProps {
   onBookClick?: () => void;
@@ -135,13 +134,15 @@ const ChatWidget: React.FC<ChatWidgetProps> = ({ onBookClick }) => {
     setInput('');
     setIsLoading(true);
 
-    // 2. Neo Logic Processing (Lazy Loaded Logic)
-    // We import NeoEngine dynamically inside the handler to be absolutely sure it doesn't load early
-    // though the top level import might be hoisted, keeping it here emphasizes intent.
-    // Ideally we'd dynamic import the engine too but simpler to rely on isLoaded flag for now.
+    try {
+      // 2. Call Server Action (Hybrid Neo + Gemini)
+      const simpleHistory = messages.map(m => ({ role: m.role, text: m.text }));
+      const response = await getNeoResponse(
+        userMsg.text,
+        currentNodeId,
+        simpleHistory
+      );
 
-    setTimeout(() => {
-      const response = NeoEngine.processInput(userMsg.text, currentNodeId, messages.length);
       const nextNode = response.node;
       setCurrentNodeId(nextNode.id);
 
@@ -150,12 +151,22 @@ const ChatWidget: React.FC<ChatWidgetProps> = ({ onBookClick }) => {
         text: (language === 'ta' && nextNode.text.ta) ? nextNode.text.ta : nextNode.text.en,
         timestamp: Date.now(),
         possibilities: nextNode.possibilities,
-        sources: []
+        sources: [],
+        urgency: response.urgency
       };
 
       setMessages(prev => [...prev, aiResponse]);
+    } catch (error) {
+      console.error('Neo AI Error:', error);
+      const errorResponse: ChatMessage = {
+        role: 'model',
+        text: 'I apologize, but I encountered an issue. Please try again or contact us directly.',
+        timestamp: Date.now()
+      };
+      setMessages(prev => [...prev, errorResponse]);
+    } finally {
       setIsLoading(false);
-    }, 600);
+    }
   };
 
 

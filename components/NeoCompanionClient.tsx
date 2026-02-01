@@ -268,27 +268,6 @@ export default function NeoCompanionClient() {
                                 </div>
                             </div>
                         ))}
-
-                        {messages.length >= 2 && !isLoading && (
-                            <div className="flex justify-center mt-12 mb-8 animate-in slide-in-from-bottom-6 duration-1000">
-                                <div className="glass-panel p-8 rounded-[2.5rem] border border-red-500/20 shadow-2xl text-center max-w-sm relative overflow-hidden group">
-                                    <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-red-500 to-transparent opacity-50"></div>
-                                    <div className="w-14 h-14 bg-red-100 dark:bg-red-900/30 rounded-2xl flex items-center justify-center mx-auto mb-6 text-red-600 dark:text-red-400 group-hover:scale-110 transition-transform">
-                                        <MessageCircle size={28} />
-                                    </div>
-                                    <h3 className="text-[10px] font-black uppercase tracking-[0.3em] text-zinc-500 dark:text-zinc-500 mb-3">Professional Validation</h3>
-                                    <p className="text-base font-bold text-zinc-900 dark:text-white mb-8 leading-tight">Show your Neo AI results to Dr. Dhivakaran for a clinical confirmation.</p>
-                                    <a
-                                        href="https://wa.me/918610425342?text=Hi%20Dr.%20Dhivakaran,%20I%20just%20finished%20a%20Neo%20AI%20consultation%20and%20would%20like%20to%20share%20the%20results%20for%20confirmation."
-                                        target="_blank"
-                                        rel="noopener noreferrer"
-                                        className="w-full inline-flex items-center justify-center gap-3 px-8 py-4 bg-green-600 hover:bg-green-700 text-white rounded-2xl font-black text-xs uppercase tracking-widest transition-all hover:-translate-y-1 shadow-lg shadow-green-500/20"
-                                    >
-                                        Share on WhatsApp
-                                    </a>
-                                </div>
-                            </div>
-                        )}
                         {isLoading && (
                             <div className="flex gap-4 animate-in fade-in">
                                 <div className="w-8 h-8 rounded-full bg-zinc-900 border border-white/10 flex items-center justify-center"><Flame size={14} className="text-red-500" /></div>
@@ -321,6 +300,19 @@ export default function NeoCompanionClient() {
                             <Send size={16} />
                         </button>
                     </div>
+
+                    {/* Optional Share Results Link - Only shown when there are messages */}
+                    {messages.length >= 2 && (
+                        <a
+                            href="https://wa.me/918610425342?text=Hi%20Dr.%20Dhivakaran,%20I%20just%20finished%20a%20Neo%20AI%20consultation%20and%20would%20like%20to%20share%20the%20results%20for%20confirmation."
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="mt-3 text-center text-xs text-zinc-500 hover:text-green-600 dark:hover:text-green-400 transition-colors flex items-center justify-center gap-2 group"
+                        >
+                            <MessageCircle size={12} className="opacity-60 group-hover:opacity-100" />
+                            <span>Share results with Dr. Dhivakaran for validation</span>
+                        </a>
+                    )}
 
                     {/* Pop-up Quick Menu inside INPUT BAR area for consistency with logic */}
                     {showMenu && (
