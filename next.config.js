@@ -56,6 +56,41 @@ const nextConfig = {
         destination: '/treatments',
         permanent: true,
       },
+      {
+        source: '/services/root-canal.html',
+        destination: '/treatments/root-canal',
+        permanent: true,
+      },
+      {
+        source: '/services/implants.html',
+        destination: '/treatments/dental-implants',
+        permanent: true,
+      },
+      {
+        source: '/services/cleaning.html',
+        destination: '/treatments/dental-cleaning',
+        permanent: true,
+      },
+      {
+        source: '/services/gum-treatment.html',
+        destination: '/treatments/gum-disease',
+        permanent: true,
+      },
+      {
+        source: '/services/kids.html',
+        destination: '/treatments/kids-dentistry',
+        permanent: true,
+      },
+      {
+        source: '/services/whitening.html',
+        destination: '/treatments/teeth-whitening',
+        permanent: true,
+      },
+      {
+        source: '/sedation-dentistry',
+        destination: '/treatments/sedation-dentistry',
+        permanent: true,
+      },
     ];
   },
 };

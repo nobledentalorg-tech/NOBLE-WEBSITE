@@ -41,7 +41,6 @@ export const RevealOnScroll = ({ children, className = "", delay = 0 }: RevealPr
         }`}
       style={{
         transitionDelay: `${delay}ms`,
-        minHeight: isVisible ? 'auto' : '100px' // Safety placeholder
       }}
     >
       {hasRendered ? children : <div className="h-20" />}

@@ -8,7 +8,7 @@ import {
    CheckCircle2, AlertTriangle, ChevronRight,
    Eye, Drill, Layers, Siren, Microscope,
    HeartPulse, FileText, Check, X, Thermometer, Phone,
-   Info, Star, Calendar, Sparkles
+   Info, Star, Calendar, Sparkles, MessageCircle
 } from 'lucide-react';
 import { RevealOnScroll } from '@/components/RevealOnScroll';
 import SchemaFAQ from '@/components/SchemaFAQ';
@@ -679,10 +679,42 @@ export default function RootCanalRefactored() {
                            </tbody>
                         </table>
                      </div>
+                     <div className="mt-8 flex justify-center">
+                        <a
+                           href="https://wa.me/918610425342?text=Hi%20Dr.%20Dhivakaran,%20I%20have%20a%20question%20about%20my%20case%20after%20reading%20the%20Decision%20Matrix."
+                           target="_blank"
+                           rel="noopener noreferrer"
+                           className="inline-flex items-center gap-3 px-6 py-3 bg-purple-600 hover:bg-purple-700 text-white rounded-full shadow-lg transition-all hover:-translate-y-1 font-bold text-xs uppercase tracking-widest"
+                        >
+                           <MessageCircle size={16} /> Ask Dr. Dhivakaran a specific question about your case
+                        </a>
+                     </div>
                   </div>
                </div>
             </div>
          </section>
+
+         {/* ================= EMERGENCY SECTION (MOVED UP) ================= */}
+         <div className="py-20 bg-[#F2F2F7] dark:bg-black border-t border-b border-slate-200 dark:border-slate-800">
+            <div className="max-w-4xl mx-auto px-6 text-center">
+               <div className="w-20 h-red-100 dark:bg-red-900/30 rounded-full flex items-center justify-center mx-auto mb-6 text-red-600 dark:text-red-400">
+                  <Siren size={32} />
+               </div>
+               <h2 className="text-3xl font-bold text-slate-900 dark:text-white mb-4 tracking-tight uppercase italic">Emergency Pain Relief.</h2>
+               <p className="text-slate-600 dark:text-slate-400 mb-8 max-w-xl mx-auto leading-relaxed font-medium">
+                  Search no further for a **Dental Clinic in Nallagandla** for an emergency **Root Canal Treatment**. **Dr. Dhivakaran** and his team reserve slots for rapid pain relief daily.
+               </p>
+               <div className="flex gap-4 justify-center">
+                  <a href="https://wa.me/918610425342?text=Emergency%20Pain%20Relief%20Request" className="ios-btn px-8 py-3 bg-red-500 text-white rounded-full font-bold text-sm shadow-lg shadow-red-500/30 flex items-center gap-2">
+                     <Activity size={16} /> Emergency WhatsApp
+                  </a>
+                  <a href="tel:+918610425342" className="ios-btn px-8 py-3 bg-white dark:bg-[#1C1C1E] text-slate-900 dark:text-white border border-slate-200 dark:border-white/10 rounded-full font-bold text-sm flex items-center gap-2">
+                     <Phone size={16} /> Call Now
+                  </a>
+               </div>
+               <p className="mt-8 text-xs text-slate-400 uppercase tracking-widest font-bold">24/7 Triage Available · Noble Dental Care Hyderabad</p>
+            </div>
+         </div>
 
          {/* ================= 6. PRICING: WALLET PASSES ================= */}
          <section id="pricing" className="py-24 bg-[#F2F2F7] dark:bg-[#000000] overflow-hidden">
@@ -787,27 +819,6 @@ export default function RootCanalRefactored() {
             </div>
          </section>
 
-         {/* ================= CTA FOOTER ================= */}
-         <div className="py-20 bg-[#F2F2F7] dark:bg-black border-t border-slate-200 dark:border-slate-800">
-            <div className="max-w-4xl mx-auto px-6 text-center">
-               <div className="w-20 h-20 bg-purple-100 dark:bg-purple-900/30 rounded-full flex items-center justify-center mx-auto mb-6 text-purple-600 dark:text-purple-400">
-                  <Siren size={32} />
-               </div>
-               <h2 className="text-3xl font-bold text-slate-900 dark:text-white mb-4 tracking-tight uppercase italic">Emergency Pain Relief.</h2>
-               <p className="text-slate-600 dark:text-slate-400 mb-8 max-w-xl mx-auto leading-relaxed font-medium">
-                  If you are searching for a **Dental Clinic in Nallagandla** located **Near Aparna Sarovar / Citizens Hospital** for an emergency **Root Canal Treatment in Nallagandla**, we can help. **Dr. Dhivakaran** and his team reserve slots for rapid pain relief daily.
-               </p>
-               <div className="flex gap-4 justify-center">
-                  <button className="ios-btn px-8 py-3 bg-red-500 text-white rounded-full font-bold text-sm shadow-lg shadow-red-500/30">
-                     Emergency Appointment
-                  </button>
-                  <button className="ios-btn px-8 py-3 bg-white dark:bg-[#1C1C1E] text-slate-900 dark:text-white border border-slate-200 dark:border-white/10 rounded-full font-bold text-sm">
-                     Call Noble Dental Care
-                  </button>
-               </div>
-               <p className="mt-8 text-xs text-slate-400 uppercase tracking-widest font-bold">Noble Dental Care Hyderabad | Your Neighborhood Expert</p>
-            </div>
-         </div>
 
       </div>
    );

@@ -47,6 +47,15 @@ export async function generateMetadata({ params }: PageProps) {
     return {
         title: `${service.title} in ${locality.name} ${landmarkText} | ${timeSensitivteTitle} | Noble Dental`,
         description: `Urgent dental pain in ${locality.name}? Dr. Dhivakaran provides ${service.title} just ${localityData?.time || '10 mins'} away. Located near ${localityData?.landmarks[0] || locality.landmark}. Open until 10:15 PM.`,
+        keywords: [
+            `${service.title} in ${locality.name}`,
+            `${service.simple_term} ${locality.name}`,
+            `Dentist near ${locality.landmark}`,
+            `Dental clinic in ${locality.name}`,
+            `${service.category} dentistry ${locality.name}`,
+            'Noble Dental Care',
+            'Hyderabad'
+        ],
     };
 }
 
@@ -160,6 +169,7 @@ export default function PSEOPage({ params }: PageProps) {
                         <div className="flex-1 w-full max-w-lg">
                             <div className="aspect-square rounded-3xl overflow-hidden bg-slate-200 dark:bg-slate-800 relative shadow-2xl border-4 border-white dark:border-slate-700">
                                 <iframe
+                                    title={`Noble Dental Care location map for ${service.title} in ${locality.name}`}
                                     src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d3805.226866299863!2d78.309001!3d17.491689!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3f1aca1c9cebf1ae%3A0x391307611634b391!2sNoble%20Dental%20Care%20-%20Best%20Dentist%20in%20Nallagandla%20%7C%20Invisalign%20%26%20Implants!5e0!3m2!1sen!2sin!4v1738128000000!5m2!1sen!2sin"
                                     width="100%"
                                     height="100%"

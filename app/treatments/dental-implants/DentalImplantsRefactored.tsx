@@ -11,7 +11,7 @@ import {
     Sparkles, DollarSign, TrendingDown, AlertCircle, XCircle, Play,
     Bone, Scale, Clock, FileText, Calculator, RefreshCw, ThumbsUp,
     HeartPulse, Brain, Baby, Cigarette, Pill, Thermometer, CheckCircle2,
-    AlertTriangle, HelpCircle, Phone, Globe, Calendar, MapPin, Mail, Search
+    AlertTriangle, HelpCircle, Phone, Globe, Calendar, MapPin, Mail, Search, MessageCircle, Siren
 } from 'lucide-react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { EffectCoverflow, Autoplay, Pagination, Navigation } from 'swiper/modules';
@@ -74,7 +74,6 @@ const customStyles = `
 
 export default function DentalImplantsRefactored() {
     const [activeTab, setActiveTab] = useState('bone');
-    const [scrolled, setScrolled] = useState(false);
     const [isMenuOpen, setIsMenuOpen] = useState(false);
     const [selectedStep, setSelectedStep] = useState(0);
 
@@ -117,11 +116,6 @@ export default function DentalImplantsRefactored() {
         }
     ];
 
-    useEffect(() => {
-        const handleScroll = () => setScrolled(window.scrollY > 50);
-        window.addEventListener('scroll', handleScroll);
-        return () => window.removeEventListener('scroll', handleScroll);
-    }, []);
 
     const eligibilityCategories = [
         {
@@ -245,10 +239,10 @@ export default function DentalImplantsRefactored() {
                             </p>
 
                             <div className="flex flex-wrap gap-4 mb-12">
-                                <button className="px-10 py-5 bg-teal-500 hover:bg-teal-400 text-slate-900 rounded-full font-black uppercase tracking-widest text-xs shadow-xl shadow-teal-500/30 transition-all flex items-center gap-3 active:scale-95 group">
+                                <button className="px-10 py-5 bg-teal-500 hover:bg-teal-400 text-slate-900 rounded-full font-black uppercase tracking-widest text-xs shadow-xl shadow-teal-500/30 transition-transform flex items-center gap-3 active:scale-95 group">
                                     <ShieldCheck size={18} /> Plan My Implant
                                 </button>
-                                <button className="px-10 py-5 bg-white dark:bg-white/5 border border-slate-200 dark:border-white/10 text-slate-900 dark:text-white rounded-full font-bold uppercase tracking-widest text-xs transition-all flex items-center gap-3 hover:bg-slate-50 dark:hover:bg-white/10 hover:shadow-lg active:scale-95">
+                                <button className="px-10 py-5 bg-white dark:bg-white/5 border border-slate-200 dark:border-white/10 text-slate-900 dark:text-white rounded-full font-bold uppercase tracking-widest text-xs transition-colors flex items-center gap-3 hover:bg-slate-50 dark:hover:bg-white/10 hover:shadow-lg active:scale-95">
                                     <Info size={16} /> Transparent Pricing
                                 </button>
                             </div>
@@ -530,7 +524,7 @@ export default function DentalImplantsRefactored() {
                                         { icon: ScanLine, title: "Zero-Cut Technique", desc: "Guided navigation allows us to place implants through 5mm punch incisions—no stitches.", color: "bg-blue-600" },
                                         { icon: Microscope, title: "3D Digital Twin", desc: "We build a digital model of your jaw before surgery to plan nerve safety.", color: "bg-slate-900" }
                                     ].map((item, idx) => (
-                                        <div key={idx} className="p-8 bg-slate-50 dark:bg-white/5 rounded-3xl border border-slate-200 dark:border-white/10 flex gap-6 hover:shadow-xl transition-all group">
+                                        <div key={idx} className="p-8 bg-slate-50 dark:bg-white/5 rounded-3xl border border-slate-200 dark:border-white/10 flex gap-6 hover:shadow-xl transition-shadow group">
                                             <div className={`w-14 h-14 shrink-0 rounded-2xl flex items-center justify-center text-white ${item.color} shadow-lg group-hover:scale-110 transition-transform`}>
                                                 <item.icon size={24} />
                                             </div>
@@ -602,9 +596,43 @@ export default function DentalImplantsRefactored() {
                                 </div>
                             ))}
                         </div>
+
+                        <div className="mt-12 flex justify-center">
+                            <a
+                                href="https://wa.me/918610425342?text=Hi%20Dr.%20Dhivakaran,%20I%20have%20a%20question%20about%20the%20Implant%20Workflow%20(CBCT/Planning)."
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="inline-flex items-center gap-3 px-6 py-3 bg-teal-600 hover:bg-teal-700 text-white rounded-full shadow-lg transition-all hover:-translate-y-1 font-bold text-xs uppercase tracking-widest text-center"
+                            >
+                                <MessageCircle size={16} /> Ask Dr. Dhivakaran a specific question about your case
+                            </a>
+                        </div>
                     </RevealOnScroll>
                 </div>
             </section>
+
+            {/* ================= EMERGENCY SECTION (NIGHT GUARDIAN) ================= */}
+            <div className="py-20 bg-slate-50 dark:bg-black border-t border-b border-slate-200 dark:border-white/5 relative overflow-hidden">
+                <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[300px] bg-red-500/5 blur-[100px] rounded-full"></div>
+                <div className="max-w-4xl mx-auto px-6 text-center relative z-10">
+                    <div className="w-20 h-20 bg-red-100 dark:bg-red-900/30 rounded-full flex items-center justify-center mx-auto mb-6 text-red-600 dark:text-red-400 animate-pulse">
+                        <Siren size={32} />
+                    </div>
+                    <h2 className="text-3xl font-black text-slate-900 dark:text-white mb-4 tracking-tight uppercase italic">Night Guardian.</h2>
+                    <p className="text-slate-600 dark:text-slate-400 mb-8 max-w-xl mx-auto leading-relaxed font-medium">
+                        Dental implant emergencies or severe trauma Near Aparna Sarovar / Citizens Hospital? **Dr. Dhivakaran** provides emergency triage and stabilization for surgical cases.
+                    </p>
+                    <div className="flex gap-4 justify-center">
+                        <a href="https://wa.me/918610425342?text=Emergency%20Implant%20Help" className="px-8 py-3 bg-red-500 text-white rounded-full font-black text-xs uppercase tracking-widest shadow-xl shadow-red-500/30 flex items-center gap-2">
+                            <Activity size={16} /> Emergency WhatsApp
+                        </a>
+                        <a href="tel:+918610425342" className="px-8 py-3 bg-white dark:bg-[#1C1C1E] text-slate-900 dark:text-white border border-slate-200 dark:border-white/10 rounded-full font-black text-xs uppercase tracking-widest flex items-center gap-2">
+                            <Phone size={16} /> Urgent Call
+                        </a>
+                    </div>
+                    <p className="mt-8 text-[10px] text-slate-400 uppercase tracking-[0.3em] font-black">Surgical Response Team · Noble Dental Care Hyderabad</p>
+                </div>
+            </div>
 
             {/* ================= CASE LIBRARY ================= */}
             <section id="cases" className="py-32 bg-white dark:bg-[#020617]">

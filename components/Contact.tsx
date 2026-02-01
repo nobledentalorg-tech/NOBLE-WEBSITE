@@ -128,7 +128,7 @@ const Contact = () => {
                                     <p className="text-sm font-bold text-slate-700 dark:text-slate-300 leading-tight mb-4">ICA Clinic Building, Main Road.</p>
 
                                     {/* [Trusted Local Signal] Lazy Loaded Map */}
-                                    <div className="w-full aspect-video rounded-xl overflow-hidden shadow-inner border border-slate-200 dark:border-white/10">
+                                    <div className="w-full aspect-video rounded-xl overflow-hidden shadow-inner border border-slate-200 dark:border-white/10 relative group/map">
                                         <iframe
                                             src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3805.703464807516!2d78.30561397462881!3d17.473901500308084!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bcb936d705f0d7b%3A0x3f1aca1c9cebf1ae!2sNoble%20Dental%20Care%20%7C%20Multispeciality%20Dental%20clinic%20in%20Nallagandla!5e0!3m2!1sen!2sin!4v1769648241406!5m2!1sen!2sin"
                                             width="100%"
@@ -137,8 +137,16 @@ const Contact = () => {
                                             allowFullScreen
                                             loading="lazy"
                                             referrerPolicy="no-referrer-when-downgrade"
-                                            title="Noble Dental Clinic Nallagandla Location"
+                                            title="Noble Dental Care Location"
                                         ></iframe>
+                                        <a
+                                            href="https://maps.app.goo.gl/fFbpcXZ9RBBCpWrg9"
+                                            target="_blank"
+                                            rel="noopener noreferrer"
+                                            className="absolute bottom-4 right-4 px-4 py-2 bg-white/90 dark:bg-slate-900/90 backdrop-blur-sm border border-slate-200 dark:border-white/10 rounded-xl text-[10px] font-black uppercase tracking-widest text-blue-600 dark:text-cyan-400 shadow-xl opacity-0 group-hover/map:opacity-100 transition-opacity flex items-center gap-2 hover:bg-white dark:hover:bg-slate-800"
+                                        >
+                                            <Navigation size={12} /> Open in Google Maps
+                                        </a>
                                     </div>
                                 </div>
                             </RevealOnScroll>

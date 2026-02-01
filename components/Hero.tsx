@@ -183,16 +183,16 @@ const Hero: React.FC<HeroProps> = ({ onBookClick }) => {
                 <Image
                   src="/images/apple-app-store-black.webp"
                   alt="Download on the App Store"
-                  width={120}
-                  height={40}
+                  width={128}
+                  height={45}
                   className="store-badge block dark:hidden"
                   priority
                 />
                 <Image
                   src="/images/apple-app-store-white.webp"
                   alt="Download on the App Store"
-                  width={120}
-                  height={40}
+                  width={128}
+                  height={45}
                   className="store-badge hidden dark:block"
                   priority
                 />
@@ -211,6 +211,7 @@ const Hero: React.FC<HeroProps> = ({ onBookClick }) => {
                   className="surgical-video object-cover"
                   sizes="(max-width: 768px) 90vw, (max-width: 1200px) 50vw, 500px"
                   priority
+                  fetchPriority="high"
                 />
                 <Image
                   src="/images/dentalcare.nallagandla.png"
@@ -221,6 +222,7 @@ const Hero: React.FC<HeroProps> = ({ onBookClick }) => {
                   sizes="60px"
                   quality={75}
                   priority
+                  fetchPriority="high"
                 />
                 <h2>ITI_SLActive <span className="light">TITANIUM</span></h2>
                 <p className="subtitle">Swiss Grade Implant</p>

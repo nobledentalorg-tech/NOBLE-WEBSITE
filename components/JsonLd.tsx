@@ -63,7 +63,8 @@ const JsonLd = () => {
                 "potentialAction": [
                     {
                         "@type": "ScheduleAction",
-                        "target": "https://nobledentalnallagandla.in/book-appointment"
+                        "target": "https://nobledentalnallagandla.in/book-appointment",
+                        "name": "Book Appointment"
                     },
                     {
                         "@type": "CheckAction",

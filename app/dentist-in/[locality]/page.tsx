@@ -30,6 +30,15 @@ export async function generateMetadata({ params }: PageProps) {
     return {
         title: `Dentist in ${locality.name} | Top Rated Dental Clinic ${localityData?.metaTitleSuffix || ''}`,
         description: `Looking for a dentist in ${locality.name}? Dr. Dhivakaran provides world-class dental care just ${localityData?.time || '10 mins'} from ${locality.landmark}.`,
+        keywords: [
+            `Dentist in ${locality.name}`,
+            `Dental clinic in ${locality.name}`,
+            `Best dentist near ${locality.landmark}`,
+            `Oral surgery ${locality.name}`,
+            'Noble Dental Care',
+            'Nallagandla',
+            'Hyderabad'
+        ],
     };
 }
 

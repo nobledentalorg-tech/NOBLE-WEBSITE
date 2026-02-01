@@ -126,7 +126,7 @@ export default function NeighborhoodGuide() {
                             </div>
                         </div>
                         <div className="flex-1 w-full h-[300px] bg-slate-200 rounded-3xl overflow-hidden relative shadow-2xl">
-                            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3805.703464807516!2d78.30561397462881!3d17.473901500308084!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bcb936d705f0d7b%3A0x3f1aca1c9cebf1ae!2sNoble%20Dental%20Care%20%7C%20Multispeciality%20Dental%20clinic%20in%20Nallagandla!5e0!3m2!1sen!2sin!4v1769543688405!5m2!1sen!2sin" width="100%" height="100%" loading="lazy" style={{ border: 0 }}></iframe>
+                            <iframe title="Aparna Neo Mall to Noble Dental Care Map" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3805.703464807516!2d78.30561397462881!3d17.473901500308084!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bcb936d705f0d7b%3A0x3f1aca1c9cebf1ae!2sNoble%20Dental%20Care%20%7C%20Multispeciality%20Dental%20clinic%20in%20Nallagandla!5e0!3m2!1sen!2sin!4v1769543688405!5m2!1sen!2sin" width="100%" height="100%" loading="lazy" style={{ border: 0 }}></iframe>
                         </div>
                     </div>
                 </div>
