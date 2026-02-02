@@ -298,7 +298,8 @@ html[data-power-mode="save"] .hide-on-lite {
 }
 
 .card-body .badge {
-  background: #ef4444;
+  background: #2563eb;
+  /* Blue-600 for high contrast */
   color: #fff;
   font-size: 10px;
   padding: 2px 8px;

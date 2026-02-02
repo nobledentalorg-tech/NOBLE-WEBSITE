@@ -209,7 +209,7 @@ const Hero: React.FC<HeroProps> = ({ onBookClick }) => {
                   alt="Clinical Background"
                   fill
                   className="surgical-video object-cover"
-                  sizes="(max-width: 768px) 90vw, (max-width: 1200px) 50vw, 500px"
+                  sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 400px"
                   priority
                   fetchPriority="high"
                 />
@@ -244,7 +244,7 @@ const Hero: React.FC<HeroProps> = ({ onBookClick }) => {
 
               <div className="card-body">
                 <section>
-                  <h3>Straumann ITI <span className="badge bg-slate-900 text-white opacity-100 font-black">New</span></h3>
+                  <h3>Straumann ITI <span className="badge bg-blue-600 text-white opacity-100 font-black">New</span></h3>
                   <p>Swiss-engineered SLActive® surface technology ensures 50% faster biological bone healing.</p>
                 </section>
 
