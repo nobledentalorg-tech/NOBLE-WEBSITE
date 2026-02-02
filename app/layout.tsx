@@ -145,6 +145,21 @@ export default async function RootLayout({
     <html lang="en" suppressHydrationWarning>
       <head>
         <SpeculationRules />
+        {/* Preload critical font to eliminate 1.4s render delay */}
+        <link
+          rel="preload"
+          href="/_next/static/media/8e9860b6e62d6359-s.woff2"
+          as="font"
+          type="font/woff2"
+          crossOrigin="anonymous"
+        />
+        {/* Preload high-intent logo to fix console warning and improve LCP */}
+        <link
+          rel="preload"
+          href="/images/dentalcare.nallagandla.png"
+          as="image"
+          type="image/png"
+        />
       </head>
       <body className={`${inter.variable} font-sans min-h-screen bg-background antialiased overflow-x-hidden w-full selection:bg-cyan-500/30 selection:text-cyan-900 group/body`}>
         <LocationProvider isLocal={isLocal}>
