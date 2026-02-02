@@ -1,4 +1,4 @@
-import { Plus_Jakarta_Sans, Inter, Poppins } from 'next/font/google';
+import { Inter } from 'next/font/google';
 import './globals.css';
 import LayoutShell from '@/components/LayoutShell';
 import JsonLd from '@/components/JsonLd';
@@ -10,9 +10,12 @@ import ReviewSchema from '@/components/ReviewSchema';
 import BreadcrumbSchema from '@/components/BreadcrumbSchema';
 import type { Metadata } from 'next';
 
-const jakarta = Plus_Jakarta_Sans({ subsets: ['latin'], variable: '--font-jakarta', display: 'swap' });
-const inter = Inter({ subsets: ['latin'], variable: '--font-inter', display: 'swap' });
-const poppins = Poppins({ subsets: ['latin'], weight: ['100', '200', '300', '400', '500', '600', '700', '800', '900'], variable: '--font-poppins', display: 'swap' });
+const inter = Inter({
+  subsets: ['latin'],
+  variable: '--font-inter',
+  display: 'swap',
+  weight: ['400', '500', '600', '700', '800']
+});
 
 export const metadata: Metadata = {
   title: {
@@ -26,7 +29,6 @@ export const metadata: Metadata = {
   icons: {
     icon: '/favicon.ico',
     shortcut: '/favicon.ico',
-    apple: '/apple-touch-icon.png',
   },
   manifest: '/manifest.json',
   other: {
@@ -144,21 +146,21 @@ export default async function RootLayout({
       <head>
         <SpeculationRules />
       </head>
-      <body className={`${inter.className} min-h-screen bg-background font-sans antialiased overflow-x-hidden w-full selection:bg-cyan-500/30 selection:text-cyan-900 group/body`}>
+      <body className={`${inter.variable} font-sans min-h-screen bg-background antialiased overflow-x-hidden w-full selection:bg-cyan-500/30 selection:text-cyan-900 group/body`}>
         <LocationProvider isLocal={isLocal}>
           <Providers>
             <AdaptiveUIProvider>
               <ClinicStatusBanner />
               <LayoutShell emergencyMode={status.emergencyStatus}>
                 {children}
+                <JsonLd />
+                <BreadcrumbSchema />
+                <ReviewSchema />
+                <UIProtector />
+                <FloatingCTA />
+                <Analytics />
+                <SpeedInsights />
               </LayoutShell>
-              <JsonLd />
-              <BreadcrumbSchema />
-              <ReviewSchema />
-              <UIProtector />
-              <FloatingCTA />
-              <Analytics />
-              <SpeedInsights />
             </AdaptiveUIProvider>
           </Providers>
         </LocationProvider>
