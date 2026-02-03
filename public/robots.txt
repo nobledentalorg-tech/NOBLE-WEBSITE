@@ -23,6 +23,8 @@ Allow: /
 User-agent: OAI-SearchBot
 User-agent: PerplexityBot
 User-agent: ClaudeBot
+User-agent: GPTBot
+User-agent: ChatGPT-User
 Allow: /
 
 # -----------------------------------------------------------------------------
@@ -41,7 +43,6 @@ User-agent: DotBot
 User-agent: SerpstatBot
 User-agent: Barkrowler
 User-agent: CCBot
-User-agent: GPTBot
 User-agent: anthropic-ai
 User-agent: Meta-ExternalAgent
 User-agent: Bytespider

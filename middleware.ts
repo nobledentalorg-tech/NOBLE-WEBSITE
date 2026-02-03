@@ -63,7 +63,7 @@ export function middleware(request: NextRequest) {
 
     const BLOCKED_BOTS = [
         'semrushbot', 'siteauditbot', 'ahrefsbot', 'ahrefssiteaudit', 'rogerbot', 'mj12bot', 'dotbot', 'serpstatbot', 'barkrowler', // SEO Spies
-        'ccbot', 'gptbot', 'anthropic-ai', 'meta-externalagent', 'bytespider', // Scrapers & AI Trainers
+        'ccbot', 'meta-externalagent', 'bytespider', // Scrapers & AI Trainers
         'httrack', 'builtwith', 'screaming frog' // Aggressive Tools
     ];
 

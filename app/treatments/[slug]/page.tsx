@@ -96,11 +96,52 @@ export default function TreatmentPage({ params }: { params: { slug: string } }) 
         }
       `}</style>
 
-      {/* Inject Schema */}
+      {/* Inject Schema: MedicalPage + FAQPage */}
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            '@context': 'https://schema.org',
+            '@graph': [
+              jsonLd,
+              ...(t.faqs ? [{
+                '@type': 'FAQPage',
+                mainEntity: t.faqs.map(f => ({
+                  '@type': 'Question',
+                  name: f.q,
+                  acceptedAnswer: {
+                    '@type': 'Answer',
+                    text: f.a
+                  }
+                }))
+              }] : [])
+            ]
+          })
+        }}
       />
+
+      {/* --- ANSWER BLOCK (GEO OPTIMIZATION) --- 
+          Designed for AI Extraction (Gemini/ChatGPT) 
+      */}
+      {t.aiSummary && (
+        <section className="bg-blue-50/50 dark:bg-slate-900/50 border-b border-blue-100 dark:border-blue-900/30 pt-20">
+          <div className="max-w-7xl mx-auto px-6 py-6 lg:py-8">
+            <div className="flex flex-col md:flex-row gap-4 items-start md:items-center">
+              <div className="bg-blue-600 text-white p-2 rounded-lg shrink-0 shadow-lg shadow-blue-600/20">
+                <Sparkles size={20} className="animate-pulse" />
+              </div>
+              <div>
+                <p className="text-[10px] font-bold text-blue-600 dark:text-blue-400 uppercase tracking-widest mb-1">
+                  AI Summary (TL;DR)
+                </p>
+                <p className="text-slate-700 dark:text-slate-300 text-sm md:text-base leading-relaxed font-medium">
+                  {t.aiSummary}
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
+      )}
 
       {/* --- PREMIUM HERO --- */}
       <section className="relative min-h-[70vh] flex items-center overflow-hidden pt-20">

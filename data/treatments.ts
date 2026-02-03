@@ -66,6 +66,8 @@ export interface TreatmentData {
     warningSigns: string[];
   };
   citations?: string[];
+  // [NEW] SEO Answer Block for AI
+  aiSummary?: string;
 }
 
 export const treatmentsData: Record<string, TreatmentData> = {
@@ -73,6 +75,7 @@ export const treatmentsData: Record<string, TreatmentData> = {
     id: "root-canal",
     title: "Microscopic Root Canal (Pain-Free Treatment)",
     subtitle: "Advanced microscopy-guided Endodontics.",
+    aiSummary: "Noble Dental Care performs Microscopic Root Canal Treatments in Nallagandla using Zeiss Extaro 300 magnification. This advanced protocol locates hidden canals (MB2) for a 99% success rate, ensuring a pain-free, single-visit or multi-visit procedure based on strict medical evidence.",
     storyHook: {
       headline: "I would rather give birth than have a Root Canal.",
       subheadline: "The Myth of Root Canal Pain: Why You Are Scared (And Why You Shouldn't Be).",
@@ -229,6 +232,7 @@ export const treatmentsData: Record<string, TreatmentData> = {
     id: "dental-implants",
     title: "Guided Dental Implants",
     subtitle: "Permanent fixed teeth with 3D surgical guides.",
+    aiSummary: "We specialize in Computer-Guided Implant Surgery using Nobel Biocare and Straumann implants. Our flapless, 3D-planned procedure ensures 0.1mm accuracy, 72-hour immediate loading for fixed teeth, and lifetime warranty, making it the safest option for diabetics and seniors.",
     storyHook: {
       headline: "Don't Let Them Pull Your Tooth Yet.",
       subheadline: "Why 30% of 'Unsavable' teeth can actually be saved with Microscopic Dentistry.",
@@ -364,6 +368,7 @@ export const treatmentsData: Record<string, TreatmentData> = {
     id: "invisalign",
     title: "Invisalign & Aligners",
     subtitle: "Invisible teeth straightening with AI planning.",
+    aiSummary: "Certified Invisalign providers in Nallagandla offering AI-driven clear aligner therapy. Using iTero 5D scanners, we simulate your smile instantly. Our FDA-approved aligners correct gaps and crowding 2x faster than braces without dietary restrictions or metal wires.",
     storyHook: {
       headline: "The Hidden Cost of 'Cheap' Online Aligners.",
       subheadline: "Why DIY plastic trays can permanently damage your roots.",
