@@ -18,8 +18,21 @@ export async function POST(req: Request) {
             return NextResponse.json({ error: "Missing required fields" }, { status: 400 })
         }
 
-        // 2. Ensure Chat Exists or Create New
         let activeChatId = chatId
+
+        if (chatId) {
+            // Verify chat ownership before saving
+            const supabase = getSupabaseClient()
+            const { data: chat, error: fetchError } = await supabase
+                .from('chats')
+                .select('user_id')
+                .eq('id', chatId)
+                .single()
+
+            if (fetchError || chat?.user_id !== session.user.id) {
+                return NextResponse.json({ error: "Forbidden: You do not own this chat" }, { status: 403 })
+            }
+        }
 
         if (!activeChatId) {
             // Create new chat

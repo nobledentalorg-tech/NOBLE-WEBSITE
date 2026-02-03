@@ -1,6 +1,7 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   swcMinify: true,
+  optimizeFonts: false,
   experimental: {
     // Other experimental features can go here if needed
     // ppr: 'incremental',

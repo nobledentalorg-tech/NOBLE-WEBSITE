@@ -3,6 +3,7 @@
 import React from 'react';
 import Link from 'next/link';
 import { Facebook, Instagram, Twitter, MapPin, Phone, Mail, CalendarCheck, School, Navigation, Activity } from 'lucide-react';
+import GoogleMap from './GoogleMap';
 
 interface FooterProps {
   onBookClick?: () => void;
@@ -76,17 +77,9 @@ const Footer: React.FC<FooterProps> = ({ onBookClick }) => {
             <ul className="space-y-4 text-sm text-slate-300">
               <li className="flex items-start gap-3 w-full">
                 <div className="w-full h-48 rounded-2xl overflow-hidden border border-white/10 shadow-lg relative group">
-                  <iframe
-                    title="Noble Dental Nallagandla Map"
-                    width="100%"
-                    height="100%"
-                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3805.290372202636!2d78.30599!3d17.47396!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bcb936d705f0d7b%3A0x3f1aca1c9becf1ae!2sNoble%20Dental%20Care!5e0!3m2!1sen!2sin!4v1700000000000!5m2!1sen!2sin"
-                    className="absolute inset-0 w-full h-full grayscale group-hover:grayscale-0 transition-all duration-500 hover:scale-105"
-                    loading="lazy"
-                    referrerPolicy="no-referrer-when-downgrade"
-                  ></iframe>
-                  <div className="absolute bottom-0 left-0 w-full p-3 bg-gradient-to-t from-black/80 to-transparent flex items-end">
-                    <span className="text-xs font-bold text-white flex items-center gap-1"><MapPin size={12} className="text-red-500 animate-bounce" /> Locate on Maps</span>
+                  <GoogleMap />
+                  <div className="absolute bottom-0 left-0 w-full p-3 bg-gradient-to-t from-black/80 to-transparent flex items-end pointer-events-none">
+                    <span className="text-xs font-bold text-white flex items-center gap-1"><MapPin size={12} className="text-red-500 animate-pulse" /> Interactive Map</span>
                   </div>
                 </div>
               </li>

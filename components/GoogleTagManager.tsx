@@ -5,7 +5,18 @@ import { Partytown } from '@qwik.dev/partytown/react';
 export default function GoogleTagManager() {
     return (
         <>
-            <Partytown debug={false} forward={['dataLayer.push']} />
+            <Partytown
+                debug={false}
+                forward={['dataLayer.push']}
+                resolveUrl={(url) => {
+                    // Suppress and handle Privacy Sandbox features if needed, 
+                    // but primarily ensuring we don't block necessary attribution if permitted.
+                    if (url.hostname.includes('google-analytics.com') || url.hostname.includes('googletagmanager.com')) {
+                        return url;
+                    }
+                    return url;
+                }}
+            />
             {/* eslint-disable-next-line @next/next/next-script-for-ga */}
             <script
                 type="text/partytown"

@@ -13,8 +13,9 @@ export async function GET(req: Request) {
     }
 
     // Simple Admin Check
-    // Note: For now, allowing any authenticated user to view calls for demo purposes if list is empty,
-    // typically you would check: if (!ADMIN_EMAILS.includes(session.user.email)) ...
+    if (!ADMIN_EMAILS.includes(session.user.email)) {
+        return NextResponse.json({ error: "Forbidden: Admins only" }, { status: 403 })
+    }
 
     const { searchParams } = new URL(req.url)
     const chatId = searchParams.get('chatId')
