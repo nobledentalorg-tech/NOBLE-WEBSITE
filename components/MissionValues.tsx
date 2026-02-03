@@ -77,7 +77,7 @@ const MissionValues = () => {
                 <div className="w-10 h-10 rounded-full bg-blue-100 dark:bg-blue-900/30 flex items-center justify-center text-blue-600 dark:text-blue-400">
                   <ShieldCheck size={20} />
                 </div>
-                <span className="text-sm font-bold text-slate-500 uppercase tracking-widest">Medical Board Certified Standards</span>
+                <span className="text-sm font-bold text-slate-700 dark:text-slate-400 uppercase tracking-widest">Medical Board Certified Standards</span>
               </div>
             </div>
           </RevealOnScroll>

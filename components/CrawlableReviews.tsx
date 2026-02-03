@@ -211,7 +211,7 @@ const CrawlableReviews = () => {
 
                             {review.link && (
                                 <div className="pt-4 border-t border-white/5 flex justify-between items-center opacity-70 group-hover:opacity-100 transition-opacity">
-                                    <a href={review.link} target="_blank" rel="nofollow noreferrer" className="inline-flex items-center gap-1.5 text-[10px] uppercase font-bold tracking-wider text-blue-400 hover:text-blue-300 transition-colors">
+                                    <a href={review.link} target="_blank" rel="nofollow noreferrer" aria-label={`Verified on Maps - Review by ${review.author}`} className="inline-flex items-center gap-1.5 text-[10px] uppercase font-bold tracking-wider text-blue-400 hover:text-blue-300 transition-colors">
                                         <MapPin size={12} /> Verified on Maps
                                     </a>
                                     <span className="text-[10px] text-slate-500">Google Review</span>

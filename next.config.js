@@ -2,7 +2,7 @@
 // Build Trigger: 2026-02-03T22:15:00Z
 const nextConfig = {
   swcMinify: true,
-  // optimizeFonts: false, // Re-enabled for LCP performance
+  optimizeFonts: true, // Re-enabled for LCP performance
   experimental: {
     // Other experimental features can go here if needed
     // ppr: 'incremental',

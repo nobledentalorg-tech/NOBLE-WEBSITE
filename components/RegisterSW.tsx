@@ -12,7 +12,7 @@ export default function RegisterSW() {
 
                         // Periodic Sync Registration (Safe Check)
                         // @ts-ignore
-                        if ('periodicSync' in registration) {
+                        if (registration.active && 'periodicSync' in registration) {
                             try {
                                 // @ts-ignore
                                 registration.periodicSync.register('update-clinic-status', {

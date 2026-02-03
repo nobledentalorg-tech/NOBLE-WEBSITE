@@ -11,7 +11,7 @@ const TechnologyGrid = () => {
             desc: "Vacuum-sealed sterilization. 100% Virus-free instruments.",
             color: "text-green-500",
             bg: "bg-green-500/10",
-            image: "https://images.unsplash.com/photo-1581594693702-fbdc51b2763b?q=80&w=2070&auto=format&fit=crop"
+            image: "https://images.unsplash.com/photo-1581594693702-fbdc51b2763b?q=80&w=400&auto=format&fit=crop"
         },
         {
             icon: Scan,
@@ -55,7 +55,7 @@ const TechnologyGrid = () => {
                     <h2 className="text-3xl md:text-5xl font-medium text-slate-900 dark:text-white mb-6">
                         Leading Dental Technology <br /> <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-indigo-600">& Advanced Clinical Care.</span>
                     </h2>
-                    <p className="text-slate-600 dark:text-slate-400 text-lg">
+                    <p className="text-slate-700 dark:text-slate-300 text-lg">
                         While others rely on traditional methods, we invest in the world&apos;s best diagnostic and treatment technology. Precision means less pain and faster recovery for you.
                     </p>
                 </div>
@@ -69,8 +69,9 @@ const TechnologyGrid = () => {
                                 <Image
                                     src={tech.image}
                                     alt={tech.title}
-                                    fill
-                                    className="object-cover group-hover:scale-110 transition-transform duration-700"
+                                    width={400}
+                                    height={300}
+                                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
                                 />
                                 <div className={`absolute bottom-4 left-4 z-20 w-10 h-10 rounded-xl ${tech.bg} ${tech.color} flex items-center justify-center backdrop-blur-md border border-white/10`}>
                                     <tech.icon size={20} />
@@ -79,7 +80,7 @@ const TechnologyGrid = () => {
 
                             <div className="p-6">
                                 <h3 className="font-bold text-lg text-slate-900 dark:text-white mb-2">{tech.title}</h3>
-                                <p className="text-sm text-slate-500 dark:text-slate-400 leading-relaxed">{tech.desc}</p>
+                                <p className="text-sm text-slate-600 dark:text-slate-400 leading-relaxed">{tech.desc}</p>
                             </div>
                         </div>
                     ))}
@@ -92,14 +93,14 @@ const TechnologyGrid = () => {
                             <h4 className="font-black text-xl mb-2 flex items-center gap-2">
                                 <span className="w-2 h-2 rounded-full bg-red-500"></span> Traditional Dentistry
                             </h4>
-                            <p className="text-sm text-slate-500">Manual scraping, film X-rays (high radiation), visual guessing, and basic sterilization.</p>
+                            <p className="text-sm text-slate-600">Manual scraping, film X-rays (high radiation), visual guessing, and basic sterilization.</p>
                         </div>
                         <div className="hidden md:block w-px h-12 bg-slate-300 dark:bg-white/10"></div>
                         <div className="flex-1">
                             <h4 className="font-black text-xl mb-2 flex items-center gap-2 text-blue-600 dark:text-blue-400">
                                 <span className="w-2 h-2 rounded-full bg-blue-500 animate-pulse"></span> Noble Digital Dentistry
                             </h4>
-                            <p className="text-sm text-slate-500 dark:text-slate-400">Laser precision, AI-assisted diagnostics, Digital impressions, and Hospital-grade sterility.</p>
+                            <p className="text-sm text-slate-600 dark:text-slate-400">Laser precision, AI-assisted diagnostics, Digital impressions, and Hospital-grade sterility.</p>
                         </div>
                     </div>
                 </div>

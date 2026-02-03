@@ -43,7 +43,7 @@ const Footer: React.FC<FooterProps> = ({ onBookClick }) => {
               <li><Link href="/case-studies" className="hover:text-blue-400 transition-colors text-purple-400 font-bold">âœ¨ Real Patient Cases</Link></li>
               <li><Link href="/blog" className="hover:text-blue-400 transition-colors text-pink-400 font-bold">ðŸ“ Dental Blog</Link></li>
               <li><Link href="/neighborhood-guide" className="hover:text-blue-400 transition-colors text-amber-500 font-bold">ðŸ“ Neighborhood Guide</Link></li>
-              <li><button onClick={onBookClick} className="hover:text-blue-400 transition-colors text-left flex items-center gap-2 font-black text-blue-500"><CalendarCheck size={14} /> BOOK APPOINTMENT</button></li>
+              <li><button onClick={onBookClick} className="hover:text-blue-400 transition-colors text-left flex items-center gap-2 font-black text-blue-400"><CalendarCheck size={14} /> BOOK APPOINTMENT</button></li>
             </ul>
           </div>
 
