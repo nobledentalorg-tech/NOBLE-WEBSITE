@@ -1,4 +1,4 @@
-'use client';
+﻿'use client';
 
 import React from 'react';
 import Link from 'next/link';
@@ -40,9 +40,9 @@ const Footer: React.FC<FooterProps> = ({ onBookClick }) => {
               <li><Link href="/treatments/root-canal" className="hover:text-blue-400 transition-colors">Microscopic RCT</Link></li>
               <li><Link href="/treatments/invisalign" className="hover:text-blue-400 transition-colors">Invisalign (Clear Aligners)</Link></li>
               <li><Link href="/treatments/kids-dentistry" className="hover:text-blue-400 transition-colors">Kids Dentistry</Link></li>
-              <li><Link href="/case-studies" className="hover:text-blue-400 transition-colors text-purple-400 font-bold">✨ Real Patient Cases</Link></li>
-              <li><Link href="/blog" className="hover:text-blue-400 transition-colors text-pink-400 font-bold">📝 Dental Blog</Link></li>
-              <li><Link href="/neighborhood-guide" className="hover:text-blue-400 transition-colors text-amber-500 font-bold">📍 Neighborhood Guide</Link></li>
+              <li><Link href="/case-studies" className="hover:text-blue-400 transition-colors text-purple-400 font-bold">âœ¨ Real Patient Cases</Link></li>
+              <li><Link href="/blog" className="hover:text-blue-400 transition-colors text-pink-400 font-bold">ðŸ“ Dental Blog</Link></li>
+              <li><Link href="/neighborhood-guide" className="hover:text-blue-400 transition-colors text-amber-500 font-bold">ðŸ“ Neighborhood Guide</Link></li>
               <li><button onClick={onBookClick} className="hover:text-blue-400 transition-colors text-left flex items-center gap-2 font-black text-blue-500"><CalendarCheck size={14} /> BOOK APPOINTMENT</button></li>
             </ul>
           </div>
@@ -51,14 +51,14 @@ const Footer: React.FC<FooterProps> = ({ onBookClick }) => {
           <div>
             <h3 className="text-lg font-bold mb-6 text-white/90">Quick Links</h3>
             <ul className="space-y-3 text-sm text-slate-400 font-medium">
-              <li><Link href="/treatments/gum-disease" className="hover:text-blue-400 transition-colors">• Gum Disease Treatment</Link></li>
-              <li><Link href="/treatments/oral-medicine" className="hover:text-blue-400 transition-colors">• Oral Diagnosis</Link></li>
-              <li><Link href="/treatments/tmj-disorders" className="hover:text-blue-400 transition-colors">• TMJ Disorder</Link></li>
-              <li><Link href="/treatments/laser-dentistry" className="hover:text-blue-400 transition-colors">• Laser Dentistry</Link></li>
-              <li><Link href="/treatments/oral-biopsy" className="hover:text-blue-400 transition-colors">• Oral Biopsy</Link></li>
-              <li><Link href="/treatments/wisdom-tooth-surgery" className="hover:text-blue-400 transition-colors">• Wisdom Tooth Surgery</Link></li>
-              <li><Link href="/treatments/kids-dentistry" className="hover:text-blue-400 transition-colors">• Child Friendly Dentist</Link></li>
-              <li><Link href="/treatments/pregnancy-dental-care" className="hover:text-blue-400 transition-colors">• Prenatal Oral Care</Link></li>
+              <li><Link href="/treatments/gum-disease" className="hover:text-blue-400 transition-colors">â€¢ Gum Disease Treatment</Link></li>
+              <li><Link href="/treatments/oral-medicine" className="hover:text-blue-400 transition-colors">â€¢ Oral Diagnosis</Link></li>
+              <li><Link href="/treatments/tmj-disorders" className="hover:text-blue-400 transition-colors">â€¢ TMJ Disorder</Link></li>
+              <li><Link href="/treatments/laser-dentistry" className="hover:text-blue-400 transition-colors">â€¢ Laser Dentistry</Link></li>
+              <li><Link href="/treatments/oral-biopsy" className="hover:text-blue-400 transition-colors">â€¢ Oral Biopsy</Link></li>
+              <li><Link href="/treatments/wisdom-tooth-surgery" className="hover:text-blue-400 transition-colors">â€¢ Wisdom Tooth Surgery</Link></li>
+              <li><Link href="/treatments/kids-dentistry" className="hover:text-blue-400 transition-colors">â€¢ Child Friendly Dentist</Link></li>
+              <li><Link href="/treatments/pregnancy-dental-care" className="hover:text-blue-400 transition-colors">â€¢ Prenatal Oral Care</Link></li>
             </ul>
           </div>
 
@@ -125,7 +125,7 @@ const Footer: React.FC<FooterProps> = ({ onBookClick }) => {
         <div className="pt-8 border-t border-white/10 mb-8">
           <h4 className="text-xs font-bold uppercase tracking-widest text-blue-500 mb-3 flex items-center gap-2"><Navigation size={12} /> Serving Nallagandla Neighbors</h4>
           <p className="text-xs text-slate-400 leading-relaxed font-medium">
-            Aparna Sarovar Zenith • Aparna Neo Mall • My Home Tridasa (Rise) • Ramky One Galaxia • My Home Sayuk • Rajapushpa Imperia • Aliens Space Station • Vertex Kingston Park • Citizens Hospital • Ratnadeep Supermarket • Vijaya Diagnostic • BHEL Hyderabad • Gopanpally • Serilingampally • Tellapur-Nallagandla Road
+            Aparna Sarovar Zenith â€¢ Aparna Neo Mall â€¢ My Home Tridasa (Rise) â€¢ Ramky One Galaxia â€¢ My Home Sayuk â€¢ Rajapushpa Imperia â€¢ Aliens Space Station â€¢ Vertex Kingston Park â€¢ Citizens Hospital â€¢ Ratnadeep Supermarket â€¢ Vijaya Diagnostic â€¢ BHEL Hyderabad â€¢ Gopanpally â€¢ Serilingampally â€¢ Tellapur-Nallagandla Road
           </p>
         </div>
 
@@ -134,7 +134,7 @@ const Footer: React.FC<FooterProps> = ({ onBookClick }) => {
             <strong>Medical Disclaimer:</strong> Information is for educational purposes and not a substitute for professional medical advice. All clinical procedures are performed by registered dental practitioners under strict sterilization protocols.
           </p>
           <div className="flex flex-col md:flex-row justify-between items-center gap-4">
-            <p className="text-xs text-slate-300">© 2024 Noble Dental Care.</p>
+            <p className="text-xs text-slate-300">Â© 2024 Noble Dental Care.</p>
             <div className="flex items-center gap-4">
               <p className="text-xs text-slate-300 font-mono">DCI Reg: 23853 (Dr. Dhivakaran)</p>
               <a href="https://healthflo.org/" target="_blank" rel="noopener noreferrer" className="text-[10px] text-slate-100 hover:text-blue-400 transition-colors uppercase tracking-widest font-black flex items-center gap-1">
@@ -155,3 +155,4 @@ const Footer: React.FC<FooterProps> = ({ onBookClick }) => {
 };
 
 export default Footer;
+
