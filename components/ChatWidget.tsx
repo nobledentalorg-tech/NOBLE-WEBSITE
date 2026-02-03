@@ -4,6 +4,7 @@ import React, { useState, useRef, useEffect } from 'react';
 import { Send, X, Bot, MessageSquare, ExternalLink, Mic, MicOff } from 'lucide-react';
 import { getNeoResponse } from '@/app/actions';
 import { ChatMessage } from '@/types';
+import { useMobileUI } from '@/context/MobileUIContext';
 
 interface ChatWidgetProps {
   onBookClick?: () => void;
@@ -22,6 +23,8 @@ const ChatWidget: React.FC<ChatWidgetProps> = ({ onBookClick }) => {
 
   // Core Logic State (only initialized after load)
   const [currentNodeId, setCurrentNodeId] = useState('root');
+
+  const { isStickyFooterVisible } = useMobileUI();
 
   // Initialize Chat Logic on First Interaction
   const initializeChat = async () => {
@@ -316,8 +319,8 @@ const ChatWidget: React.FC<ChatWidgetProps> = ({ onBookClick }) => {
         </div>
       )}
 
-      {/* Lightweight Launcher Button */}
-      {!isOpen && (
+      {/* Lightweight Launcher Button - Hidden when Sticky Footer is active on mobile */}
+      {(!isOpen && !isStickyFooterVisible) && (
         <button
           onClick={initializeChat}
           aria-label="Open AI Assistant"

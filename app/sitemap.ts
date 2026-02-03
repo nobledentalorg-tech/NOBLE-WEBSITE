@@ -4,7 +4,7 @@ import { NeoBlogEngine } from '@/neo/NeoBlogEngine';
 import { dripFeedFilter } from '@/data/drip-feed';
 import { pseoLocalities, pseoServices } from '@/data/pseo';
 
-const BASE_URL = 'https://nobledentalnallagandla.in';
+const BASE_URL = 'https://www.nobledentalnallagandla.in';
 
 export default function sitemap(): MetadataRoute.Sitemap {
     // 1. Static Routes

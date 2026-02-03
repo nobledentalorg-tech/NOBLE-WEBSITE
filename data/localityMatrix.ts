@@ -71,6 +71,15 @@ export const LOCALITY_MATRIX: Record<string, LocalityData> = {
         landmarks: ['My Home Avatar', 'Nallagandla Lake', 'Ratnadeep Supermarket'],
         demographic: 'High Net-Worth IT Families',
         metaTitleSuffix: 'Near My Home Avatar'
+    },
+    'my-home-sayuk': {
+        id: 'my-home-sayuk',
+        name: 'My Home Sayuk',
+        distance: '2.5 km',
+        time: '6 mins',
+        landmarks: ['My Home Sayuk Gate 1', 'Tellapur Road', 'Urja Stadium'],
+        demographic: 'Young Tech Families & Expats',
+        metaTitleSuffix: 'Near Sayuk & Tellapur'
     }
 };
 

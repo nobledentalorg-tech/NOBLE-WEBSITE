@@ -40,28 +40,44 @@ const BeforeAfterSlider: React.FC<BeforeAfterSliderProps> = ({
         setSliderPosition(Math.min(100, Math.max(0, x)));
     }
 
+    // Handle Keyboard Navigation
+    const handleKeyDown = (e: React.KeyboardEvent) => {
+        if (e.key === 'ArrowLeft') {
+            setSliderPosition(prev => Math.max(0, prev - 5));
+        } else if (e.key === 'ArrowRight') {
+            setSliderPosition(prev => Math.min(100, prev + 5));
+        }
+    };
+
     useEffect(() => {
-        window.addEventListener("mouseup", handleMouseDown); // Wait, logic error in standard handler names, fix below
-        window.addEventListener("mouseup", handleMouseUp);
+        const upHandler = () => setIsResizing(false);
+        window.addEventListener("mouseup", upHandler);
+        window.addEventListener("touchend", upHandler); // Fix touch end global
         return () => {
-            window.removeEventListener("mouseup", handleMouseUp);
+            window.removeEventListener("mouseup", upHandler);
+            window.removeEventListener("touchend", upHandler);
         };
     }, []);
 
     return (
+    return (
         <div
-            className={`relative w-full ${aspectRatio} overflow-hidden rounded-2xl select-none group cursor-col-resize`}
+            className={`relative w-full ${aspectRatio} overflow-hidden rounded-2xl select-none group cursor-col-resize focus:outline-none focus:ring-4 focus:ring-blue-500/50 transition-shadow`}
             ref={containerRef}
             onMouseMove={handleMouseMove}
             onTouchMove={handleTouchMove}
             onMouseDown={handleMouseDown}
             onTouchStart={handleMouseDown}
-            onTouchEnd={handleMouseUp}
+            // Accessibility
+            tabIndex={0}
+            role="region"
+            aria-label={`Comparison slider: Before and After ${alt}`}
+            onKeyDown={handleKeyDown}
         >
             {/* Background (After Image) */}
             <Image
                 src={afterImage}
-                alt={`${alt} After`}
+                alt={`Result after ${alt} treatment`}
                 fill
                 className="object-cover"
                 priority
@@ -78,7 +94,7 @@ const BeforeAfterSlider: React.FC<BeforeAfterSliderProps> = ({
             >
                 <Image
                     src={beforeImage}
-                    alt={`${alt} Before`}
+                    alt={`Condition before ${alt} treatment`}
                     fill
                     className="object-cover"
                     priority
@@ -92,6 +108,11 @@ const BeforeAfterSlider: React.FC<BeforeAfterSliderProps> = ({
             <div
                 className="absolute top-0 bottom-0 w-1 bg-white cursor-col-resize z-20 shadow-[0_0_20px_rgba(0,0,0,0.5)] flex items-center justify-center"
                 style={{ left: `${sliderPosition}%` }}
+                role="slider"
+                aria-valuenow={sliderPosition}
+                aria-valuemin={0}
+                aria-valuemax={100}
+                aria-label="Comparison slider handle"
             >
                 <div className="w-8 h-8 rounded-full bg-white flex items-center justify-center shadow-lg text-blue-600">
                     <ChevronsLeftRight size={16} />

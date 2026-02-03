@@ -1,5 +1,6 @@
-import { Metadata } from 'next';
+import type { Metadata } from 'next';
 import InvisalignRefactored from './InvisalignRefactored';
+import MedicalSchema from '@/components/seo/MedicalSchema';
 
 export const metadata: Metadata = {
     title: 'Invisalign & Clear Aligners in Nallagandla | Dr. Dhivakaran | Noble Dental',
@@ -8,42 +9,15 @@ export const metadata: Metadata = {
 };
 
 export default function InvisalignPage() {
-    const jsonLd = {
-        "@context": "https://schema.org",
-        "@type": "MedicalWebPage",
-        "name": "Orthodontic Engineering: Invisalign & Clear Aligners",
-        "description": "Medical-grade teeth straightening focusing on bite correction and TMJ health by Dr. Dhivakaran.",
-        "medicalSpecialty": "Orthodontics",
-        "mainEntity": {
-            "@type": "MedicalProcedure",
-            "name": "Invisalign Aligner Therapy",
-            "procedureCode": "D8080",
-            "description": "Custom-engineered clear aligner system with 3D clinical monitoring.",
-            "bodyLocation": "Dental Arches",
-            "howItWorks": "Gradual tooth movement using biocompatible thermoplastic controlled by AI ClinCheck software.",
-            "preparation": "iTero 5D Scan, Periodontal Clearance, Root Vector Mapping",
-            "followup": "Custom retainers and bite stabilization",
-            "relevantSpecialty": "Orthodontics",
-            "offers": {
-                "@type": "Offer",
-                "priceCurrency": "INR",
-                "lowPrice": "60000",
-                "highPrice": "150000",
-                "availability": "https://schema.org/InStock",
-                "offeredBy": {
-                    "@type": "MedicalClinic",
-                    "name": "Noble Dental & Implant Centre",
-                    "address": "Opp. Citizens Hospital, Nallagandla, Hyderabad"
-                }
-            }
-        }
-    };
-
     return (
         <>
-            <script
-                type="application/ld+json"
-                dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+            <MedicalSchema
+                procedure={{
+                    name: "Invisalign Aligner Therapy",
+                    description: "Custom-engineered clear aligner system with 3D clinical monitoring and iTero scanning.",
+                    procedureType: "Non-surgical",
+                    image: "https://nobledentalnallagandla.in/images/invisalign-hero.webp"
+                }}
             />
             <InvisalignRefactored />
         </>

@@ -10,9 +10,12 @@ export default function SpeculationRules() {
                 __html: JSON.stringify({
                     prerender: [
                         {
-                            source: 'list',
-                            urls: ['/*'], // Matches all internal links
-                            eagerness: 'moderate', // Balance between speed and data usage
+                            source: 'document',
+                            where: {
+                                href_matches: '/*', // Matches all internal links
+                                relative_to: 'document'
+                            },
+                            eagerness: 'moderate', // Triggers on hover (200ms)
                         },
                     ],
                 }),

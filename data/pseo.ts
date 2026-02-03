@@ -64,6 +64,13 @@ export const pseoLocalities: PSEOLocality[] = [
         landmark: "near My Home Avatar Entrance",
         driving_directions: "via Nallagandla Main Road in 7 minutes",
         coordinates: { lat: 17.4800, lng: 78.3100 }
+    },
+    {
+        slug: "my-home-sayuk",
+        name: "My Home Sayuk",
+        landmark: "near My Home Sayuk Main Gate",
+        driving_directions: "a straight 5-minute drive via Tellapur Road",
+        coordinates: { lat: 17.4650, lng: 78.2950 }
     }
 ];
 

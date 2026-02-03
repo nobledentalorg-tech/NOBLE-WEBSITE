@@ -23,38 +23,38 @@ const NobleDifference = () => {
                     {/* Left: Corporate Chains */}
                     <div className="bg-slate-50 dark:bg-[#111620] p-10 relative">
                         <div className="absolute top-0 right-0 bg-slate-200 dark:bg-slate-800 px-4 py-1 rounded-bl-xl text-xs font-bold uppercase text-slate-700 dark:text-slate-400">Standard Dental Chains</div>
-                        <h3 className="text-2xl font-bold text-slate-400 dark:text-slate-500 mb-8 flex items-center gap-3">
+                        <h3 className="text-2xl font-bold text-slate-400 dark:text-slate-400 mb-8 flex items-center gap-3">
                             <Users size={24} /> Mass Market Clinics
                         </h3>
 
                         <div className="space-y-8">
                             <div className="flex gap-4 opacity-60 grayscale transition-all duration-500 hover:grayscale-0 hover:opacity-100">
-                                <div className="w-12 h-12 rounded-full bg-slate-200 dark:bg-slate-800 flex items-center justify-center text-slate-500 shrink-0">
+                                <div className="w-12 h-12 rounded-full bg-slate-200 dark:bg-slate-800 flex items-center justify-center text-slate-500 dark:text-slate-400 shrink-0">
                                     <ClipboardList size={20} />
                                 </div>
                                 <div>
                                     <h4 className="font-bold text-slate-900 dark:text-white">Rotational Doctors</h4>
-                                    <p className="text-sm text-slate-500">You might see a different junior dentist every time you visit. No continuity of care.</p>
+                                    <p className="text-sm text-slate-500 dark:text-slate-400">You might see a different junior dentist every time you visit. No continuity of care.</p>
                                 </div>
                             </div>
 
                             <div className="flex gap-4 opacity-60 grayscale transition-all duration-500 hover:grayscale-0 hover:opacity-100">
-                                <div className="w-12 h-12 rounded-full bg-slate-200 dark:bg-slate-800 flex items-center justify-center text-slate-500 shrink-0">
+                                <div className="w-12 h-12 rounded-full bg-slate-200 dark:bg-slate-800 flex items-center justify-center text-slate-500 dark:text-slate-400 shrink-0">
                                     <Timer size={20} />
                                 </div>
                                 <div>
                                     <h4 className="font-bold text-slate-900 dark:text-white">Volume Focused</h4>
-                                    <p className="text-sm text-slate-500">15-minute slots. Rushed appointments to meet corporate targets.</p>
+                                    <p className="text-sm text-slate-500 dark:text-slate-400">15-minute slots. Rushed appointments to meet corporate targets.</p>
                                 </div>
                             </div>
 
                             <div className="flex gap-4 opacity-60 grayscale transition-all duration-500 hover:grayscale-0 hover:opacity-100">
-                                <div className="w-12 h-12 rounded-full bg-slate-200 dark:bg-slate-800 flex items-center justify-center text-slate-500 shrink-0">
+                                <div className="w-12 h-12 rounded-full bg-slate-200 dark:bg-slate-800 flex items-center justify-center text-slate-500 dark:text-slate-400 shrink-0">
                                     <ShieldCheck size={20} />
                                 </div>
                                 <div>
                                     <h4 className="font-bold text-slate-900 dark:text-white">Basic Sterilization</h4>
-                                    <p className="text-sm text-slate-500">Standard protocols met, but often shared instruments between multiple units.</p>
+                                    <p className="text-sm text-slate-500 dark:text-slate-400">Standard protocols met, but often shared instruments between multiple units.</p>
                                 </div>
                             </div>
                         </div>

@@ -15,6 +15,7 @@ import {
 } from 'lucide-react';
 import { RevealOnScroll } from '@/components/RevealOnScroll';
 import SchemaFAQ from '@/components/SchemaFAQ';
+import WholeBodyConnection from '@/components/WholeBodyConnection';
 
 const customStyles = `
   .ios-glass {
@@ -300,6 +301,9 @@ export default function PregnancyPage() {
                     </div>
                 </div>
             </section >
+
+            {/* --- WHOLE BODY CONNECTION (NeoSystemsLinker) --- */}
+            <WholeBodyConnection topic="pregnancy" />
 
             {/* --- TRIMESTER TIMELINE --- */}
             < section id="trimester" className="py-24 bg-white dark:bg-[#020617]" >

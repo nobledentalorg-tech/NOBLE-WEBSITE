@@ -2,10 +2,16 @@
 
 import React, { useState, useEffect } from 'react';
 import { MessageCircle, Phone, X } from 'lucide-react';
+import { useMobileUI } from '@/context/MobileUIContext';
 
 const FloatingCTA = ({ context }: { context?: string }) => {
     const phoneNumber = "918074512305";
     const [isVisible, setIsVisible] = useState(false);
+    const { setStickyFooterVisible } = useMobileUI();
+
+    useEffect(() => {
+        setStickyFooterVisible(isVisible);
+    }, [isVisible, setStickyFooterVisible]);
 
     useEffect(() => {
         const toggleVisibility = () => {

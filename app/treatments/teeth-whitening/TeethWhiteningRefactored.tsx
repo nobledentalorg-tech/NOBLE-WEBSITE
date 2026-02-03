@@ -4,8 +4,8 @@ import React, { useState, useRef, useEffect } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import {
-    ArrowRight, CheckCircle2, XCircle, Clock, Shield, Star,
-    Sparkles, Award, Zap, ChevronDown, ChevronUp, AlertCircle
+    ArrowRight, CheckCircle2, XCircle, Clock, Shield, ShieldCheck, Star,
+    Sparkles, Award, Zap, ChevronDown, ChevronUp, AlertCircle, ChevronRight
 } from 'lucide-react';
 import { motion, AnimatePresence, useScroll, useTransform } from 'framer-motion';
 import { Swiper, SwiperSlide } from 'swiper/react';
@@ -242,8 +242,28 @@ export default function TeethWhiteningRefactored() {
                                 </span>
                             </h1>
 
-                            <p className="text-xl text-slate-300 max-w-lg leading-relaxed mb-8">
+                            <p className="text-xl text-slate-300 max-w-lg leading-relaxed mb-6">
                                 Stop hiding your teeth in photos. Using <strong>Philips Zoom</strong>, we erase years of coffee and tea stains in a single 45-minute session.
+                            </p>
+
+                            {/* TRUST SIGNALS */}
+                            <div className="flex flex-wrap gap-3 mb-8">
+                                <div className="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-blue-100/10 border border-blue-200/20">
+                                    <Zap size={14} className="text-blue-400" />
+                                    <span className="text-[10px] font-bold uppercase tracking-wide text-blue-100">Philips Zoom</span>
+                                </div>
+                                <div className="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-emerald-100/10 border border-emerald-200/20">
+                                    <ShieldCheck size={14} className="text-emerald-400" />
+                                    <span className="text-[10px] font-bold uppercase tracking-wide text-emerald-100">Gum Safety</span>
+                                </div>
+                                <div className="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-yellow-100/10 border border-yellow-200/20">
+                                    <Clock size={14} className="text-yellow-400" />
+                                    <span className="text-[10px] font-bold uppercase tracking-wide text-yellow-100">45-Min Result</span>
+                                </div>
+                            </div>
+
+                            <p className="text-lg text-slate-400 max-w-lg leading-relaxed mb-8 border-l-4 border-yellow-500/50 pl-6">
+                                <strong>Dr. Dhivakaran</strong> ensures your enamel is protected with medical-grade relief gels, preventing the "zinging" pain of salons.
                             </p>
 
                             <div className="flex flex-wrap gap-4">
@@ -286,7 +306,7 @@ export default function TeethWhiteningRefactored() {
                 <div className="container mx-auto px-6 max-w-4xl text-center">
                     <RevealOnScroll>
                         <h2 className="text-3xl md:text-5xl font-bold text-slate-900 mb-8">
-                            Is your toothpaste <span className="text-red-500">lying</span> to you?
+                            The Truth: <br /><span className="text-red-500">Is your toothpaste lying?</span>
                         </h2>
                         <div className="prose prose-lg mx-auto text-slate-700 dark:text-slate-300 leading-relaxed">
                             <p>
@@ -296,8 +316,10 @@ export default function TeethWhiteningRefactored() {
                             <p>
                                 <strong>Because the stain is INSIDE the tooth.</strong>
                             </p>
-                            <p>
+                            <p className="mb-4">
                                 Most whitening toothpastes are just “sandpaper” for your teeth. They scratch off surface dirt, but they can’t touch the deep pigments absorbed into your enamel rods.
+                            </p>
+                            <p>
                                 Even worse, scrubbing too hard wears down your white enamel, revealing specifically the <em>yellow</em> layer (dentin) underneath. You are literally brushing your teeth yellow.
                             </p>
                             <p className="font-bold text-slate-900 text-xl border-l-4 border-yellow-400 pl-6 italic bg-yellow-50 p-4 rounded-r-xl my-8">
@@ -318,7 +340,7 @@ export default function TeethWhiteningRefactored() {
                     <RevealOnScroll>
                         <div className="text-center mb-16">
                             <div className="text-yellow-600 font-bold uppercase tracking-widest mb-2">Diagnosis</div>
-                            <h2 className="text-4xl font-bold text-slate-900">Why are my teeth yellow?</h2>
+                            <h2 className="text-4xl font-bold text-slate-900">Diagnosis: <br /><span className="text-yellow-600">Why are my teeth yellow?</span></h2>
                         </div>
                     </RevealOnScroll>
 
@@ -349,7 +371,7 @@ export default function TeethWhiteningRefactored() {
                         <div className="md:w-1/2 md:sticky md:top-24">
                             <RevealOnScroll>
                                 <h2 className="text-4xl md:text-5xl font-bold text-slate-900 mb-6 leading-tight">
-                                    Just sit back and relax.
+                                    The Process: <br /><span className="text-slate-500 text-3xl">Just sit back and relax.</span>
                                 </h2>
                                 <p className="text-lg text-slate-700 dark:text-slate-300 mb-8">
                                     The entire procedure takes less than an hour. Many of our patients listen to podcasts or take a quick nap while the light does the work.
@@ -406,7 +428,7 @@ export default function TeethWhiteningRefactored() {
                 <div className="container mx-auto px-6 max-w-5xl">
                     <RevealOnScroll>
                         <div className="text-center mb-16">
-                            <h2 className="text-4xl font-bold text-slate-900 mb-4">Transparent Pricing</h2>
+                            <h2 className="text-4xl font-bold text-slate-900 mb-4">Transparent Pricing: <br /><span className="text-slate-500 text-2xl">No Hidden Costs.</span></h2>
                             <p className="text-slate-700 dark:text-slate-300">Why &quot;Cheaper&quot; is not better when it comes to Chemistry.</p>
                         </div>
                     </RevealOnScroll>
@@ -472,12 +494,7 @@ export default function TeethWhiteningRefactored() {
                     <RevealOnScroll>
                         <div className="flex flex-col md:flex-row gap-12 items-center">
                             <div className="relative w-64 h-64 shrink-0 rounded-full overflow-hidden border-4 border-slate-100 shadow-xl">
-                                <Image
-                                    src="/assets/images/doctors/dr-dhivakaran.webp" // Check if this exists, else generic
-                                    alt="Dr. Dhivakaran"
-                                    fill
-                                    className="object-cover"
-                                />
+                                <Image src="/images/dhivakaran.webp" alt="Dr. Dhivakaran" width={64} height={64} className="object-cover" />
                             </div>
                             <div>
                                 <h2 className="text-3xl font-bold text-slate-900 mb-4">Meet Your Expert</h2>
@@ -518,6 +535,20 @@ export default function TeethWhiteningRefactored() {
                 </div>
             </section>
 
+            {/* ================= INTERNAL LINKING: NEXT STEPS ================= */}
+            <section className="py-12 bg-white border-t border-slate-100">
+                <div className="max-w-4xl mx-auto px-6 text-center">
+                    <p className="text-xs font-bold uppercase tracking-widest text-slate-400 mb-4">Beyond Whitening</p>
+                    <h2 className="text-3xl font-black text-slate-900 dark:text-white mb-6">Deep Stains? Shape Issues?</h2>
+                    <p className="text-slate-600 dark:text-slate-400 mb-8 max-w-xl mx-auto">
+                        If you have intrinsic stains (like tetracycline) or want to change the shape of your teeth, Whitening might not be enough. Veneers are the permanent answer.
+                    </p>
+                    <Link href="/treatments/veneers" className="inline-flex items-center gap-2 text-blue-600 dark:text-blue-400 font-bold hover:underline">
+                        Explore Ceramic Veneers <ChevronRight size={16} />
+                    </Link>
+                </div>
+            </section>
+
             {/* 
         ========================================
         8. CTA FOOTER
@@ -539,6 +570,6 @@ export default function TeethWhiteningRefactored() {
                     </RevealOnScroll>
                 </div>
             </section>
-        </div>
+        </div >
     );
 }

@@ -1,48 +1,57 @@
 'use client';
 
 import React, { useEffect, useRef, useState } from 'react';
+import { motion, useInView, useAnimation } from 'framer-motion';
 
 interface RevealProps {
   children: React.ReactNode;
   className?: string; // Added support for custom classes
-  delay?: number;     // Added support for animation delay
+  delay?: number;     // Added support for animation delay (ms)
 }
 
+// Custom Hook for hydration safety
+const useHasMounted = () => {
+  const [hasMounted, setHasMounted] = useState(false);
+  useEffect(() => {
+    setHasMounted(true);
+  }, []);
+  return hasMounted;
+};
+
 export const RevealOnScroll = ({ children, className = "", delay = 0 }: RevealProps) => {
-  const [isVisible, setIsVisible] = useState(false);
-  const [hasRendered, setHasRendered] = useState(false);
-  const ref = useRef<HTMLDivElement>(null);
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: true, margin: "0px 0px -50px 0px" });
+  const controls = useAnimation();
+  const hasMounted = useHasMounted();
 
   useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setIsVisible(true);
-          setHasRendered(true);
-        }
-      },
-      {
-        threshold: 0.05,
-        rootMargin: '200px' // Start rendering 200px before it enters view
-      }
-    );
-
-    if (ref.current) {
-      observer.observe(ref.current);
+    if (isInView && hasMounted) {
+      controls.start("visible");
     }
+  }, [isInView, hasMounted, controls]);
 
-    return () => observer.disconnect();
-  }, []);
+  if (!hasMounted) {
+    // Return static children on server to avoid hydration mismatch (Hole-Punching)
+    return <div className={className}>{children}</div>;
+  }
 
   return (
-    <div
+    <motion.div
       ref={ref}
-      className={`transition-all duration-1000 transform ${className} ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}
-      style={{
-        transitionDelay: `${delay}ms`,
+      variants={{
+        hidden: { opacity: 0, y: 30 },
+        visible: { opacity: 1, y: 0 }
       }}
+      initial="hidden"
+      animate={controls}
+      transition={{
+        duration: 0.8,
+        ease: "easeOut",
+        delay: delay / 1000
+      }}
+      className={className}
     >
       {children}
-    </div>
+    </motion.div>
   );
 };

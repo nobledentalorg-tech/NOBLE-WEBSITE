@@ -1,7 +1,7 @@
 
 import { notFound } from 'next/navigation';
 import { PATHOLOGY_INDEX, getAllPathologySlugs } from '@/src/data/knowledge_graph/pathology/index';
-import MedicalSchema from '@/src/components/seo/MedicalSchema';
+import MedicalSchema from '@/components/seo/MedicalSchema';
 import { Metadata } from 'next';
 
 // 1. Static Generation (SSG)
@@ -32,7 +32,7 @@ export default function PathologyPage({ params }: { params: { slug: string } }) 
 
     return (
         <>
-            <MedicalSchema type="MedicalCondition" data={data} />
+            <MedicalSchema condition={data as any} />
 
             <main className="max-w-4xl mx-auto px-6 py-12 font-sans text-slate-800">
                 {/* Header */}

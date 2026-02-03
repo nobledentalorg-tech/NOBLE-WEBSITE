@@ -8,10 +8,12 @@ import {
    CheckCircle2, AlertTriangle, ChevronRight,
    Eye, Drill, Layers, Siren, Microscope,
    HeartPulse, FileText, Check, X, Thermometer, Phone,
-   Info, Star, Calendar, Sparkles, MessageCircle
+   Info, Star, Calendar, Sparkles, MessageCircle, Scale, AlertCircle, XCircle
 } from 'lucide-react';
 import { RevealOnScroll } from '@/components/RevealOnScroll';
 import SchemaFAQ from '@/components/SchemaFAQ';
+import InteractiveCostEstimator from '@/components/interactive/CostEstimator';
+import AnesthesiaSpecSheet from '@/components/medical/AnesthesiaSpecSheet';
 
 const customStyles = `
   .ios-glass {
@@ -188,30 +190,58 @@ export default function RootCanalRefactored() {
 
                {/* Left: Content */}
                <div className="space-y-8 order-2 lg:order-1">
-                  <RevealOnScroll>
+                  {/* SSR FRIENDLY CONTENT: Removed RevealOnScroll from Text */}
+                  <div className="animate-in fade-in duration-700">
                      <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-slate-200/50 dark:bg-white/10 backdrop-blur-md text-purple-600 dark:text-purple-400 font-bold text-xs uppercase tracking-[0.2em]">
                         <Activity size={12} /> Painless Root Canal Protocol
                      </div>
-                     <h1 className="text-5xl md:text-7xl font-black text-slate-900 dark:text-white leading-[0.9] tracking-tighter">
-                        Precision <br />
-                        <span className="gradient-text">Root Canal.</span>
+                     <h1 className="text-5xl md:text-7xl font-black text-slate-900 dark:text-white leading-[0.9] tracking-tighter mt-4">
+                        Painless <br />
+                        <span className="gradient-text">Precision RCT.</span>
                      </h1>
 
-                     {/* Medical Review Pill */}
-                     <div className="flex items-center gap-4 py-8">
-                        <Link href="/team/dr-dhivakaran" className="ios-glass ios-btn flex items-center gap-3 p-2 pr-6 rounded-full group hover:bg-white/50 dark:hover:bg-white/10">
-                           <div className="w-10 h-10 rounded-full bg-slate-200 dark:bg-slate-800 overflow-hidden relative">
-                              <Image src="https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?auto=format&fit=crop&q=80&w=100" alt="Dr. Dhivakaran" fill className="object-cover" />
+                     {/* TRUST SIGNAL: Medical Director Badge */}
+                     <Link href="/team/dr-dhivakaran" className="group flex items-center gap-4 p-4 rounded-2xl bg-white/50 dark:bg-slate-900/50 backdrop-blur-md border border-slate-200 dark:border-white/10 mb-8 w-fit hover:bg-white/80 dark:hover:bg-slate-900/80 transition-all cursor-pointer mt-8">
+                        <div className="relative w-12 h-12 rounded-full overflow-hidden ring-2 ring-purple-500 ring-offset-2 dark:ring-offset-slate-900 group-hover:scale-105 transition-transform">
+                           <Image src="/images/dhivakaran.webp" alt="Dr. Dhivakaran" width={48} height={48} className="object-cover" />
+                        </div>
+                        <div>
+                           <div className="flex items-center gap-2">
+                              <span className="font-bold text-slate-900 dark:text-white text-sm group-hover:text-purple-500 transition-colors">Dr. Dhivakaran</span>
+                              <ShieldCheck size={14} className="text-purple-500" />
                            </div>
-                           <div className="text-left">
-                              <div className="text-xs uppercase text-purple-600 dark:text-purple-400 font-bold tracking-wider">Reviewer</div>
-                              <div className="text-xs font-bold text-slate-900 dark:text-white">Dr. Dhivakaran, CMD</div>
-                           </div>
-                        </Link>
+                           <p className="text-[10px] uppercase font-bold text-slate-500 tracking-wider">MDS • Endodontist</p>
+                        </div>
+                        <div className="h-8 w-px bg-slate-200 dark:bg-white/10 mx-2"></div>
+                        <div className="text-right">
+                           <div className="text-xs font-black text-slate-900 dark:text-white">5k+</div>
+                           <p className="text-[10px] text-slate-500 uppercase font-bold tracking-wider">Saved</p>
+                        </div>
+                     </Link>
+
+                     <p className="text-lg md:text-xl text-slate-600 dark:text-slate-400 font-medium leading-relaxed max-w-lg mb-6 border-l-4 border-purple-500 pl-6">
+                        **"We save teeth that others extract."** <br />
+                        Noble Dental Care is Nallagandla&apos;s only **Certified Microscopic Endodontic Center**. Experience **Painless Root Canal Treatment** with advanced electronic anesthesia.
+                     </p>
+
+                     {/* TRUST SIGNALS INJECTION */}
+                     <div className="flex flex-wrap gap-3 mb-8">
+                        <div className="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-emerald-100 dark:bg-emerald-900/30 border border-emerald-200 dark:border-emerald-800">
+                           <CheckCircle2 size={14} className="text-emerald-600 dark:text-emerald-400" />
+                           <span className="text-[10px] font-bold uppercase tracking-wide text-emerald-800 dark:text-emerald-300">Voted #1 in Nallagandla</span>
+                        </div>
+                        <div className="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-blue-100 dark:bg-blue-900/30 border border-blue-200 dark:border-blue-800">
+                           <Microscope size={14} className="text-blue-600 dark:text-blue-400" />
+                           <span className="text-[10px] font-bold uppercase tracking-wide text-blue-800 dark:text-blue-300">Zeiss Microscopic Center</span>
+                        </div>
+                        <div className="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-purple-100 dark:bg-purple-900/30 border border-purple-200 dark:border-purple-800">
+                           <ShieldCheck size={14} className="text-purple-600 dark:text-purple-400" />
+                           <span className="text-[10px] font-bold uppercase tracking-wide text-purple-800 dark:text-purple-300">ISO Certified Safety</span>
+                        </div>
                      </div>
 
-                     <p className="text-lg md:text-xl text-slate-600 dark:text-slate-400 font-medium leading-relaxed max-w-lg">
-                        <strong>Noble Dental Care</strong> is Nallagandla&apos;s only <strong>Certified Microscopic Endodontic Center</strong>. We utilize <strong>Zeiss Optics</strong> and <strong>Laser Disinfection</strong> protocols to ensure a 100% bacterial-free environment for your tooth.
+                     <p className="text-base text-slate-500 dark:text-slate-400 leading-relaxed max-w-lg">
+                        We utilize <strong>Zeiss Optics</strong> and <strong>Laser Disinfection</strong> protocols to ensure a 100% bacterial-free environment for your tooth.
                      </p>
 
                      <div className="flex flex-wrap gap-4 pt-4">
@@ -222,7 +252,7 @@ export default function RootCanalRefactored() {
                            Medical Insight
                         </button>
                      </div>
-                  </RevealOnScroll>
+                  </div>
                </div>
 
                {/* Right: INTERACTIVE "INFECTION WIPER" */}
@@ -330,7 +360,16 @@ export default function RootCanalRefactored() {
                         </h2>
                         <div className="space-y-4 max-w-2xl">
                            <p className="text-white/90 text-lg leading-relaxed italic">
-                              &quot;The #1 fear patients have isn&apos;t the infection—it&apos;s the treatment itself. As a leading **Dental Clinic in Nallagandla** located **Near Aparna Sarovar / Citizens Hospital**, we have redefined the patient experience. At Noble Dental, we ensure a **Painless Root Canal** experience by utilizing computer-controlled anesthesia and Swiss Rotary files. Our expertise in **Microscopic Root Canal Nallagandla** and **Laser Root Canal Treatment** ensures that we save teeth that others might extract. In 2024, **Root Canal Treatment in Nallagandla** should be as routine and comfortable as a simple filling.&quot;
+                              &quot;The #1 fear patients have isn&apos;t the infection—it&apos;s the treatment itself.
+                           </p>
+                           <p className="text-white/90 text-lg leading-relaxed italic">
+                              As a leading <strong>Dental Clinic in Nallagandla</strong> located <strong>Near Aparna Sarovar / Citizens Hospital</strong>, we have redefined the patient experience.
+                           </p>
+                           <p className="text-white/90 text-lg leading-relaxed italic">
+                              At Noble Dental, we ensure a <strong>Painless Root Canal</strong> experience by utilizing computer-controlled anesthesia and Swiss Rotary files.
+                           </p>
+                           <p className="text-white/90 text-lg leading-relaxed italic">
+                              Our expertise in <strong>Microscopic Root Canal Nallagandla</strong> ensures that we save teeth that others might extract.
                            </p>
                            <div className="flex items-center gap-3 pt-4">
                               <div className="w-12 h-12 rounded-full border-2 border-white/30 overflow-hidden">
@@ -379,7 +418,7 @@ export default function RootCanalRefactored() {
                <RevealOnScroll>
                   <div className="flex flex-col md:flex-row justify-between items-end mb-16 gap-6">
                      <div>
-                        <h2 className="text-4xl font-black text-slate-900 dark:text-white tracking-tight">The Root Cause.</h2>
+                        <h2 className="text-4xl font-black text-slate-900 dark:text-white tracking-tight">The Root Cause: <br /><span className="text-purple-500 text-2xl">Why is this happening?</span></h2>
                         <p className="text-slate-500 dark:text-slate-400 mt-2 text-lg">Why is this happening to you?</p>
                      </div>
                      <Link href="/contact" className="ios-btn px-6 py-2 bg-slate-200 dark:bg-white/10 rounded-full text-xs font-bold uppercase tracking-wider hover:bg-slate-300 dark:hover:bg-white/20 transition-colors">
@@ -397,10 +436,12 @@ export default function RootCanalRefactored() {
                            <div className="w-14 h-14 bg-purple-100 dark:bg-purple-900/30 text-purple-600 dark:text-purple-400 rounded-full flex items-center justify-center mb-6">
                               <Drill size={28} />
                            </div>
-                           <h3 className="text-3xl font-bold text-slate-900 dark:text-white mb-4 tracking-tight">Deep Decay</h3>
-                           <p className="text-slate-500 dark:text-slate-400 leading-relaxed text-lg">
-                              The most common culprit. Bacteria penetrate enamel and dentin, reaching the pulp chamber where nerves reside. This causes irreversible inflammation and excruciating toothache, especially at night.
-                           </p>
+                           <h3 className="text-3xl font-bold text-slate-900 dark:text-white mb-4 tracking-tight">Deep Decay: <br /><span className="text-purple-500 text-xl">The Hidden Pain Source</span></h3>
+                           <ul className="space-y-2 text-slate-500 dark:text-slate-400 leading-relaxed text-lg list-disc pl-5">
+                              <li>The most common culprit for severe toothaches.</li>
+                              <li>Bacteria penetrate enamel and dentin to reach the nerves.</li>
+                              <li>Causes irreversible inflammation and sleepless nights.</li>
+                           </ul>
                         </div>
                         <div className="mt-8 relative h-40 w-full bg-slate-50 dark:bg-black/50 rounded-3xl overflow-hidden border border-slate-100 dark:border-white/5">
                            <Image src="/assets/images/treatments/root-canal-decay.jpg" alt="Decay" fill className="object-cover opacity-80 group-hover:scale-105 transition-transform duration-700" />
@@ -450,7 +491,7 @@ export default function RootCanalRefactored() {
          <section id="symptoms" className="py-24 bg-white dark:bg-[#1C1C1E]">
             <div className="max-w-[1000px] mx-auto px-6">
                <div className="text-center mb-16">
-                  <h2 className="text-4xl font-black text-slate-900 dark:text-white tracking-tight">Symptoms</h2>
+                  <h2 className="text-4xl font-black text-slate-900 dark:text-white tracking-tight">Symptoms: <br /><span className="text-red-500 text-2xl">Signs that demand attention</span></h2>
                   <p className="text-slate-500 dark:text-slate-400 mt-2">Signs that demand attention.</p>
                </div>
 
@@ -554,7 +595,7 @@ export default function RootCanalRefactored() {
                <RevealOnScroll>
                   <div className="flex flex-col md:flex-row items-center gap-12">
                      <div className="md:w-1/2">
-                        <h2 className="text-5xl font-black mb-6 tracking-tight">Systems <br /><span className="text-emerald-500">Check.</span></h2>
+                        <h2 className="text-5xl font-black mb-6 tracking-tight">Systems Check: <br /><span className="text-emerald-500">Your Safety First.</span></h2>
                         <p className="text-lg text-slate-400 mb-8 leading-relaxed">
                            We treat the patient, not just the tooth. Our safety protocols mirror hospital standards, checking your systemic health before any procedure.
                         </p>
@@ -606,7 +647,7 @@ export default function RootCanalRefactored() {
             <div className="max-w-[1000px] mx-auto px-6">
                <div className="text-center mb-20">
                   <p className="text-purple-600 dark:text-purple-400 font-bold uppercase tracking-widest text-xs mb-2">The Clinical Workflow</p>
-                  <h2 className="text-4xl md:text-5xl font-black text-slate-900 dark:text-white tracking-tight italic uppercase">Single Sitting <br /> Root Canal.</h2>
+                  <h2 className="text-4xl md:text-5xl font-black text-slate-900 dark:text-white tracking-tight italic uppercase">Single Sitting Root Canal: <br /><span className="text-purple-600 text-3xl">Done in One Visit.</span></h2>
                </div>
 
                <div className="space-y-12 relative">
@@ -616,7 +657,7 @@ export default function RootCanalRefactored() {
                   {[
                      { step: "01", title: "Ouchless Injection", desc: "Computer-controlled local anesthesia (Lignocaine 2%) ensures you feel absolutely nothing but a scratch.", icon: Activity },
                      { step: "02", title: "Isolation", desc: "Rubber dam application shields your tooth from saliva and bacteria. A critical step often skipped elsewhere.", icon: ShieldCheck },
-                     { step: "03", title: "Rotary Cleaning", desc: "Swiss NiTi files (EdgeEndo/Dentsply) navigate curved roots silently, removing infection without the scraping sound of manual files.", icon: Zap, image: "/assets/images/treatments/rotary-handpiece.png" },
+                     { step: "03", title: "Rotary Cleaning", desc: "Swiss NiTi files (EdgeEndo/Dentsply) navigate curved roots silently. They remove infection without the scraping sound of manual files.", icon: Zap, image: "/assets/images/treatments/rotary-handpiece.png" },
                      { step: "04", title: "3D Obturation", desc: "Bioceramic sealers flow into every micro-channel, creating a hermetic seal that promotes bone healing.", icon: CheckCircle2 }
                   ].map((item, i) => (
                      <div key={i} className={`flex flex-col md:flex-row gap-8 items-center ${i % 2 !== 0 ? 'md:flex-row-reverse' : ''}`}>
@@ -702,7 +743,7 @@ export default function RootCanalRefactored() {
                </div>
                <h2 className="text-3xl font-bold text-slate-900 dark:text-white mb-4 tracking-tight uppercase italic">Emergency Pain Relief.</h2>
                <p className="text-slate-600 dark:text-slate-400 mb-8 max-w-xl mx-auto leading-relaxed font-medium">
-                  Search no further for a **Dental Clinic in Nallagandla** for an emergency **Root Canal Treatment**. **Dr. Dhivakaran** and his team reserve slots for rapid pain relief daily.
+                  Search no further for a **Dental Clinic in Nallagandla** for an emergency **Root Canal Treatment**. <br /><br />**Dr. Dhivakaran** and his team reserve slots for rapid pain relief daily.
                </p>
                <div className="flex gap-4 justify-center">
                   <a href="https://wa.me/918610425342?text=Emergency%20Pain%20Relief%20Request" className="ios-btn px-8 py-3 bg-red-500 text-white rounded-full font-bold text-sm shadow-lg shadow-red-500/30 flex items-center gap-2">
@@ -716,79 +757,131 @@ export default function RootCanalRefactored() {
             </div>
          </div>
 
-         {/* ================= 6. PRICING: WALLET PASSES ================= */}
-         <section id="pricing" className="py-24 bg-[#F2F2F7] dark:bg-[#000000] overflow-hidden">
-            <div className="max-w-[1200px] mx-auto px-6 grid md:grid-cols-2 gap-16 items-start">
-               <div>
-                  <div className="inline-flex items-center gap-2 px-3 py-1 bg-purple-100 dark:bg-purple-900/30 text-purple-600 rounded-full text-xs font-black uppercase tracking-widest mb-6 border border-purple-200">
-                     Root Canal Cost in Hyderabad
-                  </div>
-                  <h2 className="text-5xl font-black text-slate-900 dark:text-white tracking-tight mb-6 italic uppercase">Transparent <br /> Investment.</h2>
-                  <p className="text-lg text-slate-600 dark:text-slate-400 mb-8 leading-relaxed">
-                     Understanding the **Dental Cap / Crown Cost** and **Root Canal Treatment in Nallagandla** is essential for informed care. At Noble Dental, we provide honest, market-standard rates for premium **Micro-Endodontics**.
-                  </p>
+         {/* ================= TECH SPEC: ANESTHESIA ================= */}
+         <AnesthesiaSpecSheet />
 
-                  {/* Glassmorphism Feature List */}
-                  <div className="space-y-4">
-                     <div className="flex items-center gap-4 p-4 rounded-2xl bg-white/50 dark:bg-white/5">
-                        <CheckCircle2 className="text-emerald-500" />
-                        <span className="font-bold text-slate-700 dark:text-slate-300">No Hidden Consumable Charges</span>
-                     </div>
-                     <div className="flex items-center gap-4 p-4 rounded-2xl bg-white/50 dark:bg-white/5">
-                        <ShieldCheck className="text-purple-500" />
-                        <span className="font-bold text-slate-700 dark:text-slate-300">15-Year Warranty on Zirconia</span>
-                     </div>
-                     <div className="flex items-center gap-4 p-4 rounded-2xl bg-white/50 dark:bg-white/5">
-                        <Calendar className="text-blue-500" />
-                        <span className="font-bold text-slate-700 dark:text-slate-300">0% Interest EMI Available</span>
-                     </div>
-                  </div>
-               </div>
-
-               {/* WALLET STACK */}
-               <div className="relative h-[600px] flex items-center justify-center wallet-stack perspective-[1000px]">
-                  {[
-                     { name: "Consultation", price: "₹300", color: "bg-blue-500", top: "top-0", z: "z-10" },
-                     { name: "Single Sitting RCT", price: "₹4,500", sub: "Pain Relief Focus", color: "bg-purple-600", top: "top-16", z: "z-20" },
-                     { name: "Molar Root Canal", price: "₹6,000", sub: "Root Canal Cost in Hyderabad", color: "bg-slate-900", top: "top-32", z: "z-30" },
-                     { name: "Zirconia Crown", price: "₹8,000", sub: "Dental Cap / Crown Cost", color: "bg-emerald-600", top: "top-48", z: "z-40" }
-                  ].map((card, i) => (
-                     <div
-                        key={i}
-                        className={`absolute w-80 h-48 rounded-3xl p-6 text-white shadow-2xl wallet-card cursor-pointer group ${card.color} ${card.top} ${card.z} left-1/2 -translate-x-1/2`}
-                     >
-                        <div className="flex justify-between items-start mb-8">
-                           <div className="text-sm font-medium opacity-80">Noble Pass</div>
-                           <Activity size={20} className="opacity-80" />
-                        </div>
-                        <div className="flex justify-between items-end">
-                           <div>
-                              <div className="text-2xl font-bold tracking-tight">{card.name}</div>
-                              {card.sub && <div className="text-xs opacity-70 mt-1">{card.sub}</div>}
-                           </div>
-                           <div className="text-2xl font-bold">{card.price}</div>
-                        </div>
-                        {/* Shimmer effect */}
-                        <div className="absolute inset-0 bg-gradient-to-tr from-white/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity rounded-3xl pointer-events-none"></div>
-                     </div>
-                  ))}
-                  <div className="absolute bottom-10 text-xs text-slate-400 text-center w-full">
-                     Hover to expand pricing cards
-                  </div>
-               </div>
+         {/* ================= 6. TRUST & TRANSPARENCY: 360° MATRIX ================= */}
+         <section id="pricing" className="py-24 bg-slate-50 dark:bg-[#050505] relative overflow-hidden">
+            {/* Background Ambience */}
+            <div className="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none">
+               <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-purple-500/10 rounded-full blur-[120px] animate-pulse"></div>
+               <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-20"></div>
             </div>
 
-            {/* Neo AI CTA - Full Width */}
-            <div className="max-w-[1200px] mx-auto px-6 mt-12 text-center pb-12">
-               <Link href="/cost-estimator" className="inline-flex items-center gap-3 px-6 py-3 bg-white dark:bg-white/10 rounded-full border border-purple-200 dark:border-purple-500/30 hover:bg-purple-50 dark:hover:bg-purple-900/20 transition-colors group">
-                  <div className="w-8 h-8 rounded-full bg-gradient-to-tr from-purple-600 to-blue-500 flex items-center justify-center text-white">
-                     <Sparkles size={14} className="animate-pulse" />
+            <div className="max-w-[1200px] mx-auto px-6 relative z-10">
+               <RevealOnScroll>
+                  <div className="text-center mb-20">
+                     <div className="inline-flex items-center gap-2 px-4 py-2 bg-white dark:bg-white/5 backdrop-blur-md rounded-full border border-purple-200 dark:border-purple-500/30 text-xs font-black uppercase tracking-widest text-purple-600 dark:text-purple-400 mb-6 shadow-xl">
+                        <Scale size={14} /> Investment Transparency v2.0
+                     </div>
+                     <h2 className="text-4xl md:text-6xl font-black text-slate-900 dark:text-white mb-6 tracking-tight">
+                        Transparent <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-500 to-blue-500">Pricing Logic.</span>
+                     </h2>
+                     <p className="text-lg text-slate-600 dark:text-slate-400 max-w-2xl mx-auto leading-relaxed">
+                        No hidden fees. No surprises. Use our AI Estimator to understand the **Root Canal Cost in Nallagandla** before you even visit.
+                     </p>
                   </div>
-                  <div className="text-left">
-                     <div className="text-xs font-bold uppercase tracking-widest text-slate-500 dark:text-slate-400">Not sure which plan?</div>
-                     <div className="text-sm font-bold text-slate-900 dark:text-white group-hover:text-purple-600 transition-colors">Let Neo AI analyze your symptoms &rarr;</div>
+
+                  {/* INTERACTIVE COMPONENT INJECTION */}
+                  <div className="flex justify-center w-full my-12">
+                     <InteractiveCostEstimator />
                   </div>
-               </Link>
+
+                  {/* 360° COMPARISON GRID (Legscy Hidden) */}
+                  <div className="hidden grid lg:grid-cols-2 gap-8 items-stretch">
+
+                     {/* CARD 1: THE STANDARD (Red/Grey) */}
+                     <div className="p-10 rounded-[2.5rem] bg-white dark:bg-[#0F1115] border border-slate-200 dark:border-white/5 relative overflow-hidden group">
+                        <div className="absolute top-0 right-0 p-8 opacity-5 grayscale group-hover:grayscale-0 transition-all duration-700">
+                           <Activity size={120} />
+                        </div>
+                        <div className="relative z-10">
+                           <h3 className="text-2xl font-bold text-slate-900 dark:text-slate-400 mb-2">Standard RCT</h3>
+                           <div className="flex items-baseline gap-2 mb-8">
+                              <span className="text-4xl font-black text-slate-900 dark:text-slate-500">₹4,500</span>
+                              <span className="text-sm font-bold text-slate-400 uppercase tracking-widest">/ tooth</span>
+                           </div>
+
+                           <div className="space-y-6">
+                              {[
+                                 { icon: CheckCircle2, text: "Digital X-Ray Diagnosis", included: true },
+                                 { icon: CheckCircle2, text: "Rotary Endodontics", included: true },
+                                 { icon: AlertCircle, text: "Standard Chemical Irrigation", included: true, color: "text-amber-500" },
+                                 { icon: XCircle, text: "No Microscopic Magnification", included: false },
+                                 { icon: XCircle, text: "No Laser Disinfection", included: false }
+                              ].map((item, i) => (
+                                 <div key={i} className={`flex items-center gap-4 ${!item.included ? 'opacity-50' : ''}`}>
+                                    <item.icon size={20} className={item.color || (item.included ? "text-slate-900 dark:text-slate-400" : "text-slate-300")} />
+                                    <span className={`font-bold ${item.included ? 'text-slate-700 dark:text-slate-300' : 'text-slate-400 decoration-slate-500 line-through'}`}>{item.text}</span>
+                                 </div>
+                              ))}
+                           </div>
+
+                           <div className="mt-12 pt-8 border-t border-slate-100 dark:border-white/5">
+                              <p className="text-xs font-bold text-slate-400 uppercase tracking-widest mb-4">Best For</p>
+                              <p className="font-medium text-slate-600 dark:text-slate-400">Simple vital cases with regular anatomy.</p>
+                           </div>
+                        </div>
+                     </div>
+
+                     {/* CARD 2: THE NOBLE PREMIUM (Purple/Holographic) */}
+                     <div className="p-10 rounded-[2.5rem] bg-slate-900 dark:bg-black border border-purple-500 relative overflow-hidden shadow-2xl shadow-purple-500/20 group transform hover:-translate-y-2 transition-transform duration-500">
+                        {/* Holographic BG */}
+                        <div className="absolute inset-0 bg-gradient-to-br from-purple-900/40 to-blue-900/40 opacity-50 group-hover:opacity-100 transition-opacity"></div>
+                        <div className="absolute top-0 right-0 bg-purple-500 text-white text-[10px] font-black uppercase tracking-[0.2em] px-4 py-2 rounded-bl-2xl">
+                           Clinical Director's Choice
+                        </div>
+
+                        <div className="relative z-10 text-white">
+                           <div className="flex items-center gap-3 mb-2">
+                              <ShieldCheck size={24} className="text-teal-400" />
+                              <h3 className="text-2xl font-bold text-white">Micro-Endodontic RCT</h3>
+                           </div>
+                           <div className="flex items-baseline gap-2 mb-8">
+                              <span className="text-5xl font-black text-transparent bg-clip-text bg-gradient-to-r from-teal-400 to-purple-400">₹7,500</span>
+                              <span className="text-sm font-bold text-purple-200/60 uppercase tracking-widest">/ tooth</span>
+                           </div>
+
+                           <div className="space-y-6">
+                              {[
+                                 { text: "Zeiss Extaro 300 Magnification (25x)", sub: "See hidden canals others miss." },
+                                 { text: "Laser Disinfection Protocol", sub: "99.9% Bacterial Elimination." },
+                                 { text: "Painless Electronic Anesthesia", sub: "Computer-controlled comfort." },
+                                 { text: "Ultrasonic Irrigation", sub: "Deep cleaning of lateral canals." },
+                                 { text: "15-Year Warranty", sub: "On Zirconia Crown combinations." }
+                              ].map((item, i) => (
+                                 <div key={i} className="flex items-start gap-4">
+                                    <div className="w-6 h-6 rounded-full bg-teal-500 flex items-center justify-center shrink-0 shadow-lg shadow-teal-500/50 mt-1">
+                                       <Check size={12} className="text-black stroke-[4]" />
+                                    </div>
+                                    <div>
+                                       <span className="font-bold text-lg block">{item.text}</span>
+                                       <span className="text-xs font-bold text-purple-200/60 uppercase tracking-wider">{item.sub}</span>
+                                    </div>
+                                 </div>
+                              ))}
+                           </div>
+
+                           <div className="mt-12 pt-8 border-t border-purple-500/30 flex gap-4">
+                              <button className="flex-1 py-4 bg-white text-slate-900 rounded-xl font-black uppercase tracking-widest text-xs hover:bg-slate-200 transition-colors">
+                                 Book Premium
+                              </button>
+                              <a href="https://wa.me/918610425342?text=I%20want%20to%20know%20more%20about%20Micro%20RCT" className="px-6 py-4 border border-white/20 rounded-xl hover:bg-white/10 transition-colors text-white">
+                                 <MessageCircle size={20} />
+                              </a>
+                           </div>
+                        </div>
+                     </div>
+
+                  </div>
+
+                  <div className="mt-12 text-center">
+                     <div className="inline-flex items-center gap-2 text-slate-500 dark:text-slate-400 text-xs font-bold uppercase tracking-widest">
+                        <Info size={14} />
+                        <span>Prices are inclusive of sterile kits & X-Rays. No hidden fees.</span>
+                     </div>
+                  </div>
+               </RevealOnScroll>
             </div>
          </section>
 
@@ -799,11 +892,11 @@ export default function RootCanalRefactored() {
 
                <div className="bg-[#F2F2F7] dark:bg-black rounded-2xl overflow-hidden divide-y divide-slate-300 dark:divide-slate-800 border border-slate-200 dark:border-slate-800">
                   {[
-                     { q: "Is Root Canal Treatment in Nallagandla painful?", a: "No. At Noble Dental Care, we specialize in **Painless Root Canal** therapy. Using computer-controlled injections and advanced numbing agents, most patients feel nothing more than a slight pressure during the procedure." },
-                     { q: "What is a Single Sitting Root Canal?", a: "A **Single Sitting Root Canal** is a high-precision procedure where the entire endodontic therapy is completed in one visit of about 45-60 minutes. This is ideal for busy IT professionals in Nallagandla." },
-                     { q: "Do you have a specialist Endodontist in Nallagandla?", a: "Yes. Our team includes an expert **Endodontist in Nallagandla** who handles complex retreats and **Microscopic Root Canal Nallagandla** cases to ensure the best possible success rates." },
-                     { q: "What determines the Root Canal Cost in Hyderabad?", a: "The cost depends on the number of roots (Anterior vs Molar) and whether it's a first-time treatment or a retreatment. We provide transparent estimates for both the procedure and the **Dental Cap / Crown Cost**." },
-                     { q: "Why choose Dr. Dhivakaran for my treatment?", a: "As the **Best Dentist in Nallagandla**, Dr. Dhivakaran uses **Microscopic Root Canal Nallagandla** and Swiss technology to ensure a 98% success rate in saving natural teeth." }
+                     { q: "Is Root Canal Treatment in Nallagandla painful?", a: "No. At Noble Dental Care (near **citizen Hospital**), we specialize in **Painless Root Canal** therapy. Using computer-controlled injections and advanced numbing agents, most patients feel nothing." },
+                     { q: "What is a Single Sitting Root Canal?", a: "A **Single Sitting Root Canal** is a high-precision procedure completed in one visit of 45-60 minutes. Ideal for busy professionals from **Wipro Circle** and **My Home Sayuk**." },
+                     { q: "Do you have a specialist Endodontist in Nallagandla?", a: "Yes. Located opposite **Aparna Sarovar Zenith**, our team includes an expert **Endodontist in Nallagandla** for complex microscopic cases." },
+                     { q: "What determines the Root Canal Cost in Hyderabad?", a: "The cost depends on the number of roots (Anterior vs Molar). We provide transparent estimates for both the procedure and the **Dental Cap / Crown Cost**." },
+                     { q: "Why choose Dr. Dhivakaran for my treatment?", a: "As the **Best Dentist in Nallagandla**, Dr. Dhivakaran uses **Microscopic Root Canal Nallagandla** protocols to ensure a 98% success rate in saving natural teeth." }
                   ].map((item, i) => (
                      <details key={i} className="group bg-white dark:bg-[#1C1C1E] open:bg-slate-50 dark:open:bg-[#2C2C2E] transition-colors cursor-pointer">
                         <summary className="flex items-center justify-between p-5 text-slate-900 dark:text-white font-semibold select-none list-none">

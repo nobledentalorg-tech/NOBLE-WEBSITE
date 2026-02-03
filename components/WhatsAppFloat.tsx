@@ -2,8 +2,10 @@
 
 import React from 'react';
 import { MessageCircle } from 'lucide-react';
+import { useMobileUI } from '@/context/MobileUIContext';
 
 const WhatsAppFloat = () => {
+    const { isStickyFooterVisible } = useMobileUI();
     const phoneNumber = "918610425342"; // From Footer.tsx
     // Actually, I should use the number from the user's previous request if available, or ask.
     // Wait, I recall seeing "+91 81259 90200" in the Mulberry header analysis? 
@@ -14,6 +16,8 @@ const WhatsAppFloat = () => {
     // For now I will use a placeholder or check the footer first.
 
     // Let's check footer first before committing this file with a wrong number.
+    if (isStickyFooterVisible) return null;
+
     return (
         <a
             href={`https://wa.me/${phoneNumber}`}

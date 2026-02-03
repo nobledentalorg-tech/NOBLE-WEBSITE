@@ -3,21 +3,27 @@
 import React, { useEffect, useState } from 'react';
 import { Phone, ArrowRight } from 'lucide-react';
 import { getClinicStatus } from '@/lib/time-utils';
+import { useMobileUI } from '@/context/MobileUIContext';
 
 const EmergencyFloatingCTA = () => {
     const [isEmergency, setIsEmergency] = useState(false);
+    const { setStickyFooterVisible } = useMobileUI();
 
     useEffect(() => {
         const checkTime = () => {
             const status = getClinicStatus();
             setIsEmergency(status.isEmergency);
+            // If true, we hide other widgets (like Chat) immediately
+            if (status.isEmergency) {
+                setStickyFooterVisible(true);
+            }
         };
 
         checkTime();
         // Check every minute if we crossed into emergency hours
         const interval = setInterval(checkTime, 60000);
         return () => clearInterval(interval);
-    }, []);
+    }, [setStickyFooterVisible]);
 
     // Only show "Emergency" specific styling if late night
     // Otherwise it can be a standard conversion button or hidden if default CTA is enough

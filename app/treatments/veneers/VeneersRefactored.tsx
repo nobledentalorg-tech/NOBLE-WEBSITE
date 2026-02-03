@@ -141,8 +141,28 @@ export default function VeneersRefactored() {
                             <h1 className="text-5xl md:text-8xl font-black text-slate-900 dark:text-white leading-[0.9] tracking-tighter mb-6">
                                 Architecting Perfection.
                             </h1>
-                            <p className="text-xl text-slate-600 dark:text-slate-400 font-light leading-relaxed max-w-lg border-l-4 border-amber-500/50 pl-6 my-8">
-                                Hide gaps, chips, and stains instantly. <br />
+
+                            <p className="text-xl text-slate-600 dark:text-slate-400 font-light leading-relaxed max-w-lg mb-8">
+                                Hide gaps, chips, and stains instantly.
+                            </p>
+
+                            {/* TRUST SIGNALS */}
+                            <div className="flex flex-wrap gap-3 mb-8">
+                                <div className="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-amber-100 dark:bg-amber-900/30 border border-amber-200 dark:border-amber-800">
+                                    <Palette size={14} className="text-amber-600 dark:text-amber-400" />
+                                    <span className="text-[10px] font-bold uppercase tracking-wide text-amber-800 dark:text-amber-300">Custom Shade Match</span>
+                                </div>
+                                <div className="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-purple-100 dark:bg-purple-900/30 border border-purple-200 dark:border-purple-800">
+                                    <ShieldCheck size={14} className="text-purple-600 dark:text-purple-400" />
+                                    <span className="text-[10px] font-bold uppercase tracking-wide text-purple-800 dark:text-purple-300">15-Year Warranty</span>
+                                </div>
+                                <div className="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-blue-100 dark:bg-blue-900/30 border border-blue-200 dark:border-blue-800">
+                                    <CheckCircle2 size={14} className="text-blue-600 dark:text-blue-400" />
+                                    <span className="text-[10px] font-bold uppercase tracking-wide text-blue-800 dark:text-blue-300">E.max Certified</span>
+                                </div>
+                            </div>
+
+                            <p className="text-lg text-slate-600 dark:text-slate-400 font-medium leading-relaxed max-w-lg mb-8 border-l-4 border-amber-500/50 pl-6">
                                 We use <strong>E.max Press Ceramics</strong> to create ultra-thin shells that reflect light exactly like natural enamel.
                             </p>
 
@@ -243,7 +263,7 @@ export default function VeneersRefactored() {
                 <div className="max-w-7xl mx-auto px-6">
                     <RevealOnScroll>
                         <div className="text-center mb-16">
-                            <h2 className="text-4xl font-bold text-slate-900 dark:text-white mb-4">Design Your Character</h2>
+                            <h2 className="text-4xl font-bold text-slate-900 dark:text-white mb-4">Design Your Character: <br /><span className="text-amber-600">The Smile Personality.</span></h2>
                             <p className="text-slate-600 dark:text-slate-400 max-w-2xl mx-auto">
                                 Teeth aren&apos;t just white squares. The shape of the edges determines the &quot;personality&quot; of your smile.
                             </p>
@@ -283,7 +303,7 @@ export default function VeneersRefactored() {
                             <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-amber-600/20 border border-amber-500/30 text-amber-400 font-bold text-xs uppercase tracking-[0.3em] mb-6">
                                 <Layers size={12} /> The Protocol
                             </div>
-                            <h2 className="text-4xl font-bold mb-6">The &quot;Mock-Up&quot; Guarantee.</h2>
+                            <h2 className="text-4xl font-bold mb-6">The &quot;Mock-Up&quot; Guarantee: <br /><span className="text-amber-400 text-3xl">Preview Before You Commit.</span></h2>
                             <p className="text-slate-400 text-lg leading-relaxed mb-8">
                                 Most dentists grind your teeth first. We don&apos;t. <br />
                                 We create a <strong>temporary plastic trial smile</strong> that sits over your teeth. You wear it, test it, and approve it <i>before</i> we touch your natural enamel.
@@ -333,7 +353,7 @@ export default function VeneersRefactored() {
                         <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-green-100 dark:bg-green-900/20 text-green-700 dark:text-green-400 text-xs font-bold uppercase tracking-widest mb-4 border border-green-200 dark:border-green-800">
                             <DollarSign size={14} /> Price Transparency Promise
                         </div>
-                        <h2 className="text-4xl font-bold text-slate-900 dark:text-white mb-4">Hyderabad Pricing Analysis</h2>
+                        <h2 className="text-4xl font-bold text-slate-900 dark:text-white mb-4">Hyderabad Pricing Analysis: <br /><span className="text-green-600 text-3xl">Transparent Value.</span></h2>
                         <p className="text-slate-600 dark:text-slate-400">Premium aesthetics at honest neighborhood prices.</p>
                     </div>
 
@@ -375,7 +395,7 @@ export default function VeneersRefactored() {
             <section id="faq" className="py-24 bg-slate-50 dark:bg-[#0b101b]">
                 <div className="max-w-4xl mx-auto px-6">
                     <div className="text-center mb-16">
-                        <h2 className="text-3xl font-black text-slate-900 dark:text-white mb-4">Common Questions</h2>
+                        <h2 className="text-3xl font-black text-slate-900 dark:text-white mb-4">Common Questions: <br /><span className="text-amber-600 lowercase">Expert Answers.</span></h2>
                     </div>
                     <div className="space-y-4">
                         <details className="group bg-white dark:bg-[#151b2b] rounded-2xl border border-slate-200 dark:border-white/5 overflow-hidden transition-all duration-300 open:shadow-lg">
@@ -406,6 +426,20 @@ export default function VeneersRefactored() {
                             </div>
                         </details>
                     </div>
+                </div>
+            </section>
+
+            {/* ================= INTERNAL LINKING: NEXT STEPS ================= */}
+            <section className="py-12 bg-white dark:bg-[#020617] border-t border-slate-100 dark:border-white/5">
+                <div className="max-w-4xl mx-auto px-6 text-center">
+                    <p className="text-xs font-bold uppercase tracking-widest text-slate-400 mb-4">Alternative Options</p>
+                    <h2 className="text-3xl font-black text-slate-900 dark:text-white mb-6">Not ready for Veneers?</h2>
+                    <p className="text-slate-600 dark:text-slate-400 mb-8 max-w-xl mx-auto">
+                        If you want to straighten your teeth without altering them, Clear Aligners might be the perfect non-invasive start.
+                    </p>
+                    <Link href="/treatments/invisalign" className="inline-flex items-center gap-2 text-amber-600 dark:text-amber-400 font-bold hover:underline">
+                        Explore Invisalign <ChevronRight size={16} />
+                    </Link>
                 </div>
             </section>
 

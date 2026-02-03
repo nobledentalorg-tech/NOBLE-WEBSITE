@@ -141,8 +141,29 @@ export default function BracesRefactored() {
                             <h1 className="text-5xl md:text-7xl font-black text-slate-900 dark:text-white leading-[0.95] tracking-tighter mb-6">
                                 Advanced <br /> Orthodontics.
                             </h1>
-                            <p className="text-xl text-slate-600 dark:text-slate-400 font-light leading-relaxed max-w-lg border-l-4 border-blue-500/50 pl-6 my-8">
-                                We pair <strong>CBCT jaw analysis</strong>, growth forecasting and 3D smile simulations to plan braces for kids, teens and adults. Every wire change is guided by your digital twin.
+
+                            <p className="text-xl text-slate-600 dark:text-slate-400 font-light leading-relaxed max-w-lg mb-6">
+                                We pair <strong>CBCT jaw analysis</strong>, growth forecasting and 3D smile simulations to plan braces for kids, teens and adults.
+                            </p>
+
+                            {/* TRUST SIGNALS */}
+                            <div className="flex flex-wrap gap-3 mb-8">
+                                <div className="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-blue-100 dark:bg-blue-500/10 border border-blue-200 dark:border-blue-500/20">
+                                    <Cpu size={14} className="text-blue-600 dark:text-blue-400" />
+                                    <span className="text-[10px] font-bold uppercase tracking-wide text-blue-700 dark:text-blue-300">ISO 9001:2015</span>
+                                </div>
+                                <div className="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-purple-100 dark:bg-purple-500/10 border border-purple-200 dark:border-purple-500/20">
+                                    <Zap size={14} className="text-purple-600 dark:text-purple-400" />
+                                    <span className="text-[10px] font-bold uppercase tracking-wide text-purple-700 dark:text-purple-300">Damon Certified</span>
+                                </div>
+                                <div className="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-emerald-100 dark:bg-emerald-500/10 border border-emerald-200 dark:border-emerald-500/20">
+                                    <ShieldCheck size={14} className="text-emerald-600 dark:text-emerald-400" />
+                                    <span className="text-[10px] font-bold uppercase tracking-wide text-emerald-700 dark:text-emerald-300">Retainer Warranty</span>
+                                </div>
+                            </div>
+
+                            <p className="text-lg text-slate-600 dark:text-slate-400 font-light leading-relaxed max-w-lg border-l-4 border-blue-500/50 pl-6 my-8">
+                                Every wire change is guided by your digital twin, ensuring precision movement and shorter treatment times.
                             </p>
 
                             <div className="flex flex-wrap gap-4">
@@ -281,7 +302,7 @@ export default function BracesRefactored() {
                 <div className="max-w-7xl mx-auto px-6">
                     <RevealOnScroll>
                         <div className="text-center mb-16">
-                            <h2 className="text-3xl font-black text-slate-900 dark:text-white mb-4">Who can start braces?</h2>
+                            <h2 className="text-3xl font-black text-slate-900 dark:text-white mb-4">Eligibility: <br /><span className="text-blue-600">Who can start braces?</span></h2>
                             <p className="text-slate-600 dark:text-slate-400 text-lg">Orthodontics isn&apos;t just for teenagers. We customise protocols for all ages.</p>
                         </div>
 
@@ -328,7 +349,7 @@ export default function BracesRefactored() {
                 <div className="max-w-7xl mx-auto px-6">
                     <RevealOnScroll>
                         <div className="text-center mb-16">
-                            <h2 className="text-3xl font-black text-slate-900 dark:text-white mb-4">Understanding your Bite</h2>
+                            <h2 className="text-3xl font-black text-slate-900 dark:text-white mb-4">Malocclusion: <br /><span className="text-blue-600">Understanding your Bite.</span></h2>
                             <p className="text-slate-600 dark:text-slate-400">Common issues we correct daily.</p>
                         </div>
 
@@ -361,7 +382,7 @@ export default function BracesRefactored() {
                 <div className="max-w-7xl mx-auto px-6">
                     <div className="grid lg:grid-cols-2 gap-16 items-center">
                         <div>
-                            <h2 className="text-3xl font-black text-slate-900 dark:text-white mb-6">Digital Diagnostics</h2>
+                            <h2 className="text-3xl font-black text-slate-900 dark:text-white mb-6">Diagnostics: <br /><span className="text-blue-600">Digital Precision.</span></h2>
                             <p className="text-slate-600 dark:text-slate-400 mb-8 leading-relaxed">
                                 Digital diagnostics remove guesswork. We map teeth, jaw joints, airway and smile dynamics before the first bracket is bonded.
                             </p>
@@ -420,7 +441,7 @@ export default function BracesRefactored() {
                 <div className="max-w-7xl mx-auto px-6">
                     <div className="grid lg:grid-cols-2 gap-20">
                         <div className="space-y-8">
-                            <h3 className="text-3xl font-bold text-slate-900 dark:text-white mb-8">The Clinical Roadmap</h3>
+                            <h3 className="text-3xl font-bold text-slate-900 dark:text-white mb-8">Timeline: <br /><span className="text-blue-600">The Clinical Roadmap.</span></h3>
                             <div className="space-y-4">
                                 {journeyStages.map((stage, idx) => (
                                     <div
@@ -552,7 +573,7 @@ export default function BracesRefactored() {
                             <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-green-100 dark:bg-green-900/20 text-green-700 dark:text-green-400 text-xs font-bold uppercase tracking-widest mb-4 border border-green-200 dark:border-green-800">
                                 <TrendingDown size={14} /> Hyderabad Market Analysis 2024
                             </div>
-                            <h2 className="text-4xl font-bold text-slate-900 dark:text-white mb-4">Transparent Pricing.</h2>
+                            <h2 className="text-4xl font-bold text-slate-900 dark:text-white mb-4">Transparent Pricing: <br /><span className="text-green-600">No Hidden Fees.</span></h2>
                             <p className="text-slate-600 dark:text-slate-400 max-w-xl mx-auto">
                                 Premium orthodontic care at honest neighborhood prices. Includes all wires, adjustments, and retention.
                             </p>

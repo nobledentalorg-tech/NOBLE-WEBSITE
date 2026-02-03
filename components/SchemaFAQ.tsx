@@ -15,6 +15,7 @@ const SchemaFAQ: React.FC<SchemaFAQProps> = ({ faqs }) => {
     const schemaData = {
         "@context": "https://schema.org",
         "@type": "FAQPage",
+        "publisher": { "@id": "https://www.nobledentalnallagandla.in/#clinic" },
         "mainEntity": faqs.map((faq) => ({
             "@type": "Question",
             "name": faq.q,

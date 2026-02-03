@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import RootCanalRefactored from './RootCanalRefactored';
+import MedicalSchema from '@/components/seo/MedicalSchema';
 
 export const metadata: Metadata = {
    title: 'Painless Root Canal Nallagandla (Single Visit) - Noble Dental',
@@ -24,67 +25,14 @@ export const metadata: Metadata = {
 };
 
 export default function RootCanalPage() {
-   const schemaData = {
-      "@context": "https://schema.org",
-      "@graph": [
-         {
-            "@type": "MedicalProcedure",
-            "name": "Microscopic Root Canal Treatment",
-            "procedureType": "Non-surgical",
-            "bodyLocation": "Tooth",
-            "provider": {
-               "@type": "Dentist",
-               "name": "Noble Dental Care",
-               "image": "https://nobledentalnallagandla.in/logo.png"
-            },
-            "description": "Advanced root canal therapy using Zeiss Microscopes and Diode Lasers for 99.9% bacterial elimination.",
-            "followup": "Permanent Crown placement within 3 days."
-         },
-         {
-            "@type": "FAQPage",
-            "mainEntity": [
-               {
-                  "@type": "Question",
-                  "name": "Is it safe for Heart Patients or Diabetics?",
-                  "acceptedAnswer": {
-                     "@type": "Answer",
-                     "text": "Yes. In fact, removing the infection is crucial for your heart and blood sugar control. We coordinate with your cardiologist/physician if blood thinners need to be adjusted."
-                  }
-               },
-               {
-                  "@type": "Question",
-                  "name": "What happens if I delay treatment?",
-                  "acceptedAnswer": {
-                     "@type": "Answer",
-                     "text": "The infection will spread to the bone, causing a cyst. In severe cases, it can spread to the neck spaces (Ludwig’s Angina), which is a life-threatening emergency."
-                  }
-               },
-               {
-                  "@type": "Question",
-                  "name": "Can I drive back home after the procedure?",
-                  "acceptedAnswer": {
-                     "@type": "Answer",
-                     "text": "Yes. Local anesthesia only numbs the tooth. You will be fully alert and can drive or return to work immediately."
-                  }
-               },
-               {
-                  "@type": "Question",
-                  "name": "Why check Vitals before the procedure?",
-                  "acceptedAnswer": {
-                     "@type": "Answer",
-                     "text": "Your safety is paramount. We evaluate your blood pressure and sugar levels (if diabetic) to ensure you can tolerate the procedure safely."
-                  }
-               }
-            ]
-         }
-      ]
-   };
-
    return (
       <>
-         <script
-            type="application/ld+json"
-            dangerouslySetInnerHTML={{ __html: JSON.stringify(schemaData) }}
+         <MedicalSchema
+            procedure={{
+               name: "Microscopic Root Canal Treatment",
+               description: "Advanced root canal therapy using Zeiss Microscopes and Diode Lasers for 99.9% bacterial elimination.",
+               procedureType: "Non-surgical"
+            }}
          />
          {/* AI Answer Snippet: Declarative Fact for SGE */}
          <div className="bg-blue-50 dark:bg-blue-900/30 text-center py-2 px-4 text-xs font-bold uppercase tracking-widest text-blue-800 dark:text-blue-200 border-b border-blue-100 dark:border-blue-800">

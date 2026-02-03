@@ -28,11 +28,11 @@ export async function generateMetadata({ params }: PageProps) {
     if (!locality) return {};
 
     return {
-        title: `Dentist in ${locality.name} | Top Rated Dental Clinic ${localityData?.metaTitleSuffix || ''}`,
+        title: `Best dental clinic for residents of ${locality.name} | Noble Dental Care`,
         description: `Looking for a dentist in ${locality.name}? Dr. Dhivakaran provides world-class dental care just ${localityData?.time || '10 mins'} from ${locality.landmark}.`,
         keywords: [
             `Dentist in ${locality.name}`,
-            `Dental clinic in ${locality.name}`,
+            `Dental clinic for ${locality.name} residents`,
             `Best dentist near ${locality.landmark}`,
             `Oral surgery ${locality.name}`,
             'Noble Dental Care',
@@ -57,25 +57,41 @@ export default function LocalityHubPage({ params }: PageProps) {
             <main className="pt-32 pb-20">
                 <section className="max-w-7xl mx-auto px-6 mb-16 text-center">
                     <span className="inline-block px-4 py-1 rounded-full bg-blue-100 text-blue-700 text-xs font-bold uppercase tracking-widest mb-4">
-                        Neighborhood Guide
+                        Neighborhood Guide: {locality.name}
                     </span>
                     <h1 className="text-4xl md:text-6xl font-black mb-6">
-                        Expert Dental Care <br /> in <span className="text-blue-600">{locality.name}</span>
+                        Expert Dental Care <br /> for Residents of <span className="text-blue-600">{locality.name}</span>
                     </h1>
                     <p className="text-xl text-slate-600 dark:text-slate-400 max-w-2xl mx-auto mb-8">
-                        Serving residents of {locality.name}. We are located just <strong>{locality.driving_directions}</strong> relative to {locality.landmark}.
+                        Located just <strong>{locality.driving_directions}</strong> relative to {locality.landmark}.
+                        <br />
+                        <span className="text-sm text-slate-500 mt-2 block">
+                            (Proximity Marker: {localityData?.distance || 'Nearby'} away)
+                        </span>
                     </p>
 
-                    {localityData && (
-                        <div className="flex flex-wrap justify-center gap-4 text-sm font-medium text-slate-500">
-                            <span className="flex items-center gap-2 px-4 py-2 bg-white dark:bg-white/5 rounded-full border border-slate-200 dark:border-white/10">
-                                <MapPin size={16} className="text-blue-500" /> {localityData.distance} Away
-                            </span>
-                            <span className="flex items-center gap-2 px-4 py-2 bg-white dark:bg-white/5 rounded-full border border-slate-200 dark:border-white/10">
-                                <Star size={16} className="text-yellow-500" /> Top Rated in Neighborhood
-                            </span>
-                        </div>
-                    )}
+                    <div className="flex flex-col items-center gap-6">
+                        {/* Utility: Deep Link to Google Maps */}
+                        <Link
+                            href={`https://www.google.com/maps/dir/?api=1&origin=${encodeURIComponent(locality.name + " Hyderabad")}&destination=Noble+Dental+Care+Nallagandla&travelmode=driving`}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="inline-flex items-center gap-3 px-8 py-4 bg-blue-600 hover:bg-blue-700 text-white font-bold rounded-full shadow-lg hover:shadow-blue-500/30 transition-all transform hover:-translate-y-1"
+                        >
+                            <MapPin size={20} /> Directions from {locality.name}
+                        </Link>
+
+                        {localityData && (
+                            <div className="flex flex-wrap justify-center gap-4 text-sm font-medium text-slate-500">
+                                <span className="flex items-center gap-2 px-4 py-2 bg-white dark:bg-white/5 rounded-full border border-slate-200 dark:border-white/10">
+                                    <MapPin size={16} className="text-blue-500" /> {localityData.distance} Away
+                                </span>
+                                <span className="flex items-center gap-2 px-4 py-2 bg-white dark:bg-white/5 rounded-full border border-slate-200 dark:border-white/10">
+                                    <Star size={16} className="text-yellow-500" /> Top Rated for {locality.name}
+                                </span>
+                            </div>
+                        )}
+                    </div>
                 </section>
 
                 <section className="max-w-7xl mx-auto px-6">
@@ -93,7 +109,7 @@ export default function LocalityHubPage({ params }: PageProps) {
                                     <ArrowRight size={20} className="text-slate-300 group-hover:text-blue-500 transition-colors -rotate-45 group-hover:rotate-0" />
                                 </div>
                                 <h3 className="text-xl font-bold mb-2 group-hover:text-blue-600 transition-colors">
-                                    {service.title} in {locality.name}
+                                    {service.title} for {locality.name}
                                 </h3>
                                 <p className="text-sm text-slate-500 dark:text-slate-400">
                                     {service.emergency_hook}

@@ -101,30 +101,62 @@ export default function InvisalignRefactored() {
                             <div className="inline-flex items-center gap-2 px-3 py-1 bg-blue-50 dark:bg-blue-900/30 rounded-full text-xs font-bold uppercase tracking-widest text-blue-600 dark:text-blue-400 border border-blue-100 dark:border-blue-500/20">
                                 <Cpu size={12} /> Orthodontic Engineering v4.2
                             </div>
-                            <h1 className="text-6xl md:text-8xl font-black text-slate-900 dark:text-white leading-[0.9] tracking-tighter uppercase italic">
+                            <h1 className="text-6xl md:text-8xl font-black text-slate-900 dark:text-white leading-[0.9] tracking-tighter uppercase italic mb-6">
                                 Clear <br />
                                 <span className="gradient-text">Aligners.</span>
                             </h1>
-                            <p className="text-xl text-slate-600 dark:text-slate-400 font-medium leading-relaxed max-w-lg">
-                                Experience the best **Teeth Straightening** at **Noble Dental Care Hyderabad**. Located **Near Aparna Sarovar / Citizens Hospital**, our team led by **Dr. Dhivakaran** & **Dr. Deepak** engineers your perfect smile using advanced **Invisible Braces Hyderabad** protocols.
+
+                            <p className="text-xl text-slate-600 dark:text-slate-400 font-medium leading-relaxed max-w-lg mb-8">
+                                Experience the best **Teeth Straightening** at **Noble Dental Care Hyderabad**.
+                            </p>
+
+                            {/* TRUST SIGNALS */}
+                            <div className="flex flex-wrap gap-3 mb-8">
+                                <div className="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-blue-100 dark:bg-blue-900/30 border border-blue-200 dark:border-blue-800">
+                                    <Scan size={14} className="text-blue-600 dark:text-blue-400" />
+                                    <span className="text-[10px] font-bold uppercase tracking-wide text-blue-800 dark:text-blue-300">iTero 5D Scan</span>
+                                </div>
+                                <div className="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-indigo-100 dark:bg-indigo-900/30 border border-indigo-200 dark:border-indigo-800">
+                                    <Zap size={14} className="text-indigo-600 dark:text-indigo-400" />
+                                    <span className="text-[10px] font-bold uppercase tracking-wide text-indigo-800 dark:text-indigo-300">Fast Track</span>
+                                </div>
+                                <div className="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-emerald-100 dark:bg-emerald-900/30 border border-emerald-200 dark:border-emerald-800">
+                                    <ShieldCheck size={14} className="text-emerald-600 dark:text-emerald-400" />
+                                    <span className="text-[10px] font-bold uppercase tracking-wide text-emerald-800 dark:text-emerald-300">Root Safety</span>
+                                </div>
+                            </div>
+
+                            {/* TRUST SIGNAL: Medical Director Badge */}
+                            <Link href="/team/dr-dhivakaran" className="group flex items-center gap-4 p-4 rounded-2xl bg-white/50 dark:bg-slate-900/50 backdrop-blur-md border border-slate-200 dark:border-white/10 mb-8 w-fit hover:bg-white/80 dark:hover:bg-slate-900/80 transition-all cursor-pointer">
+                                <div className="relative w-12 h-12 rounded-full overflow-hidden ring-2 ring-blue-500 ring-offset-2 dark:ring-offset-slate-900 group-hover:scale-105 transition-transform">
+                                    <Image src="/images/dhivakaran.webp" alt="Dr. Dhivakaran" width={48} height={48} className="object-cover" />
+                                </div>
+                                <div>
+                                    <div className="flex items-center gap-2">
+                                        <span className="font-bold text-slate-900 dark:text-white text-sm group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">Dr. Dhivakaran</span>
+                                        <ShieldCheck size={14} className="text-blue-500" />
+                                    </div>
+                                    <p className="text-[10px] uppercase font-bold text-slate-500 tracking-wider">MDS • Clinical Director</p>
+                                </div>
+                                <div className="h-8 w-px bg-slate-200 dark:bg-white/10 mx-2"></div>
+                                <div className="text-right">
+                                    <div className="text-xs font-black text-slate-900 dark:text-white">450+</div>
+                                    <p className="text-[10px] text-slate-500 uppercase font-bold tracking-wider">Smiles</p>
+                                </div>
+                            </Link>
+
+                            <p className="text-lg text-slate-600 dark:text-slate-400 font-medium leading-relaxed max-w-lg mb-8 border-l-4 border-blue-500 pl-6">
+                                **"We don't just straighten teeth; we engineer your bite."** <br />
+                                Our protocol prioritizes root safety and TMJ health over speed.
                             </p>
 
                             <div className="flex flex-wrap gap-4">
                                 <button className="ios-btn px-8 py-4 bg-slate-900 dark:bg-blue-600 hover:scale-105 text-white rounded-full font-bold shadow-2xl transition-all flex items-center gap-2">
                                     <Scan size={18} /> Book Free 3D Scan
                                 </button>
-                                <div className="flex items-center gap-4 px-6 border-l border-slate-200 dark:border-white/10">
-                                    <div className="flex -space-x-2">
-                                        {[1, 2, 3].map((i) => (
-                                            <div key={i} className="w-8 h-8 rounded-full bg-slate-200 dark:bg-slate-800 border-2 border-white dark:border-slate-900 overflow-hidden">
-                                                <Image src={`https://api.dicebear.com/7.x/avataaars/svg?seed=user${i}`} alt="user" width={32} height={32} />
-                                            </div>
-                                        ))}
-                                    </div>
-                                    <div className="text-xs uppercase font-black text-slate-600 dark:text-slate-400 tracking-widest leading-none">
-                                        450+ Smiles <br /> Engineered
-                                    </div>
-                                </div>
+                                <Link href="#truth" className="ios-btn px-8 py-4 bg-white dark:bg-white/5 border border-slate-200 dark:border-white/10 text-slate-900 dark:text-white hover:bg-slate-50 rounded-full font-bold transition-all flex items-center gap-2">
+                                    <Info size={18} /> Why Us?
+                                </Link>
                             </div>
                         </div>
                     </RevealOnScroll>
@@ -191,8 +223,8 @@ export default function InvisalignRefactored() {
                                     <Shield size={12} /> Anti-Gimmick Protocol
                                 </div>
                                 <h2 className="text-4xl md:text-5xl font-black text-slate-900 dark:text-white mb-8 tracking-tighter leading-tight text-balance uppercase italic">
-                                    Engineering <br />
-                                    <span className="text-blue-600">Invisible Braces Hyderabad.</span>
+                                    Engineering Invisible Braces: <br />
+                                    <span className="text-blue-600">The Anti-Gimmick Protocol.</span>
                                 </h2>
                                 <p className="text-lg text-slate-600 dark:text-slate-400 mb-8 leading-relaxed">
                                     Why waste money on expensive brand names when the same clinical results can be engineered at our **Dental Clinic in Nallagandla**? We provide **Noble In-House Aligners**—manufactured and processed by the **Best Orthodontist in Nallagandla**, **Dr. Deepak**, to global standards under the mentorship of **Dr. Dhivakaran** delivered at an economic cost.
@@ -249,8 +281,8 @@ export default function InvisalignRefactored() {
                     <RevealOnScroll>
                         <div className="text-center mb-20 max-w-3xl mx-auto">
                             <h2 className="text-4xl md:text-5xl font-black text-slate-900 dark:text-white mb-6 tracking-tighter leading-[0.9] uppercase italic">
-                                Teeth Straightening <br />
-                                <span className="gradient-text">Bite Science.</span>
+                                Bite Science: <br />
+                                <span className="gradient-text">Beyond Straight Teeth.</span>
                             </h2>
                         </div>
 
@@ -321,7 +353,7 @@ export default function InvisalignRefactored() {
                                         <Microscope size={12} /> Scientific Rigor
                                     </div>
                                     <h2 className="text-4xl font-black text-slate-900 dark:text-white tracking-tighter leading-[0.9]">
-                                        Foundation <br /> First.
+                                        Foundation First: <br /> Scientific Rigor.
                                     </h2>
                                     <p className="text-slate-700 dark:text-slate-300 text-lg">
                                         We never start movement without clinical clearance of your periodontal foundations.
@@ -391,8 +423,8 @@ export default function InvisalignRefactored() {
                                 <Zap size={12} fill="currentColor" /> Zero Gag Reflex
                             </div>
                             <h2 className="text-5xl md:text-6xl font-black tracking-tighter leading-[0.9]">
-                                The iTero 5D <br />
-                                <span className="text-blue-500">Scan Clone.</span>
+                                iTero 5D Technology: <br />
+                                <span className="text-blue-500">The Digital Clone.</span>
                             </h2>
                             <p className="text-xl text-slate-400 leading-relaxed font-light">
                                 No goopy mud. No radiation. In 60 seconds, we create a digital duplicate of your smile for sub-millimeter accurate planning.
@@ -442,7 +474,7 @@ export default function InvisalignRefactored() {
                             <div className="inline-flex items-center gap-2 px-3 py-1 bg-blue-50 dark:bg-blue-900/30 rounded-full text-xs font-black uppercase tracking-widest text-blue-600 dark:text-blue-400 mb-6 border border-blue-100 dark:border-blue-500/20">
                                 Invisalign Cost in Nallagandla
                             </div>
-                            <h2 className="text-4xl md:text-5xl font-black text-slate-900 dark:text-white tracking-tighter mb-4 uppercase italic">Honest Engineering Fees.</h2>
+                            <h2 className="text-4xl md:text-5xl font-black text-slate-900 dark:text-white tracking-tighter mb-4 uppercase italic">Engineering Fees: <br /><span className="text-blue-600 not-italic">Transparent Pricing.</span></h2>
                             <p className="text-slate-700 dark:text-slate-300 text-lg">Whether you choose **Metal Free Braces** or the latest **Clear Aligners**, we offer transparent pricing for all **Teeth Straightening** needs in Nallagandla.</p>
                         </div>
 
@@ -511,7 +543,7 @@ export default function InvisalignRefactored() {
                 <div className="max-w-4xl mx-auto px-6">
                     <RevealOnScroll>
                         <div className="text-center mb-20">
-                            <h2 className="text-3xl font-black text-slate-900 dark:text-white uppercase tracking-tighter">Clinical Q&A</h2>
+                            <h2 className="text-3xl font-black text-slate-900 dark:text-white uppercase tracking-tighter">Clinical Q&A: <br /><span className="text-blue-600 normal-case">Expert Answers.</span></h2>
                         </div>
 
                         <div className="space-y-6">
@@ -541,6 +573,20 @@ export default function InvisalignRefactored() {
                             ))}
                         </div>
                     </RevealOnScroll>
+                </div>
+            </section>
+
+            {/* ================= INTERNAL LINKING: NEXT STEPS ================= */}
+            <section className="py-12 bg-slate-50 dark:bg-[#0b101b] border-t border-slate-200 dark:border-white/5">
+                <div className="max-w-4xl mx-auto px-6 text-center">
+                    <p className="text-xs font-bold uppercase tracking-widest text-slate-400 mb-4">The Finishing Touch</p>
+                    <h2 className="text-3xl font-black text-slate-900 dark:text-white mb-6">Want a Whiter Smile?</h2>
+                    <p className="text-slate-600 dark:text-slate-400 mb-8 max-w-xl mx-auto">
+                        After alignment, many patients choose professional whitening to showcase their new perfect smile.
+                    </p>
+                    <Link href="/treatments/teeth-whitening" className="inline-flex items-center gap-2 text-blue-600 dark:text-blue-400 font-bold hover:underline">
+                        Explore Teeth Whitening <ChevronRight size={16} />
+                    </Link>
                 </div>
             </section>
 

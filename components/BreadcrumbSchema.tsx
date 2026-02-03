@@ -5,7 +5,7 @@ import React from 'react';
 
 const BreadcrumbSchema = () => {
     const pathname = usePathname();
-    const baseUrl = 'https://nobledentalnallagandla.in';
+    const baseUrl = 'https://www.nobledentalnallagandla.in';
 
     // Don't render on 404 or unknown paths if needed, but usually safe to render.
     if (!pathname) return null;

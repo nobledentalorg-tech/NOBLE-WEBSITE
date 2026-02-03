@@ -6,9 +6,9 @@ export default function ReviewSchema() {
         "@context": "https://schema.org/",
         "@type": "Dentist",
         "name": "Noble Dental Care | Multispeciality Dental clinic in Nallagandla",
-        "image": "https://nobledentalnallagandla.in/assets/og-image.jpg",
+        "image": "https://www.nobledentalnallagandla.in/assets/og-image.jpg",
         "telephone": "+918610425342",
-        "url": "https://nobledentalnallagandla.in",
+        "url": "https://www.nobledentalnallagandla.in",
         "hasMap": "https://maps.app.goo.gl/fb88doh9LBRTet6f7",
         "address": {
             "@type": "PostalAddress",

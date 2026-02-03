@@ -1,7 +1,7 @@
 import { Inter } from 'next/font/google';
 import './globals.css';
 import LayoutShell from '@/components/LayoutShell';
-import JsonLd from '@/components/JsonLd';
+import MedicalSchema from '@/components/seo/MedicalSchema';
 import UIProtector from '@/components/UIProtector';
 import FloatingCTA from '@/components/FloatingCTA';
 import { Providers } from '@/app/providers';
@@ -22,7 +22,7 @@ export const metadata: Metadata = {
     default: "Noble Dental Care | Nallagandla's Only Microscopic Dentistry Center",
     template: '%s'
   },
-  metadataBase: new URL('https://nobledentalnallagandla.in'),
+  metadataBase: new URL('https://www.nobledentalnallagandla.in'),
   alternates: {
     canonical: '/',
   },
@@ -85,7 +85,7 @@ export const metadata: Metadata = {
   openGraph: {
     type: 'website',
     locale: 'en_IN',
-    url: 'https://nobledentalnallagandla.in',
+    url: 'https://www.nobledentalnallagandla.in',
     siteName: 'Noble Dental Care',
     images: [
       {
@@ -168,7 +168,7 @@ export default async function RootLayout({
               <ClinicStatusBanner />
               <LayoutShell emergencyMode={status.emergencyStatus}>
                 {children}
-                <JsonLd />
+                <MedicalSchema />
                 <BreadcrumbSchema />
                 <ReviewSchema />
                 <UIProtector />

@@ -103,8 +103,28 @@ export default function CrownsBridgesRefactored() {
                                 Diamond <br />
                                 <span className="gradient-text">Precision.</span>
                             </h1>
-                            <p className="text-xl text-slate-600 dark:text-slate-400 font-medium leading-relaxed max-w-lg">
-                                We mill teeth from solid Zirconia blocks using CAD/CAM technology. 5-micron accuracy for a seamless, natural fit.
+                            <p className="text-xl text-slate-600 dark:text-slate-400 font-medium leading-relaxed max-w-lg mb-6">
+                                We mill teeth from solid Zirconia blocks using CAD/CAM technology.
+                            </p>
+
+                            {/* TRUST SIGNALS */}
+                            <div className="flex flex-wrap gap-3 mb-8">
+                                <div className="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-blue-100 dark:bg-blue-900/30 border border-blue-200 dark:border-blue-800">
+                                    <ShieldCheck size={14} className="text-blue-600 dark:text-blue-400" />
+                                    <span className="text-[10px] font-bold uppercase tracking-wide text-blue-800 dark:text-blue-300">15-Year Warranty</span>
+                                </div>
+                                <div className="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-amber-100 dark:bg-amber-900/30 border border-amber-200 dark:border-amber-800">
+                                    <Award size={14} className="text-amber-600 dark:text-amber-400" />
+                                    <span className="text-[10px] font-bold uppercase tracking-wide text-amber-800 dark:text-amber-300">Certified Zirconia</span>
+                                </div>
+                                <div className="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-emerald-100 dark:bg-emerald-900/30 border border-emerald-200 dark:border-emerald-800">
+                                    <CheckCircle2 size={14} className="text-emerald-600 dark:text-emerald-400" />
+                                    <span className="text-[10px] font-bold uppercase tracking-wide text-emerald-800 dark:text-emerald-300">Metal-Free Safety</span>
+                                </div>
+                            </div>
+
+                            <p className="text-lg text-slate-600 dark:text-slate-400 font-medium leading-relaxed max-w-lg mb-8">
+                                5-micron accuracy ensures a seamless, natural fit that protects your underlying tooth.
                             </p>
 
                             <div className="flex flex-wrap gap-4">
@@ -232,8 +252,8 @@ export default function CrownsBridgesRefactored() {
                     <RevealOnScroll>
                         <div className="text-center mb-20">
                             <h2 className="text-5xl md:text-6xl font-black text-slate-900 dark:text-white tracking-tighter mb-4">
-                                5-Micron <br />
-                                <span className="gradient-text">CAD/CAM Lab.</span>
+                                5-Micron Precision: <br />
+                                <span className="gradient-text">The Digital Advantage.</span>
                             </h2>
                             <p className="text-xl text-slate-500">Milled with robotic precision, not hand-layered by guesswork.</p>
                         </div>
@@ -282,8 +302,8 @@ export default function CrownsBridgesRefactored() {
                     <RevealOnScroll>
                         <div className="text-center mb-20 max-w-3xl mx-auto">
                             <h2 className="text-5xl font-black text-slate-900 dark:text-white tracking-tighter leading-none mb-6">
-                                Material <br />
-                                <span className="text-blue-600">Decision Matrix.</span>
+                                Material Matrix: <br />
+                                <span className="text-blue-600">Choose Your Strength.</span>
                             </h2>
                             <p className="text-lg text-slate-500">Choosing the right &quot;Helmet&quot; for your tooth.</p>
                         </div>
@@ -353,7 +373,7 @@ export default function CrownsBridgesRefactored() {
                                     <Stethoscope size={12} /> The Medical Protocol
                                 </div>
                                 <h2 className="text-4xl font-black text-slate-900 dark:text-white tracking-tighter leading-none">
-                                    We Don&apos;t Just &quot;Fit&quot; Crowns. <br />
+                                    We Don&apos;t Just &quot;Fit&quot; Crowns: <br />
                                     <span className="text-blue-600">We Integrate Them.</span>
                                 </h2>
                                 <div className="grid gap-4">
@@ -391,7 +411,7 @@ export default function CrownsBridgesRefactored() {
                             <div className="inline-flex items-center gap-2 px-3 py-1 bg-white/10 rounded-full text-xs font-black uppercase tracking-widest text-blue-400 mb-6 border border-white/10">
                                 <Award size={12} /> Noble Standard Menu
                             </div>
-                            <h2 className="text-5xl md:text-7xl font-black tracking-tighter mb-4">Transparent Fees.</h2>
+                            <h2 className="text-5xl md:text-7xl font-black tracking-tighter mb-4">Transparent Fees: <br /><span className="text-blue-400 text-4xl">No Hidden Costs.</span></h2>
                             <p className="text-slate-400 text-lg">Fees based on material density and warranty years.</p>
                         </div>
 
@@ -428,7 +448,7 @@ export default function CrownsBridgesRefactored() {
                 <div className="max-w-4xl mx-auto px-6">
                     <RevealOnScroll>
                         <div className="text-center mb-20">
-                            <h2 className="text-4xl font-black text-slate-900 dark:text-white uppercase tracking-tighter">Common Concerns</h2>
+                            <h2 className="text-4xl font-black text-slate-900 dark:text-white uppercase tracking-tighter">Common Concerns: <br /><span className="text-blue-600 lowercase">Questions Answered.</span></h2>
                         </div>
 
                         <div className="space-y-6">
@@ -455,6 +475,20 @@ export default function CrownsBridgesRefactored() {
                             ))}
                         </div>
                     </RevealOnScroll>
+                </div>
+            </section>
+
+            {/* ================= INTERNAL LINKING: NEXT STEPS ================= */}
+            <section className="py-12 bg-white dark:bg-[#020617] border-t border-slate-100 dark:border-white/5">
+                <div className="max-w-4xl mx-auto px-6 text-center">
+                    <p className="text-xs font-bold uppercase tracking-widest text-slate-400 mb-4">Beyond the Crown</p>
+                    <h2 className="text-3xl font-black text-slate-900 dark:text-white mb-6">Looking for a Full Smile Makeover?</h2>
+                    <p className="text-slate-600 dark:text-slate-400 mb-8 max-w-xl mx-auto">
+                        If you want to transform your entire smile, not just a single tooth, explore our Ceramic Veneers for that Hollywood finish.
+                    </p>
+                    <Link href="/treatments/veneers" className="inline-flex items-center gap-2 text-blue-600 dark:text-blue-400 font-bold hover:underline">
+                        Explore Veneers <ChevronRight size={16} />
+                    </Link>
                 </div>
             </section>
 

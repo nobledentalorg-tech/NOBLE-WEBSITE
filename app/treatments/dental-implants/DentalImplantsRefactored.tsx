@@ -17,12 +17,15 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import { EffectCoverflow, Autoplay, Pagination, Navigation } from 'swiper/modules';
 import { RevealOnScroll } from '@/components/RevealOnScroll';
 import SchemaFAQ from '@/components/SchemaFAQ';
+import InteractiveCostEstimator from '@/components/interactive/CostEstimator';
+import MaterialSpecSheet from '@/components/medical/MaterialSpecSheet';
+import { PRICING_DATA } from '@/src/data/pricing';
+import MedicalSchema from '@/components/seo/MedicalSchema';
 
 import 'swiper/css';
 import 'swiper/css/effect-coverflow';
 import 'swiper/css/pagination';
 import 'swiper/css/navigation';
-
 const customStyles = `
   .implant-swiper .swiper-pagination-bullet { background: #14b8a6; opacity: 0.5; }
   .implant-swiper .swiper-pagination-bullet-active { background: #0d9488; opacity: 1; width: 24px; border-radius: 4px; }
@@ -64,11 +67,11 @@ const customStyles = `
     z-index: 50;
     backdrop-filter: blur(20px);
     background: rgba(255, 255, 255, 0.82);
-    border-bottom: 1px solid rgba(0,0,0,0.05);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
   }
   .dark .sticky-nav {
     background: rgba(2, 6, 23, 0.82);
-    border-bottom: 1px solid rgba(255,255,255,0.05);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
   }
 `;
 
@@ -152,7 +155,7 @@ export default function DentalImplantsRefactored() {
     const [userChoices, setUserChoices] = useState<Record<string, string>>({});
 
     const handleAnswer = (catId: string, qIdx: number, val: string) => {
-        setUserChoices(prev => ({ ...prev, [`${catId}-${qIdx}`]: val }));
+        setUserChoices(prev => ({ ...prev, [`${catId} -${qIdx} `]: val }));
     };
 
     const steps = [
@@ -227,15 +230,28 @@ export default function DentalImplantsRefactored() {
                 <div className="max-w-7xl mx-auto px-6 relative z-10 w-full mt-12 grid lg:grid-cols-2 gap-20 items-center">
                     <RevealOnScroll>
                         <div>
-                            <div className="inline-flex items-center gap-2 px-3 py-1 bg-teal-50 dark:bg-teal-900/30 rounded-full text-xs font-black uppercase tracking-widest text-teal-600 dark:text-teal-400 mb-6 border border-teal-200 dark:border-teal-500/30">
-                                <Activity size={12} /> Medical Review v4.2 · 2026 Protocols
-                            </div>
-                            <h1 className="text-6xl md:text-7xl lg:text-8xl font-black text-slate-900 dark:text-white mb-8 tracking-tighter leading-[0.9]">
-                                Titanium <br />
-                                <span className="text-transparent bg-clip-text bg-gradient-to-r from-teal-500 to-blue-600 animate-gradient-x uppercase italic">Dental Implants <br /> in Nallagandla.</span>
-                            </h1>
-                            <p className="text-lg md:text-xl text-slate-600 dark:text-slate-400 max-w-xl leading-relaxed mb-10 font-medium">
-                                Restore your smile with the **Best Dentist in Nallagandla**. At **Noble Dental Care Hyderabad**, located **Near Aparna Sarovar / Citizens Hospital**, **Dr. Dhivakaran** specializes in advanced **Missing Tooth Replacement**, including **All-on-4 Dental Implants** and complex **Zygomatic Implants Hyderabad** for ultimate stability.
+                            {/* TRUST SIGNAL: Medical Director Badge */}
+                            <Link href="/team/dr-dhivakaran" className="group flex items-center gap-4 p-4 rounded-2xl bg-white/50 dark:bg-slate-900/50 backdrop-blur-md border border-slate-200 dark:border-white/10 mb-8 w-fit hover:bg-white/80 dark:hover:bg-slate-900/80 transition-all cursor-pointer">
+                                <div className="relative w-12 h-12 rounded-full overflow-hidden ring-2 ring-teal-500 ring-offset-2 dark:ring-offset-slate-900 group-hover:scale-105 transition-transform">
+                                    <Image src="/images/dhivakaran.webp" alt="Dr. Dhivakaran" width={48} height={48} className="object-cover" />
+                                </div>
+                                <div>
+                                    <div className="flex items-center gap-2">
+                                        <span className="font-bold text-slate-900 dark:text-white text-sm group-hover:text-teal-500 transition-colors">Dr. Dhivakaran</span>
+                                        <ShieldCheck size={14} className="text-teal-500" />
+                                    </div>
+                                    <p className="text-[10px] uppercase font-bold text-slate-500 tracking-wider">MDS • Clinical Director</p>
+                                </div>
+                                <div className="h-8 w-px bg-slate-200 dark:bg-white/10 mx-2"></div>
+                                <div className="text-right">
+                                    <div className="text-xs font-black text-slate-900 dark:text-white">15+</div>
+                                    <p className="text-[10px] text-slate-500 uppercase font-bold tracking-wider">Years Exp</p>
+                                </div>
+                            </Link>
+
+                            <p className="text-lg md:text-xl text-slate-600 dark:text-slate-400 max-w-xl leading-relaxed mb-10 font-medium border-l-4 border-teal-500 pl-6">
+                                **"A missing tooth is a medical emergency for your jawbone."** <br />
+                                Prevent facial collapse today with our ISO-certified Swiss protocols.
                             </p>
 
                             <div className="flex flex-wrap gap-4 mb-12">
@@ -306,11 +322,11 @@ export default function DentalImplantsRefactored() {
                     ].map((tab) => (
                         <a
                             key={tab.id}
-                            href={`#${tab.id}`}
-                            className={`text-xs font-black uppercase tracking-[0.2em] whitespace-nowrap transition-all duration-300 px-4 py-2 rounded-full ${activeTab === tab.id
-                                ? 'bg-teal-600 text-white'
-                                : 'text-slate-400 hover:text-slate-900 dark:hover:text-white'
-                                }`}
+                            href={`#${tab.id} `}
+                            className={`text - xs font - black uppercase tracking - [0.2em] whitespace - nowrap transition - all duration - 300 px - 4 py - 2 rounded - full ${activeTab === tab.id
+                                    ? 'bg-teal-600 text-white'
+                                    : 'text-slate-400 hover:text-slate-900 dark:hover:text-white'
+                                } `}
                         >
                             {tab.label}
                         </a>
@@ -328,15 +344,18 @@ export default function DentalImplantsRefactored() {
                                     <Microscope size={12} /> Medical Authority v4.2
                                 </div>
                                 <h2 className="text-4xl md:text-5xl font-black text-slate-900 dark:text-white mb-8 tracking-tight leading-tight uppercase italic">
-                                    The Noble Truth <br />
-                                    <span className="text-teal-600 dark:text-teal-400">Biological Stability.</span>
+                                    The Noble Truth: <br />
+                                    <span className="text-teal-600 dark:text-teal-400">Why Your Implant Lasts a Lifetime.</span>
                                 </h2>
                                 <div className="space-y-6 text-lg text-slate-600 dark:text-slate-300 leading-relaxed">
                                     <p>
-                                        Many search for the lowest **Tooth Implant Cost Hyderabad** offers, but success depends on the foundation. For cases with severe bone loss, our **Dental Clinic in Nallagandla** provides specialized **Basal Implants Hyderabad** and **Zygomatic Implants Hyderabad** protocols to avoid complex grafting.
+                                        Many search for the lowest **Tooth Implant Cost Hyderabad** offers, but success depends on the foundation.
                                     </p>
                                     <p>
-                                        Under the guidance of **Dr. Dhivakaran**, our team uses the **Osstell ISQ Meter** to measure clinical stability through Resonance Frequency Analysis. This ensures your **Full Mouth Dental Implants** and **All-on-4 Dental Implants** are load-ready for immediate function.
+                                        For cases with severe bone loss, our **Dental Clinic in Nallagandla** provides specialized **Basal Implants Hyderabad** protocols to avoid complex grafting.
+                                    </p>
+                                    <p>
+                                        Under the guidance of **Dr. Dhivakaran**, our team uses the **Osstell ISQ Meter** to measure clinical stability through Resonance Frequency Analysis.
                                     </p>
                                     <ul className="space-y-4 pt-8">
                                         {[
@@ -399,7 +418,7 @@ export default function DentalImplantsRefactored() {
                         <div className="section-header text-center mb-20">
                             <h2 className="text-4xl md:text-5xl font-black text-slate-900 dark:text-white mb-6 tracking-tight leading-tight">
                                 Wolf&apos;s Law: <br />
-                                <span className="text-blue-600 dark:text-blue-400 text-3xl md:text-4xl lowercase font-bold">Use it or lose it.</span>
+                                <span className="text-blue-600 dark:text-blue-400 text-3xl md:text-4xl lowercase font-bold">Prevent Facial Collapse.</span>
                             </h2>
                             <p className="text-lg text-slate-600 dark:text-slate-400 max-w-2xl mx-auto leading-relaxed">
                                 When a tooth is lost, the jawbone no longer receives &quot;load&quot; signals. <br />
@@ -525,7 +544,7 @@ export default function DentalImplantsRefactored() {
                                         { icon: Microscope, title: "3D Digital Twin", desc: "We build a digital model of your jaw before surgery to plan nerve safety.", color: "bg-slate-900" }
                                     ].map((item, idx) => (
                                         <div key={idx} className="p-8 bg-slate-50 dark:bg-white/5 rounded-3xl border border-slate-200 dark:border-white/10 flex gap-6 hover:shadow-xl transition-shadow group">
-                                            <div className={`w-14 h-14 shrink-0 rounded-2xl flex items-center justify-center text-white ${item.color} shadow-lg group-hover:scale-110 transition-transform`}>
+                                            <div className={`w - 14 h - 14 shrink - 0 rounded - 2xl flex items - center justify - center text - white ${item.color} shadow - lg group - hover: scale - 110 transition - transform`}>
                                                 <item.icon size={24} />
                                             </div>
                                             <div>
@@ -542,8 +561,8 @@ export default function DentalImplantsRefactored() {
                                     <Shield size={12} /> Clinical Risk Mitigation
                                 </div>
                                 <h2 className="text-4xl md:text-5xl font-black text-slate-900 dark:text-white tracking-tight leading-tight">
-                                    Safety isn&apos;t a feature. <br />
-                                    <span className="text-teal-600">It&apos;s a biological system.</span>
+                                    Safety isn&apos;t a feature: <br />
+                                    <span className="text-teal-600">It&apos;s Your Peace of Mind.</span>
                                 </h2>
                                 <p className="text-lg text-slate-600 dark:text-slate-300 leading-relaxed">
                                     At Noble Dental Care, we treat implants as <strong>Ortho-Medical Procedures</strong>. We focus on soft tissue, bone density, and long-term periodontal health.
@@ -559,24 +578,24 @@ export default function DentalImplantsRefactored() {
                                             {[1, 2, 3, 4].map(i => (
                                                 <div key={i} className="w-10 h-10 rounded-full border-2 border-white dark:border-[#020617] bg-slate-200 dark:bg-white/10 overflow-hidden relative">
                                                     <Image src={`https://i.pravatar.cc/100?img=${i + 10}`} alt="User" fill />
-                                                </div>
+                                                </div >
                                             ))}
                                             <div className="w-10 h-10 rounded-full border-2 border-white dark:border-[#020617] bg-teal-500 text-white flex items-center justify-center text-xs font-bold">+18k</div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </RevealOnScroll>
-                </div>
-            </section>
+                                        </div >
+                                    </div >
+                                </div >
+                            </div >
+                        </div >
+                    </RevealOnScroll >
+                </div >
+            </section >
 
             {/* ================= CLINICAL JOURNEY ================= */}
-            <section id="diagnostic" className="py-32 bg-slate-50 dark:bg-[#0b101b]">
+            < section id="diagnostic" className="py-32 bg-slate-50 dark:bg-[#0b101b]" >
                 <div className="max-w-7xl mx-auto px-6">
                     <RevealOnScroll>
                         <div className="text-center mb-20">
-                            <h2 className="text-4xl font-black text-slate-900 dark:text-white mb-6">Clinical Workflow</h2>
+                            <h2 className="text-4xl font-black text-slate-900 dark:text-white mb-6">Clinical Workflow: <br /><span className="text-teal-600">Your Journey to a New Smile.</span></h2>
                             <p className="text-slate-600 dark:text-slate-400 text-lg">Predictable results through digital planning.</p>
                         </div>
 
@@ -609,10 +628,10 @@ export default function DentalImplantsRefactored() {
                         </div>
                     </RevealOnScroll>
                 </div>
-            </section>
+            </section >
 
             {/* ================= EMERGENCY SECTION (NIGHT GUARDIAN) ================= */}
-            <div className="py-20 bg-slate-50 dark:bg-black border-t border-b border-slate-200 dark:border-white/5 relative overflow-hidden">
+            < div className="py-20 bg-slate-50 dark:bg-black border-t border-b border-slate-200 dark:border-white/5 relative overflow-hidden" >
                 <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[300px] bg-red-500/5 blur-[100px] rounded-full"></div>
                 <div className="max-w-4xl mx-auto px-6 text-center relative z-10">
                     <div className="w-20 h-20 bg-red-100 dark:bg-red-900/30 rounded-full flex items-center justify-center mx-auto mb-6 text-red-600 dark:text-red-400 animate-pulse">
@@ -632,10 +651,10 @@ export default function DentalImplantsRefactored() {
                     </div>
                     <p className="mt-8 text-[10px] text-slate-400 uppercase tracking-[0.3em] font-black">Surgical Response Team · Noble Dental Care Hyderabad</p>
                 </div>
-            </div>
+            </div >
 
             {/* ================= CASE LIBRARY ================= */}
-            <section id="cases" className="py-32 bg-white dark:bg-[#020617]">
+            < section id="cases" className="py-32 bg-white dark:bg-[#020617]" >
                 <div className="max-w-7xl mx-auto px-6">
                     <RevealOnScroll>
                         <div className="section-header mb-16">
@@ -712,20 +731,28 @@ export default function DentalImplantsRefactored() {
                         </div>
                     </RevealOnScroll>
                 </div>
-            </section>
+            </section >
+
+            {/* ================= TECH SPEC: MATERIAL SCIENCE ================= */}
+            < MaterialSpecSheet />
 
             {/* ================= PRICING ================= */}
-            <section id="cost" className="py-32 bg-slate-50 dark:bg-[#0b101b] border-t border-slate-200 dark:border-white/5" >
+            < section id="cost" className="py-32 bg-slate-50 dark:bg-[#0b101b] border-t border-slate-200 dark:border-white/5" >
                 <div className="max-w-7xl mx-auto px-6">
                     <RevealOnScroll>
                         <div className="text-center mb-20">
                             <div className="inline-flex items-center gap-2 px-3 py-1 bg-teal-50 dark:bg-teal-900/30 text-teal-600 rounded-full text-xs font-black uppercase tracking-widest mb-4">
                                 Tooth Implant Cost Hyderabad
                             </div>
-                            <h2 className="text-4xl font-black text-slate-900 dark:text-white mb-6 uppercase italic">Select Your Foundation.</h2>
+                            <h2 className="text-4xl font-black text-slate-900 dark:text-white mb-6 uppercase italic">Select Your Foundation: <br /><span className="text-teal-600">Invest in Longevity.</span></h2>
                             <p className="text-slate-600 dark:text-slate-400 text-lg max-w-2xl mx-auto">
                                 We offer diverse options including **Titanium vs Zirconia Implants** and specialists in **Immediate Loading Implants** for rapid restoration.
                             </p>
+                        </div>
+
+                        {/* INTERACTIVE CALCULATOR */}
+                        <div className="mb-20 flex justify-center">
+                            <InteractiveCostEstimator />
                         </div>
 
                         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -775,7 +802,7 @@ export default function DentalImplantsRefactored() {
             </section >
 
             {/* ================= METRO ARBITRAGE TABLE ================= */}
-            <div className="max-w-5xl mx-auto px-6 pb-32">
+            < div className="max-w-5xl mx-auto px-6 pb-32" >
                 <div className="bg-slate-900 text-white rounded-[2.5rem] p-8 md:p-12 shadow-2xl overflow-hidden relative border border-slate-800">
                     <div className="absolute top-0 right-0 w-64 h-64 bg-teal-500/10 rounded-full blur-3xl -mr-32 -mt-32"></div>
 
@@ -786,7 +813,7 @@ export default function DentalImplantsRefactored() {
                             </div>
                             <h3 className="text-3xl font-black mb-4 uppercase italic">Noble Dental Clinic in Nallagandla</h3>
                             <p className="text-slate-400 text-sm max-w-xl mx-auto leading-relaxed">
-                                As the choice **Dental Clinic in Nallagandla**, we own our clinical space. No corporate franchise overheads. You pay for the clinical skill of **Dr. Dhivakaran** and the Swiss titanium, not for high-rent retail spaces.
+                                As the choice **Dental Clinic in Nallagandla**, we own our clinical space. No corporate franchise overheads. <br /><br />You pay for the clinical skill of **Dr. Dhivakaran** and the Swiss titanium, not for high-rent retail spaces.
                             </p>
                         </div>
 
@@ -824,10 +851,10 @@ export default function DentalImplantsRefactored() {
                         </div>
                     </div>
                 </div>
-            </div>
+            </div >
 
             {/* ================= FAQ ================= */}
-            <section id="faq" className="py-32 max-w-4xl mx-auto px-6">
+            < section id="faq" className="py-32 max-w-4xl mx-auto px-6" >
                 <RevealOnScroll>
                     <div className="text-center mb-20">
                         <h2 className="text-3xl font-black text-slate-900 dark:text-white mb-4">Clinical Q&A</h2>
@@ -863,10 +890,24 @@ export default function DentalImplantsRefactored() {
                         </p>
                     </div>
                 </RevealOnScroll>
-            </section>
+            </section >
+
+            {/* ================= INTERNAL LINKING: NEXT STEPS ================= */}
+            < section className="py-12 bg-white dark:bg-[#020617] border-t border-slate-100 dark:border-white/5" >
+                <div className="max-w-4xl mx-auto px-6 text-center">
+                    <p className="text-xs font-bold uppercase tracking-widest text-slate-400 mb-4">The Final Touch</p>
+                    <h2 className="text-3xl font-black text-slate-900 dark:text-white mb-6">What connects to the Implant?</h2>
+                    <p className="text-slate-600 dark:text-slate-400 mb-8 max-w-xl mx-auto">
+                        The implant is the root. The visible tooth is the Crown. Explore our premium Zirconia options to see how we blend technology with art.
+                    </p>
+                    <Link href="/treatments/crowns-bridges" className="inline-flex items-center gap-2 text-teal-600 dark:text-teal-400 font-bold hover:underline">
+                        Explore Zirconia Crowns <ChevronRight size={16} />
+                    </Link>
+                </div>
+            </section >
 
             {/* ================= CTA ================= */}
-            <section id="contact" className="py-24 bg-slate-900 text-white" >
+            < section id="contact" className="py-24 bg-slate-900 text-white" >
                 <div className="max-w-7xl mx-auto px-6">
                     <div className="section-header text-center mb-16">
                         <h2 className="text-4xl font-black mb-4">Secure Your Foundation</h2>
@@ -911,7 +952,7 @@ export default function DentalImplantsRefactored() {
                         Scientifically Backed · ITI Standards · FDA Cleared Surfaces
                     </div>
                 </div>
-            </section>
-        </div>
+            </section >
+        </div >
     );
 }

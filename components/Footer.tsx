@@ -134,7 +134,7 @@ const Footer: React.FC<FooterProps> = ({ onBookClick }) => {
             <strong>Medical Disclaimer:</strong> Information is for educational purposes and not a substitute for professional medical advice. All clinical procedures are performed by registered dental practitioners under strict sterilization protocols.
           </p>
           <div className="border-t border-slate-200 dark:border-white/5 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
-            <p className="text-slate-500 text-sm font-medium">
+            <p className="text-slate-400 text-sm font-medium" suppressHydrationWarning>
               © {new Date().getFullYear()} Noble Dental Care. All rights reserved.
             </p>
 

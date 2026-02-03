@@ -26,6 +26,7 @@ interface LayoutShellProps {
 
 import AdaptiveUIProvider from '@/components/AdaptiveUIProvider';
 import ClinicStatusBanner from '@/components/ClinicStatusBanner';
+import { MobileUIProvider } from '@/context/MobileUIContext';
 
 export default function LayoutShell({ children, emergencyMode = false }: LayoutShellProps) {
 
@@ -41,7 +42,7 @@ export default function LayoutShell({ children, emergencyMode = false }: LayoutS
     const openBooking = () => setIsBookingOpen(true);
 
     return (
-        <>
+        <MobileUIProvider>
             <RegisterSW />
             <Header onBookClick={openBooking} emergencyMode={emergencyMode} />
 
@@ -55,6 +56,6 @@ export default function LayoutShell({ children, emergencyMode = false }: LayoutS
 
             {/* Partytown & GTM - Moved to bottom to maximize TBT score */}
             <GoogleTagManager />
-        </>
+        </MobileUIProvider>
     );
 }

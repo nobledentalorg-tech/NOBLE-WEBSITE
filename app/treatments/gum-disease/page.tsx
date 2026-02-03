@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import GumDiseaseRefactored from './GumDiseaseRefactored';
+import WholeBodyConnection from '@/components/WholeBodyConnection';
 
 export const metadata: Metadata = {
     title: 'Gum Disease Treatment Hyderabad | Periodontics & GBT | Noble Dental',
@@ -81,6 +82,7 @@ export default function GumDiseasePage() {
                 dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
             />
             <GumDiseaseRefactored />
+            <WholeBodyConnection topic="gum-disease" />
         </>
     );
 }
