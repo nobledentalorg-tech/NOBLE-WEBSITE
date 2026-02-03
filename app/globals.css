@@ -137,6 +137,7 @@ html[data-power-mode="save"] .hide-on-lite {
 
 .animate-float {
   animation: float 6s ease-in-out infinite;
+  will-change: transform;
 }
 
 @keyframes fade-in-up {
