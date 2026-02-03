@@ -6,6 +6,10 @@ import { X, Award, ArrowRight, ShieldCheck, Microscope, Zap, GraduationCap, Exte
 import { RevealOnScroll } from './RevealOnScroll';
 import { doctors } from '@/data/doctors';
 
+// [PERFORMANCE NOTE]: This component uses static data from 'src/data/doctors.ts'.
+// Time-To-First-Byte (TTFB) is optimized by default as no database calls are made.
+// No Supabase caching layer is required here.
+
 const Doctors: React.FC = () => {
   const [selectedDoctor, setSelectedDoctor] = useState<Doctor | null>(null);
 

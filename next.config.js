@@ -145,6 +145,62 @@ const nextConfig = {
         destination: '/treatments/sedation-dentistry',
         permanent: true,
       },
+      // 🛡️ SECURITY REDIRECTS (Bot Probes)
+      {
+        source: '/wp-admin/:path*',
+        destination: '/contact',
+        permanent: true,
+      },
+      {
+        source: '/wp-login.php',
+        destination: '/contact',
+        permanent: true,
+      },
+      {
+        source: '/wp-content/:path*',
+        destination: '/contact',
+        permanent: true,
+      },
+      {
+        source: '/xmlrpc.php',
+        destination: '/contact',
+        permanent: true,
+      },
+      {
+        source: '/.env',
+        destination: '/contact',
+        permanent: true,
+      },
+      {
+        source: '/.git/:path*',
+        destination: '/contact',
+        permanent: true,
+      },
+      {
+        source: '/.aws/:path*',
+        destination: '/contact',
+        permanent: true,
+      },
+      {
+        source: '/config.ym:ext*',
+        destination: '/contact',
+        permanent: true,
+      },
+      {
+        source: '/:path*.php',
+        destination: '/contact',
+        permanent: true,
+      },
+      {
+        source: '/:path*.asp',
+        destination: '/contact',
+        permanent: true,
+      },
+      {
+        source: '/:path*.aspx',
+        destination: '/contact',
+        permanent: true,
+      },
     ];
   },
 };

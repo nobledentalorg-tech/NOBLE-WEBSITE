@@ -19,7 +19,8 @@ const Contact = () => {
         phone: '',
         service: 'General Checkup',
         doctor: 'Dr. Dhivakaran',
-        notes: ''
+        notes: '',
+        hp_field: '' // 🍯 Honeypot field
     });
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => {
@@ -28,6 +29,13 @@ const Contact = () => {
 
     const handleSubmit = (e: React.FormEvent) => {
         e.preventDefault();
+
+        // 🛡️ HONEYPOT CHECK
+        if (formData.hp_field) {
+            console.log("Bot detected. Submission rejected.");
+            return;
+        }
+
         const msg = `Hello Noble Dental! I'd like to book an appointment.\n\nName: ${formData.name}\nPhone: ${formData.phone}\nService: ${formData.service}\nDoctor: ${formData.doctor}\nNotes: ${formData.notes}`;
         window.open(`https://wa.me/918610425342?text=${encodeURIComponent(msg)}`, '_blank');
     };
@@ -202,6 +210,20 @@ const Contact = () => {
                                                     <FileText size={18} className="absolute left-4 top-6 text-slate-400" />
                                                     <textarea id="notes" name="notes" rows={2} onChange={handleChange} className="w-full bg-slate-50 dark:bg-white/5 border border-slate-200 dark:border-white/10 rounded-[2rem] py-5 pl-12 pr-4 font-bold resize-none" placeholder="Briefly describe your pain..."></textarea>
                                                 </div>
+                                            </div>
+
+                                            {/* 🍯 Honeypot Field (Hidden) */}
+                                            <div style={{ display: 'none' }}>
+                                                <label htmlFor="hp_field">Do not fill this field</label>
+                                                <input
+                                                    type="text"
+                                                    name="hp_field"
+                                                    id="hp_field"
+                                                    value={formData.hp_field}
+                                                    onChange={handleChange}
+                                                    tabIndex={-1}
+                                                    autoComplete="off"
+                                                />
                                             </div>
 
                                             <div className="flex justify-center pt-4">

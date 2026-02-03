@@ -211,7 +211,7 @@ export default function NeoCompanionClient() {
                     {session && (
                         <div className="flex items-center gap-2 px-3 py-1 rounded-full bg-white/5 border border-white/10">
                             {session.user?.image ? (
-                                <Image src={session.user.image} alt="User" width={20} height={20} className="w-5 h-5 rounded-full" />
+                                <Image src={session.user.image} alt="User" width={20} height={20} className="w-5 h-5 rounded-full" priority />
                             ) : (
                                 <div className="w-5 h-5 rounded-full bg-zinc-800 flex items-center justify-center text-[10px] text-zinc-500 font-bold">
                                     {session.user?.name?.charAt(0) || 'U'}

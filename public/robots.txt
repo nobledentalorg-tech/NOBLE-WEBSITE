@@ -1,36 +1,64 @@
+Sitemap: https://nobledentalnallagandla.in/sitemap.xml
+
+# -----------------------------------------------------------------------------
+# 1. ALLOW LIST (Verified Search & Social)
+# -----------------------------------------------------------------------------
 User-agent: Googlebot
-Allow: /
-Allow: /services/
-Allow: /blog/
-
 User-agent: Bingbot
+User-agent: Slurp
+User-agent: DuckDuckBot
+User-agent: YandexBot
+User-agent: Baiduspider
+User-agent: Facebot
+User-agent: facebookexternalhit
+User-agent: Twitterbot
+User-agent: LinkedInBot
+User-agent: Pinterestbot
+User-agent: WhatsApp
+User-agent: TelegramBot
+User-agent: Applebot
 Allow: /
-Allow: /services/
-Allow: /blog/
 
-User-agent: GPTBot
-Disallow: /
-Disallow: /app/
-Disallow: /api/
-Disallow: /neo/
-Disallow: /booking/
-
+# AI Search Agents (Citation Allowed)
+User-agent: OAI-SearchBot
+User-agent: PerplexityBot
 User-agent: ClaudeBot
-Disallow: /
-Disallow: /app/
-Disallow: /api/
-Disallow: /neo/
-Disallow: /booking/
+Allow: /
 
+# -----------------------------------------------------------------------------
+# 2. BLOCK LIST (Spies, Scrapers & Trainers)
+# -----------------------------------------------------------------------------
+User-agent: SemrushBot
+User-agent: SiteAuditBot
+User-agent: SemrushBot-BA
+User-agent: SemrushBot-SI
+User-agent: SemrushBot-SWA
+User-agent: AhrefsBot
+User-agent: AhrefsSiteAudit
+User-agent: Rogerbot
+User-agent: MJ12bot
+User-agent: DotBot
+User-agent: SerpstatBot
+User-agent: Barkrowler
 User-agent: CCBot
+User-agent: GPTBot
+User-agent: anthropic-ai
+User-agent: Meta-ExternalAgent
+User-agent: Bytespider
+User-agent: HTTrack
+User-agent: BuiltWith
 Disallow: /
-Disallow: /app/
-Disallow: /api/
-Disallow: /neo/
-Disallow: /booking/
 
+# -----------------------------------------------------------------------------
+# 3. SECURITY DISALLOW (Global)
+# -----------------------------------------------------------------------------
 User-agent: *
 Allow: /
 Disallow: /api/
 Disallow: /verify-access-system/
-Sitemap: https://nobledentalnallagandla.in/sitemap.xml
+Disallow: /wp-admin/
+Disallow: /wp-login.php
+Disallow: /.env
+Disallow: /config.yml
+Disallow: /config.yaml
+Disallow: /xmlrpc.php

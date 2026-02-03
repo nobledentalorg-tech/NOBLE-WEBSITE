@@ -133,8 +133,16 @@ const Footer: React.FC<FooterProps> = ({ onBookClick }) => {
           <p className="text-xs text-slate-400 mb-4 text-justify">
             <strong>Medical Disclaimer:</strong> Information is for educational purposes and not a substitute for professional medical advice. All clinical procedures are performed by registered dental practitioners under strict sterilization protocols.
           </p>
-          <div className="flex flex-col md:flex-row justify-between items-center gap-4">
-            <p className="text-xs text-slate-300">Â© 2024 Noble Dental Care.</p>
+          <div className="border-t border-slate-200 dark:border-white/5 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
+            <p className="text-slate-500 text-sm font-medium">
+              © {new Date().getFullYear()} Noble Dental Care. All rights reserved.
+            </p>
+
+            {/* 👻 HONEYPOT LINK (Invisible to humans, tempting for bots) */}
+            <a href="/api/v1/patient-directory" style={{ opacity: 0, position: 'absolute', height: 0, width: 0, overflow: 'hidden' }} aria-hidden="true" tabIndex={-1}>
+              Patient Directory
+            </a>
+
             <div className="flex items-center gap-4">
               <p className="text-xs text-slate-300 font-mono">DCI Reg: 23853 (Dr. Dhivakaran)</p>
               <a href="https://healthflo.org/" target="_blank" rel="noopener noreferrer" className="text-[10px] text-slate-100 hover:text-blue-400 transition-colors uppercase tracking-widest font-black flex items-center gap-1">

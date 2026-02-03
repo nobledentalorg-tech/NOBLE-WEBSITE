@@ -11,6 +11,9 @@ import {
 import Image from 'next/image';
 import { treatmentsData } from '@/data/treatments'; // <--- IMPORT YOUR DATA
 
+// [PERFORMANCE NOTE]: This component uses static data from 'src/data/treatments.ts'.
+// TTFB is optimized as no database calls are required for the service list.
+
 // Import Swiper styles
 import 'swiper/css';
 import 'swiper/css/effect-coverflow';

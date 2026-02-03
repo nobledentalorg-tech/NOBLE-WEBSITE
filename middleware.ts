@@ -3,10 +3,48 @@ import type { NextRequest } from 'next/server';
 
 export function middleware(request: NextRequest) {
     const nonce = crypto.randomUUID();
+    const ua = request.headers.get('user-agent') || ''; // Moved up for access
 
     // Relaxed CSP Policy to restore functionality
     // - strict-dynamic removed to allow Next.js hydration scripts
     // - unsafe-inline allowed for scripts and styles
+
+    // --- 🕸️ TAR PIT: DELAYED RESPONSE FOR SENSITIVE PATHS ---
+    // Instead of a quick 404/403, we stream data very slowly to waste bot resources.
+    const TAR_PIT_PATHS = ['/wp-admin', '/wp-login.php', '/.env', '/.git', '/config.yml'];
+    const isTarPit = TAR_PIT_PATHS.some(path => request.nextUrl.pathname.startsWith(path));
+
+    if (isTarPit) {
+        console.warn(`[Tar Pit] Trapped access from: ${ua} on ${request.nextUrl.pathname}`);
+
+        // Create a slow stream
+        const encoder = new TextEncoder();
+        const stream = new ReadableStream({
+            async start(controller) {
+                const message = "Connecting to secure server... Please wait... ";
+                // Send initial bytes
+                controller.enqueue(encoder.encode(message));
+
+                // Drip feed bytes every second to hold connection open
+                for (let i = 0; i < 10; i++) {
+                    await new Promise(resolve => setTimeout(resolve, 1000));
+                    controller.enqueue(encoder.encode("."));
+                }
+
+                // Finally close with a fake error or just close
+                controller.enqueue(encoder.encode("\nError: Connection Timeout\n"));
+                controller.close();
+            }
+        });
+
+        return new NextResponse(stream, {
+            headers: {
+                'Content-Type': 'text/plain',
+                'X-Robots-Tag': 'noindex, nofollow',
+                'Cache-Control': 'no-store'
+            }
+        });
+    }
 
     // --- DIGITAL MOAT: HONEYPOT TRAP ---
     if (request.nextUrl.pathname === '/verify-access-system/') {
@@ -14,6 +52,30 @@ export function middleware(request: NextRequest) {
             status: 403,
             headers: { 'Content-Type': 'application/json', 'X-Robots-Tag': 'noindex, nofollow' }
         });
+    }
+
+    // --- ACTIVE BOT DEFENSE: USER-AGENT BLOCKING ---
+    // Block verified spies/scrapers to save bandwidth and protect data
+    const start = Date.now();
+
+    // Normalize UA for checking
+    const uaLower = ua.toLowerCase();
+
+    const BLOCKED_BOTS = [
+        'semrushbot', 'siteauditbot', 'ahrefsbot', 'ahrefssiteaudit', 'rogerbot', 'mj12bot', 'dotbot', 'serpstatbot', 'barkrowler', // SEO Spies
+        'ccbot', 'gptbot', 'anthropic-ai', 'meta-externalagent', 'bytespider', // Scrapers & AI Trainers
+        'httrack', 'builtwith', 'screaming frog' // Aggressive Tools
+    ];
+
+    const isBlocked = BLOCKED_BOTS.some(bot => uaLower.includes(bot));
+
+    // Allow Screaming Frog ONLY if from localhost (Dev testing) or specific IP (future)
+    // For now, simple block unless careful.
+
+    if (isBlocked) {
+        console.warn(`[Security] Blocked access from: ${ua}`);
+        // 404 Stealth Mode as requested (User doesn't want them to know they are blocked)
+        return NextResponse.rewrite(new URL('/404', request.url));
     }
 
     const cspHeader = `
