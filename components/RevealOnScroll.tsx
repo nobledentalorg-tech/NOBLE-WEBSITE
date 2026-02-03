@@ -35,12 +35,14 @@ export const RevealOnScroll = ({ children, className = "", delay = 0 }: RevealPr
   }, []);
 
   return (
-    className = {`transition-all duration-1000 transform ${className} ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}
-style = {{
-  transitionDelay: `${delay}ms`,
+    <div
+      ref={ref}
+      className={`transition-all duration-1000 transform ${className} ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}
+      style={{
+        transitionDelay: `${delay}ms`,
       }}
     >
-  { children }
-    </div >
+      {children}
+    </div>
   );
 };
