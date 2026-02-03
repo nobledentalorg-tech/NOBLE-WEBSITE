@@ -9,13 +9,16 @@ export default function GoogleTagManager() {
                 debug={false}
                 forward={['dataLayer.push']}
                 resolveUrl={(url) => {
-                    // Suppress and handle Privacy Sandbox features if needed, 
-                    // but primarily ensuring we don't block necessary attribution if permitted.
+                    // Suppress deprecation warnings by filtering specifically if needed, 
+                    // though Permissions-Policy handles the blocking.
                     if (url.hostname.includes('google-analytics.com') || url.hostname.includes('googletagmanager.com')) {
                         return url;
                     }
                     return url;
                 }}
+                // Forward additional necessary properties
+                mainWindowAccessors={['navigator.userAgent', 'navigator.language']}
+
             />
             {/* eslint-disable-next-line @next/next/next-script-for-ga */}
             <script

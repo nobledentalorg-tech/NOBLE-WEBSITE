@@ -2,7 +2,7 @@
 // Build Trigger: 2026-02-03T22:15:00Z
 const nextConfig = {
   swcMinify: true,
-  optimizeFonts: false,
+  // optimizeFonts: false, // Re-enabled for LCP performance
   experimental: {
     // Other experimental features can go here if needed
     // ppr: 'incremental',
@@ -50,6 +50,7 @@ const nextConfig = {
       frame-src 'self' https://www.google.com https://*.supabase.co https://maps.googleapis.com;
       connect-src 'self' https://*.vercel-storage.com https://*.supabase.co https://vitals.vercel-insights.com https://www.google-analytics.com https://*.google-analytics.com https://*.googleapis.com;
       require-trusted-types-for 'script';
+      trusted-types default;
       block-all-mixed-content;
       upgrade-insecure-requests;
     `.replace(/\s{2,}/g, ' ').trim();
