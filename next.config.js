@@ -1,4 +1,5 @@
 /** @type {import('next').NextConfig} */
+// Build Trigger: 2026-02-03T22:15:00Z
 const nextConfig = {
   swcMinify: true,
   optimizeFonts: false,
