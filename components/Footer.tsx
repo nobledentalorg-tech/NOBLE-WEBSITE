@@ -3,7 +3,6 @@
 import React from 'react';
 import Link from 'next/link';
 import { Facebook, Instagram, Twitter, MapPin, Phone, Mail, CalendarCheck, School, Navigation, Activity } from 'lucide-react';
-import { Facebook, Instagram, Twitter, MapPin, Phone, Mail, CalendarCheck, School, Navigation, Activity } from 'lucide-react';
 import dynamic from 'next/dynamic';
 
 const GoogleMap = dynamic(() => import('./GoogleMap'), {
