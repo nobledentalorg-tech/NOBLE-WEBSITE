@@ -3,7 +3,13 @@
 import React from 'react';
 import Link from 'next/link';
 import { Facebook, Instagram, Twitter, MapPin, Phone, Mail, CalendarCheck, School, Navigation, Activity } from 'lucide-react';
-import GoogleMap from './GoogleMap';
+import { Facebook, Instagram, Twitter, MapPin, Phone, Mail, CalendarCheck, School, Navigation, Activity } from 'lucide-react';
+import dynamic from 'next/dynamic';
+
+const GoogleMap = dynamic(() => import('./GoogleMap'), {
+  loading: () => <div className="w-full h-full bg-slate-900/50 animate-pulse rounded-xl" />,
+  ssr: false
+});
 
 interface FooterProps {
   onBookClick?: () => void;

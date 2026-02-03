@@ -5,25 +5,40 @@ import { Navigation, MapPin } from 'lucide-react';
 
 const GoogleMap = () => {
     const [isLoaded, setIsLoaded] = useState(false);
+    const containerRef = React.useRef<HTMLDivElement>(null);
+
+    React.useEffect(() => {
+        const observer = new IntersectionObserver(
+            ([entry]) => {
+                if (entry.isIntersecting) {
+                    setIsLoaded(true);
+                    observer.disconnect();
+                }
+            },
+            { threshold: 0.1, rootMargin: '100px' }
+        );
+
+        if (containerRef.current) {
+            observer.observe(containerRef.current);
+        }
+
+        return () => observer.disconnect();
+    }, []);
 
     // Coordinate for Noble Dental Nallagandla
     const mapUrl = "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3805.703464807516!2d78.30561397462881!3d17.473901500308084!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bcb936d705f0d7b%3A0x3f1aca1c9cebf1ae!2sNoble%20Dental%20Care%20%7C%20Multispeciality%20Dental%20clinic%20in%20Nallagandla!5e0!3m2!1sen!2sin!4v1769648241406!5m2!1sen!2sin";
 
     return (
-        <div className="w-full h-full relative group/map overflow-hidden rounded-xl">
-            {/* Placeholder / Trigger */}
+        <div ref={containerRef} className="w-full h-full relative group/map overflow-hidden rounded-xl">
+            {/* Placeholder / Loading State */}
             {!isLoaded && (
                 <div
-                    onClick={() => setIsLoaded(true)}
-                    className="absolute inset-0 bg-slate-100 dark:bg-slate-800/50 flex flex-col items-center justify-center cursor-pointer transition-all duration-500 hover:bg-slate-200 dark:hover:bg-slate-800"
+                    className="absolute inset-0 bg-slate-100 dark:bg-slate-800/50 flex flex-col items-center justify-center transition-all duration-500"
                 >
-                    <div className="w-16 h-16 rounded-full bg-blue-500/10 flex items-center justify-center text-blue-600 mb-4 animate-bounce">
+                    <div className="w-16 h-16 rounded-full bg-blue-500/10 flex items-center justify-center text-blue-600 mb-4 animate-pulse">
                         <MapPin size={32} />
                     </div>
-                    <p className="text-xs font-black uppercase tracking-[0.2em] text-slate-500 dark:text-slate-400 mb-6">Click to Load Live Map</p>
-                    <button className="px-8 py-3 bg-blue-600 text-white font-black uppercase tracking-widest rounded-2xl shadow-xl shadow-blue-500/20 transform group-hover/map:scale-105 transition-transform">
-                        Interactive View
-                    </button>
+                    <p className="text-xs font-black uppercase tracking-[0.2em] text-slate-500 dark:text-slate-400 mb-6">Loading Map...</p>
 
                     {/* Faux map background for aesthetic */}
                     <div className="absolute inset-0 opacity-[0.03] dark:opacity-[0.05] pointer-events-none">

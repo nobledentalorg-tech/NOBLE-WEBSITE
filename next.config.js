@@ -39,15 +39,16 @@ const nextConfig = {
   async headers() {
     const cspHeader = `
       default-src 'self';
-      script-src 'self' 'unsafe-eval' 'unsafe-inline' https://www.googletagmanager.com https://maps.googleapis.com https://va.vercel-scripts.com https://www.google-analytics.com https://vitals.vercel-insights.com;
+      script-src 'self' 'unsafe-eval' 'unsafe-inline' https://www.googletagmanager.com https://maps.googleapis.com https://va.vercel-scripts.com https://www.google-analytics.com https://vitals.vercel-insights.com https://*.google.com https://*.googleapis.com https://*.googletagmanager.com https://*.supabase.co;
       style-src 'self' 'unsafe-inline' https://fonts.googleapis.com;
-      img-src 'self' blob: data: https://images.unsplash.com https://nobledentalnallagandla.in https://*.netlify.app https://lh3.googleusercontent.com https://maps.gstatic.com https://maps.googleapis.com https://www.google-analytics.com;
+      img-src 'self' blob: data: https://images.unsplash.com https://nobledentalnallagandla.in https://*.netlify.app https://lh3.googleusercontent.com https://maps.gstatic.com https://maps.googleapis.com https://www.google-analytics.com https://*.google.com https://*.googleapis.com https://*.supabase.co;
       font-src 'self' https://fonts.gstatic.com;
       object-src 'none';
       base-uri 'self';
       form-action 'self';
-      frame-src 'self' https://www.google.com https://*.supabase.co;
-      connect-src 'self' https://*.vercel-storage.com https://*.supabase.co https://vitals.vercel-insights.com https://www.google-analytics.com https://*.google-analytics.com;
+      frame-src 'self' https://www.google.com https://*.supabase.co https://maps.googleapis.com;
+      connect-src 'self' https://*.vercel-storage.com https://*.supabase.co https://vitals.vercel-insights.com https://www.google-analytics.com https://*.google-analytics.com https://*.googleapis.com;
+      require-trusted-types-for 'script';
       block-all-mixed-content;
       upgrade-insecure-requests;
     `.replace(/\s{2,}/g, ' ').trim();
@@ -62,7 +63,7 @@ const nextConfig = {
           },
           {
             key: 'Strict-Transport-Security',
-            value: 'max-age=31536000; includeSubDomains; preload',
+            value: 'max-age=63072000; includeSubDomains; preload',
           },
           {
             key: 'X-Frame-Options',
@@ -78,7 +79,7 @@ const nextConfig = {
           },
           {
             key: 'Permissions-Policy',
-            value: 'camera=(), microphone=(), geolocation=(), interest-cohort=()',
+            value: 'camera=(), microphone=(), geolocation=(), interest-cohort=(), attribution-reporting=(), shared-storage=(), shared-storage-select-url=(), private-aggregation=()',
           },
         ],
       },

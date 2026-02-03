@@ -3,7 +3,12 @@
 import React, { useState, useEffect } from 'react';
 import { Phone, MapPin, ArrowRight, MessageCircle, User, Stethoscope, FileText, Sparkles, Plus, Heart, Navigation } from 'lucide-react';
 import { RevealOnScroll } from './RevealOnScroll';
-import GoogleMap from './GoogleMap';
+import dynamic from 'next/dynamic';
+
+const GoogleMap = dynamic(() => import('./GoogleMap'), {
+    loading: () => <div className="w-full h-full bg-slate-100 dark:bg-slate-800 animate-pulse rounded-xl" />,
+    ssr: false
+});
 
 import { useLocation } from '@/context/LocationContext';
 
