@@ -156,3 +156,6 @@ const Footer: React.FC<FooterProps> = ({ onBookClick }) => {
 
 export default Footer;
 
+// Force Vercel Build Trigger: 2026-02-03-V6
+
+
