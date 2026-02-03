@@ -245,7 +245,7 @@ export default function NeoCompanionClient() {
                             <p className="text-xs text-zinc-500">Your conversations are securely saved and help us provide personalized care.</p>
                         </div>
                         <button
-                            onClick={() => signIn('google', { callbackUrl: '/healthflo-ai' })}
+                            onClick={() => signIn('google')}
                             className="flex items-center gap-3 px-6 py-3 rounded-full bg-blue-500 hover:bg-blue-600 text-white font-bold uppercase tracking-widest transition-all shadow-lg hover:shadow-blue-500/50"
                         >
                             <span>Sign In with Google</span>
