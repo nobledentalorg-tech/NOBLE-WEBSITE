@@ -52,14 +52,21 @@ export default function MedicalSchema({ procedure, condition, drug, pricing }: S
             {
                 "@type": "OpeningHoursSpecification",
                 "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
-                "opens": "11:00",
-                "closes": "22:15"
+                "opens": "09:30",
+                "closes": "23:30"
             },
             {
                 "@type": "OpeningHoursSpecification",
                 "dayOfWeek": "Sunday",
                 "opens": "10:00",
                 "closes": "13:30"
+            },
+            {
+                "@type": "OpeningHoursSpecification",
+                "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
+                "opens": "00:00",
+                "closes": "23:59",
+                "description": "Available 24/7 for dental emergencies"
             }
         ],
         "department": [
