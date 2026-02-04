@@ -43,7 +43,7 @@ export interface ClinicalNode {
     possibilities?: {
         title: string;
         description: string;
-        likelihood: 'High' | 'Moderate' | 'Low';
+        likelihood: 'Very High' | 'High' | 'Moderate' | 'Low';
         action: string;
         relatedSlug?: string;
     }[];

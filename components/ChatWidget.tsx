@@ -1,7 +1,8 @@
 'use client';
 
 import React, { useState, useRef, useEffect } from 'react';
-import { Send, X, Bot, MessageSquare, ExternalLink, Mic, MicOff } from 'lucide-react';
+import { Send, X, Bot, MessageSquare, ExternalLink, Mic, MicOff, Sparkles } from 'lucide-react';
+import { motion, AnimatePresence } from 'framer-motion';
 import { getNeoResponse } from '@/app/actions';
 import { ChatMessage } from '@/types';
 import { useMobileUI } from '@/context/MobileUIContext';
@@ -154,6 +155,7 @@ const ChatWidget: React.FC<ChatWidgetProps> = ({ onBookClick }) => {
         text: (language === 'ta' && nextNode.text.ta) ? nextNode.text.ta : nextNode.text.en,
         timestamp: Date.now(),
         possibilities: nextNode.possibilities,
+        options: nextNode.options, // NEW: Support interactive options
         sources: [],
         urgency: response.urgency
       };
@@ -168,6 +170,8 @@ const ChatWidget: React.FC<ChatWidgetProps> = ({ onBookClick }) => {
       };
       setMessages(prev => [...prev, errorResponse]);
     } finally {
+      // Simulate natural typing delay for smaller responses if they come back too fast
+      await new Promise(r => setTimeout(r, 600));
       setIsLoading(false);
     }
   };
@@ -175,6 +179,62 @@ const ChatWidget: React.FC<ChatWidgetProps> = ({ onBookClick }) => {
 
   const handleKeyPress = (e: React.KeyboardEvent) => {
     if (e.key === 'Enter') handleSend();
+  };
+
+  const handleOptionClick = (label: string) => {
+    setInput(label);
+    // Use a timeout to allow state to update before sending
+    setTimeout(() => {
+      handleSendViaValue(label);
+    }, 10);
+  };
+
+  const handleSendViaValue = async (val: string) => {
+    if (!val.trim() || isLoading) return;
+
+    const userMsg: ChatMessage = {
+      role: 'user',
+      text: val,
+      timestamp: Date.now()
+    };
+
+    setMessages(prev => [...prev, userMsg]);
+    setInput('');
+    setIsLoading(true);
+
+    try {
+      const simpleHistory = messages.map(m => ({ role: m.role, text: m.text }));
+      const response = await getNeoResponse(
+        userMsg.text,
+        currentNodeId,
+        simpleHistory
+      );
+
+      const nextNode = response.node;
+      setCurrentNodeId(nextNode.id);
+
+      const aiResponse: ChatMessage = {
+        role: 'model',
+        text: (language === 'ta' && nextNode.text.ta) ? nextNode.text.ta : nextNode.text.en,
+        timestamp: Date.now(),
+        possibilities: nextNode.possibilities, // Keep for backward compatibility if needed
+        options: nextNode.options, // NEW: Capture interactive options
+        sources: [],
+        urgency: response.urgency
+      };
+
+      setMessages(prev => [...prev, aiResponse]);
+    } catch (error) {
+      console.error('Neo AI Error:', error);
+      setMessages(prev => [...prev, {
+        role: 'model',
+        text: 'I apologize, but I encountered an issue.',
+        timestamp: Date.now()
+      }]);
+    } finally {
+      await new Promise(r => setTimeout(r, 600));
+      setIsLoading(false);
+    }
   };
 
   const handleBookClick = () => {
@@ -200,9 +260,12 @@ const ChatWidget: React.FC<ChatWidgetProps> = ({ onBookClick }) => {
               </div>
               <div>
                 <h3 className="font-bold text-slate-900 dark:text-white text-sm transition-colors duration-500">Noble Dental AI</h3>
+                <p className="text-[10px] text-slate-400 dark:text-slate-500 font-medium leading-none mt-0.5">
+                  Prototype - Under development by Dr. Dhivakaran for clinical use
+                </p>
 
                 {/* Book Link - NEW TRACKED ACTION */}
-                <button onClick={handleBookClick} className="flex items-center gap-1 text-xs text-blue-600 dark:text-cyan-400 font-black uppercase tracking-wider hover:underline mt-0.5">
+                <button onClick={handleBookClick} className="flex items-center gap-1 text-xs text-blue-600 dark:text-cyan-400 font-black uppercase tracking-wider hover:underline mt-1">
                   Book Appointment <ExternalLink size={10} />
                 </button>
               </div>
@@ -227,59 +290,104 @@ const ChatWidget: React.FC<ChatWidgetProps> = ({ onBookClick }) => {
 
           {/* Messages */}
           <div className="flex-1 overflow-y-auto p-5 space-y-5 bg-slate-50 dark:bg-[#020617] scrollbar-hide transition-colors duration-500">
-            {messages.map((msg, idx) => (
-              <div key={idx} className={`flex flex-col ${msg.role === 'user' ? 'items-end' : 'items-start'}`}>
-                <div className={`max-w-[90%] px-4 py-3 rounded-2xl text-sm transition-all duration-500 ${msg.role === 'user'
-                  ? 'bg-blue-600 text-white dark:bg-blue-700 shadow-md'
-                  : 'bg-white text-slate-800 border border-slate-200 dark:bg-slate-800 dark:text-slate-200 dark:border-white/5 shadow-sm'
-                  }`}>
-                  <p className="leading-relaxed whitespace-pre-wrap">{msg.text}</p>
-
-                  {msg.possibilities && msg.possibilities.length > 0 && (
-                    <div className="mt-3 space-y-2">
-                      {msg.possibilities.map((p, pIdx) => (
-                        <div key={pIdx} className="p-3 bg-slate-100 dark:bg-black/20 rounded-lg border border-slate-200 dark:border-white/10 text-xs">
-                          <div className="font-bold text-blue-600 dark:text-cyan-400 mb-1">{p.title}</div>
-                          <div className="text-slate-600 dark:text-slate-400 leading-tight mb-2">{p.description}</div>
-                          <div className="font-medium text-xs uppercase tracking-wider text-slate-500">{p.action}</div>
-                        </div>
-                      ))}
+            <AnimatePresence initial={false}>
+              {messages.map((msg, idx) => (
+                <motion.div
+                  key={idx}
+                  initial={{ opacity: 0, y: 10, scale: 0.95 }}
+                  animate={{ opacity: 1, y: 0, scale: 1 }}
+                  transition={{ duration: 0.3, ease: "easeOut" }}
+                  className={`flex flex-col ${msg.role === 'user' ? 'items-end' : 'items-start'}`}
+                >
+                  <div className={`max-w-[90%] px-4 py-3 rounded-2xl text-sm transition-all duration-500 ${msg.role === 'user'
+                    ? 'bg-blue-600 text-white dark:bg-blue-700 shadow-md'
+                    : 'bg-white text-slate-800 border border-slate-200 dark:bg-slate-800 dark:text-slate-200 dark:border-white/5 shadow-sm hover:shadow-md hover:border-blue-200 dark:hover:border-cyan-500/30'
+                    }`}>
+                    <div className="flex items-start gap-2">
+                      {msg.role === 'model' && (
+                        <Sparkles size={14} className="text-blue-500 dark:text-cyan-400 mt-1 shrink-0" />
+                      )}
+                      <p className="leading-relaxed whitespace-pre-wrap">{msg.text}</p>
                     </div>
-                  )}
 
-                  {msg.sources && msg.sources.length > 0 && (
-                    <div className="mt-4 pt-3 border-t border-slate-100 dark:border-white/10 space-y-2">
-                      <p className="text-xs font-black uppercase text-slate-400 tracking-widest mb-2">Sources:</p>
-                      <div className="flex flex-wrap gap-2">
-                        {msg.sources.map((source, sIdx) => (
-                          <a
-                            key={sIdx}
-                            href={source.uri}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="inline-flex items-center gap-1.5 px-2 py-1 bg-slate-100 dark:bg-white/5 hover:bg-slate-200 dark:hover:bg-white/10 rounded-md text-xs font-bold text-blue-600 dark:text-cyan-400 transition-all border border-slate-200 dark:border-white/5"
-                          >
-                            <span className="truncate max-w-[120px]">{source.title}</span>
-                            <ExternalLink size={10} />
-                          </a>
+                    {msg.possibilities && msg.possibilities.length > 0 && (
+                      <div className="mt-3 space-y-2">
+                        {msg.possibilities.map((p, pIdx) => (
+                          <div key={pIdx} className="p-3 bg-slate-100 dark:bg-black/20 rounded-lg border border-slate-200 dark:border-white/10 text-xs">
+                            <div className="font-bold text-blue-600 dark:text-cyan-400 mb-1">{p.title}</div>
+                            <div className="text-slate-600 dark:text-slate-400 leading-tight mb-2">{p.description}</div>
+                            <div className="font-medium text-xs uppercase tracking-wider text-slate-500">{p.action}</div>
+                          </div>
                         ))}
                       </div>
-                    </div>
-                  )}
-                </div>
-                <span className="text-xs text-slate-400 mt-1 px-2 font-medium">
-                  {new Date(msg.timestamp).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}
-                </span>
-              </div>
-            ))}
+                    )}
+
+                    {msg.sources && msg.sources.length > 0 && (
+                      <div className="mt-4 pt-3 border-t border-slate-100 dark:border-white/10 space-y-2">
+                        <p className="text-xs font-black uppercase text-slate-400 tracking-widest mb-2">Sources:</p>
+                        <div className="flex flex-wrap gap-2">
+                          {msg.sources.map((source, sIdx) => (
+                            <a
+                              key={sIdx}
+                              href={source.uri}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="inline-flex items-center gap-1.5 px-2 py-1 bg-slate-100 dark:bg-white/5 hover:bg-slate-200 dark:hover:bg-white/10 rounded-md text-xs font-bold text-blue-600 dark:text-cyan-400 transition-all border border-slate-200 dark:border-white/5"
+                            >
+                              <span className="truncate max-w-[120px]">{source.title}</span>
+                              <ExternalLink size={10} />
+                            </a>
+                          ))}
+                        </div>
+                      </div>
+                    )}
+                  </div>
+                  <span className="text-xs text-slate-400 mt-1 px-2 font-medium">
+                    {new Date(msg.timestamp).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}
+                  </span>
+                </motion.div>
+              ))}
+            </AnimatePresence>
+
             {isLoading && (
-              <div className="flex items-center gap-2 text-xs font-bold text-slate-400 uppercase tracking-widest pl-2">
-                <span className="flex h-1.5 w-1.5 rounded-full bg-blue-500 animate-bounce"></span>
-                Processing...
-              </div>
+              <motion.div
+                initial={{ opacity: 0, y: 5 }}
+                animate={{ opacity: 1, y: 0 }}
+                className="flex items-center gap-3 pl-2"
+              >
+                <div className="relative flex items-center justify-center">
+                  <span className="absolute inline-flex h-6 w-6 animate-ping rounded-full bg-blue-400 dark:bg-cyan-400 opacity-20"></span>
+                  <div className="relative h-3 w-3 rounded-full bg-gradient-to-tr from-blue-600 to-cyan-400 shadow-[0_0_10px_rgba(37,99,235,0.5)]"></div>
+                </div>
+                <span className="text-[10px] font-black text-slate-400 uppercase tracking-[.2em] animate-pulse">
+                  Neo is thinking
+                </span>
+              </motion.div>
             )}
             <div ref={messagesEndRef} />
           </div>
+
+          {/* Action Chips (Quick Replies) */}
+          <AnimatePresence>
+            {!isLoading && messages.length > 0 && messages[messages.length - 1].role === 'model' && messages[messages.length - 1].options && (
+              <motion.div
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, scale: 0.95 }}
+                className="px-4 py-2 flex gap-2 overflow-x-auto no-scrollbar bg-slate-50 dark:bg-[#020617] border-t border-slate-200 dark:border-white/5"
+              >
+                {messages[messages.length - 1].options?.map((opt, oIdx) => (
+                  <button
+                    key={oIdx}
+                    onClick={() => handleOptionClick(language === 'ta' ? opt.label.ta : opt.label.en)}
+                    className="whitespace-nowrap px-4 py-2 bg-white dark:bg-slate-800 border border-slate-200 dark:border-white/10 rounded-full text-xs font-bold text-blue-600 dark:text-cyan-400 shadow-sm hover:shadow-md hover:bg-blue-50 dark:hover:bg-white/5 transition-all"
+                  >
+                    {language === 'ta' ? opt.label.ta : opt.label.en}
+                  </button>
+                ))}
+              </motion.div>
+            )}
+          </AnimatePresence>
 
           {/* Input Area */}
           <div className="p-4 bg-white dark:bg-slate-900 border-t border-slate-200 dark:border-white/5 transition-colors duration-500">

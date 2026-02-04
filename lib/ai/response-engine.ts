@@ -32,7 +32,9 @@ export class ResponseEngine {
         const analogy = ""; // Logic moved to LLM System Prompt
 
         // 2. Clinical Truth Reformatter (Diagnostic Bridge)
-        let truth = `**Clinical Fact**: ${clinicalAnswer}`;
+        // Strip the [NEXT STEPS: ...] block from the final visible text
+        const cleanedAnswer = clinicalAnswer.replace(/\[NEXT STEPS:.*?\]/g, '').trim();
+        let truth = `${cleanedAnswer}`;
         if (sourceBook) {
             const isTextbook = trustLevel === 'textbook' || sourceBook.toLowerCase().includes('textbook') || sourceBook.toLowerCase().includes('shafer');
             truth += `\n\n> 🏛️ *Source: ${isTextbook ? 'Clinical Textbook (' + sourceBook + ')' : 'Noble Dental Clinic Protocol (' + sourceBook + ')'}*`;
@@ -42,7 +44,7 @@ export class ResponseEngine {
         const schema = this.generateMedicalSchema(clinicalAnswer, medicalCode, sourceBook);
 
         // 4. Safety Net (Time Check)
-        const safetyMsg = this.getSafetyNetMessage();
+        const safetyMsg = this.getSafetyNetMessage(clinicalAnswer);
 
         // 5. Price Injection (if query asks about cost)
         const costMsg = this.injectPricing(userQuery);
@@ -55,10 +57,6 @@ ${truth}
 
 ${costMsg}
 ${safetyMsg}
-
-<!-- SEO_INJECTION_START -->
-${schema}
-<!-- SEO_INJECTION_END -->
 `.trim();
     }
 
@@ -89,14 +87,17 @@ ${schema}
     }
 
 
-    private static getSafetyNetMessage(): string {
+    private static getSafetyNetMessage(clinicalAnswer: string): string {
         const { NeoTime } = require('../../src/neo/NeoTime'); // Ensure using our logic
         const istNow = NeoTime.getISTNow();
         const currentHour = istNow.getHours();
 
         // Safety Net Rule: If after 9 PM (21:00), remind about late hours
         if (currentHour >= 21 || currentHour < 6) {
-            return `\n\n> 🌙 **Note**: We are one of the few clinics in Nallagandla open until **11:30 PM**. You can come in tonight if this is urgent.`;
+            // Only show if the answer isn't already pointing to the doctor
+            if (!clinicalAnswer.includes("Dr. Dhivakaran") && !clinicalAnswer.includes("available")) {
+                return `\n\n> 🌙 **Note**: We are one of the few clinics in Nallagandla open until **11:30 PM**. You can come in tonight if this is urgent.`;
+            }
         }
         return "";
     }

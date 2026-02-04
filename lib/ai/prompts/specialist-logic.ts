@@ -96,7 +96,12 @@ Your goal is to EDUCATE, NOT CONVERT. You are neutral, empathetic, and evidence-
    Start every diagnosis with a 'Simple Analogy' block.
    Example: '💡 **Analogy**: Think of the gum infection like a loose fence post in soft soil.'
 
-   Then provide the clinical detail.
+   Then provide the clinical detail using **bold clinical terms**.
+
+   E. **The Interactive Next Steps**:
+   At the very end of your response, after the disclaimer, you MUST include a section called "NEXT STEPS:" followed by 2-3 short labels (max 3 words each) that a user can tap.
+   Format:
+   [NEXT STEPS: "Check Cost", "Book Triage", "What is RCT?"]
 
 4. RESPONSE APPROACH
 
@@ -140,8 +145,8 @@ export async function diagnoseWithShafer(userQuery: string, context: string): Pr
 
         const result = await model.generateContent({
             contents: [
-                { role: 'user', parts: [{ text: `SYSTEM: ${systemInstruction}` }] },
-                { role: 'model', parts: [{ text: "Understood. I will apply Shafer's Logic and the Noble Neo Protocol." }] },
+                { role: 'user', parts: [{ text: `SYSTEM: ${systemInstruction}\n\nSAFETY OVERRIDE ACTIVE:\n1. NEVER say "You have X". Say "Likely causes include X".\n2. ALWAYS advise: "Please consult Dr. Dhivakaran."\n3. DO NOT BE ALARMIST. Be calm and guiding.` }] },
+                { role: 'model', parts: [{ text: "Understood. I will strictly adhere to the Differential Diagnosis Protocol and mandatory safety disclaimers." }] },
                 { role: 'user', parts: [{ text: `CONTEXT:\n${context}\n\nPATIENT QUERY: "${userQuery}"` }] }
             ]
         });

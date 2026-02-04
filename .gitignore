@@ -36,3 +36,6 @@ build_error.log
 next-env.d.ts
 
 /generated/prisma
+
+# Large Knowledge Base Files ( > 100MB )
+public/assets/knowledge_base/textbooks/*.pdf

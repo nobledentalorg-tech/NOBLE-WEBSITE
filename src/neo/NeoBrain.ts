@@ -61,7 +61,26 @@ export class NeoBrain {
             };
         }
 
-        // 2. Emergency Nurse Override (The Gatekeeper)
+        // ==================================================
+        // TIER 0.5: CONTEXTUAL DIAGNOSTIC ROUTER
+        // ==================================================
+        const lastBotMessage = history[history.length - 1]?.text || "";
+
+        // Case A: We just asked the First Question ("Sharp or Dull?")
+        if (lastBotMessage.includes("Is the pain") && (lastBotMessage.includes("Sharp") || lastBotMessage.includes("Dull"))) {
+            const { NeoDiagnosticEngine } = await import('./NeoDiagnosticEngine');
+            return await NeoDiagnosticEngine.analyzeSymptom(userInput, "Pain_Character");
+        }
+
+        // Case B: We just asked the Second Question ("Does it linger?", "Wake you up?")
+        if (lastBotMessage.includes("linger") || lastBotMessage.includes("wake") || lastBotMessage.includes("night") || lastBotMessage.includes("stop immediately")) {
+            const { NeoDiagnosticEngine } = await import('./NeoDiagnosticEngine');
+            return await NeoDiagnosticEngine.analyzeSymptom(userInput, "Pain_Analysis");
+        }
+
+        // ==================================================
+        // TIER 0.6: EMERGENCY NURSE OVERRIDE (The Gatekeeper)
+        // ==================================================
         const triageLevel = RiskAssessor.assess({ id: 'triage_gate', type: 'assessment', text: { en: '' }, possibilities: [] }, [userInput]);
 
         if (triageLevel === 'emergency' || triageLevel === 'high') {
@@ -78,23 +97,6 @@ export class NeoBrain {
                 confidenceScore: 100,
                 urgency: 'emergency'
             };
-        }
-
-        // ==================================================
-        // TIER 0.5: CONTEXTUAL DIAGNOSTIC ROUTER
-        // ==================================================
-        const lastBotMessage = history[history.length - 1]?.text || "";
-
-        // Case A: We just asked the First Question ("Sharp or Dull?")
-        if (lastBotMessage.includes("Is the pain") && (lastBotMessage.includes("Sharp") || lastBotMessage.includes("Dull"))) {
-            const { NeoDiagnosticEngine } = await import('./NeoDiagnosticEngine');
-            return await NeoDiagnosticEngine.analyzeSymptom(userInput, "Pain_Character");
-        }
-
-        // Case B: We just asked the Second Question ("Does it linger?", "Wake you up?")
-        if (lastBotMessage.includes("linger") || lastBotMessage.includes("wake") || lastBotMessage.includes("night") || lastBotMessage.includes("stop immediately")) {
-            const { NeoDiagnosticEngine } = await import('./NeoDiagnosticEngine');
-            return await NeoDiagnosticEngine.analyzeSymptom(userInput, "Pain_Analysis");
         }
 
         // ==================================================
@@ -255,14 +257,27 @@ export class NeoBrain {
                 trustLevel: topMatch?.node.metadata?.trust_level || "high"
             });
 
+            // EXTRACT INTERACTIVE OPTIONS (NEXT STEPS)
+            let dynamicOptions: any[] = [];
+            const nextStepsMatch = clinicalRaw.match(/\[NEXT STEPS: (.*?)\]/);
+            if (nextStepsMatch) {
+                const stepsRaw = nextStepsMatch[1];
+                const steps = stepsRaw.split(',').map(s => s.trim().replace(/^["']|["']$/g, ''));
+                dynamicOptions = steps.map(s => ({
+                    label: { en: s, ta: s }, // Simplified for now, model usually gives English
+                    nextId: `prompt_${s.toLowerCase().replace(/\s+/g, '_')}`
+                }));
+            }
+
             return {
                 node: {
                     id: 'hybrid_gemini',
                     type: 'info',
-                    text: { en: finalVoice, ta: finalVoice }, // Todo: translate
-                    possibilities: []
+                    text: { en: finalVoice, ta: finalVoice },
+                    possibilities: [],
+                    options: dynamicOptions // NEW: Action Chips from Gemini
                 },
-                confidenceScore: 85, // RAG backed = High Confidence
+                confidenceScore: 85,
                 urgency: topMatch?.node.metadata?.urgencyLevel || 'low'
             };
         } catch (e) {

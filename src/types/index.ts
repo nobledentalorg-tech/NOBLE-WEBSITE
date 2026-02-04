@@ -1,3 +1,5 @@
+import { ClinicalOption } from './neoSchema';
+
 export interface Doctor {
     id: string;
     name: string;
@@ -28,7 +30,7 @@ export interface Source {
 export interface Possibility {
     title: string;
     description: string;
-    likelihood: 'High' | 'Moderate' | 'Low';
+    likelihood: 'Very High' | 'High' | 'Moderate' | 'Low';
     action: string;
     relatedSlug?: string;
 }
@@ -41,5 +43,6 @@ export interface ChatMessage {
     language?: 'en' | 'te' | 'hi' | 'ta' | 'kn' | 'ml';
     sources?: Source[];
     possibilities?: Possibility[];
+    options?: ClinicalOption[];
     urgency?: 'low' | 'medium' | 'high' | 'emergency';
 }
