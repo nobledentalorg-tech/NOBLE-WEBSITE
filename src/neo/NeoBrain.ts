@@ -81,15 +81,20 @@ export class NeoBrain {
         }
 
         // ==================================================
-        // TIER 0.5: CONTEXTUAL AWARENESS (The Lobotomy Fix)
+        // TIER 0.5: CONTEXTUAL DIAGNOSTIC ROUTER
         // ==================================================
-        // IF we just asked a diagnostic question, ACCEPT the answer.
         const lastBotMessage = history[history.length - 1]?.text || "";
-        if (lastBotMessage.includes("Sharp") || lastBotMessage.includes("Dull")) {
+
+        // Case A: We just asked the First Question ("Sharp or Dull?")
+        if (lastBotMessage.includes("Is the pain") && (lastBotMessage.includes("Sharp") || lastBotMessage.includes("Dull"))) {
             const { NeoDiagnosticEngine } = await import('./NeoDiagnosticEngine');
-            // BYPASS Confidence Check. Proceed to Analysis.
-            console.log("[NeoBrain] Contextual Bypass Active. Calling Diagnostic Engine.");
             return await NeoDiagnosticEngine.analyzeSymptom(userInput, "Pain_Character");
+        }
+
+        // Case B: We just asked the Second Question ("Does it linger?", "Wake you up?")
+        if (lastBotMessage.includes("linger") || lastBotMessage.includes("wake") || lastBotMessage.includes("night") || lastBotMessage.includes("stop immediately")) {
+            const { NeoDiagnosticEngine } = await import('./NeoDiagnosticEngine');
+            return await NeoDiagnosticEngine.analyzeSymptom(userInput, "Pain_Analysis");
         }
 
         // ==================================================
