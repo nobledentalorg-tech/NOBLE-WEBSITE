@@ -73,11 +73,23 @@ export async function getNeoResponse(
             } catch (e) { }
         }
 
-        return hybridResponse;
+        // Sanitize response for client serialization
+        const safeResponse: NeoResponse = {
+            node: JSON.parse(JSON.stringify(hybridResponse.node)),
+            confidenceScore: hybridResponse.confidenceScore,
+            urgency: hybridResponse.urgency
+        };
+
+        return safeResponse;
 
     } catch (error) {
         console.error("NeoBrain Error:", error);
-        return NeoEngine.processInput(input, currentStateId, history.length);
+        const fallback = NeoEngine.processInput(input, currentStateId, history.length);
+        return {
+            node: JSON.parse(JSON.stringify(fallback.node)),
+            confidenceScore: fallback.confidenceScore,
+            urgency: fallback.urgency
+        };
     }
 }
 
