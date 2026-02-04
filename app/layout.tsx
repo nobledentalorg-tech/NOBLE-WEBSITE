@@ -145,6 +145,7 @@ export default async function RootLayout({
     <html lang="en" suppressHydrationWarning>
       <head>
         <SpeculationRules />
+        <link rel="preconnect" href="https://www.googletagmanager.com" />
         {/* Preload critical font to eliminate 1.4s render delay */}
         <link
           rel="preload"

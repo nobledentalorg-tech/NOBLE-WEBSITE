@@ -82,7 +82,7 @@ const Doctors: React.FC = () => {
                   <h3 className="text-2xl font-bold text-slate-900 dark:text-white mb-1 group-hover:text-blue-600 dark:group-hover:text-cyan-400 transition-colors leading-tight">
                     {doc.name}
                   </h3>
-                  <p className="text-xs font-black text-slate-400 uppercase tracking-[0.2em] mb-4">{doc.role}</p>
+                  <p className="text-xs font-black text-slate-500 uppercase tracking-[0.2em] mb-4">{doc.role}</p>
                   <p className="text-sm text-slate-500 dark:text-slate-400 font-medium leading-relaxed mb-6">
                     {doc.specialty}
                   </p>
@@ -181,7 +181,7 @@ const Doctors: React.FC = () => {
                 <span className="text-blue-600 dark:text-cyan-400 font-black text-xs uppercase tracking-[0.4em] mb-3 block">Faculty Member</span>
                 <h3 className="text-5xl font-black text-slate-900 dark:text-white leading-[0.9] tracking-tighter mb-4">{selectedDoctor.name}</h3>
                 <div className="flex items-center gap-3">
-                  <p className="text-xs font-black uppercase text-slate-400 tracking-widest">{selectedDoctor.role}</p>
+                  <p className="text-xs font-black uppercase text-slate-500 tracking-widest">{selectedDoctor.role}</p>
                   {selectedDoctor.dciReg && (
                     <span className="text-xs font-mono text-blue-600 dark:text-cyan-400 bg-blue-50 dark:bg-blue-900/30 px-2 py-0.5 rounded border border-blue-100 dark:border-blue-800/50">
                       DCI: {selectedDoctor.dciReg}
@@ -193,11 +193,11 @@ const Doctors: React.FC = () => {
               <div className="grid grid-cols-2 gap-4 mb-10">
                 <div className="p-5 bg-slate-50 dark:bg-white/5 rounded-3xl border border-slate-100 dark:border-white/5 group hover:border-blue-500 transition-colors">
                   <div className="text-2xl font-black text-slate-900 dark:text-white mb-1">{selectedDoctor.experience}</div>
-                  <div className="text-xs font-black uppercase text-slate-400 tracking-widest">Active Practice</div>
+                  <div className="text-xs font-black uppercase text-slate-500 tracking-widest">Active Practice</div>
                 </div>
                 <div className="p-5 bg-slate-50 dark:bg-white/5 rounded-3xl border border-slate-100 dark:border-white/5 group hover:border-cyan-500 transition-colors">
                   <div className="text-2xl font-black text-blue-600 dark:text-cyan-400 mb-1">{selectedDoctor.success}</div>
-                  <div className="text-xs font-black uppercase text-slate-400 tracking-widest">Clinical Success</div>
+                  <div className="text-xs font-black uppercase text-slate-500 tracking-widest">Clinical Success</div>
                 </div>
               </div>
 

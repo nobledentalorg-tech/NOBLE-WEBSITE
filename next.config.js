@@ -4,6 +4,7 @@ const nextConfig = {
   swcMinify: true,
   optimizeFonts: true, // Re-enabled for LCP performance
   experimental: {
+    optimizeCss: true, // [SEO] Inline critical CSS to reduce render blocking
     // Other experimental features can go here if needed
     // ppr: 'incremental',
   },

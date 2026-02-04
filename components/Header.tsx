@@ -99,9 +99,9 @@ const Header: React.FC<HeaderProps> = ({ onBookClick, emergencyMode = false }) =
       icon: <Activity size={18} className="text-purple-500" />,
       description: "Ortho Hub",
       links: [
-        { name: "Braces & Ortho", href: "/treatments/braces" },
+        // { name: "Braces & Ortho", href: "/treatments/braces" },
         { name: "Clear Aligners", href: "/treatments/invisalign" },
-        { name: "Interceptive Ortho", href: "/treatments/pre-ortho" },
+        // { name: "Interceptive Ortho", href: "/treatments/pre-ortho" },
       ]
     },
     {
@@ -109,11 +109,11 @@ const Header: React.FC<HeaderProps> = ({ onBookClick, emergencyMode = false }) =
       icon: <Globe size={18} className="text-emerald-500" />,
       description: "Specialized Care",
       links: [
-        { name: "Jaw Surgery", href: "/treatments/orthognathic-surgery" },
-        { name: "Trauma Care", href: "/treatments/emergency-trauma" },
-        { name: "TMJ Disorders", href: "/treatments/tmj-disorders" },
-        { name: "Laser Dentistry", href: "/treatments/laser-dentistry" },
-        { name: "Oral Medicine", href: "/treatments/oral-medicine" },
+        // { name: "Jaw Surgery", href: "/treatments/orthognathic-surgery" },
+        // { name: "Trauma Care", href: "/treatments/emergency-trauma" },
+        // { name: "TMJ Disorders", href: "/treatments/tmj-disorders" },
+        { name: "Laser Dentistry", href: "/treatments/laser-gum-contouring" },
+        // { name: "Oral Medicine", href: "/treatments/oral-medicine" },
       ]
     }
   ];

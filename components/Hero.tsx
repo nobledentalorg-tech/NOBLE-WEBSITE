@@ -35,8 +35,13 @@ const Hero: React.FC<HeroProps> = ({ onBookClick }) => {
       // prevent forced reflow by reading layout inside rAF
       requestAnimationFrame(() => {
         if (!canvas) return;
-        width = canvas.width = canvas.offsetWidth * dpr;
-        height = canvas.height = canvas.offsetHeight * dpr;
+        // Optimization: Separate read and write to prevent layout thrashing
+        const rect = canvas.getBoundingClientRect();
+        const w = rect.width * dpr;
+        const h = rect.height * dpr;
+
+        width = canvas.width = w;
+        height = canvas.height = h;
 
         // Optimization: Reduce particle count from 40 to 25
         particles = Array.from({ length: 25 }, () => ({
@@ -95,8 +100,12 @@ const Hero: React.FC<HeroProps> = ({ onBookClick }) => {
       requestAnimationFrame(() => {
         // Re-read dimensions on resize (forced reflow is acceptable here as it is user-initiated)
         if (!canvas) return;
-        width = canvas.width = canvas.offsetWidth * dpr;
-        height = canvas.height = canvas.offsetHeight * dpr;
+        const rect = canvas.getBoundingClientRect();
+        const w = rect.width * dpr;
+        const h = rect.height * dpr;
+
+        width = canvas.width = w;
+        height = canvas.height = h;
       });
     };
 

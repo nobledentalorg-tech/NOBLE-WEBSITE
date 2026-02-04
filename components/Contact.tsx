@@ -111,7 +111,7 @@ const Contact = () => {
                                         <MessageCircle size={32} />
                                     </div>
                                     <div className="ml-6 flex-1">
-                                        <h3 className="text-xs font-black text-slate-400 uppercase tracking-widest mb-1">Instant Messaging</h3>
+                                        <h3 className="text-xs font-black text-slate-500 uppercase tracking-widest mb-1">Instant Messaging</h3>
                                         <p className="text-2xl font-black text-slate-900 dark:text-white group-hover:text-green-600 transition-colors">Chat on WhatsApp</p>
                                     </div>
                                     <ArrowRight size={24} className="text-slate-300 group-hover:translate-x-2 transition-transform" />
@@ -123,7 +123,7 @@ const Contact = () => {
                                     <div className="w-12 h-12 rounded-xl bg-blue-50 dark:bg-blue-900/20 flex items-center justify-center text-blue-600 mb-6 group-hover:rotate-12 transition-transform">
                                         <Phone size={24} />
                                     </div>
-                                    <h3 className="text-xs font-black text-slate-400 uppercase tracking-widest mb-1">Call Clinic</h3>
+                                    <h3 className="text-xs font-black text-slate-500 uppercase tracking-widest mb-1">Call Clinic</h3>
                                     <p className="text-lg font-black text-slate-900 dark:text-white group-hover:text-blue-600 transition-colors mb-2">+91 86104 25342</p>
                                     <div className="inline-block px-3 py-1 bg-green-50 dark:bg-green-900/20 text-green-700 dark:text-green-400 text-[10px] font-bold uppercase tracking-wide rounded-md">
                                         Active Support
@@ -136,7 +136,7 @@ const Contact = () => {
                                     <div className="w-12 h-12 rounded-xl bg-indigo-50 dark:bg-indigo-900/20 flex items-center justify-center text-indigo-600 mb-6">
                                         <MapPin size={24} />
                                     </div>
-                                    <h3 className="text-xs font-black text-slate-400 uppercase tracking-widest mb-1">
+                                    <h3 className="text-xs font-black text-slate-500 uppercase tracking-widest mb-1">
                                         {isLocal ? "Your Neighborhood Clinic" : "Nallagandla"}
                                     </h3>
                                     <p className="text-sm font-bold text-slate-700 dark:text-slate-300 leading-tight mb-4">ICA Clinic Building, Main Road.</p>
@@ -167,21 +167,21 @@ const Contact = () => {
                                             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                                                 {/* Inputs */}
                                                 <div className="space-y-2">
-                                                    <label htmlFor="name" className="text-xs font-black uppercase text-slate-400 tracking-[0.2em]">Patient Name</label>
+                                                    <label htmlFor="name" className="text-xs font-black uppercase text-slate-500 tracking-[0.2em]">Patient Name</label>
                                                     <div className="relative group">
                                                         <User size={18} className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400" />
                                                         <input type="text" id="name" name="name" required onChange={handleChange} className="w-full bg-slate-50 dark:bg-white/5 border border-slate-200 dark:border-white/10 rounded-2xl py-4 pl-12 pr-4 font-bold" placeholder="Full Name" />
                                                     </div>
                                                 </div>
                                                 <div className="space-y-2">
-                                                    <label htmlFor="phone" className="text-xs font-black uppercase text-slate-400 tracking-[0.2em]">Phone</label>
+                                                    <label htmlFor="phone" className="text-xs font-black uppercase text-slate-500 tracking-[0.2em]">Phone</label>
                                                     <div className="relative group">
                                                         <Phone size={18} className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400" />
                                                         <input type="tel" id="phone" name="phone" required onChange={handleChange} className="w-full bg-slate-50 dark:bg-white/5 border border-slate-200 dark:border-white/10 rounded-2xl py-4 pl-12 pr-4 font-bold" placeholder="+91..." />
                                                     </div>
                                                 </div>
                                                 <div className="space-y-2">
-                                                    <label htmlFor="doctor" className="text-xs font-black uppercase text-slate-400 tracking-[0.2em]">Specialist</label>
+                                                    <label htmlFor="doctor" className="text-xs font-black uppercase text-slate-500 tracking-[0.2em]">Specialist</label>
                                                     <div className="relative">
                                                         <Stethoscope size={18} className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400" />
                                                         <select id="doctor" name="doctor" onChange={handleChange} className="w-full bg-slate-50 dark:bg-white/5 border border-slate-200 dark:border-white/10 rounded-2xl py-4 pl-12 font-bold appearance-none">
@@ -192,7 +192,7 @@ const Contact = () => {
                                                     </div>
                                                 </div>
                                                 <div className="space-y-2">
-                                                    <label htmlFor="service" className="text-xs font-black uppercase text-slate-400 tracking-[0.2em]">Service</label>
+                                                    <label htmlFor="service" className="text-xs font-black uppercase text-slate-500 tracking-[0.2em]">Service</label>
                                                     <div className="relative">
                                                         <Sparkles size={18} className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400" />
                                                         <select id="service" name="service" onChange={handleChange} className="w-full bg-slate-50 dark:bg-white/5 border border-slate-200 dark:border-white/10 rounded-2xl py-4 pl-12 font-bold appearance-none">
@@ -205,7 +205,7 @@ const Contact = () => {
                                             </div>
 
                                             <div className="space-y-2">
-                                                <label htmlFor="notes" className="text-xs font-black uppercase text-slate-400 tracking-[0.2em]">Triage Notes</label>
+                                                <label htmlFor="notes" className="text-xs font-black uppercase text-slate-500 tracking-[0.2em]">Triage Notes</label>
                                                 <div className="relative">
                                                     <FileText size={18} className="absolute left-4 top-6 text-slate-400" />
                                                     <textarea id="notes" name="notes" rows={2} onChange={handleChange} className="w-full bg-slate-50 dark:bg-white/5 border border-slate-200 dark:border-white/10 rounded-[2rem] py-5 pl-12 pr-4 font-bold resize-none" placeholder="Briefly describe your pain..."></textarea>
