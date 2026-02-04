@@ -1,0 +1,13 @@
+
+Foundational Dental Science Test
+================================
+This is a test file to verify the Noble Neo Ingestion Pipeline.
+
+Topic 1: Dental Anatomy
+The tooth consists of enamel, dentin, and pulp. Enamel is the hardest substance in the human body, composed of 96% hydroxyapatite. Dentin forms the bulk of the tooth and is sensitive. The pulp contains nerves and blood vessels.
+
+Topic 2: Physiology of Pain
+Pain in the dental pulp is transmitted via A-delta fibers (sharp, fast pain) and C-fibers (dull, throbbing, slow pain). Inflammation causes increased pressure in the pulp chamber, leading to severe pain (Pulpitis).
+
+Topic 3: Pathology
+Caries is a biofilm-mediated disease. S. mutans is the primary initiator.

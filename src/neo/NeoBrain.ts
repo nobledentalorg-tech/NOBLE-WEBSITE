@@ -5,6 +5,9 @@ import { PedoHelper } from './NeoPediatrics';
 import { NeoEngine } from './NeoEngine';
 import { NeoStyleCapture } from './NeoStyleCapture';
 import { NeoResponse } from '../types/neoSchema';
+import { RiskAssessor } from './RiskAssessor'; // NEW Import
+import { NeoSecurityProxy } from './NeoSecurityProxy'; // Ensure imported
+import { SafetyFilter } from './SafetyFilter'; // Ensure imported
 
 export interface PatientContext {
     age?: number;
@@ -23,13 +26,38 @@ export class NeoBrain {
     static async processHybridInput(
         userInput: string,
         patientContext: PatientContext,
-        geminiCaller: (query: string, context: string) => Promise<string>,
+        geminiFallback: (query: string, context: string) => Promise<string>,
         proactiveVerifier?: (query: string, answer: string) => Promise<boolean>,
         currentStateId: string = 'root',
-        historyLength: number = 0
+        history: { role: string, text: string }[] = [] // FIXED: Full History Array
     ): Promise<NeoResponse> {
 
+        // Legacy compatibility
+        const historyLength = history.length;
         const normalizedText = normalizeClinicalInput(userInput);
+
+        // ==================================================
+        // TIER 0: EMERGENCY NURSE OVERRIDE (The Gatekeeper)
+        // ==================================================
+        // Before ANY logic, check for life-threatening keywords.
+        // We assume a 'root' node context for general assessment.
+        const triageLevel = RiskAssessor.assess({ id: 'triage_gate', type: 'assessment', text: { en: '' }, possibilities: [] }, [userInput]);
+
+        if (triageLevel === 'emergency' || triageLevel === 'high') {
+            return {
+                node: {
+                    id: 'emergency_override',
+                    type: 'emergency',
+                    text: {
+                        en: "⚠️ **URGENT:** Based on your symptoms, we recommend immediate care. Dr. Dhivakaran is available for emergency triage until 11:30 PM. Please click the red button below.",
+                        ta: "அவசர சிகிச்சை தேவை."
+                    },
+                    possibilities: []
+                },
+                confidenceScore: 100,
+                urgency: 'emergency'
+            };
+        }
 
         // ==================================================
         // TIER 1: HARD-CODED CLINICAL SAFETY (The Firewall)
@@ -65,121 +93,101 @@ export class NeoBrain {
         }
 
         // ==================================================
-        // TIER 1.5: KNOWLEDGE VAULT (The Authority)
+        // TIER 1.5: HYBRID RAG ROUTER (The new Brain Stem)
         // ==================================================
-        // ==================================================
-        // TIER 1.5: KNOWLEDGE VAULT (The Authority)
-        // ==================================================
-        // Logic Update: If we are deep in conversion (history > 0) and the input is short/ambiguous,
-        // we SKIP the Vault so Gemini can handle the context.
-        const isFollowUp = historyLength > 0 && userInput.split(' ').length < 5;
+        const { NeoVectorStore } = await import('./NeoVectorStore');
+        const ragResults = await NeoVectorStore.search(userInput, 3);
+        const topMatch = ragResults[0];
 
-        let vaultMatch = null;
-        if (!isFollowUp) {
-            const { NeoVaultHelper } = await import('./NeoVault');
-            vaultMatch = NeoVaultHelper.findEntry(userInput);
-        }
+        let ragContext = "";
 
-        if (vaultMatch) {
-            const vaultAnswer = NeoVaultHelper.getResponse(vaultMatch, 'en'); // Fallback to EN for processing
-            return {
-                node: {
-                    id: `vault_${vaultMatch.id}`,
-                    type: 'info',
-                    text: {
-                        en: vaultMatch.content.en?.answer || "Answer not found.",
-                        ta: vaultMatch.content.ta?.answer,
-                        te: vaultMatch.content.te?.answer,
-                        hi: vaultMatch.content.hi?.answer
+        if (topMatch) {
+            console.log(`[NeoBrain] RAG Match: "${topMatch.node.id}" (Similarity: ${topMatch.similarity})`);
+
+            // CASE A: HIGH CONFIDENCE (> 0.85) -> Direct Answer
+            if (topMatch.similarity > 0.85) {
+                return {
+                    node: {
+                        id: topMatch.node.id,
+                        type: topMatch.node.type === 'faq' ? 'info' : 'assessment',
+                        text: {
+                            en: topMatch.node.text,
+                            ta: "Translation available."
+                        },
+                        possibilities: []
                     },
-                    possibilities: []
-                },
-                confidenceScore: 95,
-                urgency: 'low'
-            };
+                    confidenceScore: 95,
+                    urgency: 'low'
+                };
+            }
+
+            // CASE B: MID CONFIDENCE -> Capture Context for Gemini
+            if (topMatch.similarity > 0.5) {
+                console.log("[NeoBrain] Injecting RAG Context into LLM.");
+                ragContext = ragResults.map((r, i) => `PROTOCOL ${i + 1}: ${r.node.text}`).join('\n\n');
+            }
         }
 
         // ==================================================
         // TIER 2: CLINICAL ENGINE (The Specialist)
         // ==================================================
-
-        // Use the clinical engine to try and find a match in the specialty DBs or Graph
         const neoResponse = NeoEngine.processInput(userInput, currentStateId, historyLength);
-
-        // If NeoEngine found a HIGH confidence clinical match, we double-check or return!
         if (neoResponse.node.id !== 'fallback' && neoResponse.confidenceScore > 90) {
-            // TIER 2.5: PROACTIVE AUDIT (The Clinical Proctor)
-            if (proactiveVerifier) {
-                const isRelevant = await proactiveVerifier(userInput, neoResponse.node.text.en);
-                if (isRelevant) {
-                    return neoResponse;
-                }
-                console.log("[NeoBrain] Proactive Audit REJECTED the match. Falling back to Gemini.");
-                // We don't return here, we fall through to Gemini Fallback (Tier 3)
-            } else {
-                return neoResponse;
-            }
+            return neoResponse;
         }
 
         // ==================================================
-        // TIER 3: GEMINI FALLBACK (The Conversationalist)
+        // TIER 3: GEMINI FALLBACK (The RAG Synthesizer)
         // ==================================================
 
-        const systemPersona = `
-            You are Dr. Neo, a friendly, empathetic, and professional AI dental assistant at Noble Dental Care.
-            Your job is to provide empathy and support for general questions while staying safe.
-            
-            GUIDELINES:
-            1. Keep answers short (under 3 sentences).
-            2. Be empathetic ("I understand tooth pain is hard").
-            3. Use Indian English context (e.g., 'clinic', 'dentist').
-            4. If the user asks about prices, say "Please check the 'Treatments' page or ask the front desk."
-            5. NEVER prescribe drugs; always advise visiting Dr. Dhivakaran.
-            
-            Current Patient Context:
-            - Age: ${patientContext.age || 'Unknown'}
-            - Medical History: ${patientContext.medicalHistory.join(', ') || 'None'}
-            - Pregnancy: ${patientContext.isPregnant ? 'Yes, ' + (patientContext.trimester || 'unknown') + ' trimester' : 'No'}
-            
-            Clinic Knowledge:
-            - Lead: Dr. Dhivakaran (Pioneer in Dentistry, 11+ Years experience, Contributor to 'Triumph's Complete Review of Dentistry', Director of HealthFlo).
-            - Location: Nallagandla, Hyderabad.
+        // 1. Vectorize History (Last 5 Turns)
+        const recentHistory = history.slice(-5).map(h => `[${h.role.toUpperCase()}]: ${h.text}`).join('\n');
+
+        // 2. Build The "Noble Neo" Context Block
+        const richContext = `
+        PATIENT PROFILE:
+        - Age: ${patientContext.age}
+        - Pregnancy: ${patientContext.isPregnant ? 'YES' : 'NO'}
+        - Condition: ${patientContext.medicalHistory.join(', ')}
+
+        CONVERSATION HISTORY (Last 5 Turns):
+        ${recentHistory}
+
+        RETRIEVED CLINICAL PROTOCOLS (Use these source truths):
+        ${ragContext || "No specific protocol found. Use general dental knowledge."}
         `;
 
         try {
-            const geminiAnswer = await geminiCaller(userInput, systemPersona);
+            // Call Shafer's Logic (The Clinical Brain)
+            const { diagnoseWithShafer } = await import('../../lib/ai/prompts/specialist-logic');
+            const clinicalRaw = await diagnoseWithShafer(userInput, richContext);
 
-            // TIER 4: STYLE CAPTURE (Harvesting Personality)
-            // We capture the "Raw Fact" vs "Gemini Polish" for future training
-            const rawFact = neoResponse.node.text.en;
-            NeoStyleCapture.captureInteraction(userInput, rawFact, geminiAnswer);
+            // Call Response Engine (The Voice & Safety Net)
+            const { ResponseEngine } = await import('../../lib/ai/response-engine');
+            const finalVoice = await ResponseEngine.synthesize({
+                userQuery: userInput,
+                clinicalAnswer: clinicalRaw,
+                sourceBook: "Noble AI Knowledge Base"
+            });
 
             return {
                 node: {
                     id: 'hybrid_gemini',
                     type: 'info',
-                    text: { en: geminiAnswer },
-                    possibilities: neoResponse.node.possibilities || []
+                    text: { en: finalVoice, ta: finalVoice }, // Todo: translate
+                    possibilities: []
                 },
-                confidenceScore: 80,
-                urgency: neoResponse.urgency || 'low'
+                confidenceScore: 85, // RAG backed = High Confidence
+                urgency: 'low'
             };
-        } catch (error) {
-            console.error("Gemini Error:", error);
-            // If Gemini fails, we check if we have a halfway decent answer from NeoEngine
-            if (neoResponse.node.id !== 'fallback') {
-                return neoResponse;
-            }
-
-            // If even NeoEngine is at 'fallback', we give a more "intelligent" AI-is-thinking-but-failed message
+        } catch (e) {
+            // ... Error handling fallback ...
             return {
                 node: {
-                    id: 'ai_warmup_fallback',
+                    id: 'rag_fail',
                     type: 'info',
-                    text: {
-                        en: "I'm focusing on your symptoms to give you the most accurate guidance. Could you tell me if the pain is constant or comes and goes?",
-                        ta: "உங்கள் அறிகுறிகளை நான் மிகத் துல்லியமாகப் புரிந்துகொள்ள முயற்சிக்கிறேன். வலி தொடர்ந்து இருக்கிறதா அல்லது விட்டு விட்டு வருகிறதா?"
-                    }
+                    text: { en: "I'm focusing on your symptoms. Could you describe the pain location?", ta: "..." },
+                    possibilities: []
                 },
                 confidenceScore: 50,
                 urgency: 'low'

@@ -57,7 +57,7 @@ export async function getNeoResponse(
                 return approved;
             },
             currentStateId,
-            history.length
+            history // CHANGED: Pass full history array for RAG Context
         );
 
         // LAYER 2: MEMORY (Save fallback answers for auditing)
@@ -294,7 +294,7 @@ export async function generateAuthorityBlogPost(topic: string, locality: string 
         if (isHighAuthority) {
             try {
                 // Clean markdown code blocks if present
-                const cleanJson = responseText.replace(/```json / g, '').replace(/```/g, '').trim();
+                const cleanJson = responseText.replace(/```json/g, '').replace(/```/g, '').trim();
                 const data = JSON.parse(cleanJson);
 
                 // Construct Safe HTML
