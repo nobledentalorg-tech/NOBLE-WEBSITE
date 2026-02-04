@@ -220,7 +220,7 @@ export default function RootCanalRefactored() {
                      </Link>
 
                      <p className="text-lg md:text-xl text-slate-600 dark:text-slate-400 font-medium leading-relaxed max-w-lg mb-6 border-l-4 border-purple-500 pl-6">
-                        **"We save teeth that others extract."** <br />
+                        **&quot;We save teeth that others extract.&quot;** <br />
                         Noble Dental Care is Nallagandla&apos;s only **Certified Microscopic Endodontic Center**. Experience **Painless Root Canal Treatment** with advanced electronic anesthesia.
                      </p>
 
@@ -829,7 +829,7 @@ export default function RootCanalRefactored() {
                         {/* Holographic BG */}
                         <div className="absolute inset-0 bg-gradient-to-br from-purple-900/40 to-blue-900/40 opacity-50 group-hover:opacity-100 transition-opacity"></div>
                         <div className="absolute top-0 right-0 bg-purple-500 text-white text-[10px] font-black uppercase tracking-[0.2em] px-4 py-2 rounded-bl-2xl">
-                           Clinical Director's Choice
+                           Clinical Director&apos;s Choice
                         </div>
 
                         <div className="relative z-10 text-white">

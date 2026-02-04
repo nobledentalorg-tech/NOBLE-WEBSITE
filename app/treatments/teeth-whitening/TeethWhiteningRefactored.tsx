@@ -263,7 +263,7 @@ export default function TeethWhiteningRefactored() {
                             </div>
 
                             <p className="text-lg text-slate-400 max-w-lg leading-relaxed mb-8 border-l-4 border-yellow-500/50 pl-6">
-                                <strong>Dr. Dhivakaran</strong> ensures your enamel is protected with medical-grade relief gels, preventing the "zinging" pain of salons.
+                                <strong>Dr. Dhivakaran</strong> ensures your enamel is protected with medical-grade relief gels, preventing the &quot;zinging&quot; pain of salons.
                             </p>
 
                             <div className="flex flex-wrap gap-4">

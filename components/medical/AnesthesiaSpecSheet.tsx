@@ -17,7 +17,7 @@ export default function AnesthesiaSpecSheet() {
                         </div>
                         <h2 className="text-4xl md:text-5xl font-black mb-6">Needle vs. The Wand</h2>
                         <p className="text-slate-400 text-lg max-w-2xl mx-auto leading-relaxed">
-                            Why "Painless" isn't a marketing buzzword at Noble Dental. It's **Flow Rate Physics.**
+                            Why &quot;Painless&quot; isn&apos;t a marketing buzzword at Noble Dental. It&apos;s **Flow Rate Physics.**
                         </p>
                     </div>
 
@@ -45,7 +45,7 @@ export default function AnesthesiaSpecSheet() {
                                 <div className="mt-6 pt-4">
                                     <p className="text-sm font-bold text-slate-500 mb-2">The Patient Reality:</p>
                                     <p className="text-xs text-slate-500 leading-relaxed uppercase tracking-wider flex items-center gap-2">
-                                        <ThumbsDown size={14} /> "The pinch determines the fear."
+                                        <ThumbsDown size={14} /> &quot;The pinch determines the fear.&quot;
                                     </p>
                                 </div>
                             </div>
