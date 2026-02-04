@@ -179,8 +179,7 @@ export default function NeoCompanionClient() {
             {/* Styles Injection */}
             <style dangerouslySetInnerHTML={{
                 __html: `
-        @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;700&display=swap');
-        .font-gemini { font-family: 'Outfit', sans-serif; }
+                .font-gemini { font-family: var(--font-outfit), sans-serif; }
         .cinematic-bg {
           background: radial-gradient(circle at 50% 0%, rgba(220, 38, 38, 0.05), transparent 70%);
         }
@@ -280,7 +279,9 @@ export default function NeoCompanionClient() {
                                 {msg.role !== 'user' && <div className="w-8 h-8 rounded-full bg-zinc-900 border border-white/10 flex items-center justify-center shrink-0"><Flame size={14} className="text-red-500" /></div>}
 
                                 <div className={`max-w-[85%] p-5 rounded-2xl ${msg.role === 'user' ? 'bg-red-600 text-white rounded-tr-none' : 'glass-panel rounded-tl-none'}`}>
-                                    <p className="font-gemini text-sm md:text-base leading-relaxed whitespace-pre-wrap">{msg.text}</p>
+                                    <p className="font-gemini text-sm md:text-base leading-relaxed whitespace-pre-wrap">
+                                        {typeof msg.text === 'string' ? msg.text : (msg.text as any)?.en || (msg.text as any)?.answer || JSON.stringify(msg.text)}
+                                    </p>
 
                                     {/* Possibility Cards */}
                                     {msg.possibilities && msg.possibilities.length > 0 && (

@@ -75,7 +75,12 @@ export class NeoBrain {
                 node: {
                     id: `vault_${vaultMatch.id}`,
                     type: 'info',
-                    text: vaultMatch.content as any, // Multi-lang support
+                    text: {
+                        en: vaultMatch.content.en?.answer || "Answer not found.",
+                        ta: vaultMatch.content.ta?.answer,
+                        te: vaultMatch.content.te?.answer,
+                        hi: vaultMatch.content.hi?.answer
+                    },
                     possibilities: []
                 },
                 confidenceScore: 95,

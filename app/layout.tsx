@@ -1,4 +1,4 @@
-import { Inter } from 'next/font/google';
+import { Inter, Outfit } from 'next/font/google';
 import './globals.css';
 import LayoutShell from '@/components/LayoutShell';
 import MedicalSchema from '@/components/seo/MedicalSchema';
@@ -17,7 +17,15 @@ const inter = Inter({
   weight: ['400', '500', '600', '700', '800']
 });
 
+const outfit = Outfit({
+  subsets: ['latin'],
+  variable: '--font-outfit',
+  display: 'swap',
+  weight: ['300', '400', '500', '700']
+});
+
 export const metadata: Metadata = {
+  // ... (Metadata stays same)
   title: {
     default: "Noble Dental Care | Nallagandla's Only Microscopic Dentistry Center",
     template: '%s'
@@ -162,7 +170,7 @@ export default async function RootLayout({
           type="image/png"
         />
       </head>
-      <body className={`${inter.variable} font-sans min-h-screen bg-background antialiased overflow-x-hidden w-full selection:bg-cyan-500/30 selection:text-cyan-900 group/body`}>
+      <body className={`${inter.variable} ${outfit.variable} font-sans min-h-screen bg-background antialiased overflow-x-hidden w-full selection:bg-cyan-500/30 selection:text-cyan-900 group/body`}>
         <LocationProvider isLocal={isLocal}>
           <Providers>
             <AdaptiveUIProvider>
