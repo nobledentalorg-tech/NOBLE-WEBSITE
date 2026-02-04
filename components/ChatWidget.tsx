@@ -379,10 +379,10 @@ const ChatWidget: React.FC<ChatWidgetProps> = ({ onBookClick }) => {
                 {messages[messages.length - 1].options?.map((opt, oIdx) => (
                   <button
                     key={oIdx}
-                    onClick={() => handleOptionClick(language === 'ta' ? opt.label.ta : opt.label.en)}
+                    onClick={() => handleOptionClick(language === 'ta' ? (opt.label.ta || opt.label.en) : opt.label.en)}
                     className="whitespace-nowrap px-4 py-2 bg-white dark:bg-slate-800 border border-slate-200 dark:border-white/10 rounded-full text-xs font-bold text-blue-600 dark:text-cyan-400 shadow-sm hover:shadow-md hover:bg-blue-50 dark:hover:bg-white/5 transition-all"
                   >
-                    {language === 'ta' ? opt.label.ta : opt.label.en}
+                    {language === 'ta' ? (opt.label.ta || opt.label.en) : opt.label.en}
                   </button>
                 ))}
               </motion.div>
