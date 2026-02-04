@@ -1,5 +1,6 @@
 
-import { TreatmentPlanner } from './treatment-planner';
+// import { TreatmentPlanner } from './treatment-planner'; // DELETED
+import { TARIFF_DB } from '../../src/data/business/tariff';
 
 // ==============================================================================
 // 🗣️ NOBLE NEO VOICE ENGINE ("The Simple Specialist")
@@ -26,8 +27,9 @@ export class ResponseEngine {
     static async synthesize(config: ResponseConfig): Promise<string> {
         const { userQuery, clinicalAnswer, sourceBook, medicalCode, trustLevel } = config;
 
-        // 1. ELI5 Analogy Generator (Heuristic for now, could be LLM later)
-        const analogy = this.generateAnalogy(clinicalAnswer);
+        // 1. ELI5 Analogy Generator (Delegated to Specialist Logic)
+        // const analogy = this.generateAnalogy(clinicalAnswer);
+        const analogy = ""; // Logic moved to LLM System Prompt
 
         // 2. Clinical Truth Reformatter (Diagnostic Bridge)
         let truth = `**Clinical Fact**: ${clinicalAnswer}`;
@@ -86,26 +88,6 @@ ${schema}
         return `<script type="application/ld+json">\n${JSON.stringify(schema, null, 2)}\n</script>`;
     }
 
-    private static generateAnalogy(text: string): string {
-        // Simple Keyword Heuristics for "Friendly Summaries"
-        const lower = text.toLowerCase();
-
-        if (lower.includes('pulpitis') || lower.includes('root canal')) {
-            return "💡 **Simple View**: Think of the tooth pulp like the 'heart' of the tooth. When it gets infected, it swells up inside a rigid box, causing pressure—just like a pressure cooker.";
-        }
-        if (lower.includes('periodontitis') || lower.includes('gum')) {
-            return "💡 **Simple View**: Your gums are like the soil holding a tree (the tooth). If the soil gets sick (infection), the tree becomes loose.";
-        }
-        if (lower.includes('implant')) {
-            return "💡 **Simple View**: An implant is like an artificial root made of titanium, acting as a strong anchor for your new tooth.";
-        }
-        if (lower.includes('caries') || lower.includes('cavity')) {
-            return "💡 **Simple View**: A cavity is like a tiny 'pothole' in your tooth enamel caused by bacteria. If not filled, it gets deeper and hits the nerve.";
-        }
-
-        // Default Fallback
-        return "💡 **Summary**: Let me break this down simply.";
-    }
 
     private static getSafetyNetMessage(): string {
         const { NeoTime } = require('../../src/neo/NeoTime'); // Ensure using our logic
@@ -123,17 +105,15 @@ ${schema}
         const q = query.toLowerCase();
 
         if (q.includes('cost') || q.includes('price') || q.includes('how much')) {
-            // Check for keywords matching our Treatment Planner
-            const treatments = TreatmentPlanner.getAllPlans();
-            let match = null;
+            // SMART LOOKUP: Search the TARIFF_DB directly
+            const item = TARIFF_DB.find(t =>
+                q.includes(t.id) ||
+                t.keywords?.some(k => q.includes(k.toLowerCase()))
+            );
 
-            // Scanning for matches (naive approach)
-            if (q.includes('root canal') || q.includes('rct')) match = treatments['Root Canal']?.['treatment'];
-            else if (q.includes('filling') || q.includes('caries')) match = treatments['Caries']?.['moderate'];
-            else if (q.includes('deep')) match = treatments['Deep Caries']?.['severe'];
-
-            if (match) {
-                return `\n💰 **Estimated Cost (Hyderabad)**: ₹${match.estimated_cost_range.min} - ₹${match.estimated_cost_range.max}. *(Includes consultation & procedure)*.`;
+            if (item) {
+                // Returns the consistent price from your main database
+                return `\n💰 **Estimated Cost**: ${item.price.currency} ${item.price.min}${item.price.max ? ' - ' + item.price.max : ''}. *(Includes consultation)*.`;
             }
         }
         return "";

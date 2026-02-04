@@ -81,6 +81,18 @@ export class NeoBrain {
         }
 
         // ==================================================
+        // TIER 0.5: CONTEXTUAL AWARENESS (The Lobotomy Fix)
+        // ==================================================
+        // IF we just asked a diagnostic question, ACCEPT the answer.
+        const lastBotMessage = history[history.length - 1]?.text || "";
+        if (lastBotMessage.includes("Sharp") || lastBotMessage.includes("Dull")) {
+            const { NeoDiagnosticEngine } = await import('./NeoDiagnosticEngine');
+            // BYPASS Confidence Check. Proceed to Analysis.
+            console.log("[NeoBrain] Contextual Bypass Active. Calling Diagnostic Engine.");
+            return await NeoDiagnosticEngine.analyzeSymptom(userInput, "Pain_Character");
+        }
+
+        // ==================================================
         // TIER 1: CONTEXTUAL TRIAGE (Phase 1 Fix)
         // ==================================================
         const hasAskedTriage = history.some(h => h.text.toLowerCase().includes('sharp') || h.text.toLowerCase().includes('dull'));
@@ -141,7 +153,15 @@ export class NeoBrain {
         // ==================================================
         const { NeoVectorStore } = await import('./NeoVectorStore');
         const searchIntent = (intent === 'triage' || userInput.toLowerCase().includes('what') || userInput.toLowerCase().includes('why')) ? 'authority' : 'operations';
-        const ragResults = await NeoVectorStore.search(userInput, searchIntent, 3);
+
+        // RAG QUERY REFINEMENT (Step 3 Fix)
+        let finalQuery = userInput;
+        if (userInput.toLowerCase().includes('dull') || userInput.toLowerCase().includes('night')) {
+            console.log("[NeoBrain] RAG Enhancement: Dull/Night Pain detected. Searching for 'Referred Pain' & 'Pulpitis'.");
+            finalQuery = "Referred Pain Irreversible Pulpitis Night Pain Clinical Features Shafer's Pathology";
+        }
+
+        const ragResults = await NeoVectorStore.search(finalQuery, searchIntent, 3);
         const topMatch = ragResults[0];
 
         let ragContext = "";
@@ -190,7 +210,7 @@ export class NeoBrain {
         const painDescriptors = ['sharp', 'dull', 'throb', 'shock', 'lingers', 'shooting'];
         const hasDescriptors = painDescriptors.some(d => userInput.toLowerCase().includes(d));
 
-        if (heuristicResponse.node.id !== 'fallback' && (heuristicResponse.confidenceScore >= 80 || hasDescriptors)) {
+        if (heuristicResponse.node.id !== 'fallback' && (heuristicResponse.confidenceScore >= 75 || hasDescriptors)) {
             return heuristicResponse;
         }
 
