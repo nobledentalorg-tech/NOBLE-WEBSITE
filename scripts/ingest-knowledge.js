@@ -57,6 +57,8 @@ async function ingest() {
                 medicalCode = 'K02'; // Caries
             } else if (file === 'Burket_Oral_Medicine.pdf') {
                 medicalCode = 'K12'; // Stomatitis/Oral Medicine
+            } else if (file === 'KDT_Pharmacology.pdf') {
+                medicalCode = 'PHARMA'; // Therapeutics/Drugs
             }
 
             // Create Chunks

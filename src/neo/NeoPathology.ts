@@ -11,6 +11,7 @@ export interface PathologyEntry {
     clinicalSigns: string[]; // Keywords for AI detection
     riskLevel: 'Low' | 'Moderate' | 'High' | 'Emergency';
     cancerPotential: boolean;
+    commonCauses?: string[];
     management: LocalizedText; // Actionable advice
 }
 
@@ -139,6 +140,7 @@ export const ORAL_PATHOLOGY_DB: Record<string, PathologyEntry> = {
         clinicalSigns: ['scrapable', 'curd like', 'wipes off', 'diabetes'],
         riskLevel: 'Moderate',
         cancerPotential: false,
+        commonCauses: ["Broad-spectrum antibiotics", "Diabetes", "Steroid Inhalers", "Immunosuppression"],
         management: {
             en: "Antifungal Mouth Paint (Clotrimazole). Check Diabetes.",
             ta: "பூஞ்சை எதிர்ப்பு மருந்து. சர்க்கரை அளவை பார்க்கவும்.",

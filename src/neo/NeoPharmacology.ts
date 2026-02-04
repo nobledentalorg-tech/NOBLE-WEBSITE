@@ -12,6 +12,7 @@ export interface DrugProtocol {
     mechanism: LocalizedText;
     whoShouldTake: LocalizedText;
     whoShouldNotTake: LocalizedText;
+    sideEffects?: LocalizedText;
     patientAdvice: LocalizedText;
 }
 
@@ -40,7 +41,7 @@ export const DENTAL_PHARMACOPOEIA: Record<string, DrugProtocol> = {
             ta: "பல் சீழ் அல்லது ஈறு தொற்று உள்ளவர்கள்.",
             te: "పంటి చీము లేదా వాపు ఉన్నవారు.",
             hi: "मवाद या संक्रमण वाले रोगी।",
-            kn: "ಕೀವು ಅಥವಾ సోంకు ಇರುವವರು.",
+            kn: "ಕೀವು ಅಥವಾ ಸೋಂಕು ಇರುವವರು.",
             ml: "പഴുപ്പ് അല്ലെങ്കിൽ അണുബാധ ഉള്ളവർ."
         },
         whoShouldNotTake: {
@@ -58,6 +59,58 @@ export const DENTAL_PHARMACOPOEIA: Record<string, DrugProtocol> = {
             hi: "पूरा कोर्स खत्म करें।",
             kn: "ಕೋರ್ಸ್ ಪೂರ್ಣಗೊಳಿಸಿ.",
             ml: "കോഴ്സ് പൂർത്തിയാക്കുക."
+        }
+    },
+
+    // 1b. ANTIBIOTIC (Tetracycline - For Perio/Acne)
+    'doxycycline': {
+        id: 'doxycycline',
+        class: 'Antibiotic (Tetracycline)',
+        genericName: 'Doxycycline 100mg',
+        brandExamples: ['Dox', 'Microdox'],
+        adultDosage: '100mg BD for 7 days',
+        pediatricDosage: 'Not recommended below 12 years',
+        pregnancyCategory: 'D', // UNSAFE
+        citations: ["KD Tripathi", "CDC Guidelines"],
+        mechanism: {
+            en: "Inhibits protein synthesis of bacteria.",
+            ta: "பாக்டீரியா வளர்ச்சியை தடுக்கிறது.",
+            te: "బ్యాక్టీరియా పెరుగుదలను ఆపుతుంది.",
+            hi: "बैक्टीरिया को बढ़ने से रोकता है।",
+            kn: "ಬ್ಯಾಕ್ಟೀರಿಯಾ ಬೆಳವಣಿಗೆಯನ್ನು ತಡೆಯುತ್ತದೆ.",
+            ml: "ബാക്ടീരിയയുടെ വളർച്ച തടയുന്നു."
+        },
+        sideEffects: {
+            en: "Oral Candidiasis (Thrush), Gastric upset, Photosensitivity.",
+            ta: "வாய் வெண்படலம் (Thrush), வயிற்று வலி.",
+            te: "నోటి పూత (Thrush), కడుపు మంట.",
+            hi: "मुंह में छाले (Thrush), पेट में जलन.",
+            kn: "ಬಾಯಿ ಹುಣ್ಣು (Thrush), ಹೊಟ್ಟೆ ಉರಿ.",
+            ml: "വായയിലെ വെളുത്ത പാടുകൾ (Thrush), വയറ്റിൽ അസ്വസ്ഥത."
+        },
+        whoShouldTake: {
+            en: "Severe Gum Disease or Acne patients.",
+            ta: "கடுமையான ஈறு நோய் உள்ளவர்கள்.",
+            te: "చిగుళ్ళ వ్యాధి ఉన్నవారు.",
+            hi: "मसूड़ों की बीमारी वाले।",
+            kn: "ಒಸಡು ರೋಗ ಇರುವವರು.",
+            ml: "മോണ രോഗമുള്ളവർ."
+        },
+        whoShouldNotTake: {
+            en: "Pregnant women and children < 12 years (Causes tooth staining).",
+            ta: "கர்ப்பிணிகள் மற்றும் குழந்தைகள் (பல் கறையாகும்).",
+            te: "గర్భిణీలు మరియు పిల్లలు.",
+            hi: "गर्भवती महिलाएं और बच्चे।",
+            kn: "ಗರ್ಭಿಣಿಯರು ಮತ್ತು ಮಕ್ಕಳು.",
+            ml: "ഗർഭിണികളും കുട്ടികളും."
+        },
+        patientAdvice: {
+            en: "Take with full glass of water. Use sunscreen.",
+            ta: "நிறைய தண்ணீர் குடிக்கவும்.",
+            te: "నీళ్లు ఎక్కువగా తాగాలి.",
+            hi: "पानी के साथ लें।",
+            kn: "ನೀರು ಜಾಸ್ತಿ ಕುಡಿಯಿರಿ.",
+            ml: "ധാരാളം വെള്ളം കുടിക്കുക."
         }
     },
 

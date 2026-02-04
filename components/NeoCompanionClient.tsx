@@ -165,12 +165,12 @@ export default function NeoCompanionClient() {
         }
     };
 
-    // Quick Actions Config
+    // Quick Actions Config (Unleashing Clinical Reasoning)
     const quickActions = [
-        { label: "Cost Estimate", query: "How much does dental treatment cost?", icon: Sparkles, color: "text-amber-400", bg: "bg-amber-500/10" },
-        { label: "Tooth Pain", query: "I have severe tooth pain", icon: Flame, color: "text-red-400", bg: "bg-red-500/10" },
-        { label: "Book Visit", query: "Book an appointment", icon: Calendar, color: "text-emerald-400", bg: "bg-emerald-500/10" },
-        { label: "Post-Op Guide", query: "Care instructions after extraction", icon: FileText, color: "text-blue-400", bg: "bg-blue-500/10" },
+        { label: "Pain Detective", query: "I have tooth pain. Please investigate the cause.", icon: Flame, color: "text-red-500", bg: "bg-red-500/10" },
+        { label: "Drug Safety Check", query: "I am taking medication (e.g. BP/Diabetes). Is it safe to take painkillers?", icon: ShieldAlert, color: "text-amber-500", bg: "bg-amber-500/10" },
+        { label: "Pediatric Advice", query: "My child has a dental issue. What should I do?", icon: Sparkles, color: "text-blue-500", bg: "bg-blue-500/10" },
+        { label: "Cost Calculator", query: "Estimate the cost of dental treatment.", icon: Calendar, color: "text-emerald-500", bg: "bg-emerald-500/10" },
     ];
 
     return (
@@ -260,7 +260,7 @@ export default function NeoCompanionClient() {
                             <Flame size={32} className="text-red-500" />
                         </div>
                         <h1 className="font-gemini text-4xl md:text-5xl font-medium mb-4 tracking-tight">{typedText}<span className="animate-pulse text-red-500">_</span></h1>
-                        <p className="text-zinc-400 mb-10">Instant provisional diagnosis & cost estimates.</p>
+                        <p className="text-zinc-400 mb-10">Advanced Clinical Reasoning & Safety Checks.</p>
 
                         <div className="grid grid-cols-2 gap-3 w-full max-w-xl">
                             {quickActions.map((action, i) => (
