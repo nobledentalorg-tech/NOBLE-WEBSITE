@@ -47,19 +47,18 @@ html[data-power-mode="save"] iframe {
   display: none !important;
 }
 
-/* High Contrast Text Logic */
-html[data-power-mode="save"] h1,
+/* High Contrast Text Logic - Removed aggressive overrides to prevent visibility issues */
+/* html[data-power-mode="save"] h1,
 html[data-power-mode="save"] h2,
 html[data-power-mode="save"] h3,
 html[data-power-mode="save"] p,
 html[data-power-mode="save"] span,
 html[data-power-mode="save"] a {
-  color: #fbbf24 !important;
-  /* Force Amber */
+  color: #fbbf24 !important; 
   text-shadow: none !important;
   animation: none !important;
   transition: none !important;
-}
+} */
 
 /* Exception for the Emergency Button */
 html[data-power-mode="save"] .bg-amber-600 {

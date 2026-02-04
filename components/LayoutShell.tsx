@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useState } from 'react';
+import { usePathname } from 'next/navigation';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import dynamic from 'next/dynamic';
@@ -41,14 +42,17 @@ export default function LayoutShell({ children, emergencyMode = false }: LayoutS
 
     const openBooking = () => setIsBookingOpen(true);
 
+    const pathname = usePathname();
+    const isImmersivePage = pathname === '/healthflo-ai';
+
     return (
         <MobileUIProvider>
             <RegisterSW />
-            <Header onBookClick={openBooking} emergencyMode={emergencyMode} />
+            {!isImmersivePage && <Header onBookClick={openBooking} emergencyMode={emergencyMode} />}
 
             <main>{children}</main>
 
-            <Footer onBookClick={openBooking} />
+            {!isImmersivePage && <Footer onBookClick={openBooking} />}
 
             {/* Global Widgets: Deferred to 4s to prioritize LCP */}
             {isChatDelayed && <ChatWidget onBookClick={openBooking} />}
