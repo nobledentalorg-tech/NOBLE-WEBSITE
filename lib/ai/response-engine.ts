@@ -14,6 +14,8 @@ interface ResponseConfig {
     userQuery: string;
     clinicalAnswer: string; // The raw output from Shafer's Logic or Vector Store
     sourceBook?: string;
+    medicalCode?: string;
+    trustLevel?: string;
 }
 
 export class ResponseEngine {
@@ -22,18 +24,25 @@ export class ResponseEngine {
      * The Main Synthesis Pipeline
      */
     static async synthesize(config: ResponseConfig): Promise<string> {
-        const { userQuery, clinicalAnswer, sourceBook } = config;
+        const { userQuery, clinicalAnswer, sourceBook, medicalCode, trustLevel } = config;
 
         // 1. ELI5 Analogy Generator (Heuristic for now, could be LLM later)
         const analogy = this.generateAnalogy(clinicalAnswer);
 
-        // 2. Clinical Truth Reformatter
-        const truth = `**Clinical Fact**: ${clinicalAnswer} ${sourceBook ? `(Source: ${sourceBook})` : ''}`;
+        // 2. Clinical Truth Reformatter (Diagnostic Bridge)
+        let truth = `**Clinical Fact**: ${clinicalAnswer}`;
+        if (sourceBook) {
+            const isTextbook = trustLevel === 'textbook' || sourceBook.toLowerCase().includes('textbook') || sourceBook.toLowerCase().includes('shafer');
+            truth += `\n\n> 🏛️ *Source: ${isTextbook ? 'Clinical Textbook (' + sourceBook + ')' : 'Noble Dental Clinic Protocol (' + sourceBook + ')'}*`;
+        }
 
-        // 3. Safety Net (Time Check)
+        // 3. SEO Schema Generation (Hidden JSON-LD for AI Search Bots)
+        const schema = this.generateMedicalSchema(clinicalAnswer, medicalCode, sourceBook);
+
+        // 4. Safety Net (Time Check)
         const safetyMsg = this.getSafetyNetMessage();
 
-        // 4. Price Injection (if query asks about cost)
+        // 5. Price Injection (if query asks about cost)
         const costMsg = this.injectPricing(userQuery);
 
         // Assembly
@@ -44,21 +53,50 @@ ${truth}
 
 ${costMsg}
 ${safetyMsg}
+
+<!-- SEO_INJECTION_START -->
+${schema}
+<!-- SEO_INJECTION_END -->
 `.trim();
     }
 
     // --- PRIVATE HELPERS ---
 
+    /**
+     * Generates MedicalEntity JSON-LD for Gemini/Perplexity/ChatGPT bots to crawl
+     */
+    private static generateMedicalSchema(answer: string, code?: string, source?: string): string {
+        const schema = {
+            "@context": "https://schema.org",
+            "@type": "MedicalEntity",
+            "name": "Dental Clinical Insight",
+            "description": answer.substring(0, 200),
+            "relevantSpecialty": {
+                "@type": "MedicalSpecialty",
+                "name": "Dentistry"
+            },
+            ...(code && { "code": { "@type": "MedicalCode", "codeValue": code, "codingSystem": "ICD-10" } }),
+            ...(source && { "citation": source })
+        };
+
+        return `<script type="application/ld+json">\n${JSON.stringify(schema, null, 2)}\n</script>`;
+    }
+
     private static generateAnalogy(text: string): string {
         // Simple Keyword Heuristics for "Friendly Summaries"
-        if (text.toLowerCase().includes('pulpitis') || text.toLowerCase().includes('root canal')) {
+        const lower = text.toLowerCase();
+
+        if (lower.includes('pulpitis') || lower.includes('root canal')) {
             return "💡 **Simple View**: Think of the tooth pulp like the 'heart' of the tooth. When it gets infected, it swells up inside a rigid box, causing pressure—just like a pressure cooker.";
         }
-        if (text.toLowerCase().includes('periodontitis') || text.toLowerCase().includes('gum')) {
+        if (lower.includes('periodontitis') || lower.includes('gum')) {
             return "💡 **Simple View**: Your gums are like the soil holding a tree (the tooth). If the soil gets sick (infection), the tree becomes loose.";
         }
-        if (text.toLowerCase().includes('implant')) {
+        if (lower.includes('implant')) {
             return "💡 **Simple View**: An implant is like an artificial root made of titanium, acting as a strong anchor for your new tooth.";
+        }
+        if (lower.includes('caries') || lower.includes('cavity')) {
+            return "💡 **Simple View**: A cavity is like a tiny 'pothole' in your tooth enamel caused by bacteria. If not filled, it gets deeper and hits the nerve.";
         }
 
         // Default Fallback
@@ -66,12 +104,13 @@ ${safetyMsg}
     }
 
     private static getSafetyNetMessage(): string {
-        const now = new Date();
-        const currentHour = now.getHours(); // 0-23
+        const { NeoTime } = require('../../src/neo/NeoTime'); // Ensure using our logic
+        const istNow = NeoTime.getISTNow();
+        const currentHour = istNow.getHours();
 
         // Safety Net Rule: If after 9 PM (21:00), remind about late hours
         if (currentHour >= 21 || currentHour < 6) {
-            return `\n🌙 **Late Night Support**: It looks like it's late. Remember, Noble Dental Care in Nallagandla is open until **11:30 PM** for emergencies. Call us if in severe pain.`;
+            return `\n\n> 🌙 **Note**: We are one of the few clinics in Nallagandla open until **11:30 PM**. You can come in tonight if this is urgent.`;
         }
         return "";
     }

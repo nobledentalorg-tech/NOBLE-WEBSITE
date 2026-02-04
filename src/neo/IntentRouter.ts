@@ -1,13 +1,18 @@
 
-export type UserIntent = 'greeting' | 'triage' | 'cost' | 'availability' | 'care' | 'unknown';
+export type UserIntent = 'greeting' | 'triage' | 'cost' | 'availability' | 'care' | 'booking' | 'unknown';
 
 export class IntentRouter {
 
     static classify(input: string): UserIntent {
         const lower = input.toLowerCase();
 
+        // 0. BOOKING (Highest Priority)
+        if (lower.includes('appointment') || lower.includes('book') || lower.includes('registration') || lower.includes('consultation') || lower.includes('slot')) {
+            return 'booking';
+        }
+
         // 1. Availability / Time
-        if (lower.includes('open') || lower.includes('time') || lower.includes('available') || lower.includes('appointment')) {
+        if (lower.includes('open') || lower.includes('time') || lower.includes('available')) {
             return 'availability';
         }
 

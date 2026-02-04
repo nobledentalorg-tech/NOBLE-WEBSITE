@@ -26,6 +26,7 @@ import { NeoLearningSystem } from './NeoLearning';
 export class NeoEngine {
 
     static processInput(input: string, currentStateId: string = 'root', historyLength: number = 0): NeoResponse {
+        console.log(`[NeoEngine] Processing: "${input}" | CurrentState: ${currentStateId}`);
 
         // GLOBAL: NORMALIZE INPUT (Tanglish/Hinglish -> Clinical)
         const cleanInput = normalizeClinicalInput(input);

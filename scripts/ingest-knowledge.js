@@ -1,130 +1,129 @@
 
 const fs = require('fs');
 const path = require('path');
+const pdfParse = require('pdf-parse');
+// Fixed: In v2+, it might be under .default or exported as a specific function.
+const parsePDF = typeof pdfParse === 'function' ? pdfParse : (pdfParse.default || pdfParse.pdf);
 
-// ==============================================================================
-// 🚜 KNOWLEDGE HARVESTER (Pure JS Engine)
-// ==============================================================================
-// Usage: node scripts/ingest-knowledge.js
-// Purpose: Scans PDF/TXT files -> Chunks -> creates vector_index.json
+/**
+ * NOBLE NEO: INTELLIGENT INGESTOR v2 (Zero-Dep Edition)
+ * High-authority extraction for Dental Textbooks.
+ * Uses a manual Recursive Character Splitter to avoid LangChain ESM issues.
+ */
 
-const KNOWLEDGE_DIR = path.join(process.cwd(), 'public/assets/knowledge_base');
-const OUTPUT_FILE = path.join(process.cwd(), 'src/data/vector_index.json');
+const KNOWLEDGE_DIR = path.join(__dirname, '../public/assets/knowledge_base');
+const TEXTBOOK_DIR = path.join(KNOWLEDGE_DIR, 'textbooks');
+const OUTPUT_FILE = path.join(__dirname, '../src/data/vector_index.json');
 
-// --- 1. CHUNKING LOGIC (Manual Implementation) ---
-const CHUNK_SIZE = 4000; // ~1000 tokens
-const OVERLAP = 600;     // ~150 tokens
-
-function chunkText(text, metadata) {
+/**
+ * Manual Recursive Character Splitter
+ * Mimics LangChain behavior: Paragraphs -> Sentences -> Spaces
+ */
+function recursiveSplit(text, chunkSize, chunkOverlap) {
     const chunks = [];
     let start = 0;
 
     while (start < text.length) {
-        const end = Math.min(start + CHUNK_SIZE, text.length);
-        const chunkText = text.slice(start, end);
+        let end = start + chunkSize;
 
-        chunks.push({
-            id: `${metadata.source_book}_${chunks.length}`,
-            text: chunkText,
-            type: 'rag_doc',
-            metadata: {
-                ...metadata,
-                clinical_relevance: deriveRelevance(chunkText)
-            }
-        });
+        // If not at the end, try to find a good breaking point
+        if (end < text.length) {
+            // Try breaking at paragraph/sentence
+            const lastNewline = text.lastIndexOf('\n', end);
+            const lastPeriod = text.lastIndexOf('. ', end);
+            const lastSpace = text.lastIndexOf(' ', end);
 
-        start += (CHUNK_SIZE - OVERLAP);
+            if (lastNewline > start + (chunkSize * 0.5)) end = lastNewline;
+            else if (lastPeriod > start + (chunkSize * 0.5)) end = lastPeriod + 1;
+            else if (lastSpace > start + (chunkSize * 0.5)) end = lastSpace;
+        }
+
+        chunks.push(text.substring(start, end).trim());
+        start = end - chunkOverlap;
+        if (start < 0) start = 0;
+
+        // Safety: ensure progress
+        if (end >= text.length) break;
+        if (start >= end) start = end;
     }
+
     return chunks;
 }
 
-function deriveRelevance(text) {
-    const clinicalKeywords = ['treatment', 'diagnosis', 'patient', 'pain', 'surgery', 'drug', 'pulp'];
-    const hits = clinicalKeywords.filter(k => text.toLowerCase().includes(k)).length;
-    if (hits > 2) return "High";
-    if (hits > 0) return "Medium";
-    return "Foundation";
-}
-
-// --- 2. MAIN CRAWLER ---
-async function main() {
-    console.log(`[NeoIngest] Scanning ${KNOWLEDGE_DIR}...`);
-
-    if (!fs.existsSync(KNOWLEDGE_DIR)) {
-        console.error(`[NeoIngest] Error: Directory not found.`);
-        process.exit(1);
-    }
-
-    const files = fs.readdirSync(KNOWLEDGE_DIR);
-    console.log(`[NeoIngest] Found ${files.length} files in directory.`);
+async function ingest() {
+    console.log(`[NeoIngest] Initializing Intelligent Ingestor (Manual Splitter)...`);
 
     const allChunks = [];
 
-    for (const file of files) {
+    // --- SUB-PROCESS: CLINIC SOPS ---
+    const clinicFiles = fs.readdirSync(KNOWLEDGE_DIR).filter(f => f.endsWith('.pdf'));
+    for (const file of clinicFiles) {
         const filePath = path.join(KNOWLEDGE_DIR, file);
-        const fileNameLower = file.toLowerCase();
+        if (fs.lstatSync(filePath).isDirectory()) continue;
 
-        // 1. PDF HANDLER
-        if (fileNameLower.endsWith('.pdf')) {
-            console.log(`[NeoIngest] Processing PDF: ${file}`);
-            try {
-                const dataBuffer = fs.readFileSync(filePath);
+        console.log(`[NeoIngest] Processing Clinic SOP: ${file}`);
+        try {
+            const dataBuffer = fs.readFileSync(filePath);
+            const pdfData = await parsePDF(dataBuffer);
 
-                // Dynamic import for pdf-parse
-                // If it fails, we log a helpful warning but continue
-                let data;
-                try {
-                    const pdf = require('pdf-parse');
-                    data = await pdf(dataBuffer);
+            const chunks = recursiveSplit(pdfData.text, 800, 100);
 
-                    const cleanText = data.text.replace(/\n\s*\n/g, '\n').trim();
-                    console.log(`[NeoIngest] Extracted ${cleanText.length} chars from ${file}`);
-
-                    const chunks = chunkText(cleanText, {
-                        subject: 'Pathology', // TODO: Dynamic subject based on folder/name?
-                        source_book: file,
-                        clinical_relevance: 'High'
-                    });
-                    allChunks.push(...chunks);
-
-                } catch (innerE) {
-                    console.error(`[NeoIngest] PDF Parse Error: ${innerE.message}. (Did you npm install pdf-parse?)`);
-                }
-
-            } catch (e) {
-                console.error(`[NeoIngest] File Read Error ${file}:`, e.message);
-            }
-        }
-
-        // 2. TEXT HANDLER (Fallback/Test)
-        else if (fileNameLower.endsWith('.txt')) {
-            console.log(`[NeoIngest] Processing TEXT: ${file}`);
-            try {
-                const text = fs.readFileSync(filePath, 'utf-8');
-                const chunks = chunkText(text, {
-                    subject: 'General',
-                    source_book: file,
-                    clinical_relevance: 'Medium'
+            chunks.forEach((c, i) => {
+                allChunks.push({
+                    id: `sop_${file}_${i}`,
+                    text: c,
+                    type: 'clinic_sop',
+                    metadata: {
+                        source: file,
+                        trust_level: 'high',
+                        medical_code: 'D01-D99'
+                    }
                 });
-                console.log(`[NeoIngest] Extracted ${text.length} chars from ${file}`);
-                allChunks.push(...chunks);
+            });
+        } catch (e) {
+            console.error(`[NeoIngest] Failed ${file}:`, e.message);
+        }
+    }
+
+    // --- SUB-PROCESS: TEXTBOOKS (The "Authority" Hijack) ---
+    if (fs.existsSync(TEXTBOOK_DIR)) {
+        const textbookFiles = fs.readdirSync(TEXTBOOK_DIR).filter(f => f.endsWith('.pdf'));
+        for (const file of textbookFiles) {
+            console.log(`[NeoIngest] 🎓 Extracting Textbook: ${file}`);
+            try {
+                const dataBuffer = fs.readFileSync(path.join(TEXTBOOK_DIR, file));
+                const pdfData = await parsePDF(dataBuffer);
+
+                let medCode = 'K02.1';
+                if (file.toLowerCase().includes('gum') || file.toLowerCase().includes('periodont')) medCode = 'K05.3';
+                if (file.toLowerCase().includes('pulp') || file.toLowerCase().includes('root')) medCode = 'K04.0';
+
+                const chunks = recursiveSplit(pdfData.text, 800, 100);
+
+                chunks.forEach((c, i) => {
+                    allChunks.push({
+                        id: `bk_${file}_${i}`,
+                        text: c,
+                        type: 'authority_library',
+                        metadata: {
+                            book_title: file.replace('.pdf', ''),
+                            medical_code: medCode,
+                            trust_level: 'textbook'
+                        }
+                    });
+                });
             } catch (e) {
-                console.error(`[NeoIngest] Failed to read TXT ${file}:`, e.message);
+                console.error(`[NeoIngest] Failed ${file}:`, e.message);
             }
         }
     }
 
-    // Write Index
-    if (allChunks.length > 0) {
-        // Ensure directory exists
-        const dir = path.dirname(OUTPUT_FILE);
-        if (!fs.existsSync(dir)) fs.mkdirSync(dir, { recursive: true });
-
-        fs.writeFileSync(OUTPUT_FILE, JSON.stringify(allChunks, null, 2));
-        console.log(`[NeoIngest] ✅ Successfully indexed ${allChunks.length} chunks to ${OUTPUT_FILE}`);
-    } else {
-        console.log(`[NeoIngest] ⚠️ No content extracted. Check if PDFs exist in public/assets/knowledge_base.`);
-    }
+    // 3. Write Unified Index
+    fs.writeFileSync(OUTPUT_FILE, JSON.stringify(allChunks, null, 2));
+    console.log(`[NeoIngest] ✅ Successfully indexed ${allChunks.length} chunks.`);
 }
 
-main().catch(console.error);
+ingest().catch(err => {
+    console.error(`[NeoIngest] Critical Failure:`, err);
+    process.exit(1);
+});

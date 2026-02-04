@@ -71,8 +71,9 @@ export async function diagnoseWithShafer(userQuery: string, context: string): Pr
         const response = result.response.text();
         return response;
 
-    } catch (error) {
-        console.error("Shafer Logic Error:", error);
+    } catch (error: any) {
+        console.error("Shafer Logic Error Detailed:", error.message || error);
+        if (error.message?.includes('429')) console.error("Create a new API Key - Quota Exceeded");
         return "I apologize, I am analyzing the clinical data but encountered a delay. Please ask Dr. Dhivakaran directly.";
     }
 }

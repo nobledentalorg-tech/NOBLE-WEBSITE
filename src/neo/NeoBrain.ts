@@ -8,6 +8,7 @@ import { NeoResponse } from '../types/neoSchema';
 import { RiskAssessor } from './RiskAssessor'; // NEW Import
 import { NeoSecurityProxy } from './NeoSecurityProxy'; // Ensure imported
 import { SafetyFilter } from './SafetyFilter'; // Ensure imported
+import { IntentRouter } from './IntentRouter';
 
 export interface PatientContext {
     age?: number;
@@ -35,12 +36,32 @@ export class NeoBrain {
         // Legacy compatibility
         const historyLength = history.length;
         const normalizedText = normalizeClinicalInput(userInput);
+        const intent = IntentRouter.classify(userInput);
 
         // ==================================================
-        // TIER 0: EMERGENCY NURSE OVERRIDE (The Gatekeeper)
+        // TIER 0: GLOBAL PRIORITY OVERRIDES
         // ==================================================
-        // Before ANY logic, check for life-threatening keywords.
-        // We assume a 'root' node context for general assessment.
+
+        // 1. Booking Emergency (Always wins)
+        if (intent === 'booking') {
+            return {
+                node: {
+                    id: 'booking_priority',
+                    type: 'info',
+                    text: {
+                        en: "I'll help you schedule that immediately. Dr. Dhivakaran and the Noble Dental specialists are available. Would you like to view our available slots or call the clinic directly?",
+                        ta: "முன்பதிவு செய்ய உதவுகிறேன்."
+                    },
+                    possibilities: [
+                        { title: "Book Appointment", description: "Schedule a dental consultation", likelihood: "High", action: "Book Now", relatedSlug: "booking_modal" }
+                    ]
+                },
+                confidenceScore: 100,
+                urgency: 'low'
+            };
+        }
+
+        // 2. Emergency Nurse Override (The Gatekeeper)
         const triageLevel = RiskAssessor.assess({ id: 'triage_gate', type: 'assessment', text: { en: '' }, possibilities: [] }, [userInput]);
 
         if (triageLevel === 'emergency' || triageLevel === 'high') {
@@ -60,7 +81,30 @@ export class NeoBrain {
         }
 
         // ==================================================
-        // TIER 1: HARD-CODED CLINICAL SAFETY (The Firewall)
+        // TIER 1: CONTEXTUAL TRIAGE (Phase 1 Fix)
+        // ==================================================
+        const hasAskedTriage = history.some(h => h.text.toLowerCase().includes('sharp') || h.text.toLowerCase().includes('dull'));
+        if (intent === 'triage' && !hasAskedTriage) {
+            return {
+                node: {
+                    id: 'contextual_triage_init',
+                    type: 'question',
+                    text: {
+                        en: "I'm sorry you're hurting. To help Dr. Dhivakaran prepare, tell me: Is the pain **Sharp** (like a shock) or **Dull** (like a throb)?",
+                        ta: "வலி எப்படி இருக்கிறது? கூர்மையான வலியா அல்லது மந்தமான வலியா?"
+                    },
+                    options: [
+                        { label: { en: "Sharp Pain", ta: "கூர்மையான வலி" }, nextId: 'assess_pulpitis', keywords: ['sharp'] },
+                        { label: { en: "Dull Pain", ta: "மந்தமான வலி" }, nextId: 'assess_abscess', keywords: ['dull'] }
+                    ]
+                },
+                confidenceScore: 100,
+                urgency: 'medium'
+            };
+        }
+
+        // ==================================================
+        // TIER 2: HARD-CODED CLINICAL SAFETY (The Firewall)
         // ==================================================
 
         // 1. Pregnancy Safety Interception
@@ -96,7 +140,8 @@ export class NeoBrain {
         // TIER 1.5: HYBRID RAG ROUTER (The new Brain Stem)
         // ==================================================
         const { NeoVectorStore } = await import('./NeoVectorStore');
-        const ragResults = await NeoVectorStore.search(userInput, 3);
+        const searchIntent = (intent === 'triage' || userInput.toLowerCase().includes('what') || userInput.toLowerCase().includes('why')) ? 'authority' : 'operations';
+        const ragResults = await NeoVectorStore.search(userInput, searchIntent, 3);
         const topMatch = ragResults[0];
 
         let ragContext = "";
@@ -104,20 +149,29 @@ export class NeoBrain {
         if (topMatch) {
             console.log(`[NeoBrain] RAG Match: "${topMatch.node.id}" (Similarity: ${topMatch.similarity})`);
 
-            // CASE A: HIGH CONFIDENCE (> 0.85) -> Direct Answer
+            // CASE A: HIGH CONFIDENCE (> 0.85) -> Direct Answer via ResponseEngine
             if (topMatch.similarity > 0.85) {
+                const { ResponseEngine } = await import('../../lib/ai/response-engine');
+                const finalVoice = await ResponseEngine.synthesize({
+                    userQuery: userInput,
+                    clinicalAnswer: topMatch.node.text,
+                    sourceBook: topMatch.node.metadata?.book_title || topMatch.node.metadata?.source || "Noble AI Knowledge Base",
+                    medicalCode: topMatch.node.metadata?.medical_code || "D01-D99",
+                    trustLevel: topMatch.node.metadata?.trust_level || "high"
+                });
+
                 return {
                     node: {
                         id: topMatch.node.id,
                         type: topMatch.node.type === 'faq' ? 'info' : 'assessment',
                         text: {
-                            en: topMatch.node.text,
+                            en: finalVoice,
                             ta: "Translation available."
                         },
                         possibilities: []
                     },
-                    confidenceScore: 95,
-                    urgency: 'low'
+                    confidenceScore: 98,
+                    urgency: topMatch.node.metadata?.urgencyLevel || 'low'
                 };
             }
 
@@ -131,9 +185,10 @@ export class NeoBrain {
         // ==================================================
         // TIER 2: CLINICAL ENGINE (The Specialist)
         // ==================================================
-        const neoResponse = NeoEngine.processInput(userInput, currentStateId, historyLength);
-        if (neoResponse.node.id !== 'fallback' && neoResponse.confidenceScore > 90) {
-            return neoResponse;
+        // RELAXED THRESHOLD: If confidence is not PERFECT (100), let Gemini have a look.
+        const heuristicResponse = NeoEngine.processInput(userInput, currentStateId, historyLength);
+        if (heuristicResponse.node.id !== 'fallback' && heuristicResponse.confidenceScore >= 100) {
+            return heuristicResponse;
         }
 
         // ==================================================
@@ -167,7 +222,9 @@ export class NeoBrain {
             const finalVoice = await ResponseEngine.synthesize({
                 userQuery: userInput,
                 clinicalAnswer: clinicalRaw,
-                sourceBook: "Noble AI Knowledge Base"
+                sourceBook: topMatch?.node.metadata?.book_title || topMatch?.node.metadata?.source || "Noble AI Knowledge Base",
+                medicalCode: topMatch?.node.metadata?.medical_code || "D01-D99",
+                trustLevel: topMatch?.node.metadata?.trust_level || "high"
             });
 
             return {
@@ -178,15 +235,18 @@ export class NeoBrain {
                     possibilities: []
                 },
                 confidenceScore: 85, // RAG backed = High Confidence
-                urgency: 'low'
+                urgency: topMatch?.node.metadata?.urgencyLevel || 'low'
             };
         } catch (e) {
-            // ... Error handling fallback ...
+            // PHASE 3: SAFE FALLBACK
             return {
                 node: {
-                    id: 'rag_fail',
+                    id: 'rag_fallback_safe',
                     type: 'info',
-                    text: { en: "I'm focusing on your symptoms. Could you describe the pain location?", ta: "..." },
+                    text: {
+                        en: "I want to be sure I understand—are you asking about a specific treatment, or do you need urgent relief right now?",
+                        ta: "உங்களுக்கு உடனடியாக சிகிச்சை தேவையா அல்லது ஒரு குறிப்பிட்ட சிகிச்சை பற்றி கேட்கிறீர்களா?"
+                    },
                     possibilities: []
                 },
                 confidenceScore: 50,

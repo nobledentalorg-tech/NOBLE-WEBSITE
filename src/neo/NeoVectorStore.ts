@@ -71,20 +71,17 @@ export class NeoVectorStore {
     }
 
     /**
-     * SEARCH: Hybrid Semantic Search
-     * Since we can't vector-scan 500 nodes in real-time without a DB,
-     * we use a "Keyword-Boosted" Algorithm that mimics Vector Similarity.
-     * 
-     * In a full Python backend, this would be: `collection.query(embeddings=[userVec])`
+     * SEARCH: Intent-Based Semantic Retrieval
+     * 'authority_library' -> What/Why queries (Education)
+     * 'clinic_sop' -> How/Cost/Booking queries (Operations)
      */
-    static async search(userQuery: string, limit: number = 3): Promise<SearchResult[]> {
+    static async search(userQuery: string, intent: 'authority' | 'operations' | 'general' = 'general', limit: number = 3): Promise<SearchResult[]> {
         this.initialize();
 
         // 1. Tokenize Query
         const terms = userQuery.toLowerCase().split(' ').filter(w => w.length > 3);
 
-        // 2. Score Nodes (TF-IDF Style Heuristic for Speed)
-        // We simulate "Similarity" to avoid 500ms API call latency for embeddings on every keystroke
+        // 2. Score Nodes (TF-IDF Style Heuristic with Namespace weighting)
         const scoredNodes = this.KNOWLEDGE_BASE.map(node => {
             const content = node.text.toLowerCase();
             let score = 0;
@@ -97,9 +94,15 @@ export class NeoVectorStore {
                 }
             });
 
+            // Namespace Weighting
+            const nodeNamespace = node.metadata?.type || 'general';
+            let priorityBoost = 1.0;
+
+            if (intent === 'authority' && nodeNamespace === 'authority_library') priorityBoost = 1.5;
+            if (intent === 'operations' && nodeNamespace === 'clinic_sop') priorityBoost = 1.5;
+
             // Normalize to 0-1 range (Simulating Cosine Similarity)
-            // 3 keyword matches = ~0.8 confidence
-            const similarity = Math.min(score * 0.25, 0.95);
+            const similarity = Math.min((score * 0.25) * priorityBoost, 0.98);
 
             return { node, similarity: matches > 0 ? similarity : 0 };
         });
