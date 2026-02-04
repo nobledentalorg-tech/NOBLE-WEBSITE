@@ -185,9 +185,12 @@ export class NeoBrain {
         // ==================================================
         // TIER 2: CLINICAL ENGINE (The Specialist)
         // ==================================================
-        // RELAXED THRESHOLD: If confidence is not PERFECT (100), let Gemini have a look.
+        // RELAXED THRESHOLD: If confidence is high (>80) OR user provided specific descriptors, trust the Engine.
         const heuristicResponse = NeoEngine.processInput(userInput, currentStateId, historyLength);
-        if (heuristicResponse.node.id !== 'fallback' && heuristicResponse.confidenceScore >= 100) {
+        const painDescriptors = ['sharp', 'dull', 'throb', 'shock', 'lingers', 'shooting'];
+        const hasDescriptors = painDescriptors.some(d => userInput.toLowerCase().includes(d));
+
+        if (heuristicResponse.node.id !== 'fallback' && (heuristicResponse.confidenceScore >= 80 || hasDescriptors)) {
             return heuristicResponse;
         }
 

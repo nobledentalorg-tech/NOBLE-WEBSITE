@@ -66,6 +66,10 @@ ${schema}
      * Generates MedicalEntity JSON-LD for Gemini/Perplexity/ChatGPT bots to crawl
      */
     private static generateMedicalSchema(answer: string, code?: string, source?: string): string {
+        // PREVENTION: If the answer is an error or fallback message, do NOT inject it into SEO
+        const isError = answer.includes("delay") || answer.includes("physical examination") || answer.length < 10;
+        if (isError) return "";
+
         const schema = {
             "@context": "https://schema.org",
             "@type": "MedicalEntity",
