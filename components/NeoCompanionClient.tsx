@@ -38,11 +38,11 @@ export default function NeoCompanionClient() {
         : "Hi. I am Neo, your Virtual Dental Consultant.";
 
     // Load chat history when user signs in
-    useEffect(() => {
-        if (session) {
-            loadHistory()
-        }
-    }, [session]);
+    // useEffect(() => {
+    //     if (session) {
+    //         loadHistory()
+    //     }
+    // }, [session]);
 
     const loadHistory = async () => {
         try {
@@ -133,8 +133,11 @@ export default function NeoCompanionClient() {
                 trimester: 'Second' as any
             };
 
+            // Sanitize history to prevent serialization errors (exclude possibilities/UI state)
+            const historyPayload = messages.map(m => ({ role: m.role, text: m.text }));
+
             // B. Call the Server Action
-            const neoResponse = await getNeoResponse(textToSend, currentNodeId, messages, patientContext);
+            const neoResponse = await getNeoResponse(textToSend, currentNodeId, historyPayload, patientContext);
 
             const nextNode = neoResponse.node;
             setCurrentNodeId(nextNode.id);
