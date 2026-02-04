@@ -67,8 +67,19 @@ export class NeoBrain {
         // ==================================================
         // TIER 1.5: KNOWLEDGE VAULT (The Authority)
         // ==================================================
-        const { NeoVaultHelper } = await import('./NeoVault');
-        const vaultMatch = NeoVaultHelper.findEntry(userInput);
+        // ==================================================
+        // TIER 1.5: KNOWLEDGE VAULT (The Authority)
+        // ==================================================
+        // Logic Update: If we are deep in conversion (history > 0) and the input is short/ambiguous,
+        // we SKIP the Vault so Gemini can handle the context.
+        const isFollowUp = historyLength > 0 && userInput.split(' ').length < 5;
+
+        let vaultMatch = null;
+        if (!isFollowUp) {
+            const { NeoVaultHelper } = await import('./NeoVault');
+            vaultMatch = NeoVaultHelper.findEntry(userInput);
+        }
+
         if (vaultMatch) {
             const vaultAnswer = NeoVaultHelper.getResponse(vaultMatch, 'en'); // Fallback to EN for processing
             return {
@@ -166,8 +177,8 @@ export class NeoBrain {
                     id: 'ai_warmup_fallback',
                     type: 'info',
                     text: {
-                        en: "I'm having a bit of trouble connecting to my clinical intelligence unit right now. While I warm up, could you tell me more about your specific symptoms?",
-                        ta: "தற்போது என்னால் இணைக்க முடியவில்லை. உங்கள் அறிகுறிகளை பற்றி சொல்லுங்கள்."
+                        en: "I'm focusing on your symptoms to give you the most accurate guidance. Could you tell me if the pain is constant or comes and goes?",
+                        ta: "உங்கள் அறிகுறிகளை நான் மிகத் துல்லியமாகப் புரிந்துகொள்ள முயற்சிக்கிறேன். வலி தொடர்ந்து இருக்கிறதா அல்லது விட்டு விட்டு வருகிறதா?"
                     }
                 },
                 confidenceScore: 50,

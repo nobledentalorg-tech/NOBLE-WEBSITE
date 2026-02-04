@@ -416,7 +416,7 @@ export class NeoEngine {
                     id: `treatment_${t.id}`,
                     type: 'info',
                     text: {
-                        en: `**${t.title}**: ${t.description}\n\n*Clinical Note*: ${t.longDescription}\n\nWould you like to check the cost or book an appointment?`,
+                        en: `**${t.title}** at Noble Dental Care is designed to be pain-free and effective.\n\n${t.description}\n\nOur specialists use advanced technology like ${t.id === 'rct' ? 'Microscopes' : 'Digital Scanners'} to ensure the best results. Would you like to check the cost or book a consultation?`,
                         ta: t.description // Fallback
                     },
                     // Inject rich possibilities from the treatment itself
@@ -425,7 +425,8 @@ export class NeoEngine {
                             title: `Book ${t.title}`,
                             description: "Schedule a consultation with our specialist.",
                             likelihood: 'High',
-                            action: "Book Now",
+                            // DYNAMIC CTA: Changes based on urgency
+                            action: (t.id === 'rct' || t.title.toLowerCase().includes('surgery')) ? "Request Immediate Relief" : "View Available Slots",
                             relatedSlug: t.id
                         }
                     ]
