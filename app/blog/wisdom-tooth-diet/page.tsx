@@ -149,7 +149,7 @@ export default function BlogPost() {
 
                         <h2>❌ The Biryani Warning (Day 1-10)</h2>
                         <p>
-                            Living in Hyderabad, the temptation for Biryani is high. However, <strong>loose rice grains are the #1 cause of post-extraction infections.</strong> Grains get trapped deep in the socket and rot, causing infection. Stick to "gooey" rice formats until the socket has mostly closed (usually Day 10+).
+                            Living in Hyderabad, the temptation for Biryani is high. However, <strong>loose rice grains are the #1 cause of post-extraction infections.</strong> Grains get trapped deep in the socket and rot, causing infection. Stick to &quot;gooey&quot; rice formats until the socket has mostly closed (usually Day 10+).
                         </p>
 
                         <div className="bg-slate-900 dark:bg-black rounded-3xl p-8 md:p-12 text-center text-white my-12 relative overflow-hidden">

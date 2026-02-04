@@ -64,10 +64,10 @@ export const ROSTER_DB = {
         const minute = now.getMinutes();
         const day = now.getDay(); // 0 = Sun
 
-        // Clinic Hours: 11:00 AM - 10:15 PM (22:15)
+        // Clinic Hours: 9:30 AM - 11:30 PM (23:30)
         const totalMinutes = hour * 60 + minute;
-        const openTime = 11 * 60;
-        const closeTime = 22 * 60 + 15;
+        const openTime = 9 * 60 + 30;
+        const closeTime = 23 * 60 + 30;
 
         // Assuming open every day including Sunday based on "accepts 24hrs emergency out side clinic hours" 
         // implies standard operating hours are the main ones. 

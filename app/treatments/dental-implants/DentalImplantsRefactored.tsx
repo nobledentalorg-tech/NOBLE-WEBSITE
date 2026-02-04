@@ -250,7 +250,7 @@ export default function DentalImplantsRefactored() {
                             </Link>
 
                             <p className="text-lg md:text-xl text-slate-600 dark:text-slate-400 max-w-xl leading-relaxed mb-10 font-medium border-l-4 border-teal-500 pl-6">
-                                **"A missing tooth is a medical emergency for your jawbone."** <br />
+                                **&quot;A missing tooth is a medical emergency for your jawbone.&quot;** <br />
                                 Prevent facial collapse today with our ISO-certified Swiss protocols.
                             </p>
 
@@ -324,8 +324,8 @@ export default function DentalImplantsRefactored() {
                             key={tab.id}
                             href={`#${tab.id} `}
                             className={`text - xs font - black uppercase tracking - [0.2em] whitespace - nowrap transition - all duration - 300 px - 4 py - 2 rounded - full ${activeTab === tab.id
-                                    ? 'bg-teal-600 text-white'
-                                    : 'text-slate-400 hover:text-slate-900 dark:hover:text-white'
+                                ? 'bg-teal-600 text-white'
+                                : 'text-slate-400 hover:text-slate-900 dark:hover:text-white'
                                 } `}
                         >
                             {tab.label}

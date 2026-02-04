@@ -366,7 +366,7 @@ export class NeoEngine {
             id: 'availability_response',
             type: 'info',
             text: {
-                en: `Current Time: ${currentTime}. ${isOpen ? "✅ Yes, Dr. Dhivakaran is currently available at Noble Dental Care." : "🕒 The clinic is currently closed. We open at 11:00 AM."}`,
+                en: `Current Time: ${currentTime}. ${isOpen ? "✅ Yes, Dr. Dhivakaran is currently available at Noble Dental Care." : "🕒 The clinic is currently closed. We open at 9:30 AM."}`,
                 ta: `தற்போதைய நேரம்: ${currentTime}. ${isOpen ? "✅ ஆம், டாக்டர் இப்போது இருக்கிறார்." : "🕒 கிளினிக் இப்போது மூடப்பட்டுள்ளது."}`
             }
         };

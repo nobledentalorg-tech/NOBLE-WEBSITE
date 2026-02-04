@@ -119,7 +119,7 @@ export default function BlogPost() {
 
                         <h3>Why a Permanent Crown is Mandatory</h3>
                         <p>
-                            A root canal treated tooth is structurally "brittle" because it no longer has a blood supply. Studies in the <a href="https://pubmed.ncbi.nlm.nih.gov/" target="_blank" rel="noopener noreferrer">Journal of Endodontics</a> show that placing a crown within 7 days increases the tooth&apos;s lifespan by 6x.
+                            A root canal treated tooth is structurally &quot;brittle&quot; because it no longer has a blood supply. Studies in the <a href="https://pubmed.ncbi.nlm.nih.gov/" target="_blank" rel="noopener noreferrer">Journal of Endodontics</a> show that placing a crown within 7 days increases the tooth&apos;s lifespan by 6x.
                         </p>
                         <p>
                             At Noble Dental Care, we use <strong>Micro-Scanning technology</strong> to create Zirconia crowns that are indistinguishable from your natural teeth.
@@ -131,7 +131,7 @@ export default function BlogPost() {
                                 Ready for Your Permanent Crown?
                             </h3>
                             <p className="text-slate-300 mb-8 max-w-lg mx-auto leading-relaxed relative z-10">
-                                Don't leave your tooth vulnerable with just a temporary filling. Schedule your Zirconia Crown fitting today.
+                                Don&apos;t leave your tooth vulnerable with just a temporary filling. Schedule your Zirconia Crown fitting today.
                             </p>
                             <div className="flex flex-col sm:flex-row justify-center gap-4 relative z-10">
                                 <Link

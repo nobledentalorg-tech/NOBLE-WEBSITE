@@ -1,9 +1,9 @@
 
 export class NeoTime {
-    private static CLINIC_OPEN_HOUR = 11;
-    private static CLINIC_OPEN_MINUTE = 0;
-    private static CLINIC_CLOSE_HOUR = 22;
-    private static CLINIC_CLOSE_MINUTE = 15;
+    private static CLINIC_OPEN_HOUR = 9;
+    private static CLINIC_OPEN_MINUTE = 30;
+    private static CLINIC_CLOSE_HOUR = 23;
+    private static CLINIC_CLOSE_MINUTE = 30;
 
     /**
      * Gets the current date/time adjusted to Indian Standard Time (UTC+5:30).
@@ -47,6 +47,6 @@ export class NeoTime {
      * Returns the next opening time as a string.
      */
     static getNextOpenTime(): string {
-        return "11:00 AM";
+        return "9:30 AM";
     }
 }

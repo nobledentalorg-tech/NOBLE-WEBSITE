@@ -26,7 +26,7 @@ export default function NeighborhoodGuide() {
                         At the Heart of <br /> Nallagandla & Tellapur.
                     </h1>
                     <div className="flex flex-wrap justify-center gap-4 text-sm font-bold opacity-90">
-                        <span className="flex items-center gap-2"><Clock /> Standard: 11:00 AM - 10:15 PM</span>
+                        <span className="flex items-center gap-2"><Clock /> Standard: 9:30 AM - 11:30 PM</span>
                         <span className="flex items-center gap-2 text-amber-300"><Moon /> Emergency: 24/7 Available</span>
                     </div>
                 </div>
@@ -153,7 +153,7 @@ export default function NeighborhoodGuide() {
                             </li>
                             <li className="flex items-center gap-3">
                                 <div className="w-6 h-6 rounded-full bg-emerald-200 flex items-center justify-center text-emerald-700"><Clock size={12} /></div>
-                                <span className="font-bold text-emerald-900 dark:text-emerald-100">Open until 10:15 PM for IT Professionals</span>
+                                <span className="font-bold text-emerald-900 dark:text-emerald-100">Open until 11:30 PM for IT Professionals</span>
                             </li>
                         </ul>
                         <Link href="/contact" className="inline-block px-8 py-4 bg-emerald-600 text-white rounded-2xl font-bold hover:shadow-xl hover:shadow-emerald-500/20 hover:scale-105 transition-all">

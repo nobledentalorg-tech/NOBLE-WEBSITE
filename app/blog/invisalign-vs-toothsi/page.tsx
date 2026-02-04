@@ -82,7 +82,7 @@ export default function BlogPost() {
                             </li>
                             <li className="flex gap-3 text-slate-700 dark:text-slate-300 text-sm font-medium">
                                 <span className="text-purple-500 font-bold">3.</span>
-                                <span>The cost of fixing a "ruined bite" is often <strong>3x more</strong> than the initial savings.</span>
+                                <span>The cost of fixing a &quot;ruined bite&quot; is often <strong>3x more</strong> than the initial savings.</span>
                             </li>
                         </ul>
                     </div>

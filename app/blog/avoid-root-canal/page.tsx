@@ -204,7 +204,7 @@ export default function BlogPost() {
                                 Still unsure about your tooth?
                             </h3>
                             <p className="text-slate-300 mb-8 max-w-lg mx-auto leading-relaxed relative z-10">
-                                Don&apos;t guess with painkillers. Come in for a digital X-Ray. I will show you exactly what&apos;s happening inside your tooth and give you an honest "Saveability Score."
+                                Don&apos;t guess with painkillers. Come in for a digital X-Ray. I will show you exactly what&apos;s happening inside your tooth and give you an honest &quot;Saveability Score.&quot;
                             </p>
 
                             <div className="flex flex-col sm:flex-row justify-center gap-4 relative z-10">

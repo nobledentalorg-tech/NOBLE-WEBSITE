@@ -46,7 +46,7 @@ export async function generateMetadata({ params }: PageProps) {
 
     return {
         title: `${service.title} in ${locality.name} ${landmarkText} | ${timeSensitivteTitle} | Noble Dental`,
-        description: `Urgent dental pain in ${locality.name}? Dr. Dhivakaran provides ${service.title} just ${localityData?.time || '10 mins'} away. Located near ${localityData?.landmarks[0] || locality.landmark}. Open until 10:15 PM.`,
+        description: `Urgent dental pain in ${locality.name}? Dr. Dhivakaran provides ${service.title} just ${localityData?.time || '10 mins'} away. Located near ${localityData?.landmarks[0] || locality.landmark}. Open until 11:30 PM.`,
         keywords: [
             `${service.title} in ${locality.name}`,
             `${service.simple_term} ${locality.name}`,
@@ -210,7 +210,7 @@ export default function PSEOPage({ params }: PageProps) {
                         </div>
                         <div className="p-6">
                             <Clock size={48} className="mx-auto text-blue-600 mb-4" />
-                            <h3 className="text-xl font-bold mb-2">Open Late (10:15 PM)</h3>
+                            <h3 className="text-xl font-bold mb-2">Open Late (11:30 PM)</h3>
                             <p className="text-slate-600 dark:text-slate-400">The only clinic open late for working professionals.</p>
                         </div>
                     </div>

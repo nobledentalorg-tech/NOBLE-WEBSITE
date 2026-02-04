@@ -10,11 +10,11 @@ const JsonLd = () => {
                 "@id": "https://nobledentalnallagandla.in/#dentist",
                 "name": "Noble Dental Care",
                 "image": [
-                    "https://nobledentalnallagandla.in/assets/og-image.jpg",
-                    "https://nobledentalnallagandla.in/assets/images/treatments/root-canal-hyderabad.webp",
-                    "https://nobledentalnallagandla.in/assets/images/treatments/dental-implants-hyderabad.webp"
+                    "https://www.nobledentalnallagandla.in/assets/og-image.jpg",
+                    "https://www.nobledentalnallagandla.in/assets/images/treatments/root-canal-hyderabad.webp",
+                    "https://www.nobledentalnallagandla.in/assets/images/treatments/dental-implants-hyderabad.webp"
                 ],
-                "url": "https://nobledentalnallagandla.in",
+                "url": "https://www.nobledentalnallagandla.in",
                 "telephone": "+918074512305",
                 "priceRange": "₹₹",
                 "address": {
@@ -51,8 +51,8 @@ const JsonLd = () => {
                         "Saturday",
                         "Sunday"
                     ],
-                    "opens": "11:00",
-                    "closes": "22:15"
+                    "opens": "09:30",
+                    "closes": "23:30"
                 },
                 "sameAs": [
                     "https://www.facebook.com/nobledentals",
@@ -76,13 +76,13 @@ const JsonLd = () => {
             {
                 "@type": "MedicalWebPage",
                 "@id": "https://nobledentalnallagandla.in/#webpage",
-                "url": "https://nobledentalnallagandla.in",
+                "url": "https://www.nobledentalnallagandla.in",
                 "name": "Noble Dental Care - Advanced Micro-Endodontics & Implantology",
-                "description": "Leading dental clinic in Nallagandla & Tellapur. Specializing in Painless Root Canals, Laser Dentistry, and Dental Implants. Open late until 10:15 PM.",
-                "about": { "@id": "https://nobledentalnallagandla.in/#dentist" },
+                "description": "Leading dental clinic in Nallagandla & Tellapur. Specializing in Painless Root Canals, Laser Dentistry, and Dental Implants. Open late until 11:30 PM.",
+                "about": { "@id": "https://www.nobledentalnallagandla.in/#dentist" },
                 "primaryImageOfPage": {
                     "@type": "ImageObject",
-                    "url": "https://nobledentalnallagandla.in/assets/og-image.jpg"
+                    "url": "https://www.nobledentalnallagandla.in/assets/og-image.jpg"
                 },
                 "medicalAudience": {
                     "@type": "Patient",

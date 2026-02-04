@@ -223,7 +223,7 @@ export async function generateAuthorityBlogPost(topic: string, locality: string 
 
         CORE VALUES (MUST INCLUDE):
         1. **Pain Relief First**: We prioritize making the patient comfortable immediately.
-        2. **Availability**: Open late until **10:15 PM** for working professionals.
+        2. **Availability**: Open late until **11:30 PM** for working professionals.
         3. **Accessibility**: Located at **Suite 101 (Ground Floor)** for senior citizens and differently-abled patients.
 
         PROTOCOL: "CLINICAL SCHOLAR"

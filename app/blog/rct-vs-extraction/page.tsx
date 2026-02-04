@@ -79,7 +79,7 @@ export default function BlogPost() {
                             </li>
                             <li className="flex gap-3 text-slate-700 dark:text-slate-300 text-sm font-medium">
                                 <span className="text-orange-500 font-bold">3.</span>
-                                <span><strong>Structural Integrity:</strong> Removing a tooth leads to "drifting"—where adjacent teeth tilt, ruining your entire bite alignment.</span>
+                                <span><strong>Structural Integrity:</strong> Removing a tooth leads to &quot;drifting&quot;—where adjacent teeth tilt, ruining your entire bite alignment.</span>
                             </li>
                         </ul>
                     </div>
@@ -118,7 +118,7 @@ export default function BlogPost() {
 
                         <h3>When is Extraction Necessary?</h3>
                         <p>
-                            According to global clinical standards, extraction is only recommended as a "last resort" when:
+                            According to global clinical standards, extraction is only recommended as a &quot;last resort&quot; when:
                         </p>
                         <ul className="space-y-4">
                             <li><strong>Vertical Root Fracture:</strong> If the crack extends deep into the root, it cannot be saved.</li>

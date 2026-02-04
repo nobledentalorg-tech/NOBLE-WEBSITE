@@ -24,11 +24,11 @@ export const NEO_VAULT: VaultEntry[] = [
         "content": {
             "en": {
                 "question": "Is severe tooth pain at night a medical emergency?",
-                "answer": "Yes. Severe nocturnal pain often indicates acute pulpitis or an abscess. Per ADA 2026 guidelines, untreated dental infections can spread systemically. Noble Dental Nallagandla provides triage until 10:15 PM.",
+                "answer": "Yes. Severe nocturnal pain often indicates acute pulpitis or an abscess. Per ADA 2026 guidelines, untreated dental infections can spread systemically. Noble Dental Nallagandla provides triage until 11:30 PM.",
                 "advice": "Rinse with warm salt water and avoid lying flat to reduce throbbing.",
                 "source": "https://www.ada.org/resources/research/science/evidence-based-dental-research/pain-management-guideline"
             },
-            "te": { "question": "రాత్రిపూట పంటి నొప్పి వస్తే అది ఎమర్జెన్సీనా?", "answer": "అవును. తీవ్రమైన నొప్పి ఇన్ఫెక్షన్ కావచ్చు. ADA ప్రకారం దీనికి తక్షణ చికిత్స అవసరం. మేము రాత్రి 10:15 వరకు అందుబాటులో ఉంటాము." },
+            "te": { "question": "రాత్రిపూట పంటి నొప్పి వస్తే అది ఎమర్జెన్సీనా?", "answer": "అవును. తీవ్రమైన నొప్పి ఇన్ఫెక్షన్ కావచ్చు. ADA ప్రకారం దీనికి తక్షణ చికిత్స అవసరం. మేము రాత్రి 11:30 వరకు అందుబాటులో ఉంటాము." },
             "hi": { "question": "क्या रात में दांतों का दर्द इमरजेंसी है?", "answer": "हाँ। रात का तेज दर्द संक्रमण का संकेत हो सकता है। ADA के अनुसार, इसका तुरंत इलाज होना चाहिए।" },
             "ta": { "question": "இரவில் பல் வலி ஏற்பட்டால் அது அவசரநிலையா?", "answer": "ஆம். கடுமையான வலி தொற்றுநோயைக் குறிக்கலாம். ADA விதிமுறைகளின்படி இதற்கு உடனடி சிகிச்சை தேவை." },
             "kn": { "question": "ರಾತ್ರಿಯಲ್ಲಿ ಹಲ್ಲು ನೋವು ಬಂದರೆ ಅದು ತುರ್ತು ಪರಿಸ್ಥಿತಿಯೇ?", "answer": "ಹೌದು. ಇದು ಸೋಂಕಿನ ಲಕ್ಷಣವಾಗಿರಬಹುದು. ತಕ್ಷಣದ ಚಿಕಿತ್ಸೆ ಅಗತ್ಯ." },

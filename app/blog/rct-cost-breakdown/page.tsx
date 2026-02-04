@@ -120,7 +120,7 @@ export default function BlogPost() {
                             Hidden Costs to Watch For
                         </h2>
                         <p>
-                            Many "low cost" clinics add hidden charges to your bill later. Always ask before starting:
+                            Many &quot;low cost&quot; clinics add hidden charges to your bill later. Always ask before starting:
                         </p>
                         <ul className="space-y-1">
                             <li className="flex gap-2 items-center"><Info size={16} className="text-red-500" /> <strong>PPE Kits:</strong> Are they charged ₹300 per visit?</li>
@@ -128,7 +128,7 @@ export default function BlogPost() {
                             <li className="flex gap-2 items-center"><Info size={16} className="text-red-500" /> <strong>Medication:</strong> Do they sell you medicines directly at a markup?</li>
                         </ul>
                         <p>
-                            <strong>Our Promise:</strong> We offer package pricing. What you see on the estimator is what you pay. No clean-up fees. No "Bio-Waste" fees.
+                            <strong>Our Promise:</strong> We offer package pricing. What you see on the estimator is what you pay. No clean-up fees. No &quot;Bio-Waste&quot; fees.
                         </p>
 
                         <div className="bg-slate-50 dark:bg-slate-900 rounded-3xl p-8 border border-slate-200 dark:border-slate-800 mt-12">

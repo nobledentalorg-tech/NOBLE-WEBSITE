@@ -60,7 +60,6 @@ const BeforeAfterSlider: React.FC<BeforeAfterSliderProps> = ({
     }, []);
 
     return (
-    return (
         <div
             className={`relative w-full ${aspectRatio} overflow-hidden rounded-2xl select-none group cursor-col-resize focus:outline-none focus:ring-4 focus:ring-blue-500/50 transition-shadow`}
             ref={containerRef}

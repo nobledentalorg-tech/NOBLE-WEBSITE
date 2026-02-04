@@ -8,7 +8,7 @@
     "Noble Dental Clinic Nallagandla",
     "Noble Dental Care Hyderabad"
   ],
-  "description": "Top-rated multispeciality dental clinic in Nallagandla, Hyderabad providing microscopic root canal, dental implants, smile design, braces, pediatric dentistry, and laser treatments with expert care and modern technology. Accepts 24/7 Emergency Support.",
+  "description": "Top-rated multispeciality dental clinic in Nallagandla, Hyderabad providing microscopic root canal, dental implants, smile design, braces, pediatric dentistry, and laser treatments with expert care and modern technology. Available for 24/7 Dental Emergency Support.",
   "image": "https://nobledentalnallagandla.in/images/clinic-front.webp",
   "url": "https://nobledentalnallagandla.in/",
   "priceRange": "₹₹",
@@ -78,8 +78,8 @@
         "Friday",
         "Saturday"
       ],
-      "opens": "11:00",
-      "closes": "22:15"
+      "opens": "09:30",
+      "closes": "23:30"
     },
     {
       "@type": "OpeningHoursSpecification",

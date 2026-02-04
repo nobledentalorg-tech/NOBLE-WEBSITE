@@ -146,7 +146,7 @@ export default function InvisalignRefactored() {
                             </Link>
 
                             <p className="text-lg text-slate-600 dark:text-slate-400 font-medium leading-relaxed max-w-lg mb-8 border-l-4 border-blue-500 pl-6">
-                                **"We don't just straighten teeth; we engineer your bite."** <br />
+                                **&quot;We don&apos;t just straighten teeth; we engineer your bite.&quot;** <br />
                                 Our protocol prioritizes root safety and TMJ health over speed.
                             </p>
 
