@@ -468,7 +468,7 @@ export default function Gallery() {
         </RevealOnScroll>
 
         <div className="text-center mt-12">
-          <Link href="/gallery" className="inline-flex items-center gap-2 text-xs font-black uppercase tracking-widest text-slate-400 hover:text-blue-600 transition-colors group">
+          <Link href="/gallery" className="inline-flex items-center gap-2 text-xs font-black uppercase tracking-widest text-slate-600 dark:text-slate-300 hover:text-blue-600 transition-colors group">
             Open Clinical Archives <ArrowRight size={16} className="group-hover:translate-x-2 transition-transform" />
           </Link>
         </div>

@@ -197,7 +197,7 @@ const CrawlableReviews = () => {
                                             </p>
                                         </div>
                                     </div>
-                                    <span className="text-xs text-slate-500">{review.date}</span>
+                                    <span className="text-xs text-slate-400">{review.date}</span>
                                 </div>
 
                                 <div className="flex text-yellow-500 mb-3">
@@ -214,7 +214,7 @@ const CrawlableReviews = () => {
                                     <a href={review.link} target="_blank" rel="nofollow noreferrer" aria-label={`Verified on Maps - Review by ${review.author}`} className="inline-flex items-center gap-1.5 text-[10px] uppercase font-bold tracking-wider text-blue-400 hover:text-blue-300 transition-colors">
                                         <MapPin size={12} /> Verified on Maps
                                     </a>
-                                    <span className="text-[10px] text-slate-500">Google Review</span>
+                                    <span className="text-[10px] text-slate-400">Google Review</span>
                                 </div>
                             )}
                         </div>

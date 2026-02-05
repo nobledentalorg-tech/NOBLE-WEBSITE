@@ -6,6 +6,7 @@ const nextConfig = {
   experimental: {
     optimizeCss: true, // [SEO] Inline critical CSS to reduce render blocking
     optimizePackageImports: ['lucide-react', 'date-fns', 'framer-motion', 'lodash'],
+    transpilePackages: ['lucide-react', 'date-fns', 'framer-motion'], // Ensure modern ES features are used
     // Other experimental features can go here if needed
     // ppr: 'incremental',
   },

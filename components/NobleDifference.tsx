@@ -29,32 +29,32 @@ const NobleDifference = () => {
 
                         <div className="space-y-8">
                             <div className="flex gap-4 opacity-60 grayscale transition-all duration-500 hover:grayscale-0 hover:opacity-100">
-                                <div className="w-12 h-12 rounded-full bg-slate-200 dark:bg-slate-800 flex items-center justify-center text-slate-500 dark:text-slate-400 shrink-0">
+                                <div className="w-12 h-12 rounded-full bg-slate-200 dark:bg-slate-800 flex items-center justify-center text-slate-600 dark:text-slate-400 shrink-0">
                                     <ClipboardList size={20} />
                                 </div>
                                 <div>
                                     <h4 className="font-bold text-slate-900 dark:text-white">Rotational Doctors</h4>
-                                    <p className="text-sm text-slate-500 dark:text-slate-400">You might see a different junior dentist every time you visit. No continuity of care.</p>
+                                    <p className="text-sm text-slate-600 dark:text-slate-400">You might see a different junior dentist every time you visit. No continuity of care.</p>
                                 </div>
                             </div>
 
                             <div className="flex gap-4 opacity-60 grayscale transition-all duration-500 hover:grayscale-0 hover:opacity-100">
-                                <div className="w-12 h-12 rounded-full bg-slate-200 dark:bg-slate-800 flex items-center justify-center text-slate-500 dark:text-slate-400 shrink-0">
+                                <div className="w-12 h-12 rounded-full bg-slate-200 dark:bg-slate-800 flex items-center justify-center text-slate-600 dark:text-slate-400 shrink-0">
                                     <Timer size={20} />
                                 </div>
                                 <div>
                                     <h4 className="font-bold text-slate-900 dark:text-white">Volume Focused</h4>
-                                    <p className="text-sm text-slate-500 dark:text-slate-400">15-minute slots. Rushed appointments to meet corporate targets.</p>
+                                    <p className="text-sm text-slate-600 dark:text-slate-400">15-minute slots. Rushed appointments to meet corporate targets.</p>
                                 </div>
                             </div>
 
                             <div className="flex gap-4 opacity-60 grayscale transition-all duration-500 hover:grayscale-0 hover:opacity-100">
-                                <div className="w-12 h-12 rounded-full bg-slate-200 dark:bg-slate-800 flex items-center justify-center text-slate-500 dark:text-slate-400 shrink-0">
+                                <div className="w-12 h-12 rounded-full bg-slate-200 dark:bg-slate-800 flex items-center justify-center text-slate-600 dark:text-slate-400 shrink-0">
                                     <ShieldCheck size={20} />
                                 </div>
                                 <div>
                                     <h4 className="font-bold text-slate-900 dark:text-white">Basic Sterilization</h4>
-                                    <p className="text-sm text-slate-500 dark:text-slate-400">Standard protocols met, but often shared instruments between multiple units.</p>
+                                    <p className="text-sm text-slate-600 dark:text-slate-400">Standard protocols met, but often shared instruments between multiple units.</p>
                                 </div>
                             </div>
                         </div>
@@ -74,7 +74,7 @@ const NobleDifference = () => {
                                 </div>
                                 <div>
                                     <h4 className="font-bold text-slate-900 dark:text-white">One Dedicated Surgeon</h4>
-                                    <p className="text-sm text-slate-500 dark:text-slate-400">Dr. Dhivakaran personally handles your case from Start to Finish.</p>
+                                    <p className="text-sm text-slate-600 dark:text-slate-400">Dr. Dhivakaran personally handles your case from Start to Finish.</p>
                                 </div>
                             </div>
 
@@ -84,7 +84,7 @@ const NobleDifference = () => {
                                 </div>
                                 <div>
                                     <h4 className="font-bold text-slate-900 dark:text-white">Unrushed Consultations</h4>
-                                    <p className="text-sm text-slate-500 dark:text-slate-400">We block 45-60 mins for you. We listen, explain, and treat with care.</p>
+                                    <p className="text-sm text-slate-600 dark:text-slate-400">We block 45-60 mins for you. We listen, explain, and treat with care.</p>
                                 </div>
                             </div>
 
@@ -94,7 +94,7 @@ const NobleDifference = () => {
                                 </div>
                                 <div>
                                     <h4 className="font-bold text-slate-900 dark:text-white">Hospital-Grade Safety</h4>
-                                    <p className="text-sm text-slate-500 dark:text-slate-400">Class B Autoclave & 8-Step Sterilization. We don&apos;t compromise.</p>
+                                    <p className="text-sm text-slate-600 dark:text-slate-400">Class B Autoclave & 8-Step Sterilization. We don&apos;t compromise.</p>
                                 </div>
                             </div>
                         </div>

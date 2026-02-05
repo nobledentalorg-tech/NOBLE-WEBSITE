@@ -341,7 +341,7 @@ const Header: React.FC<HeaderProps> = ({ onBookClick, emergencyMode = false }) =
                                       key={lIdx}
                                       href={link.href}
                                       onClick={() => setIsMobileMenuOpen(false)}
-                                      className="text-[13px] font-bold text-slate-500 dark:text-slate-400 py-3 block"
+                                      className="text-[13px] font-bold text-slate-600 dark:text-slate-400 py-3 block"
                                     >
                                       {link.name}
                                     </Link>
