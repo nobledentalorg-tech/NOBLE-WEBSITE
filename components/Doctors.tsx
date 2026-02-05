@@ -74,7 +74,7 @@ const Doctors: React.FC = () => {
                       {doc.experience} Experience
                     </span>
                     {doc.aligners && (
-                      <span className="px-2.5 py-1 bg-teal-50 dark:bg-teal-900/30 text-xs font-black text-teal-600 dark:text-teal-400 uppercase tracking-widest rounded-lg border border-teal-100 dark:border-teal-800/50 flex items-center gap-1.5">
+                      <span className="px-2.5 py-1 bg-teal-50 dark:bg-teal-900/30 text-xs font-black text-teal-700 dark:text-teal-400 uppercase tracking-widest rounded-lg border border-teal-100 dark:border-teal-800/50 flex items-center gap-1.5">
                         <Zap size={8} fill="currentColor" /> iTero Expert
                       </span>
                     )}

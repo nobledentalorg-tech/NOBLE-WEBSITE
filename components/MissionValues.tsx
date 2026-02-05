@@ -45,7 +45,7 @@ const MissionValues = () => {
 
         <div className="grid lg:grid-cols-2 gap-20 items-center mb-24">
           <RevealOnScroll>
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-100 dark:bg-blue-900/30 text-blue-600 dark:text-cyan-400 font-bold text-xs uppercase tracking-[0.3em] mb-6">
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-cyan-400 font-bold text-xs uppercase tracking-[0.3em] mb-6">
               <Sparkles size={14} /> Our Ethos
             </div>
             <h2 className="text-4xl md:text-6xl font-black text-slate-900 dark:text-white mb-8 tracking-tighter leading-[0.9]">

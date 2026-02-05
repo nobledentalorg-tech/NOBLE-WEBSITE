@@ -34,7 +34,7 @@ export default function NeighborhoodGuide() {
 
             {/* Introduction */}
             <section className="py-16 px-6 max-w-4xl mx-auto text-center">
-                <p className="text-lg md:text-xl text-slate-600 dark:text-slate-400 leading-relaxed">
+                <p className="text-lg md:text-xl text-slate-700 dark:text-slate-400 leading-relaxed">
                     Noble Dental Care isn&apos;t just a clinic; we are a community landmark.
                     Strategically positioned to serve the vibrant residential blocks of Nallagandla and the booming IT corridors of Gopanpally.
                     Here is your guide to reaching us from key neighborhood points.
@@ -57,17 +57,17 @@ export default function NeighborhoodGuide() {
                             <h3 className="font-bold text-xl mb-4 text-slate-900 dark:text-white">Nallagandla Cluster</h3>
                             <ul className="space-y-4">
                                 <li>
-                                    <a href="https://www.google.com/maps/search/?api=1&query=Epistemo+Global+School+Nallagandla" target="_blank" rel="nofollow noreferrer" className="flex items-start gap-3 text-slate-600 dark:text-slate-400 text-[0.9rem] transition-colors hover:text-blue-600 dark:hover:text-blue-400">
+                                    <a href="https://www.google.com/maps/search/?api=1&query=Epistemo+Global+School+Nallagandla" target="_blank" rel="nofollow noreferrer" className="flex items-start gap-3 text-slate-700 dark:text-slate-400 text-[0.9rem] transition-colors hover:text-blue-600 dark:hover:text-blue-400">
                                         <Navigation size={16} /> <span><strong>Epistemo Global School</strong> (Near Aparna Cyber Life)</span>
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="https://www.google.com/maps/search/?api=1&query=Indus+International+Junior+School+Nallagandla" target="_blank" rel="nofollow noreferrer" className="flex items-start gap-3 text-slate-600 dark:text-slate-400 text-[0.9rem] transition-colors hover:text-blue-600 dark:hover:text-blue-400">
+                                    <a href="https://www.google.com/maps/search/?api=1&query=Indus+International+Junior+School+Nallagandla" target="_blank" rel="nofollow noreferrer" className="flex items-start gap-3 text-slate-700 dark:text-slate-400 text-[0.9rem] transition-colors hover:text-blue-600 dark:hover:text-blue-400">
                                         <Navigation size={16} /> <span><strong>Indus International Junior</strong> (9 mins away)</span>
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="https://www.google.com/maps/search/?api=1&query=Sadhana+Infinity+International+School" target="_blank" rel="nofollow noreferrer" className="flex items-start gap-3 text-slate-600 dark:text-slate-400 text-[0.9rem] transition-colors hover:text-blue-600 dark:hover:text-blue-400">
+                                    <a href="https://www.google.com/maps/search/?api=1&query=Sadhana+Infinity+International+School" target="_blank" rel="nofollow noreferrer" className="flex items-start gap-3 text-slate-700 dark:text-slate-400 text-[0.9rem] transition-colors hover:text-blue-600 dark:hover:text-blue-400">
                                         <Navigation size={16} /> <span><strong>Sadhana Infinity Intl</strong> (Nallagandla-Tellapur Rd)</span>
                                     </a>
                                 </li>
@@ -78,17 +78,17 @@ export default function NeighborhoodGuide() {
                             <h3 className="font-bold text-xl mb-4 text-slate-900 dark:text-white">Tellapur Corridor</h3>
                             <ul className="space-y-4">
                                 <li>
-                                    <a href="https://www.google.com/maps/search/?api=1&query=Manthan+International+School+Tellapur" target="_blank" rel="nofollow noreferrer" className="flex items-start gap-3 text-slate-600 dark:text-slate-400 text-[0.9rem] transition-colors hover:text-blue-600 dark:hover:text-blue-400">
+                                    <a href="https://www.google.com/maps/search/?api=1&query=Manthan+International+School+Tellapur" target="_blank" rel="nofollow noreferrer" className="flex items-start gap-3 text-slate-700 dark:text-slate-400 text-[0.9rem] transition-colors hover:text-blue-600 dark:hover:text-blue-400">
                                         <Navigation size={16} /> <span><strong>Manthan International School</strong> (Serving High-Value Tellapur)</span>
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="https://www.google.com/maps/search/?api=1&query=Meru+International+School+Tellapur" target="_blank" rel="nofollow noreferrer" className="flex items-start gap-3 text-slate-600 dark:text-slate-400 text-[0.9rem] transition-colors hover:text-blue-600 dark:hover:text-blue-400">
+                                    <a href="https://www.google.com/maps/search/?api=1&query=Meru+International+School+Tellapur" target="_blank" rel="nofollow noreferrer" className="flex items-start gap-3 text-slate-700 dark:text-slate-400 text-[0.9rem] transition-colors hover:text-blue-600 dark:hover:text-blue-400">
                                         <Navigation size={16} /> <span><strong>Meru International School</strong> (Beside My Home Tridasa)</span>
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="https://www.google.com/maps/search/?api=1&query=Glendale+International+School+Tellapur" target="_blank" rel="nofollow noreferrer" className="flex items-start gap-3 text-slate-600 dark:text-slate-400 text-[0.9rem] transition-colors hover:text-blue-600 dark:hover:text-blue-400">
+                                    <a href="https://www.google.com/maps/search/?api=1&query=Glendale+International+School+Tellapur" target="_blank" rel="nofollow noreferrer" className="flex items-start gap-3 text-slate-700 dark:text-slate-400 text-[0.9rem] transition-colors hover:text-blue-600 dark:hover:text-blue-400">
                                         <Navigation size={16} /> <span><strong>Glendale International School</strong></span>
                                     </a>
                                 </li>
@@ -109,7 +109,7 @@ export default function NeighborhoodGuide() {
                             <p className="text-lg text-slate-600 dark:text-slate-300 mb-6 leading-relaxed">
                                 Noble Dental Care is located just <strong>450 meters</strong> away ($17.4816° N, 78.3183° E), a short <strong>2-minute drive</strong> or <strong>6-minute walk</strong> from the mall&apos;s main entrance.
                             </p>
-                            <p className="text-sm text-slate-500 dark:text-slate-400 mb-8">
+                            <p className="text-sm text-slate-600 dark:text-slate-400 mb-8">
                                 We are the most convenient multispecialty clinic for shoppers and movie-goers at <strong>Aparna Cinemas</strong>.
                                 Finish your shopping and drop by for a quick, quality dental cleaning!
                             </p>
@@ -184,7 +184,7 @@ export default function NeighborhoodGuide() {
                     <h2 className="text-3xl md:text-4xl font-black text-slate-900 dark:text-white mb-6">
                         Parents of <span className="text-amber-500">Manthan International?</span>
                     </h2>
-                    <p className="text-lg text-slate-600 dark:text-slate-400 mb-8 leading-relaxed">
+                    <p className="text-lg text-slate-700 dark:text-slate-400 mb-8 leading-relaxed">
                         Beat the <strong>3:30 PM School-Run Traffic</strong>. Avoid the detour to Gachibowli.
                         Noble Dental Care is perfectly situated on the Tellapur-Nallagandla corridor.
                         Pick up your child and hop in for a <strong>Preventive Fluoride Check</strong> on your way home.
@@ -215,7 +215,7 @@ export default function NeighborhoodGuide() {
                         {/* Neo Mall */}
                         <div className="p-6 rounded-2xl bg-blue-50 dark:bg-blue-900/10 border border-blue-100 dark:border-blue-800/20">
                             <h4 className="font-bold text-lg text-blue-900 dark:text-blue-100 mb-2">Aparna Neo Mall</h4>
-                            <p className="text-sm text-slate-600 dark:text-slate-400 mb-4">Largest Retail Hub. Just 450 meters away.</p>
+                            <p className="text-sm text-slate-700 dark:text-slate-400 mb-4">Largest Retail Hub. Just 450 meters away.</p>
                             <a href="https://www.google.com/maps/search/?api=1&query=Aparna+Neo+Mall+Nallagandla" className="text-xs font-bold text-blue-600 hover:underline flex items-center gap-1">
                                 Get Directions <Navigation size={12} />
                             </a>
@@ -224,7 +224,7 @@ export default function NeighborhoodGuide() {
                         {/* Citizens Hospital */}
                         <div className="p-6 rounded-2xl bg-green-50 dark:bg-green-900/10 border border-green-100 dark:border-green-800/20">
                             <h4 className="font-bold text-lg text-green-900 dark:text-green-100 mb-2">Citizens Hospital</h4>
-                            <p className="text-sm text-slate-600 dark:text-slate-400 mb-4">Key Medical Landmark. 5 minutes drive.</p>
+                            <p className="text-sm text-slate-700 dark:text-slate-400 mb-4">Key Medical Landmark. 5 minutes drive.</p>
                             <a href="https://www.google.com/maps/search/?api=1&query=Citizens+Specialty+Hospital+Nallagandla" className="text-xs font-bold text-green-600 hover:underline flex items-center gap-1">
                                 Get Directions <Navigation size={12} />
                             </a>
@@ -233,7 +233,7 @@ export default function NeighborhoodGuide() {
                         {/* Kanchi Gachibowli Rd */}
                         <div className="p-6 rounded-2xl bg-slate-100 dark:bg-white/5 border border-slate-200 dark:border-white/10">
                             <h4 className="font-bold text-lg text-slate-900 dark:text-white mb-2">Kanchi Gachibowli Rd</h4>
-                            <p className="text-sm text-slate-600 dark:text-slate-400 mb-4">Our Main Artery. Connecting Gachibowli & Lingampally.</p>
+                            <p className="text-sm text-slate-700 dark:text-slate-400 mb-4">Our Main Artery. Connecting Gachibowli & Lingampally.</p>
                             <a href="https://www.google.com/maps/search/?api=1&query=Noble+Dental+Care+Nallagandla" className="text-xs font-bold text-slate-600 hover:underline flex items-center gap-1">
                                 View Location <Navigation size={12} />
                             </a>

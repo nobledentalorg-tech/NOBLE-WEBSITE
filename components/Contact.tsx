@@ -92,7 +92,7 @@ const Contact = () => {
                     {/* Contact Links */}
                     <div className="lg:col-span-5 space-y-12">
                         <RevealOnScroll>
-                            <div className="inline-flex items-center gap-3 px-4 py-2 rounded-full bg-blue-500/10 border border-blue-500/20 text-blue-600 dark:text-cyan-400 font-black text-xs uppercase tracking-[0.3em] mb-4">
+                            <div className="inline-flex items-center gap-3 px-4 py-2 rounded-full bg-blue-500/10 border border-blue-500/20 text-blue-700 dark:text-cyan-400 font-black text-xs uppercase tracking-[0.3em] mb-4">
                                 <Sparkles size={14} /> Connect With Us
                             </div>
                             <h2 className="text-5xl md:text-7xl font-black text-slate-900 dark:text-white leading-[0.9] tracking-tighter mb-8">
@@ -160,7 +160,7 @@ const Contact = () => {
                                     <div className="relative z-10">
                                         <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between mb-8 gap-4">
                                             <h3 className="text-3xl font-black text-slate-900 dark:text-white tracking-tight">Reserve clinical time.</h3>
-                                            <div className="px-4 py-1.5 bg-green-500/10 text-green-600 dark:text-green-400 text-xs font-black uppercase tracking-widest rounded-full border border-green-500/20 animate-pulse">Accepting Patients</div>
+                                            <div className="px-4 py-1.5 bg-green-500/10 text-green-700 dark:text-green-400 text-xs font-black uppercase tracking-widest rounded-full border border-green-500/20 animate-pulse">Accepting Patients</div>
                                         </div>
 
                                         <form onSubmit={handleSubmit} className="space-y-5">
