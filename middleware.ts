@@ -1,83 +1,182 @@
 import { NextResponse } from 'next/server';
 import type { NextRequest } from 'next/server';
+import { NeoSecurityLogger } from '@/neo/NeoSecurityLogger';
 
-export function middleware(request: NextRequest) {
+export async function middleware(request: NextRequest) {
     const nonce = crypto.randomUUID();
-    const ua = request.headers.get('user-agent') || ''; // Moved up for access
+    const ua = request.headers.get('user-agent') || '';
+    const ip = request.headers.get('x-forwarded-for') || 'unknown';
+    // JA4 Digest from Vercel (if available) - Critical for identifying script clusters
+    const ja4 = request.headers.get('x-vercel-ja4-digest') || request.headers.get('x-ja4-fingerprint') || '';
 
-    // Relaxed CSP Policy to restore functionality
-    // - strict-dynamic removed to allow Next.js hydration scripts
-    // - unsafe-inline allowed for scripts and styles
+    // AS Name from Vercel/Cloudflare headers
+    const asnName = request.headers.get('x-vercel-ip-as-name') || '';
 
-    // --- 🕸️ TAR PIT: DELAYED RESPONSE FOR SENSITIVE PATHS ---
-    // Instead of a quick 404/403, we stream data very slowly to waste bot resources.
-    const TAR_PIT_PATHS = ['/wp-admin', '/wp-login.php', '/.env', '/.git', '/config.yml'];
-    const isTarPit = TAR_PIT_PATHS.some(path => request.nextUrl.pathname.startsWith(path));
+    // =========================================================================
+    // 🛡️ LEVEL 0: THE ALLIES (VIP WHITELIST)
+    // =========================================================================
+    const VIP_BOTS = [
+        'googlebot', 'bingbot', 'adsbot-google', 'applebot',
+        'claudebot', 'oai-searchbot', 'vercel-screenshot',
+        'vercel-favicon', 'chrome-lighthouse',
+        'google-site-verification', 'chrome privacy preserving prefetch proxy',
+        'meta-externalagent', 'faviconhash-api', 'amazonbot'
+    ];
 
-    if (isTarPit) {
-        console.warn(`[Tar Pit] Trapped access from: ${ua} on ${request.nextUrl.pathname}`);
+    const isVerifiedBot = VIP_BOTS.some(bot => ua.toLowerCase().includes(bot));
 
-        // Create a slow stream
+    // Local Patient ISPs (ACT, Jio, Excell) - STRICT PROTECTION
+    const isPatientISP = [
+        'ACT', 'Atria Convergence Technologies', 'Jio', 'Reliance Jio Infocomm',
+        'Excell', 'Excellmedia', 'Bharti Airtel', 'Hathway'
+    ].some(safe => asnName.includes(safe));
+
+    if (isPatientISP || isVerifiedBot) {
+        return nextResponse(request, nonce);
+    }
+
+    // =========================================================================
+    // 🧱 LEVEL 0.5: THE HARD BLOCK (PERMANENT DENY)
+    // =========================================================================
+    const DENY_LIST = ['Hetzner Online GmbH', 'Tencent', 'OVH SAS', 'Sprious LLC'];
+    const isHardBlock = DENY_LIST.some(host => asnName.includes(host));
+
+    const PROTECTION_PATHS = ['/api/auth/', '/.env', '/wp-admin', '/healthflo-ai'];
+    const isSensitiveAccess = PROTECTION_PATHS.some(path => request.nextUrl.pathname.includes(path));
+    const isSprious = asnName.includes('Sprious LLC');
+
+    if (isHardBlock) {
+        // Exception: Sprious on Sensitive Path -> Allow fall-through to Level 2 (Dungeon)
+        if (isSprious && isSensitiveAccess) {
+            // Pass to Dungeon Logic
+        } else {
+            await NeoSecurityLogger.logEvent(request, 'blocked_bot', { reason: 'Permanent Deny List', asn: asnName });
+            return new NextResponse(JSON.stringify({ error: 'Access Permanently Forbidden' }), { status: 403 });
+        }
+    }
+
+    // =========================================================================
+    // 👻 LEVEL 1: GHOST SCRIPT DETECTION (ASSET VALIDATION)
+    // =========================================================================
+    // Rule: Real users load CSS/JS (Cookies/Referer). Scripts often don't.
+    // Target: High-value treatment paths where SEO/Ads land.
+
+    const isTreatmentPath = request.nextUrl.pathname.startsWith('/treatments');
+    const referer = request.headers.get('referer') || '';
+    // We check for our location cookie set in Level 4, or Next.jsAuth cookie
+    const hasSessionCookie = request.cookies.has('user-location') || request.cookies.has('noble-session');
+
+    // Logic: Treatment Path + No Referer + No Cookie + Not VIP/Patient = Ghost Script
+    // We verify strictness: Direct typing users might trigger this, but "Competitor Spies" usually use scripts.
+    const isGhostScript = isTreatmentPath && !referer && !hasSessionCookie;
+
+    if (isGhostScript) {
+        console.warn(`[👻 GHOST SCRIPT] Missing Assets. IP: ${ip} | UA: ${ua}`);
+        await NeoSecurityLogger.logEvent(request, 'blocked_bot', {
+            reason: 'Bot Trapped by Asset Validation (Ghost)',
+            path: request.nextUrl.pathname
+        });
+
+        // TRAP: Redirect to Heavy Bait (as requested)
+        return NextResponse.redirect('http://speedtest.tele2.net/100MB.zip');
+    }
+
+    // =========================================================================
+    // 📊 LEVEL 1.5: JA4 THRESHOLD (STATELESS)
+    // =========================================================================
+    // Rule: If accessing /api/auth/ without a valid JA4 or suspicious pattern -> Dungeon.
+    // (Stateless approximation of "10 hits" check by flagging suspicious single-hit intent)
+
+    const isAuthPath = request.nextUrl.pathname.includes('/api/auth');
+    const isSuspiciousJA4 = isAuthPath && !ja4; // No fingerprint on auth path is highly suspicious
+
+    // =========================================================================
+    // 🎭 LEVEL 2: BEHAVIORAL BLACKLIST & DUNGEON
+    // =========================================================================
+    const PROXY_NETWORKS = [
+        'Octopus Web Solution', 'Bunny Communications', 'M247 Europe SRL',
+        'EGIHosting', 'Alex Largman', 'ASMedi', 'Colocation America',
+        'GlobalConnect AB', 'Serverius Holding', 'Optisky Fibernet', 'Contabo'
+    ];
+
+    const WATCH_IPS = [
+        '151.246.100.35', '173.211.34.235', '142.111.245.200', '194.99.26.115',
+        '38.213.16.3', '31.58.129.52', '84.32.225.233', '194.110.115.142', '157.254.67.98'
+    ];
+
+    const isProxyRisk = PROXY_NETWORKS.some(net => asnName.includes(net)) || WATCH_IPS.includes(ip);
+
+    const DUNGEON_UAS = [
+        'headlesschrome', 'sitecheckerbotcrawler', 'ahrefsbot', 'mj12bot',
+        'python-requests', 'node-fetch', 'semrushbot', 'cms-checker'
+    ];
+
+    const isDetainedUA = DUNGEON_UAS.some(bot => ua.toLowerCase().includes(bot));
+
+    // DUNGEON CONDITIONS
+    const isDungeonCandidate =
+        ((isProxyRisk || isSprious) && isSensitiveAccess) ||
+        isDetainedUA ||
+        isSuspiciousJA4; // Added JA4 Check
+
+    if (isDungeonCandidate) {
+
+        await NeoSecurityLogger.logEvent(request, 'tar_pit', {
+            reason: isSuspiciousJA4 ? 'Suspicious JA4 (Dungeon)' : 'Behavioral Dungeon',
+            asn: asnName
+        });
+
+        // 1. HEAVY BAIT (Redirect if sensitive)
+        if (isSensitiveAccess || isSuspiciousJA4) {
+            return NextResponse.redirect('http://speedtest.tele2.net/100MB.zip');
+        }
+
+        // 2. 5-MINUTE STALL
         const encoder = new TextEncoder();
         const stream = new ReadableStream({
             async start(controller) {
-                const message = "Connecting to secure server... Please wait... ";
-                // Send initial bytes
-                controller.enqueue(encoder.encode(message));
-
-                // Drip feed bytes every second to hold connection open
+                controller.enqueue(encoder.encode("<!-- Security Inspection... -->"));
                 for (let i = 0; i < 10; i++) {
-                    await new Promise(resolve => setTimeout(resolve, 1000));
-                    controller.enqueue(encoder.encode("."));
+                    await new Promise(resolve => setTimeout(resolve, 30000));
+                    controller.enqueue(encoder.encode("<!-- . -->"));
                 }
-
-                // Finally close with a fake error or just close
-                controller.enqueue(encoder.encode("\nError: Connection Timeout\n"));
+                controller.enqueue(encoder.encode("<html><body><h1>Access Denied</h1></body></html>"));
                 controller.close();
             }
         });
 
         return new NextResponse(stream, {
-            headers: {
-                'Content-Type': 'text/plain',
-                'X-Robots-Tag': 'noindex, nofollow',
-                'Cache-Control': 'no-store'
-            }
+            status: 200,
+            headers: { 'Content-Type': 'text/html', 'Cache-Control': 'no-store', 'X-Robots-Tag': 'noindex' }
         });
     }
 
-    // --- DIGITAL MOAT: HONEYPOT TRAP ---
-    if (request.nextUrl.pathname === '/verify-access-system/') {
-        return new NextResponse(JSON.stringify({ error: 'Access Denied', reason: 'Bot Detected' }), {
-            status: 403,
-            headers: { 'Content-Type': 'application/json', 'X-Robots-Tag': 'noindex, nofollow' }
-        });
+    // =========================================================================
+    // 🚧 LEVEL 3: MANAGED CHALLENGE (Proxy "Soft-Block")
+    // =========================================================================
+
+    if (isProxyRisk) {
+        await NeoSecurityLogger.logEvent(request, 'blocked_bot', { reason: 'Proxy Soft-Block' });
+        const html = `<!DOCTYPE html><html><head><meta http-equiv="refresh" content="5"><title>Security Check</title></head><body><h1>Verifying...</h1></body></html>`;
+        return new NextResponse(html, { status: 403, headers: { 'Content-Type': 'text/html' } });
     }
 
-    // --- ACTIVE BOT DEFENSE: USER-AGENT BLOCKING ---
-    // Block verified spies/scrapers to save bandwidth and protect data
-    const start = Date.now();
+    // =========================================================================
+    // 🟢 LEVEL 4: STANDARD TRAFFIC
+    // =========================================================================
+    const city = request.geo?.city?.toLowerCase() || '';
+    const isLocal = ['hyderabad', 'serilingampalle', 'nallagandla'].includes(city);
 
-    // Normalize UA for checking
-    const uaLower = ua.toLowerCase();
+    const response = nextResponse(request, nonce);
 
-    const BLOCKED_BOTS = [
-        'semrushbot', 'siteauditbot', 'ahrefsbot', 'ahrefssiteaudit', 'rogerbot', 'mj12bot', 'dotbot', 'serpstatbot', 'barkrowler', // SEO Spies
-        'ccbot', 'meta-externalagent', 'bytespider', // Scrapers & AI Trainers
-        'httrack', 'builtwith', 'screaming frog' // Aggressive Tools
-    ];
-
-    const isBlocked = BLOCKED_BOTS.some(bot => uaLower.includes(bot));
-
-    // Allow Screaming Frog ONLY if from localhost (Dev testing) or specific IP (future)
-    // For now, simple block unless careful.
-
-    if (isBlocked) {
-        console.warn(`[Security] Blocked access from: ${ua}`);
-        // 404 Stealth Mode as requested (User doesn't want them to know they are blocked)
-        return NextResponse.rewrite(new URL('/404', request.url));
+    if (isLocal) {
+        response.cookies.set('user-location', city, { httpOnly: false, maxAge: 60 * 60 * 24 * 30 });
     }
 
+    return response;
+}
+
+function nextResponse(request: NextRequest, nonce: string) {
     const cspHeader = `
     default-src 'self';
     script-src 'self' 'unsafe-inline' 'unsafe-eval' https:;
@@ -97,24 +196,12 @@ export function middleware(request: NextRequest) {
     requestHeaders.set('x-nonce', nonce);
     requestHeaders.set('Content-Security-Policy', cspHeader);
 
-    // --- JET ENGINE 3: EDGE PERSONALIZATION ---
-    // Detect if user is from our specific service area
-    const city = request.geo?.city?.toLowerCase() || '';
-    const isLocal = ['hyderabad', 'serilingampalle', 'nallagandla'].includes(city);
-
-    if (isLocal) {
-        requestHeaders.set('x-local-authority', 'true');
-    }
-
+    // Initial non-modified response
     const response = NextResponse.next({
         request: {
             headers: requestHeaders,
         },
     });
-
-    if (isLocal) {
-        response.cookies.set('user-location', city, { httpOnly: false, maxAge: 60 * 60 * 24 * 30 }); // 30 days
-    }
 
     response.headers.set('Content-Security-Policy', cspHeader);
     response.headers.set('X-Content-Type-Options', 'nosniff');
@@ -129,14 +216,6 @@ export function middleware(request: NextRequest) {
 
 export const config = {
     matcher: [
-        /*
-         * Match all request paths except for the ones starting with:
-         * - api (API routes)
-         * - _next/static (static files)
-         * - _next/image (image optimization files)
-         * - favicon.ico (favicon file)
-         * - Common static assets (svg, png, jpg, etc.)
-         */
         '/((?!api|_next/static|_next/image|favicon.ico|.*\\.(?:svg|png|jpg|jpeg|gif|webp)$).*)',
     ],
 };

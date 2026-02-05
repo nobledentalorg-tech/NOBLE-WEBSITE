@@ -136,3 +136,17 @@ model verification_tokens {
 
   @@unique([identifier, token], map: "token_unique")
 }
+
+/// This model tracks high-velocity security events (Bot Traps, Tar Pits, Blocks)
+model security_logs {
+  id         String   @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  event_type String   // 'honeypot_trap', 'tar_pit', 'blocked_bot'
+  ip_address String?
+  user_agent String?
+  path       String?
+  metadata   Json?    // For extra details like 'geo', 'headers'
+  created_at DateTime @default(now()) @db.Timestamptz(6)
+
+  @@index([event_type])
+  @@index([created_at])
+}
