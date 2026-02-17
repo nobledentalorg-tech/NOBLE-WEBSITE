@@ -170,14 +170,32 @@ const Contact = () => {
                                                     <label htmlFor="name" className="text-xs font-black uppercase text-slate-500 tracking-[0.2em]">Patient Name</label>
                                                     <div className="relative group">
                                                         <User size={18} className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400" />
-                                                        <input type="text" id="name" name="name" required onChange={handleChange} className="w-full bg-slate-50 dark:bg-white/5 border border-slate-200 dark:border-white/10 rounded-2xl py-4 pl-12 pr-4 font-bold" placeholder="Full Name" />
+                                                        <input 
+                                                            type="text" 
+                                                            id="name" 
+                                                            name="name" 
+                                                            autoComplete="name"
+                                                            required 
+                                                            onChange={handleChange} 
+                                                            className="w-full bg-slate-50 dark:bg-white/5 border border-slate-200 dark:border-white/10 rounded-2xl py-4 pl-12 pr-4 font-bold" 
+                                                            placeholder="Full Name" 
+                                                        />
                                                     </div>
                                                 </div>
                                                 <div className="space-y-2">
                                                     <label htmlFor="phone" className="text-xs font-black uppercase text-slate-500 tracking-[0.2em]">Phone</label>
                                                     <div className="relative group">
                                                         <Phone size={18} className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400" />
-                                                        <input type="tel" id="phone" name="phone" required onChange={handleChange} className="w-full bg-slate-50 dark:bg-white/5 border border-slate-200 dark:border-white/10 rounded-2xl py-4 pl-12 pr-4 font-bold" placeholder="+91..." />
+                                                        <input 
+                                                            type="tel" 
+                                                            id="phone" 
+                                                            name="phone" 
+                                                            autoComplete="tel"
+                                                            required 
+                                                            onChange={handleChange} 
+                                                            className="w-full bg-slate-50 dark:bg-white/5 border border-slate-200 dark:border-white/10 rounded-2xl py-4 pl-12 pr-4 font-bold" 
+                                                            placeholder="+91..." 
+                                                        />
                                                     </div>
                                                 </div>
                                                 <div className="space-y-2">
