@@ -22,14 +22,13 @@ const ChatWidget = dynamic(() => import('@/components/ChatWidget'), {
  */
 interface LayoutShellProps {
     children: React.ReactNode;
-    emergencyMode?: boolean;
 }
 
 import AdaptiveUIProvider from '@/components/AdaptiveUIProvider';
 import ClinicStatusBanner from '@/components/ClinicStatusBanner';
 import { MobileUIProvider } from '@/context/MobileUIContext';
 
-export default function LayoutShell({ children, emergencyMode = false }: LayoutShellProps) {
+export default function LayoutShell({ children }: LayoutShellProps) {
 
     const [isBookingOpen, setIsBookingOpen] = useState(false);
     const [isChatDelayed, setIsChatDelayed] = useState(false);
@@ -48,7 +47,7 @@ export default function LayoutShell({ children, emergencyMode = false }: LayoutS
     return (
         <MobileUIProvider>
             <RegisterSW />
-            {!isImmersivePage && <Header onBookClick={openBooking} emergencyMode={emergencyMode} />}
+            {!isImmersivePage && <Header onBookClick={openBooking} />}
 
             <main>{children}</main>
 

@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "partytown copylib public/~partytown && next build",
+    "build": "npx partytown copylib public/~partytown && next build",
     "start": "next start",
     "lint": "next lint",
     "ingest": "node scripts/ingest-knowledge.js",

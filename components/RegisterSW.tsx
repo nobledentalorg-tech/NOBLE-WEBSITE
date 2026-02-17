@@ -14,9 +14,15 @@ export default function RegisterSW() {
                         // @ts-ignore
                         if (registration.active && 'periodicSync' in registration) {
                             try {
+                                // Check if permission is granted first
                                 // @ts-ignore
-                                registration.periodicSync.register('update-clinic-status', {
-                                    minInterval: 24 * 60 * 60 * 1000 // 1 Day
+                                navigator.permissions.query({ name: 'periodic-background-sync' }).then((status) => {
+                                    if (status.state === 'granted') {
+                                        // @ts-ignore
+                                        registration.periodicSync.register('update-clinic-status', {
+                                            minInterval: 24 * 60 * 60 * 1000 // 1 Day
+                                        }).catch((e: any) => console.log('Periodic Sync registration failed:', e));
+                                    }
                                 });
                             } catch (e) {
                                 console.log('Periodic Sync could not be registered:', e);

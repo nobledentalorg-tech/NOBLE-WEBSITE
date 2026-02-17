@@ -3,8 +3,8 @@
 import React, { useEffect, useRef } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
+import { motion } from 'framer-motion';
 import { Phone, Star, CheckCircle2, Bot } from 'lucide-react';
-
 import { useLocation } from '@/context/LocationContext';
 
 interface HeroProps {
@@ -176,7 +176,6 @@ const Hero: React.FC<HeroProps> = ({ onBookClick }) => {
                   width={135}
                   height={40}
                   className="store-badge block dark:hidden"
-                  priority
                 />
                 <Image
                   src="/images/google-play-store-download-button-in-white-color.webp"
@@ -184,7 +183,6 @@ const Hero: React.FC<HeroProps> = ({ onBookClick }) => {
                   width={115}
                   height={40}
                   className="store-badge hidden dark:block"
-                  priority
                 />
               </a>
               <a href="#" className="store-link py-1 min-h-[48px] flex items-center" aria-label="Download on the App Store">
@@ -195,7 +193,6 @@ const Hero: React.FC<HeroProps> = ({ onBookClick }) => {
                   width={128}
                   height={45}
                   className="store-badge block dark:hidden"
-                  priority
                 />
                 <Image
                   src="/images/apple-app-store-white.webp"
@@ -203,7 +200,6 @@ const Hero: React.FC<HeroProps> = ({ onBookClick }) => {
                   width={128}
                   height={45}
                   className="store-badge hidden dark:block"
-                  priority
                 />
               </a>
             </div>
@@ -222,17 +218,24 @@ const Hero: React.FC<HeroProps> = ({ onBookClick }) => {
                   priority
                   fetchPriority="high"
                 />
-                <Image
-                  src="/images/dentalcare.nallagandla.png"
-                  alt="Logo"
-                  width={1479}
-                  height={1178}
-                  className="logo w-[60px] h-auto object-contain"
-                  sizes="60px"
-                  quality={75}
-                  priority
-                  fetchPriority="high"
-                />
+                            <motion.div
+                                initial={{ opacity: 0, scale: 0.8 }}
+                                animate={{ opacity: 1, scale: 1 }}
+                                transition={{ duration: 0.8, ease: "easeOut" }}
+                                className="relative z-10"
+                            >
+                                <div className="absolute inset-0 bg-blue-500/20 blur-3xl rounded-full mix-blend-multiply filter opacity-70 animate-blob"></div>
+                                <div className="absolute top-0 -right-4 w-72 h-72 bg-purple-500/20 blur-3xl rounded-full mix-blend-multiply filter opacity-70 animate-blob animation-delay-2000"></div>
+                                <Image
+                                    src="/images/dentalcare.nallagandla.png"
+                                    alt="Noble Dental Care - Premium Dental Clinic in Nallagandla"
+                                    width={1479}
+                                    height={1178}
+                                    className="logo w-[80px] md:w-[100px] h-auto object-contain relative z-20 drop-shadow-2xl"
+                                    sizes="(max-width: 768px) 80px, 100px"
+                                    quality={90}
+                                />
+                            </motion.div>
                 <h2>ITI_SLActive <span className="light">TITANIUM</span></h2>
                 <p className="subtitle">Swiss Grade Implant</p>
 

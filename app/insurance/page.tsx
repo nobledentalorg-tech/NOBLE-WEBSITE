@@ -167,16 +167,16 @@ export default function InsurancePage() {
 
                             <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-6">
                                 {[
-                                    { name: "Star Health", src: "/images/brands/star-health.webp" },
-                                    { name: "HDFC Ergo", src: "/images/brands/hdfc-ergo.webp" },
-                                    { name: "ICICI Lombard", src: "/images/brands/icici-lombard.webp" },
-                                    { name: "Niva Bupa", src: "/images/brands/niva-bupa.webp" },
-                                    { name: "Care Health", src: "/images/brands/care-health.webp" },
-                                    { name: "Manipal Cigna", src: "/images/brands/manipal-cigna.webp" },
-                                    { name: "Tata AIG", src: "/images/brands/tata-aig.webp" },
-                                    { name: "Aditya Birla", src: "/images/brands/aditya-birla.webp" },
-                                    { name: "Bajaj Allianz", src: "/images/brands/bajaj-allianz.webp" },
-                                    { name: "SBI General", src: "/images/brands/sbi-general.webp" }
+                                    { name: "Star Health", src: "/images/brands/star-health.jpg" },
+                                    { name: "HDFC Ergo", src: "/images/brands/hdfc-ergo.jpg" },
+                                    { name: "ICICI Lombard", src: "/images/brands/icici-lombard.svg" },
+                                    { name: "Niva Bupa", src: "/images/brands/niiva-bupa.png" },
+                                    { name: "Care Health", src: "/images/brands/care-health.jpg" },
+                                    { name: "Tata AIG", src: "/images/brands/tata-aig.png" },
+                                    { name: "Aditya Birla", src: "/images/brands/aditya-birla.png" },
+                                    { name: "Bajaj Allianz", src: "/images/brands/bajaj-allianz.jpg" },
+                                    { name: "SBI General", src: "/images/brands/sbi-general.png" },
+                                    // Missing: Manipal Cigna
                                 ].map((brand, idx) => (
                                     <div
                                         key={idx}
@@ -201,12 +201,8 @@ export default function InsurancePage() {
                             <h3 className="font-bold text-lg mb-6 text-slate-700 dark:text-slate-300">Third Party Administrators (TPAs)</h3>
                             <div className="grid grid-cols-3 md:grid-cols-6 gap-4">
                                 {[
-                                    { name: "MediAssist", src: "/images/brands/medi-assist.webp" },
-                                    { name: "Vidal Health", src: "/images/brands/vidal-health.webp" },
-                                    { name: "FHPL", src: "/images/brands/fhpl.webp" },
-                                    { name: "MDIndia", src: "/images/brands/md-india.webp" },
-                                    { name: "Paramount", src: "/images/brands/paramount.webp" },
-                                    { name: "Raksha TPA", src: "/images/brands/raksha.webp" },
+                                    { name: "MediAssist", src: "/images/brands/medi-assist.jpg" },
+                                    // Missing: Vidal Health, FHPL, MDIndia, Paramount, Raksha TPA
                                 ].map((tpa, idx) => (
                                     <div
                                         key={idx}

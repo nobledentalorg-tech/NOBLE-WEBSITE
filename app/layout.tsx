@@ -125,7 +125,7 @@ export const viewport = {
 };
 
 import Script from 'next/script';
-import { Partytown } from '@qwik.dev/partytown/react';
+import Script from 'next/script';
 
 import SpeculationRules from '@/components/SpeculationRules';
 
@@ -138,6 +138,8 @@ import { Analytics } from "@vercel/analytics/next";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import AdaptiveUIProvider from '@/components/AdaptiveUIProvider';
 
+import { Suspense } from 'react';
+
 export default async function RootLayout({
   children,
 }: Readonly<{
@@ -146,29 +148,20 @@ export default async function RootLayout({
   const headersList = headers();
   const isLocal = headersList.get('x-local-authority') === 'true';
 
-  // Real-Time Command Center Data (Zero Latency)
-  const status = await getClinicRealtimeStatus();
-
   return (
     <html lang="en" suppressHydrationWarning>
       <head>
         <SpeculationRules />
         <link rel="preconnect" href="https://www.googletagmanager.com" />
-        {/* Preload critical font to eliminate 1.4s render delay - REMOVED: next/font handles this */}
-        {/* Preload high-intent logo to fix console warning and improve LCP */}
-        <link
-          rel="preload"
-          href="/images/dentalcare.nallagandla.png"
-          as="image"
-          type="image/png"
-        />
       </head>
       <body className={`${inter.variable} ${outfit.variable} font-sans min-h-screen bg-background antialiased overflow-x-hidden w-full selection:bg-cyan-500/30 selection:text-cyan-900 group/body`}>
         <LocationProvider isLocal={isLocal}>
           <Providers>
             <AdaptiveUIProvider>
-              <ClinicStatusBanner />
-              <LayoutShell emergencyMode={status.emergencyStatus}>
+              <Suspense fallback={null}>
+                <ClinicStatusBanner />
+              </Suspense>
+              <LayoutShell>
                 {children}
                 <MedicalSchema />
                 <BreadcrumbSchema />

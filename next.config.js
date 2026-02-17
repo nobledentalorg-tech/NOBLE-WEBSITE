@@ -143,6 +143,27 @@ const nextConfig = {
         destination: '/treatments/teeth-whitening',
         permanent: true,
       },
+      // New Redirects for Fix
+      {
+        source: '/specialities/invisalign.html',
+        destination: '/treatments/invisalign',
+        permanent: true,
+      },
+      {
+        source: '/services.html',
+        destination: '/treatments',
+        permanent: true,
+      },
+      {
+        source: '/specialities/braces',
+        destination: '/treatments',
+        permanent: true,
+      },
+      {
+        source: '/contact.html',
+        destination: '/contact',
+        permanent: true,
+      },
       {
         source: '/sedation-dentistry',
         destination: '/treatments/sedation-dentistry',
