@@ -43,8 +43,8 @@ const Hero: React.FC<HeroProps> = ({ onBookClick }) => {
         width = canvas.width = w;
         height = canvas.height = h;
 
-        // Optimization: Reduce particle count from 40 to 25
-        particles = Array.from({ length: 25 }, () => ({
+        // Optimization: Reduce particle count from 40 to 18
+        particles = Array.from({ length: 18 }, () => ({
           x: Math.random() * width,
           y: Math.random() * height,
           size: Math.random() * 2 + 0.5,
@@ -94,7 +94,7 @@ const Hero: React.FC<HeroProps> = ({ onBookClick }) => {
     // Optimization: Delay start to allow LCP to paint first
     const startTimeout = setTimeout(() => {
       initCanvas();
-    }, 1500);
+    }, 3000);
 
     const handleResize = () => {
       requestAnimationFrame(() => {
@@ -176,6 +176,7 @@ const Hero: React.FC<HeroProps> = ({ onBookClick }) => {
                   width={135}
                   height={40}
                   className="store-badge block dark:hidden"
+                  loading="lazy"
                 />
                 <Image
                   src="/images/google-play-store-download-button-in-white-color.webp"
@@ -183,6 +184,7 @@ const Hero: React.FC<HeroProps> = ({ onBookClick }) => {
                   width={115}
                   height={40}
                   className="store-badge hidden dark:block"
+                  loading="lazy"
                 />
               </a>
               <a href="#" className="store-link py-1 min-h-[48px] flex items-center" aria-label="Download on the App Store">
@@ -193,6 +195,7 @@ const Hero: React.FC<HeroProps> = ({ onBookClick }) => {
                   width={128}
                   height={45}
                   className="store-badge block dark:hidden"
+                  loading="lazy"
                 />
                 <Image
                   src="/images/apple-app-store-white.webp"
@@ -200,6 +203,7 @@ const Hero: React.FC<HeroProps> = ({ onBookClick }) => {
                   width={128}
                   height={45}
                   className="store-badge hidden dark:block"
+                  loading="lazy"
                 />
               </a>
             </div>
@@ -229,11 +233,12 @@ const Hero: React.FC<HeroProps> = ({ onBookClick }) => {
                                 <Image
                                     src="/images/dentalcare.nallagandla.png"
                                     alt="Noble Dental Care - Premium Dental Clinic in Nallagandla"
-                                    width={1479}
-                                    height={1178}
+                                    width={100}
+                                    height={80}
                                     className="logo w-[80px] md:w-[100px] h-auto object-contain relative z-20 drop-shadow-2xl"
                                     sizes="(max-width: 768px) 80px, 100px"
-                                    quality={90}
+                                    quality={75}
+                                    loading="lazy"
                                 />
                             </motion.div>
                 <h2>ITI_SLActive <span className="light">TITANIUM</span></h2>

@@ -14,14 +14,14 @@ const inter = Inter({
   subsets: ['latin'],
   variable: '--font-inter',
   display: 'swap',
-  weight: ['400', '500', '600', '700', '800']
+  weight: ['400', '600', '700']
 });
 
 const outfit = Outfit({
   subsets: ['latin'],
   variable: '--font-outfit',
   display: 'swap',
-  weight: ['300', '400', '500', '700']
+  weight: ['400', '700']
 });
 
 export const metadata: Metadata = {
@@ -151,6 +151,8 @@ export default async function RootLayout({
     <html lang="en" suppressHydrationWarning>
       <head>
         <SpeculationRules />
+        <link rel="dns-prefetch" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <link rel="preconnect" href="https://www.googletagmanager.com" />
       </head>
       <body className={`${inter.variable} ${outfit.variable} font-sans min-h-screen bg-background antialiased overflow-x-hidden w-full selection:bg-cyan-500/30 selection:text-cyan-900 group/body`}>

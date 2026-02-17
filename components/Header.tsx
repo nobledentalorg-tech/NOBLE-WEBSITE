@@ -135,12 +135,11 @@ const Header: React.FC<HeaderProps> = ({ onBookClick, emergencyMode = false }) =
               <Image
                 src="/images/dentalcare.nallagandla.png"
                 alt="Noble Dental"
-                width={1479}
-                height={1178}
+                width={50}
+                height={40}
                 className="w-[50px] h-auto object-contain filter drop-shadow-md"
                 sizes="50px"
                 quality={75}
-                priority
               />
             </div>
             <div className="flex flex-col border-l-2 border-slate-200 dark:border-white/10 pl-3">
