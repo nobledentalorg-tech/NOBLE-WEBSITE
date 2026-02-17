@@ -124,8 +124,7 @@ export const viewport = {
   initialScale: 1,
 };
 
-import Script from 'next/script';
-import Script from 'next/script';
+import { Partytown } from '@qwik.dev/partytown/react';
 
 import SpeculationRules from '@/components/SpeculationRules';
 
