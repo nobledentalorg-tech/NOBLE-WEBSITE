@@ -130,7 +130,6 @@ import { Partytown } from '@qwik.dev/partytown/react';
 import SpeculationRules from '@/components/SpeculationRules';
 
 import { LocationProvider } from '@/context/LocationContext';
-import { headers } from 'next/headers';
 
 import { getClinicRealtimeStatus } from '@/lib/edge-config';
 import ClinicStatusBanner from '@/components/ClinicStatusBanner';
@@ -140,13 +139,11 @@ import AdaptiveUIProvider from '@/components/AdaptiveUIProvider';
 
 import { Suspense } from 'react';
 
-export default async function RootLayout({
+export default function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const headersList = headers();
-  const isLocal = headersList.get('x-local-authority') === 'true';
 
   return (
     <html lang="en" suppressHydrationWarning>
@@ -157,7 +154,7 @@ export default async function RootLayout({
         <link rel="preconnect" href="https://www.googletagmanager.com" />
       </head>
       <body className={`${inter.variable} ${outfit.variable} font-sans min-h-screen bg-background antialiased overflow-x-hidden w-full selection:bg-cyan-500/30 selection:text-cyan-900 group/body`}>
-        <LocationProvider isLocal={isLocal}>
+        <LocationProvider>
           <Providers>
             <AdaptiveUIProvider>
               <Suspense fallback={null}>
