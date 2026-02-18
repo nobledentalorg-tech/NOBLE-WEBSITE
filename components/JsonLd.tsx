@@ -54,6 +54,28 @@ const JsonLd = () => {
                     "opens": "09:30",
                     "closes": "23:30"
                 },
+                "founder": {
+                    "@type": "Person",
+                    "name": "Dr. Dhivakaran",
+                    "jobTitle": "Dental Surgeon & Implantologist",
+                    "description": "MDS, Lead Dentist specializing in Microscopic Endodontics and Digital Implantology"
+                },
+                "medicalSpecialty": [
+                    "Endodontics",
+                    "Implantology",
+                    "Orthodontics",
+                    "Laser Dentistry",
+                    "Pediatric Dentistry"
+                ],
+                "isAcceptingNewPatients": true,
+                "availableService": [
+                    { "@type": "MedicalProcedure", "name": "Microscopic Root Canal Treatment" },
+                    { "@type": "MedicalProcedure", "name": "Digital Dental Implants" },
+                    { "@type": "MedicalProcedure", "name": "Invisalign Clear Aligners" },
+                    { "@type": "MedicalProcedure", "name": "Laser Gum Surgery" },
+                    { "@type": "MedicalProcedure", "name": "Teeth Whitening" },
+                    { "@type": "MedicalProcedure", "name": "Pediatric Dentistry" }
+                ],
                 "sameAs": [
                     "https://www.facebook.com/nobledentals",
                     "https://www.instagram.com/nobledENTAL",
