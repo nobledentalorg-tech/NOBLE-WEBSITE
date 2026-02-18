@@ -1,3 +1,5 @@
+'use client';
+
 import React, { useState } from 'react';
 import { Doctor } from '@/types';
 import Image from 'next/image';

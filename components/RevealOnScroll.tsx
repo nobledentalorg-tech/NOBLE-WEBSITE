@@ -1,66 +1,48 @@
 'use client';
 
-import React, { useEffect, useRef, useState } from 'react';
-import { motion, useInView, useAnimation } from 'framer-motion';
+import React, { useEffect, useRef, useState, type ReactNode } from 'react';
 
 interface RevealProps {
-  children: React.ReactNode;
-  className?: string; // Added support for custom classes
-  delay?: number;     // Added support for animation delay (ms)
+  children: ReactNode;
+  className?: string;
+  delay?: number;
 }
 
-// Custom Hook for hydration safety
-const useHasMounted = () => {
-  const [hasMounted, setHasMounted] = useState(false);
-  useEffect(() => {
-    setHasMounted(true);
-  }, []);
-  return hasMounted;
-};
-
 export const RevealOnScroll = ({ children, className = "", delay = 0 }: RevealProps) => {
-  const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, margin: "0px 0px -10% 0px" }); // Trigger earlier (10% from bottom)
-  const controls = useAnimation();
-  const hasMounted = useHasMounted();
+  const ref = useRef<HTMLDivElement>(null);
+  const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
-    if (isInView && hasMounted) {
-      controls.start("visible");
-    }
-  }, [isInView, hasMounted, controls]);
+    const el = ref.current;
+    if (!el) return;
 
-  // Fail-Safe: Force visibility after 3s to prevent permanent invisibility
-  useEffect(() => {
-    if (hasMounted) {
-      const timer = setTimeout(() => {
-        controls.start("visible");
-      }, 3000); // 3s safety net
-      return () => clearTimeout(timer);
-    }
-  }, [hasMounted, controls]);
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          // Apply delay if specified
+          if (delay > 0) {
+            setTimeout(() => setIsVisible(true), delay);
+          } else {
+            setIsVisible(true);
+          }
+          observer.unobserve(el);
+        }
+      },
+      { rootMargin: '0px 0px -10% 0px', threshold: 0 }
+    );
 
-  if (!hasMounted) {
-    return <div className={className}>{children}</div>;
-  }
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, [delay]);
 
   return (
-    <motion.div
+    <div
       ref={ref}
-      variants={{
-        hidden: { opacity: 1, y: 0 }, // FORCE VISIBLE (Emergency Fix)
-        visible: { opacity: 1, y: 0 }
-      }}
-      initial="hidden"
-      animate={controls}
-      transition={{
-        duration: 0.6, // Faster animation
-        ease: "easeOut",
-        delay: delay / 1000
-      }}
-      className={className}
+      className={`reveal-section ${isVisible ? 'reveal-visible' : ''} ${className}`}
+      style={{ willChange: isVisible ? 'auto' : 'opacity, transform' }}
     >
       {children}
-    </motion.div>
+    </div>
   );
 };
+

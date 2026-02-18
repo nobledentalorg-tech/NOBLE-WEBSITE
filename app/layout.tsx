@@ -4,6 +4,7 @@ import LayoutShell from '@/components/LayoutShell';
 import MedicalSchema from '@/components/seo/MedicalSchema';
 import UIProtector from '@/components/UIProtector';
 import FloatingCTA from '@/components/FloatingCTA';
+import JsonLd from '@/components/JsonLd';
 import { Providers } from '@/app/providers';
 
 import ReviewSchema from '@/components/ReviewSchema';
@@ -14,21 +15,21 @@ const inter = Inter({
   subsets: ['latin'],
   variable: '--font-inter',
   display: 'swap',
-  weight: ['400', '500', '600', '700', '800']
+  weight: ['400', '600', '700']
 });
 
 const outfit = Outfit({
   subsets: ['latin'],
   variable: '--font-outfit',
   display: 'swap',
-  weight: ['300', '400', '500', '700']
+  weight: ['400', '700']
 });
 
 export const metadata: Metadata = {
   // ... (Metadata stays same)
   title: {
-    default: "Noble Dental Care | Nallagandla's Only Microscopic Dentistry Center",
-    template: '%s'
+    default: "Microscopic Root Canal & Dental Implants in Nallagandla | Noble Dental Care",
+    template: '%s | Noble Dental Care Nallagandla'
   },
   metadataBase: new URL('https://www.nobledentalnallagandla.in'),
   alternates: {
@@ -46,7 +47,7 @@ export const metadata: Metadata = {
   verification: {
     google: 'coO5jvSypAc95p3t7cWWDaTsqtjt-W2bK3ybS21ZsIc',
   },
-  description: 'Premium, pain-free dental care for residents of Aparna Sarovar, My Home Sayuk, and Ramky One Galaxia. Specializing in Zeiss Microscopic RCT and Digital Implants. Install our app for instant booking.',
+  description: 'Best dental clinic in Nallagandla & Tellapur — Zeiss Microscopic Root Canal, Digital Implants, Invisalign & Laser Dentistry by Dr. Dhivakaran MDS. Open 7 days, late night appointments. Book online now.',
   keywords: [
     // Urgency & Availability (High Intent)
     'Emergency dentist Nallagandla', 'Dentist open on Sunday Nallagandla', 'Late night dental clinic Hyderabad', 'Urgent tooth extraction near me',
@@ -151,6 +152,8 @@ export default async function RootLayout({
     <html lang="en" suppressHydrationWarning>
       <head>
         <SpeculationRules />
+        <link rel="dns-prefetch" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <link rel="preconnect" href="https://www.googletagmanager.com" />
       </head>
       <body className={`${inter.variable} ${outfit.variable} font-sans min-h-screen bg-background antialiased overflow-x-hidden w-full selection:bg-cyan-500/30 selection:text-cyan-900 group/body`}>
@@ -162,6 +165,7 @@ export default async function RootLayout({
               </Suspense>
               <LayoutShell>
                 {children}
+                <JsonLd />
                 <MedicalSchema />
                 <BreadcrumbSchema />
                 <ReviewSchema />
