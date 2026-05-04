@@ -6,18 +6,18 @@ import { RevealOnScroll } from '@/components/RevealOnScroll';
 import Skeleton from '@/components/Skeleton';
 import { NewsTicker } from '@/components/NewsTicker';
 
-// Dynamically import components below the fold to improve LCP and TBT
-const Services = dynamic(() => import('@/components/Services'), { ssr: false });
-const About = dynamic(() => import('@/components/About'), { ssr: false });
-const MissionValues = dynamic(() => import('@/components/MissionValues'), { ssr: false });
-const Gallery = dynamic(() => import('@/components/Gallery'), { ssr: false });
-const Doctors = dynamic(() => import('@/components/Doctors'), { ssr: false });
-const FAQ = dynamic(() => import('@/components/FAQ'), { ssr: false });
-const Contact = dynamic(() => import('@/components/Contact'), { ssr: false });
-const Credentials = dynamic(() => import('@/components/Credentials'), { ssr: false });
-const TechnologyGrid = dynamic(() => import('@/components/TechnologyGrid'), { ssr: false });
-const NobleDifference = dynamic(() => import('@/components/NobleDifference'), { ssr: false });
-const CrawlableReviews = dynamic(() => import('@/components/CrawlableReviews'), { ssr: false });
+// Dynamic imports for code-splitting — SSR ENABLED for crawlability
+const Services = dynamic(() => import('@/components/Services'));
+const About = dynamic(() => import('@/components/About'));
+const MissionValues = dynamic(() => import('@/components/MissionValues'));
+const Gallery = dynamic(() => import('@/components/Gallery'));
+const Doctors = dynamic(() => import('@/components/Doctors'));
+const FAQ = dynamic(() => import('@/components/FAQ'));
+const Contact = dynamic(() => import('@/components/Contact'));
+const Credentials = dynamic(() => import('@/components/Credentials'));
+const TechnologyGrid = dynamic(() => import('@/components/TechnologyGrid'));
+const NobleDifference = dynamic(() => import('@/components/NobleDifference'));
+const CrawlableReviews = dynamic(() => import('@/components/CrawlableReviews'));
 
 export default function Home() {
     return (

@@ -17,7 +17,7 @@ const CSP_HEADER = `
     worker-src 'self' blob:;
     base-uri 'self';
     form-action 'self';
-    frame-ancestors 'none';
+    frame-ancestors 'self' https://www.google.com https://search.google.com;
 `.replace(/\s{2,}/g, ' ').trim();
 
 export async function middleware(request: NextRequest) {
@@ -71,20 +71,10 @@ export async function middleware(request: NextRequest) {
     }
 
     // =========================================================================
-    // 👻 LEVEL 1: GHOST SCRIPT DETECTION (ASSET VALIDATION)
+    // 👻 LEVEL 1: GHOST SCRIPT DETECTION — DISABLED FOR SEO
+    // Google's Chromium renderer accesses pages without referer/cookies.
+    // Blocking direct-access to /treatments was preventing indexation.
     // =========================================================================
-    const isTreatmentPath = request.nextUrl.pathname.startsWith('/treatments');
-    const referer = request.headers.get('referer') || '';
-    const hasSessionCookie = request.cookies.has('user-location') || request.cookies.has('noble-session');
-    const isGhostScript = isTreatmentPath && !referer && !hasSessionCookie;
-
-    if (isGhostScript) {
-        console.warn(`[👻 GHOST SCRIPT] IP: ${ip} | UA: ${ua}`);
-        NeoSecurityLogger.logEvent(request, 'blocked_bot', {
-            reason: 'Ghost Script', path: request.nextUrl.pathname
-        });
-        return new NextResponse(JSON.stringify({ error: 'Forbidden' }), { status: 403 });
-    }
 
     // =========================================================================
     // 📊 LEVEL 1.5: JA4 THRESHOLD (STATELESS)
@@ -110,8 +100,8 @@ export async function middleware(request: NextRequest) {
     const isProxyRisk = PROXY_NETWORKS.some(net => asnName.toLowerCase().includes(net.toLowerCase())) || WATCH_IPS.includes(ip);
 
     const DUNGEON_UAS = [
-        'headlesschrome', 'sitecheckerbotcrawler', 'ahrefsbot', 'mj12bot',
-        'python-requests', 'node-fetch', 'semrushbot', 'cms-checker'
+        'sitecheckerbotcrawler', 'mj12bot',
+        'python-requests', 'node-fetch', 'cms-checker'
     ];
 
     const isDetainedUA = DUNGEON_UAS.some(bot => ua.toLowerCase().includes(bot));
@@ -169,7 +159,7 @@ function nextResponse(request: NextRequest) {
 
     response.headers.set('Content-Security-Policy', CSP_HEADER);
     response.headers.set('X-Content-Type-Options', 'nosniff');
-    response.headers.set('X-Frame-Options', 'DENY');
+    response.headers.set('X-Frame-Options', 'SAMEORIGIN');
     response.headers.set('Referrer-Policy', 'strict-origin-when-cross-origin');
     response.headers.set('Strict-Transport-Security', 'max-age=63072000; includeSubDomains; preload');
     response.headers.set('Permissions-Policy', 'camera=(), microphone=(), geolocation=()');
