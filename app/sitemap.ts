@@ -6,44 +6,50 @@ import { pseoLocalities, pseoServices } from '@/data/pseo';
 
 const BASE_URL = 'https://www.nobledentalnallagandla.in';
 
+// Stable dates per content type — avoids "everything changed today" on every deploy
+const STATIC_LAST_MOD = new Date('2026-04-15');
+const TREATMENT_LAST_MOD = new Date('2026-04-20');
+const PSEO_LAST_MOD = new Date('2026-03-01');
+
 export default function sitemap(): MetadataRoute.Sitemap {
     // 1. Static Routes
     const staticRoutes = [
-        '',
-        '/about',
-        '/contact',
-        '/emergency',
-        '/medical-tourism',
-        '/second-opinion',
-        '/treatments/dental-implants',
-        '/treatments', // Main treatments listing page
-        '/blog',
-        '/case-studies',
-        '/residents/aparna-sarovar',
-        '/medical-tourism',
-        '/neighborhood-guide',
+        { path: '', priority: 1.0, freq: 'weekly' as const },
+        { path: '/about', priority: 0.8, freq: 'monthly' as const },
+        { path: '/contact', priority: 0.9, freq: 'monthly' as const },
+        { path: '/emergency', priority: 0.9, freq: 'monthly' as const },
+        { path: '/medical-tourism', priority: 0.7, freq: 'monthly' as const },
+        { path: '/second-opinion', priority: 0.7, freq: 'monthly' as const },
+        { path: '/treatments', priority: 0.95, freq: 'weekly' as const },
+        { path: '/treatments/dental-implants', priority: 0.9, freq: 'weekly' as const },
+        { path: '/blog', priority: 0.8, freq: 'weekly' as const },
+        { path: '/case-studies', priority: 0.7, freq: 'monthly' as const },
+        { path: '/residents/aparna-sarovar', priority: 0.6, freq: 'monthly' as const },
+        { path: '/neighborhood-guide', priority: 0.6, freq: 'monthly' as const },
+        { path: '/team', priority: 0.7, freq: 'monthly' as const },
+        { path: '/faq', priority: 0.7, freq: 'monthly' as const },
+        { path: '/book-appointment', priority: 0.8, freq: 'monthly' as const },
     ].map((route) => ({
-        url: `${BASE_URL}${route}`,
-        lastModified: new Date(),
-        changeFrequency: 'weekly' as const,
-        priority: route === '' ? 1.0 : 0.9,
+        url: `${BASE_URL}${route.path}`,
+        lastModified: STATIC_LAST_MOD,
+        changeFrequency: route.freq,
+        priority: route.priority,
     }));
 
     // 2. Dynamic Treatment Routes (79+ Pages)
     const treatmentRoutes = Object.keys(treatmentsData).map((slug) => ({
         url: `${BASE_URL}/treatments/${slug}`,
-        lastModified: new Date(),
-        changeFrequency: 'weekly' as const,
-        priority: 0.9,
+        lastModified: TREATMENT_LAST_MOD,
+        changeFrequency: 'monthly' as const,
+        priority: 0.85,
     }));
 
     // 3. Dynamic Blog Routes (NeoEngine)
-    // [DRIP-FEED SAFEGUARD] Only expose a subset of pages daily to avoid Spam Flags
     const allBlogs = NeoBlogEngine.getAllAutoBlogs().map((blog) => ({
         url: `${BASE_URL}/blog/${blog.slug}`,
         lastModified: new Date(blog.date),
         changeFrequency: 'monthly' as const,
-        priority: 0.8,
+        priority: 0.7,
     }));
 
     const blogRoutes = dripFeedFilter(allBlogs);
@@ -51,19 +57,19 @@ export default function sitemap(): MetadataRoute.Sitemap {
     // 4. PSEO Routes (Hubs & Leaves)
     const pseoHubs = pseoLocalities.map((loc) => ({
         url: `${BASE_URL}/dentist-in/${loc.slug}`,
-        lastModified: new Date(),
-        changeFrequency: 'weekly' as const,
-        priority: 0.8,
+        lastModified: PSEO_LAST_MOD,
+        changeFrequency: 'monthly' as const,
+        priority: 0.75,
     }));
 
-    const pseoLeaves = [];
+    const pseoLeaves: MetadataRoute.Sitemap = [];
     for (const loc of pseoLocalities) {
         for (const srv of pseoServices) {
             pseoLeaves.push({
                 url: `${BASE_URL}/dentist-in/${loc.slug}/${srv.slug}`,
-                lastModified: new Date(),
+                lastModified: PSEO_LAST_MOD,
                 changeFrequency: 'monthly' as const,
-                priority: 0.7,
+                priority: 0.65,
             });
         }
     }

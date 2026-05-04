@@ -7,7 +7,7 @@ const JsonLd = () => {
         "@graph": [
             {
                 "@type": "Dentist",
-                "@id": "https://nobledentalnallagandla.in/#dentist",
+                "@id": "https://www.nobledentalnallagandla.in/#dentist",
                 "name": "Noble Dental Care",
                 "image": [
                     "https://www.nobledentalnallagandla.in/assets/og-image.jpg",
@@ -80,24 +80,24 @@ const JsonLd = () => {
                     "https://www.facebook.com/nobledentals",
                     "https://www.instagram.com/nobledENTAL",
                     "https://twitter.com/NobleDentalCare",
-                    "https://g.page/r/CaOyNBxhB5M5EBM/review"
+                    "https://maps.google.com/?cid=4547168998024540590"
                 ],
                 "potentialAction": [
                     {
                         "@type": "ScheduleAction",
-                        "target": "https://nobledentalnallagandla.in/book-appointment",
+                        "target": "https://www.nobledentalnallagandla.in/book-appointment",
                         "name": "Book Appointment"
                     },
                     {
                         "@type": "CheckAction",
-                        "target": "https://nobledentalnallagandla.in/book-appointment",
+                        "target": "https://www.nobledentalnallagandla.in/book-appointment",
                         "name": "Check availability at Noble Dental"
                     }
                 ]
             },
             {
                 "@type": "MedicalWebPage",
-                "@id": "https://nobledentalnallagandla.in/#webpage",
+                "@id": "https://www.nobledentalnallagandla.in/#webpage",
                 "url": "https://www.nobledentalnallagandla.in",
                 "name": "Noble Dental Care - Advanced Micro-Endodontics & Implantology",
                 "description": "Leading dental clinic in Nallagandla & Tellapur. Specializing in Painless Root Canals, Laser Dentistry, and Dental Implants. Open late until 11:30 PM.",
@@ -117,20 +117,20 @@ const JsonLd = () => {
             },
             {
                 "@type": "ScholarlyArticle",
-                "@id": "https://nobledentalnallagandla.in/#article",
+                "@id": "https://www.nobledentalnallagandla.in/#article",
                 "headline": "Evidence-Based Dental Protocols at Noble Dental",
                 "author": {
                     "@type": "Person",
                     "name": "Dr. Dhivakaran, MDS",
                     "jobTitle": "Lead Dentist & Oral Surgeon",
                     "identifier": "TSDC-REP-2024-LIC", // Mock License ID
-                    "affiliation": { "@id": "https://nobledentalnallagandla.in/#dentist" }
+                    "affiliation": { "@id": "https://www.nobledentalnallagandla.in/#dentist" }
                 },
                 "citation": [
                     "https://doi.org/10.1016/C2009-0-42464-9", // Carranza's Periodontology
                     "https://doi.org/10.1016/C2009-0-64464-0" // Cohen's Pathways of the Pulp
                 ],
-                "publisher": { "@id": "https://nobledentalnallagandla.in/#dentist" }
+                "publisher": { "@id": "https://www.nobledentalnallagandla.in/#dentist" }
             }
         ]
     };

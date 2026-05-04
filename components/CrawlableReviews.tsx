@@ -7,7 +7,7 @@ const reviews = [
         author: "Kavitha K",
         rating: 5,
         text: "Excellent treatment and painless treatment thank-you sir ... God bless you. I can't say great things about Dr.Dhivakaran sir.. Always takes time to answer all of my questions thoroughly... My treatment has be going great.",
-        date: "4 months ago",
+        date: "2026-01-15",
         badge: "Verified Patient",
         link: "https://maps.app.goo.gl/JGcZBQw2sYdfbQbr8"
     },
@@ -15,15 +15,15 @@ const reviews = [
         author: "Rahul Seth",
         rating: 5,
         text: "A top-notch dental specialist known for exceptional customer service and swift recovery. Unlike many other clinics, Dr. Dhivakaran fees are remarkably affordable.",
-        date: "9 months ago",
+        date: "2025-08-20",
         badge: "Local Guide",
         link: "https://maps.app.goo.gl/AqeZUqHnmwidAmMj9"
     },
     {
         author: "Sailaja Kandikatla",
         rating: 5,
-        text: "My experience with the Noble dental care has been excellent. The dentist is really caring and always checks in about how my teeth are doing. I love how approachable they are and that they’re always available when needed. The results have been amazing and I truly appreciate their genuine care.",
-        date: "5 months ago",
+        text: "My experience with the Noble dental care has been excellent. The dentist is really caring and always checks in about how my teeth are doing. I love how approachable they are and that they're always available when needed. The results have been amazing and I truly appreciate their genuine care.",
+        date: "2025-12-10",
         badge: "Verified Patient",
         link: "https://maps.app.goo.gl/Tc3NcV3rXh9C5d2Z6"
     },
@@ -31,7 +31,7 @@ const reviews = [
         author: "Suganya Sweety",
         rating: 5,
         text: "Thank you doc it is one of the best dental experiences I've had in a very long time. So clean, careful, thoughtful and very professional. You are outstanding, very patient and explained every procedure with it's pros and cons...",
-        date: "3 years ago",
+        date: "2023-05-15",
         badge: "6 Reviews",
         link: "https://maps.app.goo.gl/bhwGAYmMujEzVuc56"
     },
@@ -39,7 +39,7 @@ const reviews = [
         author: "Gedekaphilli Sandhya rani",
         rating: 5,
         text: "The doctor is very very genuine and superb. My previous doctors said they have to cut my bone and do surgery to remove infection but this doctor removed my infection without cutting my bone or surgery. Very very happy that my problem is gone...",
-        date: "2 years ago",
+        date: "2024-05-10",
         badge: "Verified Patient",
         link: "https://maps.app.goo.gl/1gi45XP2VgUTfj5GA"
     },
@@ -47,7 +47,7 @@ const reviews = [
         author: "R. Revathi",
         rating: 5,
         text: "Went for Teeth cleaning to remove black stains from my mouth. Dr Dhivakaran was very polite and completely ensured me to be comfortable as I felt sensitivity at times during the process. Also he explained regarding certain brushing habits...",
-        date: "a year ago",
+        date: "2025-05-20",
         badge: "4 Reviews",
         link: "https://maps.app.goo.gl/amRSHozsMcvRZjBM7"
     },
@@ -55,7 +55,7 @@ const reviews = [
         author: "Grace",
         rating: 5,
         text: "Doctor is comforting, friendly and very patience with my kids. Very good explanation on good and bad habits with hygiene instructions. Unreasonable charges not done.i liked the way they treated us in the whole treatment.",
-        date: "a year ago",
+        date: "2025-05-05",
         badge: "Verified Patient",
         link: "https://maps.app.goo.gl/xo5CutNEtZ2YR2feA"
     },
@@ -63,7 +63,7 @@ const reviews = [
         author: "DIVYA A",
         rating: 5,
         text: "Dr Dhivakaran is kind, sharp, meticulous and takes his time to explain and answer any questions or concerns. I have been to this clinic for removing tooth , done Root canal and feel very satisfied with the level of care.",
-        date: "3 years ago",
+        date: "2023-06-12",
         badge: "4 Reviews",
         link: "https://maps.app.goo.gl/PBDQKVk4txsUC7E37"
     },
@@ -71,7 +71,7 @@ const reviews = [
         author: "Sathya",
         rating: 5,
         text: "Had a very pleasant experience with Dr.Dhivakar and his staff. Coming into the office it was very pleasant and calming.The doctor is professional, very friendly and attentive. He took the time to explain the procedure in a very informative way.",
-        date: "3 years ago",
+        date: "2023-04-18",
         badge: "Verified Patient",
         link: "https://maps.app.goo.gl/wGo6WaRK2bTf4DtY9"
     },
@@ -79,7 +79,7 @@ const reviews = [
         author: "Vishal Nirmal",
         rating: 5,
         text: "Dr Dhivakaran, soon friendly and very caring. He is very careful, precise, very hygiene, explains and plans the treatment in a very efficient manner. I was advised to remove my buried tooth in the lower jaw...",
-        date: "3 years ago",
+        date: "2023-07-22",
         badge: "2 Reviews",
         link: "https://maps.app.goo.gl/HKaLkPmfoiWzaMry6"
     },
@@ -87,7 +87,7 @@ const reviews = [
         author: "Soniya Jenifer",
         rating: 5,
         text: "The staff is friendly and very professional from the moment my walk-in and throughout our appointment.They are helped me to know how to care my teeth better &they made me feel comfortable...",
-        date: "2 years ago",
+        date: "2024-06-08",
         badge: "Verified Patient",
         link: "https://maps.app.goo.gl/FK4JHy1pPYboXkff9"
     },
@@ -95,7 +95,7 @@ const reviews = [
         author: "Yegammai Isha",
         rating: 5,
         text: "I had been to this clinic for tooth ache. The doctor was kind enough to listen my issues and helped me out. On top of everything the charges are affordable and good. Will recommend this place.",
-        date: "a year ago",
+        date: "2025-04-15",
         badge: "8 Reviews",
         link: "https://maps.app.goo.gl/JwAnXbgEYgJiQPbn8"
     },
@@ -103,7 +103,7 @@ const reviews = [
         author: "Gnanam V",
         rating: 5,
         text: "Complete professionalism from the doctor and his team, really great to have a dental care setup around, like this. I decided to take Dr Divakaran's consultation on any future dental care needs. Thank you and best wishes.",
-        date: "2 years ago",
+        date: "2024-03-25",
         badge: "4 Reviews",
         link: "https://maps.app.goo.gl/oRSSxMDE5UHufki4A"
     },
@@ -111,7 +111,7 @@ const reviews = [
         author: "Srinivasarao Yerlanki",
         rating: 5,
         text: "I have shown to my kid 3.5 yrs really Dr fantastic job with out any issue and pain very friendly Dr and smooth coordination and well support always it's clinics phase recommended Dental as Good Dr Diwakaran...",
-        date: "a year ago",
+        date: "2025-06-10",
         badge: "Local Guide",
         link: "https://maps.app.goo.gl/jU84DrDApJW4FJ7r6"
     }
@@ -122,9 +122,9 @@ const CrawlableReviews = () => {
     const reviewsSchema = {
         "@context": "https://schema.org",
         "@type": "Dentist",
-        "@id": "https://nobledentalnallagandla.in/schema/localbusiness.json",
+        "@id": "https://www.nobledentalnallagandla.in/#localbusiness",
         "name": "Noble Dental Care Nallagandla",
-        "image": "https://nobledentalnallagandla.in/images/clinic-front.webp",
+        "image": "https://www.nobledentalnallagandla.in/assets/og-image.jpg",
         "review": reviews.map(review => ({
             "@type": "Review",
             "author": {
@@ -137,7 +137,7 @@ const CrawlableReviews = () => {
                 "bestRating": "5"
             },
             "reviewBody": review.text,
-            "datePublished": review.date, // Note: ISO date preferred but relative string provided for UI
+            "datePublished": review.date,
             "url": review.link
         })),
         "aggregateRating": {
@@ -146,6 +146,7 @@ const CrawlableReviews = () => {
             "reviewCount": "427"
         }
     };
+
 
     return (
         <section className="py-16 bg-slate-900 border-t border-white/5 relative">

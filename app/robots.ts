@@ -5,14 +5,28 @@ export default function robots(): MetadataRoute.Robots {
         rules: [
             {
                 userAgent: '*',
-                allow: ['/', '/dentist-in/', '/blog/'],
-                disallow: ['/admin/', '/private/', '/tmp/', '/drafts/', '/old/', '/cgi-bin/', '/search?', '/*?sessionid=', '/*?ref=', '/*?utm_*', '/*?fbclid=*'],
+                allow: '/',
+                disallow: ['/admin/', '/private/', '/tmp/', '/drafts/', '/old/', '/cgi-bin/', '/api/', '/search?', '/*?sessionid=', '/*?ref=', '/*?utm_*', '/*?fbclid=*'],
             },
             {
-                userAgent: ['ChatGPT-User', 'GPTBot', 'Googlebot', 'Google-Extended', 'Bingbot', 'BingAI', 'ClaudeBot', 'anthropic-ai', 'PerplexityBot', 'DuckDuckBot', 'CCBot'],
-                allow: ['/'],
+                userAgent: ['Googlebot', 'Bingbot', 'Applebot', 'DuckDuckBot'],
+                allow: '/',
+            },
+            {
+                userAgent: ['ChatGPT-User', 'GPTBot', 'Google-Extended', 'BingAI', 'ClaudeBot', 'PerplexityBot', 'OAI-SearchBot'],
+                allow: '/',
+            },
+            {
+                // Allow ONE SEO audit tool for your own monitoring
+                userAgent: 'ScreamingFrogSEOSpider',
+                allow: '/',
+            },
+            {
+                // Block competitor scrapers
+                userAgent: ['AhrefsBot', 'SemrushBot', 'MJ12bot', 'DotBot', 'BLEXBot', 'Bytespider'],
+                disallow: '/',
             }
         ],
-        sitemap: 'https://nobledentalnallagandla.in/sitemap.xml',
+        sitemap: 'https://www.nobledentalnallagandla.in/sitemap.xml',
     };
 }

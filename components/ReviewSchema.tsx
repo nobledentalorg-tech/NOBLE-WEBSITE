@@ -25,8 +25,8 @@ export default function ReviewSchema() {
         },
         "aggregateRating": {
             "@type": "AggregateRating",
-            "ratingValue": "5",
-            "reviewCount": "40",
+            "ratingValue": "4.9",
+            "reviewCount": "427",
             "bestRating": "5",
             "worstRating": "1"
         },
