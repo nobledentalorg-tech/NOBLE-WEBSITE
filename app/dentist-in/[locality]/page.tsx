@@ -9,6 +9,8 @@ import { MapPin, ArrowRight, ShieldCheck, Star } from 'lucide-react';
 
 export const revalidate = 60;
 
+const BASE_URL = 'https://www.nobledentalnallagandla.in';
+
 interface PageProps {
     params: {
         locality: string;
@@ -28,17 +30,11 @@ export async function generateMetadata({ params }: PageProps) {
     if (!locality) return {};
 
     return {
-        title: `Best dental clinic for residents of ${locality.name} | Noble Dental Care`,
-        description: `Looking for a dentist in ${locality.name}? Dr. Dhivakaran provides world-class dental care just ${localityData?.time || '10 mins'} from ${locality.landmark}.`,
-        keywords: [
-            `Dentist in ${locality.name}`,
-            `Dental clinic for ${locality.name} residents`,
-            `Best dentist near ${locality.landmark}`,
-            `Oral surgery ${locality.name}`,
-            'Noble Dental Care',
-            'Nallagandla',
-            'Hyderabad'
-        ],
+        title: `Best Dentist Near ${locality.name} | Noble Dental Care Nallagandla`,
+        description: `Looking for a dentist near ${locality.name}, Hyderabad? Noble Dental Care is just ${localityData?.time || '10 mins'} away. Root canals, implants, Invisalign & emergency care by Dr. Dhivakaran. 427+ Google Reviews ⭐ 4.9`,
+        alternates: {
+            canonical: `${BASE_URL}/dentist-in/${locality.slug}`,
+        },
     };
 }
 
@@ -53,6 +49,85 @@ export default function LocalityHubPage({ params }: PageProps) {
     return (
         <div className="min-h-screen bg-slate-50 dark:bg-slate-950 font-sans text-slate-900 dark:text-white">
             <Header />
+
+            {/* LocalBusiness + BreadcrumbList Schema */}
+            <script
+                type="application/ld+json"
+                dangerouslySetInnerHTML={{
+                    __html: JSON.stringify({
+                        '@context': 'https://schema.org',
+                        '@graph': [
+                            {
+                                '@type': 'Dentist',
+                                '@id': `${BASE_URL}/#dentist`,
+                                name: 'Noble Dental Care',
+                                image: `${BASE_URL}/images/dentalcare.nallagandla.png`,
+                                url: `${BASE_URL}/dentist-in/${locality.slug}`,
+                                telephone: '+91-8610425342',
+                                priceRange: '₹₹',
+                                address: {
+                                    '@type': 'PostalAddress',
+                                    streetAddress: 'Plot 151/2, ICA Clinic 1st Floor, HUDA Layout Water Tank Road',
+                                    addressLocality: 'Nallagandla',
+                                    addressRegion: 'Telangana',
+                                    postalCode: '500019',
+                                    addressCountry: 'IN'
+                                },
+                                geo: {
+                                    '@type': 'GeoCoordinates',
+                                    latitude: 17.4747785,
+                                    longitude: 78.3102918
+                                },
+                                areaServed: {
+                                    '@type': 'City',
+                                    name: `${locality.name}, Hyderabad`
+                                },
+                                aggregateRating: {
+                                    '@type': 'AggregateRating',
+                                    ratingValue: '4.9',
+                                    reviewCount: '427',
+                                    bestRating: '5'
+                                },
+                                openingHoursSpecification: [
+                                    {
+                                        '@type': 'OpeningHoursSpecification',
+                                        dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'],
+                                        opens: '09:30',
+                                        closes: '21:00'
+                                    },
+                                    {
+                                        '@type': 'OpeningHoursSpecification',
+                                        dayOfWeek: 'Sunday',
+                                        opens: '13:00',
+                                        closes: '21:00'
+                                    }
+                                ],
+                                sameAs: [
+                                    'https://www.google.com/maps/place/Noble+Dental+Care',
+                                    'https://www.justdial.com/Hyderabad/Noble-Dental-Care-Multispeciality-Dental-Clinic/040PXX40-XX40-230311104127-B8Q4_BZDET'
+                                ]
+                            },
+                            {
+                                '@type': 'BreadcrumbList',
+                                itemListElement: [
+                                    {
+                                        '@type': 'ListItem',
+                                        position: 1,
+                                        name: 'Home',
+                                        item: BASE_URL
+                                    },
+                                    {
+                                        '@type': 'ListItem',
+                                        position: 2,
+                                        name: `Dentist Near ${locality.name}`,
+                                        item: `${BASE_URL}/dentist-in/${locality.slug}`
+                                    }
+                                ]
+                            }
+                        ]
+                    })
+                }}
+            />
 
             <main className="pt-32 pb-20">
                 <section className="max-w-7xl mx-auto px-6 mb-16 text-center">

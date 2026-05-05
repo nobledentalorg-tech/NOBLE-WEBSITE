@@ -1,4 +1,6 @@
 import type { Metadata } from 'next';
+
+const BASE_URL = 'https://www.nobledentalnallagandla.in';
 import { treatmentsData } from '@/data/treatments';
 import { notFound } from 'next/navigation';
 import Image from 'next/image';
@@ -39,11 +41,15 @@ export async function generateMetadata({ params }: { params: { slug: string } })
   return {
     title: `${treatment.title} in Nallagandla | Noble Dental Care`,
     description: treatment.description,
-    keywords: [...treatment.keywords, 'Dentist Nallagandla', 'Hyderabad'],
+    alternates: {
+      canonical: `${BASE_URL}/treatments/${params.slug}`,
+    },
     openGraph: {
-      title: treatment.title,
+      title: `${treatment.title} in Nallagandla | Noble Dental Care`,
       description: treatment.description,
       images: [treatment.heroImage],
+      url: `${BASE_URL}/treatments/${params.slug}`,
+      type: 'article',
     }
   };
 }
@@ -104,6 +110,29 @@ export default function TreatmentPage({ params }: { params: { slug: string } }) 
             '@context': 'https://schema.org',
             '@graph': [
               jsonLd,
+              {
+                '@type': 'BreadcrumbList',
+                itemListElement: [
+                  {
+                    '@type': 'ListItem',
+                    position: 1,
+                    name: 'Home',
+                    item: BASE_URL
+                  },
+                  {
+                    '@type': 'ListItem',
+                    position: 2,
+                    name: 'Treatments',
+                    item: `${BASE_URL}/treatments`
+                  },
+                  {
+                    '@type': 'ListItem',
+                    position: 3,
+                    name: t.title,
+                    item: `${BASE_URL}/treatments/${params.slug}`
+                  }
+                ]
+              },
               ...(t.faqs ? [{
                 '@type': 'FAQPage',
                 mainEntity: t.faqs.map(f => ({

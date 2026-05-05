@@ -9,7 +9,7 @@ const BASE_URL = 'https://www.nobledentalnallagandla.in';
 // Stable dates per content type — avoids "everything changed today" on every deploy
 const STATIC_LAST_MOD = new Date('2026-04-15');
 const TREATMENT_LAST_MOD = new Date('2026-04-20');
-const PSEO_LAST_MOD = new Date('2026-03-01');
+const PSEO_LAST_MOD = new Date('2026-05-05');
 
 export default function sitemap(): MetadataRoute.Sitemap {
     // 1. Static Routes
@@ -29,6 +29,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
         { path: '/team', priority: 0.7, freq: 'monthly' as const },
         { path: '/faq', priority: 0.7, freq: 'monthly' as const },
         { path: '/book-appointment', priority: 0.8, freq: 'monthly' as const },
+        { path: '/blog/dental-implant-cost-nallagandla', priority: 0.9, freq: 'monthly' as const },
+        { path: '/blog/rct-cost-breakdown', priority: 0.85, freq: 'monthly' as const },
     ].map((route) => ({
         url: `${BASE_URL}${route.path}`,
         lastModified: STATIC_LAST_MOD,

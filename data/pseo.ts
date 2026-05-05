@@ -114,5 +114,61 @@ export const pseoServices: PSEOService[] = [
         phonetic: "Max-ill-o-fac-ial Sur-geon",
         simple_term: "Wisdom Tooth Extraction",
         category: "Emergency"
+    },
+    {
+        slug: "invisalign",
+        title: "Invisalign & Clear Aligners",
+        emergency_hook: "Want straighter teeth without ugly metal braces?",
+        phonetic: "In-viz-a-line",
+        simple_term: "Invisible Teeth Straightening",
+        category: "Orthodontics"
+    },
+    {
+        slug: "teeth-whitening",
+        title: "Professional Teeth Whitening",
+        emergency_hook: "Yellow or stained teeth affecting your confidence?",
+        phonetic: "Teeth Why-ten-ing",
+        simple_term: "Teeth Brightening Treatment",
+        category: "Cosmetic"
+    },
+    {
+        slug: "crowns-bridges",
+        title: "Zirconia Crowns & Bridges",
+        emergency_hook: "Broken tooth or black-line metal cap needing replacement?",
+        phonetic: "Zir-cone-ee-a Crown",
+        simple_term: "Tooth Cap / Dental Cap",
+        category: "Restorative"
+    },
+    {
+        slug: "tooth-fillings",
+        title: "Invisible Tooth Fillings",
+        emergency_hook: "Cavity or hole in your tooth causing sensitivity?",
+        phonetic: "Com-poz-it Fill-ing",
+        simple_term: "Cavity Filling Treatment",
+        category: "Restorative"
+    },
+    {
+        slug: "scaling-whitening",
+        title: "Teeth Cleaning & Scaling",
+        emergency_hook: "Bad breath or yellow tartar build-up on your teeth?",
+        phonetic: "Den-tal Scale-ing",
+        simple_term: "Professional Teeth Cleaning",
+        category: "Preventive"
+    },
+    {
+        slug: "gum-disease",
+        title: "Gum Disease Treatment",
+        emergency_hook: "Bleeding, swollen, or receding gums causing pain?",
+        phonetic: "Peri-o-dont-ics",
+        simple_term: "Bleeding Gums Treatment",
+        category: "Periodontics"
+    },
+    {
+        slug: "smile-design",
+        title: "Smile Makeover & Designing",
+        emergency_hook: "Unhappy with crooked, chipped, or discoloured front teeth?",
+        phonetic: "Smile De-zine",
+        simple_term: "Complete Smile Transformation",
+        category: "Cosmetic"
     }
 ];
