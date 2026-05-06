@@ -102,7 +102,7 @@ export default function FAQEntryPage({ params }: PageProps) {
                         <div className="prose dark:prose-invert max-w-none">
                             <h3 className="flex items-center gap-3 text-lg font-bold text-slate-900 dark:text-white mb-4">
                                 <Stethoscope className="text-blue-500" />
-                                Dr. Dhivakaran&apos;s Clinical Note
+                                Dr. Dhivakaran Reddy&apos;s Clinical Note
                             </h3>
                             <p className="text-slate-600 dark:text-slate-400 leading-7">
                                 {data.clinicalDetail}

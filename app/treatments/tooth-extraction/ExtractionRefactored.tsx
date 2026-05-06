@@ -126,7 +126,7 @@ export default function ExtractionRefactored() {
                                 <span className="gradient-text">Extraction.</span>
                             </h1>
                             <p className="text-xl text-slate-600 dark:text-slate-400 font-medium leading-relaxed max-w-lg">
-                                As the **Best Dentist in Nallagandla**, **Dr. Dhivakaran** leads our surgical team at **Noble Dental Care Hyderabad**, located **Near Aparna Sarovar / Citizens Hospital**. We specialize in **Atraumatic Extraction Hyderabad** and **Tooth Extraction Treatment in Nallagandla** using advanced **Socket Preservation Nallagandla** protocols and **PRF Therapy in Dentistry** for immediate healing.
+                                As the **Best Dentist in Nallagandla**, **Dr. Dhivakaran Reddy** leads our surgical team at **Noble Dental Care Hyderabad**, located **Near Aparna Sarovar / Citizens Hospital**. We specialize in **Atraumatic Extraction Hyderabad** and **Tooth Extraction Treatment in Nallagandla** using advanced **Socket Preservation Nallagandla** protocols and **PRF Therapy in Dentistry** for immediate healing.
                             </p>
 
                             <div className="flex flex-wrap gap-4">
@@ -214,7 +214,7 @@ export default function ExtractionRefactored() {
                                     &quot;I am scared of the pain and the pressure.&quot;
                                 </h2>
                                 <p className="text-lg text-slate-600 dark:text-slate-400 mb-8 leading-relaxed font-medium italic">
-                                    &quot;Most patients fear the &apos;pulling&apos; sensation. As the **Best Dentist in Nallagandla**, I use Physics Forceps and **PRF Therapy in Dentistry** to ensure a **Painless Tooth Removal** experience. At **Noble Dental Care Hyderabad**, our focus is **Socket Preservation Nallagandla**—ensuring the bone remains intact for future implants using surgical **Bone Grafts after Extraction**.&quot; — **Dr. Dhivakaran**
+                                    &quot;Most patients fear the &apos;pulling&apos; sensation. As the **Best Dentist in Nallagandla**, I use Physics Forceps and **PRF Therapy in Dentistry** to ensure a **Painless Tooth Removal** experience. At **Noble Dental Care Hyderabad**, our focus is **Socket Preservation Nallagandla**—ensuring the bone remains intact for future implants using surgical **Bone Grafts after Extraction**.&quot; — **Dr. Dhivakaran Reddy**
                                 </p>
                                 <div className="space-y-4">
                                     {[
@@ -390,7 +390,7 @@ export default function ExtractionRefactored() {
                                 </div>
                                 <h3 className="text-2xl font-black mb-4">Hospital-Grade Safety</h3>
                                 <p className="text-slate-400 text-sm leading-relaxed mb-8">
-                                    Chief Medical Director **Dr. Dhivakaran** ensures every surgical procedure at **Noble Dental Care Hyderabad** follows strict international sterilization and pre-op vitals protocols.
+                                    Chief Medical Director **Dr. Dhivakaran Reddy** ensures every surgical procedure at **Noble Dental Care Hyderabad** follows strict international sterilization and pre-op vitals protocols.
                                 </p>
                                 <button className="px-8 py-3 bg-white text-slate-900 rounded-full font-black text-xs uppercase tracking-widest hover:scale-105 transition-transform">
                                     Request Safety Protocol PDF
@@ -409,7 +409,7 @@ export default function ExtractionRefactored() {
                             <h2 className="text-4xl md:text-5xl font-black text-slate-900 dark:text-white mb-6 tracking-tighter leading-none">
                                 Save vs. Extract?
                             </h2>
-                            <p className="text-lg text-slate-500 font-medium italic">Honest advice from Dr. Dhivakaran.</p>
+                            <p className="text-lg text-slate-500 font-medium italic">Honest advice from Dr. Dhivakaran Reddy.</p>
                         </div>
 
                         <div className="ios-glass overflow-hidden rounded-[3rem] border border-white/20 shadow-2xl">
@@ -533,7 +533,7 @@ export default function ExtractionRefactored() {
                         </h2>
                         <div className="flex flex-col md:flex-row items-center justify-center gap-6">
                             <button className="ios-btn px-10 py-5 bg-blue-600 text-white rounded-full font-black uppercase tracking-widest text-sm shadow-2xl">
-                                Book Dr. Dhivakaran
+                                Book Dr. Dhivakaran Reddy
                             </button>
                             <a href="tel:+918610425342" className="ios-btn px-10 py-5 bg-white/10 text-white border border-white/20 rounded-full font-black uppercase tracking-widest text-sm">
                                 Emergency Line

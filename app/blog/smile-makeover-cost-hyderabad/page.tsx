@@ -8,21 +8,21 @@ const SLUG = 'smile-makeover-cost-hyderabad';
 
 export const metadata = {
     title: 'Smile Makeover Cost in Hyderabad & Nallagandla (2026) | Noble Dental',
-    description: 'Complete smile makeover cost in Hyderabad from ₹15,000 to ₹3L. Veneers, bonding, whitening & aligners combined. Digital Smile Design by Dr. Dhivakaran. Before/after results.',
+    description: 'Complete smile makeover cost in Hyderabad from ₹15,000 to ₹3L. Veneers, bonding, whitening & aligners combined. Digital Smile Design by Dr. Dhivakaran Reddy. Before/after results.',
     alternates: { canonical: `${BASE}/blog/${SLUG}` },
     openGraph: { title: 'Smile Makeover Cost Hyderabad 2026', url: `${BASE}/blog/${SLUG}`, type: 'article' },
 };
 
 const faqs = [
     { q: 'How much does a smile makeover cost in Hyderabad?', a: 'A smile makeover at Noble Dental ranges from ₹15,000 (teeth whitening + bonding) to ₹3L+ (full veneer set + gum contouring). The cost depends on how many teeth are involved and which treatments are combined.' },
-    { q: 'What is included in a smile makeover?', a: 'A smile makeover can include any combination of: teeth whitening, dental veneers, composite bonding, gum contouring, crowns, and aligners. Dr. Dhivakaran designs a custom plan based on your smile analysis.' },
+    { q: 'What is included in a smile makeover?', a: 'A smile makeover can include any combination of: teeth whitening, dental veneers, composite bonding, gum contouring, crowns, and aligners. Dr. Dhivakaran Reddy designs a custom plan based on your smile analysis.' },
     { q: 'How long does a smile makeover take?', a: 'Simple makeovers (whitening + bonding) take 1-2 visits. Full veneer cases take 2-3 weeks. Complex cases with aligners can take 3-6 months.' },
     { q: 'Are dental veneers permanent?', a: 'Porcelain veneers last 15-20 years. Composite veneers last 5-7 years. Both require minimal tooth preparation. Veneers are an irreversible procedure — once placed, you\'ll always need veneers on those teeth.' },
 ];
 
 const jsonLd = {
     '@context': 'https://schema.org', '@graph': [
-        { '@type': 'Article', headline: 'Smile Makeover Cost in Hyderabad (2026)', author: { '@type': 'Person', name: 'Dr. Dhivakaran R' }, publisher: { '@type': 'Organization', name: 'Noble Dental Care' }, datePublished: '2026-05-06', mainEntityOfPage: `${BASE}/blog/${SLUG}` },
+        { '@type': 'Article', headline: 'Smile Makeover Cost in Hyderabad (2026)', author: { '@type': 'Person', name: 'Dr. Dhivakaran Reddy' }, publisher: { '@type': 'Organization', name: 'Noble Dental Care' }, datePublished: '2026-05-06', mainEntityOfPage: `${BASE}/blog/${SLUG}` },
         { '@type': 'BreadcrumbList', itemListElement: [{ '@type': 'ListItem', position: 1, name: 'Home', item: BASE }, { '@type': 'ListItem', position: 2, name: 'Blog', item: `${BASE}/blog` }, { '@type': 'ListItem', position: 3, name: 'Smile Makeover Cost', item: `${BASE}/blog/${SLUG}` }] },
         { '@type': 'FAQPage', mainEntity: faqs.map(f => ({ '@type': 'Question', name: f.q, acceptedAnswer: { '@type': 'Answer', text: f.a } })) }
     ]
@@ -48,7 +48,7 @@ export default function Page() {
                     <div className="flex items-center gap-3 mb-6"><span className="px-3 py-1 rounded-full bg-rose-100 dark:bg-rose-900/30 text-rose-700 dark:text-rose-400 text-xs font-black uppercase tracking-widest">Cosmetic Guide</span><span className="text-slate-400 text-xs font-bold uppercase tracking-widest">5 Min Read</span></div>
                     <h1 className="text-3xl md:text-5xl font-black text-slate-900 dark:text-white mb-6 leading-[1.15]">Smile Makeover Cost in Hyderabad: <span className="text-rose-600">Complete 2026 Guide</span><br /><span className="text-slate-400 font-light text-2xl md:text-3xl">Veneers, Bonding, Whitening — What&apos;s Worth It?</span></h1>
                     <div className="flex items-center justify-between border-y border-slate-100 dark:border-white/10 py-6">
-                        <div className="flex items-center gap-4"><div className="relative w-12 h-12 rounded-full overflow-hidden border-2 border-slate-200"><Image src="/images/dr-dhivakaran.webp" alt="Dr. Dhivakaran" width={48} height={48} className="object-cover" /></div><div><div className="flex items-center gap-2"><span className="font-bold text-slate-900 dark:text-white text-sm">Dr. Dhivakaran R</span><ShieldCheck size={14} className="text-blue-500" /></div><p className="text-xs text-slate-500 m-0">MDS, Cosmetic Dentistry • 12+ Years</p></div></div>
+                        <div className="flex items-center gap-4"><div className="relative w-12 h-12 rounded-full overflow-hidden border-2 border-slate-200"><Image src="/images/dr-dhivakaran.webp" alt="Dr. Dhivakaran Reddy" width={48} height={48} className="object-cover" /></div><div><div className="flex items-center gap-2"><span className="font-bold text-slate-900 dark:text-white text-sm">Dr. Dhivakaran Reddy</span><ShieldCheck size={14} className="text-blue-500" /></div><p className="text-xs text-slate-500 m-0">Chief Dental Surgeon CMD, Healthflo - Director, NOBLE OS-NEO AI - CTO</p></div></div>
                         <div className="text-right hidden sm:block"><p className="text-xs text-slate-400 uppercase tracking-widest font-bold mb-1">Updated</p><p className="text-sm font-medium text-slate-700 dark:text-slate-300">May 2026</p></div>
                     </div>
                 </header>

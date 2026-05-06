@@ -28,7 +28,7 @@ export default function EmergencyPage() {
 
                     <div className="flex flex-col sm:flex-row justify-center gap-6">
                         <a href="tel:+918610425342" className="px-10 py-5 bg-red-600 hover:bg-red-700 text-white rounded-2xl font-black uppercase text-xl shadow-2xl flex items-center justify-center gap-3 animate-bounce">
-                            <Phone size={24} /> Call Dr. Dhivakaran Directly: 861-042-5342
+                            <Phone size={24} /> Call Dr. Dhivakaran Reddy Directly: 861-042-5342
                         </a>
                         <a href="https://wa.me/918610425342?text=EMERGENCY:%20I%20am%20in%20severe%20pain." className="px-10 py-5 bg-white dark:bg-white/5 text-slate-900 dark:text-white border border-slate-200 dark:border-white/10 hover:border-green-500 rounded-2xl font-bold uppercase text-sm flex items-center justify-center gap-3">
                             WhatsApp Support

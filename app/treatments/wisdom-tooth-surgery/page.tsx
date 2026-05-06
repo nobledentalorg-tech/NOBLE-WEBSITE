@@ -108,7 +108,7 @@ export default function WisdomToothPage() {
         },
         "performer": {
             "@type": "Dentist",
-            "name": "Dr. Dhivakaran",
+            "name": "Dr. Dhivakaran Reddy",
             "url": "https://nobledentalnallagandla.in/team/dr-dhivakaran"
         }
     };
@@ -157,11 +157,11 @@ export default function WisdomToothPage() {
                             <div className="flex items-center gap-4 py-4">
                                 <Link href="/team/dr-dhivakaran" className="ios-glass ios-btn flex items-center gap-3 p-2 pr-6 rounded-full group hover:bg-white/50 dark:hover:bg-white/10">
                                     <div className="w-10 h-10 rounded-full bg-slate-200 dark:bg-slate-800 overflow-hidden relative">
-                                        <Image src="https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?auto=format&fit=crop&q=80&w=100" alt="Dr. Dhivakaran" fill className="object-cover" />
+                                        <Image src="https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?auto=format&fit=crop&q=80&w=100" alt="Dr. Dhivakaran Reddy" fill className="object-cover" />
                                     </div>
                                     <div className="text-left">
                                         <div className="text-xs uppercase text-blue-600 dark:text-blue-400 font-bold tracking-wider">Reviewed By</div>
-                                        <div className="text-xs font-bold text-slate-900 dark:text-white">Dr. Dhivakaran, MDS (Maxillofacial)</div>
+                                        <div className="text-xs font-bold text-slate-900 dark:text-white">Dr. Dhivakaran Reddy - Chief Dental Surgeon CMD, Healthflo - Director, NOBLE OS-NEO AI - CTO</div>
                                     </div>
                                 </Link>
                             </div>

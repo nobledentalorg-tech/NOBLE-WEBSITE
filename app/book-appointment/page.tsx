@@ -4,7 +4,7 @@ import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
     title: 'Book Appointment | Noble Dental Care',
-    description: 'Reserve your clinical time with Dr. Dhivakaran. Single visit RCTs, Implants, and Invisalign. Instant WhatsApp confirmation.',
+    description: 'Reserve your clinical time with Dr. Dhivakaran Reddy. Single visit RCTs, Implants, and Invisalign. Instant WhatsApp confirmation.',
     alternates: {
         canonical: '/book-appointment',
     },

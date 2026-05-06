@@ -218,7 +218,7 @@ export default function ToothFillingsRefactored() {
                                     </div>
                                     <h3 className="text-3xl font-black text-slate-900 dark:text-white mb-6 tracking-tight">The &quot;No-Compromise&quot; Guarantee</h3>
                                     <p className="text-lg text-slate-500 italic">&quot;I will never perform a composite restoration without absolute moisture control. Your tooth&apos;s life depends on that 7th-gen bond.&quot;</p>
-                                    <div className="mt-8 text-xs font-black text-blue-600 tracking-widest uppercase">— Dr. Dhivakaran</div>
+                                    <div className="mt-8 text-xs font-black text-blue-600 tracking-widest uppercase">— Dr. Dhivakaran Reddy</div>
                                 </div>
                             </div>
                         </div>

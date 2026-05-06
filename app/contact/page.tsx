@@ -135,7 +135,7 @@ export default function ContactPage() {
           <div className="bg-slate-50 dark:bg-[#131B2C] p-8 md:p-12 rounded-[3rem] h-fit sticky top-32">
             <div className="mb-8">
               <h2 className="text-2xl font-bold text-slate-900 dark:text-white mb-2">Send a Message</h2>
-              <p className="text-slate-500 text-sm">Direct line to Dr. Dhivakaran & Team.</p>
+              <p className="text-slate-500 text-sm">Direct line to Dr. Dhivakaran Reddy & Team.</p>
             </div>
             <form className="space-y-6" onSubmit={handleSubmit}>
               <div><label className="label">Your Name</label><input type="text" className="input" placeholder="John Doe" /></div>

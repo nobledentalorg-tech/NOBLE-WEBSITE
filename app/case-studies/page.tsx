@@ -94,7 +94,7 @@ const CaseStudiesPage = () => {
                     <div className="absolute top-0 right-0 w-64 h-64 bg-blue-500/5 blur-3xl rounded-full translate-x-1/2 -translate-y-1/2"></div>
                     <h2 className="text-3xl font-black text-slate-900 dark:text-white mb-6">Ready for your transformation?</h2>
                     <p className="text-slate-500 dark:text-slate-400 mb-8 max-w-lg mx-auto">
-                        Every smile is unique. Book a clinical assessment with Dr. Dhivakaran to discuss your customized treatment plan.
+                        Every smile is unique. Book a clinical assessment with Dr. Dhivakaran Reddy to discuss your customized treatment plan.
                     </p>
                     <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
                         <Link href="/contact" className="px-8 py-4 bg-blue-600 text-white rounded-2xl font-black uppercase tracking-widest text-xs shadow-xl shadow-blue-500/20 hover:bg-blue-700 transition-all flex items-center gap-2">

@@ -221,7 +221,7 @@ export default function OrthognathicSurgeryRefactored() {
                                     </div>
                                     <h3 className="text-3xl font-black text-slate-900 dark:text-white mb-6 uppercase tracking-tight italic">The Golden Ratio</h3>
                                     <p className="text-lg text-slate-500 italic">&quot;We don&apos;t &apos;move&apos; bones arbitrarily. We calculate the exact millimetric shift required to align your profile with the phi ratio: 1.618.&quot;</p>
-                                    <div className="mt-8 text-xs font-black text-blue-600 tracking-widest uppercase">— Dr. Dhivakaran</div>
+                                    <div className="mt-8 text-xs font-black text-blue-600 tracking-widest uppercase">— Dr. Dhivakaran Reddy</div>
                                 </div>
                             </div>
                         </div>

@@ -47,7 +47,7 @@ export const metadata: Metadata = {
   verification: {
     google: 'coO5jvSypAc95p3t7cWWDaTsqtjt-W2bK3ybS21ZsIc',
   },
-  description: 'Noble Dental Care — Zeiss Microscopic Root Canal, Digital Implants, Invisalign & Laser Dentistry by Dr. Dhivakaran MDS in Nallagandla, Hyderabad. Open 7 days, late evening appointments available. Book online now.',
+  description: 'Noble Dental Care — Zeiss Microscopic Root Canal, Digital Implants, Invisalign & Laser Dentistry by Dr. Dhivakaran Reddy MDS in Nallagandla, Hyderabad. Open 7 days, late evening appointments available. Book online now.',
   openGraph: {
     type: 'website',
     locale: 'en_IN',
@@ -67,7 +67,7 @@ export const metadata: Metadata = {
     site: '@nobledentalcare',
     creator: '@drdhivakaran',
     title: 'Noble Dental Care | Trusted Family Dentistry Hyderabad',
-    description: 'Expert dental care in Nallagandla & Tellapur. Root Canals, Implants, and Invisalign by Dr. Dhivakaran.',
+    description: 'Expert dental care in Nallagandla & Tellapur. Root Canals, Implants, and Invisalign by Dr. Dhivakaran Reddy.',
     images: ['/assets/og-image.jpg'],
   },
   robots: {

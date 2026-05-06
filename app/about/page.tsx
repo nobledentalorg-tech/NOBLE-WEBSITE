@@ -6,7 +6,7 @@ import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
     title: 'About Noble Dental Care | Best Dentist in Nallagandla',
-    description: 'Dr. Dhivakaran is a leading dentist in Nallagandla, serving the community near Citizens Hospital and Aparna Neo Mall with ethical, microscopic dentistry.',
+    description: 'Dr. Dhivakaran Reddy is a leading dentist in Nallagandla, serving the community near Citizens Hospital and Aparna Neo Mall with ethical, microscopic dentistry.',
 };
 
 export default function AboutPage() {
@@ -22,7 +22,7 @@ export default function AboutPage() {
                         Deeply Rooted in <a href="https://en.wikipedia.org/wiki/Nallagandla" target="_blank" rel="noopener noreferrer" className="underline decoration-blue-400 decoration-2 hover:bg-blue-50 dark:hover:bg-blue-900/20 transition-colors">Nallagandla&apos;s</a> Growth.
                     </h1>
                     <p className="text-xl text-slate-600 dark:text-slate-400 leading-relaxed mb-8">
-                        Founded by <strong className="text-slate-900 dark:text-white">Dr. Dhivakaran</strong>, Noble Dental Care was established to bridge the gap between &quot;Corporate Chains&quot; and &quot;Traditional Clinics.&quot;
+                        Founded by <strong className="text-slate-900 dark:text-white">Dr. Dhivakaran Reddy</strong>, Noble Dental Care was established to bridge the gap between &quot;Corporate Chains&quot; and &quot;Traditional Clinics.&quot;
                         We bring <a href="https://www.citizenshospitals.com/" target="_blank" rel="noopener noreferrer" className="text-blue-600 font-bold hover:underline">Citizens Specialty Hospital</a>-grade sterilization and global microscopic technology directly to your neighborhood.
                     </p>
                 </div>
@@ -31,7 +31,7 @@ export default function AboutPage() {
                     <div className="relative h-[500px] rounded-3xl overflow-hidden shadow-2xl">
                         {/* Placeholder for Doctor Image */}
                         <div className="absolute inset-0 bg-slate-200 dark:bg-[#111] flex items-center justify-center text-slate-400">
-                            Dr. Dhivakaran Photo
+                            Dr. Dhivakaran Reddy Photo
                         </div>
                     </div>
                     <div>
@@ -41,7 +41,7 @@ export default function AboutPage() {
                                 <div className="p-3 bg-blue-100 dark:bg-blue-900/20 text-blue-600 rounded-xl h-fit"><Award size={24} /></div>
                                 <div>
                                     <h4 className="font-bold text-lg text-slate-900 dark:text-white">Not a &quot;Rotating Doctor&quot; Clinic</h4>
-                                    <p className="text-slate-500">Unlike corporate chains where doctors change every month, Dr. Dhivakaran is your permanent partner in health. He personally oversees every Implant and Root Canal case.</p>
+                                    <p className="text-slate-500">Unlike corporate chains where doctors change every month, Dr. Dhivakaran Reddy is your permanent partner in health. He personally oversees every Implant and Root Canal case.</p>
                                 </div>
                             </div>
                             <div className="flex gap-4">

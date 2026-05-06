@@ -7,7 +7,7 @@ import Header from '@/components/Header';
 
 export const metadata = {
     title: 'Invisalign vs. Toothsi / Direct-to-Home Aligners: A Dentist Review (2025) | Noble Dental',
-    description: 'Thinking about ordering aligners online? Read this comparison first. Dr. Dhivakaran compares cost, safety, and results of Invisalign vs Toothsi.',
+    description: 'Thinking about ordering aligners online? Read this comparison first. Dr. Dhivakaran Reddy compares cost, safety, and results of Invisalign vs Toothsi.',
 };
 
 export default function BlogPost() {
@@ -45,7 +45,7 @@ export default function BlogPost() {
                                 <div className="relative w-12 h-12 rounded-full overflow-hidden border-2 border-slate-200 dark:border-slate-700">
                                     <Image
                                         src="/images/dr-dhivakaran.webp"
-                                        alt="Dr. Dhivakaran"
+                                        alt="Dr. Dhivakaran Reddy"
                                         width={48}
                                         height={48}
                                         className="object-cover"
@@ -53,10 +53,10 @@ export default function BlogPost() {
                                 </div>
                                 <div>
                                     <div className="flex items-center gap-2">
-                                        <span className="font-bold text-slate-900 dark:text-white text-sm">Dr. Dhivakaran</span>
+                                        <span className="font-bold text-slate-900 dark:text-white text-sm">Dr. Dhivakaran Reddy</span>
                                         <ShieldAlert size={14} className="text-blue-500" />
                                     </div>
-                                    <p className="text-xs text-slate-500 m-0">MDS, Orthodontics • Gold Provider</p>
+                                    <p className="text-xs text-slate-500 m-0">Chief Dental Surgeon CMD, Healthflo - Director, NOBLE OS-NEO AI - CTO</p>
                                 </div>
                             </div>
                             <div className="text-right hidden sm:block">
@@ -173,7 +173,7 @@ export default function BlogPost() {
                                     href="tel:918074512305"
                                     className="px-8 py-4 bg-white/10 hover:bg-white/20 text-white font-bold rounded-xl backdrop-blur-sm transition-all flex items-center justify-center gap-2"
                                 >
-                                    Talk to Dr. Dhivakaran <User size={18} className="text-purple-200" />
+                                    Talk to Dr. Dhivakaran Reddy <User size={18} className="text-purple-200" />
                                 </a>
                             </div>
                         </div>

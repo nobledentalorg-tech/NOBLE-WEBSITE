@@ -3,7 +3,7 @@ import KidsDentistryRefactored from './KidsDentistryRefactored';
 
 export const metadata: Metadata = {
     title: 'Pediatric Dentist Nallagandla: Sedation Care - Noble Dental',
-    description: "Anxiety-free kids dentistry in Nallagandla. We use 'Happy Air' (Nitrous) and No-Drill SDF technology. Building future health, not just fixing baby teeth. Dr. Dhivakaran's protocol.",
+    description: "Anxiety-free kids dentistry in Nallagandla. We use 'Happy Air' (Nitrous) and No-Drill SDF technology. Building future health, not just fixing baby teeth. Dr. Dhivakaran Reddy's protocol.",
     keywords: [
         'kids dentist nallagandla',
         'pediatric dentist hyderabad',
@@ -39,7 +39,7 @@ export default function KidsDentistryPage() {
             {
                 "@type": "Physician",
                 "@id": "https://nobledental.in/#dr-dhivakaran",
-                "name": "Dr. Dhivakaran",
+                "name": "Dr. Dhivakaran Reddy",
                 "jobTitle": "Chief Medical Director",
                 "medicalSpecialty": "Pediatric Dentistry",
                 "worksFor": { "@id": "https://nobledental.in/#clinic" }

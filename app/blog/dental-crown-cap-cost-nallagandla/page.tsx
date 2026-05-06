@@ -17,12 +17,12 @@ const faqs = [
     { q: 'How much does a zirconia crown cost in Nallagandla?', a: 'A zirconia dental crown at Noble Dental costs ₹5,000–₹12,000 per tooth depending on the grade. Multilayer aesthetic zirconia costs more than standard monolithic zirconia.' },
     { q: 'How long does a dental crown last?', a: 'A well-made zirconia crown lasts 15–20 years. PFM (metal) crowns last 10–15 years but develop a black line at the gum margin over time.' },
     { q: 'Is a dental crown painful?', a: 'No. The tooth is numbed with local anesthesia. The preparation takes 20–30 minutes and is painless. A temporary crown protects the tooth while the permanent one is made.' },
-    { q: 'When do I need a crown vs a filling?', a: 'If more than 50% of the tooth is damaged or after a root canal, a crown is recommended. Fillings work for small cavities. Dr. Dhivakaran will advise based on X-rays.' },
+    { q: 'When do I need a crown vs a filling?', a: 'If more than 50% of the tooth is damaged or after a root canal, a crown is recommended. Fillings work for small cavities. Dr. Dhivakaran Reddy will advise based on X-rays.' },
 ];
 
 const jsonLd = {
     '@context': 'https://schema.org', '@graph': [
-        { '@type': 'Article', headline: 'Dental Crown & Cap Cost in Nallagandla (2026)', author: { '@type': 'Person', name: 'Dr. Dhivakaran R' }, publisher: { '@type': 'Organization', name: 'Noble Dental Care' }, datePublished: '2026-05-06', mainEntityOfPage: `${BASE}/blog/${SLUG}` },
+        { '@type': 'Article', headline: 'Dental Crown & Cap Cost in Nallagandla (2026)', author: { '@type': 'Person', name: 'Dr. Dhivakaran Reddy' }, publisher: { '@type': 'Organization', name: 'Noble Dental Care' }, datePublished: '2026-05-06', mainEntityOfPage: `${BASE}/blog/${SLUG}` },
         { '@type': 'BreadcrumbList', itemListElement: [{ '@type': 'ListItem', position: 1, name: 'Home', item: BASE }, { '@type': 'ListItem', position: 2, name: 'Blog', item: `${BASE}/blog` }, { '@type': 'ListItem', position: 3, name: 'Crown Cost', item: `${BASE}/blog/${SLUG}` }] },
         { '@type': 'FAQPage', mainEntity: faqs.map(f => ({ '@type': 'Question', name: f.q, acceptedAnswer: { '@type': 'Answer', text: f.a } })) }
     ]
@@ -47,7 +47,7 @@ export default function Page() {
                     <div className="flex items-center gap-3 mb-6"><span className="px-3 py-1 rounded-full bg-teal-100 dark:bg-teal-900/30 text-teal-700 dark:text-teal-400 text-xs font-black uppercase tracking-widest">Cost Guide</span><span className="text-slate-400 text-xs font-bold uppercase tracking-widest">4 Min Read</span></div>
                     <h1 className="text-3xl md:text-5xl font-black text-slate-900 dark:text-white mb-6 leading-[1.15]">Dental Crown & Cap Cost in Nallagandla: <span className="text-teal-600">2026 Prices</span><br /><span className="text-slate-400 font-light text-2xl md:text-3xl">Zirconia vs PFM vs E.max — Honest Comparison</span></h1>
                     <div className="flex items-center justify-between border-y border-slate-100 dark:border-white/10 py-6">
-                        <div className="flex items-center gap-4"><div className="relative w-12 h-12 rounded-full overflow-hidden border-2 border-slate-200"><Image src="/images/dr-dhivakaran.webp" alt="Dr. Dhivakaran" width={48} height={48} className="object-cover" /></div><div><div className="flex items-center gap-2"><span className="font-bold text-slate-900 dark:text-white text-sm">Dr. Dhivakaran R</span><ShieldCheck size={14} className="text-blue-500" /></div><p className="text-xs text-slate-500 m-0">MDS, Prosthodontist • 12+ Years</p></div></div>
+                        <div className="flex items-center gap-4"><div className="relative w-12 h-12 rounded-full overflow-hidden border-2 border-slate-200"><Image src="/images/dr-dhivakaran.webp" alt="Dr. Dhivakaran Reddy" width={48} height={48} className="object-cover" /></div><div><div className="flex items-center gap-2"><span className="font-bold text-slate-900 dark:text-white text-sm">Dr. Dhivakaran Reddy</span><ShieldCheck size={14} className="text-blue-500" /></div><p className="text-xs text-slate-500 m-0">Chief Dental Surgeon CMD, Healthflo - Director, NOBLE OS-NEO AI - CTO</p></div></div>
                         <div className="text-right hidden sm:block"><p className="text-xs text-slate-400 uppercase tracking-widest font-bold mb-1">Updated</p><p className="text-sm font-medium text-slate-700 dark:text-slate-300">May 2026</p></div>
                     </div>
                 </header>

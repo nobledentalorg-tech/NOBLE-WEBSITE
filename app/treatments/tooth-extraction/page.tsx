@@ -3,7 +3,7 @@ import ExtractionRefactored from './ExtractionRefactored';
 
 export const metadata: Metadata = {
     title: 'Painless Tooth Extraction Nallagandla | Atraumatic Wisdom Teeth Surgery',
-    description: 'Expert atraumatic tooth extraction in Nallagandla using Physics Forceps. We preserve your jawbone for future implants with microsurgical precision by Dr. Dhivakaran.',
+    description: 'Expert atraumatic tooth extraction in Nallagandla using Physics Forceps. We preserve your jawbone for future implants with microsurgical precision by Dr. Dhivakaran Reddy.',
     keywords: [
         'tooth extraction cost nallagandla',
         'painless wisdom tooth removal',
@@ -39,7 +39,7 @@ export default function ExtractionPage() {
             {
                 "@type": "Physician",
                 "@id": "https://nobledental.in/#dr-dhivakaran",
-                "name": "Dr. Dhivakaran",
+                "name": "Dr. Dhivakaran Reddy",
                 "jobTitle": "Chief Medical Director",
                 "medicalSpecialty": "Oral and Maxillofacial Surgery",
                 "worksFor": { "@id": "https://nobledental.in/#clinic" }

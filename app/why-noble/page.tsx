@@ -120,7 +120,7 @@ export default function WhyNoblePage() {
                     &quot;Technology means nothing without empathy. We use the world&apos;s best equipment not to show off, but because it allows us to be <strong>gentler, faster, and safer</strong> for you. That is the Noble promise.&quot;
                 </p>
                 <div className="flex items-center justify-center gap-4">
-                    <Link href="/about" className="text-blue-600 font-bold hover:underline">Meet Dr. Dhivakaran</Link>
+                    <Link href="/about" className="text-blue-600 font-bold hover:underline">Meet Dr. Dhivakaran Reddy</Link>
                     <span className="text-slate-300">|</span>
                     <Link href="/doctors" className="text-blue-600 font-bold hover:underline">Our Specialists</Link>
                 </div>

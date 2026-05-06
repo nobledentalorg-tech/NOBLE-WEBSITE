@@ -192,7 +192,7 @@ export default function EmergencyTraumaRefactored() {
                         </div>
                         <h3 className="text-3xl font-black text-white mb-6 uppercase tracking-tight italic">Zero Wait Policy</h3>
                         <p className="text-lg text-slate-400 italic">&quot;Dental emergencies don&apos;t have business hours. If you are experiencing acute trauma or uncontrolled swelling, you skip the queue. Your health is the only priority.&quot;</p>
-                        <div className="mt-8 text-xs font-black text-red-500 tracking-widest uppercase">— Dr. Dhivakaran</div>
+                        <div className="mt-8 text-xs font-black text-red-500 tracking-widest uppercase">— Dr. Dhivakaran Reddy</div>
                     </div>
                 </div>
             </section>

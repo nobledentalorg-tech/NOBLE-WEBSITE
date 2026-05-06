@@ -263,7 +263,7 @@ export default function TeethWhiteningRefactored() {
                             </div>
 
                             <p className="text-lg text-slate-400 max-w-lg leading-relaxed mb-8 border-l-4 border-yellow-500/50 pl-6">
-                                <strong>Dr. Dhivakaran</strong> ensures your enamel is protected with medical-grade relief gels, preventing the &quot;zinging&quot; pain of salons.
+                                <strong>Dr. Dhivakaran Reddy</strong> ensures your enamel is protected with medical-grade relief gels, preventing the &quot;zinging&quot; pain of salons.
                             </p>
 
                             <div className="flex flex-wrap gap-4">
@@ -494,11 +494,11 @@ export default function TeethWhiteningRefactored() {
                     <RevealOnScroll>
                         <div className="flex flex-col md:flex-row gap-12 items-center">
                             <div className="relative w-64 h-64 shrink-0 rounded-full overflow-hidden border-4 border-slate-100 shadow-xl">
-                                <Image src="/images/dhivakaran.webp" alt="Dr. Dhivakaran" width={64} height={64} className="object-cover" />
+                                <Image src="/images/dhivakaran.webp" alt="Dr. Dhivakaran Reddy" width={64} height={64} className="object-cover" />
                             </div>
                             <div>
                                 <h2 className="text-3xl font-bold text-slate-900 mb-4">Meet Your Expert</h2>
-                                <div className="text-xl font-bold text-yellow-600 mb-6">Dr. Dhivakaran</div>
+                                <div className="text-xl font-bold text-yellow-600 mb-6">Dr. Dhivakaran Reddy</div>
                                 <p className="text-slate-700 dark:text-slate-300 leading-relaxed italic mb-6">
                                     &quot;I don&apos;t believe in &apos;Hollywood White&apos; veneers for everyone. Sometimes, all you need is to unlock the natural brightness of your own enamel. My approach is conservative: clean the canvas before we paint on it.&quot;
                                 </p>

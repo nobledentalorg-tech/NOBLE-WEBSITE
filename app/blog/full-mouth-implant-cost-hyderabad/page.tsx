@@ -16,13 +16,13 @@ export const metadata = {
 const faqs = [
     { q: 'How much do full mouth implants cost in Hyderabad?', a: 'All-on-4 starts from ₹1.5L per jaw at Noble Dental. All-on-6 with zirconia bridge costs ₹2.5L–₹4L per jaw. Full mouth (both jaws) ranges from ₹4L to ₹7L depending on implant brand and bridge material.' },
     { q: 'Can I get fixed teeth in 3 days?', a: 'Yes. With our Immediate Loading protocol, we place implants on Day 1 and fix a temporary acrylic bridge on Day 2-3. You walk out with fixed teeth. The permanent zirconia bridge is placed after 3-4 months of healing.' },
-    { q: 'All-on-4 vs All-on-6 — which is better?', a: 'All-on-4 uses 4 implants and works well for most cases. All-on-6 uses 6 implants for extra support — recommended if you have very weak bone or want a longer zirconia bridge. Dr. Dhivakaran recommends based on your CBCT scan.' },
+    { q: 'All-on-4 vs All-on-6 — which is better?', a: 'All-on-4 uses 4 implants and works well for most cases. All-on-6 uses 6 implants for extra support — recommended if you have very weak bone or want a longer zirconia bridge. Dr. Dhivakaran Reddy recommends based on your CBCT scan.' },
     { q: 'Are full mouth implants better than dentures?', a: 'Absolutely. Fixed implant bridges don\'t move, don\'t need adhesive, preserve jawbone, and last 20+ years. Dentures lose fit over time as bone shrinks, cause sore spots, and restrict what you can eat.' },
 ];
 
 const jsonLd = {
     '@context': 'https://schema.org', '@graph': [
-        { '@type': 'Article', headline: 'Full Mouth Dental Implant Cost in Hyderabad (2026)', author: { '@type': 'Person', name: 'Dr. Dhivakaran R' }, publisher: { '@type': 'Organization', name: 'Noble Dental Care' }, datePublished: '2026-05-06', mainEntityOfPage: `${BASE}/blog/${SLUG}` },
+        { '@type': 'Article', headline: 'Full Mouth Dental Implant Cost in Hyderabad (2026)', author: { '@type': 'Person', name: 'Dr. Dhivakaran Reddy' }, publisher: { '@type': 'Organization', name: 'Noble Dental Care' }, datePublished: '2026-05-06', mainEntityOfPage: `${BASE}/blog/${SLUG}` },
         { '@type': 'BreadcrumbList', itemListElement: [{ '@type': 'ListItem', position: 1, name: 'Home', item: BASE }, { '@type': 'ListItem', position: 2, name: 'Blog', item: `${BASE}/blog` }, { '@type': 'ListItem', position: 3, name: 'Full Mouth Implant Cost', item: `${BASE}/blog/${SLUG}` }] },
         { '@type': 'FAQPage', mainEntity: faqs.map(f => ({ '@type': 'Question', name: f.q, acceptedAnswer: { '@type': 'Answer', text: f.a } })) }
     ]
@@ -48,7 +48,7 @@ export default function Page() {
                     <div className="flex items-center gap-3 mb-6"><span className="px-3 py-1 rounded-full bg-indigo-100 dark:bg-indigo-900/30 text-indigo-700 dark:text-indigo-400 text-xs font-black uppercase tracking-widest">Premium Guide</span><span className="text-slate-400 text-xs font-bold uppercase tracking-widest">6 Min Read</span></div>
                     <h1 className="text-3xl md:text-5xl font-black text-slate-900 dark:text-white mb-6 leading-[1.15]">Full Mouth Implant Cost in Hyderabad: <span className="text-indigo-600">All-on-4 & All-on-6</span><br /><span className="text-slate-400 font-light text-2xl md:text-3xl">Fixed Teeth in 3 Days — The Complete 2026 Guide</span></h1>
                     <div className="flex items-center justify-between border-y border-slate-100 dark:border-white/10 py-6">
-                        <div className="flex items-center gap-4"><div className="relative w-12 h-12 rounded-full overflow-hidden border-2 border-slate-200"><Image src="/images/dr-dhivakaran.webp" alt="Dr. Dhivakaran" width={48} height={48} className="object-cover" /></div><div><div className="flex items-center gap-2"><span className="font-bold text-slate-900 dark:text-white text-sm">Dr. Dhivakaran R</span><ShieldCheck size={14} className="text-blue-500" /></div><p className="text-xs text-slate-500 m-0">MDS, Implantologist • Straumann Certified</p></div></div>
+                        <div className="flex items-center gap-4"><div className="relative w-12 h-12 rounded-full overflow-hidden border-2 border-slate-200"><Image src="/images/dr-dhivakaran.webp" alt="Dr. Dhivakaran Reddy" width={48} height={48} className="object-cover" /></div><div><div className="flex items-center gap-2"><span className="font-bold text-slate-900 dark:text-white text-sm">Dr. Dhivakaran Reddy</span><ShieldCheck size={14} className="text-blue-500" /></div><p className="text-xs text-slate-500 m-0">Chief Dental Surgeon CMD, Healthflo - Director, NOBLE OS-NEO AI - CTO</p></div></div>
                         <div className="text-right hidden sm:block"><p className="text-xs text-slate-400 uppercase tracking-widest font-bold mb-1">Updated</p><p className="text-sm font-medium text-slate-700 dark:text-slate-300">May 2026</p></div>
                     </div>
                 </header>

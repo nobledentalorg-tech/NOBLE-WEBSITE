@@ -6,7 +6,7 @@ import Image from 'next/image';
 
 export const metadata = {
     title: 'Dental Implant Cost in Nallagandla & Hyderabad (2026 Guide) | Noble Dental',
-    description: 'Transparent dental implant pricing in Nallagandla, Hyderabad. Compare Korean vs Swiss implant brands, understand hidden costs, and get an honest cost breakdown from Dr. Dhivakaran.',
+    description: 'Transparent dental implant pricing in Nallagandla, Hyderabad. Compare Korean vs Swiss implant brands, understand hidden costs, and get an honest cost breakdown from Dr. Dhivakaran Reddy.',
     alternates: {
         canonical: 'https://www.nobledentalnallagandla.in/blog/dental-implant-cost-nallagandla',
     },
@@ -27,8 +27,8 @@ export default function DentalImplantCostBlog() {
                 headline: 'Dental Implant Cost in Nallagandla & Hyderabad (2026 Guide)',
                 author: {
                     '@type': 'Person',
-                    name: 'Dr. Dhivakaran R',
-                    jobTitle: 'MDS, Implantologist',
+                    name: 'Dr. Dhivakaran Reddy',
+                    jobTitle: 'Chief Dental Surgeon CMD, Healthflo - Director, NOBLE OS-NEO AI - CTO',
                     url: 'https://www.nobledentalnallagandla.in/team'
                 },
                 publisher: {
@@ -115,7 +115,7 @@ export default function DentalImplantCostBlog() {
                                 <div className="relative w-12 h-12 rounded-full overflow-hidden border-2 border-slate-200 dark:border-slate-700">
                                     <Image
                                         src="/images/dr-dhivakaran.webp"
-                                        alt="Dr. Dhivakaran"
+                                        alt="Dr. Dhivakaran Reddy"
                                         width={48}
                                         height={48}
                                         className="object-cover"
@@ -123,10 +123,10 @@ export default function DentalImplantCostBlog() {
                                 </div>
                                 <div>
                                     <div className="flex items-center gap-2">
-                                        <span className="font-bold text-slate-900 dark:text-white text-sm">Dr. Dhivakaran R</span>
+                                        <span className="font-bold text-slate-900 dark:text-white text-sm">Dr. Dhivakaran Reddy</span>
                                         <ShieldCheck size={14} className="text-blue-500" />
                                     </div>
-                                    <p className="text-xs text-slate-500 m-0">MDS, Implantologist • Straumann Certified • 12+ Years</p>
+                                    <p className="text-xs text-slate-500 m-0">Chief Dental Surgeon CMD, Healthflo - Director, NOBLE OS-NEO AI - CTO</p>
                                 </div>
                             </div>
                             <div className="text-right hidden sm:block">
@@ -227,7 +227,7 @@ export default function DentalImplantCostBlog() {
                             <li><strong>Swiss Implants (Straumann, Nobel Biocare):</strong> Gold standard. SLActive surface technology allows faster healing (3–4 weeks vs 8–12 weeks). Better for diabetics, smokers, and complex cases. 99%+ success rate.</li>
                         </ul>
                         <p>
-                            <strong>Dr. Dhivakaran&apos;s recommendation:</strong> &quot;If budget allows, I prefer Straumann for most patients because the SLActive surface heals faster and is more forgiving in less-than-ideal bone conditions. But Korean implants are perfectly acceptable for straightforward cases.&quot;
+                            <strong>Dr. Dhivakaran Reddy&apos;s recommendation:</strong> &quot;If budget allows, I prefer Straumann for most patients because the SLActive surface heals faster and is more forgiving in less-than-ideal bone conditions. But Korean implants are perfectly acceptable for straightforward cases.&quot;
                         </p>
 
                         <h2 className="text-2xl md:text-3xl font-bold text-slate-900 dark:text-white mt-12 mb-6 flex items-center gap-3">

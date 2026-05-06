@@ -112,7 +112,7 @@ export default function GumDiseaseRefactored() {
                                 <span className="gradient-text">Surgery.</span>
                             </h1>
                             <p className="text-xl text-slate-600 dark:text-slate-400 font-medium leading-relaxed max-w-lg">
-                                Experience advanced **Laser Gum Surgery Hyderabad** protocols at **Noble Dental Care Hyderabad**. Located **Near Aparna Sarovar / Citizens Hospital**, **Dr. Dhivakaran** uses specialized **Laser Dentistry Nallagandla** tech to treat your heart and gums.
+                                Experience advanced **Laser Gum Surgery Hyderabad** protocols at **Noble Dental Care Hyderabad**. Located **Near Aparna Sarovar / Citizens Hospital**, **Dr. Dhivakaran Reddy** uses specialized **Laser Dentistry Nallagandla** tech to treat your heart and gums.
                             </p>
 
                             <div className="flex flex-wrap gap-4">
@@ -227,7 +227,7 @@ export default function GumDiseaseRefactored() {
                                     </div>
                                     <h3 className="text-3xl font-black text-slate-900 dark:text-white mb-6 tracking-tight uppercase">Medical Refusal</h3>
                                     <p className="text-lg text-slate-500 italic">&quot;I refuse to call a simple polish a &apos;cleaning&apos;. If your gum thickness is &lt; 3mm, we perform a medical-grade prophylaxis, not just a cosmetic one.&quot;</p>
-                                    <div className="mt-8 text-xs font-black text-red-600 tracking-widest uppercase">— Dr. Dhivakaran</div>
+                                    <div className="mt-8 text-xs font-black text-red-600 tracking-widest uppercase">— Dr. Dhivakaran Reddy</div>
                                 </div>
                             </div>
                         </div>
@@ -244,7 +244,7 @@ export default function GumDiseaseRefactored() {
                                 Best Gum Specialist <br />
                                 <span className="text-red-600">in Nallagandla.</span>
                             </h2>
-                            <p className="text-xl text-slate-700 dark:text-slate-300">As the **Best Gum Specialist in Nallagandla**, **Dr. Dhivakaran** ensures your **Bleeding Gums Treatment** is linked to your overall systemic health.</p>
+                            <p className="text-xl text-slate-700 dark:text-slate-300">As the **Best Gum Specialist in Nallagandla**, **Dr. Dhivakaran Reddy** ensures your **Bleeding Gums Treatment** is linked to your overall systemic health.</p>
                         </div>
 
                         <div className="grid lg:grid-cols-3 gap-8">
@@ -421,7 +421,7 @@ export default function GumDiseaseRefactored() {
                                 },
                                 {
                                     q: "Who is the Best Gum Specialist in Nallagandla?",
-                                    a: "**Dr. Dhivakaran** is recognized as the **Best Gum Specialist in Nallagandla** for implementing Swiss GBT and **Laser Gum Surgery Hyderabad** protocols to save teeth that others might extract."
+                                    a: "**Dr. Dhivakaran Reddy** is recognized as the **Best Gum Specialist in Nallagandla** for implementing Swiss GBT and **Laser Gum Surgery Hyderabad** protocols to save teeth that others might extract."
                                 },
                                 {
                                     q: "Why do you use heated water?",
@@ -450,7 +450,7 @@ export default function GumDiseaseRefactored() {
                         </h2>
                         <div className="flex flex-col md:flex-row items-center justify-center gap-6">
                             <button className="px-10 py-5 bg-red-600 text-white rounded-full font-black uppercase tracking-widest text-sm shadow-2xl hover:scale-105 active:scale-95 transition-all">
-                                Book Dr. Dhivakaran
+                                Book Dr. Dhivakaran Reddy
                             </button>
                             <a href="tel:+918610425342" className="px-10 py-5 bg-white/10 text-white border border-white/20 rounded-full font-black uppercase tracking-widest text-sm hover:bg-white/20">
                                 Clinic Direct Line

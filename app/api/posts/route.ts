@@ -24,7 +24,7 @@ export async function POST(req: NextRequest) {
             slug,
             content,
             excerpt,
-            author: author || 'Dr. Dhivakaran',
+            author: author || 'Dr. Dhivakaran Reddy',
             cover_image,
             tags: tags || [],
             published: true

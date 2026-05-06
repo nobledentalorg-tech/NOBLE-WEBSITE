@@ -27,7 +27,7 @@ export default function OrthognathicSurgeryPage() {
         "bodyLocation": "Jaw",
         "provider": {
             "@type": "Dentist",
-            "name": "Dr. Dhivakaran",
+            "name": "Dr. Dhivakaran Reddy",
             "memberOf": {
                 "@type": "DentalClinic",
                 "name": "Noble Dental Care",

@@ -10,7 +10,7 @@ export const revalidate = 3600;
 
 export const metadata = {
     title: 'Dental Health Blog | Noble Dental Care Nallagandla',
-    description: 'Expert insights on dentistry, maxillo-facial surgery, and patient safety from Dr. Dhivakaran and team.',
+    description: 'Expert insights on dentistry, maxillo-facial surgery, and patient safety from Dr. Dhivakaran Reddy and team.',
 };
 
 import { NeoBlogEngine } from '@/neo/NeoBlogEngine';
@@ -25,9 +25,9 @@ export default async function BlogIndex() {
                 id: 'avoid-root-canal',
                 slug: 'avoid-root-canal',
                 title: 'Can I Avoid a Root Canal? The Honest Truth.',
-                excerpt: 'Searching for how to avoid root canal? Read this honest guide by Dr. Dhivakaran. Learn when antibiotics work and when to save vs extract.',
+                excerpt: 'Searching for how to avoid root canal? Read this honest guide by Dr. Dhivakaran Reddy. Learn when antibiotics work and when to save vs extract.',
                 created_at: new Date().toISOString(),
-                author: 'Dr. Dhivakaran',
+                author: 'Dr. Dhivakaran Reddy',
                 category: 'Patient Education',
                 cover_image: null
             },
@@ -37,7 +37,7 @@ export default async function BlogIndex() {
                 title: 'Invisalign vs. Direct-to-Home Aligners: Which is Safe?',
                 excerpt: 'Thinking about ordering aligners online? Read this comparison first. We compare cost, safety, and results of Invisalign vs Toothsi.',
                 created_at: new Date().toISOString(),
-                author: 'Dr. Dhivakaran',
+                author: 'Dr. Dhivakaran Reddy',
                 category: 'Orthodontic Guide',
                 cover_image: null
             }
@@ -78,7 +78,7 @@ export default async function BlogIndex() {
                 title: p.title,
                 excerpt: p.excerpt || p.content?.substring(0, 150) + '...',
                 date: p.created_at,
-                author: p.author || 'Dr. Dhivakaran',
+                author: p.author || 'Dr. Dhivakaran Reddy',
                 category: p.category || 'General',
                 image: p.cover_image
             })),

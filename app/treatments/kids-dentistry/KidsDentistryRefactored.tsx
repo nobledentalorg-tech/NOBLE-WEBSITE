@@ -104,7 +104,7 @@ export default function KidsDentistryRefactored() {
                                 <span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-400 to-pink-500">Smiles.</span>
                             </h1>
                             <p className="text-xl text-slate-600 dark:text-slate-400 font-medium leading-relaxed max-w-lg">
-                                Welcome to the best **Kids Dentistry Nallagandla** offers at **Noble Dental Care Hyderabad**. Located **Near Aparna Sarovar / Citizens Hospital**, **Dr. Dhivakaran** specializes as a **Painless Kids Dentist** for your child&apos;s developing smile.
+                                Welcome to the best **Kids Dentistry Nallagandla** offers at **Noble Dental Care Hyderabad**. Located **Near Aparna Sarovar / Citizens Hospital**, **Dr. Dhivakaran Reddy** specializes as a **Painless Kids Dentist** for your child&apos;s developing smile.
                             </p>
 
                             <div className="flex flex-wrap gap-4">
@@ -128,7 +128,7 @@ export default function KidsDentistryRefactored() {
                             <div className="relative z-10 rounded-[3rem] overflow-hidden shadow-2xl ios-card-hover border-4 border-white dark:border-slate-800">
                                 <Image
                                     src="/assets/images/treatments/kids-hero.png"
-                                    alt="Dr. Dhivakaran High-Five with a smiling child"
+                                    alt="Dr. Dhivakaran Reddy High-Five with a smiling child"
                                     width={800}
                                     height={800}
                                     className="w-full h-auto object-cover"
@@ -190,7 +190,7 @@ export default function KidsDentistryRefactored() {
                                     <span className="text-blue-600 italic">Dentist Nallagandla.</span>
                                 </h2>
                                 <p className="text-xl text-slate-600 dark:text-slate-400 leading-relaxed font-medium">
-                                    At our **Dental Clinic in Nallagandla**, we believe baby teeth are the &quot;Space Savers&quot;. Whether it&apos;s a **Milk Teeth Filling** or preventive care, **Dr. Dhivakaran** ensures your child is handled with the utmost precision.
+                                    At our **Dental Clinic in Nallagandla**, we believe baby teeth are the &quot;Space Savers&quot;. Whether it&apos;s a **Milk Teeth Filling** or preventive care, **Dr. Dhivakaran Reddy** ensures your child is handled with the utmost precision.
                                 </p>
 
                                 <div className="space-y-6">
@@ -357,7 +357,7 @@ export default function KidsDentistryRefactored() {
                             <h2 className="text-5xl md:text-6xl font-black text-slate-900 dark:text-white tracking-tighter mb-4">
                                 The Decision Matrix.
                             </h2>
-                            <p className="text-lg text-slate-500">How Dr. Dhivakaran decides the best protocol for your child.</p>
+                            <p className="text-lg text-slate-500">How Dr. Dhivakaran Reddy decides the best protocol for your child.</p>
                         </div>
 
                         <div className="ios-glass overflow-hidden rounded-[3rem] border border-white/20 shadow-2xl">

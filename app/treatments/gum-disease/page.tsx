@@ -28,7 +28,7 @@ export default function GumDiseasePage() {
         "bodyLocation": "Gums",
         "provider": {
             "@type": "Dentist",
-            "name": "Dr. Dhivakaran",
+            "name": "Dr. Dhivakaran Reddy",
             "memberOf": {
                 "@type": "DentalClinic",
                 "name": "Noble Dental Care",

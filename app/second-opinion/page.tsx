@@ -20,7 +20,7 @@ export default function SecondOpinionPage() {
                     </h1>
                     <p className="text-xl text-slate-500 dark:text-slate-400 font-medium leading-relaxed max-w-2xl mx-auto mb-10">
                         40% of standard dental diagnoses are aggressive or unnecessary.
-                        <br />Before you agree to surgery, let Dr. Dhivakaran audit your X-Ray.
+                        <br />Before you agree to surgery, let Dr. Dhivakaran Reddy audit your X-Ray.
                         <br /><strong>We save 3 out of 10 &quot;Unsavable&quot; teeth.</strong>
                     </p>
 
@@ -41,7 +41,7 @@ export default function SecondOpinionPage() {
                             Many corporate chains have <strong>monthly targets</strong>. A small cavity that could be filled is often pushed as a &quot;Root Canal&quot; to meet a quota.
                         </p>
                         <p className="text-slate-600 dark:text-slate-300 text-lg leading-relaxed mb-8">
-                            At Noble Dental, we are <strong>Owner-Operated</strong>. Dr. Dhivakaran answers only to his conscience, not a sales manager. If a tooth can be saved with a simple filling, that is exactly what we will do.
+                            At Noble Dental, we are <strong>Owner-Operated</strong>. Dr. Dhivakaran Reddy answers only to his conscience, not a sales manager. If a tooth can be saved with a simple filling, that is exactly what we will do.
                         </p>
 
                         <div className="space-y-4">
@@ -70,7 +70,7 @@ export default function SecondOpinionPage() {
                             </div>
                             <div className="flex gap-4">
                                 <div className="w-8 h-8 rounded-full bg-blue-500/20 flex items-center justify-center text-blue-500 font-bold shrink-0">2</div>
-                                <p>Dr. Dhivakaran used a **Microscope** to find the tooth was structurally sound, just had deep decay.</p>
+                                <p>Dr. Dhivakaran Reddy used a **Microscope** to find the tooth was structurally sound, just had deep decay.</p>
                             </div>
                             <div className="flex gap-4">
                                 <div className="w-8 h-8 rounded-full bg-green-500/20 flex items-center justify-center text-green-500 font-bold shrink-0">3</div>

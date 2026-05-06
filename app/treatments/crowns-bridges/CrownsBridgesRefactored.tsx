@@ -237,7 +237,7 @@ export default function CrownsBridgesRefactored() {
                                     <div className="w-24 h-24 bg-blue-600 rounded-full flex items-center justify-center text-white mb-8 shadow-2xl shadow-blue-500/50">
                                         <Shield size={48} />
                                     </div>
-                                    <h3 className="text-3xl font-black text-slate-900 dark:text-white mb-6 tracking-tight">Dr. Dhivakaran&apos;s Refusal</h3>
+                                    <h3 className="text-3xl font-black text-slate-900 dark:text-white mb-6 tracking-tight">Dr. Dhivakaran Reddy&apos;s Refusal</h3>
                                     <p className="text-lg text-slate-500 italic">&quot;I refuse to place metal-based crowns on front teeth. Your biology deserves better than a cheap alloy.&quot;</p>
                                 </div>
                             </div>
@@ -502,7 +502,7 @@ export default function CrownsBridgesRefactored() {
                         </h2>
                         <div className="flex flex-col md:flex-row items-center justify-center gap-6">
                             <button className="px-10 py-5 bg-blue-600 text-white rounded-full font-black uppercase tracking-widest text-sm shadow-2xl hover:scale-105 active:scale-95 transition-all">
-                                Book Dr. Dhivakaran
+                                Book Dr. Dhivakaran Reddy
                             </button>
                             <a href="tel:+918610425342" className="px-10 py-5 bg-white/10 text-white border border-white/20 rounded-full font-black uppercase tracking-widest text-sm hover:bg-white/20">
                                 Clinic Direct Line

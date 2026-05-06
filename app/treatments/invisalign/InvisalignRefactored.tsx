@@ -129,11 +129,11 @@ export default function InvisalignRefactored() {
                             {/* TRUST SIGNAL: Medical Director Badge */}
                             <Link href="/team/dr-dhivakaran" className="group flex items-center gap-4 p-4 rounded-2xl bg-white/50 dark:bg-slate-900/50 backdrop-blur-md border border-slate-200 dark:border-white/10 mb-8 w-fit hover:bg-white/80 dark:hover:bg-slate-900/80 transition-all cursor-pointer">
                                 <div className="relative w-12 h-12 rounded-full overflow-hidden ring-2 ring-blue-500 ring-offset-2 dark:ring-offset-slate-900 group-hover:scale-105 transition-transform">
-                                    <Image src="/images/dhivakaran.webp" alt="Dr. Dhivakaran" width={48} height={48} className="object-cover" />
+                                    <Image src="/images/dhivakaran.webp" alt="Dr. Dhivakaran Reddy" width={48} height={48} className="object-cover" />
                                 </div>
                                 <div>
                                     <div className="flex items-center gap-2">
-                                        <span className="font-bold text-slate-900 dark:text-white text-sm group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">Dr. Dhivakaran</span>
+                                        <span className="font-bold text-slate-900 dark:text-white text-sm group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">Dr. Dhivakaran Reddy</span>
                                         <ShieldCheck size={14} className="text-blue-500" />
                                     </div>
                                     <p className="text-[10px] uppercase font-bold text-slate-500 tracking-wider">MDS • Clinical Director</p>
@@ -227,7 +227,7 @@ export default function InvisalignRefactored() {
                                     <span className="text-blue-600">The Anti-Gimmick Protocol.</span>
                                 </h2>
                                 <p className="text-lg text-slate-600 dark:text-slate-400 mb-8 leading-relaxed">
-                                    Why waste money on expensive brand names when the same clinical results can be engineered at our **Dental Clinic in Nallagandla**? We provide **Noble In-House Aligners**—manufactured and processed by the **Best Orthodontist in Nallagandla**, **Dr. Deepak**, to global standards under the mentorship of **Dr. Dhivakaran** delivered at an economic cost.
+                                    Why waste money on expensive brand names when the same clinical results can be engineered at our **Dental Clinic in Nallagandla**? We provide **Noble In-House Aligners**—manufactured and processed by the **Best Orthodontist in Nallagandla**, **Dr. Deepak**, to global standards under the mentorship of **Dr. Dhivakaran Reddy** delivered at an economic cost.
                                     <br /><br />
                                     <span className="text-xs text-slate-700 dark:text-slate-400 italic">Disclaimer: The designs are made in trays. The technical work, tooth simulations, and transferring them to the tray matters—not the brand.</span>
                                 </p>
@@ -266,7 +266,7 @@ export default function InvisalignRefactored() {
                                         <div className="text-2xl font-black text-slate-900 dark:text-white">International Standards</div>
                                         <p className="text-slate-700 text-sm">Our aligners meet the same durability and transparency benchmarks as the world&apos;s leading brands.</p>
                                         <div className="h-1 w-24 bg-blue-500 mx-auto rounded-full"></div>
-                                        <p className="italic text-slate-600 dark:text-slate-400 text-sm">&quot;The tool is local, the precision is global.&quot; <br /> — Dr. Deepak</p>
+                                        <p className="italic text-slate-600 dark:text-slate-400 text-sm">&quot;The tool is local, the precision is global.&quot; <br /> — Dr. Deepak, Orthodontist - Assistant Professor</p>
                                     </div>
                                 </div>
                             </div>
@@ -557,8 +557,8 @@ export default function InvisalignRefactored() {
                                     a: "**Invisible Braces Hyderabad** patients prefer **Clear Aligners** because they are removable and aesthetic. Unlike metal braces, these are **Metal Free Braces** that allow you to eat anything and maintain better oral hygiene during your **Teeth Straightening** journey."
                                 },
                                 {
-                                    q: "Can Dr. Dhivakaran treat complex cases with aligners?",
-                                    a: "Yes. **Dr. Dhivakaran** and **Dr. Deepak** use iTero 5D scanning at our clinic **Near Aparna Sarovar / Citizens Hospital** to plan complex movements that were previously only possible with metal braces."
+                                    q: "Can Dr. Dhivakaran Reddy treat complex cases with aligners?",
+                                    a: "Yes. **Dr. Dhivakaran Reddy** and **Dr. Deepak** use iTero 5D scanning at our clinic **Near Aparna Sarovar / Citizens Hospital** to plan complex movements that were previously only possible with metal braces."
                                 }
                             ].map((faq, i) => (
                                 <div key={i} className="p-8 ios-glass rounded-[2.5rem] border border-slate-100 dark:border-white/5 ios-card-hover">
@@ -619,7 +619,7 @@ export default function InvisalignRefactored() {
                     <div className="flex items-center justify-center gap-3 text-slate-400">
                         <ShieldCheck size={16} className="text-blue-500" />
                         <p className="text-xs font-bold uppercase tracking-widest">
-                            Clinically Verified v4.2 | Dr. Dhivakaran & Dr. Deepak
+                            Clinically Verified v4.2 | Dr. Dhivakaran Reddy & Dr. Deepak, Orthodontist
                         </p>
                     </div>
                 </div>

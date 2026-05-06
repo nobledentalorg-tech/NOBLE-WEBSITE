@@ -95,7 +95,7 @@ export default function DentalImplantsRefactored() {
         },
         "performer": {
             "@type": "Dentist",
-            "name": "Dr. Dhivakaran",
+            "name": "Dr. Dhivakaran Reddy",
             "url": "https://nobledentalnallagandla.in/team/dr-dhivakaran"
         }
     };
@@ -106,8 +106,8 @@ export default function DentalImplantsRefactored() {
             a: "The Tooth Implant Cost Hyderabad patients find varies. At Noble Dental, our Dental Implants in Nallagandla start at ₹22k, including a high-end crown. We believe in providing the best value Near Aparna Sarovar / Citizens Hospital through premium Swiss engineering."
         },
         {
-            q: "Why choose Dr. Dhivakaran for Full Mouth Dental Implants?",
-            a: "As the Best Dentist in Nallagandla, Dr. Dhivakaran specializes in complex Full Mouth Dental Implants cases using Immediate Loading Implants and All-on-4 Dental Implants where patients can walk out with teeth in 72 hours."
+            q: "Why choose Dr. Dhivakaran Reddy for Full Mouth Dental Implants?",
+            a: "As the Best Dentist in Nallagandla, Dr. Dhivakaran Reddy specializes in complex Full Mouth Dental Implants cases using Immediate Loading Implants and All-on-4 Dental Implants where patients can walk out with teeth in 72 hours."
         },
         {
             q: "Do you offer Zygomatic Implants Hyderabad?",
@@ -233,11 +233,11 @@ export default function DentalImplantsRefactored() {
                             {/* TRUST SIGNAL: Medical Director Badge */}
                             <Link href="/team/dr-dhivakaran" className="group flex items-center gap-4 p-4 rounded-2xl bg-white/50 dark:bg-slate-900/50 backdrop-blur-md border border-slate-200 dark:border-white/10 mb-8 w-fit hover:bg-white/80 dark:hover:bg-slate-900/80 transition-all cursor-pointer">
                                 <div className="relative w-12 h-12 rounded-full overflow-hidden ring-2 ring-teal-500 ring-offset-2 dark:ring-offset-slate-900 group-hover:scale-105 transition-transform">
-                                    <Image src="/images/dhivakaran.webp" alt="Dr. Dhivakaran" width={48} height={48} className="object-cover" />
+                                    <Image src="/images/dhivakaran.webp" alt="Dr. Dhivakaran Reddy" width={48} height={48} className="object-cover" />
                                 </div>
                                 <div>
                                     <div className="flex items-center gap-2">
-                                        <span className="font-bold text-slate-900 dark:text-white text-sm group-hover:text-teal-500 transition-colors">Dr. Dhivakaran</span>
+                                        <span className="font-bold text-slate-900 dark:text-white text-sm group-hover:text-teal-500 transition-colors">Dr. Dhivakaran Reddy</span>
                                         <ShieldCheck size={14} className="text-teal-500" />
                                     </div>
                                     <p className="text-[10px] uppercase font-bold text-slate-500 tracking-wider">MDS • Clinical Director</p>
@@ -355,7 +355,7 @@ export default function DentalImplantsRefactored() {
                                         For cases with severe bone loss, our **Dental Clinic in Nallagandla** provides specialized **Basal Implants Hyderabad** protocols to avoid complex grafting.
                                     </p>
                                     <p>
-                                        Under the guidance of **Dr. Dhivakaran**, our team uses the **Osstell ISQ Meter** to measure clinical stability through Resonance Frequency Analysis.
+                                        Under the guidance of **Dr. Dhivakaran Reddy**, our team uses the **Osstell ISQ Meter** to measure clinical stability through Resonance Frequency Analysis.
                                     </p>
                                     <ul className="space-y-4 pt-8">
                                         {[
@@ -623,7 +623,7 @@ export default function DentalImplantsRefactored() {
                                 rel="noopener noreferrer"
                                 className="inline-flex items-center gap-3 px-6 py-3 bg-teal-600 hover:bg-teal-700 text-white rounded-full shadow-lg transition-all hover:-translate-y-1 font-bold text-xs uppercase tracking-widest text-center"
                             >
-                                <MessageCircle size={16} /> Ask Dr. Dhivakaran a specific question about your case
+                                <MessageCircle size={16} /> Ask Dr. Dhivakaran Reddy a specific question about your case
                             </a>
                         </div>
                     </RevealOnScroll>
@@ -639,7 +639,7 @@ export default function DentalImplantsRefactored() {
                     </div>
                     <h2 className="text-3xl font-black text-slate-900 dark:text-white mb-4 tracking-tight uppercase italic">Night Guardian.</h2>
                     <p className="text-slate-600 dark:text-slate-400 mb-8 max-w-xl mx-auto leading-relaxed font-medium">
-                        Dental implant emergencies or severe trauma Near Aparna Sarovar / Citizens Hospital? **Dr. Dhivakaran** provides emergency triage and stabilization for surgical cases.
+                        Dental implant emergencies or severe trauma Near Aparna Sarovar / Citizens Hospital? **Dr. Dhivakaran Reddy** provides emergency triage and stabilization for surgical cases.
                     </p>
                     <div className="flex gap-4 justify-center">
                         <a href="https://wa.me/918610425342?text=Emergency%20Implant%20Help" className="px-8 py-3 bg-red-500 text-white rounded-full font-black text-xs uppercase tracking-widest shadow-xl shadow-red-500/30 flex items-center gap-2">
@@ -813,7 +813,7 @@ export default function DentalImplantsRefactored() {
                             </div>
                             <h3 className="text-3xl font-black mb-4 uppercase italic">Noble Dental Clinic in Nallagandla</h3>
                             <p className="text-slate-400 text-sm max-w-xl mx-auto leading-relaxed">
-                                As the choice **Dental Clinic in Nallagandla**, we own our clinical space. No corporate franchise overheads. <br /><br />You pay for the clinical skill of **Dr. Dhivakaran** and the Swiss titanium, not for high-rent retail spaces.
+                                As the choice **Dental Clinic in Nallagandla**, we own our clinical space. No corporate franchise overheads. <br /><br />You pay for the clinical skill of **Dr. Dhivakaran Reddy** and the Swiss titanium, not for high-rent retail spaces.
                             </p>
                         </div>
 
@@ -864,7 +864,7 @@ export default function DentalImplantsRefactored() {
                     <div className="space-y-4">
                         {[
                             { q: "What is the Dental Implants Cost in Nallagandla?", a: "The **Tooth Implant Cost Hyderabad** patients find varies. At Noble Dental, our **Dental Implants in Nallagandla** start at ₹22k, including a high-end crown. We believe in providing the best value **Near Aparna Sarovar / Citizens Hospital** through premium Swiss engineering." },
-                            { q: "Why choose Dr. Dhivakaran for Full Mouth Dental Implants?", a: "As the **Best Dentist in Nallagandla**, **Dr. Dhivakaran** specializes in complex **Full Mouth Dental Implants** cases using **Immediate Loading Implants** and **All-on-4 Dental Implants** where patients can walk out with teeth in 72 hours." },
+                            { q: "Why choose Dr. Dhivakaran Reddy for Full Mouth Dental Implants?", a: "As the **Best Dentist in Nallagandla**, **Dr. Dhivakaran Reddy** specializes in complex **Full Mouth Dental Implants** cases using **Immediate Loading Implants** and **All-on-4 Dental Implants** where patients can walk out with teeth in 72 hours." },
                             { q: "Do you offer Zygomatic Implants Hyderabad?", a: "Yes. For patients with zero bone volume, we provide advanced **Zygomatic Implants Hyderabad** and **Basal Implants Hyderabad**. These bypass the need for months of bone grafting, offering a faster **Missing Tooth Replacement**." },
                             { q: "Titanium vs Zirconia Implants: Which is better?", a: "Titanium is the gold standard for bone fusion, while Zirconia is preferred for esthetic zones or metal-free preferences. Our team at this **Dental Clinic in Nallagandla** will guide you based on your biological needs." }
                         ].map((faq, i) => (

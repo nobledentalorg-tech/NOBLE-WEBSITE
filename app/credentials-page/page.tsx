@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import CredentialsRefactored from './CredentialsRefactored';
 
 export const metadata: Metadata = {
-    title: 'Dr. Dhivakaran\'s Certifications & Credentials - Noble Dental',
+    title: 'Dr. Dhivakaran Reddy\'s Certifications & Credentials - Noble Dental',
     description: 'Verified ISO 9001:2015, NABH, and DCI certified dental clinic in Hyderabad.',
     alternates: {
         canonical: '/credentials-page'

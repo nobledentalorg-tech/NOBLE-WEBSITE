@@ -98,7 +98,7 @@ export default function MedicalTourismPage() {
                             We know that many parents visiting from <strong>Vijayawada, Guntur, or Bhimavaram</strong> delay their dental needs because they fear &quot;Big City Doctors&quot;.
                         </p>
                         <p className="text-slate-600 dark:text-slate-300 leading-relaxed mb-8">
-                            Dr. Dhivakaran speaks their language. No medical jargon. Just honest, clear advice for fixed teeth (Implants/Bridges) within their short stay. We offer <strong>Priority Weekend Slots</strong> so you don&apos;t have to take leave from work.
+                            Dr. Dhivakaran Reddy speaks their language. No medical jargon. Just honest, clear advice for fixed teeth (Implants/Bridges) within their short stay. We offer <strong>Priority Weekend Slots</strong> so you don&apos;t have to take leave from work.
                         </p>
                         <div className="flex gap-4">
                             <div className="px-6 py-4 bg-white dark:bg-[#0B1019] rounded-xl shadow-sm text-sm font-bold">
@@ -136,7 +136,7 @@ export default function MedicalTourismPage() {
 
                         <h3 className="text-2xl font-bold mb-4">Yes. We speak Tamil fluidly.</h3>
                         <p className="text-slate-300 text-lg mb-8 max-w-2xl mx-auto">
-                            Dr. Dhivakaran is fluent in Tamil. If you are referring parents from <strong>Madurai, Salem, or Krishnagiri</strong>, they will feel right at home. No translation errors. No confusion.
+                            Dr. Dhivakaran Reddy is fluent in Tamil. If you are referring parents from <strong>Madurai, Salem, or Krishnagiri</strong>, they will feel right at home. No translation errors. No confusion.
                         </p>
 
                         <div className="grid md:grid-cols-2 gap-8 text-left max-w-2xl mx-auto">

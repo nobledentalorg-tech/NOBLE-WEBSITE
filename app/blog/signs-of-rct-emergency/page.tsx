@@ -46,7 +46,7 @@ export default function BlogPost() {
                                 <div className="relative w-12 h-12 rounded-full overflow-hidden border-2 border-slate-200 dark:border-slate-700">
                                     <Image
                                         src="/images/dr-dhivakaran.webp"
-                                        alt="Dr. Dhivakaran"
+                                        alt="Dr. Dhivakaran Reddy"
                                         width={48}
                                         height={48}
                                         className="object-cover"
@@ -54,10 +54,10 @@ export default function BlogPost() {
                                 </div>
                                 <div>
                                     <div className="flex items-center gap-2">
-                                        <span className="font-bold text-slate-900 dark:text-white text-sm">Dr. Dhivakaran</span>
+                                        <span className="font-bold text-slate-900 dark:text-white text-sm">Dr. Dhivakaran Reddy</span>
                                         <ShieldAlert size={14} className="text-red-500" />
                                     </div>
-                                    <p className="text-xs text-slate-500 m-0">Emergency Dental Specialist • 24/7 On-Call</p>
+                                    <p className="text-xs text-slate-500 m-0">Chief Dental Surgeon CMD, Healthflo - Director, NOBLE OS-NEO AI - CTO</p>
                                 </div>
                             </div>
                             <div className="text-right hidden sm:block">

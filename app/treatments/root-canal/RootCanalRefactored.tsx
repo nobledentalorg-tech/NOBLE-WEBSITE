@@ -113,7 +113,7 @@ export default function RootCanalRefactored() {
       },
       "performer": {
          "@type": "Dentist",
-         "name": "Dr. Dhivakaran",
+         "name": "Dr. Dhivakaran Reddy",
          "url": "https://nobledentalnallagandla.in/team/dr-dhivakaran"
       }
    };
@@ -136,8 +136,8 @@ export default function RootCanalRefactored() {
          a: "Yes. Our team includes an expert Endodontist in Nallagandla who handles complex retreats and Microscopic Root Canal Nallagandla cases to ensure the best possible success rates."
       },
       {
-         q: "Why choose Dr. Dhivakaran for my treatment?",
-         a: "As the Best Dentist in Nallagandla, Dr. Dhivakaran uses Microscopic Root Canal Nallagandla and Swiss technology to ensure a 98% success rate in saving natural teeth."
+         q: "Why choose Dr. Dhivakaran Reddy for my treatment?",
+         a: "As the Best Dentist in Nallagandla, Dr. Dhivakaran Reddy uses Microscopic Root Canal Nallagandla and Swiss technology to ensure a 98% success rate in saving natural teeth."
       }
    ];
    const isClean = cleaningProgress >= 100;
@@ -203,11 +203,11 @@ export default function RootCanalRefactored() {
                      {/* TRUST SIGNAL: Medical Director Badge */}
                      <Link href="/team/dr-dhivakaran" className="group flex items-center gap-4 p-4 rounded-2xl bg-white/50 dark:bg-slate-900/50 backdrop-blur-md border border-slate-200 dark:border-white/10 mb-8 w-fit hover:bg-white/80 dark:hover:bg-slate-900/80 transition-all cursor-pointer mt-8">
                         <div className="relative w-12 h-12 rounded-full overflow-hidden ring-2 ring-purple-500 ring-offset-2 dark:ring-offset-slate-900 group-hover:scale-105 transition-transform">
-                           <Image src="/images/dhivakaran.webp" alt="Dr. Dhivakaran" width={48} height={48} className="object-cover" />
+                           <Image src="/images/dhivakaran.webp" alt="Dr. Dhivakaran Reddy" width={48} height={48} className="object-cover" />
                         </div>
                         <div>
                            <div className="flex items-center gap-2">
-                              <span className="font-bold text-slate-900 dark:text-white text-sm group-hover:text-purple-500 transition-colors">Dr. Dhivakaran</span>
+                              <span className="font-bold text-slate-900 dark:text-white text-sm group-hover:text-purple-500 transition-colors">Dr. Dhivakaran Reddy</span>
                               <ShieldCheck size={14} className="text-purple-500" />
                            </div>
                            <p className="text-[10px] uppercase font-bold text-slate-500 tracking-wider">MDS • Endodontist</p>
@@ -373,10 +373,10 @@ export default function RootCanalRefactored() {
                            </p>
                            <div className="flex items-center gap-3 pt-4">
                               <div className="w-12 h-12 rounded-full border-2 border-white/30 overflow-hidden">
-                                 <Image src="/images/dhivakaran.webp" alt="Dr. Dhivakaran" width={48} height={48} />
+                                 <Image src="/images/dhivakaran.webp" alt="Dr. Dhivakaran Reddy" width={48} height={48} />
                               </div>
                               <div>
-                                 <p className="text-white font-bold text-sm">Dr. Dhivakaran, CMD</p>
+                                 <p className="text-white font-bold text-sm">Dr. Dhivakaran Reddy, CMD</p>
                                  <p className="text-white/60 text-xs uppercase tracking-widest font-black">Best Dentist in Nallagandla</p>
                               </div>
                            </div>
@@ -572,7 +572,7 @@ export default function RootCanalRefactored() {
                            </div>
                         </div>
                         <p className="text-sm text-slate-500 dark:text-slate-400 mt-2">
-                           Dr. Dhivakaran&apos;s special interest in <strong>difficult re-treatments</strong> (fixing failed old rcts).
+                           Dr. Dhivakaran Reddy&apos;s special interest in <strong>difficult re-treatments</strong> (fixing failed old rcts).
                         </p>
                      </div>
                      <p className="text-sm text-slate-500 dark:text-slate-400 pl-4">
@@ -727,7 +727,7 @@ export default function RootCanalRefactored() {
                            rel="noopener noreferrer"
                            className="inline-flex items-center gap-3 px-6 py-3 bg-purple-600 hover:bg-purple-700 text-white rounded-full shadow-lg transition-all hover:-translate-y-1 font-bold text-xs uppercase tracking-widest"
                         >
-                           <MessageCircle size={16} /> Ask Dr. Dhivakaran a specific question about your case
+                           <MessageCircle size={16} /> Ask Dr. Dhivakaran Reddy a specific question about your case
                         </a>
                      </div>
                   </div>
@@ -743,7 +743,7 @@ export default function RootCanalRefactored() {
                </div>
                <h2 className="text-3xl font-bold text-slate-900 dark:text-white mb-4 tracking-tight uppercase italic">Emergency Pain Relief.</h2>
                <p className="text-slate-600 dark:text-slate-400 mb-8 max-w-xl mx-auto leading-relaxed font-medium">
-                  Search no further for a **Dental Clinic in Nallagandla** for an emergency **Root Canal Treatment**. <br /><br />**Dr. Dhivakaran** and his team reserve slots for rapid pain relief daily.
+                  Search no further for a **Dental Clinic in Nallagandla** for an emergency **Root Canal Treatment**. <br /><br />**Dr. Dhivakaran Reddy** and his team reserve slots for rapid pain relief daily.
                </p>
                <div className="flex gap-4 justify-center">
                   <a href="https://wa.me/918610425342?text=Emergency%20Pain%20Relief%20Request" className="ios-btn px-8 py-3 bg-red-500 text-white rounded-full font-bold text-sm shadow-lg shadow-red-500/30 flex items-center gap-2">
@@ -896,7 +896,7 @@ export default function RootCanalRefactored() {
                      { q: "What is a Single Sitting Root Canal?", a: "A **Single Sitting Root Canal** is a high-precision procedure completed in one visit of 45-60 minutes. Ideal for busy professionals from **Wipro Circle** and **My Home Sayuk**." },
                      { q: "Do you have a specialist Endodontist in Nallagandla?", a: "Yes. Located opposite **Aparna Sarovar Zenith**, our team includes an expert **Endodontist in Nallagandla** for complex microscopic cases." },
                      { q: "What determines the Root Canal Cost in Hyderabad?", a: "The cost depends on the number of roots (Anterior vs Molar). We provide transparent estimates for both the procedure and the **Dental Cap / Crown Cost**." },
-                     { q: "Why choose Dr. Dhivakaran for my treatment?", a: "As the **Best Dentist in Nallagandla**, Dr. Dhivakaran uses **Microscopic Root Canal Nallagandla** protocols to ensure a 98% success rate in saving natural teeth." }
+                     { q: "Why choose Dr. Dhivakaran Reddy for my treatment?", a: "As the **Best Dentist in Nallagandla**, Dr. Dhivakaran Reddy uses **Microscopic Root Canal Nallagandla** protocols to ensure a 98% success rate in saving natural teeth." }
                   ].map((item, i) => (
                      <details key={i} className="group bg-white dark:bg-[#1C1C1E] open:bg-slate-50 dark:open:bg-[#2C2C2E] transition-colors cursor-pointer">
                         <summary className="flex items-center justify-between p-5 text-slate-900 dark:text-white font-semibold select-none list-none">

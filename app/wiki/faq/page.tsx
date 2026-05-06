@@ -8,7 +8,7 @@ import { Metadata } from 'next';
 
 export const metadata: Metadata = {
     title: 'Dental FAQ & Knowledge Base | Noble Dental Care',
-    description: 'Expert answers to your dental questions by Dr. Dhivakaran. Root Canals, Implants, Invisalign, and more explained simply.',
+    description: 'Expert answers to your dental questions by Dr. Dhivakaran Reddy. Root Canals, Implants, Invisalign, and more explained simply.',
 };
 
 export default function FAQIndexPage() {
@@ -30,7 +30,7 @@ export default function FAQIndexPage() {
                     </h1>
                     <p className="text-xl text-slate-600 dark:text-slate-400 max-w-2xl mx-auto">
                         Clear, clinical answers to your most pressing dental questions.
-                        Optimized for voice search and verified by Dr. Dhivakaran.
+                        Optimized for voice search and verified by Dr. Dhivakaran Reddy.
                     </p>
 
                     {/* Search Placeholder (Visual Only for now) */}

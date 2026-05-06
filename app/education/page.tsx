@@ -7,7 +7,7 @@ import CrawlableReviews from '@/components/CrawlableReviews';
 
 export const metadata: Metadata = {
     title: 'Patient Education | Root Canal, Implants & Invisalign Guide',
-    description: 'Learn about Microscopic Root Canals, Dental Implants cost in Hyderabad, and Invisalign vs Braces. Expert guides by Dr. Dhivakaran.',
+    description: 'Learn about Microscopic Root Canals, Dental Implants cost in Hyderabad, and Invisalign vs Braces. Expert guides by Dr. Dhivakaran Reddy.',
     keywords: ['Root canal process', 'Invisalign cost Hyderabad', 'Dental implants explained', 'Patient education dentistry'],
 };
 

@@ -118,7 +118,7 @@ async function callGeminiFallback(userQuery: string, context: string): Promise<s
     - If the user mentions pain, ** DROP ** all marketing.
        - ** Validate **: "I hear you, and I’m sorry you’re dealing with this."
         - ** Triage **: Ask ** ONE ** targeted question at a time(e.g., "Is it sensitive to hot or cold?").
-       - ** Connect **: "While only Dr. Dhivakaran can diagnose, this sounds like [Clinical Possibility]. We are open until 11:30 PM for triage."
+       - ** Connect **: "While only Dr. Dhivakaran Reddy can diagnose, this sounds like [Clinical Possibility]. We are open until 11:30 PM for triage."
 
     2. ** THE "RULE OF THREE" **:
        - Do ** NOT ** offer a diagnosis or specific treatment(e.g., "You need a Root Canal") until you have collected ** 3 distinct symptoms **.

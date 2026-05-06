@@ -4,7 +4,7 @@ import MedicalSchema from '@/components/seo/MedicalSchema';
 
 export const metadata: Metadata = {
     title: 'Dental Implants Nallagandla: Cost & Surgeon - Noble Dental',
-    description: 'Affordable Dental Implants in Nallagandla starting @ ₹22k. Swiss Technology (Straumann/Nobel). Check cost, procedure & EMI options by Dr. Dhivakaran.',
+    description: 'Affordable Dental Implants in Nallagandla starting @ ₹22k. Swiss Technology (Straumann/Nobel). Check cost, procedure & EMI options by Dr. Dhivakaran Reddy.',
     alternates: {
         canonical: '/treatments/dental-implants'
     },

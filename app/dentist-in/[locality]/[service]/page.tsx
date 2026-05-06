@@ -46,7 +46,7 @@ export async function generateMetadata({ params }: PageProps) {
 
     return {
         title: `${service.title} in ${locality.name} ${landmarkText} | ${timeSensitivteTitle} | Noble Dental`,
-        description: `Urgent dental pain in ${locality.name}? Dr. Dhivakaran provides ${service.title} just ${localityData?.time || '10 mins'} away. Located near ${localityData?.landmarks[0] || locality.landmark}. Open until 11:30 PM.`,
+        description: `Urgent dental pain in ${locality.name}? Dr. Dhivakaran Reddy provides ${service.title} just ${localityData?.time || '10 mins'} away. Located near ${localityData?.landmarks[0] || locality.landmark}. Open until 11:30 PM.`,
         keywords: [
             `${service.title} in ${locality.name}`,
             `${service.simple_term} ${locality.name}`,

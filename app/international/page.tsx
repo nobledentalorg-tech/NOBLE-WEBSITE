@@ -171,7 +171,7 @@ export default function InternationalPatients() {
                             </div>
                             <div className="w-[calc(100%-4rem)] md:w-[calc(50%-2.5rem)] bg-white dark:bg-slate-900 p-6 rounded-2xl shadow-sm border border-slate-100 dark:border-white/5">
                                 <h3 className="font-bold text-lg mb-2">Virtual Consultation (Before Trip)</h3>
-                                <p className="text-sm text-slate-600 dark:text-slate-400">Connect with Dr. Dhivakaran via Zoom/WhatsApp. Share X-rays and get a tentative treatment plan and cost estimate.</p>
+                                <p className="text-sm text-slate-600 dark:text-slate-400">Connect with Dr. Dhivakaran Reddy via Zoom/WhatsApp. Share X-rays and get a tentative treatment plan and cost estimate.</p>
                             </div>
                         </div>
 

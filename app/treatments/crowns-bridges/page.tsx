@@ -27,7 +27,7 @@ export default function CrownsBridgesPage() {
         "bodyLocation": "Dental Arch",
         "provider": {
             "@type": "Dentist",
-            "name": "Dr. Dhivakaran",
+            "name": "Dr. Dhivakaran Reddy",
             "memberOf": {
                 "@type": "DentalClinic",
                 "name": "Noble Dental Care",

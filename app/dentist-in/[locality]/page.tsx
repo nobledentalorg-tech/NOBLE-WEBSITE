@@ -31,7 +31,7 @@ export async function generateMetadata({ params }: PageProps) {
 
     return {
         title: `Best Dentist Near ${locality.name} | Noble Dental Care Nallagandla`,
-        description: `Looking for a dentist near ${locality.name}, Hyderabad? Noble Dental Care is just ${localityData?.time || '10 mins'} away. Root canals, implants, Invisalign & emergency care by Dr. Dhivakaran. 427+ Google Reviews ⭐ 4.9`,
+        description: `Looking for a dentist near ${locality.name}, Hyderabad? Noble Dental Care is just ${localityData?.time || '10 mins'} away. Root canals, implants, Invisalign & emergency care by Dr. Dhivakaran Reddy. 427+ Google Reviews ⭐ 4.9`,
         alternates: {
             canonical: `${BASE_URL}/dentist-in/${locality.slug}`,
         },
