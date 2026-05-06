@@ -28,7 +28,7 @@ const outfit = Outfit({
 export const metadata: Metadata = {
   // ... (Metadata stays same)
   title: {
-    default: "Microscopic Root Canal & Dental Implants in Nallagandla | Noble Dental Care",
+    default: "Noble Dental Care | Best Dentist & Dental Clinic in Nallagandla",
     template: '%s | Noble Dental Care Nallagandla'
   },
   metadataBase: new URL('https://www.nobledentalnallagandla.in'),
@@ -36,8 +36,13 @@ export const metadata: Metadata = {
     canonical: '/',
   },
   icons: {
-    icon: '/favicon.ico',
-    shortcut: '/favicon.ico',
+    icon: [
+      { url: '/favicon.ico' },
+      { url: '/logo.png', sizes: 'any', type: 'image/png' },
+    ],
+    apple: [
+      { url: '/logo.png', sizes: '180x180', type: 'image/png' },
+    ],
   },
   manifest: '/manifest.json',
   other: {
