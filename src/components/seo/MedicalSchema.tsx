@@ -80,7 +80,6 @@ export default function MedicalSchema({ procedure, condition, drug, pricing }: S
                 "name": "Orthodontics",
                 "description": "Invisalign and Braces"
             }
-        ],
         ]
     } as any;
 
