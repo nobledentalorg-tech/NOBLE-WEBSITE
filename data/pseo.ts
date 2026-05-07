@@ -17,6 +17,13 @@ export interface PSEOService {
 
 export const pseoLocalities: PSEOLocality[] = [
     {
+        slug: "nallagandla",
+        name: "Nallagandla",
+        landmark: "near Ratnadeep / Citizens Hospital",
+        driving_directions: "located right here in the heart of Nallagandla",
+        coordinates: { lat: 17.4747, lng: 78.3102 }
+    },
+    {
         slug: "tellapur",
         name: "Tellapur",
         landmark: "near Urja Stadium / Alien Space Station",

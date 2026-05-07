@@ -9,6 +9,15 @@ export interface LocalityData {
 }
 
 export const LOCALITY_MATRIX: Record<string, LocalityData> = {
+    'nallagandla': {
+        id: 'nallagandla',
+        name: 'Nallagandla',
+        distance: '0.0 km',
+        time: '1 min',
+        landmarks: ['Ratnadeep Supermarket', 'Citizens Hospital', 'Nallagandla Lake'],
+        demographic: 'Local residents & families',
+        metaTitleSuffix: 'Heart of Nallagandla'
+    },
     'tellapur': {
         id: 'tellapur',
         name: 'Tellapur',
@@ -27,8 +36,8 @@ export const LOCALITY_MATRIX: Record<string, LocalityData> = {
         demographic: 'Tech employees & Financial District professionals',
         metaTitleSuffix: 'Near DLF & Microsoft'
     },
-    'chanda-nagar': {
-        id: 'chanda-nagar',
+    'chandanagar': {
+        id: 'chandanagar',
         name: 'Chanda Nagar',
         distance: '~2.8 km',
         time: '7-10 mins',
