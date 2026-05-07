@@ -31,9 +31,6 @@ export const metadata: Metadata = {
     template: '%s | Noble Dental Care Nallagandla'
   },
   metadataBase: new URL('https://www.nobledentalnallagandla.in'),
-  alternates: {
-    canonical: '/',
-  },
   icons: {
     icon: [
       { url: '/favicon.ico' },
