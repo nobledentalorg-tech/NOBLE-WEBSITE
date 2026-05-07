@@ -1,7 +1,6 @@
 import { Inter, Outfit } from 'next/font/google';
 import './globals.css';
 import LayoutShell from '@/components/LayoutShell';
-import MedicalSchema from '@/components/seo/MedicalSchema';
 import UIProtector from '@/components/UIProtector';
 import FloatingCTA from '@/components/FloatingCTA';
 import JsonLd from '@/components/JsonLd';
@@ -125,7 +124,6 @@ export default function RootLayout({
               <LayoutShell>
                 {children}
                 <JsonLd />
-                <MedicalSchema />
                 <BreadcrumbSchema />
                 <ReviewSchema />
                 <UIProtector />

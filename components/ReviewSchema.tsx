@@ -5,6 +5,7 @@ export default function ReviewSchema() {
     const schema = {
         "@context": "https://schema.org/",
         "@type": "Dentist",
+        "@id": "https://www.nobledentalnallagandla.in/#dentist",
         "name": "Noble Dental Care | Multispeciality Dental clinic in Nallagandla",
         "image": "https://www.nobledentalnallagandla.in/assets/og-image.jpg",
         "telephone": "+918610425342",
@@ -30,6 +31,29 @@ export default function ReviewSchema() {
             "bestRating": "5",
             "worstRating": "1"
         },
+        "review": [
+            {
+                "@type": "Review",
+                "author": { "@type": "Person", "name": "Ananya Sharma" },
+                "datePublished": "2025-08-14",
+                "reviewBody": "Had my root canal treatment done here. Dr. Dhivakaran explained every step clearly, and the procedure was painless under the microscope.",
+                "reviewRating": { "@type": "Rating", "ratingValue": "5" }
+            },
+            {
+                "@type": "Review",
+                "author": { "@type": "Person", "name": "Ravi Kumar" },
+                "datePublished": "2025-07-28",
+                "reviewBody": "Visited Noble Dental Care for my child's tooth filling. The pediatric dentist was friendly, and the staff made my kid comfortable throughout.",
+                "reviewRating": { "@type": "Rating", "ratingValue": "5" }
+            },
+            {
+                "@type": "Review",
+                "author": { "@type": "Person", "name": "Sneha Reddy" },
+                "datePublished": "2025-06-09",
+                "reviewBody": "Got my smile design done. The results were fantastic — natural, aesthetic, and affordable.",
+                "reviewRating": { "@type": "Rating", "ratingValue": "5" }
+            }
+        ],
         "priceRange": "₹500 - ₹25000"
     }
 

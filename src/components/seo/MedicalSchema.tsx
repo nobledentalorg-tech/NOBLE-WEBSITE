@@ -24,8 +24,8 @@ interface SchemaProps {
 export default function MedicalSchema({ procedure, condition, drug, pricing }: SchemaProps) {
     // 1. Core Entity: MedicalBusiness (#clinic)
     const clinic = {
-        "@type": "MedicalBusiness",
-        "@id": "https://www.nobledentalnallagandla.in/#clinic",
+        "@type": "Dentist",
+        "@id": "https://www.nobledentalnallagandla.in/#dentist",
         "name": "Noble Dental Care",
         "alternateName": ["Noble Dental Care Nallagandla", "NDC Dental Clinic Hyderabad"],
         "description": "Top-rated multispeciality dental clinic in Nallagandla & Tellapur. Specializing in Microscopic Root Canals, Dental Implants, Invisalign, and Laser Dentistry.",
@@ -81,35 +81,6 @@ export default function MedicalSchema({ procedure, condition, drug, pricing }: S
                 "description": "Invisalign and Braces"
             }
         ],
-        "aggregateRating": {
-            "@type": "AggregateRating",
-            "ratingValue": "4.9",
-            "reviewCount": "427",
-            "bestRating": "5",
-            "worstRating": "1"
-        },
-        "review": [
-            {
-                "@type": "Review",
-                "author": { "@type": "Person", "name": "Ananya Sharma" },
-                "datePublished": "2025-08-14",
-                "reviewBody": "Had my root canal treatment done here. Dr. Dhivakaran explained every step clearly, and the procedure was painless under the microscope.",
-                "reviewRating": { "@type": "Rating", "ratingValue": "5" }
-            },
-            {
-                "@type": "Review",
-                "author": { "@type": "Person", "name": "Ravi Kumar" },
-                "datePublished": "2025-07-28",
-                "reviewBody": "Visited Noble Dental Care for my child’s tooth filling. The pediatric dentist was friendly, and the staff made my kid comfortable throughout.",
-                "reviewRating": { "@type": "Rating", "ratingValue": "5" }
-            },
-            {
-                "@type": "Review",
-                "author": { "@type": "Person", "name": "Sneha Reddy" },
-                "datePublished": "2025-06-09",
-                "reviewBody": "Got my smile design done. The results were fantastic — natural, aesthetic, and affordable.",
-                "reviewRating": { "@type": "Rating", "ratingValue": "5" }
-            }
         ]
     } as any;
 
@@ -120,7 +91,7 @@ export default function MedicalSchema({ procedure, condition, drug, pricing }: S
         "name": "Dr. Dhivakaran",
         "jobTitle": "Clinical Director",
         "medicalSpecialty": "Endodontist",
-        "memberOf": { "@id": "https://www.nobledentalnallagandla.in/#clinic" },
+        "memberOf": { "@id": "https://www.nobledentalnallagandla.in/#dentist" },
         "image": "https://www.nobledentalnallagandla.in/images/dr-dhivakaran.webp",
         "url": "https://www.nobledentalnallagandla.in/team/dr-dhivakaran",
         "sameAs": [
@@ -156,7 +127,7 @@ export default function MedicalSchema({ procedure, condition, drug, pricing }: S
             "description": procedure.description,
             "procedureType": procedure.procedureType || "Non-surgical",
             "performer": { "@id": "https://www.nobledentalnallagandla.in/#doctor" },
-            "location": { "@id": "https://www.nobledentalnallagandla.in/#clinic" },
+            "location": { "@id": "https://www.nobledentalnallagandla.in/#dentist" },
             "instrument": { "@id": "https://www.nobledentalnallagandla.in/#zeiss-extaro" },
             "image": procedure.image
         });
@@ -189,7 +160,7 @@ export default function MedicalSchema({ procedure, condition, drug, pricing }: S
             "proprietaryName": drug.brandNames,
             "description": drug.description.en,
             "warning": drug.dosageWarning.en,
-            "manufacturer": { "@id": "https://nobledentalnallagandla.in/#clinic" } // Or external
+            "manufacturer": { "@id": "https://nobledentalnallagandla.in/#dentist" } // Or external
         });
     }
 
