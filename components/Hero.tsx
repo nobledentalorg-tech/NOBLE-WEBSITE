@@ -250,9 +250,8 @@ const Hero: React.FC<HeroProps> = ({ onBookClick }) => {
                   alt="Swiss Implant System"
                   width={300}
                   height={300}
-                  priority={true}
+                  loading="lazy"
                   sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 440px"
-                  fetchPriority="high" // [SEO] LCP Optimization
                   unoptimized={false}
                 />
 
