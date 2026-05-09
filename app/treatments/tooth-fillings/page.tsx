@@ -10,7 +10,7 @@ export const metadata: Metadata = {
     openGraph: {
         title: 'Invisible Tooth Fillings Hyderabad | Noble Dental Care',
         description: 'Biomimetic nano-composite restorations. Moisture-controlled precision and natural aesthetics.',
-        url: 'https://nobledentalnallagandla.in/treatments/tooth-fillings',
+        url: 'https://www.nobledentalnallagandla.in/treatments/tooth-fillings',
         siteName: 'Noble Dental Care',
         images: [{ url: '/assets/images/treatments/fillings-hyderabad.webp', width: 1200, height: 630 }],
         type: 'article'

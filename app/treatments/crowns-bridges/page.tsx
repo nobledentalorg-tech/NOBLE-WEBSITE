@@ -10,7 +10,7 @@ export const metadata: Metadata = {
     openGraph: {
         title: 'Monolithic Zirconia Crowns Hyderabad | Noble Dental Care',
         description: 'Robotic CAD/CAM Zirconia crowns. Metal-free, gum-healthy, and aesthetically perfect.',
-        url: 'https://nobledentalnallagandla.in/treatments/crowns-bridges',
+        url: 'https://www.nobledentalnallagandla.in/treatments/crowns-bridges',
         siteName: 'Noble Dental Care',
         images: [{ url: '/assets/images/treatments/crowns-bridges-hyderabad.webp', width: 1200, height: 630 }],
         type: 'article'

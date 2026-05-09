@@ -11,7 +11,7 @@ export const metadata: Metadata = {
     openGraph: {
         title: 'Gum Disease Treatment Hyderabad | Noble Dental Care',
         description: 'Advanced periodontics. Scaling, root planing, and laser gum therapy to prevent heart disease and preserve teeth.',
-        url: 'https://nobledentalnallagandla.in/treatments/gum-disease',
+        url: 'https://www.nobledentalnallagandla.in/treatments/gum-disease',
         siteName: 'Noble Dental Care',
         images: [{ url: '/assets/images/treatments/gum-disease-hyderabad.webp', width: 1200, height: 630 }],
         type: 'article'

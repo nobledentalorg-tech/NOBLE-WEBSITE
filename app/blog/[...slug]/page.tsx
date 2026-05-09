@@ -27,7 +27,10 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
     if (autoPost) {
         return {
             title: `${autoPost.title} | Clinical Insights`,
-            description: autoPost.excerpt
+            description: autoPost.excerpt,
+            alternates: {
+                canonical: `https://www.nobledentalnallagandla.in/blog/${slug}`,
+            },
         };
     }
 

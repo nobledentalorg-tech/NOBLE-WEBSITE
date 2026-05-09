@@ -10,7 +10,7 @@ export const metadata: Metadata = {
    openGraph: {
       title: 'Dental Pharmacy & Products | Noble Dental Care',
       description: 'Order prescribed dental products directly from Noble Dental.',
-      url: 'https://nobledentalnallagandla.in/products',
+      url: 'https://www.nobledentalnallagandla.in/products',
       siteName: 'Noble Dental Care',
       images: [{ url: '/assets/og-image.jpg', width: 1200, height: 630 }],
       type: 'website'

@@ -10,7 +10,7 @@ export const metadata: Metadata = {
    openGraph: {
       title: 'Invisible Braces Hyderabad | Invisalign & Damon System',
       description: 'Correct teeth alignment with world-class orthodontics. 3D-planned precision.',
-      url: 'https://nobledentalnallagandla.in/treatments/braces',
+      url: 'https://www.nobledentalnallagandla.in/treatments/braces',
       siteName: 'Noble Dental Care',
       images: [{ url: '/assets/og-image.jpg', width: 1200, height: 630 }],
       type: 'article'

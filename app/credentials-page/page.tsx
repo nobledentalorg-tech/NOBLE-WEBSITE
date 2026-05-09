@@ -10,7 +10,7 @@ export const metadata: Metadata = {
     openGraph: {
         title: 'Credentials & Safety | Noble Dental Care',
         description: 'We don\'t just claim quality; we are certified for it. ISO, NABH, DCI.',
-        url: 'https://nobledentalnallagandla.in/credentials-page',
+        url: 'https://www.nobledentalnallagandla.in/credentials-page',
         siteName: 'Noble Dental Care',
         images: [{ url: '/assets/og-image.jpg', width: 1200, height: 630 }],
         type: 'website'

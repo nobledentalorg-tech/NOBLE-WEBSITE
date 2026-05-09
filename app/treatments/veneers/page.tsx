@@ -10,7 +10,7 @@ export const metadata: Metadata = {
     openGraph: {
         title: 'Porcelain Veneers Hyderabad | Hollywood Smile Design',
         description: 'Transform your smile with ultra-thin E.max veneers.',
-        url: 'https://nobledentalnallagandla.in/treatments/veneers',
+        url: 'https://www.nobledentalnallagandla.in/treatments/veneers',
         siteName: 'Noble Dental Care',
         images: [{ url: '/assets/og-image.jpg', width: 1200, height: 630 }],
         type: 'article'

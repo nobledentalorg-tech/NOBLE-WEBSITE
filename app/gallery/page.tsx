@@ -10,7 +10,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'Clinical Gallery | Noble Dental Care',
     description: 'See the results of our Full Mouth Reconstructions and Smile Designs.',
-    url: 'https://nobledentalnallagandla.in/gallery',
+    url: 'https://www.nobledentalnallagandla.in/gallery',
     siteName: 'Noble Dental Care',
     images: [{ url: '/assets/og-image.jpg', width: 1200, height: 630 }],
     type: 'website'

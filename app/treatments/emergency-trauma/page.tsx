@@ -10,7 +10,7 @@ export const metadata: Metadata = {
     openGraph: {
         title: 'Emergency Dental Trauma Care Hyderabad | Noble Dental',
         description: 'Immediate surgical intervention for dental emergencies. Save your tooth within the golden hour.',
-        url: 'https://nobledentalnallagandla.in/treatments/emergency-trauma',
+        url: 'https://www.nobledentalnallagandla.in/treatments/emergency-trauma',
         siteName: 'Noble Dental Care',
         images: [{ url: '/assets/images/treatments/emergency-hyderabad.webp', width: 1200, height: 630 }],
         type: 'article'

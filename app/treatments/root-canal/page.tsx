@@ -11,7 +11,7 @@ export const metadata: Metadata = {
    openGraph: {
       title: 'Root Canal Treatment Hyderabad | Painless Rotary Endodontics',
       description: 'Save your natural tooth with microscopic precision. Single-visit root canals using laser disinfection.',
-      url: 'https://nobledentalnallagandla.in/treatments/root-canal',
+      url: 'https://www.nobledentalnallagandla.in/treatments/root-canal',
       siteName: 'Noble Dental Care',
       images: [{ url: '/assets/og-image.jpg', width: 1200, height: 630 }],
       type: 'article'

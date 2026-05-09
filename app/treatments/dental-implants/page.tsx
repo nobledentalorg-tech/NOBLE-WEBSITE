@@ -11,7 +11,7 @@ export const metadata: Metadata = {
     openGraph: {
         title: 'Dental Implants Hyderabad | Swiss Titanium & Zirconia',
         description: 'Restore your smile with 99.2% success rate implants. Authorized centre for Straumann and Nobel Biocare.',
-        url: 'https://nobledentalnallagandla.in/treatments/dental-implants',
+        url: 'https://www.nobledentalnallagandla.in/treatments/dental-implants',
         siteName: 'Noble Dental Care',
         images: [{ url: '/assets/og-image.jpg', width: 1200, height: 630 }],
         type: 'article'
