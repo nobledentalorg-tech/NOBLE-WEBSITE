@@ -142,9 +142,18 @@ const Contact = () => {
                                     <p className="text-sm font-bold text-slate-700 dark:text-slate-300 leading-tight mb-4">1st floor - ICA Clinic suite 2, Plot no. 151/2, HUDA layout water tank road Nallagandla, above Travancore Ayuvedha, Serilingampalle (M), Hyderabad, Telangana 500019.</p>
 
                                     {/* [Trusted Local Signal] Lazy Loaded Map */}
-                                    <div className="w-full aspect-video rounded-xl overflow-hidden shadow-inner border border-slate-200 dark:border-white/10 relative group/map">
+                                    <div className="w-full aspect-video rounded-xl overflow-hidden shadow-inner border border-slate-200 dark:border-white/10 relative group/map mb-4">
                                         <GoogleMap />
                                     </div>
+                                    
+                                    <a 
+                                        href="https://maps.app.goo.gl/fb88doh9LBRTet6f7" 
+                                        target="_blank" 
+                                        rel="noopener noreferrer"
+                                        className="inline-flex items-center justify-center w-full gap-2 px-4 py-3 bg-indigo-600 hover:bg-indigo-700 text-white rounded-xl font-bold transition-all shadow-lg shadow-indigo-500/30"
+                                    >
+                                        <MapPin size={18} className="fill-white/20" /> Get Directions
+                                    </a>
                                 </div>
                             </RevealOnScroll>
                         </div>
