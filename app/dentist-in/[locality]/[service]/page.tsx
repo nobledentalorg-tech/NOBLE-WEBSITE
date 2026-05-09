@@ -56,6 +56,9 @@ export async function generateMetadata({ params }: PageProps) {
             'Noble Dental Care',
             'Hyderabad'
         ],
+        alternates: {
+            canonical: `https://www.nobledentalnallagandla.in/dentist-in/${locality.slug}/${service.slug}`,
+        },
     };
 }
 
