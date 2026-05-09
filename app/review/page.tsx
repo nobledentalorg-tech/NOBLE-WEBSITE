@@ -10,7 +10,7 @@ export const metadata: Metadata = {
 
 export default function ReviewPage() {
     // Standard Google Review link derived from the map CID/Place ID
-    const googleReviewLink = "https://g.page/r/ChIJew1fcG2TyzsRrvHrnBzKGj8/review";
+    const googleReviewLink = "https://g.page/r/Ca7x65wcyho_EAE/review";
 
     return (
         <main className="min-h-screen pt-32 pb-20 bg-slate-50 dark:bg-[#0B1019] relative overflow-hidden">
@@ -61,24 +61,37 @@ export default function ReviewPage() {
                     <div className="bg-white dark:bg-[#151b2b] rounded-[2rem] p-8 border border-slate-200 dark:border-white/5 shadow-xl shadow-indigo-500/5 relative overflow-hidden group">
                         <div className="absolute top-0 right-0 w-32 h-32 bg-indigo-500/10 rounded-bl-full -z-10 transition-transform group-hover:scale-110"></div>
                         
-                        <div className="w-16 h-16 rounded-2xl bg-indigo-50 dark:bg-indigo-900/20 flex items-center justify-center text-indigo-600 mb-6">
+                        <div className="w-16 h-16 rounded-2xl bg-indigo-50 dark:bg-indigo-900/20 flex items-center justify-center text-indigo-600 mb-6 mx-auto md:mx-0">
                             <QrCode size={32} />
                         </div>
                         
                         <h2 className="text-2xl font-bold text-slate-900 dark:text-white mb-4">
-                            Official Google QR
+                            Scan to Review
                         </h2>
-                        <p className="text-slate-500 dark:text-slate-400 mb-8">
-                            Download our official Google-verified QR code to share with friends and family.
+                        <p className="text-slate-500 dark:text-slate-400 mb-6">
+                            Already at the clinic? Simply scan this code with your phone camera to leave a review instantly.
                         </p>
                         
-                        <a 
-                            href="/google-qr.pdf" 
-                            download="Noble_Dental_Care_QR.pdf"
-                            className="inline-flex items-center justify-center w-full gap-2 px-6 py-4 bg-slate-100 dark:bg-white/5 hover:bg-slate-200 dark:hover:bg-white/10 text-slate-900 dark:text-white rounded-xl font-bold transition-all"
-                        >
-                            <ExternalLink size={18} /> Download QR Code PDF
-                        </a>
+                        <div className="bg-white p-4 rounded-2xl inline-block shadow-sm border border-slate-100">
+                            {/* Using Google Chart API to generate the exact QR Code on the fly */}
+                            <img 
+                                src={`https://api.qrserver.com/v1/create-qr-code/?size=250x250&data=${encodeURIComponent(googleReviewLink)}`} 
+                                alt="Google Review QR Code" 
+                                width={200}
+                                height={200}
+                                className="w-[200px] h-[200px] object-contain"
+                            />
+                        </div>
+
+                        <div className="mt-6">
+                            <a 
+                                href="/google-qr.pdf" 
+                                download="Noble_Dental_Care_QR.pdf"
+                                className="inline-flex items-center justify-center gap-2 px-4 py-2 text-sm bg-slate-100 dark:bg-white/5 hover:bg-slate-200 dark:hover:bg-white/10 text-slate-600 dark:text-slate-300 rounded-lg font-bold transition-all"
+                            >
+                                <ExternalLink size={14} /> Download PDF Version
+                            </a>
+                        </div>
                     </div>
                 </div>
 
