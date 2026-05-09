@@ -26,6 +26,9 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
     return {
         title: `${data.question} | Dental FAQ`,
         description: data.conciseAnswer.slice(0, 160),
+        alternates: {
+            canonical: `https://www.nobledentalnallagandla.in/wiki/faq/${params.slug}`,
+        },
     };
 }
 

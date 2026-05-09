@@ -19,6 +19,9 @@ export async function generateMetadata({ params }: { params: { slug: string } })
     return {
         title: `${data.medicalTerm.en} (${data.laymanTerm.en}) | Noble Medical Wiki`,
         description: data.description.en,
+        alternates: {
+            canonical: `https://www.nobledentalnallagandla.in/wiki/pathology/${params.slug}`,
+        },
     };
 }
 
