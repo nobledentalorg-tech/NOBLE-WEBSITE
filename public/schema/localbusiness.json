@@ -185,6 +185,16 @@
       "Elderly Patients"
     ]
   },
-  "lastReviewed": "2025-10-01",
-  "version": "2025.10"
+  "makesOffer": {
+    "@type": "Offer",
+    "itemOffered": {
+      "@type": "SoftwareApplication",
+      "name": "Noble OS",
+      "description": "India's Sovereign Dental Operating System — Enterprise-grade clinical management for modern dental practices.",
+      "url": "https://nobleos.nobledentalnallagandla.in",
+      "applicationCategory": "HealthApplication"
+    }
+  },
+  "lastReviewed": "2026-05-09",
+  "version": "2026.05"
 }
