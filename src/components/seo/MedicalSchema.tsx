@@ -32,13 +32,16 @@ export default function MedicalSchema({ procedure, condition, drug, pricing }: S
         "url": "https://www.nobledentalnallagandla.in",
         "logo": "https://www.nobledentalnallagandla.in/images/logo-footer.webp",
         "image": "https://www.nobledentalnallagandla.in/images/clinic-front.webp",
-        "telephone": "+918074512305",
-        "email": "nobledentalorg@gmail.com",
+        "telephone": [
+            "+918610425342",
+            "+918074512305"
+        ],
+        "email": "nobledental.org@gmail.com",
         "priceRange": "₹₹",
         "address": {
             "@type": "PostalAddress",
-            "streetAddress": "Suite 101, Ground Floor, Sri Klara, Nallagandla-Tellapur Rd",
-            "addressLocality": "Serilingampally",
+            "streetAddress": "1st floor - ICA Clinic suite 2, Plot no. 151/2, HUDA layout water tank road Nallagandla, above Travancore Ayuvedha",
+            "addressLocality": "Serilingampalle (M)",
             "addressRegion": "Telangana",
             "postalCode": "500019",
             "addressCountry": "IN"

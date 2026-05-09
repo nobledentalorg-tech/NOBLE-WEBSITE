@@ -15,6 +15,7 @@ interface PageProps {
 }
 
 import { NeoBlogEngine } from '@/neo/NeoBlogEngine';
+import BlogPostSchema from '@/components/BlogPostSchema';
 
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
     const slug = params.slug.join('/');
@@ -91,10 +92,40 @@ export default async function BlogPostPage({ params }: PageProps) {
         notFound();
     }
 
+    // Get Related Posts
+    const categoryTags = post.tags || [];
+    const relatedPosts = allAutoBlogs
+        .filter(b => b.slug !== slug && b.tags.some(t => categoryTags.includes(t)))
+        .slice(0, 3);
+
+    const postUrl = `https://www.nobledentalnallagandla.in/blog/${slug}`;
+
     return (
         <div className="min-h-screen bg-white dark:bg-[#020617]">
+            <BlogPostSchema
+                title={post.title}
+                description={post.excerpt}
+                url={postUrl}
+                imageUrl={post.cover_image || undefined}
+                datePublished={post.created_at}
+                authorName={post.author}
+                medicalCategory={categoryTags[0] || "Dentistry"}
+            />
 
             <article className="pt-32 pb-16">
+                {/* Breadcrumbs */}
+                <div className="max-w-4xl mx-auto px-6 mb-8 text-sm text-slate-500 dark:text-slate-400 font-medium">
+                    <Link href="/" className="hover:text-blue-600">Home</Link>
+                    <span className="mx-2">›</span>
+                    <Link href="/blog" className="hover:text-blue-600">Clinical Blog</Link>
+                    {categoryTags[0] && (
+                        <>
+                            <span className="mx-2">›</span>
+                            <span className="capitalize">{categoryTags[0]}</span>
+                        </>
+                    )}
+                </div>
+
                 {/* Hero / Header */}
                 <div className="max-w-4xl mx-auto px-6 mb-12 text-center">
                     <div className="flex items-center justify-center gap-4 text-sm text-slate-500 mb-6">
@@ -148,6 +179,21 @@ export default async function BlogPostPage({ params }: PageProps) {
                             </p>
                         </div>
                     </div>
+
+                    {/* Related Articles for Internal Linking */}
+                    {relatedPosts.length > 0 && (
+                        <div className="mt-16 pt-8 border-t border-slate-200 dark:border-white/10">
+                            <h3 className="text-2xl font-black text-slate-900 dark:text-white mb-6">Related Clinical Guides</h3>
+                            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                                {relatedPosts.map((relatedPost) => (
+                                    <Link href={`/blog/${relatedPost.slug}`} key={relatedPost.slug} className="group block p-5 rounded-2xl bg-slate-50 dark:bg-[#111620] border border-slate-100 dark:border-white/5 hover:border-blue-500/50 transition-all">
+                                        <h4 className="font-bold text-slate-900 dark:text-white group-hover:text-blue-600 transition-colors line-clamp-2 mb-2">{relatedPost.title}</h4>
+                                        <p className="text-xs text-slate-500 line-clamp-2">{relatedPost.excerpt}</p>
+                                    </Link>
+                                ))}
+                            </div>
+                        </div>
+                    )}
 
                     {/* Navigation */}
                     <div className="mt-12 pt-8 border-t border-slate-200 dark:border-white/10">

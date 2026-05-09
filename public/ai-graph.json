@@ -44,8 +44,8 @@
       ],
       "address": {
         "@type": "PostalAddress",
-        "streetAddress": "1st Floor - ICA Clinic, Plot No. 151/2, HUDA Layout Water Tank Road, above Travancore Ayuvedha, Nallagandla",
-        "addressLocality": "Hyderabad",
+        "streetAddress": "1st floor - ICA Clinic suite 2, Plot no. 151/2, HUDA layout water tank road Nallagandla, above Travancore Ayuvedha",
+        "addressLocality": "Serilingampalle (M)",
         "addressRegion": "Telangana",
         "postalCode": "500019",
         "addressCountry": "IN"
@@ -62,8 +62,11 @@
       "contactPoint": {
         "@type": "ContactPoint",
         "contactType": "Customer Service",
-        "telephone": "+91-86104-25342",
-        "email": "nobledentalorg@gmail.com",
+        "telephone": [
+          "+918610425342",
+          "+918074512305"
+        ],
+        "email": "nobledental.org@gmail.com",
         "availableLanguage": ["English", "Hindi", "Telugu"]
       },
       "sameAs": [

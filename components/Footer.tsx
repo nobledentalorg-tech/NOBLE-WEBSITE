@@ -1,4 +1,4 @@
-﻿'use client';
+'use client';
 
 import React from 'react';
 import Link from 'next/link';
@@ -90,7 +90,7 @@ const Footer: React.FC<FooterProps> = ({ onBookClick }) => {
               </li>
               <li className="flex items-start gap-3 mt-4">
                 <MapPin size={18} className="text-blue-500 mt-0.5 shrink-0" />
-                <span>1st floor - ICA Clinic Plot no. 151/2,<br />HUDA layout water tank road,<br />Nallagandla - 500019</span>
+                <span>1st floor - ICA Clinic suite 2, Plot no. 151/2,<br />HUDA layout water tank road Nallagandla,<br />above Travancore Ayuvedha, Serilingampalle (M),<br />Hyderabad, Telangana 500019</span>
               </li>
               <li className="flex items-center gap-3">
                 <Phone size={18} className="text-blue-500" />

@@ -15,12 +15,15 @@ const JsonLd = () => {
                     "https://www.nobledentalnallagandla.in/assets/images/treatments/dental-implants-hyderabad.webp"
                 ],
                 "url": "https://www.nobledentalnallagandla.in",
-                "telephone": "+918074512305",
+                "telephone": [
+                    "+918610425342",
+                    "+918074512305"
+                ],
                 "priceRange": "₹₹",
                 "address": {
                     "@type": "PostalAddress",
-                    "streetAddress": "Suite 101, Ground Floor, Sri Klara, Nallagandla-Tellapur Rd",
-                    "addressLocality": "Serilingampally",
+                    "streetAddress": "1st floor - ICA Clinic suite 2, Plot no. 151/2, HUDA layout water tank road Nallagandla, above Travancore Ayuvedha",
+                    "addressLocality": "Serilingampalle (M)",
                     "addressRegion": "Telangana",
                     "postalCode": "500019",
                     "addressCountry": "IN"

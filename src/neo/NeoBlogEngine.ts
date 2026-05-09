@@ -104,7 +104,7 @@ ${tooth.clinicalSignificance.en}
 `;
 
         return {
-            slug: `anatomy/${tooth.name.en.toLowerCase().replace(/ /g, '-')}`,
+            slug: `anatomy/${tooth.name.en.toLowerCase().replace(/[^a-z0-9]+/g, '-')}`,
             title,
             excerpt: `Everything you need to know about the ${tooth.name.en}. Eruption time: ${tooth.eruption}.`,
             content,

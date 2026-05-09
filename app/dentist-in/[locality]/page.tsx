@@ -63,12 +63,15 @@ export default function LocalityHubPage({ params }: PageProps) {
                                 name: 'Noble Dental Care',
                                 image: `${BASE_URL}/images/dentalcare.nallagandla.png`,
                                 url: `${BASE_URL}/dentist-in/${locality.slug}`,
-                                telephone: '+91-8610425342',
+                                telephone: [
+                                    '+918610425342',
+                                    '+918074512305'
+                                ],
                                 priceRange: '₹₹',
                                 address: {
                                     '@type': 'PostalAddress',
-                                    streetAddress: 'Plot 151/2, ICA Clinic 1st Floor, HUDA Layout Water Tank Road',
-                                    addressLocality: 'Nallagandla',
+                                    streetAddress: '1st floor - ICA Clinic suite 2, Plot no. 151/2, HUDA layout water tank road Nallagandla, above Travancore Ayuvedha',
+                                    addressLocality: 'Serilingampalle (M)',
                                     addressRegion: 'Telangana',
                                     postalCode: '500019',
                                     addressCountry: 'IN'

@@ -20,6 +20,11 @@ export function applyInternalLinking(content: string): string {
         { keyword: 'Braces', url: '/treatments/invisalign-aligners' },
         { keyword: 'Invisalign', url: '/treatments/invisalign-aligners' },
         { keyword: 'Smile Design', url: '/treatments/smile-design' },
+        { keyword: 'Toothache', url: '/emergency' },
+        { keyword: 'Gums Bleeding', url: '/blog/faq/bleed-brushing' },
+        { keyword: 'Incisor', url: '/blog/anatomy/upper-central-incisor' },
+        { keyword: 'Molar', url: '/blog/anatomy/milk-second-molar' },
+        { keyword: 'Canine', url: '/blog/anatomy/upper-canine-eye-tooth' }
     ];
 
     let linkedContent = content;

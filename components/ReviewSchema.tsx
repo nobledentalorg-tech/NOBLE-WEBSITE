@@ -8,13 +8,16 @@ export default function ReviewSchema() {
         "@id": "https://www.nobledentalnallagandla.in/#dentist",
         "name": "Noble Dental Care | Multispeciality Dental clinic in Nallagandla",
         "image": "https://www.nobledentalnallagandla.in/assets/og-image.jpg",
-        "telephone": "+918610425342",
+        "telephone": [
+            "+918610425342",
+            "+918074512305"
+        ],
         "url": "https://www.nobledentalnallagandla.in",
         "hasMap": "https://maps.app.goo.gl/fb88doh9LBRTet6f7",
         "address": {
             "@type": "PostalAddress",
-            "streetAddress": "1st floor - ICA Clinic Plot no. 151/2, HUDA layout water tank road, above Travancore Ayuvedha",
-            "addressLocality": "Nallagandla, Serilingampalle (M), Hyderabad",
+            "streetAddress": "1st floor - ICA Clinic suite 2, Plot no. 151/2, HUDA layout water tank road Nallagandla, above Travancore Ayuvedha",
+            "addressLocality": "Serilingampalle (M)",
             "addressRegion": "Telangana",
             "postalCode": "500019",
             "addressCountry": "IN"

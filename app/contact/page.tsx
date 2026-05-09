@@ -63,10 +63,10 @@ export default function ContactPage() {
                 <div>
                   <h3 className="font-bold text-slate-900 dark:text-white text-lg">Noble Dental Care</h3>
                   <p className="text-slate-500 dark:text-slate-400 leading-relaxed text-sm">
-                    1st floor - ICA Clinic Plot no. 151/2,<br />
+                    1st floor - ICA Clinic suite 2, Plot no. 151/2,<br />
                     HUDA layout water tank road Nallagandla,<br />
-                    Above Travancore Ayurvedha,<br />
-                    Hyderabad 500019
+                    Above Travancore Ayuvedha, Serilingampalle (M),<br />
+                    Hyderabad, Telangana 500019
                   </p>
                 </div>
               </div>

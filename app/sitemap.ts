@@ -6,10 +6,10 @@ import { pseoLocalities, pseoServices } from '@/data/pseo';
 
 const BASE_URL = 'https://www.nobledentalnallagandla.in';
 
-// Stable dates per content type — avoids "everything changed today" on every deploy
-const STATIC_LAST_MOD = new Date('2026-04-15');
-const TREATMENT_LAST_MOD = new Date('2026-04-20');
-const PSEO_LAST_MOD = new Date('2026-05-05');
+// Use current date to signal to Googlebot that everything is fresh and should be re-crawled.
+const STATIC_LAST_MOD = new Date();
+const TREATMENT_LAST_MOD = new Date();
+const PSEO_LAST_MOD = new Date();
 
 export default function sitemap(): MetadataRoute.Sitemap {
     // 1. Static Routes
@@ -62,7 +62,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
         priority: 0.7,
     }));
 
-    const blogRoutes = dripFeedFilter(allBlogs);
+    // Disable drip feed to allow Google to discover and index all 172+ pages immediately
+    const blogRoutes = allBlogs;
 
     // 4. PSEO Routes (Hubs & Leaves)
     const pseoHubs = pseoLocalities.map((loc) => ({

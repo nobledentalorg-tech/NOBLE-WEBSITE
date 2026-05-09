@@ -139,7 +139,7 @@ const Contact = () => {
                                     <h3 className="text-xs font-black text-slate-500 uppercase tracking-widest mb-1">
                                         {isLocal ? "Your Neighborhood Clinic" : "Nallagandla"}
                                     </h3>
-                                    <p className="text-sm font-bold text-slate-700 dark:text-slate-300 leading-tight mb-4">ICA Clinic Building, Main Road.</p>
+                                    <p className="text-sm font-bold text-slate-700 dark:text-slate-300 leading-tight mb-4">1st floor - ICA Clinic suite 2, Plot no. 151/2, HUDA layout water tank road Nallagandla, above Travancore Ayuvedha, Serilingampalle (M), Hyderabad, Telangana 500019.</p>
 
                                     {/* [Trusted Local Signal] Lazy Loaded Map */}
                                     <div className="w-full aspect-video rounded-xl overflow-hidden shadow-inner border border-slate-200 dark:border-white/10 relative group/map">
